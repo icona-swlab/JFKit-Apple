@@ -1,0 +1,116 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		EA6A6B311890852600ED30B2 /* Development Log.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Development Log.txt"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		EA6A6B301890852600ED30B2 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				EA6A6B311890852600ED30B2 /* Development Log.txt */,
+			);
+			name = Documentation;
+			path = JFMobileFramework/Documentation;
+			sourceTree = "<group>";
+		};
+		EA7F672F188C2236002CEE17 = {
+			isa = PBXGroup;
+			children = (
+				EA6A6B301890852600ED30B2 /* Documentation */,
+				EA7F6774188C24A6002CEE17 /* Frameworks */,
+				EA7F6736188C22B8002CEE17 /* Libraries */,
+				EA7F6737188C22B8002CEE17 /* Resources */,
+				EA7F6738188C22B8002CEE17 /* Sources */,
+			);
+			sourceTree = "<group>";
+		};
+		EA7F6736188C22B8002CEE17 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			path = JFMobileFramework/Libraries;
+			sourceTree = "<group>";
+		};
+		EA7F6737188C22B8002CEE17 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = JFMobileFramework/Resources;
+			sourceTree = "<group>";
+		};
+		EA7F6738188C22B8002CEE17 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sources;
+			path = JFMobileFramework/Sources;
+			sourceTree = "<group>";
+		};
+		EA7F6774188C24A6002CEE17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		EA7F6730188C2236002CEE17 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = EA7F6733188C2236002CEE17 /* Build configuration list for PBXProject "JFMobileFramework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EA7F672F188C2236002CEE17;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		EA7F6734188C2236002CEE17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		EA7F6735188C2236002CEE17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA7F6733188C2236002CEE17 /* Build configuration list for PBXProject "JFMobileFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA7F6734188C2236002CEE17 /* Debug */,
+				EA7F6735188C2236002CEE17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA7F6730188C2236002CEE17 /* Project object */;
+}

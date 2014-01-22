@@ -1,0 +1,22 @@
+
+DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
+
+
+
+########## 2014.01.23 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	00:00
+Time ended:		00:15
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Created the empty project and the GIT repository.
+
+
+########################################################################
