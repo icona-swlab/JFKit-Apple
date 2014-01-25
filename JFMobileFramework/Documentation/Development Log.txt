@@ -3,6 +3,26 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.01.25 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	16:45
+Time ended:		19:30
+---------------------
+Time total:		02:45
+---------------------
+
+Activity:
+
+	- Updated the compiler flags of the project.
+	- Created the "JFLogger" target.
+	- Created the "JFUtilities" target.
+	- Imported the "JFLogger" class.
+	- Imported some of the "JFConstants" and "JFUtilities" code to compile the "JFLogger" target.
+
+
 ########## 2014.01.23 ##################################################
 
 Developer:	Jacopo Filié
