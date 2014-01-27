@@ -10,3 +10,10 @@
 #import "JFUtilities.h"
 
 
+
+#pragma mark - Functions (Info)
+
+NSString* appInfoForKey(NSString* key)
+{
+	return [[[NSBundle mainBundle] infoDictionary] objectForKey:key];
+}

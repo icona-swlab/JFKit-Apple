@@ -3,6 +3,25 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.01.26 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	12:30
+Time paused:	06:30
+Time ended:		00:45
+---------------------
+Time total:		05:45
+---------------------
+
+Activity:
+
+	- Added new "Info" macros.
+	- Created the "JFFileManager" target.
+	- Imported some of the "JFFileManager" code to compile the "JFLogger" target.
+
+
 ########## 2014.01.25 ##################################################
 
 Developer:	Jacopo Filié

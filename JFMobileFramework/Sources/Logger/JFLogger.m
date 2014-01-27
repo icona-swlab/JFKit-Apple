@@ -12,6 +12,7 @@
 #import <pthread.h>
 
 #import "JFConstants.h"
+#import "JFFileManager.h"
 #import "JFUtilities.h"
 
 
@@ -89,14 +90,14 @@
 	NSString* hashtagsString = [self hashtagsToString:(LogHashtagAttention|LogHashtagFilesystem)];
 	
 	// Creates an owned instance of a file manager for thread safety.
-	NSFileManager* fm = [NSFileManager new];
+	JFFileManager* fm = [JFFileManager defaultManager];
 	
 	// Checks if the file exists and creates it if not.
-	BOOL fileExists = [fm fileExistsAtPath:filePath];
+	BOOL fileExists = [fm itemExistsAtURL:[NSURL fileURLWithPath:filePath] isDirectory:NULL];
 	if(!fileExists)
 	{
 		// Creates an empty file at filepath location.
-		fileExists = [fm createFileAtPath:filePath contents:nil attributes:nil];
+		fileExists = [fm createFileAtURL:[NSURL fileURLWithPath:filePath] contents:nil attributes:nil];
 		if(!fileExists)
 		{
 			NSLog(@"%@: could not create log file at path '%@'. %@", SelfClassString, filePath, hashtagsString);
@@ -139,7 +140,7 @@
 	}
 	
 	// Checks if the file should be cleared before appending the new log.
-	BOOL clearLog = [self shouldClearLogFileAtPath:filePath];
+	BOOL clearLog = NO; //[self shouldClearLogFileAtPath:filePath]; // TODO: implement new logic.
 	
 	// Tries to append the data to the log file (NSFileHandle is NOT thread safe).
 	@synchronized(self)

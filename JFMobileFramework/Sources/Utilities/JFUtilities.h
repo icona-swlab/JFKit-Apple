@@ -11,13 +11,23 @@
 
 
 
-#pragma mark - Macro (Info)
+#pragma mark - Macros (Info)
 
+#define AppDisplayName	appInfoForKey(@"CFBundleDisplayName")
+#define AppIdentifier	appInfoForKey(@"CFBundleIdentifier")
+#define AppName			appInfoForKey(@"CFBundleName")
+#define AppVersionLong	appInfoForKey(@"CFBundleVersion")
+#define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
 #define	SelfClassString	ObjectClassString(self)
 
 
-#pragma mark - Macro (Strings)
+#pragma mark - Macros (Strings)
 
 #define	IsEmptyString(arg_str)			[(arg_str) isEqualToString:EmptyString]
 #define	IsNullOrEmptyString(arg_str)	(!(arg_str) || IsEmptyString(arg_str))
 #define	ObjectClassString(arg_obj)		NSStringFromClass([(arg_obj) class])
+
+
+#pragma mark - Functions (Info)
+
+extern NSString* appInfoForKey(NSString* key);
