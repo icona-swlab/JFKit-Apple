@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.01.29 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	12:00
+Time ended:		13:00
+---------------------
+Time total:		01:00
+---------------------
+
+Activity:
+
+	- Changed the "build paths" compiler flag of the project.
+
+
 ########## 2014.01.26 ##################################################
 
 Developer:	Jacopo Filié

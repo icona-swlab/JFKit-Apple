@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA11ED9218958C3F00CA297C /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DBD1894223D003C55E8 /* JFLogger.m */; };
 		EA11ED9318958C3F00CA297C /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC01894223D003C55E8 /* JFConstants.m */; };
 		EA11ED9418958C3F00CA297C /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC21894223D003C55E8 /* JFUtilities.m */; };
 		EA11ED9618958C3F00CA297C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA11ED9E18958C7D00CA297C /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA11ED9D18958C7D00CA297C /* JFFileManager.m */; };
 		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DEA18942332003C55E8 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DBD1894223D003C55E8 /* JFLogger.m */; };
-		EA425DED18942C46003C55E8 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DBD1894223D003C55E8 /* JFLogger.m */; };
 		EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DF518942E1B003C55E8 /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC01894223D003C55E8 /* JFConstants.m */; };
 		EA425DF618942E1B003C55E8 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC21894223D003C55E8 /* JFUtilities.m */; };
@@ -280,7 +278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA11ED9218958C3F00CA297C /* JFLogger.m in Sources */,
 				EA11ED9E18958C7D00CA297C /* JFFileManager.m in Sources */,
 				EA11ED9318958C3F00CA297C /* JFConstants.m in Sources */,
 				EA11ED9418958C3F00CA297C /* JFUtilities.m in Sources */,
@@ -299,7 +296,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA425DED18942C46003C55E8 /* JFLogger.m in Sources */,
 				EA425DF518942E1B003C55E8 /* JFConstants.m in Sources */,
 				EA425DF618942E1B003C55E8 /* JFUtilities.m in Sources */,
 			);
@@ -338,6 +334,8 @@
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = "/tmp/$(TARGET_NAME).dst";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -353,11 +351,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OBJROOT = .build;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SYMROOT = Products;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -380,6 +380,8 @@
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)";
 				DSTROOT = "/tmp/$(TARGET_NAME).dst";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -390,10 +392,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OBJROOT = .build;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SYMROOT = Products;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
