@@ -16,7 +16,7 @@ Time total:		01:00
 
 Activity:
 
-	- Changed the "build paths" compiler flag of the project.
+	- Changed the "build paths" compiler flags of the project.
 
 
 ########## 2014.01.26 ##################################################
