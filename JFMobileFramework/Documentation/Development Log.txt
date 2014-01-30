@@ -3,6 +3,23 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.01.30 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	11:00
+Time paused:	01:00
+Time ended:		15:30
+---------------------
+Time total:		03:30
+---------------------
+
+Activity:
+
+	- Heavily changed the 'JFLogger' class to expose better APIs.
+
+
 ########## 2014.01.29 ##################################################
 
 Developer:	Jacopo Filié

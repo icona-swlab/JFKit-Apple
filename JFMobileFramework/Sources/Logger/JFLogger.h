@@ -13,13 +13,13 @@
 
 typedef NS_OPTIONS(UInt8, LogDestinations)
 {
-	LogDestinationConsole	= 1 << 0,
-	LogDestinationFile		= 1 << 1,
+	LogDestinationConsole	= 1 << 0,	// Logs the message into the console.
+	LogDestinationFile		= 1 << 1,	// Logs the message into the file if 'fileURL' is set.
 };
 
 typedef NS_OPTIONS(UInt16, LogHashtags)
 {
-	LogHashtagNone			= 0,
+	LogHashtagsNone			= 0,		// Message is not associated to any hashtag.
 	
 	LogHashtagAttention		= 1 << 0,	// Message that should be investigated by a system administrator, because it may be a sign of a larger issue. For example, errors from a hard drive controller that typically occur when the drive is about to fail.
 	LogHashtagClue			= 1 << 1,	// Message containing extra key/value pairs with additional information to help reconstruct the context.
@@ -40,14 +40,18 @@ typedef NS_OPTIONS(UInt16, LogHashtags)
 
 @interface JFLogger : NSObject
 
-// Data
-@property (copy)	NSString*	filePath;
+// Settings
+@property (assign)						LogDestinations	destinations;
+@property (strong, nonatomic, readonly)	NSURL*			fileURL;
 
 // Memory management
-+ (instancetype)	logger;
++ (instancetype)	defaultLogger;	// It can log to the default log file called <Application name>.log inside the Application Support folder.
+- (instancetype)	initWithFileURL:(NSURL*)fileURL;
 
 // Logging management
-- (void)	logTo:(LogDestinations)destinations message:(NSString*)message;
-- (void)	logTo:(LogDestinations)destinations message:(NSString*)message hashtags:(LogHashtags)hashtags;
+- (void)	logMessage:(NSString*)message;
+- (void)	logMessage:(NSString*)message hashtags:(LogHashtags)hashtags;
+- (void)	logMessage:(NSString*)message toDestinations:(LogDestinations)destinations;
+- (void)	logMessage:(NSString*)message toDestinations:(LogDestinations)destinations hashtags:(LogHashtags)hashtags;
 
 @end
