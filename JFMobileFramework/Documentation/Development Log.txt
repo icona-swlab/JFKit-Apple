@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.01.31 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	22:00
+Time ended:		22:30
+---------------------
+Time total:		00:30
+---------------------
+
+Activity:
+
+	- Changed some compiler flags.
+
+
 ########## 2014.01.30 ##################################################
 
 Developer:	Jacopo Filié
