@@ -188,7 +188,7 @@
 		fileExists = [fm createFileAtURL:self.fileURL contents:nil attributes:nil];
 		if(!fileExists)
 		{
-			NSLog(@"%@: could not create log file at path '%@'. %@", SelfClassString, [self.fileURL path], hashtagsString);
+			NSLog(@"%@: could not create log file at path '%@'. %@", ClassName, [self.fileURL path], hashtagsString);
 			return;
 		}
 	}
@@ -210,7 +210,7 @@
 	NSData* data = [message dataUsingEncoding:NSUTF8StringEncoding];
 	if(!data)
 	{
-		NSLog(@"%@: failed to create data from log message '%@'. %@", SelfClassString, message, hashtagsString);
+		NSLog(@"%@: failed to create data from log message '%@'. %@", ClassName, message, hashtagsString);
 		return;
 	}
 	
@@ -221,7 +221,7 @@
 		NSFileHandle* fh = [NSFileHandle fileHandleForWritingAtPath:[self.fileURL path]];
 		if(!fh)
 		{
-			NSLog(@"%@: could not open the log file at path '%@'. %@", SelfClassString, [self.fileURL path], hashtagsString);
+			NSLog(@"%@: could not open the log file at path '%@'. %@", ClassName, [self.fileURL path], hashtagsString);
 			return;
 		}
 		

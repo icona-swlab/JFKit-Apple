@@ -11,6 +11,11 @@
 
 
 
+#pragma mark - Macros (Debug)
+
+#define	LogMethod	NSLog(@"%@: executing '%@'.", ClassName, MethodName)
+
+
 #pragma mark - Macros (Info)
 
 #define AppDisplayName	appInfoForKey(@"CFBundleDisplayName")
@@ -18,7 +23,8 @@
 #define AppName			appInfoForKey(@"CFBundleName")
 #define AppVersionLong	appInfoForKey(@"CFBundleVersion")
 #define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
-#define	SelfClassString	ObjectClassString(self)
+#define	ClassName		ObjectClassString(self)
+#define	MethodName		NSStringFromSelector(_cmd)
 
 
 #pragma mark - Macros (Strings)

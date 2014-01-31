@@ -73,7 +73,7 @@
 		NSError* error;
 		if(![self createFolderAtURL:parentFolder attributes:nil error:&error])
 		{
-			NSLog(@"%@: failed to create the parent folder of the file at URL '%@' for error '%@'.", SelfClassString, fileURL, error);
+			NSLog(@"%@: failed to create the parent folder of the file at URL '%@' for error '%@'.", ClassName, fileURL, error);
 			return NO;
 		}
 	}
@@ -106,7 +106,7 @@
 	NSURL* retVal = [self.fileManager URLForDirectory:NSItemReplacementDirectory inDomain:NSUserDomainMask appropriateForURL:url create:YES error:&error]; // The temporary directory is created despite the 'create' parameter value.
 	
 	if(!retVal)
-		NSLog(@"%@: failed to create a temporary directory appropriate for URL '%@' for error '%@'.", SelfClassString, url, error);
+		NSLog(@"%@: failed to create a temporary directory appropriate for URL '%@' for error '%@'.", ClassName, url, error);
 	
 	return retVal;
 }
@@ -122,7 +122,7 @@
 	NSURL* retVal = [self systemDirectory:NSApplicationSupportDirectory error:&error];
 	
 	if(!retVal)
-		NSLog(@"%@: unable to locate system directory 'Application Support' for error '%@'.", SelfClassString, error);
+		NSLog(@"%@: unable to locate system directory 'Application Support' for error '%@'.", ClassName, error);
 	
 	return retVal;
 }
@@ -133,7 +133,7 @@
 	NSURL* retVal = [self systemDirectory:NSCachesDirectory error:&error];
 	
 	if(!retVal)
-		NSLog(@"%@: unable to locate system directory 'Caches' for error '%@'.", SelfClassString, error);
+		NSLog(@"%@: unable to locate system directory 'Caches' for error '%@'.", ClassName, error);
 	
 	return retVal;
 }
@@ -144,7 +144,7 @@
 	NSURL* retVal = [self systemDirectory:NSDocumentDirectory error:&error];
 	
 	if(!retVal)
-		NSLog(@"%@: unable to locate system directory 'Documents' for error '%@'.", SelfClassString, error);
+		NSLog(@"%@: unable to locate system directory 'Documents' for error '%@'.", ClassName, error);
 	
 	return retVal;
 }
@@ -158,7 +158,7 @@
 		retVal = [retVal URLByAppendingPathComponent:@"Inbox"];
 	
 	if(!retVal)
-		NSLog(@"%@: unable to locate system directory 'Inbox' for error '%@'.", SelfClassString, error);
+		NSLog(@"%@: unable to locate system directory 'Inbox' for error '%@'.", ClassName, error);
 	
 	return retVal;
 }
@@ -169,7 +169,7 @@
 	NSURL* retVal = [self systemDirectory:NSLibraryDirectory error:&error];
 	
 	if(!retVal)
-		NSLog(@"%@: unable to locate system directory 'Library' for error '%@'.", SelfClassString, error);
+		NSLog(@"%@: unable to locate system directory 'Library' for error '%@'.", ClassName, error);
 	
 	return retVal;
 }
