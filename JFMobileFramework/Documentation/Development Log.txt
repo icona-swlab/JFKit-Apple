@@ -58,16 +58,37 @@ Developer:	Jacopo Filié
 
 ---------------------
 Time started:	12:30
-Time paused:	06:30
-Time ended:		00:45
+Time ended:		12:45
 ---------------------
-Time total:		05:45
+Time total:		00:15
 ---------------------
 
 Activity:
 
 	- Added new "Info" macros.
+
+
+---------------------
+Time started:	15:30
+Time ended:		18:30
+---------------------
+Time total:		03:00
+---------------------
+
+Activity:
+
 	- Created the "JFFileManager" target.
+
+
+---------------------
+Time started:	21:30
+Time ended:		00:00
+---------------------
+Time total:		02:30
+---------------------
+
+Activity:
+
 	- Imported some of the "JFFileManager" code to compile the "JFLogger" target.
 
 

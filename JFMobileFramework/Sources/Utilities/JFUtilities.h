@@ -9,6 +9,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "JFConstants.h"
+
 
 
 #pragma mark - Macros (Debug)
