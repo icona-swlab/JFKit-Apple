@@ -3,6 +3,24 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.02.04 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	21:30
+Time ended:		22:30
+---------------------
+Time total:		01:00
+---------------------
+
+Activity:
+
+	- Imported some "Strings" macros to convert numbers in strings.
+	- Imported the "JFHTTPRequest" class and all necessary utilities to compile it.
+	- Deleted the "JFConstants" class as it was totally useless.
+
+
 ########## 2014.01.31 ##################################################
 
 Developer:	Jacopo Filié

@@ -11,7 +11,6 @@
 
 #import <pthread.h>
 
-#import "JFConstants.h"
 #import "JFFileManager.h"
 #import "JFUtilities.h"
 
