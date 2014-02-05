@@ -64,6 +64,15 @@
 #define ShowNetworkActivityIndicator	setNetworkActivityIndicatorHidden(NO)
 
 
+#pragma mark - Typedef (Blocks)
+
+typedef void (^Block)(void);
+typedef void (^BlockWithBool)(BOOL value);
+typedef void (^BlockWithError)(NSError* error);
+typedef void (^BlockWithObject)(id object);
+typedef void (^BlockWithObjectAndError)(id object, NSError* error);
+
+
 #pragma mark - Constants (Strings)
 
 extern	NSString* const	EmptyString;

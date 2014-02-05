@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.02.05 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	16:45
+Time ended:		17:00
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Created some new basic types for block programming.
+
+
 ########## 2014.02.04 ##################################################
 
 Developer:	Jacopo Filié
