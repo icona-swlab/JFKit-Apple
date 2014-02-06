@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.02.06 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	16:45
+Time ended:		17:00
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Added a dictionary property to the "JFHTTPRequest" class to save additional info.
+
+
 ########## 2014.02.05 ##################################################
 
 Developer:	Jacopo Filié

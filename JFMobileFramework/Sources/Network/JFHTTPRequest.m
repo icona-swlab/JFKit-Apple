@@ -45,6 +45,7 @@
 #pragma mark - Properties
 
 // Attributes
+@synthesize additionalInfo	= _additionalInfo;
 @synthesize credential		= _credential;
 @synthesize encoding		= _encoding;
 @synthesize fields			= _fields;
@@ -63,6 +64,14 @@
 
 
 #pragma mark - Properties accessors (Attributes)
+
+- (void)setAdditionalInfo:(NSDictionary*)additionalInfo
+{
+	if(self.connection)
+		return;
+	
+	_additionalInfo = additionalInfo;
+}
 
 - (void)setCredential:(NSURLCredential*)credential
 {

@@ -29,8 +29,8 @@ typedef NS_ENUM(UInt8, JFHTTPMethod)
 @required
 
 // HTTP request events
-- (void)	onHTTPRequest:(JFHTTPRequest*)httpRequest completedRequestWithData:(NSData*)data;
-- (void)	onHTTPRequest:(JFHTTPRequest*)httpRequest failedRequestWithError:(NSError*)error;
+- (void)	onHTTPRequest:(JFHTTPRequest*)request completedRequestWithData:(NSData*)data;
+- (void)	onHTTPRequest:(JFHTTPRequest*)request failedRequestWithError:(NSError*)error;
 
 @end
 
@@ -39,6 +39,7 @@ typedef NS_ENUM(UInt8, JFHTTPMethod)
 @interface JFHTTPRequest : NSObject
 
 // Attributes
+@property (strong, nonatomic)	NSDictionary*		additionalInfo;
 @property (strong, nonatomic)	NSURLCredential*	credential;
 @property (assign, nonatomic)	NSStringEncoding	encoding;
 @property (assign, nonatomic)	JFHTTPMethod		httpMethod;
