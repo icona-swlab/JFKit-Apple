@@ -17,6 +17,9 @@
 		EA425DEA18942332003C55E8 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DBD1894223D003C55E8 /* JFLogger.m */; };
 		EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DF618942E1B003C55E8 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC21894223D003C55E8 /* JFUtilities.m */; };
+		EAD5B6C218A8F44700414379 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
+		EAD5B6CB18A8F46E00414379 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B6CA18A8F46E00414379 /* JFCoreDataManager.m */; };
+		EAD5B6D118A8F61100414379 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B6D018A8F61100414379 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +59,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAD5B6C318A8F44700414379 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +87,10 @@
 		EA425DC71894224A003C55E8 /* libJFLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFLogger.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA425DF418942C46003C55E8 /* libJFUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD5B6C718A8F44700414379 /* libJFPersistence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFPersistence.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD5B6C918A8F46E00414379 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
+		EAD5B6CA18A8F46E00414379 /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
+		EAD5B6D018A8F61100414379 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +123,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD5B6C118A8F44700414379 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD5B6D118A8F61100414379 /* CoreData.framework in Frameworks */,
+				EAD5B6C218A8F44700414379 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +175,7 @@
 				EA425DF418942C46003C55E8 /* libJFUtilities.a */,
 				EA11ED9B18958C3F00CA297C /* libJFFileManager.a */,
 				EA300EB018A18B1000E9DA78 /* libJFNetwork.a */,
+				EAD5B6C718A8F44700414379 /* libJFPersistence.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +183,7 @@
 		EA425D8F1894211F003C55E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAD5B6D018A8F61100414379 /* CoreData.framework */,
 				EA425D901894211F003C55E8 /* Foundation.framework */,
 				EA425DD71894224A003C55E8 /* UIKit.framework */,
 				EA425D9E1894211F003C55E8 /* XCTest.framework */,
@@ -195,6 +222,7 @@
 				EA11ED8F18958AE800CA297C /* File Manager */,
 				EA425DBB1894223D003C55E8 /* Logger */,
 				EA300EA318A18AFA00E9DA78 /* Network */,
+				EAD5B6C818A8F46E00414379 /* Persistence */,
 				EA425DBE1894223D003C55E8 /* Utilities */,
 			);
 			name = Sources;
@@ -217,6 +245,15 @@
 				EA425DC21894223D003C55E8 /* JFUtilities.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EAD5B6C818A8F46E00414379 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				EAD5B6C918A8F46E00414379 /* JFCoreDataManager.h */,
+				EAD5B6CA18A8F46E00414379 /* JFCoreDataManager.m */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +327,23 @@
 			productReference = EA425DF418942C46003C55E8 /* libJFUtilities.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		EAD5B6BE18A8F44700414379 /* JFPersistence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD5B6C418A8F44700414379 /* Build configuration list for PBXNativeTarget "JFPersistence" */;
+			buildPhases = (
+				EAD5B6BF18A8F44700414379 /* Sources */,
+				EAD5B6C118A8F44700414379 /* Frameworks */,
+				EAD5B6C318A8F44700414379 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JFPersistence;
+			productName = JFLogger;
+			productReference = EAD5B6C718A8F44700414379 /* libJFPersistence.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -314,6 +368,7 @@
 				EA11ED9018958C3F00CA297C /* JFFileManager */,
 				EA425DC61894224A003C55E8 /* JFLogger */,
 				EA300EA618A18B1000E9DA78 /* JFNetwork */,
+				EAD5B6BE18A8F44700414379 /* JFPersistence */,
 				EA425DEB18942C46003C55E8 /* JFUtilities */,
 			);
 		};
@@ -351,6 +406,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA425DF618942E1B003C55E8 /* JFUtilities.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD5B6BF18A8F44700414379 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD5B6CB18A8F46E00414379 /* JFCoreDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +549,18 @@
 			};
 			name = Release;
 		};
+		EAD5B6C518A8F44700414379 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		EAD5B6C618A8F44700414379 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -530,6 +605,15 @@
 			buildConfigurations = (
 				EA425DF218942C46003C55E8 /* Debug */,
 				EA425DF318942C46003C55E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD5B6C418A8F44700414379 /* Build configuration list for PBXNativeTarget "JFPersistence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD5B6C518A8F44700414379 /* Debug */,
+				EAD5B6C618A8F44700414379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

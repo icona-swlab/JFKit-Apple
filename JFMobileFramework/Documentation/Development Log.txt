@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.02.10 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	11:00
+Time ended:		11:15
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Imported the "JFCoreDataManager" class.
+
+
 ########## 2014.02.06 ##################################################
 
 Developer:	Jacopo Filié
