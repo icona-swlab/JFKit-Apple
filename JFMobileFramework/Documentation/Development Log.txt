@@ -19,6 +19,18 @@ Activity:
 	- Imported the "JFCoreDataManager" class.
 
 
+---------------------
+Time started:	16:30
+Time ended:		17:30
+---------------------
+Time total:		01:00
+---------------------
+
+Activity:
+
+	- Modified the "JFCoreDataManager" class to expose its internal objects and use more recent APIs.
+
+
 ########## 2014.02.06 ##################################################
 
 Developer:	Jacopo Filié

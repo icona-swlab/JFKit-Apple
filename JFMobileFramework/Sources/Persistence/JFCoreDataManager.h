@@ -15,12 +15,18 @@
 
 @interface JFCoreDataManager : NSObject
 
+// Connection
+@property (strong, nonatomic, readonly)	NSURL*							dataModelURL;
+@property (strong, nonatomic, readonly)	NSManagedObjectContext*			mainManagedObjectContext;
+@property (strong, nonatomic, readonly)	NSManagedObjectModel*			managedObjectModel;
+@property (strong, nonatomic, readonly)	NSPersistentStoreCoordinator*	persistentStoreCoordinator;
+@property (strong, nonatomic, readonly)	NSURL*							persistentStoreURL;
+
 // Memory management
-- (instancetype)	initWithPathToPersistentStore:(NSString*)persistentStoreFilePath andPathToDataModel:(NSString*)dataModelFilePath;
-- (instancetype)	initWithURLToPersistentStore:(NSURL*)persistentStoreFileURL andURLToDataModel:(NSURL*)dataModelFileURL;
+- (instancetype)	initWithPersistentStoreURL:(NSURL*)persistentStoreURL andDataModelURL:(NSURL*)dataModelURL;
 
 // Connection management
-- (NSManagedObjectContext*)	createManagedObjectContext;
+- (NSManagedObjectContext*)	createPrivateManagedObjectContext;
 
 // Fetch requests management
 - (NSFetchRequest*)	fetchRequestTemplateForName:(NSString*)name;

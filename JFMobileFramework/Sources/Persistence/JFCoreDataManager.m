@@ -15,11 +15,8 @@
 
 @interface JFCoreDataManager ()
 
-// Connection
-@property (strong, nonatomic, readonly)	NSURL*							dataModelFileURL;
-@property (strong, nonatomic, readonly)	NSManagedObjectModel*			managedObjectModel;
-@property (strong, nonatomic, readonly)	NSPersistentStoreCoordinator*	persistentStoreCoordinator;
-@property (strong, nonatomic, readonly)	NSURL*							persistentStoreFileURL;
+// Connection management
+- (NSManagedObjectContext*)	createManagedObjectContextWithConcurrencyType:(NSManagedObjectContextConcurrencyType)concurrencyType;
 
 @end
 
@@ -30,20 +27,32 @@
 #pragma mark - Properties
 
 // Connection
-@synthesize dataModelFileURL			= _dataModelFileURL;
+@synthesize dataModelURL				= _dataModelURL;
+@synthesize mainManagedObjectContext	= _mainManagedObjectContext;
 @synthesize managedObjectModel			= _managedObjectModel;
 @synthesize persistentStoreCoordinator	= _persistentStoreCoordinator;
-@synthesize persistentStoreFileURL		= _persistentStoreFileURL;
+@synthesize persistentStoreURL			= _persistentStoreURL;
 
 
 #pragma mark - Properties accessors (Connection)
+
+- (NSManagedObjectContext*)mainManagedObjectContext
+{
+	@synchronized(self)
+	{
+		if(!_mainManagedObjectContext)
+			_mainManagedObjectContext = [self createManagedObjectContextWithConcurrencyType:NSMainQueueConcurrencyType];
+		
+		return _mainManagedObjectContext;
+	}
+}
 
 - (NSManagedObjectModel*)managedObjectModel
 {
 	@synchronized(self)
 	{
 		if(!_managedObjectModel)
-			_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:self.dataModelFileURL];
+			_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:self.dataModelURL];
 		
 		return _managedObjectModel;
 	}
@@ -57,10 +66,10 @@
 		{
 			NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
 			NSError* error = nil;
-			if([coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.persistentStoreFileURL options:nil error:&error])
+			if([coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.persistentStoreURL options:nil error:&error])
 				_persistentStoreCoordinator = coordinator;
 			else
-				NSLog(@"%@: could not connect to persistent store at URL '%@' for error '%@'.", ClassName, [self.persistentStoreFileURL absoluteString], error);
+				NSLog(@"%@: could not connect to persistent store at URL '%@' for error '%@'.", ClassName, [self.persistentStoreURL absoluteString], error);
 		}
 		
 		return _persistentStoreCoordinator;
@@ -70,25 +79,14 @@
 
 #pragma mark - Memory management
 
-- (instancetype)initWithPathToPersistentStore:(NSString*)persistentStoreFilePath andPathToDataModel:(NSString*)dataModelFilePath
+- (instancetype)initWithPersistentStoreURL:(NSURL*)persistentStoreURL andDataModelURL:(NSURL*)dataModelURL
 {
-	if(!persistentStoreFilePath || !dataModelFilePath)
-	{
-		self = nil;
-		return nil;
-	}
-	
-	return [self initWithURLToPersistentStore:[NSURL fileURLWithPath:persistentStoreFilePath] andURLToDataModel:[NSURL fileURLWithPath:dataModelFilePath]];
-}
-
-- (instancetype)initWithURLToPersistentStore:(NSURL*)persistentStoreFileURL andURLToDataModel:(NSURL*)dataModelFileURL
-{
-	self = ((persistentStoreFileURL && dataModelFileURL) ? [super init] : nil);
+	self = ((persistentStoreURL && dataModelURL) ? [super init] : nil);
 	if(self)
 	{
 		// Connection
-		_dataModelFileURL = [dataModelFileURL copy];
-		_persistentStoreFileURL = [persistentStoreFileURL copy];
+		_dataModelURL = [dataModelURL copy];
+		_persistentStoreURL = [persistentStoreURL copy];
 	}
 	return self;
 }
@@ -96,14 +94,23 @@
 
 #pragma mark - Connection management
 
-- (NSManagedObjectContext*)createManagedObjectContext
+- (NSManagedObjectContext*)createManagedObjectContextWithConcurrencyType:(NSManagedObjectContextConcurrencyType)concurrencyType
 {
 	if(!self.persistentStoreCoordinator)
 		return nil;
 	
-	NSManagedObjectContext* retVal = [NSManagedObjectContext new];
-	retVal.persistentStoreCoordinator = self.persistentStoreCoordinator;
+	NSManagedObjectContext* retVal = [[NSManagedObjectContext alloc] initWithConcurrencyType:concurrencyType];
+	if(retVal)
+	{
+		retVal.persistentStoreCoordinator = self.persistentStoreCoordinator;
+		retVal.undoManager = [NSUndoManager new];
+	}
 	return retVal;
+}
+
+- (NSManagedObjectContext*)createPrivateManagedObjectContext
+{
+	return [self createManagedObjectContextWithConcurrencyType:NSPrivateQueueConcurrencyType];
 }
 
 
