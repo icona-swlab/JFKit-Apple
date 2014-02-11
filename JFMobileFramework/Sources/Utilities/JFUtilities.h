@@ -25,7 +25,12 @@
 #define AppVersionLong	appInfoForKey(@"CFBundleVersion")
 #define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
 #define	ClassName		ObjectClassString(self)
-#define	MethodName		NSStringFromSelector(_cmd)
+#define MethodName		NSStringFromSelector(_cmd)
+
+
+#pragma mark - Macros (Resources)
+
+#define BundleResourceURL(arg_filename)	[[NSBundle mainBundle] URLForResource:[(arg_filename) stringByDeletingPathExtension] withExtension:[(arg_filename) pathExtension]]
 
 
 #pragma mark - Macros (Shortcuts)

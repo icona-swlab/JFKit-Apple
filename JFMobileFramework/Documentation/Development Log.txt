@@ -3,6 +3,24 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.02.11 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	11:00
+Time ended:		12:00
+---------------------
+Time total:		01:00
+---------------------
+
+Activity:
+
+	- Modified the "JFCoreDataManager" class.
+	- Added a macro to get bundle resource URLs.
+	- Added some comments in the "JFFileManager" class.
+
+
 ########## 2014.02.10 ##################################################
 
 Developer:	Jacopo Filié
