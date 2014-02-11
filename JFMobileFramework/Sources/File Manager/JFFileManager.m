@@ -49,10 +49,10 @@
 
 + (instancetype)defaultManager
 {
-    static dispatch_once_t token;
+    static dispatch_once_t onceToken;
     static id defaultManager;
 	
-    dispatch_once(&token, ^{
+    dispatch_once(&onceToken, ^{
         defaultManager = [[self alloc] init];
     });
 	

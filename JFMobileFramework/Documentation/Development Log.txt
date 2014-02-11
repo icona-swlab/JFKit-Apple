@@ -33,6 +33,18 @@ Activity:
 	- Changed some property attributes for coherence (from "nonatomic" to "atomic").
 
 
+---------------------
+Time started:	16:30
+Time ended:		16:45
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Changed the name of the "token" variable to "onceToken" in the singleton initialization of the "JFFileManager" class.
+
+
 ########## 2014.02.10 ##################################################
 
 Developer:	Jacopo Filié
