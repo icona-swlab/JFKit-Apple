@@ -17,7 +17,7 @@
 @interface JFFileManager ()
 
 // Managers
-@property (strong, nonatomic, readonly)	NSFileManager*	fileManager;
+@property (strong, readonly)	NSFileManager*	fileManager;
 
 @end
 
@@ -39,8 +39,9 @@
 	{
 		if(!_fileManager)
 			_fileManager = [NSFileManager new];
+		
+		return _fileManager;
 	}
-	return _fileManager;
 }
 
 

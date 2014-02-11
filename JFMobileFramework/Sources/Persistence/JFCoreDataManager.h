@@ -17,9 +17,9 @@
 
 // Store
 @property (strong, nonatomic, readonly)	NSURL*							dataModelURL;
-@property (strong, nonatomic, readonly)	NSManagedObjectContext*			mainManagedObjectContext;
-@property (strong, nonatomic, readonly)	NSManagedObjectModel*			managedObjectModel;
-@property (strong, nonatomic, readonly)	NSPersistentStoreCoordinator*	persistentStoreCoordinator;
+@property (strong, readonly)			NSManagedObjectContext*			mainManagedObjectContext;
+@property (strong, readonly)			NSManagedObjectModel*			managedObjectModel;
+@property (strong, readonly)			NSPersistentStoreCoordinator*	persistentStoreCoordinator;
 @property (strong, nonatomic, readonly)	NSString*						persistentStoreType;
 @property (strong, nonatomic, readonly)	NSURL*							persistentStoreURL;
 

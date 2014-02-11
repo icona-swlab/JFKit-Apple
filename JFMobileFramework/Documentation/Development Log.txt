@@ -21,6 +21,18 @@ Activity:
 	- Added some comments in the "JFFileManager" class.
 
 
+---------------------
+Time started:	15:30
+Time ended:		15:45
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Changed some property attributes for coherence (from "nonatomic" to "atomic").
+
+
 ########## 2014.02.10 ##################################################
 
 Developer:	Jacopo Filié
