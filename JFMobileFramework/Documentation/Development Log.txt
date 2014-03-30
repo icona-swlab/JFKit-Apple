@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.03.29 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	12:00
+Time ended:		12:30
+---------------------
+Time total:		00:30
+---------------------
+
+Activity:
+
+	- Added the "StandardXibName" macro with its relative function.
+
+
 ########## 2014.02.11 ##################################################
 
 Developer:	Jacopo Filié

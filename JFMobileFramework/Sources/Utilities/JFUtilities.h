@@ -26,6 +26,7 @@
 #define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
 #define	ClassName		ObjectClassString(self)
 #define MethodName		NSStringFromSelector(_cmd)
+#define StandardXIBName	standardXIBNameForViewController(self)
 
 
 #pragma mark - Macros (Resources)
@@ -86,6 +87,7 @@ extern	NSString* const	EmptyString;
 #pragma mark - Functions (Info)
 
 extern NSString* appInfoForKey(NSString* key);
+extern NSString* standardXIBNameForViewController(UIViewController* viewController);
 
 
 #pragma mark - Functions (User interface)
