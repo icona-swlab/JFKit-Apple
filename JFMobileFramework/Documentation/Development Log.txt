@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.03.30 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	15:00
+Time ended:		15:15
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Added some object equality comparison macros.
+
+
 ########## 2014.03.29 ##################################################
 
 Developer:	Jacopo Filié
