@@ -12,6 +12,18 @@
 
 
 
+#pragma mark - Macros (Colors)
+
+#define ColorBlue(arg_val)							ColorWithRGB(0, 0, arg_val)
+#define ColorGray(arg_val)							ColorWithRGB(arg_val, arg_val, arg_val)
+#define ColorGreen(arg_val)							ColorWithRGB(0, arg_val, 0)
+#define ColorRed(arg_val)							ColorWithRGB(arg_val, 0, 0)
+#define ColorWithHex(arg_val)						ColorWithHexA((arg_val << 8) | 0x000000FF)
+#define ColorWithHexA(arg_val)						ColorWithRGBA(((arg_val & 0xFF000000) >> 24), ((arg_val & 0xFF0000) >> 16), ((arg_val & 0xFF00) >> 8), (arg_val & 0xFF))
+#define ColorWithRGB(arg_r, arg_g, arg_b)			ColorWithRGBA(arg_r, arg_g, arg_b, 1)
+#define ColorWithRGBA(arg_r, arg_g, arg_b, arg_a)	[UIColor colorWithRed:(((float)arg_r)/255) green:(((float)arg_g)/255) blue:(((float)arg_b)/255) alpha:(float)arg_a]
+
+
 #pragma mark - Macros (Debug)
 
 #define	LogMethod	NSLog(@"%@: executing '%@'.", ClassName, MethodName)
@@ -70,6 +82,13 @@
 #define UInt16ToString(arg_val)			[NSString stringWithFormat:@"%hu", (unsigned short)arg_val]
 #define UInt32ToString(arg_val)			[NSString stringWithFormat:@"%lu", (unsigned long)arg_val]
 #define UInt64ToString(arg_val)			[NSString stringWithFormat:@"%llu", (unsigned long long)arg_val]
+
+
+#pragma mark - Macros (System version)
+#define DeviceSystemVersion	[UIDevice currentDevice].systemVersion
+#define iOS(arg_version)	[DeviceSystemVersion hasPrefix:arg_version]
+#define iOS6				iOS(@"6.")
+#define iOS7				iOS(@"7.")
 
 
 #pragma mark - Macros (User interface)
