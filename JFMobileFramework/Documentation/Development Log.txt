@@ -3,6 +3,23 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.04.05 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	17:15
+Time ended:		17:45
+---------------------
+Time total:		00:30
+---------------------
+
+Activity:
+
+	- Refactored the project layout and the project targets.
+	- Imported the "JFGalleryView" class.
+
+
 ########## 2014.03.31 ##################################################
 
 Developer:	Jacopo Filié

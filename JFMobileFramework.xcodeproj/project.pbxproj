@@ -7,23 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA11ED9418958C3F00CA297C /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC21894223D003C55E8 /* JFUtilities.m */; };
-		EA11ED9618958C3F00CA297C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA11ED9E18958C7D00CA297C /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA11ED9D18958C7D00CA297C /* JFFileManager.m */; };
-		EA300EA918A18B1000E9DA78 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC21894223D003C55E8 /* JFUtilities.m */; };
+		EA00D0A018F0558A00A1CDA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
+		EA00D0A618F055C400A1CDA3 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09418F0555F00A1CDA3 /* JFLogger.m */; };
+		EA00D0A718F055CD00A1CDA3 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D08F18F0555F00A1CDA3 /* JFCoreDataManager.m */; };
+		EA00D0A818F055CD00A1CDA3 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09118F0555F00A1CDA3 /* JFHTTPRequest.m */; };
+		EA00D0A918F055D000A1CDA3 /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09718F0555F00A1CDA3 /* JFGalleryView.m */; };
+		EA00D0AA18F055D600A1CDA3 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09A18F0555F00A1CDA3 /* JFFileManager.m */; };
+		EA00D0AB18F055D600A1CDA3 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */; };
 		EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA300EB118A18B5900E9DA78 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA300EA518A18AFA00E9DA78 /* JFHTTPRequest.m */; };
 		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA425DEA18942332003C55E8 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DBD1894223D003C55E8 /* JFLogger.m */; };
 		EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA425DF618942E1B003C55E8 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA425DC21894223D003C55E8 /* JFUtilities.m */; };
-		EAD5B6C218A8F44700414379 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EAD5B6CB18A8F46E00414379 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B6CA18A8F46E00414379 /* JFCoreDataManager.m */; };
-		EAD5B6D118A8F61100414379 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B6D018A8F61100414379 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EA11ED9718958C3F00CA297C /* CopyFiles */ = {
+		EA00D0A118F0558A00A1CDA3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -59,46 +56,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EAD5B6C318A8F44700414379 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EA11ED9B18958C3F00CA297C /* libJFFileManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFFileManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA11ED9C18958C7D00CA297C /* JFFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
-		EA11ED9D18958C7D00CA297C /* JFFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFFileManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA300EA418A18AFA00E9DA78 /* JFHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
-		EA300EA518A18AFA00E9DA78 /* JFHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
-		EA300EB018A18B1000E9DA78 /* libJFNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA00D08E18F0555F00A1CDA3 /* JFCoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
+		EA00D08F18F0555F00A1CDA3 /* JFCoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
+		EA00D09018F0555F00A1CDA3 /* JFHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
+		EA00D09118F0555F00A1CDA3 /* JFHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
+		EA00D09318F0555F00A1CDA3 /* JFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
+		EA00D09418F0555F00A1CDA3 /* JFLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
+		EA00D09618F0555F00A1CDA3 /* JFGalleryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
+		EA00D09718F0555F00A1CDA3 /* JFGalleryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
+		EA00D09918F0555F00A1CDA3 /* JFFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
+		EA00D09A18F0555F00A1CDA3 /* JFFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFFileManager.m; sourceTree = "<group>"; };
+		EA00D09B18F0555F00A1CDA3 /* JFUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
+		EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
+		EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUserInterface.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDataAccess.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA425D901894211F003C55E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA425D9E1894211F003C55E8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		EA425DB71894223D003C55E8 /* Development Log.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Development Log.txt"; sourceTree = "<group>"; };
-		EA425DBC1894223D003C55E8 /* JFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
-		EA425DBD1894223D003C55E8 /* JFLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFLogger.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA425DC11894223D003C55E8 /* JFUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JFUtilities.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EA425DC21894223D003C55E8 /* JFUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
-		EA425DC71894224A003C55E8 /* libJFLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFLogger.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA425DC71894224A003C55E8 /* libJFDebug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDebug.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA425DF418942C46003C55E8 /* libJFUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAD5B6C718A8F44700414379 /* libJFPersistence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFPersistence.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAD5B6C918A8F46E00414379 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
-		EAD5B6CA18A8F46E00414379 /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
 		EAD5B6D018A8F61100414379 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EA11ED9518958C3F00CA297C /* Frameworks */ = {
+		EA00D09F18F0558A00A1CDA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA11ED9618958C3F00CA297C /* Foundation.framework in Frameworks */,
+				EA00D0A018F0558A00A1CDA3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,34 +115,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EAD5B6C118A8F44700414379 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EAD5B6D118A8F61100414379 /* CoreData.framework in Frameworks */,
-				EAD5B6C218A8F44700414379 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EA11ED8F18958AE800CA297C /* File Manager */ = {
+		EA00D08C18F0555F00A1CDA3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EA11ED9C18958C7D00CA297C /* JFFileManager.h */,
-				EA11ED9D18958C7D00CA297C /* JFFileManager.m */,
+				EA00D08D18F0555F00A1CDA3 /* Data Access */,
+				EA00D09218F0555F00A1CDA3 /* Debug */,
+				EA00D09518F0555F00A1CDA3 /* User Interface */,
+				EA00D09818F0555F00A1CDA3 /* Utilities */,
 			);
-			path = "File Manager";
+			name = Sources;
+			path = JFMobileFramework/Sources;
 			sourceTree = "<group>";
 		};
-		EA300EA318A18AFA00E9DA78 /* Network */ = {
+		EA00D08D18F0555F00A1CDA3 /* Data Access */ = {
 			isa = PBXGroup;
 			children = (
-				EA300EA418A18AFA00E9DA78 /* JFHTTPRequest.h */,
-				EA300EA518A18AFA00E9DA78 /* JFHTTPRequest.m */,
+				EA00D08E18F0555F00A1CDA3 /* JFCoreDataManager.h */,
+				EA00D08F18F0555F00A1CDA3 /* JFCoreDataManager.m */,
+				EA00D09018F0555F00A1CDA3 /* JFHTTPRequest.h */,
+				EA00D09118F0555F00A1CDA3 /* JFHTTPRequest.m */,
 			);
-			path = Network;
+			path = "Data Access";
+			sourceTree = "<group>";
+		};
+		EA00D09218F0555F00A1CDA3 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				EA00D09318F0555F00A1CDA3 /* JFLogger.h */,
+				EA00D09418F0555F00A1CDA3 /* JFLogger.m */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		EA00D09518F0555F00A1CDA3 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				EA00D09618F0555F00A1CDA3 /* JFGalleryView.h */,
+				EA00D09718F0555F00A1CDA3 /* JFGalleryView.m */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		EA00D09818F0555F00A1CDA3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EA00D09918F0555F00A1CDA3 /* JFFileManager.h */,
+				EA00D09A18F0555F00A1CDA3 /* JFFileManager.m */,
+				EA00D09B18F0555F00A1CDA3 /* JFUtilities.h */,
+				EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		EA425D841894211F003C55E8 = {
@@ -164,18 +178,17 @@
 				EA425DB81894223D003C55E8 /* Libraries */,
 				EA425D8E1894211F003C55E8 /* Products */,
 				EA425DB91894223D003C55E8 /* Resources */,
-				EA425DBA1894223D003C55E8 /* Sources */,
+				EA00D08C18F0555F00A1CDA3 /* Sources */,
 			);
 			sourceTree = "<group>";
 		};
 		EA425D8E1894211F003C55E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA425DC71894224A003C55E8 /* libJFLogger.a */,
+				EA425DC71894224A003C55E8 /* libJFDebug.a */,
 				EA425DF418942C46003C55E8 /* libJFUtilities.a */,
-				EA11ED9B18958C3F00CA297C /* libJFFileManager.a */,
-				EA300EB018A18B1000E9DA78 /* libJFNetwork.a */,
-				EAD5B6C718A8F44700414379 /* libJFPersistence.a */,
+				EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */,
+				EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,69 +229,29 @@
 			path = JFMobileFramework/Resources;
 			sourceTree = "<group>";
 		};
-		EA425DBA1894223D003C55E8 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				EA11ED8F18958AE800CA297C /* File Manager */,
-				EA425DBB1894223D003C55E8 /* Logger */,
-				EA300EA318A18AFA00E9DA78 /* Network */,
-				EAD5B6C818A8F46E00414379 /* Persistence */,
-				EA425DBE1894223D003C55E8 /* Utilities */,
-			);
-			name = Sources;
-			path = JFMobileFramework/Sources;
-			sourceTree = "<group>";
-		};
-		EA425DBB1894223D003C55E8 /* Logger */ = {
-			isa = PBXGroup;
-			children = (
-				EA425DBC1894223D003C55E8 /* JFLogger.h */,
-				EA425DBD1894223D003C55E8 /* JFLogger.m */,
-			);
-			path = Logger;
-			sourceTree = "<group>";
-		};
-		EA425DBE1894223D003C55E8 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				EA425DC11894223D003C55E8 /* JFUtilities.h */,
-				EA425DC21894223D003C55E8 /* JFUtilities.m */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		EAD5B6C818A8F46E00414379 /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				EAD5B6C918A8F46E00414379 /* JFCoreDataManager.h */,
-				EAD5B6CA18A8F46E00414379 /* JFCoreDataManager.m */,
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA11ED9018958C3F00CA297C /* JFFileManager */ = {
+		EA00D09D18F0558A00A1CDA3 /* JFUserInterface */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA11ED9818958C3F00CA297C /* Build configuration list for PBXNativeTarget "JFFileManager" */;
+			buildConfigurationList = EA00D0A218F0558A00A1CDA3 /* Build configuration list for PBXNativeTarget "JFUserInterface" */;
 			buildPhases = (
-				EA11ED9118958C3F00CA297C /* Sources */,
-				EA11ED9518958C3F00CA297C /* Frameworks */,
-				EA11ED9718958C3F00CA297C /* CopyFiles */,
+				EA00D09E18F0558A00A1CDA3 /* Sources */,
+				EA00D09F18F0558A00A1CDA3 /* Frameworks */,
+				EA00D0A118F0558A00A1CDA3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = JFFileManager;
+			name = JFUserInterface;
 			productName = JFLogger;
-			productReference = EA11ED9B18958C3F00CA297C /* libJFFileManager.a */;
+			productReference = EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		EA300EA618A18B1000E9DA78 /* JFNetwork */ = {
+		EA300EA618A18B1000E9DA78 /* JFDataAccess */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA300EAD18A18B1000E9DA78 /* Build configuration list for PBXNativeTarget "JFNetwork" */;
+			buildConfigurationList = EA300EAD18A18B1000E9DA78 /* Build configuration list for PBXNativeTarget "JFDataAccess" */;
 			buildPhases = (
 				EA300EA718A18B1000E9DA78 /* Sources */,
 				EA300EAA18A18B1000E9DA78 /* Frameworks */,
@@ -288,14 +261,14 @@
 			);
 			dependencies = (
 			);
-			name = JFNetwork;
+			name = JFDataAccess;
 			productName = JFLogger;
-			productReference = EA300EB018A18B1000E9DA78 /* libJFNetwork.a */;
+			productReference = EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		EA425DC61894224A003C55E8 /* JFLogger */ = {
+		EA425DC61894224A003C55E8 /* JFDebug */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA425DE41894224A003C55E8 /* Build configuration list for PBXNativeTarget "JFLogger" */;
+			buildConfigurationList = EA425DE41894224A003C55E8 /* Build configuration list for PBXNativeTarget "JFDebug" */;
 			buildPhases = (
 				EA425DC31894224A003C55E8 /* Sources */,
 				EA425DC41894224A003C55E8 /* Frameworks */,
@@ -305,9 +278,9 @@
 			);
 			dependencies = (
 			);
-			name = JFLogger;
+			name = JFDebug;
 			productName = JFLogger;
-			productReference = EA425DC71894224A003C55E8 /* libJFLogger.a */;
+			productReference = EA425DC71894224A003C55E8 /* libJFDebug.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		EA425DEB18942C46003C55E8 /* JFUtilities */ = {
@@ -325,23 +298,6 @@
 			name = JFUtilities;
 			productName = JFLogger;
 			productReference = EA425DF418942C46003C55E8 /* libJFUtilities.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		EAD5B6BE18A8F44700414379 /* JFPersistence */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EAD5B6C418A8F44700414379 /* Build configuration list for PBXNativeTarget "JFPersistence" */;
-			buildPhases = (
-				EAD5B6BF18A8F44700414379 /* Sources */,
-				EAD5B6C118A8F44700414379 /* Frameworks */,
-				EAD5B6C318A8F44700414379 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JFPersistence;
-			productName = JFLogger;
-			productReference = EAD5B6C718A8F44700414379 /* libJFPersistence.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -365,22 +321,20 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA11ED9018958C3F00CA297C /* JFFileManager */,
-				EA425DC61894224A003C55E8 /* JFLogger */,
-				EA300EA618A18B1000E9DA78 /* JFNetwork */,
-				EAD5B6BE18A8F44700414379 /* JFPersistence */,
+				EA300EA618A18B1000E9DA78 /* JFDataAccess */,
+				EA425DC61894224A003C55E8 /* JFDebug */,
+				EA00D09D18F0558A00A1CDA3 /* JFUserInterface */,
 				EA425DEB18942C46003C55E8 /* JFUtilities */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EA11ED9118958C3F00CA297C /* Sources */ = {
+		EA00D09E18F0558A00A1CDA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA11ED9E18958C7D00CA297C /* JFFileManager.m in Sources */,
-				EA11ED9418958C3F00CA297C /* JFUtilities.m in Sources */,
+				EA00D0A918F055D000A1CDA3 /* JFGalleryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,8 +342,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA300EA918A18B1000E9DA78 /* JFUtilities.m in Sources */,
-				EA300EB118A18B5900E9DA78 /* JFHTTPRequest.m in Sources */,
+				EA00D0A718F055CD00A1CDA3 /* JFCoreDataManager.m in Sources */,
+				EA00D0A818F055CD00A1CDA3 /* JFHTTPRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA425DEA18942332003C55E8 /* JFLogger.m in Sources */,
+				EA00D0A618F055C400A1CDA3 /* JFLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,28 +359,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA425DF618942E1B003C55E8 /* JFUtilities.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EAD5B6BF18A8F44700414379 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EAD5B6CB18A8F46E00414379 /* JFCoreDataManager.m in Sources */,
+				EA00D0AB18F055D600A1CDA3 /* JFUtilities.m in Sources */,
+				EA00D0AA18F055D600A1CDA3 /* JFFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		EA11ED9918958C3F00CA297C /* Debug */ = {
+		EA00D0A318F0558A00A1CDA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Debug;
 		};
-		EA11ED9A18958C3F00CA297C /* Release */ = {
+		EA00D0A418F0558A00A1CDA3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
@@ -548,31 +495,19 @@
 			};
 			name = Release;
 		};
-		EAD5B6C518A8F44700414379 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		EAD5B6C618A8F44700414379 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA11ED9818958C3F00CA297C /* Build configuration list for PBXNativeTarget "JFFileManager" */ = {
+		EA00D0A218F0558A00A1CDA3 /* Build configuration list for PBXNativeTarget "JFUserInterface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EA11ED9918958C3F00CA297C /* Debug */,
-				EA11ED9A18958C3F00CA297C /* Release */,
+				EA00D0A318F0558A00A1CDA3 /* Debug */,
+				EA00D0A418F0558A00A1CDA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA300EAD18A18B1000E9DA78 /* Build configuration list for PBXNativeTarget "JFNetwork" */ = {
+		EA300EAD18A18B1000E9DA78 /* Build configuration list for PBXNativeTarget "JFDataAccess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA300EAE18A18B1000E9DA78 /* Debug */,
@@ -590,7 +525,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA425DE41894224A003C55E8 /* Build configuration list for PBXNativeTarget "JFLogger" */ = {
+		EA425DE41894224A003C55E8 /* Build configuration list for PBXNativeTarget "JFDebug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA425DE51894224A003C55E8 /* Debug */,
@@ -604,15 +539,6 @@
 			buildConfigurations = (
 				EA425DF218942C46003C55E8 /* Debug */,
 				EA425DF318942C46003C55E8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EAD5B6C418A8F44700414379 /* Build configuration list for PBXNativeTarget "JFPersistence" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EAD5B6C518A8F44700414379 /* Debug */,
-				EAD5B6C618A8F44700414379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
