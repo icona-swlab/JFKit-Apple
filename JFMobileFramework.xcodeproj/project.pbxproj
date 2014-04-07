@@ -15,6 +15,7 @@
 		EA00D0AA18F055D600A1CDA3 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09A18F0555F00A1CDA3 /* JFFileManager.m */; };
 		EA00D0AB18F055D600A1CDA3 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */; };
 		EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
+		EA4257D918F2A86000E1DEC1 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */; };
 		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,8 @@
 		EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
 		EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUserInterface.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDataAccess.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA4257D718F2A86000E1DEC1 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
+		EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
 		EA425D901894211F003C55E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA425D9E1894211F003C55E8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		EA425DB71894223D003C55E8 /* Development Log.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Development Log.txt"; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 			children = (
 				EA00D09618F0555F00A1CDA3 /* JFGalleryView.h */,
 				EA00D09718F0555F00A1CDA3 /* JFGalleryView.m */,
+				EA4257D718F2A86000E1DEC1 /* JFSimpleFormViewController.h */,
+				EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA4257D918F2A86000E1DEC1 /* JFSimpleFormViewController.m in Sources */,
 				EA00D0A918F055D000A1CDA3 /* JFGalleryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
