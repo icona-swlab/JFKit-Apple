@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.04.09 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	15:30
+Time ended:		18:30
+---------------------
+Time total:		03:00
+---------------------
+
+Activity:
+
+	- Worked on the "JFSimpleFormViewController" class.
+
+
 ########## 2014.04.08 ##################################################
 
 Developer:	Jacopo Filié

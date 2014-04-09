@@ -21,14 +21,17 @@ typedef NS_ENUM(NSUInteger, JFSimpleFormViewCellStyle) {
 };
 
 // Default insets
-extern UIEdgeInsets const fieldInsets;
-extern UIEdgeInsets const labelInsets;
-extern UIEdgeInsets const imageInsets;
-extern UIEdgeInsets const textInsets;
+extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsField;
+extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsLabel;
+extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsImage;
+extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText;
 
 
 
 @interface JFSimpleFormViewController : UITableViewController
+
+// Data
+@property (copy, nonatomic)	NSArray*	tableDataInfo;
 
 @end
 
@@ -37,10 +40,13 @@ extern UIEdgeInsets const textInsets;
 @interface JFSimpleFormViewCellInfo : NSObject
 
 // Attributes
+@property (strong, nonatomic)	UIFont*						font;
 @property (assign, nonatomic)	UIEdgeInsets				insets;
 @property (assign, nonatomic)	JFSimpleFormViewCellStyle	style;
 
 // Data
+@property (strong, nonatomic)	UIImage*	image;
+@property (copy, nonatomic)		NSString*	placeholder;
 @property (copy, nonatomic)		NSString*	text;
 @property (copy, nonatomic)		NSString*	title;
 

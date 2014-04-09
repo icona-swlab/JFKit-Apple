@@ -15,27 +15,30 @@
 
 
 // Default insets
-UIEdgeInsets const fieldInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
-UIEdgeInsets const labelInsets	= {0.0f, 10.0f, 0.0f, 10.0f};
-UIEdgeInsets const imageInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
-UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
+UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsField	= {13.0f, 8.0f, 13.0f, 8.0f};
+UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsLabel	= {4.0f, 8.0f, 4.0f, 8.0f};
+UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsImage	= {0.0f, 0.0f, 0.0f, 0.0f};
+UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.0f};
 
 
 
-@interface JFSimpleFormViewController ()
+@interface JFSimpleFormViewController () <UITextViewDelegate>
 
 // Data
 @property (strong, nonatomic, readonly)	NSMutableArray*	tableData;
 
 // User interface management
-- (UITextField*)	createSimpleFormViewCellField;
-- (UIImageView*)	createSimpleFormViewCellImage;
-- (UILabel*)		createSimpleFormViewCellLabel;
-- (UITextView*)		createSimpleFormViewCellText;
+- (UITextField*)	createSimpleFormViewCellContentField;
+- (UIImageView*)	createSimpleFormViewCellContentImage;
+- (UILabel*)		createSimpleFormViewCellContentLabel;
+- (UITextView*)		createSimpleFormViewCellContentText;
 
 // Table view management
 - (UITableViewCell*)	createSimpleFormViewCellWithStyle:(JFSimpleFormViewCellStyle)style reuseIdentifier:(NSString*)reuseIdentifier;
 - (void)				fillSimpleFormViewCell:(UITableViewCell*)cell withInfo:(JFSimpleFormViewCellInfo*)info;
+
+// Debug management
+- (void)	loadDebugData;
 
 @end
 
@@ -46,7 +49,31 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 #pragma mark - Properties
 
 // Data
-@synthesize tableData	= _tableData;
+@synthesize tableData		= _tableData;
+@synthesize tableDataInfo	= _tableDataInfo;
+
+
+#pragma mark - Properties accessors (Data)
+
+- (void)setTableDataInfo:(NSArray*)tableDataInfo
+{
+	if(_tableDataInfo == tableDataInfo)
+		return;
+	
+	NSMutableArray* acceptableDataInfo = [NSMutableArray arrayWithCapacity:[tableDataInfo count]];
+	for(id info in tableDataInfo)
+	{
+		if([info isKindOfClass:[JFSimpleFormViewCellInfo class]])
+			[acceptableDataInfo addObject:info];
+	}
+	
+	_tableDataInfo = [acceptableDataInfo copy];
+	
+	[self.tableData setArray:_tableDataInfo];
+	
+	if([self isViewLoaded])
+		[self.tableView reloadData];
+}
 
 
 #pragma mark - Memory management
@@ -89,46 +116,46 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 {
 	[super viewDidLoad];
 	
-	JFSimpleFormViewCellInfo* o1 = [JFSimpleFormViewCellInfo new];
-	o1.title = @"Ingredienti";
-	o1.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed quam dui. Ut imperdiet lacus sed rutrum mattis. Fusce ut facilisis mi. Nullam a sagittis ligula. Nunc dictum diam nec luctus dapibus. Vestibulum ac ultricies nibh. Etiam id risus convallis, sollicitudin sem a, consectetur leo. Etiam purus mi, fermentum ut euismod sit amet, cursus nec dui. Donec consectetur sem vel justo dignissim dapibus.";
-	JFSimpleFormViewCellInfo* o2 = [[JFSimpleFormViewCellInfo alloc] initWithStyle:JFSimpleFormViewCellStyleLabel];
-	o2.title = @"Istruzioni";
-	o2.text = @"Integer vel ornare ante. In id leo sit amet tellus feugiat varius vitae vel nulla. Nullam laoreet tortor quam, sed rutrum tellus aliquet vitae. Mauris et orci risus. Vestibulum in neque lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse vitae consectetur quam. Pellentesque vel imperdiet elit, nec posuere enim. Praesent hendrerit metus arcu, at semper diam vulputate in. Fusce in urna turpis. Nullam luctus mollis nisi non consectetur. Mauris vel lacus ut arcu rutrum feugiat nec nec elit.";
-	JFSimpleFormViewCellInfo* o3 = [[JFSimpleFormViewCellInfo alloc] initWithStyle:JFSimpleFormViewCellStyleImage];
-	o3.title = @"Immagine";
-	[self.tableData setArray:@[o1, o2, o3]];
-	[self.tableView reloadData];
+	self.tableView.allowsSelection = NO;
+	self.tableView.allowsSelectionDuringEditing = NO;
+	
+	[self loadDebugData];
 }
 
 
 #pragma mark - User interface management
 
-- (UITextField*)createSimpleFormViewCellField
+- (UITextField*)createSimpleFormViewCellContentField
 {
 	UITextField* retVal = [[UITextField alloc] init];
+	retVal.borderStyle = UITextBorderStyleNone;
+	retVal.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	retVal.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	retVal.font = [UIFont systemFontOfSize:14.0f];
 	return retVal;
 }
 
-- (UIImageView*)createSimpleFormViewCellImage
+- (UIImageView*)createSimpleFormViewCellContentImage
 {
 	UIImageView* retVal = [[UIImageView alloc] init];
 	return retVal;
 }
 
-- (UILabel*)createSimpleFormViewCellLabel
+- (UILabel*)createSimpleFormViewCellContentLabel
 {
 	UILabel* retVal = [[UILabel alloc] init];
-	retVal.backgroundColor = [UIColor cyanColor];
-	retVal.font = [UIFont systemFontOfSize:16.0f];
+	retVal.font = [UIFont systemFontOfSize:14.0f];
 	retVal.lineBreakMode = NSLineBreakByWordWrapping;
 	retVal.numberOfLines = 0;
 	return retVal;
 }
 
-- (UITextView*)createSimpleFormViewCellText
+- (UITextView*)createSimpleFormViewCellContentText
 {
 	UITextView* retVal = [[UITextView alloc] init];
+	retVal.bounces = NO;
+	retVal.font = [UIFont systemFontOfSize:14.0f];
+	retVal.scrollEnabled = NO;
 	return retVal;
 }
 
@@ -176,33 +203,74 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	JFSimpleFormViewCellInfo* info = [self.tableData objectAtIndex:indexPath.section];
+	BOOL isGroupedStyle = (tableView.style == UITableViewStyleGrouped);
 	
-	CGFloat retVal = UITableViewAutomaticDimension;
+	JFSimpleFormViewCellInfo* info = [self.tableData objectAtIndex:indexPath.section];
+	if(!info)
+		return UITableViewAutomaticDimension;
+	
+	UIView* view = nil;
 	switch(info.style)
 	{
+		case JFSimpleFormViewCellStyleField:
+		{
+			static UITextField* textField = nil;
+			if(!textField)
+				textField = [self createSimpleFormViewCellContentField];
+			
+			textField.font = info.font;
+			
+			view = textField;
+			break;
+		}
+		case JFSimpleFormViewCellStyleImage:
+		{
+			static UIImageView* imageView = nil;
+			if(!imageView)
+				imageView = [self createSimpleFormViewCellContentImage];
+			
+			imageView.image = info.image;
+			
+			view = imageView;
+			break;
+		}
 		case JFSimpleFormViewCellStyleLabel:
 		{
-			CGRect frame = self.tableView.bounds;
-			frame.size.height -= info.insets.top + info.insets.bottom;
-			frame.size.width -= info.insets.left + info.insets.right;
+			static UILabel* label = nil;
+			if(!label)
+				label = [self createSimpleFormViewCellContentLabel];
 			
-			UILabel* label = [self createSimpleFormViewCellLabel];
-			label.frame = frame;
+			label.font = info.font;
 			label.text = info.text;
 			
-			CGSize limits = CGSizeMake(frame.size.width, CGFLOAT_MAX);
-			CGSize size = [label sizeThatFits:limits];
-			size.height += (iOS6 ? 0.0f : 1.0f); // Seems to fix an error in the "sizeThatFits:" method of the iOS7+ SDK.
+			view = label;
+			break;
+		}
+		case JFSimpleFormViewCellStyleText:
+		{
+			static UITextView* textView = nil;
+			if(!textView)
+				textView = [self createSimpleFormViewCellContentText];
+
+			textView.font = info.font;
+			textView.text = info.text;
 			
-			retVal = size.height + info.insets.top + info.insets.bottom;
+			view = textView;
 			break;
 		}
 		default:
 			break;
 	}
+	if(!view)
+		return UITableViewAutomaticDimension;
 	
-	return retVal;
+	CGRect frame = tableView.bounds;
+	frame.size.width -= info.insets.left + info.insets.right + (isGroupedStyle ? 20.0f : 0.0f);
+	CGSize limits = CGSizeMake(frame.size.width, CGFLOAT_MAX);
+	CGSize size = [view sizeThatFits:limits];
+	size.height += (iOS6 ? 0.0f : 1.0f); // Seems to fix an error in the "sizeThatFits:" method of the iOS7+ SDK.
+	
+	return (size.height + info.insets.top + info.insets.bottom);
 }
 
 
@@ -217,20 +285,11 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 	UIView* view = nil;
 	switch(style)
 	{
-		case JFSimpleFormViewCellStyleField:
-		{
-			UITextField* textField = [[UITextField alloc] init];
-			view = textField;
-			break;
-		}
-		case JFSimpleFormViewCellStyleImage:	view = [self createSimpleFormViewCellImage];	break;
-		case JFSimpleFormViewCellStyleLabel:	view = [self createSimpleFormViewCellLabel];	break;
-		case JFSimpleFormViewCellStyleText:
-		{
-			UITextView* textView = [[UITextView alloc] init];
-			view = textView;
-			break;
-		}
+		case JFSimpleFormViewCellStyleField:	view = [self createSimpleFormViewCellContentField];	break;
+		case JFSimpleFormViewCellStyleImage:	view = [self createSimpleFormViewCellContentImage];	break;
+		case JFSimpleFormViewCellStyleLabel:	view = [self createSimpleFormViewCellContentLabel];	break;
+		case JFSimpleFormViewCellStyleText:		view = [self createSimpleFormViewCellContentText];	break;
+			
 		default:
 			break;
 	}
@@ -238,6 +297,7 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 	if(view)
 	{
 		view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+		view.backgroundColor = [UIColor clearColor];
 		view.frame = retVal.contentView.bounds;
 		view.tag = 1;
 		
@@ -261,33 +321,67 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 	{
 		case JFSimpleFormViewCellStyleField:
 		{
-			//UITextField* textField = (UITextField*)view;
+			UITextField* textField = (UITextField*)view;
+			textField.font = info.font;
+			textField.placeholder = info.placeholder;
+			textField.text = info.text;
 			break;
 		}
 		case JFSimpleFormViewCellStyleImage:
 		{
-			NSString* format = [NSString stringWithFormat:@"%gx%g", frame.size.width, frame.size.height];
-			NSString* urlString = [NSString stringWithFormat:@"http://placehold.it/%@/", format];
-			NSURL* url = [NSURL URLWithString:urlString];
-			NSData* data = [NSData dataWithContentsOfURL:url];
 			UIImageView* imageView = (UIImageView*)view;
-			imageView.image = [UIImage imageWithData:data];
+			imageView.image = info.image;
 			break;
 		}
 		case JFSimpleFormViewCellStyleLabel:
 		{
 			UILabel* label = (UILabel*)view;
+			label.font = info.font;
 			label.text = info.text;
 			break;
 		}
 		case JFSimpleFormViewCellStyleText:
 		{
-			//UITextView* textView = (UITextView*)view;
+			UITextView* textView = (UITextView*)view;
+			textView.font = info.font;
+			textView.text = info.text;
 			break;
 		}
 		default:
 			break;
 	}
+}
+
+
+#pragma mark - Debug management
+
+- (void)loadDebugData
+{
+	NSString* urlString = [NSString stringWithFormat:@"http://placehold.it/320x400/"];
+	NSURL* url = [NSURL URLWithString:urlString];
+	NSData* data = [NSData dataWithContentsOfURL:url];
+	UIImage* image = [UIImage imageWithData:data];
+	
+	JFSimpleFormViewCellInfo* o1 = [JFSimpleFormViewCellInfo new];
+	o1.title = @"New";
+	o1.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed quam dui. Ut imperdiet lacus sed rutrum mattis. Fusce ut facilisis mi. Nullam a sagittis ligula. Nunc dictum diam nec luctus dapibus. Vestibulum ac ultricies nibh. Etiam id risus convallis, sollicitudin sem a, consectetur leo. Etiam purus mi, fermentum ut euismod sit amet, cursus nec dui. Donec consectetur sem vel justo dignissim dapibus.";
+	JFSimpleFormViewCellInfo* o2 = [[JFSimpleFormViewCellInfo alloc] initWithStyle:JFSimpleFormViewCellStyleLabel];
+	o2.title = @"Label";
+	o2.text = @"Integer vel ornare ante. In id leo sit amet tellus feugiat varius vitae vel nulla. Nullam laoreet tortor quam, sed rutrum tellus aliquet vitae. Mauris et orci risus. Vestibulum in neque lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse vitae consectetur quam. Pellentesque vel imperdiet elit, nec posuere enim. Praesent hendrerit metus arcu, at semper diam vulputate in. Fusce in urna turpis. Nullam luctus mollis nisi non consectetur. Mauris vel lacus ut arcu rutrum feugiat nec nec elit.";
+	JFSimpleFormViewCellInfo* o3 = [[JFSimpleFormViewCellInfo alloc] initWithStyle:JFSimpleFormViewCellStyleImage];
+	o3.title = @"Image";
+	o3.image = image;
+	JFSimpleFormViewCellInfo* o4 = [[JFSimpleFormViewCellInfo alloc] initWithStyle:JFSimpleFormViewCellStyleField];
+	o4.title = @"Field";
+	o4.placeholder = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+	JFSimpleFormViewCellInfo* o5 = [[JFSimpleFormViewCellInfo alloc] initWithStyle:JFSimpleFormViewCellStyleText];
+	o5.title = @"Text";
+	o5.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed quam dui. Ut imperdiet lacus sed rutrum mattis. Fusce ut facilisis mi. Nullam a sagittis ligula. Nunc dictum diam nec luctus dapibus. Vestibulum ac ultricies nibh. Etiam id risus convallis, sollicitudin sem a, consectetur leo. Etiam purus mi, fermentum ut euismod sit amet, cursus nec dui. Donec consectetur sem vel justo dignissim dapibus.";
+	
+	[self.tableData setArray:@[o5, o4, o2, o1, o3]];
+	
+	if([self isViewLoaded])
+		[self.tableView reloadData];
 }
 
 @end
@@ -299,12 +393,15 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 #pragma mark - Properties
 
 // Attributes
+@synthesize font	= _font;
 @synthesize insets	= _insets;
 @synthesize style	= _style;
 
 // Data
-@synthesize text	= _text;
-@synthesize title	= _title;
+@synthesize image		= _image;
+@synthesize placeholder	= _placeholder;
+@synthesize text		= _text;
+@synthesize title		= _title;
 
 
 #pragma mark - Memory management
@@ -319,10 +416,10 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 	UIEdgeInsets insets = UIEdgeInsetsZero;
 	switch(style)
 	{
-		case JFSimpleFormViewCellStyleField:	insets = fieldInsets;	break;
-		case JFSimpleFormViewCellStyleImage:	insets = imageInsets;	break;
-		case JFSimpleFormViewCellStyleLabel:	insets = labelInsets;	break;
-		case JFSimpleFormViewCellStyleText:		insets = textInsets;	break;
+		case JFSimpleFormViewCellStyleField:	insets = JFSimpleFormViewCellDefaultInsetsField;	break;
+		case JFSimpleFormViewCellStyleImage:	insets = JFSimpleFormViewCellDefaultInsetsImage;	break;
+		case JFSimpleFormViewCellStyleLabel:	insets = JFSimpleFormViewCellDefaultInsetsLabel;	break;
+		case JFSimpleFormViewCellStyleText:		insets = JFSimpleFormViewCellDefaultInsetsText;		break;
 			
 		default:
 			break;
@@ -332,6 +429,7 @@ UIEdgeInsets const textInsets	= {0.0f, 0.0f, 0.0f, 0.0f};
 	if(self)
 	{
 		// Attributes
+		_font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
 		_insets = insets;
 		_style = style;
     }
