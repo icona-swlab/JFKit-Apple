@@ -10,12 +10,14 @@
 
 #import "JFSimpleFormViewController.h"
 
+#import "JFGalleryView.h"
 #import "JFUtilities.h"
 
 
 
 // Default insets
 UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsField	= {13.0f, 8.0f, 13.0f, 8.0f};
+UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsGallery	= {0.0f, 0.0f, 0.0f, 0.0f};
 UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsLabel	= {4.0f, 8.0f, 4.0f, 8.0f};
 UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsImage	= {0.0f, 0.0f, 0.0f, 0.0f};
 UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.0f};
@@ -29,6 +31,7 @@ UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.
 
 // User interface management
 - (UITextField*)	createSimpleFormViewCellContentField;
+- (JFGalleryView*)	createSimpleFormViewCellContentGallery;
 - (UIImageView*)	createSimpleFormViewCellContentImage;
 - (UILabel*)		createSimpleFormViewCellContentLabel;
 - (UITextView*)		createSimpleFormViewCellContentText;
@@ -135,6 +138,12 @@ UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.
 	return retVal;
 }
 
+- (JFGalleryView*)createSimpleFormViewCellContentGallery
+{
+	JFGalleryView* retVal = [[JFGalleryView alloc] init];
+	return retVal;
+}
+
 - (UIImageView*)createSimpleFormViewCellContentImage
 {
 	UIImageView* retVal = [[UIImageView alloc] init];
@@ -223,6 +232,15 @@ UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.
 			view = textField;
 			break;
 		}
+		case JFSimpleFormViewCellStyleGallery:
+		{
+			static JFGalleryView* galleryView = nil;
+			if(!galleryView)
+				galleryView = [self createSimpleFormViewCellContentGallery];
+			
+			view = galleryView;
+			break;
+		}
 		case JFSimpleFormViewCellStyleImage:
 		{
 			static UIImageView* imageView = nil;
@@ -285,10 +303,11 @@ UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.
 	UIView* view = nil;
 	switch(style)
 	{
-		case JFSimpleFormViewCellStyleField:	view = [self createSimpleFormViewCellContentField];	break;
-		case JFSimpleFormViewCellStyleImage:	view = [self createSimpleFormViewCellContentImage];	break;
-		case JFSimpleFormViewCellStyleLabel:	view = [self createSimpleFormViewCellContentLabel];	break;
-		case JFSimpleFormViewCellStyleText:		view = [self createSimpleFormViewCellContentText];	break;
+		case JFSimpleFormViewCellStyleField:	view = [self createSimpleFormViewCellContentField];		break;
+		case JFSimpleFormViewCellStyleGallery:	view = [self createSimpleFormViewCellContentGallery];	break;
+		case JFSimpleFormViewCellStyleImage:	view = [self createSimpleFormViewCellContentImage];		break;
+		case JFSimpleFormViewCellStyleLabel:	view = [self createSimpleFormViewCellContentLabel];		break;
+		case JFSimpleFormViewCellStyleText:		view = [self createSimpleFormViewCellContentText];		break;
 			
 		default:
 			break;
@@ -325,6 +344,10 @@ UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.
 			textField.font = info.font;
 			textField.placeholder = info.placeholder;
 			textField.text = info.text;
+			break;
+		}
+		case JFSimpleFormViewCellStyleGallery:
+		{
 			break;
 		}
 		case JFSimpleFormViewCellStyleImage:
@@ -378,7 +401,11 @@ UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.
 	o5.title = @"Text";
 	o5.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed quam dui. Ut imperdiet lacus sed rutrum mattis. Fusce ut facilisis mi. Nullam a sagittis ligula. Nunc dictum diam nec luctus dapibus. Vestibulum ac ultricies nibh. Etiam id risus convallis, sollicitudin sem a, consectetur leo. Etiam purus mi, fermentum ut euismod sit amet, cursus nec dui. Donec consectetur sem vel justo dignissim dapibus.";
 	
-	[self.tableData setArray:@[o5, o4, o2, o1, o3]];
+	JFSimpleFormViewCellInfo* o6 = [[JFSimpleFormViewCellInfo alloc] initWithStyle:JFSimpleFormViewCellStyleGallery];
+	o6.title = @"Gallery";
+	o3.image = image;
+	
+	[self.tableData setArray:@[o5, o6, o4, o2, o1, o3]];
 	
 	if([self isViewLoaded])
 		[self.tableView reloadData];
@@ -417,6 +444,7 @@ UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText	= {0.0f, 0.0f, 0.0f, 0.
 	switch(style)
 	{
 		case JFSimpleFormViewCellStyleField:	insets = JFSimpleFormViewCellDefaultInsetsField;	break;
+		case JFSimpleFormViewCellStyleGallery:	insets = JFSimpleFormViewCellDefaultInsetsGallery;	break;
 		case JFSimpleFormViewCellStyleImage:	insets = JFSimpleFormViewCellDefaultInsetsImage;	break;
 		case JFSimpleFormViewCellStyleLabel:	insets = JFSimpleFormViewCellDefaultInsetsLabel;	break;
 		case JFSimpleFormViewCellStyleText:		insets = JFSimpleFormViewCellDefaultInsetsText;		break;

@@ -15,6 +15,7 @@
 // Form cell styles
 typedef NS_ENUM(NSUInteger, JFSimpleFormViewCellStyle) {
 	JFSimpleFormViewCellStyleField,
+	JFSimpleFormViewCellStyleGallery,
 	JFSimpleFormViewCellStyleLabel,
 	JFSimpleFormViewCellStyleImage,
 	JFSimpleFormViewCellStyleText,
@@ -22,6 +23,7 @@ typedef NS_ENUM(NSUInteger, JFSimpleFormViewCellStyle) {
 
 // Default insets
 extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsField;
+extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsGallery;
 extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsLabel;
 extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsImage;
 extern UIEdgeInsets const JFSimpleFormViewCellDefaultInsetsText;
