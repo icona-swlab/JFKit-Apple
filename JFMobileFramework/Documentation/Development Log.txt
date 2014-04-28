@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.04.28 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	15:30
+Time ended:		16:00
+---------------------
+Time total:		00:30
+---------------------
+
+Activity:
+
+	- Added the GNU license to each source code file.
+
+
 ########## 2014.04.09 ##################################################
 
 Developer:	Jacopo Filié
