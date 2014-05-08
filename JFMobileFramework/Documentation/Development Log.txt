@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.05.08 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	15:00
+Time ended:		15:15
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Fixed the format strings of the macros.
+
+
 ########## 2014.04.28 ##################################################
 
 Developer:	Jacopo Filié

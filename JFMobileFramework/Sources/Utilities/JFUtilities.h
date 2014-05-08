@@ -79,19 +79,22 @@
 #define HexToString(arg_val)			[NSString stringWithFormat:@"%x", (unsigned int)arg_val]
 #define	IsEmptyString(arg_str)			[arg_str isEqualToString:EmptyString]
 #define	IsNullOrEmptyString(arg_str)	(!arg_str || IsEmptyString(arg_str))
+#if __LP64__
+#define NSIntegerToString(arg_val)		SInt64ToString(arg_val)
+#define NSUIntegerToString(arg_val)		UInt64ToString(arg_val)
+#else
 #define NSIntegerToString(arg_val)		SInt32ToString(arg_val)
 #define NSUIntegerToString(arg_val)		UInt32ToString(arg_val)
+#endif
 #define	ObjectClassString(arg_obj)		NSStringFromClass([arg_obj class])
 #define PointerToString(arg_val)		[NSString stringWithFormat:@"%p", (id)arg_val]
-#define SIntToString(arg_val)			[NSString stringWithFormat:@"%d", (int)arg_val]
 #define SInt8ToString(arg_val)			[NSString stringWithFormat:@"%hhd", (char)arg_val]
 #define SInt16ToString(arg_val)			[NSString stringWithFormat:@"%hd", (short)arg_val]
-#define SInt32ToString(arg_val)			[NSString stringWithFormat:@"%ld", (long)arg_val]
+#define SInt32ToString(arg_val)			[NSString stringWithFormat:@"%d", (int)arg_val]
 #define SInt64ToString(arg_val)			[NSString stringWithFormat:@"%lld", (long long)arg_val]
-#define UIntToString(arg_val)			[NSString stringWithFormat:@"%u", (unsigned int)arg_val]
 #define UInt8ToString(arg_val)			[NSString stringWithFormat:@"%hhu", (unsigned char)arg_val]
 #define UInt16ToString(arg_val)			[NSString stringWithFormat:@"%hu", (unsigned short)arg_val]
-#define UInt32ToString(arg_val)			[NSString stringWithFormat:@"%lu", (unsigned long)arg_val]
+#define UInt32ToString(arg_val)			[NSString stringWithFormat:@"%u", (unsigned int)arg_val]
 #define UInt64ToString(arg_val)			[NSString stringWithFormat:@"%llu", (unsigned long long)arg_val]
 
 
