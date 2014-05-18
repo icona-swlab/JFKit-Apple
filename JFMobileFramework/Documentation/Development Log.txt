@@ -3,6 +3,23 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.05.18 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	15:30
+Time ended:		15:45
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Fixed an error in the "JFCoreDataManager" class.
+	- Added localization macros in the "JFUtilities" class.
+
+
 ########## 2014.05.08 ##################################################
 
 Developer:	Jacopo Filié

@@ -60,6 +60,12 @@
 #define StandardXIBName	standardXIBNameForViewController(self)
 
 
+#pragma mark - Macros (Localization)
+
+#define LocalizedString(arg_key, arg_defVal)							LocalizedStringWithComment(arg_key, arg_defVal, nil)
+#define LocalizedStringWithComment(arg_key, arg_defVal, arg_comment)	NSLocalizedStringWithDefaultValue(arg_key, nil, [NSBundle mainBundle], arg_defVal, arg_comment)
+
+
 #pragma mark - Macros (Resources)
 
 #define BundleResourceURL(arg_filename)	[[NSBundle mainBundle] URLForResource:[arg_filename stringByDeletingPathExtension] withExtension:[arg_filename pathExtension]]
