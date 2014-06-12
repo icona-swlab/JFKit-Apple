@@ -27,6 +27,17 @@
 NSString* const	EmptyString	= @"";
 
 
+#pragma mark - Functions (C)
+
+ByteStream ByteStreamMake(Byte* bytes, NSUInteger length)
+{
+	ByteStream retVal;
+	retVal.bytes = bytes;
+	retVal.length = length;
+	return retVal;
+}
+
+
 #pragma mark - Functions (Info)
 
 NSString* appInfoForKey(NSString* key)

@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.06.11 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	16:15
+Time ended:		16:30
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Added the "ByteStream" struct and relative creation function.
+
+
 ########## 2014.05.08 ##################################################
 
 Developer:	Jacopo Filié

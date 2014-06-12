@@ -23,6 +23,11 @@
 
 
 
+#pragma mark - Macros (C)
+
+#define ByteStreamNull	ByteStreamMake(NULL, 0)
+
+
 #pragma mark - Macros (Colors)
 
 #define ColorBlue(arg_val)							ColorWithRGB(0, 0, arg_val)
@@ -120,9 +125,22 @@ typedef void (^BlockWithObject)(id object);
 typedef void (^BlockWithObjectAndError)(id object, NSError* error);
 
 
+#pragma mark - Typedef (C)
+
+typedef struct {
+	Byte*		bytes;
+	NSUInteger	length;
+} ByteStream;
+
+
 #pragma mark - Constants (Strings)
 
 extern	NSString* const	EmptyString;
+
+
+#pragma mark - Functions (C)
+
+extern ByteStream ByteStreamMake(Byte* bytes, NSUInteger length);
 
 
 #pragma mark - Functions (Info)
