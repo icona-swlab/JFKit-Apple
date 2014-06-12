@@ -142,7 +142,11 @@
 
 - (NSManagedObjectContext*)createPrivateManagedObjectContext
 {
-	return [self createManagedObjectContextWithConcurrencyType:NSPrivateQueueConcurrencyType];
+	return [self createManagedObjectContextWithConcurrencyType:NSConfinementConcurrencyType];
+	
+	//BOOL isMainThread = [[NSThread currentThread] isMainThread];
+	//NSManagedObjectContextConcurrencyType concurrencyType = (isMainThread ? NSMainQueueConcurrencyType : NSPrivateQueueConcurrencyType);
+	//return [self createManagedObjectContextWithConcurrencyType:concurrencyType];
 }
 
 @end
