@@ -3,6 +3,24 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.07.03 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	11:15
+Time ended:		11:30
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Added more of the "ByteStream" struct functions.
+	- Added some macros for C strings.
+	- Added some macros for the recognition of the device type.
+
+
 ########## 2014.06.11 ##################################################
 
 Developer:	Jacopo Filié
