@@ -25,7 +25,7 @@
 
 #pragma mark - Macros (C)
 
-#define ByteStreamNull	ByteStreamMake(NULL, 0)
+#define ByteStreamNull	ByteStreamAlloc(0)
 
 
 #pragma mark - Macros (Colors)
@@ -146,7 +146,13 @@ extern	NSString* const	EmptyString;
 
 #pragma mark - Functions (C)
 
-extern ByteStream ByteStreamMake(Byte* bytes, NSUInteger length);
+extern ByteStream	ByteStreamAlloc(NSUInteger length);
+extern ByteStream	ByteStreamCCopy(ByteStream byteStream, NSUInteger length);
+extern ByteStream	ByteStreamCopy(ByteStream byteStream);
+extern BOOL			ByteStreamEqualToByteStream(ByteStream byteStream1, ByteStream byteStream2);
+extern void			ByteStreamFree(ByteStream byteStream);
+extern ByteStream	ByteStreamMake(Byte* bytes, NSUInteger length);
+extern ByteStream	ByteStreamRealloc(ByteStream byteStream, NSUInteger length);
 
 
 #pragma mark - Functions (Info)
