@@ -62,7 +62,7 @@
 #define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
 #define	ClassName		ObjectClassString(self)
 #define MethodName		NSStringFromSelector(_cmd)
-#define StandardXIBName	standardXIBNameForViewController(self)
+#define StandardXIBName	standardXIBNameForViewController(self) // Class name without the word "Controller" (e.g. "UIViewController" -> "UIView").
 
 
 #pragma mark - Macros (Localization)
@@ -114,6 +114,11 @@
 #define iOS(arg_version)	[DeviceSystemVersion hasPrefix:arg_version]
 #define iOS6				iOS(@"6.")
 #define iOS7				iOS(@"7.")
+#define iOS8				iOS(@"8.")
+#define iPad				([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+#define iPhone				([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+#define iPhoneC				(iPhone && ([UIScreen mainScreen].bounds.size.height == 480.0f)) // iPhone with 3.5'' display.
+#define iPhone5				(iPhone && ([UIScreen mainScreen].bounds.size.height == 568.0f)) // iPhone with 4'' display.
 
 
 #pragma mark - Macros (User interface)
