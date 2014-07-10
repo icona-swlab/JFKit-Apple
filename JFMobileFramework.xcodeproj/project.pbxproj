@@ -14,6 +14,7 @@
 		EA00D0A918F055D000A1CDA3 /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09718F0555F00A1CDA3 /* JFGalleryView.m */; };
 		EA00D0AA18F055D600A1CDA3 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09A18F0555F00A1CDA3 /* JFFileManager.m */; };
 		EA00D0AB18F055D600A1CDA3 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */; };
+		EA13CAAB196E8AED00EC0C00 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA13CAAA196E8AED00EC0C00 /* JFTransparentToolbar.m */; };
 		EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA4257D918F2A86000E1DEC1 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */; };
 		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
@@ -73,6 +74,8 @@
 		EA00D09B18F0555F00A1CDA3 /* JFUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
 		EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
 		EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUserInterface.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA13CAA9196E8AED00EC0C00 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
+		EA13CAAA196E8AED00EC0C00 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
 		EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDataAccess.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4257D718F2A86000E1DEC1 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
 		EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				EA00D09718F0555F00A1CDA3 /* JFGalleryView.m */,
 				EA4257D718F2A86000E1DEC1 /* JFSimpleFormViewController.h */,
 				EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */,
+				EA13CAA9196E8AED00EC0C00 /* JFTransparentToolbar.h */,
+				EA13CAAA196E8AED00EC0C00 /* JFTransparentToolbar.m */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA4257D918F2A86000E1DEC1 /* JFSimpleFormViewController.m in Sources */,
+				EA13CAAB196E8AED00EC0C00 /* JFTransparentToolbar.m in Sources */,
 				EA00D0A918F055D000A1CDA3 /* JFGalleryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

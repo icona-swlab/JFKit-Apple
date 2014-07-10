@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.07.10 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	11:00
+Time ended:		11:15
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Added the "JFTransparentToolbar" class.
+
+
 ########## 2014.07.03 ##################################################
 
 Developer:	Jacopo Filié
