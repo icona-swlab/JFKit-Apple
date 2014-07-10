@@ -86,7 +86,6 @@
 - (id)hitTest:(CGPoint)point withEvent:(UIEvent*)event
 {
 	id retVal = [super hitTest:point withEvent:event];
-	NSLog(@"%@", retVal);
 	return ((retVal == self) ? self.underneathView : retVal);
 }
 
