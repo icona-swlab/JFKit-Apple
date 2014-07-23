@@ -27,6 +27,7 @@
 NSString* const	EmptyString	= @"";
 
 
+
 #pragma mark - Functions (C)
 
 ByteStream ByteStreamAlloc(NSUInteger length)

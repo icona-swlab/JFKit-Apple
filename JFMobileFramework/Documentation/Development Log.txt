@@ -3,6 +3,23 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.07.23 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	10:30
+Time ended:		11:30
+---------------------
+Time total:		01:00
+---------------------
+
+Activity:
+
+	- Added the "JFActivityIndicatorView" class.
+	- Fixed the "ColorWithRGBA" macro.
+
+
 ########## 2014.07.10 ##################################################
 
 Developer:	Jacopo Filié
