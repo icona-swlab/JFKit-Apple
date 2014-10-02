@@ -93,13 +93,13 @@
 
 - (instancetype)initWithDataModelURL:(NSURL*)dataModelURL persistentStoreURL:(NSURL*)persistentStoreURL persistentStoreType:(NSString*)persistentStoreType
 {
-	self = ((dataModelURL && persistentStoreURL && !IsNullOrEmptyString(persistentStoreType)) ? [super init] : nil);
+	self = ((dataModelURL && persistentStoreURL && !IsNullOrEmptyString(persistentStoreType)) ? [self init] : nil);
 	if(self)
 	{
 		// Connection
-		_dataModelURL = [dataModelURL copy];
-		_persistentStoreType = [persistentStoreType copy];
-		_persistentStoreURL = [persistentStoreURL copy];
+		_dataModelURL = dataModelURL;
+		_persistentStoreType = persistentStoreType;
+		_persistentStoreURL = persistentStoreURL;
 	}
 	return self;
 }

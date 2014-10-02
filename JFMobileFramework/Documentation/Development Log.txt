@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.09.28 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	16:00
+Time ended:		16:15
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+	- Removed the copy execution of the properties of the init of the "JFCoreDataManager" class.
+
+
 ########## 2014.07.10 ##################################################
 
 Developer:	Jacopo Filié
