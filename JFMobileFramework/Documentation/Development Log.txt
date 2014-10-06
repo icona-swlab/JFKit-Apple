@@ -16,7 +16,23 @@ Time total:		00:15
 
 Activity:
 
-	- Removed the copy execution of the properties of the init of the "JFCoreDataManager" class.
+- Removed the copy execution of the properties in the "init" method of the "JFCoreDataManager" class.
+
+
+########## 2014.09.23 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	11:15
+Time ended:		12:15
+---------------------
+Time total:		01:00
+---------------------
+
+Activity:
+
+- Worked on the "JFHTTPRequest" class.
 
 
 ########## 2014.07.25 ##################################################

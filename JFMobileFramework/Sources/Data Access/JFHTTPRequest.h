@@ -24,6 +24,8 @@
 
 @class JFHTTPRequest;
 
+@protocol JFHTTPRequestDelegate;
+
 
 
 // List of supported HTTP methods.
@@ -33,27 +35,27 @@ typedef NS_ENUM(UInt8, JFHTTPMethod)
 	JFHTTPMethodPost,
 };
 
-
-
-@protocol JFHTTPRequestDelegate
-
-@required
-
-// HTTP request events
-- (void)	onHTTPRequest:(JFHTTPRequest*)request completedRequestWithData:(NSData*)data;
-- (void)	onHTTPRequest:(JFHTTPRequest*)request failedRequestWithError:(NSError*)error;
-
-@end
+// Request state
+typedef NS_ENUM(UInt8, JFHTTPRequestState)
+{
+	JFHTTPRequestStateReady,
+	JFHTTPRequestStateStarted,
+	JFHTTPRequestStateCompleted,
+	JFHTTPRequestStateFailed,
+};
 
 
 
 @interface JFHTTPRequest : NSObject
 
 // Attributes
+@property (assign, nonatomic)			NSStringEncoding	encoding;
+@property (assign, nonatomic)			JFHTTPMethod		httpMethod;
+@property (assign, nonatomic, readonly)	JFHTTPRequestState	state;
+
+// Data
 @property (strong, nonatomic)	NSDictionary*		additionalInfo;
 @property (strong, nonatomic)	NSURLCredential*	credential;
-@property (assign, nonatomic)	NSStringEncoding	encoding;
-@property (assign, nonatomic)	JFHTTPMethod		httpMethod;
 @property (strong, nonatomic)	NSURL*				url;
 
 // Memory management
@@ -64,6 +66,19 @@ typedef NS_ENUM(UInt8, JFHTTPMethod)
 - (void)	setValue:(NSString*)value forHTTPHeaderField:(NSString*)field;
 
 // HTTP request management
+- (void)	reset;
 - (void)	start;
+
+@end
+
+
+
+@protocol JFHTTPRequestDelegate
+
+@required
+
+// HTTP request events
+- (void)	httpRequest:(JFHTTPRequest*)request completedRequestWithData:(NSData*)data;
+- (void)	httpRequest:(JFHTTPRequest*)request failedRequestWithError:(NSError*)error;
 
 @end

@@ -24,9 +24,12 @@
 
 
 
-@interface JFHTTPRequest ()
+@interface JFHTTPRequest () <NSURLConnectionDataDelegate>
 
 // Attributes
+@property (assign, nonatomic, readwrite)	JFHTTPRequestState	state;
+
+// Data
 @property (strong, nonatomic, readonly)	NSMutableDictionary*	fields;
 @property (strong, nonatomic, readonly)	NSMutableDictionary*	headerFields;
 
@@ -36,7 +39,7 @@
 @property (strong, nonatomic, readonly)	NSMutableURLRequest*	request;
 @property (assign, nonatomic)			NSInteger				responseCode;
 
-// Listeners
+// Relationships
 @property (weak, nonatomic)	NSObject<JFHTTPRequestDelegate>*	delegate;
 
 // Attributes management
@@ -56,13 +59,18 @@
 #pragma mark - Properties
 
 // Attributes
+@synthesize encoding	= _encoding;
+@synthesize httpMethod	= _httpMethod;
+
+// Data
 @synthesize additionalInfo	= _additionalInfo;
 @synthesize credential		= _credential;
-@synthesize encoding		= _encoding;
 @synthesize fields			= _fields;
 @synthesize headerFields	= _headerFields;
-@synthesize httpMethod		= _httpMethod;
 @synthesize url				= _url;
+
+// Flags
+@synthesize state	= _state;
 
 // HTTP request
 @synthesize connection		= _connection;
@@ -70,31 +78,15 @@
 @synthesize request			= _request;
 @synthesize responseCode	= _responseCode;
 
-// Listeners
+// Relationships
 @synthesize delegate	= _delegate;
 
 
 #pragma mark - Properties accessors (Attributes)
 
-- (void)setAdditionalInfo:(NSDictionary*)additionalInfo
-{
-	if(self.connection)
-		return;
-	
-	_additionalInfo = additionalInfo;
-}
-
-- (void)setCredential:(NSURLCredential*)credential
-{
-	if(self.connection)
-		return;
-	
-	_credential = credential;
-}
-
 - (void)setEncoding:(NSStringEncoding)encoding
 {
-	if(self.connection)
+	if(self.state != JFHTTPRequestStateReady)
 		return;
 	
 	_encoding = encoding;
@@ -102,15 +94,34 @@
 
 - (void)setHttpMethod:(JFHTTPMethod)httpMethod
 {
-	if(self.connection)
+	if(self.state != JFHTTPRequestStateReady)
 		return;
 	
 	_httpMethod = httpMethod;
 }
 
+
+#pragma mark - Properties accessors (Data)
+
+- (void)setAdditionalInfo:(NSDictionary*)additionalInfo
+{
+	if(self.state != JFHTTPRequestStateReady)
+		return;
+	
+	_additionalInfo = additionalInfo;
+}
+
+- (void)setCredential:(NSURLCredential*)credential
+{
+	if(self.state != JFHTTPRequestStateReady)
+		return;
+	
+	_credential = credential;
+}
+
 - (void)setUrl:(NSURL*)url
 {
-	if(self.connection)
+	if(self.state != JFHTTPRequestStateReady)
 		return;
 	
 	_url = url;
@@ -126,6 +137,9 @@
 	{
 		// Attributes
 		_encoding = NSUTF8StringEncoding;
+		_state = JFHTTPRequestStateReady;
+		
+		// Data
 		_fields = [NSMutableDictionary dictionary];
 		_headerFields = [NSMutableDictionary dictionary];
 		
@@ -133,7 +147,7 @@
 		_receivedData = [NSMutableData data];
 		_request = [NSMutableURLRequest new];
 		
-		// Listeners
+		// Relationships
 		_delegate = delegate;
 	}
 	return self;
@@ -186,7 +200,7 @@
 
 - (void)setValue:(NSString*)value forHTTPField:(NSString*)field
 {
-	if(!field || self.connection)
+	if(!field || (self.state != JFHTTPRequestStateReady))
 		return;
 	
 	if(value)
@@ -197,7 +211,7 @@
 
 - (void)setValue:(NSString*)value forHTTPHeaderField:(NSString*)field
 {
-	if(!field || self.connection)
+	if(!field || (self.state != JFHTTPRequestStateReady))
 		return;
 	
 	if(value)
@@ -215,9 +229,21 @@
 	[self.receivedData setLength:0];
 }
 
+- (void)reset
+{
+	if(self.state == JFHTTPRequestStateStarted)
+	{
+		[self.connection cancel];
+		[self clean];
+		HideNetworkActivityIndicator;
+	}
+	
+	self.state = JFHTTPRequestStateReady;
+}
+
 - (void)start
 {
-	if(self.connection)
+	if(self.state != JFHTTPRequestStateReady)
 		return;
 	
 	NSURL* url = [self getURL];
@@ -241,30 +267,21 @@
 		}
 		
 		ShowNetworkActivityIndicator;
+		self.state = JFHTTPRequestStateStarted;
 		self.connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:YES];
 	}
 }
 
 
-#pragma mark - Connection delegate
-
-- (void)connection:(NSURLConnection*)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge
-{
-	if(self.credential)
-		[[challenge sender] useCredential:self.credential forAuthenticationChallenge:challenge];
-	else
-		[[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
-}
+#pragma mark - Delegation management (NSURLConnectionDelegate)
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
 	[self clean];
 	HideNetworkActivityIndicator;
-	[self.delegate onHTTPRequest:self failedRequestWithError:error];
+	self.state = JFHTTPRequestStateFailed;
+	[self.delegate httpRequest:self failedRequestWithError:error];
 }
-
-
-#pragma mark - Connection data delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
 {
@@ -282,12 +299,21 @@
 	[self.receivedData setLength:0];
 }
 
+- (void)connection:(NSURLConnection*)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge
+{
+	if(self.credential)
+		[[challenge sender] useCredential:self.credential forAuthenticationChallenge:challenge];
+	else
+		[[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
 	NSData* data = [self.receivedData copy];
 	[self clean];
 	HideNetworkActivityIndicator;
-	[self.delegate onHTTPRequest:self completedRequestWithData:data];
+	self.state = JFHTTPRequestStateCompleted;
+	[self.delegate httpRequest:self completedRequestWithData:data];
 }
 
 @end
