@@ -16,6 +16,9 @@
 		EA00D0AB18F055D600A1CDA3 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09C18F0555F00A1CDA3 /* JFUtilities.m */; };
 		EA13CAAB196E8AED00EC0C00 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA13CAAA196E8AED00EC0C00 /* JFTransparentToolbar.m */; };
 		EA1FF0141982A5CA00C69825 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF0131982A5CA00C69825 /* JFNavigationController.m */; };
+		EA2C858B19EC2516004B1D8C /* JFDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2C858619EC2516004B1D8C /* JFDrawerController.m */; };
+		EA2C858C19EC2516004B1D8C /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2C858819EC2516004B1D8C /* JFMenuViewController.m */; };
+		EA2C858D19EC2516004B1D8C /* JFPaneledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2C858A19EC2516004B1D8C /* JFPaneledViewController.m */; };
 		EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA4257D918F2A86000E1DEC1 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */; };
 		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
@@ -80,6 +83,12 @@
 		EA13CAAA196E8AED00EC0C00 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
 		EA1FF0121982A5CA00C69825 /* JFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
 		EA1FF0131982A5CA00C69825 /* JFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
+		EA2C858519EC2516004B1D8C /* JFDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFDrawerController.h; sourceTree = "<group>"; };
+		EA2C858619EC2516004B1D8C /* JFDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFDrawerController.m; sourceTree = "<group>"; };
+		EA2C858719EC2516004B1D8C /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
+		EA2C858819EC2516004B1D8C /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
+		EA2C858919EC2516004B1D8C /* JFPaneledViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFPaneledViewController.h; sourceTree = "<group>"; };
+		EA2C858A19EC2516004B1D8C /* JFPaneledViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFPaneledViewController.m; sourceTree = "<group>"; };
 		EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDataAccess.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4257D718F2A86000E1DEC1 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
 		EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
@@ -167,10 +176,16 @@
 			children = (
 				EAF85368197FC0F10003E86A /* JFActivityIndicatorView.h */,
 				EAF85369197FC0F10003E86A /* JFActivityIndicatorView.m */,
+				EA2C858519EC2516004B1D8C /* JFDrawerController.h */,
+				EA2C858619EC2516004B1D8C /* JFDrawerController.m */,
 				EA00D09618F0555F00A1CDA3 /* JFGalleryView.h */,
 				EA00D09718F0555F00A1CDA3 /* JFGalleryView.m */,
+				EA2C858719EC2516004B1D8C /* JFMenuViewController.h */,
+				EA2C858819EC2516004B1D8C /* JFMenuViewController.m */,
 				EA1FF0121982A5CA00C69825 /* JFNavigationController.h */,
 				EA1FF0131982A5CA00C69825 /* JFNavigationController.m */,
+				EA2C858919EC2516004B1D8C /* JFPaneledViewController.h */,
+				EA2C858A19EC2516004B1D8C /* JFPaneledViewController.m */,
 				EA4257D718F2A86000E1DEC1 /* JFSimpleFormViewController.h */,
 				EA4257D818F2A86000E1DEC1 /* JFSimpleFormViewController.m */,
 				EA13CAA9196E8AED00EC0C00 /* JFTransparentToolbar.h */,
@@ -354,8 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA2C858B19EC2516004B1D8C /* JFDrawerController.m in Sources */,
 				EA1FF0141982A5CA00C69825 /* JFNavigationController.m in Sources */,
+				EA2C858C19EC2516004B1D8C /* JFMenuViewController.m in Sources */,
 				EA4257D918F2A86000E1DEC1 /* JFSimpleFormViewController.m in Sources */,
+				EA2C858D19EC2516004B1D8C /* JFPaneledViewController.m in Sources */,
 				EAF8536A197FC0F10003E86A /* JFActivityIndicatorView.m in Sources */,
 				EA13CAAB196E8AED00EC0C00 /* JFTransparentToolbar.m in Sources */,
 				EA00D0A918F055D000A1CDA3 /* JFGalleryView.m in Sources */,

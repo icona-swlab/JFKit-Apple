@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.10.13 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	17:00
+Time ended:		17:15
+---------------------
+Time total:		00:15
+---------------------
+
+Activity:
+
+- Added some new classes to handle the existence of a drawer fashioned style menu.
+
+
 ########## 2014.09.28 ##################################################
 
 Developer:	Jacopo Filié
