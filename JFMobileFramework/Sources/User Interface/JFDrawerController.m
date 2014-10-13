@@ -37,6 +37,13 @@
 
 @implementation JFDrawerController
 
+#pragma mark - Properties
+
+// User interface
+@synthesize menuViewController		= _menuViewController;
+@synthesize paneledViewController	= _paneledViewController;
+
+
 #pragma mark - Memory management
 
 - (instancetype)init

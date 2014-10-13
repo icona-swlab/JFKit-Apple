@@ -20,15 +20,31 @@
 
 #import "JFMenuViewController.h"
 
+#import "JFMenuGroup.h"
+#import "JFMenuItem.h"
+#import "JFUtilities.h"
+
 
 
 @interface JFMenuViewController ()
+
+// Data
+@property (strong, nonatomic, readonly)	NSMutableArray*	items;
 
 @end
 
 
 
 @implementation JFMenuViewController
+
+#pragma mark - Properties
+
+// Data
+@synthesize items	= _items;
+
+// Relationships
+@synthesize delegate	= _delegate;
+
 
 #pragma mark - User interface management (Inherited)
 
@@ -44,7 +60,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-	return 1;
+	return [self.items count];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -56,10 +72,18 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 40;
+	JFMenuItem* item = [self.items objectAtIndex:section];
+	if(![item isKindOfClass:[JFMenuGroup class]])
+		return 1;
+	
+	JFMenuGroup* group = (JFMenuGroup*)item;
+	return [group.items count] + 1;
 }
 
 
 #pragma mark - Delegation management (UITableViewDelegate)
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{}
 
 @end

@@ -1,5 +1,5 @@
 //
-//  JFMenuViewController.h
+//  JFMenuItem.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,29 +18,23 @@
 
 
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 
 
-@class JFMenuItem;
+@interface JFMenuItem : NSObject
 
-@protocol JFMenuViewControllerDelegate;
+// Attributes
+@property (strong, nonatomic)	UIColor*	detailTextColor;
+@property (strong, nonatomic)	UIFont*		detailTextFont;
+@property (strong, nonatomic)	UIColor*	textColor;
+@property (strong, nonatomic)	UIFont*		textFont;
 
-
-
-@interface JFMenuViewController : UITableViewController
-
-// Relationships
-@property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
-
-@end
-
-
-
-@protocol JFMenuViewControllerDelegate <NSObject>
-
-@optional
-
-- (void)	menuViewController:(JFMenuViewController*)drawerController didSelectItem:(JFMenuItem*)item;
+// Data
+@property (strong, nonatomic)	UIImage*	backgroundImage;
+@property (copy, nonatomic)		NSString*	detailText;
+@property (strong, nonatomic)	UIImage*	image;
+@property (copy, nonatomic)		NSString*	text;
 
 @end

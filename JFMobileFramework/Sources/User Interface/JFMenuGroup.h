@@ -1,5 +1,5 @@
 //
-//  JFMenuViewController.h
+//  JFMenuGroup.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,29 +18,16 @@
 
 
 
-#import <UIKit/UIKit.h>
+#import "JFMenuItem.h"
 
 
 
-@class JFMenuItem;
+@interface JFMenuGroup : JFMenuItem
 
-@protocol JFMenuViewControllerDelegate;
-
-
-
-@interface JFMenuViewController : UITableViewController
+// Flags
+@property (assign, nonatomic)	BOOL	isCollapsed;
 
 // Relationships
-@property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
-
-@end
-
-
-
-@protocol JFMenuViewControllerDelegate <NSObject>
-
-@optional
-
-- (void)	menuViewController:(JFMenuViewController*)drawerController didSelectItem:(JFMenuItem*)item;
+@property (strong, nonatomic)	NSArray*	items;
 
 @end
