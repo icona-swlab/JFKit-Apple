@@ -8,10 +8,11 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 Developer:	Jacopo Filié
 
 ---------------------
-Time started:	17:00
-Time ended:		19:00
+Time started:	10:00
+Time paused:	01:00
+Time ended:		18:00
 ---------------------
-Time total:		02:00
+Time total:		07:00
 ---------------------
 
 Activity:
