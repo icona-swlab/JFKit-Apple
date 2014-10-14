@@ -16,8 +16,24 @@ Time total:		02:00
 
 Activity:
 
+	- Worked on the menu and drawer controllers.
+
+
+########## 2014.10.13 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	17:00
+Time ended:		19:00
+---------------------
+Time total:		02:00
+---------------------
+
+Activity:
+
 	- Added some new classes to handle the existence of a drawer fashioned style menu.
-	- Working on the menu controller.
+	- Worked on the menu controller.
 
 
 ########## 2014.09.28 ##################################################

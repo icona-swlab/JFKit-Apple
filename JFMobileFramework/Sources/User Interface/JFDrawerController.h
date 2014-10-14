@@ -22,6 +22,18 @@
 
 
 
+@class JFMenuGroup;
+@class JFMenuItem;
+
+
+
 @interface JFDrawerController : UIViewController
+
+// Data management
+- (void)	setMenuItems:(NSArray*)items;
+
+// User interface management
+- (BOOL)	showMenu;
+- (BOOL)	showMenu:(BOOL)animated;
 
 @end

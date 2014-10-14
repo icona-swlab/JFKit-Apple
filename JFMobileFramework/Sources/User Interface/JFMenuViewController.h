@@ -22,6 +22,7 @@
 
 
 
+@class JFMenuGroup;
 @class JFMenuItem;
 
 @protocol JFMenuViewControllerDelegate;
@@ -30,8 +31,21 @@
 
 @interface JFMenuViewController : UITableViewController
 
+// Attributes
+@property (assign, nonatomic)	NSInteger	itemsIndentationLevel;
+@property (assign, nonatomic)	CGFloat		itemsIndentationWidth;
+@property (assign, nonatomic)	NSInteger	subitemsIndentationLevel;
+@property (assign, nonatomic)	CGFloat		subitemsIndentationWidth;
+
+// Flags
+@property (assign, nonatomic)	BOOL	shouldIndentItems;
+@property (assign, nonatomic)	BOOL	shouldIndentSubitems;
+
 // Relationships
 @property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
+
+// Data management
+- (void)	setMenuItems:(NSArray*)items;
 
 @end
 
@@ -42,5 +56,8 @@
 @optional
 
 - (void)	menuViewController:(JFMenuViewController*)drawerController didSelectItem:(JFMenuItem*)item;
+
+- (void)	menuViewController:(JFMenuViewController*)drawerController shouldCollapseGroup:(JFMenuGroup*)group;
+- (void)	menuViewController:(JFMenuViewController*)drawerController shouldExpandGroup:(JFMenuGroup*)group;
 
 @end

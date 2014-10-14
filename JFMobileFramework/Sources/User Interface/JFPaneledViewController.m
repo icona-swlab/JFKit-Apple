@@ -71,8 +71,9 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 // User interface management (Sliding)
 - (void)	cleanUp:(BOOL)finished animated:(BOOL)animated;
 - (void)	completeSlideWithTranslation:(CGFloat)translation velocity:(CGFloat)velocity;
-- (void)	prepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition animated:(BOOL)animated;
-- (void)	prepareSlideWithTranslation:(CGFloat)translation animated:(BOOL)animated;
+- (BOOL)	prepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition animated:(BOOL)animated;
+- (BOOL)	prepareSlideWithTranslation:(CGFloat)translation animated:(BOOL)animated;
+- (BOOL)	shouldPrepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition;
 - (void)	slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(BlockWithBool)completion;
 - (void)	updateCurrentSlideDistancesForTransition:(JFPaneledViewControllerSlideTransition)transition;
 
@@ -252,11 +253,8 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(self.state != JFPaneledViewControllerStateIsShowingRootPanel)
 		return NO;
 	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:shouldShowLeftPanel:)])
-		if(![self.delegate paneledViewController:self shouldShowLeftPanel:self.leftPanel])
-			return NO;
-	
-	[self prepareSlideWithTransition:JFPaneledViewControllerSlideTransitionRootToLeft animated:animated];
+	if(![self prepareSlideWithTransition:JFPaneledViewControllerSlideTransitionRootToLeft animated:animated])
+		return NO;
 	
 	BlockWithBool internalCompletion = ^(BOOL finished)
 	{
@@ -283,11 +281,8 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(self.state != JFPaneledViewControllerStateIsShowingRootPanel)
 		return NO;
 	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:shouldShowRightPanel:)])
-		if(![self.delegate paneledViewController:self shouldShowRightPanel:self.rightPanel])
-			return NO;
-	
-	[self prepareSlideWithTransition:JFPaneledViewControllerSlideTransitionRootToRight animated:animated];
+	if(![self prepareSlideWithTransition:JFPaneledViewControllerSlideTransitionRootToRight animated:animated])
+		return NO;
 	
 	BlockWithBool internalCompletion = ^(BOOL finished)
 	{
@@ -321,11 +316,8 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 			return NO;
 	}
 	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:shouldShowRootPanel:)])
-		if(![self.delegate paneledViewController:self shouldShowRootPanel:self.rootPanel])
-			return NO;
-	
-	[self prepareSlideWithTransition:transition animated:animated];
+	if(![self prepareSlideWithTransition:transition animated:animated])
+		return NO;
 	
 	BlockWithBool internalCompletion = ^(BOOL finished)
 	{
@@ -583,10 +575,13 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	[self slideWithTranslation:translation animated:YES completion:completion];
 }
 
-- (void)prepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition animated:(BOOL)animated
+- (BOOL)prepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition animated:(BOOL)animated
 {
-	if(transition == JFPaneledViewControllerSlideTransitionNone)
-		return;
+	if(self.animating)
+		return NO;
+	
+	if(![self shouldPrepareSlideWithTransition:transition])
+		return NO;
 	
 	[self updateCurrentSlideDistancesForTransition:transition];
 	
@@ -629,7 +624,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 			break;
 		}
 		default:
-			return;
+			return NO;
 	}
 	
 	panelContainer.userInteractionEnabled = NO;
@@ -657,9 +652,11 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	
 	self.animating = YES;
 	self.slideTransition = transition;
+	
+	return YES;
 }
 
-- (void)prepareSlideWithTranslation:(CGFloat)translation animated:(BOOL)animated
+- (BOOL)prepareSlideWithTranslation:(CGFloat)translation animated:(BOOL)animated
 {
 	JFPaneledViewControllerSlideTransition transition = JFPaneledViewControllerSlideTransitionNone;
 	JFPaneledViewControllerState state = self.state;
@@ -679,7 +676,43 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 			transition = JFPaneledViewControllerSlideTransitionLeftToRoot;
 	}
 	
-	[self prepareSlideWithTransition:transition animated:animated];
+	return [self prepareSlideWithTransition:transition animated:animated];
+}
+
+- (BOOL)shouldPrepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition
+{
+	if(!self.delegate)
+		return YES;
+	
+	BOOL retVal = YES;
+	switch(transition)
+	{
+		case JFPaneledViewControllerSlideTransitionLeftToRoot:
+		case JFPaneledViewControllerSlideTransitionRightToRoot:
+		{
+			if([self.delegate respondsToSelector:@selector(paneledViewController:shouldShowRootPanel:)])
+				retVal = [self.delegate paneledViewController:self shouldShowRootPanel:self.rootPanel];
+			break;
+		}
+		case JFPaneledViewControllerSlideTransitionRootToLeft:
+		{
+			if([self.delegate respondsToSelector:@selector(paneledViewController:shouldShowLeftPanel:)])
+				retVal = [self.delegate paneledViewController:self shouldShowLeftPanel:self.leftPanel];
+			break;
+		}
+		case JFPaneledViewControllerSlideTransitionRootToRight:
+		{
+			if([self.delegate respondsToSelector:@selector(paneledViewController:shouldShowRightPanel:)])
+				retVal = [self.delegate paneledViewController:self shouldShowRightPanel:self.rightPanel];
+			break;
+		}
+		default:
+		{
+			retVal = NO;
+			break;
+		}
+	}
+	return retVal;
 }
 
 - (void)slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(BlockWithBool)completion

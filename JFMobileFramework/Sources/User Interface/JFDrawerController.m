@@ -25,7 +25,7 @@
 
 
 
-@interface JFDrawerController ()
+@interface JFDrawerController () <JFPaneledViewControllerDelegate>
 
 // User interface
 @property (strong, nonatomic, readonly)	JFMenuViewController*		menuViewController;
@@ -54,8 +54,32 @@
 		// User interface
 		_menuViewController = [[JFMenuViewController alloc] initWithStyle:UITableViewStylePlain];
 		_paneledViewController = [[JFPaneledViewController alloc] init];
+		
+		// Builds the relationships.
+		self.paneledViewController.delegate = self;
 	}
 	return self;
+}
+
+
+#pragma mark - Data management
+
+- (void)setMenuItems:(NSArray*)items
+{
+	[self.menuViewController setMenuItems:items];
+}
+
+
+#pragma mark - User interface management
+
+- (BOOL)showMenu
+{
+	return [self showMenu:YES];
+}
+
+- (BOOL)showMenu:(BOOL)animated
+{
+	return [self.paneledViewController showLeftPanel:animated completion:nil];
 }
 
 
@@ -68,6 +92,14 @@
 	[self.view addSubview:self.paneledViewController.view];
 	
 	self.paneledViewController.leftPanel = self.menuViewController;
+}
+
+
+#pragma mark - Delegation management (JFPaneledViewControllerDelegate)
+
+- (BOOL)paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowRightPanel:(UIViewController*)rightPanel
+{
+	return NO;
 }
 
 @end
