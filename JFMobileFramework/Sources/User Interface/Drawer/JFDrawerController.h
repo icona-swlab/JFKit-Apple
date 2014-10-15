@@ -1,5 +1,5 @@
 //
-//  JFMenuGroup.m
+//  JFDrawerController.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,24 +18,25 @@
 
 
 
-#import "JFMenuGroup.h"
+#import <UIKit/UIKit.h>
 
 
 
-@interface JFMenuGroup ()
-
-@end
-
+@class JFMenuGroup;
+@class JFMenuItem;
 
 
-@implementation JFMenuGroup
 
-#pragma mark - Properties
+@interface JFDrawerController : UIViewController
 
-// Flags
-@synthesize isCollapsed	= _isCollapsed;
+// Attributes
+@property (strong, nonatomic)	UIColor*	menuBackgroundColor;
 
-// Relationships
-@synthesize items	= _items;
+// Data management
+- (void)	setMenuItems:(NSArray*)items;
+
+// User interface management
+- (BOOL)	showMenu;
+- (BOOL)	showMenu:(BOOL)animated;
 
 @end

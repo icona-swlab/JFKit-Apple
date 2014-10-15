@@ -48,7 +48,7 @@
 
 - (void)commonInit
 {
-	self.backgroundColor = ColorWithHexA(0x00000080);
+	self.backgroundColor = ColorAlpha(80.0f);
 	self.opaque = NO;
 	self.userInteractionEnabled = YES;
 	

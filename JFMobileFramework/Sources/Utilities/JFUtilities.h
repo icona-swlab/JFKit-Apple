@@ -30,14 +30,15 @@
 
 #pragma mark - Macros (Colors)
 
-#define ColorBlue(arg_val)							ColorWithRGB(0, 0, arg_val)
+#define ColorAlpha(arg_val)							ColorWithRGBA(0.0f, 0.0f, 0.0f, arg_val)
+#define ColorBlue(arg_val)							ColorWithRGB(0.0f, 0.0f, arg_val)
 #define ColorGray(arg_val)							ColorWithRGB(arg_val, arg_val, arg_val)
-#define ColorGreen(arg_val)							ColorWithRGB(0, arg_val, 0)
-#define ColorRed(arg_val)							ColorWithRGB(arg_val, 0, 0)
-#define ColorWithHex(arg_val)						ColorWithHexA((arg_val << 8) | 0x000000FF)
-#define ColorWithHexA(arg_val)						ColorWithRGBA(((arg_val & 0xFF000000) >> 24), ((arg_val & 0xFF0000) >> 16), ((arg_val & 0xFF00) >> 8), (arg_val & 0xFF))
-#define ColorWithRGB(arg_r, arg_g, arg_b)			ColorWithRGBA(arg_r, arg_g, arg_b, 255)
-#define ColorWithRGBA(arg_r, arg_g, arg_b, arg_a)	[UIColor colorWithRed:(((float)arg_r)/255) green:(((float)arg_g)/255) blue:(((float)arg_b)/255) alpha:(((float)arg_a)/255)]
+#define ColorGreen(arg_val)							ColorWithRGB(0.0f, arg_val, 0.0f)
+#define ColorRed(arg_val)							ColorWithRGB(arg_val, 0.0f, 0.0f)
+#define ColorWithHex(arg_val)						ColorWithHexA(arg_val, 255.0f)
+#define ColorWithHexA(arg_val, arg_a)				ColorWithRGBA(((arg_val & 0xFF0000) >> 16), ((arg_val & 0xFF00) >> 8), (arg_val & 0xFF), arg_a)
+#define ColorWithRGB(arg_r, arg_g, arg_b)			ColorWithRGBA(arg_r, arg_g, arg_b, 255.0f)
+#define ColorWithRGBA(arg_r, arg_g, arg_b, arg_a)	[UIColor colorWithRed:(((float)arg_r)/255.0f) green:(((float)arg_g)/255.0f) blue:(((float)arg_b)/255.0f) alpha:(((float)arg_a)/255.0f)]
 
 
 #pragma mark - Macros (Debug)

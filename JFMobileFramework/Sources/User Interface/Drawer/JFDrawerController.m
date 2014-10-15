@@ -39,9 +39,26 @@
 
 #pragma mark - Properties
 
+// Attributes
+@synthesize menuBackgroundColor	= _menuBackgroundColor;
+
 // User interface
 @synthesize menuViewController		= _menuViewController;
 @synthesize paneledViewController	= _paneledViewController;
+
+
+#pragma mark - Properties accessors (Attributes)
+
+- (void)setMenuBackgroundColor:(UIColor*)menuBackgroundColor
+{
+	if(_menuBackgroundColor == menuBackgroundColor)
+		return;
+	
+	_menuBackgroundColor = menuBackgroundColor;
+	
+	if([self isViewLoaded])
+		self.menuViewController.view.backgroundColor = _menuBackgroundColor;
+}
 
 
 #pragma mark - Memory management
@@ -88,6 +105,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	self.menuViewController.view.backgroundColor = self.menuBackgroundColor;
 	
 	[self.view addSubview:self.paneledViewController.view];
 	

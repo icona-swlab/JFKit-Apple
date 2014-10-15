@@ -3,7 +3,26 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
-########## 2014.10.13 ##################################################
+########## 2014.10.15 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	10:00
+Time paused:	01:00
+Time ended:		18:00
+---------------------
+Time total:		07:00
+---------------------
+
+Activity:
+
+	- Fixed an error with the "ColorWithHex" macro.
+	- Refactored folders of the "User Interface" section.
+	- Worked on the "JFMenuViewController" class and related objects.
+
+
+########## 2014.10.14 ##################################################
 
 Developer:	Jacopo Filié
 

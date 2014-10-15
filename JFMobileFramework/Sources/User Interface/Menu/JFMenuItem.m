@@ -33,15 +33,48 @@
 #pragma mark - Properties
 
 // Attributes
-@synthesize detailTextColor	= _detailTextColor;
-@synthesize detailTextFont	= _detailTextFont;
-@synthesize textColor		= _textColor;
-@synthesize textFont		= _textFont;
+@synthesize attributes	= _attributes;
 
 // Data
 @synthesize backgroundImage	= _backgroundImage;
 @synthesize detailText		= _detailText;
 @synthesize image			= _image;
 @synthesize text			= _text;
+
+// Flags
+@synthesize selectionEnabled		= _selectionEnabled;
+@synthesize userInteractionEnabled	= _userInteractionEnabled;
+
+
+#pragma mark - Memory management
+
+- (instancetype)copyWithZone:(NSZone*)zone
+{
+	JFMenuItem* retVal = [[[self class] allocWithZone:zone] init];
+	if(retVal)
+	{
+		// Attributes
+		retVal->_attributes = _attributes;
+		
+		// Data
+		retVal->_backgroundImage = _backgroundImage;
+		retVal->_detailText = _detailText;
+		retVal->_image = _image;
+		retVal->_text = _text;
+	}
+	return retVal;
+}
+
+- (instancetype)init
+{
+	self = [super init];
+	if(self)
+	{
+		// Flags
+		_selectionEnabled = YES;
+		_userInteractionEnabled = YES;
+	}
+	return self;
+}
 
 @end

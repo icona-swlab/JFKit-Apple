@@ -22,6 +22,7 @@
 
 #import "JFMenuGroup.h"
 #import "JFMenuItem.h"
+#import "JFTableViewCellAttributes.h"
 #import "JFUtilities.h"
 
 
@@ -49,18 +50,8 @@
 
 #pragma mark - Properties
 
-// Attributes
-@synthesize itemsIndentationLevel		= _itemsIndentationLevel;
-@synthesize itemsIndentationWidth		= _itemsIndentationWidth;
-@synthesize subitemsIndentationLevel	= _subitemsIndentationLevel;
-@synthesize subitemsIndentationWidth	= _subitemsIndentationWidth;
-
 // Data
 @synthesize items	= _items;
-
-// Flags
-@synthesize shouldIndentItems		= _shouldIndentItems;
-@synthesize shouldIndentSubitems	= _shouldIndentSubitems;
 
 // Relationships
 @synthesize delegate	= _delegate;
@@ -70,18 +61,8 @@
 
 - (void)commonInit
 {
-	// Attributes
-	_itemsIndentationLevel = 0;
-	_itemsIndentationWidth = 0.0f;
-	_subitemsIndentationLevel = 1;
-	_subitemsIndentationWidth = 10.0f;
-	
 	// Data
 	_items = [NSMutableArray new];
-	
-	// Flags
-	_shouldIndentItems = NO;
-	_shouldIndentSubitems = YES;
 }
 
 - (instancetype)init
@@ -201,7 +182,9 @@
 	UITableViewCell* retVal = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 	
 	retVal.detailTextLabel.text = item.detailText;
+	retVal.imageView.image = item.image;
 	retVal.textLabel.text = item.text;
+	retVal.userInteractionEnabled = item.userInteractionEnabled;
 	
 	return retVal;
 }
@@ -235,8 +218,35 @@
 			[self collapseGroup:group atIndex:indexPath.section];
 	}
 	
+	NSLog(@"Selected item: %@", item.text);
+	
 	if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:didSelectItem:)])
 		[self.delegate menuViewController:self didSelectItem:item];
+}
+
+- (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
+	
+	cell.backgroundColor = item.attributes.backgroundColor;
+	cell.detailTextLabel.highlightedTextColor = item.attributes.highlightedDetailTextColor;
+	cell.detailTextLabel.textColor = item.attributes.detailTextColor;
+	cell.detailTextLabel.font = item.attributes.detailTextFont;
+	cell.indentationLevel = item.attributes.indentationLevel;
+	cell.indentationWidth = item.attributes.indentationWidth;
+	cell.selectionStyle = item.attributes.selectionStyle;
+	cell.textLabel.highlightedTextColor = item.attributes.highlightedTextColor;
+	cell.textLabel.textColor = item.attributes.textColor;
+	cell.textLabel.font = item.attributes.textFont;
+}
+
+- (NSIndexPath*)tableView:(UITableView*)tableView willSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{
+	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
+	if(!item.selectionEnabled)
+		return nil;
+	
+	return indexPath;
 }
 
 @end

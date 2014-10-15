@@ -23,18 +23,23 @@
 
 
 
-@interface JFMenuItem : NSObject
+@class JFTableViewCellAttributes;
+
+
+
+@interface JFMenuItem : NSObject <NSCopying>
 
 // Attributes
-@property (strong, nonatomic)	UIColor*	detailTextColor;
-@property (strong, nonatomic)	UIFont*		detailTextFont;
-@property (strong, nonatomic)	UIColor*	textColor;
-@property (strong, nonatomic)	UIFont*		textFont;
+@property (strong, nonatomic)	JFTableViewCellAttributes*	attributes;
 
 // Data
 @property (strong, nonatomic)	UIImage*	backgroundImage;
 @property (copy, nonatomic)		NSString*	detailText;
 @property (strong, nonatomic)	UIImage*	image;
 @property (copy, nonatomic)		NSString*	text;
+
+// Flags
+@property (assign, nonatomic)	BOOL selectionEnabled;
+@property (assign, nonatomic)	BOOL userInteractionEnabled;
 
 @end

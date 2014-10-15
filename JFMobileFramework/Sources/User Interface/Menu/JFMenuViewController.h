@@ -31,16 +31,6 @@
 
 @interface JFMenuViewController : UITableViewController
 
-// Attributes
-@property (assign, nonatomic)	NSInteger	itemsIndentationLevel;
-@property (assign, nonatomic)	CGFloat		itemsIndentationWidth;
-@property (assign, nonatomic)	NSInteger	subitemsIndentationLevel;
-@property (assign, nonatomic)	CGFloat		subitemsIndentationWidth;
-
-// Flags
-@property (assign, nonatomic)	BOOL	shouldIndentItems;
-@property (assign, nonatomic)	BOOL	shouldIndentSubitems;
-
 // Relationships
 @property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
 
