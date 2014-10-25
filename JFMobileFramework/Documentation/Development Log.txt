@@ -9,14 +9,16 @@ Developer:	Jacopo Filié
 
 ---------------------
 Time started:	10:30
-Time ended:		10:45
+Time paused:	01:00
+Time ended:		16:30
 ---------------------
-Time total:		00:45
+Time total:		05:00
 ---------------------
 
 Activity:
 
 	- Merged changes done while working at Icona S.r.l..
+	- Fixed the "JFPaneledViewController" class.
 
 
 ########## 2014.10.15 ##################################################

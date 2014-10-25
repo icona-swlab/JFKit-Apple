@@ -23,16 +23,13 @@
 #import "JFMenuViewController.h"
 #import "JFPaneledViewController.h"
 
-#import "JFSlideViewController.h"
 
 
-
-@interface JFDrawerController () <JFSlideViewDelegate, JFMenuViewControllerDelegate, JFPaneledViewControllerDelegate>
+@interface JFDrawerController () <JFMenuViewControllerDelegate, JFPaneledViewControllerDelegate>
 
 // User interface
 @property (strong, nonatomic, readonly)	JFMenuViewController*		menuViewController;
 @property (strong, nonatomic, readonly)	JFPaneledViewController*	paneledViewController;
-@property (strong, nonatomic, readonly)	JFSlideViewController*		slideViewController;
 
 @end
 
@@ -55,7 +52,6 @@
 @synthesize menuViewController		= _menuViewController;
 @synthesize paneledViewController	= _paneledViewController;
 @synthesize rootViewController		= _rootViewController;
-@synthesize slideViewController		= _slideViewController;
 
 
 #pragma mark - Properties accessors (Attributes)
@@ -81,7 +77,7 @@
 	
 	_rootViewController = rootViewController;
 	
-	self.slideViewController.rootViewController = _rootViewController;
+	self.paneledViewController.rootPanel = _rootViewController;
 }
 
 
@@ -95,12 +91,10 @@
 		// User interface
 		_menuViewController = [[JFMenuViewController alloc] initWithStyle:UITableViewStylePlain];
 		_paneledViewController = [[JFPaneledViewController alloc] init];
-		_slideViewController = [JFSlideViewController new];
 		
 		// Builds the relationships.
 		self.menuViewController.delegate = self;
 		self.paneledViewController.delegate = self;
-		self.slideViewController.delegate = self;
 	}
 	return self;
 }
@@ -123,10 +117,7 @@
 
 - (BOOL)hideMenu:(BOOL)animated
 {
-	[self.slideViewController showRootView];
-	return YES;
-	
-	//return [self.paneledViewController showLeftPanel:animated completion:nil];
+	return [self.paneledViewController showRootPanel:animated completion:nil];
 }
 
 - (BOOL)showMenu
@@ -136,10 +127,7 @@
 
 - (BOOL)showMenu:(BOOL)animated
 {
-	[self.slideViewController showLeftView];
-	return YES;
-	
-	//return [self.paneledViewController showLeftPanel:animated completion:nil];
+	return [self.paneledViewController showLeftPanel:animated completion:nil];
 }
 
 
@@ -151,15 +139,10 @@
 	
 	self.menuViewController.view.backgroundColor = self.menuBackgroundColor;
 	
-	//[self.view addSubview:self.paneledViewController.view];
+	[self.view addSubview:self.paneledViewController.view];
 	
 	self.paneledViewController.leftPanel = self.menuViewController;
 	self.paneledViewController.rootPanel = self.rootViewController;
-	
-	[self.view addSubview:self.slideViewController.view];
-	
-	self.slideViewController.rootViewController = self.rootViewController;
-	self.slideViewController.leftViewController = self.menuViewController;
 }
 
 

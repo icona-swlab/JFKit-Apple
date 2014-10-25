@@ -24,7 +24,28 @@
 
 
 
-@protocol JFPaneledViewControllerDelegate;
+@class JFPaneledViewController;
+
+
+
+@protocol JFPaneledViewControllerDelegate <NSObject>
+
+@optional
+
+- (BOOL)	paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowLeftPanel:(UIViewController*)leftPanel;
+- (BOOL)	paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowRightPanel:(UIViewController*)rightPanel;
+- (BOOL)	paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowRootPanel:(UIViewController*)rootPanel;
+
+- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didCancelHidePanel:(UIViewController*)panel;
+- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didCancelShowPanel:(UIViewController*)panel;
+
+- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didHidePanel:(UIViewController*)panel;
+- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didShowPanel:(UIViewController*)panel;
+
+- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController willHidePanel:(UIViewController*)panel;
+- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController willShowPanel:(UIViewController*)panel;
+
+@end
 
 
 
@@ -63,26 +84,5 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerState)
 - (BOOL)	showRightPanel:(BOOL)animated completion:(BlockWithBool)completion;
 - (BOOL)	showRootPanel;
 - (BOOL)	showRootPanel:(BOOL)animated completion:(BlockWithBool)completion;
-
-@end
-
-
-
-@protocol JFPaneledViewControllerDelegate <NSObject>
-
-@optional
-
-- (BOOL)	paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowLeftPanel:(UIViewController*)leftPanel;
-- (BOOL)	paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowRightPanel:(UIViewController*)rightPanel;
-- (BOOL)	paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowRootPanel:(UIViewController*)rootPanel;
-
-- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didCancelHidePanel:(UIViewController*)panel;
-- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didCancelShowPanel:(UIViewController*)panel;
-
-- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didHidePanel:(UIViewController*)panel;
-- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController didShowPanel:(UIViewController*)panel;
-
-- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController willHidePanel:(UIViewController*)panel;
-- (void)	paneledViewController:(JFPaneledViewController*)paneledViewController willShowPanel:(UIViewController*)panel;
 
 @end

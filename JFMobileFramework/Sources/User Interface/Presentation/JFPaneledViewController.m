@@ -77,6 +77,10 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 - (void)	slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(BlockWithBool)completion;
 - (void)	updateCurrentSlideDistancesForTransition:(JFPaneledViewControllerSlideTransition)transition;
 
+// Utilities
+- (NSString*)	convertSlideTransitionToString:(JFPaneledViewControllerSlideTransition)slideTransition;
+- (NSString*)	convertStateToString:(JFPaneledViewControllerState)state;
+
 @end
 
 
@@ -137,19 +141,14 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(_slideTransition == slideTransition)
 		return;
 	
-	NSString* string;
-	switch(_slideTransition)
-	{
-		case JFPaneledViewControllerSlideTransitionLeftToRoot:	string = @"Left => Root";	break;
-		case JFPaneledViewControllerSlideTransitionRightToRoot:	string = @"Right => Root";	break;
-		case JFPaneledViewControllerSlideTransitionRootToLeft:	string = @"Root => Left";	break;
-		case JFPaneledViewControllerSlideTransitionRootToRight:	string = @"Root => Right";	break;
-		default:												string = @"Unknown";		break;
-	}
-	
-	NSLog(@"Moving panels with transition: %@", string);
+	NSString* oldSlideTransitionString = [self convertSlideTransitionToString:_slideTransition];
+	NSString* newSlideTransitionString = [self convertSlideTransitionToString:slideTransition];
+	NSLog(@"Slide transition changed from '%@' to '%@'.", oldSlideTransitionString, newSlideTransitionString);
 	
 	_slideTransition = slideTransition;
+	
+	if([self isViewLoaded])
+		[self updateCurrentSlideDistancesForTransition:_slideTransition];
 }
 
 - (void)setState:(JFPaneledViewControllerState)state
@@ -157,25 +156,9 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(_state == state)
 		return;
 	
-	NSString* stateString;
-	NSString* oldStateString;
-	for(UInt8 i = 0; i < 2; i++)
-	{
-		NSString* string;
-		switch((i == 0 ? _state : state))
-		{
-			case JFPaneledViewControllerStateIsShowingLeftPanel:	string = @"Showing Left Panel";		break;
-			case JFPaneledViewControllerStateIsShowingRightPanel:	string = @"Showing Right Panel";	break;
-			case JFPaneledViewControllerStateIsShowingRootPanel:	string = @"Showing Root Panel";		break;
-			default:												string = @"Unknown";				break;
-		}
-		if(i == 0)
-			stateString = string;
-		else
-			oldStateString = string;
-	}
-	
-	NSLog(@"Panels state changed from '%@' to '%@'.", oldStateString, stateString);
+	NSString* oldStateString = [self convertStateToString:_state];
+	NSString* newStateString = [self convertStateToString:state];
+	NSLog(@"Panels state changed from '%@' to '%@'.", oldStateString, newStateString);
 	
 	_state = state;
 }
@@ -188,12 +171,14 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(_leftPanel == leftPanel)
 		return;
 	
+	LogMethod;
+	
 	if(_leftPanel && [self isViewLoaded])
 		[_leftPanel.view removeFromSuperview];
 	
 	_leftPanel = leftPanel;
 	
-	if([self isViewLoaded])
+	if(_leftPanel && [self isViewLoaded])
 	{
 		_leftPanel.view.frame = self.leftPanelContainer.bounds;
 		[self.leftPanelContainer addSubview:leftPanel.view];
@@ -205,12 +190,14 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(_rightPanel == rightPanel)
 		return;
 	
+	LogMethod;
+	
 	if(_rightPanel && [self isViewLoaded])
 		[_rightPanel.view removeFromSuperview];
 	
 	_rightPanel = rightPanel;
 	
-	if([self isViewLoaded])
+	if(_rightPanel && [self isViewLoaded])
 	{
 		_rightPanel.view.frame = self.rightPanelContainer.bounds;
 		[self.rightPanelContainer addSubview:_rightPanel.view];
@@ -222,12 +209,14 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(_rootPanel == rootPanel)
 		return;
 	
+	LogMethod;
+	
 	if(_rootPanel && [self isViewLoaded])
 		[_rootPanel.view removeFromSuperview];
 	
 	_rootPanel = rootPanel;
 	
-	if([self isViewLoaded])
+	if(_rootPanel && [self isViewLoaded])
 	{
 		_rootPanel.view.frame = self.rootPanelContainer.bounds;
 		[self.rootPanelContainer addSubview:_rootPanel.view];
@@ -256,15 +245,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		_shouldCancelCurrentSlideTransition = NO;
 		_slideTransition = JFPaneledViewControllerSlideTransitionNone;
 		_state = JFPaneledViewControllerStateIsShowingRootPanel;
-		
-		// Gesture recognizers
-		_panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)];
-		
-		// Layout
-		_leftPanelContainer = [[UIView alloc] init];
-		_rightPanelContainer = [[UIView alloc] init];
-		_rootPanelContainer = [[UIView alloc] init];
-		_showRootPanelButton = [[UIButton alloc] init];
 	}
 	return self;
 }
@@ -278,9 +258,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	UIButton* button = self.showRootPanelButton;
 	button.frame = self.rootPanelContainer.bounds;
 	[self.rootPanelContainer addSubview:button];
-	
-	[self.rootPanelContainer removeGestureRecognizer:self.panGestureRecognizer];
-	[button addGestureRecognizer:self.panGestureRecognizer];
 }
 
 - (BOOL)showLeftPanel
@@ -377,9 +354,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 - (void)uninstallShowRootPanelButton
 {
 	[self.showRootPanelButton removeFromSuperview];
-	
-	[self.showRootPanelButton removeGestureRecognizer:self.panGestureRecognizer];
-	[self.rootPanelContainer addGestureRecognizer:self.panGestureRecognizer];
 }
 
 - (void)updatePanelContainersFrames
@@ -434,6 +408,17 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 {
 	[super viewDidLoad];
 	
+	// User interface.
+	_leftPanelContainer = [[UIView alloc] init];
+	_rightPanelContainer = [[UIView alloc] init];
+	_rootPanelContainer = [[UIView alloc] init];
+	_showRootPanelButton = [[UIButton alloc] init];
+	
+	// Gesture recognizers
+	_panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)];
+	
+	self.rootPanelContainer.clipsToBounds = YES;
+	
 	self.leftPanelContainer.backgroundColor = [UIColor lightGrayColor];
 	self.rightPanelContainer.backgroundColor = [UIColor darkGrayColor];
 	self.rootPanelContainer.backgroundColor = [UIColor blackColor];
@@ -460,15 +445,11 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	button.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
 	[button addTarget:self action:@selector(showRootPanelButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	
+	[self updatePanelContainersFrames];
+	
 	self.panGestureRecognizer.delegate = self;
 	
 	[self.rootPanelContainer addGestureRecognizer:self.panGestureRecognizer];
-}
-
-- (void)viewWillLayoutSubviews
-{
-	[super viewWillLayoutSubviews];
-	[self updatePanelContainersFrames];
 }
 
 
@@ -547,6 +528,10 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(shouldUninstallShowRootPanelButton)
 		[self uninstallShowRootPanelButton];
 	
+	self.animating = NO;
+	self.shouldCancelCurrentSlideTransition = NO;
+	self.slideTransition = JFPaneledViewControllerSlideTransitionNone;
+	
 	if(shouldCancel)
 	{
 		if(didHidePanel)
@@ -557,11 +542,11 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		
 		if(didShowPanel)
 		{
+			panelContainer.hidden = YES;
+			
 			[panel viewDidDisappear:animated];
 			if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:didCancelShowPanel:)])
 				[self.delegate paneledViewController:self didCancelShowPanel:panel];
-			
-			panelContainer.hidden = YES;
 		}
 	}
 	else
@@ -572,11 +557,11 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		
 		if(didHidePanel)
 		{
+			panelContainer.hidden = YES;
+			
 			[panel viewDidDisappear:animated];
 			if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:didHidePanel:)])
 				[self.delegate paneledViewController:self didHidePanel:panel];
-			
-			panelContainer.hidden = YES;
 		}
 		
 		if(didShowPanel)
@@ -585,10 +570,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 				[self.delegate paneledViewController:self didShowPanel:panel];
 		}
 	}
-	
-	self.animating = NO;
-	self.shouldCancelCurrentSlideTransition = NO;
-	self.slideTransition = JFPaneledViewControllerSlideTransitionNone;
 }
 
 - (void)completeSlideWithTranslation:(CGFloat)translation velocity:(CGFloat)velocity
@@ -614,7 +595,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		}
 	}
 	else
-		translation = ((ABS(translation) >= ABS(self.currentSlideLength / 2.0f)) ? self.currentSlideLength : 0.0f);
+		translation = ((fabsf(translation) >= fabsf(self.currentSlideLength / 2.0f)) ? self.currentSlideLength : 0.0f);
 	
 	self.shouldCancelCurrentSlideTransition = (translation == 0.0f);
 	
@@ -771,22 +752,22 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(!self.animating)
 		return;
 	
-	CGFloat position = self.currentSlideOrigin + translation;
+	CGFloat destination = self.currentSlideOrigin + translation;
 	
 	switch(self.slideTransition)
 	{
 		case JFPaneledViewControllerSlideTransitionLeftToRoot:
 		case JFPaneledViewControllerSlideTransitionRootToRight:
 		{
-			position = MIN(position, self.currentSlideOrigin);
-			position = MAX(position, self.currentSlideDestination);
+			destination = MIN(destination, self.currentSlideOrigin);
+			destination = MAX(destination, self.currentSlideDestination);
 			break;
 		}
 		case JFPaneledViewControllerSlideTransitionRightToRoot:
 		case JFPaneledViewControllerSlideTransitionRootToLeft:
 		{
-			position = MIN(position, self.currentSlideDestination);
-			position = MAX(position, self.currentSlideOrigin);
+			destination = MIN(destination, self.currentSlideDestination);
+			destination = MAX(destination, self.currentSlideOrigin);
 			break;
 		}
 		default:
@@ -796,7 +777,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	NSTimeInterval duration = (animated ? self.currentSlideDuration : 0.0f);
 	
 	CGRect frame = self.rootPanelContainer.frame;
-	frame.origin.x = position;
+	frame.origin.x = destination;
 	
 	Block animations = ^(void)
 	{
@@ -907,11 +888,42 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(gestureRecognizer == self.panGestureRecognizer)
 	{
 		CGPoint translation = [self.panGestureRecognizer translationInView:self.view];
-		if(fabs(translation.y) > fabs(translation.x))
+		if(fabsf(translation.y) > fabsf(translation.x))
 			return NO;
 	}
 	
 	return YES;
+}
+
+
+#pragma mark - Utilities
+
+- (NSString*)convertSlideTransitionToString:(JFPaneledViewControllerSlideTransition)slideTransition
+{
+	NSString* retVal;
+	switch(slideTransition)
+	{
+		case JFPaneledViewControllerSlideTransitionLeftToRoot:	retVal = @"Left => Root";	break;
+		case JFPaneledViewControllerSlideTransitionRightToRoot:	retVal = @"Right => Root";	break;
+		case JFPaneledViewControllerSlideTransitionRootToLeft:	retVal = @"Root => Left";	break;
+		case JFPaneledViewControllerSlideTransitionRootToRight:	retVal = @"Root => Right";	break;
+		case JFPaneledViewControllerSlideTransitionNone:		retVal = @"None";			break;
+		default:												retVal = @"Unknown";		break;
+	}
+	return retVal;
+}
+
+- (NSString*)convertStateToString:(JFPaneledViewControllerState)state
+{
+	NSString* retVal;
+	switch(state)
+	{
+		case JFPaneledViewControllerStateIsShowingLeftPanel:	retVal = @"Showing Left Panel";		break;
+		case JFPaneledViewControllerStateIsShowingRightPanel:	retVal = @"Showing Right Panel";	break;
+		case JFPaneledViewControllerStateIsShowingRootPanel:	retVal = @"Showing Root Panel";		break;
+		default:												retVal = @"Unknown";				break;
+	}
+	return retVal;
 }
 
 @end
