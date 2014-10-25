@@ -36,6 +36,7 @@
 @synthesize attributes	= _attributes;
 
 // Data
+@synthesize additionalInfo	= _additionalInfo;
 @synthesize backgroundImage	= _backgroundImage;
 @synthesize detailText		= _detailText;
 @synthesize image			= _image;
@@ -44,6 +45,9 @@
 // Flags
 @synthesize selectionEnabled		= _selectionEnabled;
 @synthesize userInteractionEnabled	= _userInteractionEnabled;
+
+// Identity
+@synthesize tokenID	= _tokenID;
 
 
 #pragma mark - Memory management
@@ -57,10 +61,18 @@
 		retVal->_attributes = _attributes;
 		
 		// Data
+		retVal->_additionalInfo = _additionalInfo;
 		retVal->_backgroundImage = _backgroundImage;
 		retVal->_detailText = _detailText;
 		retVal->_image = _image;
 		retVal->_text = _text;
+		
+		// Flags
+		retVal->_selectionEnabled = _selectionEnabled;
+		retVal->_userInteractionEnabled = _userInteractionEnabled;
+		
+		// Identity
+		retVal->_tokenID = _tokenID;
 	}
 	return retVal;
 }

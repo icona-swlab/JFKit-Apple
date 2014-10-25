@@ -31,6 +31,9 @@
 
 @interface JFMenuViewController : UITableViewController
 
+// Flags
+@property (weak, nonatomic)	JFMenuItem*	selectedItem;
+
 // Relationships
 @property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
 
@@ -45,9 +48,9 @@
 
 @optional
 
-- (void)	menuViewController:(JFMenuViewController*)drawerController didSelectItem:(JFMenuItem*)item;
+- (void)	menuViewController:(JFMenuViewController*)menuViewController didSelectItem:(JFMenuItem*)item;
 
-- (void)	menuViewController:(JFMenuViewController*)drawerController shouldCollapseGroup:(JFMenuGroup*)group;
-- (void)	menuViewController:(JFMenuViewController*)drawerController shouldExpandGroup:(JFMenuGroup*)group;
+- (void)	menuViewController:(JFMenuViewController*)menuViewController shouldCollapseGroup:(JFMenuGroup*)group;
+- (void)	menuViewController:(JFMenuViewController*)menuViewController shouldExpandGroup:(JFMenuGroup*)group;
 
 @end

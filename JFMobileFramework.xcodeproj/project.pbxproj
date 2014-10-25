@@ -8,26 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		EA00D0A018F0558A00A1CDA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA00D0A618F055C400A1CDA3 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09418F0555F00A1CDA3 /* JFLogger.m */; };
-		EA00D0A718F055CD00A1CDA3 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D08F18F0555F00A1CDA3 /* JFCoreDataManager.m */; };
-		EA00D0A818F055CD00A1CDA3 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D09118F0555F00A1CDA3 /* JFHTTPRequest.m */; };
 		EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EAEED1D719EEEA9300DC7CD5 /* JFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1B319EEEA9300DC7CD5 /* JFActivityIndicatorView.m */; };
-		EAEED1D819EEEA9300DC7CD5 /* JFTableViewCellAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1B619EEEA9300DC7CD5 /* JFTableViewCellAttributes.m */; };
-		EAEED1D919EEEA9300DC7CD5 /* JFViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1B819EEEA9300DC7CD5 /* JFViewAttributes.m */; };
-		EAEED1DA19EEEA9300DC7CD5 /* JFDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1BB19EEEA9300DC7CD5 /* JFDrawerController.m */; };
-		EAEED1DB19EEEA9300DC7CD5 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1BE19EEEA9300DC7CD5 /* JFSimpleFormViewController.m */; };
-		EAEED1DC19EEEA9300DC7CD5 /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1C119EEEA9300DC7CD5 /* JFGalleryView.m */; };
-		EAEED1DD19EEEA9300DC7CD5 /* JFMenuGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1C419EEEA9300DC7CD5 /* JFMenuGroup.m */; };
-		EAEED1DE19EEEA9300DC7CD5 /* JFMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1C619EEEA9300DC7CD5 /* JFMenuItem.m */; };
-		EAEED1DF19EEEA9300DC7CD5 /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1C819EEEA9300DC7CD5 /* JFMenuViewController.m */; };
-		EAEED1E019EEEA9300DC7CD5 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1CB19EEEA9300DC7CD5 /* JFNavigationController.m */; };
-		EAEED1E119EEEA9300DC7CD5 /* JFPaneledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1CE19EEEA9300DC7CD5 /* JFPaneledViewController.m */; };
-		EAEED1E219EEEA9300DC7CD5 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1D119EEEA9300DC7CD5 /* JFTransparentToolbar.m */; };
-		EAEED1EA19EEEAA300DC7CD5 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1E719EEEAA300DC7CD5 /* JFFileManager.m */; };
-		EAEED1EB19EEEAA300DC7CD5 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEED1E919EEEAA300DC7CD5 /* JFUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,12 +53,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EA00D08E18F0555F00A1CDA3 /* JFCoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
-		EA00D08F18F0555F00A1CDA3 /* JFCoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
-		EA00D09018F0555F00A1CDA3 /* JFHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
-		EA00D09118F0555F00A1CDA3 /* JFHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
-		EA00D09318F0555F00A1CDA3 /* JFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
-		EA00D09418F0555F00A1CDA3 /* JFLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 		EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUserInterface.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDataAccess.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA425D901894211F003C55E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,34 +62,51 @@
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA425DF418942C46003C55E8 /* libJFUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD5B6D018A8F61100414379 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		EAEED1B219EEEA9300DC7CD5 /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
-		EAEED1B319EEEA9300DC7CD5 /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFActivityIndicatorView.m; sourceTree = "<group>"; };
-		EAEED1B519EEEA9300DC7CD5 /* JFTableViewCellAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewCellAttributes.h; sourceTree = "<group>"; };
-		EAEED1B619EEEA9300DC7CD5 /* JFTableViewCellAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewCellAttributes.m; sourceTree = "<group>"; };
-		EAEED1B719EEEA9300DC7CD5 /* JFViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFViewAttributes.h; sourceTree = "<group>"; };
-		EAEED1B819EEEA9300DC7CD5 /* JFViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFViewAttributes.m; sourceTree = "<group>"; };
-		EAEED1BA19EEEA9300DC7CD5 /* JFDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFDrawerController.h; sourceTree = "<group>"; };
-		EAEED1BB19EEEA9300DC7CD5 /* JFDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFDrawerController.m; sourceTree = "<group>"; };
-		EAEED1BD19EEEA9300DC7CD5 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
-		EAEED1BE19EEEA9300DC7CD5 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
-		EAEED1C019EEEA9300DC7CD5 /* JFGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
-		EAEED1C119EEEA9300DC7CD5 /* JFGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
-		EAEED1C319EEEA9300DC7CD5 /* JFMenuGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuGroup.h; sourceTree = "<group>"; };
-		EAEED1C419EEEA9300DC7CD5 /* JFMenuGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuGroup.m; sourceTree = "<group>"; };
-		EAEED1C519EEEA9300DC7CD5 /* JFMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItem.h; sourceTree = "<group>"; };
-		EAEED1C619EEEA9300DC7CD5 /* JFMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuItem.m; sourceTree = "<group>"; };
-		EAEED1C719EEEA9300DC7CD5 /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
-		EAEED1C819EEEA9300DC7CD5 /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
-		EAEED1CA19EEEA9300DC7CD5 /* JFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
-		EAEED1CB19EEEA9300DC7CD5 /* JFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
-		EAEED1CD19EEEA9300DC7CD5 /* JFPaneledViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFPaneledViewController.h; sourceTree = "<group>"; };
-		EAEED1CE19EEEA9300DC7CD5 /* JFPaneledViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFPaneledViewController.m; sourceTree = "<group>"; };
-		EAEED1D019EEEA9300DC7CD5 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
-		EAEED1D119EEEA9300DC7CD5 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
-		EAEED1E619EEEAA300DC7CD5 /* JFFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
-		EAEED1E719EEEAA300DC7CD5 /* JFFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFileManager.m; sourceTree = "<group>"; };
-		EAEED1E819EEEAA300DC7CD5 /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
-		EAEED1E919EEEAA300DC7CD5 /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
+		EAF3F7C619FB99F500DE8DB4 /* JFCoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
+		EAF3F7C719FB99F500DE8DB4 /* JFCoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
+		EAF3F7C819FB99F500DE8DB4 /* JFHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
+		EAF3F7C919FB99F500DE8DB4 /* JFHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
+		EAF3F7CB19FB99F500DE8DB4 /* JFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
+		EAF3F7CC19FB99F500DE8DB4 /* JFLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
+		EAF3F7CF19FB99F500DE8DB4 /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
+		EAF3F7D019FB99F500DE8DB4 /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFActivityIndicatorView.m; sourceTree = "<group>"; };
+		EAF3F7D219FB99F500DE8DB4 /* JFMenuItemTableViewCellAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMenuItemTableViewCellAttributes.h; sourceTree = "<group>"; };
+		EAF3F7D319FB99F500DE8DB4 /* JFMenuItemTableViewCellAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFMenuItemTableViewCellAttributes.m; sourceTree = "<group>"; };
+		EAF3F7D419FB99F500DE8DB4 /* JFTableViewCellAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTableViewCellAttributes.h; sourceTree = "<group>"; };
+		EAF3F7D519FB99F500DE8DB4 /* JFTableViewCellAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTableViewCellAttributes.m; sourceTree = "<group>"; };
+		EAF3F7D619FB99F500DE8DB4 /* JFViewAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFViewAttributes.h; sourceTree = "<group>"; };
+		EAF3F7D719FB99F500DE8DB4 /* JFViewAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFViewAttributes.m; sourceTree = "<group>"; };
+		EAF3F7D919FB99F500DE8DB4 /* JFDrawerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFDrawerController.h; sourceTree = "<group>"; };
+		EAF3F7DA19FB99F500DE8DB4 /* JFDrawerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFDrawerController.m; sourceTree = "<group>"; };
+		EAF3F7DB19FB99F500DE8DB4 /* JFSlideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFSlideViewController.h; sourceTree = "<group>"; };
+		EAF3F7DC19FB99F500DE8DB4 /* JFSlideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFSlideViewController.m; sourceTree = "<group>"; };
+		EAF3F7DE19FB99F500DE8DB4 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
+		EAF3F7DF19FB99F500DE8DB4 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
+		EAF3F7E119FB99F500DE8DB4 /* JFGalleryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
+		EAF3F7E219FB99F500DE8DB4 /* JFGalleryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
+		EAF3F7E419FB99F500DE8DB4 /* JFMenuGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMenuGroup.h; sourceTree = "<group>"; };
+		EAF3F7E519FB99F500DE8DB4 /* JFMenuGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFMenuGroup.m; sourceTree = "<group>"; };
+		EAF3F7E619FB99F500DE8DB4 /* JFMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMenuItem.h; sourceTree = "<group>"; };
+		EAF3F7E719FB99F500DE8DB4 /* JFMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFMenuItem.m; sourceTree = "<group>"; };
+		EAF3F7E819FB99F500DE8DB4 /* JFMenuItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMenuItemTableViewCell.h; sourceTree = "<group>"; };
+		EAF3F7E919FB99F500DE8DB4 /* JFMenuItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFMenuItemTableViewCell.m; sourceTree = "<group>"; };
+		EAF3F7EA19FB99F500DE8DB4 /* JFMenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JFMenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		EAF3F7EB19FB99F500DE8DB4 /* JFMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
+		EAF3F7EC19FB99F500DE8DB4 /* JFMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
+		EAF3F7EE19FB99F500DE8DB4 /* JFNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
+		EAF3F7EF19FB99F500DE8DB4 /* JFNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
+		EAF3F7F119FB99F500DE8DB4 /* JFGalleryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
+		EAF3F7F219FB99F500DE8DB4 /* JFGalleryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
+		EAF3F7F319FB99F500DE8DB4 /* JFGalleryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFGalleryViewController.h; sourceTree = "<group>"; };
+		EAF3F7F419FB99F500DE8DB4 /* JFGalleryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFGalleryViewController.m; sourceTree = "<group>"; };
+		EAF3F7F519FB99F500DE8DB4 /* JFPaneledViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFPaneledViewController.h; sourceTree = "<group>"; };
+		EAF3F7F619FB99F500DE8DB4 /* JFPaneledViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFPaneledViewController.m; sourceTree = "<group>"; };
+		EAF3F7F819FB99F500DE8DB4 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
+		EAF3F7F919FB99F500DE8DB4 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
+		EAF3F7FB19FB99F500DE8DB4 /* JFFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
+		EAF3F7FC19FB99F500DE8DB4 /* JFFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFFileManager.m; sourceTree = "<group>"; };
+		EAF3F7FD19FB99F500DE8DB4 /* JFUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
+		EAF3F7FE19FB99F500DE8DB4 /* JFUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,38 +145,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EA00D08C18F0555F00A1CDA3 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				EA00D08D18F0555F00A1CDA3 /* Data Access */,
-				EA00D09218F0555F00A1CDA3 /* Debug */,
-				EAEED1B019EEEA9300DC7CD5 /* User Interface */,
-				EAEED1E519EEEAA300DC7CD5 /* Utilities */,
-			);
-			name = Sources;
-			path = JFMobileFramework/Sources;
-			sourceTree = "<group>";
-		};
-		EA00D08D18F0555F00A1CDA3 /* Data Access */ = {
-			isa = PBXGroup;
-			children = (
-				EA00D08E18F0555F00A1CDA3 /* JFCoreDataManager.h */,
-				EA00D08F18F0555F00A1CDA3 /* JFCoreDataManager.m */,
-				EA00D09018F0555F00A1CDA3 /* JFHTTPRequest.h */,
-				EA00D09118F0555F00A1CDA3 /* JFHTTPRequest.m */,
-			);
-			path = "Data Access";
-			sourceTree = "<group>";
-		};
-		EA00D09218F0555F00A1CDA3 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				EA00D09318F0555F00A1CDA3 /* JFLogger.h */,
-				EA00D09418F0555F00A1CDA3 /* JFLogger.m */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
 		EA425D841894211F003C55E8 = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +153,7 @@
 				EA425DB81894223D003C55E8 /* Libraries */,
 				EA425D8E1894211F003C55E8 /* Products */,
 				EA425DB91894223D003C55E8 /* Resources */,
-				EA00D08C18F0555F00A1CDA3 /* Sources */,
+				EAF3F7C419FB99F500DE8DB4 /* Sources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,116 +204,159 @@
 			path = JFMobileFramework/Resources;
 			sourceTree = "<group>";
 		};
-		EAEED1B019EEEA9300DC7CD5 /* User Interface */ = {
+		EAF3F7C419FB99F500DE8DB4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1B119EEEA9300DC7CD5 /* Activity Indicator */,
-				EAEED1B419EEEA9300DC7CD5 /* Attributes */,
-				EAEED1B919EEEA9300DC7CD5 /* Drawer */,
-				EAEED1BC19EEEA9300DC7CD5 /* Forms */,
-				EAEED1BF19EEEA9300DC7CD5 /* Gallery */,
-				EAEED1C219EEEA9300DC7CD5 /* Menu */,
-				EAEED1C919EEEA9300DC7CD5 /* Navigation */,
-				EAEED1CC19EEEA9300DC7CD5 /* Panels */,
-				EAEED1CF19EEEA9300DC7CD5 /* Toolbars */,
+				EAF3F7C519FB99F500DE8DB4 /* Data Access */,
+				EAF3F7CA19FB99F500DE8DB4 /* Debug */,
+				EAF3F7CD19FB99F500DE8DB4 /* User Interface */,
+				EAF3F7FA19FB99F500DE8DB4 /* Utilities */,
+			);
+			name = Sources;
+			path = JFMobileFramework/Sources;
+			sourceTree = "<group>";
+		};
+		EAF3F7C519FB99F500DE8DB4 /* Data Access */ = {
+			isa = PBXGroup;
+			children = (
+				EAF3F7C619FB99F500DE8DB4 /* JFCoreDataManager.h */,
+				EAF3F7C719FB99F500DE8DB4 /* JFCoreDataManager.m */,
+				EAF3F7C819FB99F500DE8DB4 /* JFHTTPRequest.h */,
+				EAF3F7C919FB99F500DE8DB4 /* JFHTTPRequest.m */,
+			);
+			path = "Data Access";
+			sourceTree = "<group>";
+		};
+		EAF3F7CA19FB99F500DE8DB4 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				EAF3F7CB19FB99F500DE8DB4 /* JFLogger.h */,
+				EAF3F7CC19FB99F500DE8DB4 /* JFLogger.m */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		EAF3F7CD19FB99F500DE8DB4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				EAF3F7CE19FB99F500DE8DB4 /* Activity Indicator */,
+				EAF3F7D119FB99F500DE8DB4 /* Attributes */,
+				EAF3F7D819FB99F500DE8DB4 /* Drawer */,
+				EAF3F7DD19FB99F500DE8DB4 /* Forms */,
+				EAF3F7E019FB99F500DE8DB4 /* Gallery */,
+				EAF3F7E319FB99F500DE8DB4 /* Menu */,
+				EAF3F7ED19FB99F500DE8DB4 /* Navigation */,
+				EAF3F7F019FB99F500DE8DB4 /* Presentation */,
+				EAF3F7F719FB99F500DE8DB4 /* Toolbars */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
 		};
-		EAEED1B119EEEA9300DC7CD5 /* Activity Indicator */ = {
+		EAF3F7CE19FB99F500DE8DB4 /* Activity Indicator */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1B219EEEA9300DC7CD5 /* JFActivityIndicatorView.h */,
-				EAEED1B319EEEA9300DC7CD5 /* JFActivityIndicatorView.m */,
+				EAF3F7CF19FB99F500DE8DB4 /* JFActivityIndicatorView.h */,
+				EAF3F7D019FB99F500DE8DB4 /* JFActivityIndicatorView.m */,
 			);
 			path = "Activity Indicator";
 			sourceTree = "<group>";
 		};
-		EAEED1B419EEEA9300DC7CD5 /* Attributes */ = {
+		EAF3F7D119FB99F500DE8DB4 /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1B519EEEA9300DC7CD5 /* JFTableViewCellAttributes.h */,
-				EAEED1B619EEEA9300DC7CD5 /* JFTableViewCellAttributes.m */,
-				EAEED1B719EEEA9300DC7CD5 /* JFViewAttributes.h */,
-				EAEED1B819EEEA9300DC7CD5 /* JFViewAttributes.m */,
+				EAF3F7D219FB99F500DE8DB4 /* JFMenuItemTableViewCellAttributes.h */,
+				EAF3F7D319FB99F500DE8DB4 /* JFMenuItemTableViewCellAttributes.m */,
+				EAF3F7D419FB99F500DE8DB4 /* JFTableViewCellAttributes.h */,
+				EAF3F7D519FB99F500DE8DB4 /* JFTableViewCellAttributes.m */,
+				EAF3F7D619FB99F500DE8DB4 /* JFViewAttributes.h */,
+				EAF3F7D719FB99F500DE8DB4 /* JFViewAttributes.m */,
 			);
 			path = Attributes;
 			sourceTree = "<group>";
 		};
-		EAEED1B919EEEA9300DC7CD5 /* Drawer */ = {
+		EAF3F7D819FB99F500DE8DB4 /* Drawer */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1BA19EEEA9300DC7CD5 /* JFDrawerController.h */,
-				EAEED1BB19EEEA9300DC7CD5 /* JFDrawerController.m */,
+				EAF3F7D919FB99F500DE8DB4 /* JFDrawerController.h */,
+				EAF3F7DA19FB99F500DE8DB4 /* JFDrawerController.m */,
+				EAF3F7DB19FB99F500DE8DB4 /* JFSlideViewController.h */,
+				EAF3F7DC19FB99F500DE8DB4 /* JFSlideViewController.m */,
 			);
 			path = Drawer;
 			sourceTree = "<group>";
 		};
-		EAEED1BC19EEEA9300DC7CD5 /* Forms */ = {
+		EAF3F7DD19FB99F500DE8DB4 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1BD19EEEA9300DC7CD5 /* JFSimpleFormViewController.h */,
-				EAEED1BE19EEEA9300DC7CD5 /* JFSimpleFormViewController.m */,
+				EAF3F7DE19FB99F500DE8DB4 /* JFSimpleFormViewController.h */,
+				EAF3F7DF19FB99F500DE8DB4 /* JFSimpleFormViewController.m */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
 		};
-		EAEED1BF19EEEA9300DC7CD5 /* Gallery */ = {
+		EAF3F7E019FB99F500DE8DB4 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1C019EEEA9300DC7CD5 /* JFGalleryView.h */,
-				EAEED1C119EEEA9300DC7CD5 /* JFGalleryView.m */,
+				EAF3F7E119FB99F500DE8DB4 /* JFGalleryView.h */,
+				EAF3F7E219FB99F500DE8DB4 /* JFGalleryView.m */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
 		};
-		EAEED1C219EEEA9300DC7CD5 /* Menu */ = {
+		EAF3F7E319FB99F500DE8DB4 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1C319EEEA9300DC7CD5 /* JFMenuGroup.h */,
-				EAEED1C419EEEA9300DC7CD5 /* JFMenuGroup.m */,
-				EAEED1C519EEEA9300DC7CD5 /* JFMenuItem.h */,
-				EAEED1C619EEEA9300DC7CD5 /* JFMenuItem.m */,
-				EAEED1C719EEEA9300DC7CD5 /* JFMenuViewController.h */,
-				EAEED1C819EEEA9300DC7CD5 /* JFMenuViewController.m */,
+				EAF3F7E419FB99F500DE8DB4 /* JFMenuGroup.h */,
+				EAF3F7E519FB99F500DE8DB4 /* JFMenuGroup.m */,
+				EAF3F7E619FB99F500DE8DB4 /* JFMenuItem.h */,
+				EAF3F7E719FB99F500DE8DB4 /* JFMenuItem.m */,
+				EAF3F7E819FB99F500DE8DB4 /* JFMenuItemTableViewCell.h */,
+				EAF3F7E919FB99F500DE8DB4 /* JFMenuItemTableViewCell.m */,
+				EAF3F7EA19FB99F500DE8DB4 /* JFMenuItemTableViewCell.xib */,
+				EAF3F7EB19FB99F500DE8DB4 /* JFMenuViewController.h */,
+				EAF3F7EC19FB99F500DE8DB4 /* JFMenuViewController.m */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		EAEED1C919EEEA9300DC7CD5 /* Navigation */ = {
+		EAF3F7ED19FB99F500DE8DB4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1CA19EEEA9300DC7CD5 /* JFNavigationController.h */,
-				EAEED1CB19EEEA9300DC7CD5 /* JFNavigationController.m */,
+				EAF3F7EE19FB99F500DE8DB4 /* JFNavigationController.h */,
+				EAF3F7EF19FB99F500DE8DB4 /* JFNavigationController.m */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		EAEED1CC19EEEA9300DC7CD5 /* Panels */ = {
+		EAF3F7F019FB99F500DE8DB4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1CD19EEEA9300DC7CD5 /* JFPaneledViewController.h */,
-				EAEED1CE19EEEA9300DC7CD5 /* JFPaneledViewController.m */,
+				EAF3F7F119FB99F500DE8DB4 /* JFGalleryView.h */,
+				EAF3F7F219FB99F500DE8DB4 /* JFGalleryView.m */,
+				EAF3F7F319FB99F500DE8DB4 /* JFGalleryViewController.h */,
+				EAF3F7F419FB99F500DE8DB4 /* JFGalleryViewController.m */,
+				EAF3F7F519FB99F500DE8DB4 /* JFPaneledViewController.h */,
+				EAF3F7F619FB99F500DE8DB4 /* JFPaneledViewController.m */,
 			);
-			path = Panels;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
-		EAEED1CF19EEEA9300DC7CD5 /* Toolbars */ = {
+		EAF3F7F719FB99F500DE8DB4 /* Toolbars */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1D019EEEA9300DC7CD5 /* JFTransparentToolbar.h */,
-				EAEED1D119EEEA9300DC7CD5 /* JFTransparentToolbar.m */,
+				EAF3F7F819FB99F500DE8DB4 /* JFTransparentToolbar.h */,
+				EAF3F7F919FB99F500DE8DB4 /* JFTransparentToolbar.m */,
 			);
 			path = Toolbars;
 			sourceTree = "<group>";
 		};
-		EAEED1E519EEEAA300DC7CD5 /* Utilities */ = {
+		EAF3F7FA19FB99F500DE8DB4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				EAEED1E619EEEAA300DC7CD5 /* JFFileManager.h */,
-				EAEED1E719EEEAA300DC7CD5 /* JFFileManager.m */,
-				EAEED1E819EEEAA300DC7CD5 /* JFUtilities.h */,
-				EAEED1E919EEEAA300DC7CD5 /* JFUtilities.m */,
+				EAF3F7FB19FB99F500DE8DB4 /* JFFileManager.h */,
+				EAF3F7FC19FB99F500DE8DB4 /* JFFileManager.m */,
+				EAF3F7FD19FB99F500DE8DB4 /* JFUtilities.h */,
+				EAF3F7FE19FB99F500DE8DB4 /* JFUtilities.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -461,18 +466,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAEED1DA19EEEA9300DC7CD5 /* JFDrawerController.m in Sources */,
-				EAEED1DC19EEEA9300DC7CD5 /* JFGalleryView.m in Sources */,
-				EAEED1E119EEEA9300DC7CD5 /* JFPaneledViewController.m in Sources */,
-				EAEED1D919EEEA9300DC7CD5 /* JFViewAttributes.m in Sources */,
-				EAEED1DE19EEEA9300DC7CD5 /* JFMenuItem.m in Sources */,
-				EAEED1DB19EEEA9300DC7CD5 /* JFSimpleFormViewController.m in Sources */,
-				EAEED1E019EEEA9300DC7CD5 /* JFNavigationController.m in Sources */,
-				EAEED1DF19EEEA9300DC7CD5 /* JFMenuViewController.m in Sources */,
-				EAEED1DD19EEEA9300DC7CD5 /* JFMenuGroup.m in Sources */,
-				EAEED1D819EEEA9300DC7CD5 /* JFTableViewCellAttributes.m in Sources */,
-				EAEED1E219EEEA9300DC7CD5 /* JFTransparentToolbar.m in Sources */,
-				EAEED1D719EEEA9300DC7CD5 /* JFActivityIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,8 +473,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA00D0A718F055CD00A1CDA3 /* JFCoreDataManager.m in Sources */,
-				EA00D0A818F055CD00A1CDA3 /* JFHTTPRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +480,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA00D0A618F055C400A1CDA3 /* JFLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,8 +487,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAEED1EB19EEEAA300DC7CD5 /* JFUtilities.m in Sources */,
-				EAEED1EA19EEEAA300DC7CD5 /* JFFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

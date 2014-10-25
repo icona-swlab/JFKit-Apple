@@ -3,6 +3,22 @@ DEVELOPMENT LOG FOR PROJECT "JFMobileFramework"
 
 
 
+########## 2014.10.25 ##################################################
+
+Developer:	Jacopo Filié
+
+---------------------
+Time started:	10:30
+Time ended:		10:45
+---------------------
+Time total:		00:45
+---------------------
+
+Activity:
+
+	- Merged changes done while working at Icona S.r.l..
+
+
 ########## 2014.10.15 ##################################################
 
 Developer:	Jacopo Filié

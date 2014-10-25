@@ -1,5 +1,5 @@
 //
-//  JFAttributes.m
+//  JFMenuItemCell.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,37 +18,22 @@
 
 
 
-#import "JFViewAttributes.h"
+#import <UIKit/UIKit.h>
 
 
 
-@implementation JFViewAttributes
+@interface JFMenuItemTableViewCell : UITableViewCell
 
-#pragma mark - Properties
+// Attributes
+@property (strong, nonatomic)	UIColor*		bottomSeparatorColor;
+@property (assign, nonatomic)	CGFloat			bottomSeparatorHeight;
+@property (assign, nonatomic)	UIEdgeInsets	bottomSeparatorInset;
+@property (strong, nonatomic)	UIColor*		topSeparatorColor;
+@property (assign, nonatomic)	CGFloat			topSeparatorHeight;
+@property (assign, nonatomic)	UIEdgeInsets	topSeparatorInset;
 
-// Background
-@synthesize backgroundColor	= _backgroundColor;
-
-// Text
-@synthesize textColor	= _textColor;
-@synthesize textFont	= _textFont;
-
-
-#pragma mark - Memory management
-
-- (instancetype)copyWithZone:(NSZone*)zone
-{
-	JFViewAttributes* retVal = [[[self class] allocWithZone:zone] init];
-	if(retVal)
-	{
-		// Background
-		retVal->_backgroundColor = _backgroundColor;
-		
-		// Text
-		retVal->_textColor = _textColor;
-		retVal->_textFont = _textFont;
-	}
-	return retVal;
-}
+// Memory management
++ (UINib*)		nib;
++ (NSString*)	reuseIdentifier;
 
 @end

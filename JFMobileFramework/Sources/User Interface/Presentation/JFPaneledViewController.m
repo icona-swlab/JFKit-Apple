@@ -57,16 +57,16 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 @property (strong, nonatomic, readonly)	UIView*		rootPanelContainer;
 @property (strong, nonatomic, readonly)	UIButton*	showRootPanelButton;
 
-// Gesture recognizers actions
+// Gesture recognizers management (Actions)
 - (void)	panGestureRecognized:(UIPanGestureRecognizer*)recognizer;
-
-// User interface actions
-- (void)	showRootPanelButtonTapped:(UIButton*)sender;
 
 // User interface management
 - (void)	installShowRootPanelButton;
 - (void)	uninstallShowRootPanelButton;
 - (void)	updatePanelContainersFrames;
+
+// User interface management (Actions)
+- (void)	showRootPanelButtonTapped:(UIButton*)sender;
 
 // User interface management (Sliding)
 - (void)	cleanUp:(BOOL)finished animated:(BOOL)animated;
@@ -127,6 +127,57 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	
 	if([self isViewLoaded])
 		[self updatePanelContainersFrames];
+}
+
+
+#pragma mark - Properties accessors (Flags)
+
+- (void)setSlideTransition:(JFPaneledViewControllerSlideTransition)slideTransition
+{
+	if(_slideTransition == slideTransition)
+		return;
+	
+	NSString* string;
+	switch(_slideTransition)
+	{
+		case JFPaneledViewControllerSlideTransitionLeftToRoot:	string = @"Left => Root";	break;
+		case JFPaneledViewControllerSlideTransitionRightToRoot:	string = @"Right => Root";	break;
+		case JFPaneledViewControllerSlideTransitionRootToLeft:	string = @"Root => Left";	break;
+		case JFPaneledViewControllerSlideTransitionRootToRight:	string = @"Root => Right";	break;
+		default:												string = @"Unknown";		break;
+	}
+	
+	NSLog(@"Moving panels with transition: %@", string);
+	
+	_slideTransition = slideTransition;
+}
+
+- (void)setState:(JFPaneledViewControllerState)state
+{
+	if(_state == state)
+		return;
+	
+	NSString* stateString;
+	NSString* oldStateString;
+	for(UInt8 i = 0; i < 2; i++)
+	{
+		NSString* string;
+		switch((i == 0 ? _state : state))
+		{
+			case JFPaneledViewControllerStateIsShowingLeftPanel:	string = @"Showing Left Panel";		break;
+			case JFPaneledViewControllerStateIsShowingRightPanel:	string = @"Showing Right Panel";	break;
+			case JFPaneledViewControllerStateIsShowingRootPanel:	string = @"Showing Root Panel";		break;
+			default:												string = @"Unknown";				break;
+		}
+		if(i == 0)
+			stateString = string;
+		else
+			oldStateString = string;
+	}
+	
+	NSLog(@"Panels state changed from '%@' to '%@'.", oldStateString, stateString);
+	
+	_state = state;
 }
 
 
@@ -218,14 +269,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	return self;
 }
 
-
-
-#pragma mark - User interface actions
-
-- (void)showRootPanelButtonTapped:(UIButton*)sender
-{
-	[self showRootPanel];
-}
 
 
 #pragma mark - User interface management
@@ -374,6 +417,14 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	self.rootPanelContainer.frame = frame;
 	
 	[self updateCurrentSlideDistancesForTransition:self.slideTransition];
+}
+
+
+#pragma mark - User interface management (Actions)
+
+- (void)showRootPanelButtonTapped:(UIButton*)sender
+{
+	[self showRootPanel];
 }
 
 
@@ -811,13 +862,13 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	{
 		case UIGestureRecognizerStateBegan:
 		{
-			//NSLog(@"UIGestureRecognizerStateBegan");
+			NSLog(@"UIGestureRecognizerStateBegan");
 			[self prepareSlideWithTranslation:translation.x animated:YES];
 			break;
 		}
 		case UIGestureRecognizerStateChanged:
 		{
-			//NSLog(@"UIGestureRecognizerStateChanged");
+			NSLog(@"UIGestureRecognizerStateChanged");
 			if(self.animating)
 				[self slideWithTranslation:translation.x animated:NO completion:nil];
 			else
@@ -826,20 +877,20 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		}
 		case UIGestureRecognizerStateEnded:
 		{
-			//NSLog(@"UIGestureRecognizerStateEnded");
+			NSLog(@"UIGestureRecognizerStateEnded");
 			CGPoint velocity = [recognizer velocityInView:self.view];
 			[self completeSlideWithTranslation:translation.x velocity:velocity.x];
 			break;
 		}
 		case UIGestureRecognizerStateCancelled:
 		{
-			//NSLog(@"UIGestureRecognizerStateCancelled");
+			NSLog(@"UIGestureRecognizerStateCancelled");
 			[self completeSlideWithTranslation:0.0f velocity:0.0f];
 			break;
 		}
 		case UIGestureRecognizerStateFailed:
 		{
-			//NSLog(@"UIGestureRecognizerStateFailed");
+			NSLog(@"UIGestureRecognizerStateFailed");
 			[self completeSlideWithTranslation:0.0f velocity:0.0f];
 			break;
 		}
@@ -849,7 +900,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 }
 
 
-#pragma mark - Delegation management (UIGestureRecognizerDelegate)
+#pragma mark - Protocol implementation (UIGestureRecognizerDelegate)
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer
 {

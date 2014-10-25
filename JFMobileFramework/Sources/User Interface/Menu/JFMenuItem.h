@@ -23,23 +23,27 @@
 
 
 
-@class JFTableViewCellAttributes;
+@class JFMenuItemTableViewCellAttributes;
 
 
 
 @interface JFMenuItem : NSObject <NSCopying>
 
 // Attributes
-@property (strong, nonatomic)	JFTableViewCellAttributes*	attributes;
+@property (strong, nonatomic)	JFMenuItemTableViewCellAttributes*	attributes;
 
 // Data
-@property (strong, nonatomic)	UIImage*	backgroundImage;
-@property (copy, nonatomic)		NSString*	detailText;
-@property (strong, nonatomic)	UIImage*	image;
-@property (copy, nonatomic)		NSString*	text;
+@property (strong, nonatomic)	NSDictionary*	additionalInfo;
+@property (strong, nonatomic)	UIImage*		backgroundImage;
+@property (copy, nonatomic)		NSString*		detailText;
+@property (strong, nonatomic)	UIImage*		image;
+@property (copy, nonatomic)		NSString*		text;
 
 // Flags
 @property (assign, nonatomic)	BOOL selectionEnabled;
 @property (assign, nonatomic)	BOOL userInteractionEnabled;
+
+// Identity
+@property (assign, nonatomic)	NSUInteger	tokenID;
 
 @end

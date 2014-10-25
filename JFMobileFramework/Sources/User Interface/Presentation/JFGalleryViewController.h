@@ -1,5 +1,5 @@
 //
-//  JFAttributes.m
+//  JFGalleryViewController.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,37 +18,17 @@
 
 
 
-#import "JFViewAttributes.h"
+#import "JFGalleryView.h"
 
 
 
-@implementation JFViewAttributes
-
-#pragma mark - Properties
-
-// Background
-@synthesize backgroundColor	= _backgroundColor;
-
-// Text
-@synthesize textColor	= _textColor;
-@synthesize textFont	= _textFont;
+@class JFGalleryView;
 
 
-#pragma mark - Memory management
 
-- (instancetype)copyWithZone:(NSZone*)zone
-{
-	JFViewAttributes* retVal = [[[self class] allocWithZone:zone] init];
-	if(retVal)
-	{
-		// Background
-		retVal->_backgroundColor = _backgroundColor;
-		
-		// Text
-		retVal->_textColor = _textColor;
-		retVal->_textFont = _textFont;
-	}
-	return retVal;
-}
+@interface JFGalleryViewController : UIViewController <JFGalleryViewDataSource>
+
+// Layout
+@property (retain, nonatomic)	JFGalleryView*	galleryView;
 
 @end

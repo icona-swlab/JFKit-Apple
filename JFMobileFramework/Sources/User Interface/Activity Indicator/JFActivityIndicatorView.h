@@ -24,4 +24,11 @@
 
 @interface JFActivityIndicatorView : UIView
 
+// Attributes
+@property (assign, nonatomic)	NSTimeInterval	animationDuration;
+@property (assign, nonatomic)	CGSize			animationSize;
+
+// Data
+@property (copy, nonatomic)	NSArray*	animationImages;
+
 @end

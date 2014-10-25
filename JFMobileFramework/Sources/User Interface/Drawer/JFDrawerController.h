@@ -22,8 +22,9 @@
 
 
 
-@class JFMenuGroup;
 @class JFMenuItem;
+
+@protocol JFDrawerControllerDelegate;
 
 
 
@@ -32,11 +33,32 @@
 // Attributes
 @property (strong, nonatomic)	UIColor*	menuBackgroundColor;
 
+// Flags
+@property (weak, nonatomic)	JFMenuItem*	selectedItem;
+
+// Relationships
+@property (weak, nonatomic)	id<JFDrawerControllerDelegate>	delegate;
+
+// User interface
+@property (strong, nonatomic)	UIViewController*	rootViewController;
+
 // Data management
 - (void)	setMenuItems:(NSArray*)items;
 
 // User interface management
+- (BOOL)	hideMenu;
+- (BOOL)	hideMenu:(BOOL)animated;
 - (BOOL)	showMenu;
 - (BOOL)	showMenu:(BOOL)animated;
+
+@end
+
+
+
+@protocol JFDrawerControllerDelegate <NSObject>
+
+@optional
+
+- (void)	drawerController:(JFDrawerController*)drawerController didSelectItem:(JFMenuItem*)item;
 
 @end

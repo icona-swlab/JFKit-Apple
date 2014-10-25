@@ -1,9 +1,19 @@
 //
 //  JFCellAttributes.m
-//  ADR
+//  Copyright (C) 2014  Jacopo Filié
 //
-//  Created by Jacopo Filié on 15/10/14.
-//  Copyright (c) 2014 Interlem s.r.l. All rights reserved.
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
 
@@ -22,6 +32,9 @@
 
 // Selection
 @synthesize selectionStyle	= _selectionStyle;
+
+// Separator
+@synthesize separatorInset	= _separatorInset;
 
 // Text
 @synthesize detailTextColor				= _detailTextColor;
@@ -44,6 +57,9 @@
 		// Selection
 		retVal->_selectionStyle = _selectionStyle;
 		
+		// Separator
+		retVal->_separatorInset = _separatorInset;
+		
 		// Text
 		retVal->_detailTextColor = _detailTextColor;
 		retVal->_detailTextFont = _detailTextFont;
@@ -60,10 +76,13 @@
 	{
 		// Indentation
 		_indentationLevel = 0;
-		_indentationWidth = 10.0f;
+		_indentationWidth = 0.0f;
 		
 		// Selection
-		_selectionStyle = UITableViewCellSelectionStyleDefault;
+		_selectionStyle = UITableViewCellSelectionStyleNone;
+		
+		// Separator
+		_separatorInset = UIEdgeInsetsZero;
 	}
 	return self;
 }

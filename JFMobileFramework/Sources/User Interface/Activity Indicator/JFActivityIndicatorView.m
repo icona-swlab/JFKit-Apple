@@ -26,11 +26,18 @@
 
 @interface JFActivityIndicatorView ()
 
+// Flags
+@property (assign, nonatomic)	BOOL	shouldUseIndicatorView;
+
 // User interface
+@property (strong, nonatomic, readonly)	UIImageView*				imageView;
 @property (strong, nonatomic, readonly)	UIActivityIndicatorView*	indicatorView;
 
 // Memory management
 - (void)	commonInit;
+
+// User interface management
+- (void)	updateIndicators;
 
 @end
 
@@ -40,28 +47,105 @@
 
 #pragma mark - Properties
 
+// Attributes
+@synthesize animationDuration	= _animationDuration;
+@synthesize animationSize		= _animationSize;
+
+// Data
+@synthesize animationImages	= _animationImages;
+
+// Flags
+@synthesize shouldUseIndicatorView	= _shouldUseIndicatorView;
+
 // User interface
+@synthesize imageView		= _imageView;
 @synthesize indicatorView	= _indicatorView;
+
+
+#pragma mark - Properties accessors (Attributes)
+
+- (void)setAnimationDuration:(NSTimeInterval)animationDuration
+{
+	if(_animationDuration == animationDuration)
+		return;
+	
+	_animationDuration = animationDuration;
+	
+	self.imageView.animationDuration = _animationDuration;
+}
+
+- (void)setAnimationSize:(CGSize)animationSize
+{
+	if(CGSizeEqualToSize(_animationSize, animationSize))
+		return;
+	
+	_animationSize = animationSize;
+	
+	[self updateIndicators];
+}
+
+
+#pragma mark - Properties accessors (Data)
+
+- (void)setAnimationImages:(NSArray*)animationImages
+{
+	if(_animationImages == animationImages)
+		return;
+	
+	_animationImages = animationImages;
+	
+	self.imageView.animationImages = _animationImages;
+	self.shouldUseIndicatorView = (_animationImages == nil);
+}
+
+
+#pragma mark - Properties accessors (Flags)
+
+- (void)setShouldUseIndicatorView:(BOOL)shouldUseIndicatorView
+{
+	if(_shouldUseIndicatorView == shouldUseIndicatorView)
+		return;
+	
+	_shouldUseIndicatorView = shouldUseIndicatorView;
+	[self updateIndicators];
+}
+
+
+#pragma mark - Properties accessors (Inherited)
+
+- (void)setHidden:(BOOL)hidden
+{
+	[super setHidden:hidden];
+	[self updateIndicators];
+}
 
 
 #pragma mark - Memory management
 
 - (void)commonInit
 {
+	// Flags
+	_shouldUseIndicatorView = YES;
+	
+	// Inherited
 	self.backgroundColor = ColorAlpha(80.0f);
 	self.opaque = NO;
 	self.userInteractionEnabled = YES;
 	
+	_imageView = [UIImageView new];
 	_indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	self.indicatorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+	
+	UIViewAutoresizing autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin);
+	self.imageView.autoresizingMask = autoresizingMask;
+	self.indicatorView.autoresizingMask = autoresizingMask;
+	
+	[self addSubview:self.imageView];
 	[self addSubview:self.indicatorView];
 	
-	CGRect frame = self.indicatorView.frame;
-	frame.origin.x = (float)(self.bounds.size.width - frame.size.width) / 2.0f;
-	frame.origin.y = (float)(self.bounds.size.height - frame.size.height) / 2.0f;
-	self.indicatorView.frame = frame;
+	self.imageView.animationDuration = self.animationDuration;
+	self.imageView.animationImages = self.animationImages;
 	
-	[self.indicatorView startAnimating];
+	[self updateIndicators];
 }
 
 - (instancetype)init
@@ -97,14 +181,48 @@
 
 #pragma mark - User interface management
 
-- (void)setHidden:(BOOL)hidden
+- (void)updateIndicators
 {
-	[super setHidden:hidden];
+	self.imageView.hidden = self.shouldUseIndicatorView;
+	self.indicatorView.hidden = !self.shouldUseIndicatorView;
 	
-	if(hidden)
-		[self.indicatorView stopAnimating];
+	if(self.hidden)
+	{
+		if(self.shouldUseIndicatorView)
+			[self.indicatorView stopAnimating];
+		else
+			[self.imageView stopAnimating];
+	}
 	else
-		[self.indicatorView startAnimating];
+	{
+		if(self.shouldUseIndicatorView)
+		{
+			[self.imageView stopAnimating];
+			[self.indicatorView startAnimating];
+		}
+		else
+		{
+			[self.indicatorView stopAnimating];
+			[self.imageView startAnimating];
+		}
+	}
+	
+	if(!self.imageView.hidden)
+	{
+		CGRect frame = self.imageView.frame;
+		frame.size = self.animationSize;
+		frame.origin.x = (float)(self.bounds.size.width - frame.size.width) / 2.0f;
+		frame.origin.y = (float)(self.bounds.size.height - frame.size.height) / 2.0f;
+		self.imageView.frame = frame;
+	}
+	
+	if(!self.indicatorView.hidden)
+	{
+		CGRect frame = self.indicatorView.frame;
+		frame.origin.x = (float)(self.bounds.size.width - frame.size.width) / 2.0f;
+		frame.origin.y = (float)(self.bounds.size.height - frame.size.height) / 2.0f;
+		self.indicatorView.frame = frame;
+	}
 }
 
 @end

@@ -22,7 +22,8 @@
 
 #import "JFMenuGroup.h"
 #import "JFMenuItem.h"
-#import "JFTableViewCellAttributes.h"
+#import "JFMenuItemTableViewCell.h"
+#import "JFMenuItemTableViewCellAttributes.h"
 #import "JFUtilities.h"
 
 
@@ -53,8 +54,25 @@
 // Data
 @synthesize items	= _items;
 
+// Flags
+@synthesize selectedItem	= _selectedItem;
+
 // Relationships
 @synthesize delegate	= _delegate;
+
+
+#pragma mark - Properties accessors (Flags)
+
+- (void)setSelectedItem:(JFMenuItem*)selectedItem
+{
+	//if(_selectedItem == selectedItem)
+	//	return;
+	
+	_selectedItem = selectedItem;
+	
+	if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:didSelectItem:)])
+		[self.delegate menuViewController:self didSelectItem:_selectedItem];
+}
 
 
 #pragma mark - Memory management
@@ -102,7 +120,9 @@
 {
 	[super viewDidLoad];
 	
-	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	
+	[self.tableView registerNib:[JFMenuItemTableViewCell nib] forCellReuseIdentifier:[JFMenuItemTableViewCell reuseIdentifier]];
 }
 
 
@@ -163,12 +183,14 @@
 
 - (void)setMenuItems:(NSArray*)items
 {
+	self.selectedItem = nil;
+	
 	[self.items setArray:items];
 	[self.tableView reloadData];
 }
 
 
-#pragma mark - Delegation management (UITableViewDataSource)
+#pragma mark - Protocol implementation (UITableViewDataSource)
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
@@ -179,7 +201,7 @@
 {
 	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
 	
-	UITableViewCell* retVal = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+	UITableViewCell* retVal = [tableView dequeueReusableCellWithIdentifier:[JFMenuItemTableViewCell reuseIdentifier] forIndexPath:indexPath];
 	
 	retVal.detailTextLabel.text = item.detailText;
 	retVal.imageView.image = item.image;
@@ -203,7 +225,7 @@
 }
 
 
-#pragma mark - Delegation management (UITableViewDelegate)
+#pragma mark - Protocol implementation (UITableViewDelegate)
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
@@ -218,26 +240,30 @@
 			[self collapseGroup:group atIndex:indexPath.section];
 	}
 	
-	NSLog(@"Selected item: %@", item.text);
-	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:didSelectItem:)])
-		[self.delegate menuViewController:self didSelectItem:item];
+	self.selectedItem = item;
 }
 
-- (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
+- (void)tableView:(UITableView*)tableView willDisplayCell:(JFMenuItemTableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
 {
 	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
 	
 	cell.backgroundColor = item.attributes.backgroundColor;
+	cell.bottomSeparatorColor = item.attributes.bottomSeparatorColor;
+	cell.bottomSeparatorHeight = item.attributes.bottomSeparatorHeight;
+	cell.bottomSeparatorInset = item.attributes.bottomSeparatorInset;
 	cell.detailTextLabel.highlightedTextColor = item.attributes.highlightedDetailTextColor;
 	cell.detailTextLabel.textColor = item.attributes.detailTextColor;
 	cell.detailTextLabel.font = item.attributes.detailTextFont;
 	cell.indentationLevel = item.attributes.indentationLevel;
 	cell.indentationWidth = item.attributes.indentationWidth;
 	cell.selectionStyle = item.attributes.selectionStyle;
+	cell.separatorInset = item.attributes.separatorInset;
 	cell.textLabel.highlightedTextColor = item.attributes.highlightedTextColor;
 	cell.textLabel.textColor = item.attributes.textColor;
 	cell.textLabel.font = item.attributes.textFont;
+	cell.topSeparatorColor = item.attributes.topSeparatorColor;
+	cell.topSeparatorHeight = item.attributes.topSeparatorHeight;
+	cell.topSeparatorInset = item.attributes.topSeparatorInset;
 }
 
 - (NSIndexPath*)tableView:(UITableView*)tableView willSelectRowAtIndexPath:(NSIndexPath*)indexPath

@@ -23,13 +23,16 @@
 #import "JFMenuViewController.h"
 #import "JFPaneledViewController.h"
 
+#import "JFSlideViewController.h"
 
 
-@interface JFDrawerController () <JFPaneledViewControllerDelegate>
+
+@interface JFDrawerController () <JFSlideViewDelegate, JFMenuViewControllerDelegate, JFPaneledViewControllerDelegate>
 
 // User interface
 @property (strong, nonatomic, readonly)	JFMenuViewController*		menuViewController;
 @property (strong, nonatomic, readonly)	JFPaneledViewController*	paneledViewController;
+@property (strong, nonatomic, readonly)	JFSlideViewController*		slideViewController;
 
 @end
 
@@ -42,9 +45,17 @@
 // Attributes
 @synthesize menuBackgroundColor	= _menuBackgroundColor;
 
+// Flags
+@synthesize selectedItem	= _selectedItem;
+
+// Relationships
+@synthesize delegate	= _delegate;
+
 // User interface
 @synthesize menuViewController		= _menuViewController;
 @synthesize paneledViewController	= _paneledViewController;
+@synthesize rootViewController		= _rootViewController;
+@synthesize slideViewController		= _slideViewController;
 
 
 #pragma mark - Properties accessors (Attributes)
@@ -61,6 +72,19 @@
 }
 
 
+#pragma mark - Properties accessors (User interface)
+
+- (void)setRootViewController:(UIViewController*)rootViewController
+{
+	if(_rootViewController == rootViewController)
+		return;
+	
+	_rootViewController = rootViewController;
+	
+	self.slideViewController.rootViewController = _rootViewController;
+}
+
+
 #pragma mark - Memory management
 
 - (instancetype)init
@@ -71,9 +95,12 @@
 		// User interface
 		_menuViewController = [[JFMenuViewController alloc] initWithStyle:UITableViewStylePlain];
 		_paneledViewController = [[JFPaneledViewController alloc] init];
+		_slideViewController = [JFSlideViewController new];
 		
 		// Builds the relationships.
+		self.menuViewController.delegate = self;
 		self.paneledViewController.delegate = self;
+		self.slideViewController.delegate = self;
 	}
 	return self;
 }
@@ -89,6 +116,19 @@
 
 #pragma mark - User interface management
 
+- (BOOL)hideMenu
+{
+	return [self hideMenu:YES];
+}
+
+- (BOOL)hideMenu:(BOOL)animated
+{
+	[self.slideViewController showRootView];
+	return YES;
+	
+	//return [self.paneledViewController showLeftPanel:animated completion:nil];
+}
+
 - (BOOL)showMenu
 {
 	return [self showMenu:YES];
@@ -96,7 +136,10 @@
 
 - (BOOL)showMenu:(BOOL)animated
 {
-	return [self.paneledViewController showLeftPanel:animated completion:nil];
+	[self.slideViewController showLeftView];
+	return YES;
+	
+	//return [self.paneledViewController showLeftPanel:animated completion:nil];
 }
 
 
@@ -108,13 +151,28 @@
 	
 	self.menuViewController.view.backgroundColor = self.menuBackgroundColor;
 	
-	[self.view addSubview:self.paneledViewController.view];
+	//[self.view addSubview:self.paneledViewController.view];
 	
 	self.paneledViewController.leftPanel = self.menuViewController;
+	self.paneledViewController.rootPanel = self.rootViewController;
+	
+	[self.view addSubview:self.slideViewController.view];
+	
+	self.slideViewController.rootViewController = self.rootViewController;
+	self.slideViewController.leftViewController = self.menuViewController;
 }
 
 
-#pragma mark - Delegation management (JFPaneledViewControllerDelegate)
+#pragma mark - Protocol implementation (JFMenuViewControllerDelegate)
+
+- (void)menuViewController:(JFMenuViewController*)menuViewController didSelectItem:(JFMenuItem*)item
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(drawerController:didSelectItem:)])
+		[self.delegate drawerController:self didSelectItem:item];
+}
+
+
+#pragma mark - Protocol implementation (JFPaneledViewControllerDelegate)
 
 - (BOOL)paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowRightPanel:(UIViewController*)rightPanel
 {
