@@ -21,15 +21,15 @@
 #import "JFDrawerController.h"
 
 #import "JFMenuViewController.h"
-#import "JFPaneledViewController.h"
+#import "JFSliderController.h"
 
 
 
-@interface JFDrawerController () <JFMenuViewControllerDelegate, JFPaneledViewControllerDelegate>
+@interface JFDrawerController () <JFMenuViewControllerDelegate, JFSliderControllerDelegate>
 
 // User interface
-@property (strong, nonatomic, readonly)	JFMenuViewController*		menuViewController;
-@property (strong, nonatomic, readonly)	JFPaneledViewController*	paneledViewController;
+@property (strong, nonatomic, readonly)	JFMenuViewController*	menuViewController;
+@property (strong, nonatomic, readonly)	JFSliderController*		sliderController;
 
 @end
 
@@ -41,17 +41,15 @@
 
 // Attributes
 @synthesize menuBackgroundColor	= _menuBackgroundColor;
-
-// Flags
-@synthesize selectedItem	= _selectedItem;
+@synthesize menuBackgroundImage	= _menuBackgroundImage;
 
 // Relationships
 @synthesize delegate	= _delegate;
 
 // User interface
-@synthesize menuViewController		= _menuViewController;
-@synthesize paneledViewController	= _paneledViewController;
-@synthesize rootViewController		= _rootViewController;
+@synthesize menuViewController	= _menuViewController;
+@synthesize sliderController	= _sliderController;
+@synthesize rootViewController	= _rootViewController;
 
 
 #pragma mark - Properties accessors (Attributes)
@@ -67,6 +65,39 @@
 		self.menuViewController.view.backgroundColor = _menuBackgroundColor;
 }
 
+- (void)setMenuBackgroundImage:(UIImage*)menuBackgroundImage
+{
+	if(_menuBackgroundImage == menuBackgroundImage)
+		return;
+	
+	_menuBackgroundImage = menuBackgroundImage;
+	
+	// TODO: update the menu background.
+}
+
+
+#pragma mark - Properties accessors (Data)
+
+- (NSArray*)menuItems
+{
+	return self.menuViewController.items;
+}
+
+- (void)setMenuItems:(NSArray*)menuItems
+{
+	self.menuViewController.items = menuItems;
+}
+
+- (JFMenuItem*)selectedMenuItem
+{
+	return self.menuViewController.selectedItem;
+}
+
+- (void)setSelectedMenuItem:(JFMenuItem*)selectedMenuItem
+{
+	self.menuViewController.selectedItem = selectedMenuItem;
+}
+
 
 #pragma mark - Properties accessors (User interface)
 
@@ -77,7 +108,7 @@
 	
 	_rootViewController = rootViewController;
 	
-	self.paneledViewController.rootPanel = _rootViewController;
+	self.sliderController.rootPanel = _rootViewController;
 }
 
 
@@ -89,22 +120,14 @@
 	if(self)
 	{
 		// User interface
-		_menuViewController = [[JFMenuViewController alloc] initWithStyle:UITableViewStylePlain];
-		_paneledViewController = [[JFPaneledViewController alloc] init];
+		_menuViewController = [[JFMenuViewController alloc] init];
+		_sliderController = [[JFSliderController alloc] init];
 		
 		// Builds the relationships.
 		self.menuViewController.delegate = self;
-		self.paneledViewController.delegate = self;
+		self.sliderController.delegate = self;
 	}
 	return self;
-}
-
-
-#pragma mark - Data management
-
-- (void)setMenuItems:(NSArray*)items
-{
-	[self.menuViewController setMenuItems:items];
 }
 
 
@@ -117,7 +140,7 @@
 
 - (BOOL)hideMenu:(BOOL)animated
 {
-	return [self.paneledViewController showRootPanel:animated completion:nil];
+	return [self.sliderController showPanel:JFSliderControllerPanelRoot animated:animated completion:nil];
 }
 
 - (BOOL)showMenu
@@ -127,7 +150,7 @@
 
 - (BOOL)showMenu:(BOOL)animated
 {
-	return [self.paneledViewController showLeftPanel:animated completion:nil];
+	return [self.sliderController showPanel:JFSliderControllerPanelLeft animated:animated completion:nil];
 }
 
 
@@ -139,10 +162,10 @@
 	
 	self.menuViewController.view.backgroundColor = self.menuBackgroundColor;
 	
-	[self.view addSubview:self.paneledViewController.view];
+	[self.view addSubview:self.sliderController.view];
 	
-	self.paneledViewController.leftPanel = self.menuViewController;
-	self.paneledViewController.rootPanel = self.rootViewController;
+	self.sliderController.leftPanel = self.menuViewController;
+	self.sliderController.rootPanel = self.rootViewController;
 }
 
 
@@ -155,11 +178,11 @@
 }
 
 
-#pragma mark - Protocol implementation (JFPaneledViewControllerDelegate)
+#pragma mark - Protocol implementation (JFSliderControllerDelegate)
 
-- (BOOL)paneledViewController:(JFPaneledViewController*)paneledViewController shouldShowRightPanel:(UIViewController*)rightPanel
+- (BOOL)sliderController:(JFSliderController*)sliderController shouldShowPanel:(JFSliderControllerPanel)panel
 {
-	return NO;
+	return (panel != JFSliderControllerPanelRight);
 }
 
 @end

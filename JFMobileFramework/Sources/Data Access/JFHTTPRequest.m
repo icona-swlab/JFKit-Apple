@@ -273,7 +273,7 @@
 }
 
 
-#pragma mark - Delegation management (NSURLConnectionDelegate)
+#pragma mark - Protocol implementation (NSURLConnectionDelegate)
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {

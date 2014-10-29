@@ -23,27 +23,53 @@
 
 
 
-@class JFMenuItemTableViewCellAttributes;
+@class JFMenuItemAttributes;
 
 
 
 @interface JFMenuItem : NSObject <NSCopying>
 
 // Attributes
-@property (strong, nonatomic)	JFMenuItemTableViewCellAttributes*	attributes;
+@property (strong, nonatomic)	JFMenuItemAttributes*	attributes;
+@property (strong, nonatomic)	JFMenuItemAttributes*	selectedAttributes;
 
 // Data
 @property (strong, nonatomic)	NSDictionary*	additionalInfo;
 @property (strong, nonatomic)	UIImage*		backgroundImage;
 @property (copy, nonatomic)		NSString*		detailText;
 @property (strong, nonatomic)	UIImage*		image;
+@property (strong, nonatomic)	UIImage*		selectedImage;
 @property (copy, nonatomic)		NSString*		text;
 
 // Flags
 @property (assign, nonatomic)	BOOL selectionEnabled;
 @property (assign, nonatomic)	BOOL userInteractionEnabled;
 
-// Identity
-@property (assign, nonatomic)	NSUInteger	tokenID;
+@end
+
+
+
+@interface JFMenuItemAttributes : NSObject <NSCopying>
+
+// Background
+@property (strong, nonatomic)	UIColor*	backgroundColor;
+
+// Indentation
+@property (assign, nonatomic)	NSInteger	indentationLevel;
+@property (assign, nonatomic)	CGFloat		indentationWidth;
+
+// Separator
+@property (strong, nonatomic)	UIColor*	separatorColor;
+@property (assign, nonatomic)	CGFloat		separatorHeight;
+
+// Spacing
+@property (assign, nonatomic)	UIEdgeInsets	backgroundPadding;
+@property (assign, nonatomic)	UIEdgeInsets	contentPadding;
+
+// Text
+@property (strong, nonatomic)	UIColor*	detailTextColor;
+@property (strong, nonatomic)	UIFont*		detailTextFont;
+@property (strong, nonatomic)	UIColor*	textColor;
+@property (strong, nonatomic)	UIFont*		textFont;
 
 @end

@@ -24,36 +24,33 @@
 
 @interface JFMenuItemTableViewCell ()
 
-// Attributes
-@property (assign, nonatomic)	NSInteger	indentationLevel;
-@property (assign, nonatomic)	CGFloat		indentationWidth;
-
 // Constraints
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	bottomSeparatorBottomConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	bottomSeparatorHeightConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	bottomSeparatorLeftConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	bottomSeparatorRightConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	bottomSeparatorTopConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	backgroundPaddingBottomConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	backgroundPaddingLeftConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	backgroundPaddingRightConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	backgroundPaddingTopConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	contentPaddingBottomConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	contentPaddingLeftConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	contentPaddingRightConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	contentPaddingTopConstraint;
 @property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	indentationConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	topSeparatorBottomConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	topSeparatorHeightConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	topSeparatorLeftConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	topSeparatorRightConstraint;
-@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	topSeparatorTopConstraint;
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	separatorHeightConstraint;
 
 // User interface
-@property (strong, nonatomic)	IBOutlet	UIView*			cellBottomSeparator;
+@property (strong, nonatomic)	IBOutlet	UIImageView*	cellBackgroundImageView;
+@property (strong, nonatomic)	IBOutlet	UILabel*		cellDetailTextLabel;
 @property (strong, nonatomic)	IBOutlet	UIImageView*	cellImageView;
+@property (strong, nonatomic)	IBOutlet	UIView*			cellSeparator;
 @property (strong, nonatomic)	IBOutlet	UILabel*		cellTextLabel;
-@property (strong, nonatomic)	IBOutlet	UIView*			cellTopSeparator;
 
 // Memory management
 - (void)	commonInit;
 
 // Constraints management
-- (void)	updateBottomSeparatorContraints;
-- (void)	updateIndentationContraint;
-- (void)	updateTopSeparatorContraints;
+- (void)	updateBackgroundPaddingConstraints;
+- (void)	updateContentPaddingConstraints;
+- (void)	updateIndentationConstraints;
+- (void)	updateSeparatorConstraints;
 
 @end
 
@@ -64,36 +61,97 @@
 #pragma mark - Properties
 
 // Attributes
-@synthesize bottomSeparatorColor	= _bottomSeparatorColor;
-@synthesize bottomSeparatorHeight	= _bottomSeparatorHeight;
-@synthesize bottomSeparatorInset	= _bottomSeparatorInset;
-@synthesize indentationLevel		= _indentationLevel;
-@synthesize indentationWidth		= _indentationWidth;
-@synthesize topSeparatorColor		= _topSeparatorColor;
-@synthesize topSeparatorHeight		= _topSeparatorHeight;
-@synthesize topSeparatorInset		= _topSeparatorInset;
+@synthesize backgroundPadding	= _backgroundPadding;
+@synthesize contentPadding		= _contentPadding;
+@synthesize separatorColor		= _separatorColor;
+@synthesize separatorHeight		= _separatorHeight;
 
 // Constraints
-@synthesize bottomSeparatorBottomConstraint	= _bottomSeparatorBottomConstraint;
-@synthesize bottomSeparatorHeightConstraint	= _bottomSeparatorHeightConstraint;
-@synthesize bottomSeparatorLeftConstraint	= _bottomSeparatorLeftConstraint;
-@synthesize bottomSeparatorRightConstraint	= _bottomSeparatorRightConstraint;
-@synthesize bottomSeparatorTopConstraint	= _bottomSeparatorTopConstraint;
-@synthesize indentationConstraint			= _indentationConstraint;
-@synthesize topSeparatorBottomConstraint	= _topSeparatorBottomConstraint;
-@synthesize topSeparatorHeightConstraint	= _topSeparatorHeightConstraint;
-@synthesize topSeparatorLeftConstraint		= _topSeparatorLeftConstraint;
-@synthesize topSeparatorRightConstraint		= _topSeparatorRightConstraint;
-@synthesize topSeparatorTopConstraint		= _topSeparatorTopConstraint;
+@synthesize backgroundPaddingBottomConstraint	= _backgroundPaddingBottomConstraint;
+@synthesize backgroundPaddingLeftConstraint		= _backgroundPaddingLeftConstraint;
+@synthesize backgroundPaddingRightConstraint	= _backgroundPaddingRightConstraint;
+@synthesize backgroundPaddingTopConstraint		= _backgroundPaddingTopConstraint;
+@synthesize contentPaddingBottomConstraint		= _contentPaddingBottomConstraint;
+@synthesize contentPaddingLeftConstraint		= _contentPaddingLeftConstraint;
+@synthesize contentPaddingRightConstraint		= _contentPaddingRightConstraint;
+@synthesize contentPaddingTopConstraint			= _contentPaddingTopConstraint;
+@synthesize indentationConstraint				= _indentationConstraint;
+@synthesize separatorHeightConstraint			= _separatorHeightConstraint;
+
+// Data
+@synthesize backgroundImage	= _backgroundImage;
 
 // User interface
-@synthesize cellBottomSeparator	= _cellBottomSeparator;
-@synthesize cellImageView		= _cellImageView;
-@synthesize cellTextLabel		= _cellTextLabel;
-@synthesize cellTopSeparator	= _cellTopSeparator;
+@synthesize cellBackgroundImageView	= _cellBackgroundImageView;
+@synthesize cellDetailTextLabel		= _cellDetailTextLabel;
+@synthesize cellImageView			= _cellImageView;
+@synthesize cellSeparator			= _cellSeparator;
+@synthesize cellTextLabel			= _cellTextLabel;
+
+
+#pragma mark - Properties accessors (Attributes)
+
+- (void)setBackgroundPadding:(UIEdgeInsets)backgroundInsets
+{
+	if(UIEdgeInsetsEqualToEdgeInsets(_backgroundPadding, backgroundInsets))
+		return;
+	
+	_backgroundPadding = backgroundInsets;
+	
+	[self setNeedsUpdateConstraints];
+}
+
+- (void)setContentPadding:(UIEdgeInsets)contentInsets
+{
+	if(UIEdgeInsetsEqualToEdgeInsets(_contentPadding, contentInsets))
+		return;
+	
+	_contentPadding = contentInsets;
+	
+	[self setNeedsUpdateConstraints];
+}
+
+- (void)setSeparatorColor:(UIColor*)separatorColor
+{
+	if(_separatorColor == separatorColor)
+		return;
+	
+	_separatorColor = separatorColor;
+	
+	self.cellSeparator.backgroundColor = _separatorColor;
+}
+
+- (void)setSeparatorHeight:(CGFloat)separatorHeight
+{
+	if(_separatorHeight == separatorHeight)
+		return;
+	
+	_separatorHeight = separatorHeight;
+	
+	[self setNeedsUpdateConstraints];
+}
+
+
+#pragma mark - Properties accessors (Data)
+
+- (void)setBackgroundImage:(UIImage*)backgroundImage
+{
+	if(_backgroundImage == backgroundImage)
+		return;
+	
+	_backgroundImage = backgroundImage;
+	
+	self.cellBackgroundImageView.hidden = (_backgroundImage == nil);
+	self.cellBackgroundImageView.image = _backgroundImage;
+}
 
 
 #pragma mark - Properties accessors (Inherited)
+
+- (UILabel*)detailTextLabel
+{
+	return self.cellDetailTextLabel;
+}
 
 - (UIImageView*)imageView
 {
@@ -102,90 +160,19 @@
 
 - (void)setIndentationLevel:(NSInteger)indentationLevel
 {
-	if(_indentationLevel == indentationLevel)
-		return;
-	
-	_indentationLevel = indentationLevel;
-	
-	[self updateIndentationContraint];
+	[super setIndentationLevel:indentationLevel];
+	[self setNeedsUpdateConstraints];
 }
 
 - (void)setIndentationWidth:(CGFloat)indentationWidth
 {
-	if(_indentationWidth == indentationWidth)
-		return;
-	
-	_indentationWidth = indentationWidth;
-	
-	[self updateIndentationContraint];
+	[super setIndentationWidth:indentationWidth];
+	[self setNeedsUpdateConstraints];
 }
 
 - (UILabel*)textLabel
 {
 	return self.cellTextLabel;
-}
-
-
-#pragma mark - Properties accessors (Attributes)
-
-- (void)setBottomSeparatorColor:(UIColor*)bottomSeparatorColor
-{
-	if(_bottomSeparatorColor == bottomSeparatorColor)
-		return;
-	
-	_bottomSeparatorColor = bottomSeparatorColor;
-	
-	self.cellBottomSeparator.backgroundColor = _bottomSeparatorColor;
-}
-
-- (void)setBottomSeparatorHeight:(CGFloat)bottomSeparatorHeight
-{
-	if(_bottomSeparatorHeight == bottomSeparatorHeight)
-		return;
-	
-	_bottomSeparatorHeight = bottomSeparatorHeight;
-	
-	[self updateBottomSeparatorContraints];
-}
-
-- (void)setBottomSeparatorInset:(UIEdgeInsets)bottomSeparatorInset
-{
-	if(UIEdgeInsetsEqualToEdgeInsets(_bottomSeparatorInset, bottomSeparatorInset))
-		return;
-	
-	_bottomSeparatorInset = bottomSeparatorInset;
-	
-	[self updateBottomSeparatorContraints];
-}
-
-- (void)setTopSeparatorColor:(UIColor*)topSeparatorColor
-{
-	if(_topSeparatorColor == topSeparatorColor)
-		return;
-	
-	_topSeparatorColor = topSeparatorColor;
-	
-	self.cellTopSeparator.backgroundColor = _topSeparatorColor;
-}
-
-- (void)setTopSeparatorHeight:(CGFloat)topSeparatorHeight
-{
-	if(_topSeparatorHeight == topSeparatorHeight)
-		return;
-	
-	_topSeparatorHeight = topSeparatorHeight;
-	
-	[self updateTopSeparatorContraints];
-}
-
-- (void)setTopSeparatorInset:(UIEdgeInsets)topSeparatorInset
-{
-	if(UIEdgeInsetsEqualToEdgeInsets(_topSeparatorInset, topSeparatorInset))
-		return;
-	
-	topSeparatorInset = topSeparatorInset;
-	
-	[self updateTopSeparatorContraints];
 }
 
 
@@ -204,14 +191,13 @@
 - (void)commonInit
 {
 	// Attributes
-	_bottomSeparatorColor	= [UIColor lightGrayColor];
-	_bottomSeparatorHeight	= 1.0f;
-	_bottomSeparatorInset	= UIEdgeInsetsZero;
-	_indentationLevel		= 0;
-	_indentationWidth		= 10.0f;
-	_topSeparatorColor		= nil;
-	_topSeparatorHeight		= 0.0f;
-	_topSeparatorInset		= UIEdgeInsetsZero;
+	_backgroundPadding = UIEdgeInsetsZero;
+	_contentPadding = UIEdgeInsetsMake(5.0f, 15.0f, 4.0f, 15.0f);
+	_separatorColor = [UIColor lightGrayColor];
+	_separatorHeight = 1.0f;
+	
+	// Inherited
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (instancetype)init
@@ -257,46 +243,49 @@
 
 #pragma mark - User interface management
 
-- (void)awakeFromNib
++ (CGFloat)height
 {
-	[super awakeFromNib];
-	
-	self.cellBottomSeparator.backgroundColor = self.bottomSeparatorColor;
-	self.cellTopSeparator.backgroundColor = self.topSeparatorColor;
-	
-	[self updateBottomSeparatorContraints];
-	[self updateIndentationContraint];
-	[self updateTopSeparatorContraints];
+	return 44.0f;
+}
+
+- (void)updateConstraints
+{
+	[super updateConstraints];
+	[self updateBackgroundPaddingConstraints];
+	[self updateContentPaddingConstraints];
+	[self updateIndentationConstraints];
+	[self updateSeparatorConstraints];
 }
 
 
 #pragma mark - Constraints management
 
-- (void)updateBottomSeparatorContraints
+- (void)updateBackgroundPaddingConstraints
 {
-	self.bottomSeparatorHeightConstraint.constant = self.bottomSeparatorHeight;
-	
-	UIEdgeInsets separatorInset = self.bottomSeparatorInset;
-	self.bottomSeparatorBottomConstraint.constant = separatorInset.bottom;
-	self.bottomSeparatorLeftConstraint.constant = separatorInset.left;
-	self.bottomSeparatorRightConstraint.constant = separatorInset.right;
-	self.bottomSeparatorTopConstraint.constant = separatorInset.top;
+	UIEdgeInsets insets = self.backgroundPadding;
+	self.backgroundPaddingBottomConstraint.constant = insets.bottom;
+	self.backgroundPaddingLeftConstraint.constant = insets.left;
+	self.backgroundPaddingRightConstraint.constant = insets.right;
+	self.backgroundPaddingTopConstraint.constant = insets.top;
 }
 
-- (void)updateIndentationContraint
+- (void)updateContentPaddingConstraints
+{
+	UIEdgeInsets insets = self.contentPadding;
+	self.contentPaddingBottomConstraint.constant = insets.bottom;
+	self.contentPaddingLeftConstraint.constant = insets.left;
+	self.contentPaddingRightConstraint.constant = insets.right;
+	self.contentPaddingTopConstraint.constant = insets.top;
+}
+
+- (void)updateIndentationConstraints
 {
 	self.indentationConstraint.constant = self.indentationLevel * self.indentationWidth;
 }
 
-- (void)updateTopSeparatorContraints
+- (void)updateSeparatorConstraints
 {
-	self.topSeparatorHeightConstraint.constant = self.topSeparatorHeight;
-	
-	UIEdgeInsets separatorInset = self.topSeparatorInset;
-	self.topSeparatorBottomConstraint.constant = separatorInset.bottom;
-	self.topSeparatorLeftConstraint.constant = separatorInset.left;
-	self.topSeparatorRightConstraint.constant = separatorInset.right;
-	self.topSeparatorTopConstraint.constant = separatorInset.top;
+	self.separatorHeightConstraint.constant = self.separatorHeight;
 }
 
 @end

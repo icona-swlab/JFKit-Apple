@@ -33,9 +33,6 @@
 @property (strong, nonatomic, readonly)	UIImageView*				imageView;
 @property (strong, nonatomic, readonly)	UIActivityIndicatorView*	indicatorView;
 
-// Memory management
-- (void)	commonInit;
-
 // User interface management
 - (void)	updateIndicators;
 

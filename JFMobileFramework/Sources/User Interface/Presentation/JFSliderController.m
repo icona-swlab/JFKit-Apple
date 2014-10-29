@@ -1,5 +1,5 @@
 //
-//  JFPaneledViewController.m
+//  JFSliderController.m
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,23 +18,23 @@
 
 
 
-#import "JFPaneledViewController.h"
+#import "JFSliderController.h"
 
 
 
 // Custom types
-typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
+typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 {
-	JFPaneledViewControllerSlideTransitionNone,
-	JFPaneledViewControllerSlideTransitionLeftToRoot,
-	JFPaneledViewControllerSlideTransitionRightToRoot,
-	JFPaneledViewControllerSlideTransitionRootToLeft,
-	JFPaneledViewControllerSlideTransitionRootToRight,
+	JFSliderControllerTransitionNone,
+	JFSliderControllerTransitionLeftToRoot,
+	JFSliderControllerTransitionRightToRoot,
+	JFSliderControllerTransitionRootToLeft,
+	JFSliderControllerTransitionRootToRight,
 };
 
 
 
-@interface JFPaneledViewController () <UIGestureRecognizerDelegate>
+@interface JFSliderController () <UIGestureRecognizerDelegate>
 
 // Attributes
 @property (assign, nonatomic)	CGFloat			currentSlideDestination;
@@ -43,10 +43,10 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 @property (assign, nonatomic)	CGFloat			currentSlideOrigin;
 
 // Flags
-@property (assign, nonatomic)				BOOL									animating;
-@property (assign, nonatomic)				BOOL									shouldCancelCurrentSlideTransition;
-@property (assign, nonatomic)				JFPaneledViewControllerSlideTransition	slideTransition;
-@property (assign, nonatomic, readwrite)	JFPaneledViewControllerState			state;
+@property (assign, nonatomic)				BOOL							animating;
+@property (assign, nonatomic, readwrite)	JFSliderControllerPanel			currentFocalPanel;
+@property (assign, nonatomic)				JFSliderControllerTransition	currentTransition;
+@property (assign, nonatomic)				BOOL							shouldCancelCurrentTransition;
 
 // Gesture recognizers
 @property (strong, nonatomic, readonly)	UIPanGestureRecognizer*	panGestureRecognizer;
@@ -56,9 +56,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 @property (strong, nonatomic, readonly)	UIView*		rightPanelContainer;
 @property (strong, nonatomic, readonly)	UIView*		rootPanelContainer;
 @property (strong, nonatomic, readonly)	UIButton*	showRootPanelButton;
-
-// Gesture recognizers management (Actions)
-- (void)	panGestureRecognized:(UIPanGestureRecognizer*)recognizer;
 
 // User interface management
 - (void)	installShowRootPanelButton;
@@ -71,21 +68,24 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 // User interface management (Sliding)
 - (void)	cleanUp:(BOOL)finished animated:(BOOL)animated;
 - (void)	completeSlideWithTranslation:(CGFloat)translation velocity:(CGFloat)velocity;
-- (BOOL)	prepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition animated:(BOOL)animated;
+- (BOOL)	prepareSlideWithTransition:(JFSliderControllerTransition)transition animated:(BOOL)animated;
 - (BOOL)	prepareSlideWithTranslation:(CGFloat)translation animated:(BOOL)animated;
-- (BOOL)	shouldPrepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition;
+- (BOOL)	shouldPrepareSlideWithTransition:(JFSliderControllerTransition)transition;
 - (void)	slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(BlockWithBool)completion;
-- (void)	updateCurrentSlideDistancesForTransition:(JFPaneledViewControllerSlideTransition)transition;
+- (void)	updateCurrentSlideDistancesForTransition:(JFSliderControllerTransition)transition;
+
+// Gesture recognizers management (Actions)
+- (void)	panGestureRecognized:(UIPanGestureRecognizer*)recognizer;
 
 // Utilities
-- (NSString*)	convertSlideTransitionToString:(JFPaneledViewControllerSlideTransition)slideTransition;
-- (NSString*)	convertStateToString:(JFPaneledViewControllerState)state;
++ (NSString*)	convertTransitionToString:(JFSliderControllerTransition)transition;
+- (NSString*)	convertTransitionToString:(JFSliderControllerTransition)transition;
 
 @end
 
 
 
-@implementation JFPaneledViewController
+@implementation JFSliderController
 
 #pragma mark - Properties
 
@@ -95,14 +95,14 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 @synthesize currentSlideLength		= _currentSlideLength;
 @synthesize currentSlideOrigin		= _currentSlideOrigin;
 @synthesize	slideInDuration			= _slideInDuration;
-@synthesize	slideOffset				= _slideOffset;
+@synthesize	slideInsets				= _slideInsets;
 @synthesize	slideOutDuration		= _slideOutDuration;
 
 // Flags
-@synthesize animating							= _animating;
-@synthesize shouldCancelCurrentSlideTransition	= _shouldCancelCurrentSlideTransition;
-@synthesize slideTransition						= _slideTransition;
-@synthesize	state								= _state;
+@synthesize animating						= _animating;
+@synthesize	currentFocalPanel				= _currentFocalPanel;
+@synthesize currentTransition				= _currentTransition;
+@synthesize shouldCancelCurrentTransition	= _shouldCancelCurrentTransition;
 
 // Gesture recognizers
 @synthesize panGestureRecognizer	= _panGestureRecognizer;
@@ -122,12 +122,12 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 
 #pragma mark - Properties accessors (Attributes)
 
-- (void)setSlideOffset:(CGFloat)slideOffset
+- (void)setSlideInsets:(UIEdgeInsets)slideInsets
 {
-	if(_slideOffset == slideOffset)
+	if(UIEdgeInsetsEqualToEdgeInsets(_slideInsets, slideInsets))
 		return;
 	
-	_slideOffset = slideOffset;
+	_slideInsets = slideInsets;
 	
 	if([self isViewLoaded])
 		[self updatePanelContainersFrames];
@@ -136,31 +136,31 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 
 #pragma mark - Properties accessors (Flags)
 
-- (void)setSlideTransition:(JFPaneledViewControllerSlideTransition)slideTransition
+- (void)setCurrentFocalPanel:(JFSliderControllerPanel)currentFocalPanel
 {
-	if(_slideTransition == slideTransition)
+	if(_currentFocalPanel == currentFocalPanel)
 		return;
 	
-	NSString* oldSlideTransitionString = [self convertSlideTransitionToString:_slideTransition];
-	NSString* newSlideTransitionString = [self convertSlideTransitionToString:slideTransition];
-	NSLog(@"Slide transition changed from '%@' to '%@'.", oldSlideTransitionString, newSlideTransitionString);
+	NSString* oldStateString = [self convertPanelToString:_currentFocalPanel];
+	NSString* newStateString = [self convertPanelToString:currentFocalPanel];
+	NSLog(@"%@: focal panel changed from '%@' to '%@'.", ClassName, oldStateString, newStateString);
 	
-	_slideTransition = slideTransition;
-	
-	if([self isViewLoaded])
-		[self updateCurrentSlideDistancesForTransition:_slideTransition];
+	_currentFocalPanel = currentFocalPanel;
 }
 
-- (void)setState:(JFPaneledViewControllerState)state
+- (void)setCurrentTransition:(JFSliderControllerTransition)currentTransition
 {
-	if(_state == state)
+	if(_currentTransition == currentTransition)
 		return;
 	
-	NSString* oldStateString = [self convertStateToString:_state];
-	NSString* newStateString = [self convertStateToString:state];
-	NSLog(@"Panels state changed from '%@' to '%@'.", oldStateString, newStateString);
+	NSString* oldTransitionString = [self convertTransitionToString:_currentTransition];
+	NSString* newTransitionString = [self convertTransitionToString:currentTransition];
+	NSLog(@"%@: transition changed from '%@' to '%@'.", ClassName, oldTransitionString, newTransitionString);
 	
-	_state = state;
+	_currentTransition = currentTransition;
+	
+	if([self isViewLoaded])
+		[self updateCurrentSlideDistancesForTransition:_currentTransition];
 }
 
 
@@ -171,8 +171,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(_leftPanel == leftPanel)
 		return;
 	
-	LogMethod;
-	
 	if(_leftPanel && [self isViewLoaded])
 		[_leftPanel.view removeFromSuperview];
 	
@@ -181,7 +179,8 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	if(_leftPanel && [self isViewLoaded])
 	{
 		_leftPanel.view.frame = self.leftPanelContainer.bounds;
-		[self.leftPanelContainer addSubview:leftPanel.view];
+		[self.leftPanelContainer addSubview:_leftPanel.view];
+		[self.leftPanelContainer sendSubviewToBack:_leftPanel.view];
 	}
 }
 
@@ -189,8 +188,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 {
 	if(_rightPanel == rightPanel)
 		return;
-	
-	LogMethod;
 	
 	if(_rightPanel && [self isViewLoaded])
 		[_rightPanel.view removeFromSuperview];
@@ -201,6 +198,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	{
 		_rightPanel.view.frame = self.rightPanelContainer.bounds;
 		[self.rightPanelContainer addSubview:_rightPanel.view];
+		[self.rightPanelContainer sendSubviewToBack:_rightPanel.view];
 	}
 }
 
@@ -208,8 +206,6 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 {
 	if(_rootPanel == rootPanel)
 		return;
-	
-	LogMethod;
 	
 	if(_rootPanel && [self isViewLoaded])
 		[_rootPanel.view removeFromSuperview];
@@ -220,6 +216,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	{
 		_rootPanel.view.frame = self.rootPanelContainer.bounds;
 		[self.rootPanelContainer addSubview:_rootPanel.view];
+		[self.rootPanelContainer sendSubviewToBack:_rootPanel.view];
 	}
 }
 
@@ -237,14 +234,14 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		_currentSlideLength = 0.0f;
 		_currentSlideOrigin = 0.0f;
 		_slideInDuration = 0.25;
-		_slideOffset = 40.0f;
+		_slideInsets = UIEdgeInsetsMake(0.0f, 40.0f, 0.0f, 40.0f);
 		_slideOutDuration = 0.25;
 		
 		// Flags
 		_animating = NO;
-		_shouldCancelCurrentSlideTransition = NO;
-		_slideTransition = JFPaneledViewControllerSlideTransitionNone;
-		_state = JFPaneledViewControllerStateIsShowingRootPanel;
+		_shouldCancelCurrentTransition = NO;
+		_currentTransition = JFSliderControllerTransitionNone;
+		_currentFocalPanel = JFSliderControllerPanelRoot;
 	}
 	return self;
 }
@@ -260,78 +257,35 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	[self.rootPanelContainer addSubview:button];
 }
 
-- (BOOL)showLeftPanel
+- (BOOL)showPanel:(JFSliderControllerPanel)panel
 {
-	return [self showLeftPanel:YES completion:nil];
+	return [self showPanel:panel animated:YES completion:nil];
 }
 
-- (BOOL)showLeftPanel:(BOOL)animated completion:(BlockWithBool)completion
+- (BOOL)showPanel:(JFSliderControllerPanel)panel animated:(BOOL)animated completion:(BlockWithBool)completion
 {
 	if(self.animating)
 		return NO;
 	
-	if(self.state != JFPaneledViewControllerStateIsShowingRootPanel)
+	if((self.currentFocalPanel != JFSliderControllerPanelRoot) && (panel != JFSliderControllerPanelRoot))
 		return NO;
 	
-	if(![self prepareSlideWithTransition:JFPaneledViewControllerSlideTransitionRootToLeft animated:animated])
-		return NO;
-	
-	BlockWithBool internalCompletion = ^(BOOL finished)
+	JFSliderControllerTransition transition;
+	switch(self.currentFocalPanel)
 	{
-		[self cleanUp:finished animated:animated];
-		if(completion)
-			completion(finished);
-	};
-	
-	[self slideWithTranslation:self.currentSlideLength animated:animated completion:internalCompletion];
-	
-	return YES;
-}
-
-- (BOOL)showRightPanel
-{
-	return [self showRightPanel:YES completion:nil];
-}
-
-- (BOOL)showRightPanel:(BOOL)animated completion:(BlockWithBool)completion
-{
-	if(self.animating)
-		return NO;
-	
-	if(self.state != JFPaneledViewControllerStateIsShowingRootPanel)
-		return NO;
-	
-	if(![self prepareSlideWithTransition:JFPaneledViewControllerSlideTransitionRootToRight animated:animated])
-		return NO;
-	
-	BlockWithBool internalCompletion = ^(BOOL finished)
-	{
-		[self cleanUp:finished animated:animated];
-		if(completion)
-			completion(finished);
-	};
-	
-	[self slideWithTranslation:self.currentSlideLength animated:animated completion:internalCompletion];
-	
-	return YES;
-}
-
-- (BOOL)showRootPanel
-{
-	return [self showRootPanel:YES completion:nil];
-}
-
-- (BOOL)showRootPanel:(BOOL)animated completion:(BlockWithBool)completion
-{
-	if(self.animating)
-		return NO;
-	
-	JFPaneledViewControllerSlideTransition transition;
-	switch(self.state)
-	{
-		case JFPaneledViewControllerStateIsShowingLeftPanel:	transition = JFPaneledViewControllerSlideTransitionLeftToRoot;	break;
-		case JFPaneledViewControllerStateIsShowingRightPanel:	transition = JFPaneledViewControllerSlideTransitionRightToRoot;	break;
-			
+		case JFSliderControllerPanelLeft:	transition = JFSliderControllerTransitionLeftToRoot;	break;
+		case JFSliderControllerPanelRight:	transition = JFSliderControllerTransitionRightToRoot;	break;
+		case JFSliderControllerPanelRoot:
+		{
+			switch(panel)
+			{
+				case JFSliderControllerPanelLeft:	transition = JFSliderControllerTransitionRootToLeft;	break;
+				case JFSliderControllerPanelRight:	transition = JFSliderControllerTransitionRootToRight;	break;
+				default:
+					return NO;
+			}
+			break;
+		}
 		default:
 			return NO;
 	}
@@ -359,28 +313,29 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 - (void)updatePanelContainersFrames
 {
 	CGRect bounds = self.view.bounds;
+	UIEdgeInsets insets = self.slideInsets;
 	
 	// Updates the left panel container frame.
 	CGRect frame = bounds;
-	frame.size.width = bounds.size.width - self.slideOffset;
+	frame.size.width = bounds.size.width - insets.left;
 	self.leftPanelContainer.frame = frame;
 	
 	// Updates the right panel container frame.
 	frame = bounds;
-	frame.origin.x = self.slideOffset;
-	frame.size.width = bounds.size.width - self.slideOffset;
+	frame.origin.x = insets.right;
+	frame.size.width = bounds.size.width - insets.right;
 	self.rightPanelContainer.frame = frame;
 	
 	// Updates the root panel container frame.
 	frame = bounds;
-	switch(self.state)
+	switch(self.currentFocalPanel)
 	{
-		case JFPaneledViewControllerStateIsShowingLeftPanel:
+		case JFSliderControllerPanelLeft:
 		{
 			frame.origin.x = CGRectGetMaxX(self.leftPanelContainer.frame);
 			break;
 		}
-		case JFPaneledViewControllerStateIsShowingRightPanel:
+		case JFSliderControllerPanelRight:
 		{
 			frame.origin.x = CGRectGetMinX(self.rightPanelContainer.frame) - CGRectGetWidth(frame);
 			break;
@@ -390,7 +345,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	}
 	self.rootPanelContainer.frame = frame;
 	
-	[self updateCurrentSlideDistancesForTransition:self.slideTransition];
+	[self updateCurrentSlideDistancesForTransition:self.currentTransition];
 }
 
 
@@ -398,7 +353,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 
 - (void)showRootPanelButtonTapped:(UIButton*)sender
 {
-	[self showRootPanel];
+	[self showPanel:JFSliderControllerPanelRoot];
 }
 
 
@@ -457,45 +412,40 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 
 - (void)cleanUp:(BOOL)finished animated:(BOOL)animated
 {
-	BOOL shouldCancel = self.shouldCancelCurrentSlideTransition;
+	BOOL shouldCancel = self.shouldCancelCurrentTransition;
 	
 	BOOL didHidePanel = NO;
 	BOOL didShowPanel = NO;
 	BOOL shouldUninstallShowRootPanelButton = NO;
-	UIViewController* panel = nil;
-	UIView* panelContainer = nil;
-	JFPaneledViewControllerState state = self.state;
 	
-	switch(self.slideTransition)
+	JFSliderControllerPanel currentFocalPanel = self.currentFocalPanel;
+	JFSliderControllerPanel panel = currentFocalPanel;
+	UIView* panelContainer = nil;
+	UIViewController* panelController = nil;
+	
+	switch(self.currentTransition)
 	{
-		case JFPaneledViewControllerSlideTransitionLeftToRoot:
-		case JFPaneledViewControllerSlideTransitionRightToRoot:
+		case JFSliderControllerTransitionLeftToRoot:
+		case JFSliderControllerTransitionRightToRoot:
 		{
 			didHidePanel = YES;
-			
-			if(self.slideTransition == JFPaneledViewControllerSlideTransitionLeftToRoot)
-			{
-				panel = self.leftPanel;
-				panelContainer = self.leftPanelContainer;
-			}
-			else
-			{
-				panel = self.rightPanel;
-				panelContainer = self.rightPanelContainer;
-			}
+			panel = ((self.currentTransition == JFSliderControllerTransitionLeftToRoot) ? JFSliderControllerPanelLeft : JFSliderControllerPanelRight);
+			panelContainer = ((self.currentTransition == JFSliderControllerTransitionLeftToRoot) ? self.leftPanelContainer : self.rightPanelContainer);
+			panelController = ((self.currentTransition == JFSliderControllerTransitionLeftToRoot) ? self.leftPanel : self.rightPanel);
 			
 			if(shouldCancel)
 				break;
 			
+			currentFocalPanel = JFSliderControllerPanelRoot;
 			shouldUninstallShowRootPanelButton = YES;
-			state = JFPaneledViewControllerStateIsShowingRootPanel;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToLeft:
+		case JFSliderControllerTransitionRootToLeft:
 		{
 			didShowPanel = YES;
-			panel = self.leftPanel;
+			panel = JFSliderControllerPanelLeft;
 			panelContainer = self.leftPanelContainer;
+			panelController = self.leftPanel;
 			
 			if(shouldCancel)
 			{
@@ -503,14 +453,15 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 				break;
 			}
 			
-			state = JFPaneledViewControllerStateIsShowingLeftPanel;
+			currentFocalPanel = JFSliderControllerPanelLeft;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToRight:
+		case JFSliderControllerTransitionRootToRight:
 		{
 			didShowPanel = YES;
-			panel = self.rightPanel;
+			panel = JFSliderControllerPanelRight;
 			panelContainer = self.rightPanelContainer;
+			panelController = self.rightPanel;
 			
 			if(shouldCancel)
 			{
@@ -518,7 +469,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 				break;
 			}
 			
-			state = JFPaneledViewControllerStateIsShowingRightPanel;
+			currentFocalPanel = JFSliderControllerPanelRight;
 			break;
 		}
 		default:
@@ -529,29 +480,29 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		[self uninstallShowRootPanelButton];
 	
 	self.animating = NO;
-	self.shouldCancelCurrentSlideTransition = NO;
-	self.slideTransition = JFPaneledViewControllerSlideTransitionNone;
+	self.shouldCancelCurrentTransition = NO;
+	self.currentTransition = JFSliderControllerTransitionNone;
 	
 	if(shouldCancel)
 	{
 		if(didHidePanel)
 		{
-			if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:didCancelHidePanel:)])
-				[self.delegate paneledViewController:self didCancelHidePanel:panel];
+			if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didCancelHidePanel:)])
+				[self.delegate sliderController:self didCancelHidePanel:panel];
 		}
 		
 		if(didShowPanel)
 		{
 			panelContainer.hidden = YES;
 			
-			[panel viewDidDisappear:animated];
-			if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:didCancelShowPanel:)])
-				[self.delegate paneledViewController:self didCancelShowPanel:panel];
+			[panelController viewDidDisappear:animated];
+			if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didCancelShowPanel:)])
+				[self.delegate sliderController:self didCancelShowPanel:panel];
 		}
 	}
 	else
 	{
-		self.state = state;
+		self.currentFocalPanel = currentFocalPanel;
 		
 		panelContainer.userInteractionEnabled = YES;
 		
@@ -559,15 +510,15 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		{
 			panelContainer.hidden = YES;
 			
-			[panel viewDidDisappear:animated];
-			if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:didHidePanel:)])
-				[self.delegate paneledViewController:self didHidePanel:panel];
+			[panelController viewDidDisappear:animated];
+			if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didHidePanel:)])
+				[self.delegate sliderController:self didHidePanel:panel];
 		}
 		
 		if(didShowPanel)
 		{
-			if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:didShowPanel:)])
-				[self.delegate paneledViewController:self didShowPanel:panel];
+			if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didShowPanel:)])
+				[self.delegate sliderController:self didShowPanel:panel];
 		}
 	}
 }
@@ -576,16 +527,16 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 {
 	if(velocity != 0.0f)
 	{
-		switch(self.slideTransition)
+		switch(self.currentTransition)
 		{
-			case JFPaneledViewControllerSlideTransitionLeftToRoot:
-			case JFPaneledViewControllerSlideTransitionRootToRight:
+			case JFSliderControllerTransitionLeftToRoot:
+			case JFSliderControllerTransitionRootToRight:
 			{
 				translation = ((velocity > 0.0f) ? 0.0f : self.currentSlideLength);
 				break;
 			}
-			case JFPaneledViewControllerSlideTransitionRightToRoot:
-			case JFPaneledViewControllerSlideTransitionRootToLeft:
+			case JFSliderControllerTransitionRightToRoot:
+			case JFSliderControllerTransitionRootToLeft:
 			{
 				translation = ((velocity < 0.0f) ? 0.0f : self.currentSlideLength);
 				break;
@@ -597,7 +548,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	else
 		translation = ((fabsf(translation) >= fabsf(self.currentSlideLength / 2.0f)) ? self.currentSlideLength : 0.0f);
 	
-	self.shouldCancelCurrentSlideTransition = (translation == 0.0f);
+	self.shouldCancelCurrentTransition = (translation == 0.0f);
 	
 	BlockWithBool completion = ^(BOOL finished)
 	{
@@ -607,7 +558,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	[self slideWithTranslation:translation animated:YES completion:completion];
 }
 
-- (BOOL)prepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition animated:(BOOL)animated
+- (BOOL)prepareSlideWithTransition:(JFSliderControllerTransition)transition animated:(BOOL)animated
 {
 	if(self.animating)
 		return NO;
@@ -620,37 +571,43 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	BOOL shouldInstallShowRootPanelButton = NO;
 	BOOL willHidePanel = NO;
 	BOOL willShowPanel = NO;
-	UIViewController* panel = nil;
+	
+	JFSliderControllerPanel panel;
 	UIView* panelContainer = nil;
+	UIViewController* panelController = nil;
 	
 	switch(transition)
 	{
-		case JFPaneledViewControllerSlideTransitionLeftToRoot:
+		case JFSliderControllerTransitionLeftToRoot:
 		{
-			panel = self.leftPanel;
+			panel = JFSliderControllerPanelLeft;
 			panelContainer = self.leftPanelContainer;
+			panelController = self.leftPanel;
 			willHidePanel = YES;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRightToRoot:
+		case JFSliderControllerTransitionRightToRoot:
 		{
-			panel = self.rightPanel;
+			panel = JFSliderControllerPanelRight;
 			panelContainer = self.rightPanelContainer;
+			panelController = self.rightPanel;
 			willHidePanel = YES;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToLeft:
+		case JFSliderControllerTransitionRootToLeft:
 		{
-			panel = self.leftPanel;
+			panel = JFSliderControllerPanelLeft;
 			panelContainer = self.leftPanelContainer;
+			panelController = self.leftPanel;
 			shouldInstallShowRootPanelButton = YES;
 			willShowPanel = YES;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToRight:
+		case JFSliderControllerTransitionRootToRight:
 		{
-			panel = self.rightPanel;
+			panel = JFSliderControllerPanelRight;
 			panelContainer = self.rightPanelContainer;
+			panelController = self.rightPanel;
 			shouldInstallShowRootPanelButton = YES;
 			willShowPanel = YES;
 			break;
@@ -663,55 +620,55 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	
 	if(willHidePanel)
 	{
-		[panel viewWillDisappear:animated];
-		if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:willHidePanel:)])
-			[self.delegate paneledViewController:self willHidePanel:panel];
+		[panelController viewWillDisappear:animated];
+		if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:willHidePanel:)])
+			[self.delegate sliderController:self willHidePanel:panel];
 	}
 	
 	if(willShowPanel)
 	{
-		[panel viewWillAppear:animated];
-		if(self.delegate && [self.delegate respondsToSelector:@selector(paneledViewController:willShowPanel:)])
-			[self.delegate paneledViewController:self willShowPanel:panel];
+		[panelController viewWillAppear:animated];
+		if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:willShowPanel:)])
+			[self.delegate sliderController:self willShowPanel:panel];
 		
 		panelContainer.hidden = NO;
 		
-		[panel viewDidAppear:animated];
+		[panelController viewDidAppear:animated];
 	}
 	
 	if(shouldInstallShowRootPanelButton)
 		[self installShowRootPanelButton];
 	
 	self.animating = YES;
-	self.slideTransition = transition;
+	self.currentTransition = transition;
 	
 	return YES;
 }
 
 - (BOOL)prepareSlideWithTranslation:(CGFloat)translation animated:(BOOL)animated
 {
-	JFPaneledViewControllerSlideTransition transition = JFPaneledViewControllerSlideTransitionNone;
-	JFPaneledViewControllerState state = self.state;
+	JFSliderControllerTransition transition = JFSliderControllerTransitionNone;
+	JFSliderControllerPanel currentFocalPanel = self.currentFocalPanel;
 	
 	if(translation > 0.0f)
 	{
-		if(state == JFPaneledViewControllerStateIsShowingRootPanel)
-			transition = JFPaneledViewControllerSlideTransitionRootToLeft;
-		else if(state == JFPaneledViewControllerStateIsShowingRightPanel)
-			transition = JFPaneledViewControllerSlideTransitionRightToRoot;
+		if(currentFocalPanel == JFSliderControllerPanelRoot)
+			transition = JFSliderControllerTransitionRootToLeft;
+		else if(currentFocalPanel == JFSliderControllerPanelRight)
+			transition = JFSliderControllerTransitionRightToRoot;
 	}
 	else if(translation < 0.0f)
 	{
-		if(state == JFPaneledViewControllerStateIsShowingRootPanel)
-			transition = JFPaneledViewControllerSlideTransitionRootToRight;
-		else if(state == JFPaneledViewControllerStateIsShowingLeftPanel)
-			transition = JFPaneledViewControllerSlideTransitionLeftToRoot;
+		if(currentFocalPanel == JFSliderControllerPanelRoot)
+			transition = JFSliderControllerTransitionRootToRight;
+		else if(currentFocalPanel == JFSliderControllerPanelLeft)
+			transition = JFSliderControllerTransitionLeftToRoot;
 	}
 	
 	return [self prepareSlideWithTransition:transition animated:animated];
 }
 
-- (BOOL)shouldPrepareSlideWithTransition:(JFPaneledViewControllerSlideTransition)transition
+- (BOOL)shouldPrepareSlideWithTransition:(JFSliderControllerTransition)transition
 {
 	if(!self.delegate)
 		return YES;
@@ -719,23 +676,23 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	BOOL retVal = YES;
 	switch(transition)
 	{
-		case JFPaneledViewControllerSlideTransitionLeftToRoot:
-		case JFPaneledViewControllerSlideTransitionRightToRoot:
+		case JFSliderControllerTransitionLeftToRoot:
+		case JFSliderControllerTransitionRightToRoot:
 		{
-			if([self.delegate respondsToSelector:@selector(paneledViewController:shouldShowRootPanel:)])
-				retVal = [self.delegate paneledViewController:self shouldShowRootPanel:self.rootPanel];
+			if([self.delegate respondsToSelector:@selector(sliderController:shouldShowPanel:)])
+				retVal = [self.delegate sliderController:self shouldShowPanel:JFSliderControllerPanelRoot];
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToLeft:
+		case JFSliderControllerTransitionRootToLeft:
 		{
-			if([self.delegate respondsToSelector:@selector(paneledViewController:shouldShowLeftPanel:)])
-				retVal = [self.delegate paneledViewController:self shouldShowLeftPanel:self.leftPanel];
+			if([self.delegate respondsToSelector:@selector(sliderController:shouldShowPanel:)])
+				retVal = [self.delegate sliderController:self shouldShowPanel:JFSliderControllerPanelLeft];
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToRight:
+		case JFSliderControllerTransitionRootToRight:
 		{
-			if([self.delegate respondsToSelector:@selector(paneledViewController:shouldShowRightPanel:)])
-				retVal = [self.delegate paneledViewController:self shouldShowRightPanel:self.rightPanel];
+			if([self.delegate respondsToSelector:@selector(sliderController:shouldShowPanel:)])
+				retVal = [self.delegate sliderController:self shouldShowPanel:JFSliderControllerPanelRight];
 			break;
 		}
 		default:
@@ -754,17 +711,17 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	
 	CGFloat destination = self.currentSlideOrigin + translation;
 	
-	switch(self.slideTransition)
+	switch(self.currentTransition)
 	{
-		case JFPaneledViewControllerSlideTransitionLeftToRoot:
-		case JFPaneledViewControllerSlideTransitionRootToRight:
+		case JFSliderControllerTransitionLeftToRoot:
+		case JFSliderControllerTransitionRootToRight:
 		{
 			destination = MIN(destination, self.currentSlideOrigin);
 			destination = MAX(destination, self.currentSlideDestination);
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRightToRoot:
-		case JFPaneledViewControllerSlideTransitionRootToLeft:
+		case JFSliderControllerTransitionRightToRoot:
+		case JFSliderControllerTransitionRootToLeft:
 		{
 			destination = MIN(destination, self.currentSlideDestination);
 			destination = MAX(destination, self.currentSlideOrigin);
@@ -787,39 +744,39 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	[UIView animateWithDuration:duration animations:animations completion:completion];
 }
 
-- (void)updateCurrentSlideDistancesForTransition:(JFPaneledViewControllerSlideTransition)transition
+- (void)updateCurrentSlideDistancesForTransition:(JFSliderControllerTransition)transition
 {
 	switch(transition)
 	{
-		case JFPaneledViewControllerSlideTransitionLeftToRoot:
+		case JFSliderControllerTransitionLeftToRoot:
 		{
 			self.currentSlideOrigin = CGRectGetMaxX(self.leftPanelContainer.frame);
 			self.currentSlideDestination = 0.0f;
 			self.currentSlideDuration = self.slideOutDuration;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRightToRoot:
+		case JFSliderControllerTransitionRightToRoot:
 		{
 			self.currentSlideOrigin = CGRectGetMinX(self.rightPanelContainer.frame) - CGRectGetWidth(self.rootPanelContainer.frame);
 			self.currentSlideDestination = 0.0f;
 			self.currentSlideDuration = self.slideOutDuration;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToLeft:
+		case JFSliderControllerTransitionRootToLeft:
 		{
 			self.currentSlideOrigin = 0.0f;
 			self.currentSlideDestination = CGRectGetMaxX(self.leftPanelContainer.frame);
 			self.currentSlideDuration = self.slideInDuration;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionRootToRight:
+		case JFSliderControllerTransitionRootToRight:
 		{
 			self.currentSlideOrigin = 0.0f;
 			self.currentSlideDestination = CGRectGetMinX(self.rightPanelContainer.frame) - CGRectGetWidth(self.rootPanelContainer.frame);
 			self.currentSlideDuration = self.slideInDuration;
 			break;
 		}
-		case JFPaneledViewControllerSlideTransitionNone:
+		case JFSliderControllerTransitionNone:
 		{
 			self.currentSlideOrigin = 0.0f;
 			self.currentSlideDestination = 0.0f;
@@ -834,7 +791,7 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 }
 
 
-#pragma mark - Gesture recognizers actions
+#pragma mark - Gesture recognizers management (Actions)
 
 - (void)panGestureRecognized:(UIPanGestureRecognizer*)recognizer
 {
@@ -843,13 +800,11 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 	{
 		case UIGestureRecognizerStateBegan:
 		{
-			NSLog(@"UIGestureRecognizerStateBegan");
 			[self prepareSlideWithTranslation:translation.x animated:YES];
 			break;
 		}
 		case UIGestureRecognizerStateChanged:
 		{
-			NSLog(@"UIGestureRecognizerStateChanged");
 			if(self.animating)
 				[self slideWithTranslation:translation.x animated:NO completion:nil];
 			else
@@ -858,20 +813,17 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 		}
 		case UIGestureRecognizerStateEnded:
 		{
-			NSLog(@"UIGestureRecognizerStateEnded");
 			CGPoint velocity = [recognizer velocityInView:self.view];
 			[self completeSlideWithTranslation:translation.x velocity:velocity.x];
 			break;
 		}
 		case UIGestureRecognizerStateCancelled:
 		{
-			NSLog(@"UIGestureRecognizerStateCancelled");
 			[self completeSlideWithTranslation:0.0f velocity:0.0f];
 			break;
 		}
 		case UIGestureRecognizerStateFailed:
 		{
-			NSLog(@"UIGestureRecognizerStateFailed");
 			[self completeSlideWithTranslation:0.0f velocity:0.0f];
 			break;
 		}
@@ -898,32 +850,42 @@ typedef NS_ENUM(UInt8, JFPaneledViewControllerSlideTransition)
 
 #pragma mark - Utilities
 
-- (NSString*)convertSlideTransitionToString:(JFPaneledViewControllerSlideTransition)slideTransition
++ (NSString*)convertPanelToString:(JFSliderControllerPanel)panel
 {
 	NSString* retVal;
-	switch(slideTransition)
+	switch(panel)
 	{
-		case JFPaneledViewControllerSlideTransitionLeftToRoot:	retVal = @"Left => Root";	break;
-		case JFPaneledViewControllerSlideTransitionRightToRoot:	retVal = @"Right => Root";	break;
-		case JFPaneledViewControllerSlideTransitionRootToLeft:	retVal = @"Root => Left";	break;
-		case JFPaneledViewControllerSlideTransitionRootToRight:	retVal = @"Root => Right";	break;
-		case JFPaneledViewControllerSlideTransitionNone:		retVal = @"None";			break;
-		default:												retVal = @"Unknown";		break;
+		case JFSliderControllerPanelLeft:	retVal = @"Left Panel";		break;
+		case JFSliderControllerPanelRight:	retVal = @"Right Panel";	break;
+		case JFSliderControllerPanelRoot:	retVal = @"Root Panel";		break;
+		default:							retVal = @"Unknown";		break;
 	}
 	return retVal;
 }
 
-- (NSString*)convertStateToString:(JFPaneledViewControllerState)state
++ (NSString*)convertTransitionToString:(JFSliderControllerTransition)transition
 {
 	NSString* retVal;
-	switch(state)
+	switch(transition)
 	{
-		case JFPaneledViewControllerStateIsShowingLeftPanel:	retVal = @"Showing Left Panel";		break;
-		case JFPaneledViewControllerStateIsShowingRightPanel:	retVal = @"Showing Right Panel";	break;
-		case JFPaneledViewControllerStateIsShowingRootPanel:	retVal = @"Showing Root Panel";		break;
-		default:												retVal = @"Unknown";				break;
+		case JFSliderControllerTransitionLeftToRoot:	retVal = @"Left => Root";	break;
+		case JFSliderControllerTransitionRightToRoot:	retVal = @"Right => Root";	break;
+		case JFSliderControllerTransitionRootToLeft:	retVal = @"Root => Left";	break;
+		case JFSliderControllerTransitionRootToRight:	retVal = @"Root => Right";	break;
+		case JFSliderControllerTransitionNone:			retVal = @"None";			break;
+		default:										retVal = @"Unknown";		break;
 	}
 	return retVal;
+}
+
+- (NSString*)convertPanelToString:(JFSliderControllerPanel)panel
+{
+	return [[self class] convertPanelToString:panel];
+}
+
+- (NSString*)convertTransitionToString:(JFSliderControllerTransition)transition
+{
+	return [[self class] convertTransitionToString:transition];
 }
 
 @end

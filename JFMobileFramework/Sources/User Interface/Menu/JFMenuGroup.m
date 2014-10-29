@@ -33,7 +33,8 @@
 #pragma mark - Properties
 
 // Flags
-@synthesize isCollapsed	= _isCollapsed;
+@synthesize isCollapsed						= _isCollapsed;
+@synthesize shouldHideSeparatorWhenExpanded	= _shouldHideSeparatorWhenExpanded;
 
 // Relationships
 @synthesize items	= _items;
@@ -48,6 +49,7 @@
 	{
 		// Flags
 		retVal->_isCollapsed = _isCollapsed;
+		retVal->_shouldHideSeparatorWhenExpanded = _shouldHideSeparatorWhenExpanded;
 		
 		// Relationships
 		retVal->_items = _items;

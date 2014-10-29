@@ -24,23 +24,7 @@
 
 @class JFMenuGroup;
 @class JFMenuItem;
-
-@protocol JFMenuViewControllerDelegate;
-
-
-
-@interface JFMenuViewController : UITableViewController
-
-// Flags
-@property (weak, nonatomic)	JFMenuItem*	selectedItem;
-
-// Relationships
-@property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
-
-// Data management
-- (void)	setMenuItems:(NSArray*)items;
-
-@end
+@class JFMenuViewController;
 
 
 
@@ -48,9 +32,26 @@
 
 @optional
 
+- (void)	menuViewController:(JFMenuViewController*)menuViewController didDeselectItem:(JFMenuItem*)item;
 - (void)	menuViewController:(JFMenuViewController*)menuViewController didSelectItem:(JFMenuItem*)item;
 
-- (void)	menuViewController:(JFMenuViewController*)menuViewController shouldCollapseGroup:(JFMenuGroup*)group;
-- (void)	menuViewController:(JFMenuViewController*)menuViewController shouldExpandGroup:(JFMenuGroup*)group;
+- (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldCollapseGroup:(JFMenuGroup*)group;
+- (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldExpandGroup:(JFMenuGroup*)group;
+
+@end
+
+
+
+@interface JFMenuViewController : UITableViewController
+
+// Data
+@property (strong, nonatomic)	NSArray*	items;	// Array of "JFMenuItem" objects.
+@property (weak, nonatomic)		JFMenuItem*	selectedItem;
+
+// Flags
+@property (assign, nonatomic)	BOOL	shouldCollapseGroups;
+
+// Relationships
+@property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
 
 @end

@@ -25,15 +25,19 @@
 @interface JFMenuItemTableViewCell : UITableViewCell
 
 // Attributes
-@property (strong, nonatomic)	UIColor*		bottomSeparatorColor;
-@property (assign, nonatomic)	CGFloat			bottomSeparatorHeight;
-@property (assign, nonatomic)	UIEdgeInsets	bottomSeparatorInset;
-@property (strong, nonatomic)	UIColor*		topSeparatorColor;
-@property (assign, nonatomic)	CGFloat			topSeparatorHeight;
-@property (assign, nonatomic)	UIEdgeInsets	topSeparatorInset;
+@property (assign, nonatomic)	UIEdgeInsets	backgroundPadding;
+@property (assign, nonatomic)	UIEdgeInsets	contentPadding;
+@property (strong, nonatomic)	UIColor*		separatorColor;
+@property (assign, nonatomic)	CGFloat			separatorHeight;
+
+// Data
+@property (strong, nonatomic)	UIImage*	backgroundImage;
 
 // Memory management
 + (UINib*)		nib;
 + (NSString*)	reuseIdentifier;
+
+// User interface management
++ (CGFloat)	height;
 
 @end

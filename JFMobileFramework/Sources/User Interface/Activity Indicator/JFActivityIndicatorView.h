@@ -31,4 +31,7 @@
 // Data
 @property (copy, nonatomic)	NSArray*	animationImages;
 
+// Memory management
+- (void)	commonInit;
+
 @end

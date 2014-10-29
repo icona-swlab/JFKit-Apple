@@ -41,18 +41,17 @@
 
 // Attributes
 @property (strong, nonatomic)	UIColor*	menuBackgroundColor;
+@property (strong, nonatomic)	UIImage*	menuBackgroundImage;
 
 // Data
-@property (weak, nonatomic)	JFMenuItem*	selectedItem;
+@property (strong, nonatomic)	NSArray*	menuItems;	// Array of "JFMenuItem" objects.
+@property (weak, nonatomic)		JFMenuItem*	selectedMenuItem;
 
 // Relationships
 @property (weak, nonatomic)	id<JFDrawerControllerDelegate>	delegate;
 
 // User interface
 @property (strong, nonatomic)	UIViewController*	rootViewController;
-
-// Data management
-- (void)	setMenuItems:(NSArray*)items;
 
 // User interface management
 - (BOOL)	hideMenu;

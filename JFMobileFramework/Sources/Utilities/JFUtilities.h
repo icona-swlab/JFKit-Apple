@@ -48,6 +48,7 @@
 
 #pragma mark - Macros (Equality)
 
+#define AreArraysEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToArray:arg_obj2])
 #define AreDatesEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToDate:arg_obj2])
 #define AreObjectsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqual:arg_obj2])
 #define AreSetsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToSet:arg_obj2])

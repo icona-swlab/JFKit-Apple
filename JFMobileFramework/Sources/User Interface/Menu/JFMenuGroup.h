@@ -26,6 +26,7 @@
 
 // Flags
 @property (assign, nonatomic)	BOOL	isCollapsed;
+@property (assign, nonatomic)	BOOL	shouldHideSeparatorWhenExpanded;
 
 // Relationships
 @property (strong, nonatomic)	NSArray*	items;
