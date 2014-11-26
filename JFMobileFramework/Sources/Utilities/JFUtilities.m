@@ -91,14 +91,108 @@ ByteStream ByteStreamRealloc(ByteStream byteStream, NSUInteger length)
 
 NSString* appInfoForKey(NSString* key)
 {
-	return [[[NSBundle mainBundle] infoDictionary] objectForKey:key];
+	return [[MainBundle infoDictionary] objectForKey:key];
 }
 
 NSString* standardXIBNameForViewController(UIViewController* viewController)
 {
-	NSString* className = ObjectClassString(viewController);
-	NSRange range = [className rangeOfString:@"Controller" options:NSBackwardsSearch];
-	return [className stringByReplacingCharactersInRange:range withString:EmptyString];
+	NSString* retVal = nil;
+	Class class = [viewController class];
+	while(!retVal && class)
+	{
+		NSString* className = NSStringFromClass(class);
+		NSRange range = [className rangeOfString:@"Controller" options:NSBackwardsSearch];
+		
+		NSString* path = nil;
+		NSString* xibName = nil;
+		if(range.location != NSNotFound)
+		{
+			NSString* baseName = [className stringByReplacingCharactersInRange:range withString:EmptyString];
+			
+			if(iPad)
+			{
+				xibName = [baseName stringByAppendingString:@"~iPad"];
+				path = [MainBundle pathForResource:xibName ofType:@"nib"];
+			}
+			
+			if(!path)
+			{
+				xibName = baseName;
+				path = [MainBundle pathForResource:xibName ofType:@"nib"];
+			}
+		}
+		
+		if(path)
+			retVal = xibName;
+		else
+			class = [class superclass];
+	}
+	return retVal;
+}
+
+
+
+#pragma mark - Functions (Runtime)
+
+void performSelector(NSObject* target, SEL action)
+{
+	IMP implementation = [target methodForSelector:action];
+	void (*performMethod)(id, SEL) = (void*)implementation;
+	performMethod(target, action);
+}
+
+void performSelector1(NSObject* target, SEL action, id object)
+{
+	IMP implementation = [target methodForSelector:action];
+	void (*performMethod)(id, SEL, id) = (void*)implementation;
+	performMethod(target, action, object);
+}
+
+void performSelector2(NSObject* target, SEL action, id obj1, id obj2)
+{
+	IMP implementation = [target methodForSelector:action];
+	void (*performMethod)(id, SEL, id, id) = (void*)implementation;
+	performMethod(target, action, obj1, obj2);
+}
+
+
+#pragma mark - Functions (System version)
+
+BOOL isSystemVersion(NSString* version)
+{
+	if(!version)
+		return NO;
+	
+	return [DeviceSystemVersion hasPrefix:version];
+}
+
+BOOL isSystemVersionExact(NSString* version)
+{
+	if(!version)
+		return NO;
+	
+	return ([version compare:DeviceSystemVersion options:NSNumericSearch] == NSOrderedSame);
+}
+
+BOOL isSystemVersionPlus(NSString* version)
+{
+	if(!version)
+		return NO;
+	
+	return ([version compare:DeviceSystemVersion options:NSNumericSearch] != NSOrderedDescending);
+}
+
+
+#pragma mark - Functions (Trigonometry)
+
+double convertDegreesToRadians(double degrees)
+{
+	return degrees * M_PI / 180.0;
+}
+
+double convertRadiansToDegrees(double radians)
+{
+	return radians * 180.0 / M_PI;
 }
 
 

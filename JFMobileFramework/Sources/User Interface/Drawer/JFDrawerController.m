@@ -25,6 +25,16 @@
 
 
 
+// List of drawer notifications.
+NSString* const	JFDrawerControllerDidCancelHideMenuNotification	= @"JFDrawerControllerDidCancelHideMenuNotification";
+NSString* const	JFDrawerControllerDidCancelShowMenuNotification	= @"JFDrawerControllerDidCancelShowMenuNotification";
+NSString* const	JFDrawerControllerDidHideMenuNotification		= @"JFDrawerControllerDidHideMenuNotification";
+NSString* const	JFDrawerControllerDidShowMenuNotification		= @"JFDrawerControllerDidShowMenuNotification";
+NSString* const	JFDrawerControllerWillHideMenuNotification		= @"JFDrawerControllerWillHideMenuNotification";
+NSString* const	JFDrawerControllerWillShowMenuNotification		= @"JFDrawerControllerWillShowMenuNotification";
+
+
+
 @interface JFDrawerController () <JFMenuViewControllerDelegate, JFSliderControllerDelegate>
 
 // User interface
@@ -131,6 +141,15 @@
 }
 
 
+
+#pragma mark - Data management
+
+- (void)reloadMenuItems
+{
+	[self.menuViewController reloadItems];
+}
+
+
 #pragma mark - User interface management
 
 - (BOOL)hideMenu
@@ -180,9 +199,39 @@
 
 #pragma mark - Protocol implementation (JFSliderControllerDelegate)
 
+- (void)sliderController:(JFSliderController*)sliderController didCancelHidePanel:(JFSliderControllerPanel)panel
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:JFDrawerControllerDidCancelHideMenuNotification object:self];
+}
+
+- (void)sliderController:(JFSliderController*)sliderController didCancelShowPanel:(JFSliderControllerPanel)panel
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:JFDrawerControllerDidCancelShowMenuNotification object:self];
+}
+
+- (void)sliderController:(JFSliderController*)sliderController didHidePanel:(JFSliderControllerPanel)panel
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:JFDrawerControllerDidHideMenuNotification object:self];
+}
+
+- (void)sliderController:(JFSliderController*)sliderController didShowPanel:(JFSliderControllerPanel)panel
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:JFDrawerControllerDidShowMenuNotification object:self];
+}
+
 - (BOOL)sliderController:(JFSliderController*)sliderController shouldShowPanel:(JFSliderControllerPanel)panel
 {
 	return (panel != JFSliderControllerPanelRight);
+}
+
+- (void)sliderController:(JFSliderController*)sliderController willHidePanel:(JFSliderControllerPanel)panel
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:JFDrawerControllerWillHideMenuNotification object:self];
+}
+
+- (void)sliderController:(JFSliderController*)sliderController willShowPanel:(JFSliderControllerPanel)panel
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:JFDrawerControllerWillShowMenuNotification object:self];
 }
 
 @end

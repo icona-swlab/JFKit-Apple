@@ -1,5 +1,5 @@
 //
-//  JFGalleryViewController.h
+//  JFLabel.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,17 +18,10 @@
 
 
 
-#import "JFGalleryView.h"
+#import <UIKit/UIKit.h>
 
 
 
-@class JFGalleryView;
-
-
-
-@interface JFGalleryViewController : UIViewController <JFGalleryViewDataSource>
-
-// Layout
-@property (retain, nonatomic)	JFGalleryView*	galleryView;
+@interface JFLabel : UILabel
 
 @end

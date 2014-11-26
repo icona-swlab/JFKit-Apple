@@ -141,9 +141,9 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	if(_currentFocalPanel == currentFocalPanel)
 		return;
 	
-	NSString* oldStateString = [self convertPanelToString:_currentFocalPanel];
-	NSString* newStateString = [self convertPanelToString:currentFocalPanel];
-	NSLog(@"%@: focal panel changed from '%@' to '%@'.", ClassName, oldStateString, newStateString);
+	//NSString* oldStateString = [self convertPanelToString:_currentFocalPanel];
+	//NSString* newStateString = [self convertPanelToString:currentFocalPanel];
+	//NSLog(@"%@: focal panel changed from '%@' to '%@'.", ClassName, oldStateString, newStateString);
 	
 	_currentFocalPanel = currentFocalPanel;
 }
@@ -153,9 +153,9 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	if(_currentTransition == currentTransition)
 		return;
 	
-	NSString* oldTransitionString = [self convertTransitionToString:_currentTransition];
-	NSString* newTransitionString = [self convertTransitionToString:currentTransition];
-	NSLog(@"%@: transition changed from '%@' to '%@'.", ClassName, oldTransitionString, newTransitionString);
+	//NSString* oldTransitionString = [self convertTransitionToString:_currentTransition];
+	//NSString* newTransitionString = [self convertTransitionToString:currentTransition];
+	//NSLog(@"%@: transition changed from '%@' to '%@'.", ClassName, oldTransitionString, newTransitionString);
 	
 	_currentTransition = currentTransition;
 	
@@ -171,16 +171,33 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	if(_leftPanel == leftPanel)
 		return;
 	
+	BOOL shouldNotify = !self.leftPanelContainer.hidden;
+	
 	if(_leftPanel && [self isViewLoaded])
+	{
+		if(shouldNotify)
+			[_leftPanel viewWillDisappear:NO];
+		
 		[_leftPanel.view removeFromSuperview];
+		
+		if(shouldNotify)
+			[_leftPanel viewDidDisappear:NO];
+	}
 	
 	_leftPanel = leftPanel;
 	
 	if(_leftPanel && [self isViewLoaded])
 	{
 		_leftPanel.view.frame = self.leftPanelContainer.bounds;
+		
+		if(shouldNotify)
+			[_leftPanel viewWillAppear:NO];
+		
 		[self.leftPanelContainer addSubview:_leftPanel.view];
 		[self.leftPanelContainer sendSubviewToBack:_leftPanel.view];
+		
+		if(shouldNotify)
+			[_leftPanel viewDidAppear:NO];
 	}
 }
 
@@ -189,16 +206,33 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	if(_rightPanel == rightPanel)
 		return;
 	
+	BOOL shouldNotify = !self.rightPanelContainer.hidden;
+	
 	if(_rightPanel && [self isViewLoaded])
+	{
+		if(shouldNotify)
+			[_rightPanel viewWillDisappear:NO];
+		
 		[_rightPanel.view removeFromSuperview];
+		
+		if(shouldNotify)
+			[_rightPanel viewDidDisappear:NO];
+	};
 	
 	_rightPanel = rightPanel;
 	
 	if(_rightPanel && [self isViewLoaded])
 	{
 		_rightPanel.view.frame = self.rightPanelContainer.bounds;
+		
+		if(shouldNotify)
+			[_rightPanel viewWillAppear:NO];
+		
 		[self.rightPanelContainer addSubview:_rightPanel.view];
 		[self.rightPanelContainer sendSubviewToBack:_rightPanel.view];
+		
+		if(shouldNotify)
+			[_rightPanel viewDidAppear:NO];
 	}
 }
 
@@ -208,15 +242,21 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 		return;
 	
 	if(_rootPanel && [self isViewLoaded])
+	{
+		[_rootPanel viewWillDisappear:NO];
 		[_rootPanel.view removeFromSuperview];
+		[_rootPanel viewDidDisappear:NO];
+	}
 	
 	_rootPanel = rootPanel;
 	
 	if(_rootPanel && [self isViewLoaded])
 	{
 		_rootPanel.view.frame = self.rootPanelContainer.bounds;
+		[_rootPanel viewWillAppear:NO];
 		[self.rootPanelContainer addSubview:_rootPanel.view];
 		[self.rootPanelContainer sendSubviewToBack:_rootPanel.view];
+		[_rootPanel viewDidAppear:NO];
 	}
 }
 
@@ -359,6 +399,30 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 
 #pragma mark - User interface management (Inherited)
 
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(sliderControllerPreferredInterfaceOrientationForPresentation:)])
+		return [self.delegate sliderControllerPreferredInterfaceOrientationForPresentation:self];
+	
+	return [super preferredInterfaceOrientationForPresentation];
+}
+
+- (BOOL)shouldAutorotate
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(sliderControllerShouldAutorotate:)])
+		return [self.delegate sliderControllerShouldAutorotate:self];
+	
+	return [super shouldAutorotate];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(sliderControllerSupportedInterfaceOrientations:)])
+		return [self.delegate sliderControllerSupportedInterfaceOrientations:self];
+	
+	return [super supportedInterfaceOrientations];
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -380,6 +444,18 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	
 	self.leftPanelContainer.hidden = YES;
 	self.rightPanelContainer.hidden = YES;
+	
+	if(self.leftPanel)
+	{
+		self.leftPanel.view.frame = self.leftPanelContainer.bounds;
+		[self.leftPanelContainer addSubview:self.leftPanel.view];
+	}
+	
+	if(self.rightPanel)
+	{
+		self.rightPanel.view.frame = self.rightPanelContainer.bounds;
+		[self.rightPanelContainer addSubview:self.rightPanel.view];
+	}
 	
 	if(self.rootPanel)
 	{

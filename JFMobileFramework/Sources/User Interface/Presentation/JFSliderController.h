@@ -42,6 +42,10 @@ typedef NS_ENUM(UInt8, JFSliderControllerPanel)
 
 @optional
 
+- (UIInterfaceOrientation)	sliderControllerPreferredInterfaceOrientationForPresentation:(JFSliderController*)sliderController;
+- (BOOL)					sliderControllerShouldAutorotate:(JFSliderController*)sliderController;
+- (NSUInteger)				sliderControllerSupportedInterfaceOrientations:(JFSliderController*)sliderController;
+
 - (BOOL)	sliderController:(JFSliderController*)sliderController shouldShowPanel:(JFSliderControllerPanel)panel;
 
 - (void)	sliderController:(JFSliderController*)sliderController didCancelHidePanel:(JFSliderControllerPanel)panel;

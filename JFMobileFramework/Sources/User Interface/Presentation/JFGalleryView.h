@@ -27,7 +27,7 @@
 @required
 
 - (UIView*)		galleryView:(JFGalleryView*)galleryView viewAtIndex:(NSInteger)index;
-- (NSUInteger)	numberOfViewsInGalleryViewController:(JFGalleryView*)galleryView;
+- (NSUInteger)	numberOfViewsInGalleryView:(JFGalleryView*)galleryView;
 
 @end
 
@@ -36,6 +36,9 @@
 @protocol JFGalleryViewDelegate <NSObject>
 
 @optional
+
+// This method is called during the purge action.
+- (void)	galleryView:(JFGalleryView*)galleryView didReleaseViewAtIndex:(NSInteger)index;
 
 // These methods are called when the gallery view is scrolled by code.
 - (void)	galleryView:(JFGalleryView*)galleryView didHideViewAtIndex:(NSInteger)index;
@@ -62,15 +65,16 @@
 @property (assign, nonatomic)			BOOL		pageControlHidesForSinglePage;
 @property (assign, nonatomic)			BOOL		userScrollingEnabled;
 
-// Targets
-@property (assign, nonatomic)	IBOutlet id<JFGalleryViewDataSource>	dataSource;
-@property (assign, nonatomic)	IBOutlet id<JFGalleryViewDelegate>		delegate;
+// Relationships
+@property (weak, nonatomic)	IBOutlet	id<JFGalleryViewDataSource>	dataSource;
+@property (weak, nonatomic)	IBOutlet	id<JFGalleryViewDelegate>	delegate;
 
-// View management
-- (void)	scrollToViewAtIndex:(NSInteger)index animated:(BOOL)animated;
-
-// Data management
+// Memory management
+- (void)	commonInit;
 - (void)	releaseUnusedViews;
+
+// User interface management
+- (void)	scrollToViewAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 // Data management
 - (void)	reloadData;

@@ -1,5 +1,5 @@
 //
-//  JFMenuGroup.h
+//  JFKeyboardViewHandler.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,17 +18,19 @@
 
 
 
-#import "JFMenuItem.h"
+#import <Foundation/Foundation.h>
 
 
 
-@interface JFMenuGroup : JFMenuItem
+@interface JFKeyboardViewHandler : NSObject
 
-// Flags
-@property (assign, nonatomic)	BOOL	isCollapsed;
-@property (assign, nonatomic)	BOOL	shouldHideSeparatorWhenExpanded;
+// Attributes
+@property (assign, nonatomic)	IBInspectable	CGFloat	constant;
 
-// Relationships
-@property (copy, nonatomic)	NSArray*	items;
+// Constraints
+@property (strong, nonatomic)	IBOutlet	NSLayoutConstraint*	resizableViewBottomConstraint;
+
+// User interface
+@property (strong, nonatomic)	IBOutlet	UIView*	resizableView;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  JFMenuGroup.h
+//  JFSplitViewController.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,17 +18,27 @@
 
 
 
-#import "JFMenuItem.h"
+#import <UIKit/UIKit.h>
 
 
 
-@interface JFMenuGroup : JFMenuItem
+@class JFSplitViewController;
 
-// Flags
-@property (assign, nonatomic)	BOOL	isCollapsed;
-@property (assign, nonatomic)	BOOL	shouldHideSeparatorWhenExpanded;
 
-// Relationships
-@property (copy, nonatomic)	NSArray*	items;
+
+@protocol JFSplitViewControllerDelegate <NSObject, UISplitViewControllerDelegate>
+
+@optional
+
+- (BOOL)	splitViewControllerShouldAutorotate:(JFSplitViewController*)splitViewController;
+
+@end
+
+
+
+@interface JFSplitViewController : UISplitViewController
+
+// Inherited
+@property (nonatomic, assign) id<JFSplitViewControllerDelegate> delegate;
 
 @end

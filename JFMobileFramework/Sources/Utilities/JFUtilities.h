@@ -70,18 +70,24 @@
 #pragma mark - Macros (Localization)
 
 #define LocalizedString(arg_key, arg_defVal)							LocalizedStringWithComment(arg_key, arg_defVal, nil)
-#define LocalizedStringWithComment(arg_key, arg_defVal, arg_comment)	NSLocalizedStringWithDefaultValue(arg_key, nil, [NSBundle mainBundle], arg_defVal, arg_comment)
+#define LocalizedStringWithComment(arg_key, arg_defVal, arg_comment)	NSLocalizedStringWithDefaultValue(arg_key, nil, MainBundle, arg_defVal, arg_comment)
 
 
 #pragma mark - Macros (Resources)
 
-#define BundleResourceURL(arg_filename)	[[NSBundle mainBundle] URLForResource:[arg_filename stringByDeletingPathExtension] withExtension:[arg_filename pathExtension]]
+#define BundleResourceURL(arg_filename)						[MainBundle URLForResource:[arg_filename stringByDeletingPathExtension] withExtension:[arg_filename pathExtension]]
+#define BundleResourceURLWithType(arg_filename, arg_type)	[MainBundle URLForResource:arg_filename withExtension:arg_type]
 
 
 #pragma mark - Macros (Shortcuts)
 
-#define	UIApp			[UIApplication sharedApplication]
-#define	UIAppDelegate	((AppDelegate*)[UIApp delegate])
+#define MainBundle				[NSBundle mainBundle]
+#define	UIApp					[UIApplication sharedApplication]
+#define	UIAppDelegate			((AppDelegate*)[UIApp delegate])
+#define UIAppLanguage			[UIAppLanguages firstObject]
+#define UIAppLanguages			[MainBundle preferredLocalizations]
+#define UIIdiom					[[UIDevice currentDevice] userInterfaceIdiom]
+#define UIStatusBarOrientation	[UIApp statusBarOrientation]
 
 
 #pragma mark - Macros (Strings)
@@ -116,15 +122,26 @@
 
 
 #pragma mark - Macros (System version)
-#define DeviceSystemVersion	[UIDevice currentDevice].systemVersion
-#define iOS(arg_version)	[DeviceSystemVersion hasPrefix:arg_version]
-#define iOS6				iOS(@"6.")
-#define iOS7				iOS(@"7.")
-#define iOS8				iOS(@"8.")
-#define iPad				([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-#define iPhone				([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-#define iPhoneC				(iPhone && ([UIScreen mainScreen].bounds.size.height == 480.0f)) // iPhone with 3.5'' display.
-#define iPhone5				(iPhone && ([UIScreen mainScreen].bounds.size.height == 568.0f)) // iPhone with 4'' display.
+#define DeviceSystemVersion		[UIDevice currentDevice].systemVersion
+#define iOS(arg_version)		isSystemVersion(arg_version)
+#define iOSExact(arg_version)	isSystemVersionExact(arg_version)
+#define iOSPlus(arg_version)	isSystemVersionPlus(arg_version)
+#define iOS6					iOS(@"6.")
+#define iOS6Plus				iOSPlus(@"6.")
+#define iOS7					iOS(@"7.")
+#define iOS7Plus				iOSPlus(@"7.")
+#define iOS8					iOS(@"8.")
+#define iOS8Plus				iOSPlus(@"8.")
+#define iPad					(UIIdiom == UIUserInterfaceIdiomPad)
+#define iPhone					(UIIdiom == UIUserInterfaceIdiomPhone)
+#define iPhoneC					(iPhone && ([UIScreen mainScreen].bounds.size.height == 480.0f)) // iPhone with 3.5'' display.
+#define iPhone5					(iPhone && ([UIScreen mainScreen].bounds.size.height == 568.0f)) // iPhone with 4'' display.
+
+
+#pragma mark - Macros (Trigonometry)
+
+#define DegreesToRadians(arg_deg)	convertDegreesToRadians(arg_deg)
+#define RadiansToDegrees(arg_rad)	convertRadiansToDegrees(arg_rad)
 
 
 #pragma mark - Macros (User interface)
@@ -135,11 +152,12 @@
 
 #pragma mark - Typedef (Blocks)
 
-typedef void (^Block)(void);
-typedef void (^BlockWithBool)(BOOL value);
-typedef void (^BlockWithError)(NSError* error);
-typedef void (^BlockWithObject)(id object);
-typedef void (^BlockWithObjectAndError)(id object, NSError* error);
+typedef void	(^Block)(void);
+typedef void	(^BlockWithBool)(BOOL value);
+typedef void	(^BlockWithError)(NSError* error);
+typedef void	(^BlockWithObject)(id object);
+typedef void	(^BlockWithObjectAndError)(id object, NSError* error);
+typedef id		(^ProcessDataBlock)(NSData* data);
 
 
 #pragma mark - Typedef (C)
@@ -168,10 +186,29 @@ extern ByteStream	ByteStreamRealloc(ByteStream byteStream, NSUInteger length);
 
 #pragma mark - Functions (Info)
 
-extern NSString* appInfoForKey(NSString* key);
-extern NSString* standardXIBNameForViewController(UIViewController* viewController);
+extern NSString*	appInfoForKey(NSString* key);
+extern NSString*	standardXIBNameForViewController(UIViewController* viewController);
 
+
+#pragma mark - Functions (Runtime)
+
+extern void	performSelector(NSObject* target, SEL action);
+extern void performSelector1(NSObject* target, SEL action, id object);
+extern void performSelector2(NSObject* target, SEL action, id obj1, id obj2);
+
+
+#pragma mark - Functions (System version)
+
+extern BOOL	isSystemVersion(NSString* version);
+extern BOOL	isSystemVersionExact(NSString* version);
+extern BOOL	isSystemVersionPlus(NSString* version);
+
+
+#pragma mark - Functions (Trigonometry)
+
+extern double	convertDegreesToRadians(double degrees);
+extern double	convertRadiansToDegrees(double radians);
 
 #pragma mark - Functions (User interface)
 
-extern void setNetworkActivityIndicatorHidden(BOOL hidden);
+extern void	setNetworkActivityIndicatorHidden(BOOL hidden);

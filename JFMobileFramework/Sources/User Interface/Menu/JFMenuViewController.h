@@ -34,6 +34,7 @@
 
 - (void)	menuViewController:(JFMenuViewController*)menuViewController didDeselectItem:(JFMenuItem*)item;
 - (void)	menuViewController:(JFMenuViewController*)menuViewController didSelectItem:(JFMenuItem*)item;
+- (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldSelectItem:(JFMenuItem*)item;
 
 - (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldCollapseGroup:(JFMenuGroup*)group;
 - (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldExpandGroup:(JFMenuGroup*)group;
@@ -53,5 +54,8 @@
 
 // Relationships
 @property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
+
+// Data management
+- (void)	reloadItems;
 
 @end

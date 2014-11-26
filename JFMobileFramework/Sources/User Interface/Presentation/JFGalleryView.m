@@ -28,34 +28,26 @@
 @property (assign, nonatomic)	NSInteger	previousIndex;
 @property (assign, nonatomic)	BOOL		shouldPerformScrollViewDelegateMethods;
 
-// Paging
-@property (retain, nonatomic, readonly)	NSMutableArray*	galleryViews;
-@property (retain, nonatomic, readonly)	UIPageControl*	pageControl;
-@property (retain, nonatomic, readonly)	UIScrollView*	scrollView;
+// User interface
+@property (strong, nonatomic, readonly)	NSMutableArray*	galleryViews;
+@property (strong, nonatomic, readonly)	UIPageControl*	pageControl;
+@property (strong, nonatomic, readonly)	UIScrollView*	scrollView;
 
-// View actions
-- (void)	pageControlClicked;
+// Data management
+- (void)	loadViewAtIndex:(NSInteger)index;
+- (void)	reset;
 
-// View management
+// User interface management
 - (CGRect)	frameForPageAtIndex:(NSInteger)index;
 - (void)	resizeScrollViewContent;
 - (void)	setupPageControl;
 - (void)	setupScrollView;
 - (void)	setupView;
 
-// Data management
-- (void)	loadViewAtIndex:(NSInteger)index;
-- (void)	reset;
+// User interface management (Actions)
+- (void)	pageControlClicked;
 
 @end
-
-
-
-#ifdef DEBUG
-static BOOL debugMode = NO;
-#else
-static BOOL debugMode = NO;
-#endif
 
 
 
@@ -73,19 +65,17 @@ static BOOL debugMode = NO;
 @synthesize	shouldPerformScrollViewDelegateMethods	= _shouldPerformScrollViewDelegateMethods;
 @synthesize	userScrollingEnabled					= _userScrollingEnabled;
 
-// Gallery
+// Relationships
+@synthesize	dataSource	= _dataSource;
+@synthesize	delegate	= _delegate;
+
+// User interface
 @synthesize	galleryViews	= _galleryViews;
 @synthesize	pageControl		= _pageControl;
 @synthesize	scrollView		= _scrollView;
 
-// Targets
-@synthesize	dataSource	= _dataSource;
-@synthesize	delegate	= _delegate;
 
-
-#pragma mark - Properties accessors
-
-// Attributes
+#pragma mark - Properties accessors (Attributes)
 
 - (NSInteger)currentIndex
 {
@@ -142,7 +132,8 @@ static BOOL debugMode = NO;
 	[self setupScrollView];
 }
 
-// Targets
+
+#pragma mark - Properties accessors (Relationships)
 
 - (void)setDataSource:(id<JFGalleryViewDataSource>)dataSource
 {
@@ -157,8 +148,28 @@ static BOOL debugMode = NO;
 
 #pragma mark - Memory management
 
+- (void)commonInit
+{
+	// Attributes
+	_pageControlDistanceFromBottom = 0.0f;
+	_pageControlHeight = 36.0f;
+	_pageControlHidesForSinglePage = YES;
+	_previousIndex = NSNotFound;
+	_shouldPerformScrollViewDelegateMethods = YES;
+	_userScrollingEnabled = YES;
+	
+	// User interface
+	_pageControl = [[UIPageControl alloc] init];
+	_scrollView = [[UIScrollView alloc] init];
+	_galleryViews = [[NSMutableArray alloc] init];
+	
+	[self setupView];
+}
+
 - (void)releaseUnusedViews
 {
+	BOOL shouldNotify = [self.delegate respondsToSelector:@selector(galleryView:didReleaseViewAtIndex:)];
+	
 	// Releases all unused stored views of the gallery.
 	NSInteger index = self.pageControl.currentPage;
 	for(NSInteger i = 0; i < [self.galleryViews count]; i++)
@@ -171,57 +182,108 @@ static BOOL debugMode = NO;
 		{
 			[view removeFromSuperview];
 			[self.galleryViews replaceObjectAtIndex:i withObject:[NSNull null]];
-			if(debugMode) NSLog(@"GALLERY VIEW: Released view at index %@.", NSIntegerToString(i));
+			
+			if(shouldNotify)
+				[self.delegate galleryView:self didReleaseViewAtIndex:i];
 		}
 	}
 }
 
-- (id)init
+- (instancetype)initWithCoder:(NSCoder*)aDecoder
 {
-	self = [super init];
+	self = [super initWithCoder:aDecoder];
 	if(self)
 	{
-		// Attributes
-		_pageControlDistanceFromBottom = 0.0f;
-		_pageControlHeight = 36.0f;
-		_pageControlHidesForSinglePage = YES;
-		_previousIndex = NSNotFound;
-		_shouldPerformScrollViewDelegateMethods = YES;
-		_userScrollingEnabled = YES;
-		
-		// Paging
-		_pageControl = [[UIPageControl alloc] init];
-		_scrollView = [[UIScrollView alloc] init];
-		_galleryViews = [[NSMutableArray alloc] init];
-		
-		// Super properties
-		self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-		
-		[self setupView];
+		[self commonInit];
+	}
+	return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+	self = [super initWithFrame:frame];
+	if(self)
+	{
+		[self commonInit];
 	}
 	return self;
 }
 
 
-#pragma mark - View actions
+#pragma mark - Data management
 
-- (void)pageControlClicked
+- (void)loadViewAtIndex:(NSInteger)index
 {
-	self.shouldPerformScrollViewDelegateMethods = NO;
+	if((index < 0) || (index >= self.pageControl.numberOfPages))
+		return;
 	
-    NSInteger index = self.currentIndex;
+	// Tests if the view has been loaded already and loads it if not.
+	UIView* view = [self.galleryViews objectAtIndex:index];
+	if((NSNull*)view == [NSNull null])
+	{
+		view = ([self.dataSource respondsToSelector:@selector(galleryView:viewAtIndex:)] ? [self.dataSource galleryView:self viewAtIndex:index] : nil);
+		if(!view)
+		{
+			view = [[UIView alloc] init];
+			float red = (arc4random() % 255) / 255.0f;
+			float green = (arc4random() % 255) / 255.0f;
+			float blue = (arc4random() % 255) / 255.0f;
+			view.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+		}
+		[self.galleryViews replaceObjectAtIndex:index withObject:view];
+		//NSLog(@"%@: Loaded view at index %@.", ClassName, NSIntegerToString(index));
+	}
 	
-	// Loads the adjacent views.
-	[self loadViewAtIndex:index - 1];
-	[self loadViewAtIndex:index];
-	[self loadViewAtIndex:index + 1];
+	if(view)
+	{
+		view.frame = [self frameForPageAtIndex:index];
+		[self.scrollView addSubview:view];
+	}
+}
+
+- (void)reloadData
+{
+	[self reset];
 	
-	// Scrolls to the selected index.
-	[self scrollToViewAtIndex:index animated:YES];
+	if(!self.dataSource)
+		return;
+	
+	self.pageControl.numberOfPages = [self.dataSource numberOfViewsInGalleryView:self];
+	if(self.pageControl.numberOfPages == 0)
+		return;
+	
+	// Prepares the views array with placeholders.
+	for(NSUInteger i = 0; i < self.pageControl.numberOfPages; i++)
+		[self.galleryViews addObject:[NSNull null]];
+	
+	if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:willShowViewAtIndex:)])
+		[self.delegate galleryView:self willShowViewAtIndex:0];
+	
+	[self loadViewAtIndex:0];
+	if(self.pageControl.numberOfPages > 1)
+		[self loadViewAtIndex:1];
+	
+	self.pageControl.currentPage = 0;
+	self.previousIndex = 0;
+	
+	[self resizeScrollViewContent];
+	
+	if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:didShowViewAtIndex:)])
+		[self.delegate galleryView:self didShowViewAtIndex:0];
+}
+
+- (void)reset
+{
+	self.pageControl.currentPage = NSNotFound; // It must be set to a value different from '0' or else it will not show the starting white dot when the gallery reloads the data.
+	self.pageControl.numberOfPages = 0;
+	self.previousIndex = NSNotFound;
+	self.scrollView.contentOffset = CGPointZero;
+	self.scrollView.contentSize = self.scrollView.bounds.size;
+	[self.galleryViews removeAllObjects];
 }
 
 
-#pragma mark - View management
+#pragma mark - User interface management
 
 - (CGRect)frameForPageAtIndex:(NSInteger)index
 {
@@ -254,10 +316,13 @@ static BOOL debugMode = NO;
 
 - (void)scrollToViewAtIndex:(NSInteger)index animated:(BOOL)animated
 {
-	if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:willHideViewAtIndex:)])
-		[self.delegate galleryView:self willHideViewAtIndex:self.previousIndex];
-	if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:willShowViewAtIndex:)])
-		[self.delegate galleryView:self willShowViewAtIndex:index];
+	if(index != self.currentIndex)
+	{
+		if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:willHideViewAtIndex:)])
+			[self.delegate galleryView:self willHideViewAtIndex:self.previousIndex];
+		if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:willShowViewAtIndex:)])
+			[self.delegate galleryView:self willShowViewAtIndex:index];
+	}
 	
 	[self.scrollView scrollRectToVisible:[self frameForPageAtIndex:index] animated:animated];
 	
@@ -303,80 +368,25 @@ static BOOL debugMode = NO;
 }
 
 
-#pragma mark - Data management
+#pragma mark - User interface management (Actions)
 
-- (void)loadViewAtIndex:(NSInteger)index
+- (void)pageControlClicked
 {
-	if((index < 0) || (index >= self.pageControl.numberOfPages))
-		return;
+	self.shouldPerformScrollViewDelegateMethods = NO;
 	
-	// Tests if the view has been loaded already and loads it if not.
-	UIView* view = [self.galleryViews objectAtIndex:index];
-	if((NSNull*)view == [NSNull null])
-	{
-		view = ([self.dataSource respondsToSelector:@selector(galleryView:viewAtIndex:)] ? [self.dataSource galleryView:self viewAtIndex:index] : nil);
-		if(!view)
-		{
-			view = [[UIView alloc] init];
-			float red = (arc4random() % 255) / 255.0f;
-			float green = (arc4random() % 255) / 255.0f;
-			float blue = (arc4random() % 255) / 255.0f;
-			view.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
-		}
-		[self.galleryViews replaceObjectAtIndex:index withObject:view];
-		if(debugMode) NSLog(@"GALLERY VIEW: Loaded view at index %@.", NSIntegerToString(index));
-	}
+	NSInteger index = self.currentIndex;
 	
-	if(view)
-	{
-		view.frame = [self frameForPageAtIndex:index];
-		[self.scrollView addSubview:view];
-	}
-}
-
-- (void)reloadData
-{
-	[self reset];
+	// Loads the adjacent views.
+	[self loadViewAtIndex:index - 1];
+	[self loadViewAtIndex:index];
+	[self loadViewAtIndex:index + 1];
 	
-	if(!self.dataSource)
-		return;
-	
-	self.pageControl.numberOfPages = [self.dataSource numberOfViewsInGalleryViewController:self];
-	if(self.pageControl.numberOfPages == 0)
-		return;
-	
-	// Prepares the views array with placeholders.
-	for(NSUInteger i = 0; i < self.pageControl.numberOfPages; i++)
-		[self.galleryViews addObject:[NSNull null]];
-	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:willShowViewAtIndex:)])
-		[self.delegate galleryView:self willShowViewAtIndex:0];
-	
-	[self loadViewAtIndex:0];
-	if(self.pageControl.numberOfPages > 1)
-		[self loadViewAtIndex:1];
-	
-	self.pageControl.currentPage = 0;
-	self.previousIndex = 0;
-	
-	[self resizeScrollViewContent];
-	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(galleryView:didShowViewAtIndex:)])
-		[self.delegate galleryView:self didShowViewAtIndex:0];
-}
-
-- (void)reset
-{
-	self.pageControl.currentPage = NSNotFound; // It must be set to a value different from '0' or else it will not show the starting white dot when the gallery reloads the data.
-	self.pageControl.numberOfPages = 0;
-	self.previousIndex = NSNotFound;
-	self.scrollView.contentOffset = CGPointZero;
-	self.scrollView.contentSize = self.scrollView.bounds.size;
-	[self.galleryViews removeAllObjects];
+	// Scrolls to the selected index.
+	[self scrollToViewAtIndex:index animated:YES];
 }
 
 
-#pragma mark - Scroll view delegate
+#pragma mark - Protocol implementation (UIScrollViewDelegate)
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView*)scrollView
 {
@@ -393,7 +403,7 @@ static BOOL debugMode = NO;
 	
 	// Updates the page control current page.
 	CGFloat width = self.scrollView.frame.size.width;
-	NSInteger index = floor((self.scrollView.contentOffset.x - (width / 2)) / width) + 1;
+	NSInteger index = floor((self.scrollView.contentOffset.x - (width / 2.0f)) / width) + 1;
 	self.pageControl.currentPage = index;
 	
 	// Loads the adjacent views.

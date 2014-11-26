@@ -32,7 +32,7 @@
 // Memory management
 - (void)	commonInit;
 
-// User interface management (Table view)
+// User interface management (TableView)
 - (void)	applyAttributesOfItem:(JFMenuItem*)item toCell:(JFMenuItemTableViewCell*)cell;
 - (void)	collapseGroup:(JFMenuGroup*)group atIndex:(NSInteger)index;
 - (void)	collapseGroupsIfPossible;
@@ -44,6 +44,9 @@
 - (JFMenuGroup*)	groupForItem:(JFMenuItem*)item;
 - (NSIndexPath*)	indexPathOfItem:(JFMenuItem*)item;
 - (JFMenuItem*)		itemForRowAtIndexPath:(NSIndexPath*)indexPath;
+
+// Validation management
+- (BOOL)	validateItem:(JFMenuItem*)item;
 
 @end
 
@@ -71,15 +74,9 @@
 	if(_items == items)
 		return;
 	
-	self.selectedItem = nil;
-	
 	_items = items;
 	
-	if(self.shouldCollapseGroups)
-		[self collapseGroupsIfPossible];
-	
-	if([self isViewLoaded])
-		[self.tableView reloadData];
+	[self reloadItems];
 }
 
 - (void)setSelectedItem:(JFMenuItem*)selectedItem
@@ -87,8 +84,8 @@
 	if(_selectedItem == selectedItem)
 		return;
 	
-	// Checks if the new selected item is one of the menu items and cancels the operation if not.
-	if(![self.items containsObject:selectedItem] && ![self groupForItem:selectedItem])
+	// Checks if the new selected item is one of the menu items and cancels the operation if not ('nil' value is allowed).
+	if(selectedItem && (![self validateItem:selectedItem] || !selectedItem.selectionEnabled))
 		return;
 	
 	JFMenuItem* oldItem = _selectedItem;
@@ -107,7 +104,15 @@
 	if(_selectedItem)
 	{
 		if([self isViewLoaded])
-			[self updateCellAtIndexPath:[self indexPathOfItem:_selectedItem]];
+		{
+			NSIndexPath* indexPath = [self indexPathOfItem:_selectedItem];
+			
+			JFMenuGroup* group = [self groupForItem:_selectedItem];
+			if(group)
+				[self expandGroup:group atIndex:indexPath.section];
+			
+			[self updateCellAtIndexPath:indexPath];
+		}
 		
 		if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:didSelectItem:)])
 			[self.delegate menuViewController:self didSelectItem:_selectedItem];
@@ -170,6 +175,21 @@
 }
 
 
+#pragma mark - Data management
+
+- (void)reloadItems
+{
+	if([self isViewLoaded])
+		[self.tableView reloadData];
+	
+	if(self.shouldCollapseGroups)
+		[self collapseGroupsIfPossible];
+	
+	if(self.selectedItem && (![self validateItem:self.selectedItem] || !self.selectedItem.selectionEnabled))
+		self.selectedItem = nil;
+}
+
+
 #pragma mark - User interface management (Inherited)
 
 - (void)viewDidLoad
@@ -183,7 +203,7 @@
 }
 
 
-#pragma mark - User interface management (Table view)
+#pragma mark - User interface management (TableView)
 
 - (void)applyAttributesOfItem:(JFMenuItem*)item toCell:(JFMenuItemTableViewCell*)cell
 {
@@ -277,6 +297,9 @@
 		if(![self.delegate menuViewController:self shouldExpandGroup:group])
 			return;
 	}
+	
+	if([group.items count] == 0)
+		return;
 	
 	group.isCollapsed = NO;
 	
@@ -382,6 +405,14 @@
 }
 
 
+#pragma mark - Validation management
+
+- (BOOL)validateItem:(JFMenuItem*)item
+{
+	return (item && ([self.items containsObject:item] || [self groupForItem:item]));
+}
+
+
 #pragma mark - Protocol implementation (UITableViewDataSource)
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
@@ -396,6 +427,9 @@
 	JFMenuItemTableViewCell* retVal = [tableView dequeueReusableCellWithIdentifier:[JFMenuItemTableViewCell reuseIdentifier] forIndexPath:indexPath];
 	
 	[self loadDataOfItem:item intoCell:retVal];
+	
+	if(item == self.selectedItem)
+		[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 	
 	return retVal;
 }
@@ -443,6 +477,12 @@
 	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
 	if(!item.selectionEnabled)
 		return nil;
+	
+	if([self.delegate respondsToSelector:@selector(menuViewController:shouldSelectItem:)])
+	{
+		if(![self.delegate menuViewController:self shouldSelectItem:item])
+			return nil;
+	}
 	
 	return indexPath;
 }

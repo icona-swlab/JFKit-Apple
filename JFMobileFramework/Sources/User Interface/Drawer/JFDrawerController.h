@@ -27,6 +27,16 @@
 
 
 
+// List of drawer notifications.
+extern NSString* const	JFDrawerControllerDidCancelHideMenuNotification;
+extern NSString* const	JFDrawerControllerDidCancelShowMenuNotification;
+extern NSString* const	JFDrawerControllerDidHideMenuNotification;
+extern NSString* const	JFDrawerControllerDidShowMenuNotification;
+extern NSString* const	JFDrawerControllerWillHideMenuNotification;
+extern NSString* const	JFDrawerControllerWillShowMenuNotification;
+
+
+
 @protocol JFDrawerControllerDelegate <NSObject>
 
 @optional
@@ -52,6 +62,9 @@
 
 // User interface
 @property (strong, nonatomic)	UIViewController*	rootViewController;
+
+// Data management
+- (void)	reloadMenuItems;
 
 // User interface management
 - (BOOL)	hideMenu;

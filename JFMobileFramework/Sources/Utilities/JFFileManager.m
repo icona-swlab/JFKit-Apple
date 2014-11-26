@@ -100,7 +100,7 @@
 	return [self.fileManager createDirectoryAtURL:folderURL withIntermediateDirectories:YES attributes:attributes error:error];
 }
 
-- (BOOL)itemExistsAtURL:(NSURL*)itemURL isDirectory:(BOOL*)isDirectory;
+- (BOOL)itemExistsAtURL:(NSURL*)itemURL isDirectory:(BOOL*)isDirectory
 {
 	if(![itemURL isFileURL])
 		return NO;

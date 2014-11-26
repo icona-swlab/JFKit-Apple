@@ -1,6 +1,6 @@
 //
-//  JFGalleryView.h
-//  Copyright (C) 2013  Jacopo Filié
+//  JFTextView.h
+//  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -22,39 +22,9 @@
 
 
 
-@class JFGalleryView;
-
-
-
-@protocol  JFGalleryViewDataSource
-
-@required
+@interface JFTextView : UITextView
 
 // Data
-- (UIImage*)	galleryView:(JFGalleryView*)galleryView imageForItemAtIndex:(NSUInteger)index;
-- (NSUInteger)	numberOfItemsInGalleryView:(JFGalleryView*)galleryView;
-
-@end
-
-
-
-@protocol  JFGalleryViewDelegate
-
-@optional
-
-// User interface
-- (UIEdgeInsets)	edgeInsetsForGalleryView:(JFGalleryView*)galleryView;
-
-@end
-
-
-
-@interface JFGalleryView : UIView
-
-// Listeners
-@property (weak, nonatomic)	IBOutlet	NSObject<JFGalleryViewDataSource>*	dataSource;
-
-// Gallery view management
-- (void)	reloadData;
+@property (copy, nonatomic)	IBInspectable	NSString*	placeholder;
 
 @end
