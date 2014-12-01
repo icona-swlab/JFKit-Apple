@@ -20,6 +20,8 @@
 
 #import "JFKeyboardViewHandler.h"
 
+#import "JFUtilities.h"
+
 
 
 @interface JFKeyboardViewHandler ()

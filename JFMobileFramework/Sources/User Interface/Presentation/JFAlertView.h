@@ -20,6 +20,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "JFUtilities.h"
+
 
 
 @class JFAlertView;

@@ -21,6 +21,7 @@
 #import "JFTextView.h"
 
 #import "JFLabel.h"
+#import "JFUtilities.h"
 
 
 
