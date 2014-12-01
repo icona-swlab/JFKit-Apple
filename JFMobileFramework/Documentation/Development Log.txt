@@ -9,14 +9,15 @@ Developer:	Jacopo Filié
 
 ---------------------
 Time started:	14:30
-Time ended:		14:45
+Time ended:		15:00
 ---------------------
-Time total:		00:15
+Time total:		00:30
 ---------------------
 
 Activity:
 
 	- Merged changes done while working at Icona S.r.l..
+	- Fixed the "JFKeyboardViewHandler" class.
 
 
 ########## 2014.11.26 ##################################################

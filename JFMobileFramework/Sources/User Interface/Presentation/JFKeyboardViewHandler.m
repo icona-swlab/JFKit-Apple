@@ -95,7 +95,9 @@
 	CGRect keyboardFrameEnd = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	UIViewAnimationOptions options = (UIViewAnimationOptionBeginFromCurrentState | (curve << 16));
 	
-	self.resizableViewBottomConstraint.constant = self.constant + CGRectGetHeight(keyboardFrameEnd);
+	CGFloat height = ((iOS7 && UIInterfaceOrientationIsLandscape(UIStatusBarOrientation)) ? CGRectGetWidth(keyboardFrameEnd) : CGRectGetHeight(keyboardFrameEnd));
+	
+	self.resizableViewBottomConstraint.constant = self.constant + height;
 	[self.resizableView.superview setNeedsUpdateConstraints];
 	
 	Block animations = ^()
