@@ -31,6 +31,8 @@
 		EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
+		EA5C580A1A28AC36005B0571 /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5C58091A28AC36005B0571 /* JFUpdatableFile.m */; };
+		EAF286741A2CA6260000CD1E /* JFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF286731A2CA6260000CD1E /* JFAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -122,7 +124,11 @@
 		EA425DC71894224A003C55E8 /* libJFDebug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDebug.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA425DF418942C46003C55E8 /* libJFUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA5C58081A28AC36005B0571 /* JFUpdatableFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUpdatableFile.h; sourceTree = "<group>"; };
+		EA5C58091A28AC36005B0571 /* JFUpdatableFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUpdatableFile.m; sourceTree = "<group>"; };
 		EAD5B6D018A8F61100414379 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EAF286721A2CA6260000CD1E /* JFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlertView.h; sourceTree = "<group>"; };
+		EAF286731A2CA6260000CD1E /* JFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +256,8 @@
 		EA1F0F231A25D64B000C6CD3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				EAF286721A2CA6260000CD1E /* JFAlertView.h */,
+				EAF286731A2CA6260000CD1E /* JFAlertView.m */,
 				EA1F0F241A25D64B000C6CD3 /* JFGalleryView.h */,
 				EA1F0F251A25D64B000C6CD3 /* JFGalleryView.m */,
 				EA1F0F261A25D64B000C6CD3 /* JFKeyboardViewHandler.h */,
@@ -280,6 +288,8 @@
 			children = (
 				EA1F0F431A25D651000C6CD3 /* JFFileManager.h */,
 				EA1F0F441A25D651000C6CD3 /* JFFileManager.m */,
+				EA5C58081A28AC36005B0571 /* JFUpdatableFile.h */,
+				EA5C58091A28AC36005B0571 /* JFUpdatableFile.m */,
 				EA1F0F451A25D651000C6CD3 /* JFUtilities.h */,
 				EA1F0F461A25D651000C6CD3 /* JFUtilities.m */,
 			);
@@ -473,6 +483,7 @@
 				EA1F0F391A25D64B000C6CD3 /* JFMenuViewController.m in Sources */,
 				EA1F0F351A25D64B000C6CD3 /* JFSimpleFormViewController.m in Sources */,
 				EA1F0F341A25D64B000C6CD3 /* JFDrawerController.m in Sources */,
+				EAF286741A2CA6260000CD1E /* JFAlertView.m in Sources */,
 				EA1F0F361A25D64B000C6CD3 /* JFMenuGroup.m in Sources */,
 				EA1F0F331A25D64B000C6CD3 /* JFActivityIndicatorView.m in Sources */,
 				EA1F0F3A1A25D64B000C6CD3 /* JFNavigationController.m in Sources */,
@@ -503,6 +514,7 @@
 			files = (
 				EA1F0F481A25D651000C6CD3 /* JFUtilities.m in Sources */,
 				EA1F0F471A25D651000C6CD3 /* JFFileManager.m in Sources */,
+				EA5C580A1A28AC36005B0571 /* JFUpdatableFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

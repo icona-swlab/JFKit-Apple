@@ -109,6 +109,8 @@
 #endif
 #define	ObjectClassString(arg_obj)						NSStringFromClass([arg_obj class])
 #define PointerToString(arg_val)						[NSString stringWithFormat:@"%p", (id)arg_val]
+#define KVCPropertyName(arg_property)					[[KVCPropertyPath(arg_property) componentsSeparatedByString:@"."] lastObject]
+#define KVCPropertyPath(arg_property)					(@""#arg_property)
 #define SInt8ToString(arg_val)							[NSString stringWithFormat:@"%hhd", (char)arg_val]
 #define SInt16ToString(arg_val)							[NSString stringWithFormat:@"%hd", (short)arg_val]
 #define SInt32ToString(arg_val)							[NSString stringWithFormat:@"%d", (int)arg_val]
