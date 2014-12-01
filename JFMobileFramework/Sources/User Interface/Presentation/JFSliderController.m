@@ -559,6 +559,8 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	self.shouldCancelCurrentTransition = NO;
 	self.currentTransition = JFSliderControllerTransitionNone;
 	
+	panelContainer.userInteractionEnabled = YES;
+	
 	if(shouldCancel)
 	{
 		if(didHidePanel)
@@ -579,8 +581,6 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	else
 	{
 		self.currentFocalPanel = currentFocalPanel;
-		
-		panelContainer.userInteractionEnabled = YES;
 		
 		if(didHidePanel)
 		{
