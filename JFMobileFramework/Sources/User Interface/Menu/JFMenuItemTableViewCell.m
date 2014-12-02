@@ -20,6 +20,8 @@
 
 #import "JFMenuItemTableViewCell.h"
 
+#import "JFUtilities.h"
+
 
 
 @interface JFMenuItemTableViewCell ()
@@ -113,7 +115,7 @@
 
 - (void)setSeparatorColor:(UIColor*)separatorColor
 {
-	if(_separatorColor == separatorColor)
+	if(AreColorsEqual(_separatorColor, separatorColor))
 		return;
 	
 	_separatorColor = separatorColor;

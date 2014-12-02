@@ -87,6 +87,39 @@ ByteStream ByteStreamRealloc(ByteStream byteStream, NSUInteger length)
 }
 
 
+#pragma mark - Functions (Equality)
+
+BOOL UIColorEqualToColor(UIColor* color1, UIColor* color2)
+{
+	if((!color1 && !color2) || (color1 == color2))
+		return YES;
+	
+	if(!(color1 && color2))
+		return NO;
+	
+	UIColor* (^convertToRGBSpace)(UIColor*) = ^UIColor*(UIColor* color)
+	{
+		if(!color)
+			return nil;
+		
+		CGColorSpaceModel colorSpaceModel = CGColorSpaceGetModel(CGColorGetColorSpace(color.CGColor));
+		if(colorSpaceModel == kCGColorSpaceModelRGB)
+			return color;
+		
+		CGFloat red, green, blue, alpha;
+		if(![color getRed:&red green:&green blue:&blue alpha:&alpha])
+			return nil;
+		
+		return [[UIColor alloc] initWithRed:red green:green blue:blue alpha:alpha];
+	};
+	
+	UIColor* cColor1 = convertToRGBSpace(color1);
+	UIColor* cColor2 = convertToRGBSpace(color2);
+	
+	return CGColorEqualToColor(cColor1.CGColor, cColor2.CGColor);
+}
+
+
 #pragma mark - Functions (Info)
 
 NSString* appInfoForKey(NSString* key)

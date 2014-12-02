@@ -133,8 +133,6 @@
 
 - (void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	LogMethod;
-	
 	JFAlertViewButton* button = [self.currentButtons objectAtIndex:buttonIndex];
 	if(button.action)
 		button.action();
@@ -142,7 +140,6 @@
 
 - (void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	LogMethod;
 	self.isVisible = NO;
 	
 	JFAlertViewButton* button = [self.currentButtons objectAtIndex:buttonIndex];
@@ -163,8 +160,6 @@
 
 - (void)alertView:(UIAlertView*)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	LogMethod;
-	
 	if(self.delegate && [self.delegate respondsToSelector:@selector(alertView:willDismissWithButton:)])
 	{
 		JFAlertViewButton* button = [self.currentButtons objectAtIndex:buttonIndex];
@@ -174,8 +169,6 @@
 
 - (void)didPresentAlertView:(UIAlertView*)alertView
 {
-	LogMethod;
-	
 	if(self.delegate && [self.delegate respondsToSelector:@selector(alertViewDidPresent:)])
 		[self.delegate alertViewDidPresent:self];
 	
@@ -189,8 +182,6 @@
 
 - (void)willPresentAlertView:(UIAlertView*)alertView
 {
-	LogMethod;
-	
 	self.isVisible = YES;
 	
 	if(self.delegate && [self.delegate respondsToSelector:@selector(alertViewWillPresent:)])

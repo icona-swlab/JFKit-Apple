@@ -60,7 +60,7 @@
 
 // User interface management
 - (BOOL)	dismissWithClickedButton:(JFAlertViewButton*)button completion:(Block)completion;
-- (BOOL)	present:(Block)completion;
+- (BOOL)	present:(Block)completion;	// Fails if there is not at least the cancel button.
 
 @end
 

@@ -49,6 +49,7 @@
 #pragma mark - Macros (Equality)
 
 #define AreArraysEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToArray:arg_obj2])
+#define AreColorsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || UIColorEqualToColor(arg_obj1, arg_obj2))
 #define AreDatesEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToDate:arg_obj2])
 #define AreObjectsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqual:arg_obj2])
 #define AreSetsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToSet:arg_obj2])
@@ -184,6 +185,11 @@ extern BOOL			ByteStreamEqualToByteStream(ByteStream byteStream1, ByteStream byt
 extern void			ByteStreamFree(ByteStream byteStream);
 extern ByteStream	ByteStreamMake(Byte* bytes, NSUInteger length);
 extern ByteStream	ByteStreamRealloc(ByteStream byteStream, NSUInteger length);
+
+
+#pragma mark - Functions (Equality)
+
+extern BOOL	UIColorEqualToColor(UIColor* color1, UIColor* color2);
 
 
 #pragma mark - Functions (Info)
