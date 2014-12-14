@@ -18,10 +18,6 @@
 
 
 
-#import <UIKit/UIKit.h>
-
-
-
 // Form cell styles
 typedef NS_ENUM(NSUInteger, JFSimpleFormViewCellStyle) {
 	JFSimpleFormViewCellStyleField,

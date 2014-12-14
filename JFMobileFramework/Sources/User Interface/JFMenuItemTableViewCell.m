@@ -182,7 +182,7 @@
 
 + (UINib*)nib
 {
-	return [UINib nibWithNibName:NSStringFromClass(self) bundle:nil];
+	return [UINib nibWithNibName:NSStringFromClass(self) bundle:[NSBundle bundleWithPath:JFMobileFrameworkBundle]];
 }
 
 + (NSString*)reuseIdentifier

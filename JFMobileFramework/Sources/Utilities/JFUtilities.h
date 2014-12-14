@@ -18,11 +18,6 @@
 
 
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
-
-
 #pragma mark - Macros (C)
 
 #define ByteStreamNull	ByteStreamAlloc(0)

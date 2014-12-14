@@ -18,10 +18,6 @@
 
 
 
-#import <UIKit/UIKit.h>
-
-
-
 @interface JFActivityIndicatorView : UIView
 
 // Attributes

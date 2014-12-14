@@ -1,5 +1,5 @@
 //
-//  JFTextView.h
+//  Prefix.pch
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,9 +18,15 @@
 
 
 
-@interface JFTextView : UITextView
+#ifndef JFMobileFramework_Prefix_pch
+#define JFMobileFramework_Prefix_pch
 
-// Data
-@property (copy, nonatomic)	IBInspectable	NSString*	placeholder;
+// SDK
+#import <CoreData/CoreData.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@end
+// Common
+#import "JFGlobals.h"
+
+#endif

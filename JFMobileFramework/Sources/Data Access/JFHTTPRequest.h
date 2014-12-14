@@ -18,10 +18,6 @@
 
 
 
-#import <Foundation/Foundation.h>
-
-
-
 @class JFHTTPRequest;
 
 @protocol JFHTTPRequestDelegate;

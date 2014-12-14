@@ -18,10 +18,6 @@
 
 
 
-#import <UIKit/UIKit.h>
-
-
-
 @interface JFMenuItemTableViewCell : UITableViewCell
 
 // Attributes

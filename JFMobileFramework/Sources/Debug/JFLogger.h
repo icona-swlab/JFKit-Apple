@@ -18,10 +18,6 @@
 
 
 
-#import <Foundation/Foundation.h>
-
-
-
 typedef NS_OPTIONS(UInt8, LogDestinations)
 {
 	LogDestinationConsole	= 1 << 0,	// Logs the message into the console.

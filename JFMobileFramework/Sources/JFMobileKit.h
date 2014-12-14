@@ -18,7 +18,12 @@
 
 
 
-// Apple
+#ifndef JFMobileFramework_JFMobileKit_h
+#define JFMobileFramework_JFMobileKit_h
+
+// SDK
+#import <CoreData/CoreData.h>
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 // Data access
@@ -50,3 +55,5 @@
 #import "JFFileManager.h"
 #import "JFUpdatableFile.h"
 #import "JFUtilities.h"
+
+#endif

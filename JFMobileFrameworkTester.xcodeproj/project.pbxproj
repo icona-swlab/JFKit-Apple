@@ -14,6 +14,7 @@
 		EAAEB5861A3E2FB9003DCD73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5851A3E2FB9003DCD73 /* Foundation.framework */; };
 		EAAEB5881A3E2FC0003DCD73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5871A3E2FC0003DCD73 /* UIKit.framework */; };
 		EAAEB5931A3E35F1003DCD73 /* libJFMobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5901A3E3478003DCD73 /* libJFMobileLibrary.a */; };
+		EAAEB5A71A3E3F66003DCD73 /* JFMobileFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAAEB5A61A3E3F34003DCD73 /* JFMobileFramework.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = EA6F57521A3E0CDE006D6C37;
 			remoteInfo = JFMobileLibrary;
+		};
+		EAAEB5A21A3E3F34003DCD73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAAEB58B1A3E3478003DCD73 /* JFMobileFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EAAEB5971A3E3CEE003DCD73;
+			remoteInfo = Resources;
+		};
+		EAAEB5A51A3E3F34003DCD73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAAEB58B1A3E3478003DCD73 /* JFMobileFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EAAEB5981A3E3CEE003DCD73;
+			remoteInfo = Resources;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -115,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAEB5901A3E3478003DCD73 /* libJFMobileLibrary.a */,
+				EAAEB5A61A3E3F34003DCD73 /* JFMobileFramework.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +169,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EAAEB5A31A3E3F34003DCD73 /* PBXTargetDependency */,
 				EAAEB5921A3E35EE003DCD73 /* PBXTargetDependency */,
 			);
 			name = JFMobileFrameworkTester;
@@ -207,6 +224,13 @@
 			remoteRef = EAAEB58F1A3E3478003DCD73 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		EAAEB5A61A3E3F34003DCD73 /* JFMobileFramework.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = JFMobileFramework.bundle;
+			remoteRef = EAAEB5A51A3E3F34003DCD73 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -215,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA1262061A3E2CB000CB61D9 /* Images.xcassets in Resources */,
+				EAAEB5A71A3E3F66003DCD73 /* JFMobileFramework.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +263,11 @@
 			isa = PBXTargetDependency;
 			name = JFMobileLibrary;
 			targetProxy = EAAEB5911A3E35EE003DCD73 /* PBXContainerItemProxy */;
+		};
+		EAAEB5A31A3E3F34003DCD73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Resources;
+			targetProxy = EAAEB5A21A3E3F34003DCD73 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

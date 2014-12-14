@@ -18,8 +18,6 @@
 
 
 
-#import <Foundation/Foundation.h>
-
 #import "JFUtilities.h"
 
 

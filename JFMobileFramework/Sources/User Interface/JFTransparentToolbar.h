@@ -18,10 +18,6 @@
 
 
 
-#import <UIKit/UIKit.h>
-
-
-
 @interface JFTransparentToolbar : UIToolbar
 
 // User interface

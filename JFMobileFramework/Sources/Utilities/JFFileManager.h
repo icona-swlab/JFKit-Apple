@@ -18,10 +18,6 @@
 
 
 
-#import <Foundation/Foundation.h>
-
-
-
 @interface JFFileManager : NSObject
 
 // Memory management

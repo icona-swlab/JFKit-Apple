@@ -33,6 +33,7 @@
 		EA5C29341A3E13A00027D706 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B6D018A8F61100414379 /* CoreData.framework */; };
 		EA5C29351A3E13A00027D706 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA5C29361A3E13A00027D706 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425DD71894224A003C55E8 /* UIKit.framework */; };
+		EA69EF461A3E550F00445BAE /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = EA69EF451A3E550F00445BAE /* Prefix.pch */; };
 		EA6F579C1A3E0CFC006D6C37 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */; };
 		EA6F579D1A3E0CFC006D6C37 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576F1A3E0CFC006D6C37 /* JFHTTPRequest.m */; };
 		EA6F579E1A3E0CFC006D6C37 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57721A3E0CFC006D6C37 /* JFLogger.m */; };
@@ -55,6 +56,8 @@
 		EA6F57AF1A3E0CFC006D6C37 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57971A3E0CFC006D6C37 /* JFFileManager.m */; };
 		EA6F57B01A3E0CFC006D6C37 /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57991A3E0CFC006D6C37 /* JFUpdatableFile.m */; };
 		EA6F57B11A3E0CFC006D6C37 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F579B1A3E0CFC006D6C37 /* JFUtilities.m */; };
+		EAADAB491A3E544E00BD98D0 /* JFGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = EAADAB481A3E544E00BD98D0 /* JFGlobals.h */; };
+		EAAEB5A81A3E4732003DCD73 /* JFMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6F57861A3E0CFC006D6C37 /* JFMenuItemTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,7 +76,8 @@
 		EA425D901894211F003C55E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA5C29331A3E130E0027D706 /* JFMobileKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMobileKit.h; sourceTree = "<group>"; };
-		EA6F57531A3E0CDE006D6C37 /* libJFMobileLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA69EF451A3E550F00445BAE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = JFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
 		EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFCoreDataManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA6F576E1A3E0CFC006D6C37 /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
@@ -119,6 +123,9 @@
 		EA6F57991A3E0CFC006D6C37 /* JFUpdatableFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUpdatableFile.m; sourceTree = "<group>"; };
 		EA6F579A1A3E0CFC006D6C37 /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
 		EA6F579B1A3E0CFC006D6C37 /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
+		EAADAB481A3E544E00BD98D0 /* JFGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGlobals.h; sourceTree = "<group>"; };
+		EAAEB5981A3E3CEE003DCD73 /* JFMobileFramework.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JFMobileFramework.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAAEB5A01A3E3E91003DCD73 /* Resources-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Resources-Info.plist"; sourceTree = "<group>"; };
 		EAD5B6D018A8F61100414379 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -133,6 +140,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAAEB5951A3E3CEE003DCD73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -142,13 +156,15 @@
 				EA425D8F1894211F003C55E8 /* Frameworks */,
 				EA425D8E1894211F003C55E8 /* Products */,
 				EA6F576A1A3E0CFC006D6C37 /* Sources */,
+				EAAEB59F1A3E3E91003DCD73 /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
 		EA425D8E1894211F003C55E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA6F57531A3E0CDE006D6C37 /* libJFMobileLibrary.a */,
+				EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */,
+				EAAEB5981A3E3CEE003DCD73 /* JFMobileFramework.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +182,7 @@
 		EA6F576A1A3E0CFC006D6C37 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EAADAB481A3E544E00BD98D0 /* JFGlobals.h */,
 				EA5C29331A3E130E0027D706 /* JFMobileKit.h */,
 				EA6F576B1A3E0CFC006D6C37 /* Data Access */,
 				EA6F57701A3E0CFC006D6C37 /* Debug */,
@@ -249,6 +266,16 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		EAAEB59F1A3E3E91003DCD73 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA69EF451A3E550F00445BAE /* Prefix.pch */,
+				EAAEB5A01A3E3E91003DCD73 /* Resources-Info.plist */,
+			);
+			name = "Supporting Files";
+			path = "JFMobileFramework/Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -269,8 +296,10 @@
 				EA27C6C41A3E142500B578EB /* JFMobileKit.h in Headers */,
 				EA27C6CC1A3E142500B578EB /* JFKeyboardViewHandler.h in Headers */,
 				EA27C6CF1A3E142500B578EB /* JFMenuItem.h in Headers */,
+				EAADAB491A3E544E00BD98D0 /* JFGlobals.h in Headers */,
 				EA27C6D11A3E142500B578EB /* JFMenuViewController.h in Headers */,
 				EA27C6D81A3E142500B578EB /* JFFileManager.h in Headers */,
+				EA69EF461A3E550F00445BAE /* Prefix.pch in Headers */,
 				EA27C6C51A3E142500B578EB /* JFCoreDataManager.h in Headers */,
 				EA27C6C81A3E142500B578EB /* JFActivityIndicatorView.h in Headers */,
 				EA27C6CE1A3E142500B578EB /* JFMenuGroup.h in Headers */,
@@ -285,9 +314,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EA6F57521A3E0CDE006D6C37 /* JFMobileLibrary */ = {
+		EA6F57521A3E0CDE006D6C37 /* Library */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA6F57641A3E0CDF006D6C37 /* Build configuration list for PBXNativeTarget "JFMobileLibrary" */;
+			buildConfigurationList = EA6F57641A3E0CDF006D6C37 /* Build configuration list for PBXNativeTarget "Library" */;
 			buildPhases = (
 				EA6F574F1A3E0CDE006D6C37 /* Sources */,
 				EA6F57501A3E0CDE006D6C37 /* Frameworks */,
@@ -298,10 +327,27 @@
 			);
 			dependencies = (
 			);
-			name = JFMobileLibrary;
+			name = Library;
 			productName = JFMobileLibrary;
-			productReference = EA6F57531A3E0CDE006D6C37 /* libJFMobileLibrary.a */;
+			productReference = EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		EAAEB5971A3E3CEE003DCD73 /* Resources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAAEB59E1A3E3CEE003DCD73 /* Build configuration list for PBXNativeTarget "Resources" */;
+			buildPhases = (
+				EAAEB5941A3E3CEE003DCD73 /* Sources */,
+				EAAEB5951A3E3CEE003DCD73 /* Frameworks */,
+				EAAEB5961A3E3CEE003DCD73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Resources;
+			productName = JFMobileFrameworkResources;
+			productReference = EAAEB5981A3E3CEE003DCD73 /* JFMobileFramework.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -313,6 +359,9 @@
 				ORGANIZATIONNAME = "Jacopo Filié";
 				TargetAttributes = {
 					EA6F57521A3E0CDE006D6C37 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					EAAEB5971A3E3CEE003DCD73 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
@@ -329,10 +378,22 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA6F57521A3E0CDE006D6C37 /* JFMobileLibrary */,
+				EA6F57521A3E0CDE006D6C37 /* Library */,
+				EAAEB5971A3E3CEE003DCD73 /* Resources */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAAEB5961A3E3CEE003DCD73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAAEB5A81A3E4732003DCD73 /* JFMenuItemTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA6F574F1A3E0CDE006D6C37 /* Sources */ = {
@@ -361,6 +422,13 @@
 				EA6F57AF1A3E0CFC006D6C37 /* JFFileManager.m in Sources */,
 				EA6F57AE1A3E0CFC006D6C37 /* JFTransparentToolbar.m in Sources */,
 				EA6F57A21A3E0CFC006D6C37 /* JFGalleryView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAAEB5941A3E3CEE003DCD73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,8 +527,10 @@
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -470,7 +540,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -480,13 +549,56 @@
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EAAEB59C1A3E3CEE003DCD73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "$(PROJECT_NAME)/Supporting Files/Resources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		EAAEB59D1A3E3CEE003DCD73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "$(PROJECT_NAME)/Supporting Files/Resources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -502,11 +614,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA6F57641A3E0CDF006D6C37 /* Build configuration list for PBXNativeTarget "JFMobileLibrary" */ = {
+		EA6F57641A3E0CDF006D6C37 /* Build configuration list for PBXNativeTarget "Library" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA6F57651A3E0CDF006D6C37 /* Debug */,
 				EA6F57661A3E0CDF006D6C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAAEB59E1A3E3CEE003DCD73 /* Build configuration list for PBXNativeTarget "Resources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAAEB59C1A3E3CEE003DCD73 /* Debug */,
+				EAAEB59D1A3E3CEE003DCD73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

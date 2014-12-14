@@ -18,10 +18,6 @@
 
 
 
-#import <UIKit/UIKit.h>
-
-
-
 @class JFMenuGroup;
 @class JFMenuItem;
 @class JFMenuViewController;
