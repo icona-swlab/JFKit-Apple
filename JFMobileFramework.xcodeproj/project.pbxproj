@@ -7,63 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA00D0A018F0558A00A1CDA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA1F0F061A25D641000C6CD3 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F031A25D641000C6CD3 /* JFCoreDataManager.m */; };
-		EA1F0F071A25D641000C6CD3 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F051A25D641000C6CD3 /* JFHTTPRequest.m */; };
-		EA1F0F0B1A25D646000C6CD3 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F0A1A25D646000C6CD3 /* JFLogger.m */; };
-		EA1F0F331A25D64B000C6CD3 /* JFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F0F1A25D64B000C6CD3 /* JFActivityIndicatorView.m */; };
-		EA1F0F341A25D64B000C6CD3 /* JFDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F121A25D64B000C6CD3 /* JFDrawerController.m */; };
-		EA1F0F351A25D64B000C6CD3 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F151A25D64B000C6CD3 /* JFSimpleFormViewController.m */; };
-		EA1F0F361A25D64B000C6CD3 /* JFMenuGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F181A25D64B000C6CD3 /* JFMenuGroup.m */; };
-		EA1F0F371A25D64B000C6CD3 /* JFMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F1A1A25D64B000C6CD3 /* JFMenuItem.m */; };
-		EA1F0F381A25D64B000C6CD3 /* JFMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F1C1A25D64B000C6CD3 /* JFMenuItemTableViewCell.m */; };
-		EA1F0F391A25D64B000C6CD3 /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F1F1A25D64B000C6CD3 /* JFMenuViewController.m */; };
-		EA1F0F3A1A25D64B000C6CD3 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F221A25D64B000C6CD3 /* JFNavigationController.m */; };
-		EA1F0F3B1A25D64B000C6CD3 /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F251A25D64B000C6CD3 /* JFGalleryView.m */; };
-		EA1F0F3C1A25D64B000C6CD3 /* JFKeyboardViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F271A25D64B000C6CD3 /* JFKeyboardViewHandler.m */; };
-		EA1F0F3D1A25D64B000C6CD3 /* JFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F291A25D64B000C6CD3 /* JFLabel.m */; };
-		EA1F0F3E1A25D64B000C6CD3 /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F2B1A25D64B000C6CD3 /* JFSliderController.m */; };
-		EA1F0F3F1A25D64B000C6CD3 /* JFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F2D1A25D64B000C6CD3 /* JFSplitViewController.m */; };
-		EA1F0F401A25D64B000C6CD3 /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F2F1A25D64B000C6CD3 /* JFTextView.m */; };
-		EA1F0F411A25D64B000C6CD3 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F321A25D64B000C6CD3 /* JFTransparentToolbar.m */; };
-		EA1F0F471A25D651000C6CD3 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F441A25D651000C6CD3 /* JFFileManager.m */; };
-		EA1F0F481A25D651000C6CD3 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1F0F461A25D651000C6CD3 /* JFUtilities.m */; };
-		EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
-		EA5C580A1A28AC36005B0571 /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5C58091A28AC36005B0571 /* JFUpdatableFile.m */; };
-		EAF286741A2CA6260000CD1E /* JFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF286731A2CA6260000CD1E /* JFAlertView.m */; };
+		EA27C6C41A3E142500B578EB /* JFMobileKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5C29331A3E130E0027D706 /* JFMobileKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6C51A3E142500B578EB /* JFCoreDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6C61A3E142500B578EB /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F576E1A3E0CFC006D6C37 /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6C71A3E142500B578EB /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57711A3E0CFC006D6C37 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6C81A3E142500B578EB /* JFActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57741A3E0CFC006D6C37 /* JFActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6C91A3E142500B578EB /* JFAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57761A3E0CFC006D6C37 /* JFAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6CA1A3E142500B578EB /* JFDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57781A3E0CFC006D6C37 /* JFDrawerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6CB1A3E142500B578EB /* JFGalleryView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F577A1A3E0CFC006D6C37 /* JFGalleryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6CC1A3E142500B578EB /* JFKeyboardViewHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F577C1A3E0CFC006D6C37 /* JFKeyboardViewHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6CD1A3E142500B578EB /* JFLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6CE1A3E142500B578EB /* JFMenuGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57801A3E0CFC006D6C37 /* JFMenuGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6CF1A3E142500B578EB /* JFMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D01A3E142500B578EB /* JFMenuItemTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57841A3E0CFC006D6C37 /* JFMenuItemTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D11A3E142500B578EB /* JFMenuViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D21A3E142500B578EB /* JFNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D31A3E142500B578EB /* JFSimpleFormViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D41A3E142500B578EB /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F578D1A3E0CFC006D6C37 /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D51A3E142500B578EB /* JFSplitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F578F1A3E0CFC006D6C37 /* JFSplitViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D61A3E142500B578EB /* JFTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57911A3E0CFC006D6C37 /* JFTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D71A3E142500B578EB /* JFTransparentToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57931A3E0CFC006D6C37 /* JFTransparentToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D81A3E142500B578EB /* JFFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57961A3E0CFC006D6C37 /* JFFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6D91A3E142500B578EB /* JFUpdatableFile.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57981A3E0CFC006D6C37 /* JFUpdatableFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA27C6DA1A3E142500B578EB /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F579A1A3E0CFC006D6C37 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5C29341A3E13A00027D706 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B6D018A8F61100414379 /* CoreData.framework */; };
+		EA5C29351A3E13A00027D706 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
+		EA5C29361A3E13A00027D706 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425DD71894224A003C55E8 /* UIKit.framework */; };
+		EA6F579C1A3E0CFC006D6C37 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */; };
+		EA6F579D1A3E0CFC006D6C37 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576F1A3E0CFC006D6C37 /* JFHTTPRequest.m */; };
+		EA6F579E1A3E0CFC006D6C37 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57721A3E0CFC006D6C37 /* JFLogger.m */; };
+		EA6F579F1A3E0CFC006D6C37 /* JFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57751A3E0CFC006D6C37 /* JFActivityIndicatorView.m */; };
+		EA6F57A01A3E0CFC006D6C37 /* JFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57771A3E0CFC006D6C37 /* JFAlertView.m */; };
+		EA6F57A11A3E0CFC006D6C37 /* JFDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57791A3E0CFC006D6C37 /* JFDrawerController.m */; };
+		EA6F57A21A3E0CFC006D6C37 /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F577B1A3E0CFC006D6C37 /* JFGalleryView.m */; };
+		EA6F57A31A3E0CFC006D6C37 /* JFKeyboardViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */; };
+		EA6F57A41A3E0CFC006D6C37 /* JFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */; };
+		EA6F57A51A3E0CFC006D6C37 /* JFMenuGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57811A3E0CFC006D6C37 /* JFMenuGroup.m */; };
+		EA6F57A61A3E0CFC006D6C37 /* JFMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */; };
+		EA6F57A71A3E0CFC006D6C37 /* JFMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57851A3E0CFC006D6C37 /* JFMenuItemTableViewCell.m */; };
+		EA6F57A81A3E0CFC006D6C37 /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */; };
+		EA6F57A91A3E0CFC006D6C37 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */; };
+		EA6F57AA1A3E0CFC006D6C37 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F578C1A3E0CFC006D6C37 /* JFSimpleFormViewController.m */; };
+		EA6F57AB1A3E0CFC006D6C37 /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F578E1A3E0CFC006D6C37 /* JFSliderController.m */; };
+		EA6F57AC1A3E0CFC006D6C37 /* JFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57901A3E0CFC006D6C37 /* JFSplitViewController.m */; };
+		EA6F57AD1A3E0CFC006D6C37 /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57921A3E0CFC006D6C37 /* JFTextView.m */; };
+		EA6F57AE1A3E0CFC006D6C37 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57941A3E0CFC006D6C37 /* JFTransparentToolbar.m */; };
+		EA6F57AF1A3E0CFC006D6C37 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57971A3E0CFC006D6C37 /* JFFileManager.m */; };
+		EA6F57B01A3E0CFC006D6C37 /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57991A3E0CFC006D6C37 /* JFUpdatableFile.m */; };
+		EA6F57B11A3E0CFC006D6C37 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F579B1A3E0CFC006D6C37 /* JFUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EA00D0A118F0558A00A1CDA3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA300EAC18A18B1000E9DA78 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA425DC51894224A003C55E8 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA425DF018942C46003C55E8 /* CopyFiles */ = {
+		EA6F57511A3E0CDE006D6C37 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -75,246 +70,85 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUserInterface.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA1F0F021A25D641000C6CD3 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
-		EA1F0F031A25D641000C6CD3 /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
-		EA1F0F041A25D641000C6CD3 /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
-		EA1F0F051A25D641000C6CD3 /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
-		EA1F0F091A25D646000C6CD3 /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
-		EA1F0F0A1A25D646000C6CD3 /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
-		EA1F0F0E1A25D64B000C6CD3 /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
-		EA1F0F0F1A25D64B000C6CD3 /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFActivityIndicatorView.m; sourceTree = "<group>"; };
-		EA1F0F111A25D64B000C6CD3 /* JFDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFDrawerController.h; sourceTree = "<group>"; };
-		EA1F0F121A25D64B000C6CD3 /* JFDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFDrawerController.m; sourceTree = "<group>"; };
-		EA1F0F141A25D64B000C6CD3 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
-		EA1F0F151A25D64B000C6CD3 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
-		EA1F0F171A25D64B000C6CD3 /* JFMenuGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuGroup.h; sourceTree = "<group>"; };
-		EA1F0F181A25D64B000C6CD3 /* JFMenuGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuGroup.m; sourceTree = "<group>"; };
-		EA1F0F191A25D64B000C6CD3 /* JFMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItem.h; sourceTree = "<group>"; };
-		EA1F0F1A1A25D64B000C6CD3 /* JFMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuItem.m; sourceTree = "<group>"; };
-		EA1F0F1B1A25D64B000C6CD3 /* JFMenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItemTableViewCell.h; sourceTree = "<group>"; };
-		EA1F0F1C1A25D64B000C6CD3 /* JFMenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuItemTableViewCell.m; sourceTree = "<group>"; };
-		EA1F0F1D1A25D64B000C6CD3 /* JFMenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JFMenuItemTableViewCell.xib; sourceTree = "<group>"; };
-		EA1F0F1E1A25D64B000C6CD3 /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
-		EA1F0F1F1A25D64B000C6CD3 /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
-		EA1F0F211A25D64B000C6CD3 /* JFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
-		EA1F0F221A25D64B000C6CD3 /* JFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
-		EA1F0F241A25D64B000C6CD3 /* JFGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
-		EA1F0F251A25D64B000C6CD3 /* JFGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
-		EA1F0F261A25D64B000C6CD3 /* JFKeyboardViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKeyboardViewHandler.h; sourceTree = "<group>"; };
-		EA1F0F271A25D64B000C6CD3 /* JFKeyboardViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFKeyboardViewHandler.m; sourceTree = "<group>"; };
-		EA1F0F281A25D64B000C6CD3 /* JFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLabel.h; sourceTree = "<group>"; };
-		EA1F0F291A25D64B000C6CD3 /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLabel.m; sourceTree = "<group>"; };
-		EA1F0F2A1A25D64B000C6CD3 /* JFSliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSliderController.h; sourceTree = "<group>"; };
-		EA1F0F2B1A25D64B000C6CD3 /* JFSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSliderController.m; sourceTree = "<group>"; };
-		EA1F0F2C1A25D64B000C6CD3 /* JFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSplitViewController.h; sourceTree = "<group>"; };
-		EA1F0F2D1A25D64B000C6CD3 /* JFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSplitViewController.m; sourceTree = "<group>"; };
-		EA1F0F2E1A25D64B000C6CD3 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
-		EA1F0F2F1A25D64B000C6CD3 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
-		EA1F0F311A25D64B000C6CD3 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
-		EA1F0F321A25D64B000C6CD3 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
-		EA1F0F431A25D651000C6CD3 /* JFFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
-		EA1F0F441A25D651000C6CD3 /* JFFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFileManager.m; sourceTree = "<group>"; };
-		EA1F0F451A25D651000C6CD3 /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
-		EA1F0F461A25D651000C6CD3 /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
-		EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDataAccess.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA425D901894211F003C55E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		EA425D9E1894211F003C55E8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EA425DB71894223D003C55E8 /* Development Log.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Development Log.txt"; sourceTree = "<group>"; };
-		EA425DC71894224A003C55E8 /* libJFDebug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFDebug.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		EA425DF418942C46003C55E8 /* libJFUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA5C58081A28AC36005B0571 /* JFUpdatableFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUpdatableFile.h; sourceTree = "<group>"; };
-		EA5C58091A28AC36005B0571 /* JFUpdatableFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUpdatableFile.m; sourceTree = "<group>"; };
+		EA5C29331A3E130E0027D706 /* JFMobileKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMobileKit.h; sourceTree = "<group>"; };
+		EA6F57531A3E0CDE006D6C37 /* libJFMobileLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
+		EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFCoreDataManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F576E1A3E0CFC006D6C37 /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
+		EA6F576F1A3E0CFC006D6C37 /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFHTTPRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57711A3E0CFC006D6C37 /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
+		EA6F57721A3E0CFC006D6C37 /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFLogger.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57741A3E0CFC006D6C37 /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
+		EA6F57751A3E0CFC006D6C37 /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFActivityIndicatorView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57761A3E0CFC006D6C37 /* JFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JFAlertView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EA6F57771A3E0CFC006D6C37 /* JFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFAlertView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57781A3E0CFC006D6C37 /* JFDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JFDrawerController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EA6F57791A3E0CFC006D6C37 /* JFDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFDrawerController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F577A1A3E0CFC006D6C37 /* JFGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
+		EA6F577B1A3E0CFC006D6C37 /* JFGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFGalleryView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F577C1A3E0CFC006D6C37 /* JFKeyboardViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKeyboardViewHandler.h; sourceTree = "<group>"; };
+		EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFKeyboardViewHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLabel.h; sourceTree = "<group>"; };
+		EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFLabel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57801A3E0CFC006D6C37 /* JFMenuGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JFMenuGroup.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EA6F57811A3E0CFC006D6C37 /* JFMenuGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFMenuGroup.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItem.h; sourceTree = "<group>"; };
+		EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFMenuItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57841A3E0CFC006D6C37 /* JFMenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItemTableViewCell.h; sourceTree = "<group>"; };
+		EA6F57851A3E0CFC006D6C37 /* JFMenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFMenuItemTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57861A3E0CFC006D6C37 /* JFMenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JFMenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
+		EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
+		EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
+		EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
+		EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
+		EA6F578C1A3E0CFC006D6C37 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
+		EA6F578D1A3E0CFC006D6C37 /* JFSliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSliderController.h; sourceTree = "<group>"; };
+		EA6F578E1A3E0CFC006D6C37 /* JFSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSliderController.m; sourceTree = "<group>"; };
+		EA6F578F1A3E0CFC006D6C37 /* JFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSplitViewController.h; sourceTree = "<group>"; };
+		EA6F57901A3E0CFC006D6C37 /* JFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSplitViewController.m; sourceTree = "<group>"; };
+		EA6F57911A3E0CFC006D6C37 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
+		EA6F57921A3E0CFC006D6C37 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
+		EA6F57931A3E0CFC006D6C37 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
+		EA6F57941A3E0CFC006D6C37 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
+		EA6F57961A3E0CFC006D6C37 /* JFFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
+		EA6F57971A3E0CFC006D6C37 /* JFFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFFileManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57981A3E0CFC006D6C37 /* JFUpdatableFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUpdatableFile.h; sourceTree = "<group>"; };
+		EA6F57991A3E0CFC006D6C37 /* JFUpdatableFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUpdatableFile.m; sourceTree = "<group>"; };
+		EA6F579A1A3E0CFC006D6C37 /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
+		EA6F579B1A3E0CFC006D6C37 /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
 		EAD5B6D018A8F61100414379 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		EAF286721A2CA6260000CD1E /* JFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlertView.h; sourceTree = "<group>"; };
-		EAF286731A2CA6260000CD1E /* JFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EA00D09F18F0558A00A1CDA3 /* Frameworks */ = {
+		EA6F57501A3E0CDE006D6C37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA00D0A018F0558A00A1CDA3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA300EAA18A18B1000E9DA78 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA300EAB18A18B1000E9DA78 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA425DC41894224A003C55E8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA425DC81894224A003C55E8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA425DEE18942C46003C55E8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA425DEF18942C46003C55E8 /* Foundation.framework in Frameworks */,
+				EA5C29341A3E13A00027D706 /* CoreData.framework in Frameworks */,
+				EA5C29351A3E13A00027D706 /* Foundation.framework in Frameworks */,
+				EA5C29361A3E13A00027D706 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EA1F0F011A25D641000C6CD3 /* Data Access */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F021A25D641000C6CD3 /* JFCoreDataManager.h */,
-				EA1F0F031A25D641000C6CD3 /* JFCoreDataManager.m */,
-				EA1F0F041A25D641000C6CD3 /* JFHTTPRequest.h */,
-				EA1F0F051A25D641000C6CD3 /* JFHTTPRequest.m */,
-			);
-			path = "Data Access";
-			sourceTree = "<group>";
-		};
-		EA1F0F081A25D646000C6CD3 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F091A25D646000C6CD3 /* JFLogger.h */,
-				EA1F0F0A1A25D646000C6CD3 /* JFLogger.m */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
-		EA1F0F0C1A25D64B000C6CD3 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F0D1A25D64B000C6CD3 /* Activity Indicator */,
-				EA1F0F101A25D64B000C6CD3 /* Drawer */,
-				EA1F0F131A25D64B000C6CD3 /* Forms */,
-				EA1F0F161A25D64B000C6CD3 /* Menu */,
-				EA1F0F201A25D64B000C6CD3 /* Navigation */,
-				EA1F0F231A25D64B000C6CD3 /* Presentation */,
-				EA1F0F301A25D64B000C6CD3 /* Toolbars */,
-			);
-			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		EA1F0F0D1A25D64B000C6CD3 /* Activity Indicator */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F0E1A25D64B000C6CD3 /* JFActivityIndicatorView.h */,
-				EA1F0F0F1A25D64B000C6CD3 /* JFActivityIndicatorView.m */,
-			);
-			path = "Activity Indicator";
-			sourceTree = "<group>";
-		};
-		EA1F0F101A25D64B000C6CD3 /* Drawer */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F111A25D64B000C6CD3 /* JFDrawerController.h */,
-				EA1F0F121A25D64B000C6CD3 /* JFDrawerController.m */,
-			);
-			path = Drawer;
-			sourceTree = "<group>";
-		};
-		EA1F0F131A25D64B000C6CD3 /* Forms */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F141A25D64B000C6CD3 /* JFSimpleFormViewController.h */,
-				EA1F0F151A25D64B000C6CD3 /* JFSimpleFormViewController.m */,
-			);
-			path = Forms;
-			sourceTree = "<group>";
-		};
-		EA1F0F161A25D64B000C6CD3 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F171A25D64B000C6CD3 /* JFMenuGroup.h */,
-				EA1F0F181A25D64B000C6CD3 /* JFMenuGroup.m */,
-				EA1F0F191A25D64B000C6CD3 /* JFMenuItem.h */,
-				EA1F0F1A1A25D64B000C6CD3 /* JFMenuItem.m */,
-				EA1F0F1B1A25D64B000C6CD3 /* JFMenuItemTableViewCell.h */,
-				EA1F0F1C1A25D64B000C6CD3 /* JFMenuItemTableViewCell.m */,
-				EA1F0F1D1A25D64B000C6CD3 /* JFMenuItemTableViewCell.xib */,
-				EA1F0F1E1A25D64B000C6CD3 /* JFMenuViewController.h */,
-				EA1F0F1F1A25D64B000C6CD3 /* JFMenuViewController.m */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		EA1F0F201A25D64B000C6CD3 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F211A25D64B000C6CD3 /* JFNavigationController.h */,
-				EA1F0F221A25D64B000C6CD3 /* JFNavigationController.m */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		EA1F0F231A25D64B000C6CD3 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				EAF286721A2CA6260000CD1E /* JFAlertView.h */,
-				EAF286731A2CA6260000CD1E /* JFAlertView.m */,
-				EA1F0F241A25D64B000C6CD3 /* JFGalleryView.h */,
-				EA1F0F251A25D64B000C6CD3 /* JFGalleryView.m */,
-				EA1F0F261A25D64B000C6CD3 /* JFKeyboardViewHandler.h */,
-				EA1F0F271A25D64B000C6CD3 /* JFKeyboardViewHandler.m */,
-				EA1F0F281A25D64B000C6CD3 /* JFLabel.h */,
-				EA1F0F291A25D64B000C6CD3 /* JFLabel.m */,
-				EA1F0F2A1A25D64B000C6CD3 /* JFSliderController.h */,
-				EA1F0F2B1A25D64B000C6CD3 /* JFSliderController.m */,
-				EA1F0F2C1A25D64B000C6CD3 /* JFSplitViewController.h */,
-				EA1F0F2D1A25D64B000C6CD3 /* JFSplitViewController.m */,
-				EA1F0F2E1A25D64B000C6CD3 /* JFTextView.h */,
-				EA1F0F2F1A25D64B000C6CD3 /* JFTextView.m */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		EA1F0F301A25D64B000C6CD3 /* Toolbars */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F311A25D64B000C6CD3 /* JFTransparentToolbar.h */,
-				EA1F0F321A25D64B000C6CD3 /* JFTransparentToolbar.m */,
-			);
-			path = Toolbars;
-			sourceTree = "<group>";
-		};
-		EA1F0F421A25D651000C6CD3 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F431A25D651000C6CD3 /* JFFileManager.h */,
-				EA1F0F441A25D651000C6CD3 /* JFFileManager.m */,
-				EA5C58081A28AC36005B0571 /* JFUpdatableFile.h */,
-				EA5C58091A28AC36005B0571 /* JFUpdatableFile.m */,
-				EA1F0F451A25D651000C6CD3 /* JFUtilities.h */,
-				EA1F0F461A25D651000C6CD3 /* JFUtilities.m */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		EA425D841894211F003C55E8 = {
 			isa = PBXGroup;
 			children = (
-				EA425DB61894223D003C55E8 /* Documentation */,
 				EA425D8F1894211F003C55E8 /* Frameworks */,
-				EA425DB81894223D003C55E8 /* Libraries */,
 				EA425D8E1894211F003C55E8 /* Products */,
-				EA425DB91894223D003C55E8 /* Resources */,
-				EAF3F7C419FB99F500DE8DB4 /* Sources */,
+				EA6F576A1A3E0CFC006D6C37 /* Sources */,
 			);
 			sourceTree = "<group>";
 		};
 		EA425D8E1894211F003C55E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA425DC71894224A003C55E8 /* libJFDebug.a */,
-				EA425DF418942C46003C55E8 /* libJFUtilities.a */,
-				EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */,
-				EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */,
+				EA6F57531A3E0CDE006D6C37 /* libJFMobileLibrary.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,117 +159,148 @@
 				EAD5B6D018A8F61100414379 /* CoreData.framework */,
 				EA425D901894211F003C55E8 /* Foundation.framework */,
 				EA425DD71894224A003C55E8 /* UIKit.framework */,
-				EA425D9E1894211F003C55E8 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EA425DB61894223D003C55E8 /* Documentation */ = {
+		EA6F576A1A3E0CFC006D6C37 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EA425DB71894223D003C55E8 /* Development Log.txt */,
-			);
-			name = Documentation;
-			path = JFMobileFramework/Documentation;
-			sourceTree = "<group>";
-		};
-		EA425DB81894223D003C55E8 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Libraries;
-			path = JFMobileFramework/Libraries;
-			sourceTree = "<group>";
-		};
-		EA425DB91894223D003C55E8 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			path = JFMobileFramework/Resources;
-			sourceTree = "<group>";
-		};
-		EAF3F7C419FB99F500DE8DB4 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				EA1F0F011A25D641000C6CD3 /* Data Access */,
-				EA1F0F081A25D646000C6CD3 /* Debug */,
-				EA1F0F0C1A25D64B000C6CD3 /* User Interface */,
-				EA1F0F421A25D651000C6CD3 /* Utilities */,
+				EA5C29331A3E130E0027D706 /* JFMobileKit.h */,
+				EA6F576B1A3E0CFC006D6C37 /* Data Access */,
+				EA6F57701A3E0CFC006D6C37 /* Debug */,
+				EA6F57731A3E0CFC006D6C37 /* User Interface */,
+				EA6F57951A3E0CFC006D6C37 /* Utilities */,
 			);
 			name = Sources;
 			path = JFMobileFramework/Sources;
 			sourceTree = "<group>";
 		};
+		EA6F576B1A3E0CFC006D6C37 /* Data Access */ = {
+			isa = PBXGroup;
+			children = (
+				EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */,
+				EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */,
+				EA6F576E1A3E0CFC006D6C37 /* JFHTTPRequest.h */,
+				EA6F576F1A3E0CFC006D6C37 /* JFHTTPRequest.m */,
+			);
+			path = "Data Access";
+			sourceTree = "<group>";
+		};
+		EA6F57701A3E0CFC006D6C37 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				EA6F57711A3E0CFC006D6C37 /* JFLogger.h */,
+				EA6F57721A3E0CFC006D6C37 /* JFLogger.m */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		EA6F57731A3E0CFC006D6C37 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				EA6F57741A3E0CFC006D6C37 /* JFActivityIndicatorView.h */,
+				EA6F57751A3E0CFC006D6C37 /* JFActivityIndicatorView.m */,
+				EA6F57761A3E0CFC006D6C37 /* JFAlertView.h */,
+				EA6F57771A3E0CFC006D6C37 /* JFAlertView.m */,
+				EA6F57781A3E0CFC006D6C37 /* JFDrawerController.h */,
+				EA6F57791A3E0CFC006D6C37 /* JFDrawerController.m */,
+				EA6F577A1A3E0CFC006D6C37 /* JFGalleryView.h */,
+				EA6F577B1A3E0CFC006D6C37 /* JFGalleryView.m */,
+				EA6F577C1A3E0CFC006D6C37 /* JFKeyboardViewHandler.h */,
+				EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */,
+				EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */,
+				EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */,
+				EA6F57801A3E0CFC006D6C37 /* JFMenuGroup.h */,
+				EA6F57811A3E0CFC006D6C37 /* JFMenuGroup.m */,
+				EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */,
+				EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */,
+				EA6F57841A3E0CFC006D6C37 /* JFMenuItemTableViewCell.h */,
+				EA6F57851A3E0CFC006D6C37 /* JFMenuItemTableViewCell.m */,
+				EA6F57861A3E0CFC006D6C37 /* JFMenuItemTableViewCell.xib */,
+				EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */,
+				EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */,
+				EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */,
+				EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */,
+				EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */,
+				EA6F578C1A3E0CFC006D6C37 /* JFSimpleFormViewController.m */,
+				EA6F578D1A3E0CFC006D6C37 /* JFSliderController.h */,
+				EA6F578E1A3E0CFC006D6C37 /* JFSliderController.m */,
+				EA6F578F1A3E0CFC006D6C37 /* JFSplitViewController.h */,
+				EA6F57901A3E0CFC006D6C37 /* JFSplitViewController.m */,
+				EA6F57911A3E0CFC006D6C37 /* JFTextView.h */,
+				EA6F57921A3E0CFC006D6C37 /* JFTextView.m */,
+				EA6F57931A3E0CFC006D6C37 /* JFTransparentToolbar.h */,
+				EA6F57941A3E0CFC006D6C37 /* JFTransparentToolbar.m */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		EA6F57951A3E0CFC006D6C37 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EA6F57961A3E0CFC006D6C37 /* JFFileManager.h */,
+				EA6F57971A3E0CFC006D6C37 /* JFFileManager.m */,
+				EA6F57981A3E0CFC006D6C37 /* JFUpdatableFile.h */,
+				EA6F57991A3E0CFC006D6C37 /* JFUpdatableFile.m */,
+				EA6F579A1A3E0CFC006D6C37 /* JFUtilities.h */,
+				EA6F579B1A3E0CFC006D6C37 /* JFUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		EA27C6C31A3E140B00B578EB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA27C6CB1A3E142500B578EB /* JFGalleryView.h in Headers */,
+				EA27C6D71A3E142500B578EB /* JFTransparentToolbar.h in Headers */,
+				EA27C6CD1A3E142500B578EB /* JFLabel.h in Headers */,
+				EA27C6C71A3E142500B578EB /* JFLogger.h in Headers */,
+				EA27C6CA1A3E142500B578EB /* JFDrawerController.h in Headers */,
+				EA27C6D91A3E142500B578EB /* JFUpdatableFile.h in Headers */,
+				EA27C6D01A3E142500B578EB /* JFMenuItemTableViewCell.h in Headers */,
+				EA27C6DA1A3E142500B578EB /* JFUtilities.h in Headers */,
+				EA27C6D21A3E142500B578EB /* JFNavigationController.h in Headers */,
+				EA27C6D41A3E142500B578EB /* JFSliderController.h in Headers */,
+				EA27C6C41A3E142500B578EB /* JFMobileKit.h in Headers */,
+				EA27C6CC1A3E142500B578EB /* JFKeyboardViewHandler.h in Headers */,
+				EA27C6CF1A3E142500B578EB /* JFMenuItem.h in Headers */,
+				EA27C6D11A3E142500B578EB /* JFMenuViewController.h in Headers */,
+				EA27C6D81A3E142500B578EB /* JFFileManager.h in Headers */,
+				EA27C6C51A3E142500B578EB /* JFCoreDataManager.h in Headers */,
+				EA27C6C81A3E142500B578EB /* JFActivityIndicatorView.h in Headers */,
+				EA27C6CE1A3E142500B578EB /* JFMenuGroup.h in Headers */,
+				EA27C6C91A3E142500B578EB /* JFAlertView.h in Headers */,
+				EA27C6D61A3E142500B578EB /* JFTextView.h in Headers */,
+				EA27C6C61A3E142500B578EB /* JFHTTPRequest.h in Headers */,
+				EA27C6D51A3E142500B578EB /* JFSplitViewController.h in Headers */,
+				EA27C6D31A3E142500B578EB /* JFSimpleFormViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		EA00D09D18F0558A00A1CDA3 /* JFUserInterface */ = {
+		EA6F57521A3E0CDE006D6C37 /* JFMobileLibrary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA00D0A218F0558A00A1CDA3 /* Build configuration list for PBXNativeTarget "JFUserInterface" */;
+			buildConfigurationList = EA6F57641A3E0CDF006D6C37 /* Build configuration list for PBXNativeTarget "JFMobileLibrary" */;
 			buildPhases = (
-				EA00D09E18F0558A00A1CDA3 /* Sources */,
-				EA00D09F18F0558A00A1CDA3 /* Frameworks */,
-				EA00D0A118F0558A00A1CDA3 /* CopyFiles */,
+				EA6F574F1A3E0CDE006D6C37 /* Sources */,
+				EA6F57501A3E0CDE006D6C37 /* Frameworks */,
+				EA6F57511A3E0CDE006D6C37 /* CopyFiles */,
+				EA27C6C31A3E140B00B578EB /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = JFUserInterface;
-			productName = JFLogger;
-			productReference = EA00D0A518F0558A00A1CDA3 /* libJFUserInterface.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		EA300EA618A18B1000E9DA78 /* JFDataAccess */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EA300EAD18A18B1000E9DA78 /* Build configuration list for PBXNativeTarget "JFDataAccess" */;
-			buildPhases = (
-				EA300EA718A18B1000E9DA78 /* Sources */,
-				EA300EAA18A18B1000E9DA78 /* Frameworks */,
-				EA300EAC18A18B1000E9DA78 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JFDataAccess;
-			productName = JFLogger;
-			productReference = EA300EB018A18B1000E9DA78 /* libJFDataAccess.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		EA425DC61894224A003C55E8 /* JFDebug */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EA425DE41894224A003C55E8 /* Build configuration list for PBXNativeTarget "JFDebug" */;
-			buildPhases = (
-				EA425DC31894224A003C55E8 /* Sources */,
-				EA425DC41894224A003C55E8 /* Frameworks */,
-				EA425DC51894224A003C55E8 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JFDebug;
-			productName = JFLogger;
-			productReference = EA425DC71894224A003C55E8 /* libJFDebug.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		EA425DEB18942C46003C55E8 /* JFUtilities */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EA425DF118942C46003C55E8 /* Build configuration list for PBXNativeTarget "JFUtilities" */;
-			buildPhases = (
-				EA425DEC18942C46003C55E8 /* Sources */,
-				EA425DEE18942C46003C55E8 /* Frameworks */,
-				EA425DF018942C46003C55E8 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JFUtilities;
-			productName = JFLogger;
-			productReference = EA425DF418942C46003C55E8 /* libJFUtilities.a */;
+			name = JFMobileLibrary;
+			productName = JFMobileLibrary;
+			productReference = EA6F57531A3E0CDE006D6C37 /* libJFMobileLibrary.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -446,6 +311,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Jacopo Filié";
+				TargetAttributes = {
+					EA6F57521A3E0CDE006D6C37 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
 			};
 			buildConfigurationList = EA425D881894211F003C55E8 /* Build configuration list for PBXProject "JFMobileFramework" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -459,92 +329,44 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA300EA618A18B1000E9DA78 /* JFDataAccess */,
-				EA425DC61894224A003C55E8 /* JFDebug */,
-				EA00D09D18F0558A00A1CDA3 /* JFUserInterface */,
-				EA425DEB18942C46003C55E8 /* JFUtilities */,
+				EA6F57521A3E0CDE006D6C37 /* JFMobileLibrary */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EA00D09E18F0558A00A1CDA3 /* Sources */ = {
+		EA6F574F1A3E0CDE006D6C37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA1F0F371A25D64B000C6CD3 /* JFMenuItem.m in Sources */,
-				EA1F0F411A25D64B000C6CD3 /* JFTransparentToolbar.m in Sources */,
-				EA1F0F3D1A25D64B000C6CD3 /* JFLabel.m in Sources */,
-				EA1F0F3E1A25D64B000C6CD3 /* JFSliderController.m in Sources */,
-				EA1F0F401A25D64B000C6CD3 /* JFTextView.m in Sources */,
-				EA1F0F3B1A25D64B000C6CD3 /* JFGalleryView.m in Sources */,
-				EA1F0F3C1A25D64B000C6CD3 /* JFKeyboardViewHandler.m in Sources */,
-				EA1F0F381A25D64B000C6CD3 /* JFMenuItemTableViewCell.m in Sources */,
-				EA1F0F391A25D64B000C6CD3 /* JFMenuViewController.m in Sources */,
-				EA1F0F351A25D64B000C6CD3 /* JFSimpleFormViewController.m in Sources */,
-				EA1F0F341A25D64B000C6CD3 /* JFDrawerController.m in Sources */,
-				EAF286741A2CA6260000CD1E /* JFAlertView.m in Sources */,
-				EA1F0F361A25D64B000C6CD3 /* JFMenuGroup.m in Sources */,
-				EA1F0F331A25D64B000C6CD3 /* JFActivityIndicatorView.m in Sources */,
-				EA1F0F3A1A25D64B000C6CD3 /* JFNavigationController.m in Sources */,
-				EA1F0F3F1A25D64B000C6CD3 /* JFSplitViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA300EA718A18B1000E9DA78 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA1F0F061A25D641000C6CD3 /* JFCoreDataManager.m in Sources */,
-				EA1F0F071A25D641000C6CD3 /* JFHTTPRequest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA425DC31894224A003C55E8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA1F0F0B1A25D646000C6CD3 /* JFLogger.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA425DEC18942C46003C55E8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA1F0F481A25D651000C6CD3 /* JFUtilities.m in Sources */,
-				EA1F0F471A25D651000C6CD3 /* JFFileManager.m in Sources */,
-				EA5C580A1A28AC36005B0571 /* JFUpdatableFile.m in Sources */,
+				EA6F57A11A3E0CFC006D6C37 /* JFDrawerController.m in Sources */,
+				EA6F57A61A3E0CFC006D6C37 /* JFMenuItem.m in Sources */,
+				EA6F579C1A3E0CFC006D6C37 /* JFCoreDataManager.m in Sources */,
+				EA6F57A81A3E0CFC006D6C37 /* JFMenuViewController.m in Sources */,
+				EA6F57A51A3E0CFC006D6C37 /* JFMenuGroup.m in Sources */,
+				EA6F57A91A3E0CFC006D6C37 /* JFNavigationController.m in Sources */,
+				EA6F57AB1A3E0CFC006D6C37 /* JFSliderController.m in Sources */,
+				EA6F57A41A3E0CFC006D6C37 /* JFLabel.m in Sources */,
+				EA6F579F1A3E0CFC006D6C37 /* JFActivityIndicatorView.m in Sources */,
+				EA6F57AD1A3E0CFC006D6C37 /* JFTextView.m in Sources */,
+				EA6F57A01A3E0CFC006D6C37 /* JFAlertView.m in Sources */,
+				EA6F57B01A3E0CFC006D6C37 /* JFUpdatableFile.m in Sources */,
+				EA6F57B11A3E0CFC006D6C37 /* JFUtilities.m in Sources */,
+				EA6F57A71A3E0CFC006D6C37 /* JFMenuItemTableViewCell.m in Sources */,
+				EA6F57AC1A3E0CFC006D6C37 /* JFSplitViewController.m in Sources */,
+				EA6F57A31A3E0CFC006D6C37 /* JFKeyboardViewHandler.m in Sources */,
+				EA6F579D1A3E0CFC006D6C37 /* JFHTTPRequest.m in Sources */,
+				EA6F57AA1A3E0CFC006D6C37 /* JFSimpleFormViewController.m in Sources */,
+				EA6F579E1A3E0CFC006D6C37 /* JFLogger.m in Sources */,
+				EA6F57AF1A3E0CFC006D6C37 /* JFFileManager.m in Sources */,
+				EA6F57AE1A3E0CFC006D6C37 /* JFTransparentToolbar.m in Sources */,
+				EA6F57A21A3E0CFC006D6C37 /* JFGalleryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		EA00D0A318F0558A00A1CDA3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		EA00D0A418F0558A00A1CDA3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Release;
-		};
-		EA300EAE18A18B1000E9DA78 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		EA300EAF18A18B1000E9DA78 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Release;
-		};
 		EA425DAE1894211F003C55E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -565,6 +387,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = "/tmp/$(TARGET_NAME).dst";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -581,9 +404,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -606,6 +431,8 @@
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = "/tmp/$(TARGET_NAME).dst";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -617,59 +444,55 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		EA425DE51894224A003C55E8 /* Debug */ = {
+		EA6F57651A3E0CDF006D6C37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		EA425DE61894224A003C55E8 /* Release */ = {
+		EA6F57661A3E0CDF006D6C37 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-			};
-			name = Release;
-		};
-		EA425DF218942C46003C55E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		EA425DF318942C46003C55E8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA00D0A218F0558A00A1CDA3 /* Build configuration list for PBXNativeTarget "JFUserInterface" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EA00D0A318F0558A00A1CDA3 /* Debug */,
-				EA00D0A418F0558A00A1CDA3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EA300EAD18A18B1000E9DA78 /* Build configuration list for PBXNativeTarget "JFDataAccess" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EA300EAE18A18B1000E9DA78 /* Debug */,
-				EA300EAF18A18B1000E9DA78 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		EA425D881894211F003C55E8 /* Build configuration list for PBXProject "JFMobileFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -679,20 +502,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA425DE41894224A003C55E8 /* Build configuration list for PBXNativeTarget "JFDebug" */ = {
+		EA6F57641A3E0CDF006D6C37 /* Build configuration list for PBXNativeTarget "JFMobileLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EA425DE51894224A003C55E8 /* Debug */,
-				EA425DE61894224A003C55E8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EA425DF118942C46003C55E8 /* Build configuration list for PBXNativeTarget "JFUtilities" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EA425DF218942C46003C55E8 /* Debug */,
-				EA425DF318942C46003C55E8 /* Release */,
+				EA6F57651A3E0CDF006D6C37 /* Debug */,
+				EA6F57661A3E0CDF006D6C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
