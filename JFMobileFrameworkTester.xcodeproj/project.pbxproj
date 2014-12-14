@@ -13,7 +13,7 @@
 		EAAEB5841A3E2ED6003DCD73 /* JFWindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAEB5831A3E2ED6003DCD73 /* JFWindowManager.m */; };
 		EAAEB5861A3E2FB9003DCD73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5851A3E2FB9003DCD73 /* Foundation.framework */; };
 		EAAEB5881A3E2FC0003DCD73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5871A3E2FC0003DCD73 /* UIKit.framework */; };
-		EAAEB5931A3E35F1003DCD73 /* libJFMobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5901A3E3478003DCD73 /* libJFMobileLibrary.a */; };
+		EAAEB5931A3E35F1003DCD73 /* JFMobileFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5901A3E3478003DCD73 /* JFMobileFramework.a */; };
 		EAAEB5A71A3E3F66003DCD73 /* JFMobileFramework.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAAEB5A61A3E3F34003DCD73 /* JFMobileFramework.bundle */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAAEB5931A3E35F1003DCD73 /* libJFMobileLibrary.a in Frameworks */,
+				EAAEB5931A3E35F1003DCD73 /* JFMobileFramework.a in Frameworks */,
 				EAAEB5881A3E2FC0003DCD73 /* UIKit.framework in Frameworks */,
 				EAAEB5861A3E2FB9003DCD73 /* Foundation.framework in Frameworks */,
 			);
@@ -129,7 +129,7 @@
 		EAAEB58C1A3E3478003DCD73 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EAAEB5901A3E3478003DCD73 /* libJFMobileLibrary.a */,
+				EAAEB5901A3E3478003DCD73 /* JFMobileFramework.a */,
 				EAAEB5A61A3E3F34003DCD73 /* JFMobileFramework.bundle */,
 			);
 			name = Products;
@@ -217,10 +217,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EAAEB5901A3E3478003DCD73 /* libJFMobileLibrary.a */ = {
+		EAAEB5901A3E3478003DCD73 /* JFMobileFramework.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libJFMobileLibrary.a;
+			path = JFMobileFramework.a;
 			remoteRef = EAAEB58F1A3E3478003DCD73 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -356,15 +356,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/JFMobileFramework/**",
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-				);
 				INFOPLIST_FILE = "$(PROJECT_NAME)/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/JFMobileFramework";
 			};
 			name = Debug;
 		};
@@ -374,15 +370,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/JFMobileFramework/**",
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-				);
 				INFOPLIST_FILE = "$(PROJECT_NAME)/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/JFMobileFramework";
 			};
 			name = Release;
 		};
