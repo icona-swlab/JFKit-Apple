@@ -12,6 +12,6 @@
 #define JFMobileFramework_JFGlobals_h
 
 // Bundles
-#define JFMobileFrameworkBundle	@"JFMobileFrameworkResources.bundle"
+#define JFMobileFrameworkBundle	@"JFMobileFramework.bundle"
 
 #endif
