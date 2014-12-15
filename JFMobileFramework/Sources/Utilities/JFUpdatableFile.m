@@ -67,6 +67,9 @@
 		_bundleURL = bundleURL;
 		_localURL = localURL;
 		_remoteURL = remoteURL;
+		
+		// Flags
+		_isUpdatingContent = NO;
 	}
 	return self;
 }

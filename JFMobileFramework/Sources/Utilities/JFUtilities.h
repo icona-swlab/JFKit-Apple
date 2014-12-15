@@ -66,29 +66,37 @@
 #pragma mark - Macros (Localization)
 
 #define LocalizedString(arg_key, arg_defVal)							LocalizedStringWithComment(arg_key, arg_defVal, nil)
-#define LocalizedStringWithComment(arg_key, arg_defVal, arg_comment)	NSLocalizedStringWithDefaultValue(arg_key, nil, MainBundle, arg_defVal, arg_comment)
+#define LocalizedStringWithComment(arg_key, arg_defVal, arg_comment)	NSLocalizedStringWithDefaultValue(arg_key, nil, NSMainBundle, arg_defVal, arg_comment)
+
+
+#pragma mark - Macros (Orientation)
+
+#define UIDeviceOrientation		[UICurrentDevice orientation]
+#define UIStatusBarOrientation	[UIApp statusBarOrientation]
 
 
 #pragma mark - Macros (Resources)
 
-#define BundleResourceURL(arg_filename)						[MainBundle URLForResource:[arg_filename stringByDeletingPathExtension] withExtension:[arg_filename pathExtension]]
-#define BundleResourceURLWithType(arg_filename, arg_type)	[MainBundle URLForResource:arg_filename withExtension:arg_type]
+#define BundleResourceURL(arg_filename)						[NSMainBundle URLForResource:[arg_filename stringByDeletingPathExtension] withExtension:[arg_filename pathExtension]]
+#define BundleResourceURLWithType(arg_filename, arg_type)	[NSMainBundle URLForResource:arg_filename withExtension:arg_type]
 
 
 #pragma mark - Macros (Shortcuts)
 
-#define MainBundle				[NSBundle mainBundle]
-#define	UIApp					[UIApplication sharedApplication]
-#define	UIAppDelegate			((AppDelegate*)[UIApp delegate])
-#define UIAppLanguage			[UIAppLanguages firstObject]
-#define UIAppLanguages			[MainBundle preferredLocalizations]
-#define UIIdiom					[[UIDevice currentDevice] userInterfaceIdiom]
-#define UIStatusBarOrientation	[UIApp statusBarOrientation]
+#define NSDefaultNotificationCenter	[NSNotificationCenter defaultCenter]
+#define NSMainBundle				[NSBundle mainBundle]
+#define	UIApp						[UIApplication sharedApplication]
+#define	UIAppDelegate				((AppDelegate*)[UIApp delegate])
+#define UIAppLanguage				[UIAppLanguages firstObject]
+#define UIAppLanguages				[NSMainBundle preferredLocalizations]
+#define UICurrentDevice				[UIDevice currentDevice]
+#define UIIdiom						[UICurrentDevice userInterfaceIdiom]
+#define UIMainScreen				[UIScreen mainScreen]
 
 
 #pragma mark - Macros (Strings)
 
-#define BoolToString(arg_val)							(arg_val ? @"YES" : @"NO")
+#define BoolToString(arg_val)							((BOOL)arg_val ? @"YES" : @"NO")
 #define CStringToString(arg_str)						CStringToStringWithEncoding(arg_str, NSUTF8StringEncoding)
 #define CStringToStringWithEncoding(arg_str, arg_enc)	[NSString stringWithCString:arg_str encoding:arg_enc]
 #define DoubleToString(arg_val)							[NSString stringWithFormat:@"%f", (double)arg_val]
@@ -120,7 +128,7 @@
 
 
 #pragma mark - Macros (System version)
-#define DeviceSystemVersion		[UIDevice currentDevice].systemVersion
+#define DeviceSystemVersion		UICurrentDevice.systemVersion
 #define iOS(arg_version)		isSystemVersion(arg_version)
 #define iOSExact(arg_version)	isSystemVersionExact(arg_version)
 #define iOSPlus(arg_version)	isSystemVersionPlus(arg_version)
@@ -132,8 +140,6 @@
 #define iOS8Plus				iOSPlus(@"8.")
 #define iPad					(UIIdiom == UIUserInterfaceIdiomPad)
 #define iPhone					(UIIdiom == UIUserInterfaceIdiomPhone)
-#define iPhoneC					(iPhone && ([UIScreen mainScreen].bounds.size.height == 480.0f)) // iPhone with 3.5'' display.
-#define iPhone5					(iPhone && ([UIScreen mainScreen].bounds.size.height == 568.0f)) // iPhone with 4'' display.
 
 
 #pragma mark - Macros (Trigonometry)

@@ -94,7 +94,7 @@
 
 - (void)dealloc
 {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[NSDefaultNotificationCenter removeObserver:self];
 }
 
 - (instancetype)initWithCoder:(NSCoder*)aDecoder
@@ -105,7 +105,7 @@
 		[self prepareUserInterface];
 		
 		// Begins to listen for interesting notifications.
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedThatTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
+		[NSDefaultNotificationCenter addObserver:self selector:@selector(notifiedThatTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
 	}
 	return self;
 }
@@ -118,7 +118,7 @@
 		[self prepareUserInterface];
 		
 		// Begins to listen for interesting notifications.
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedThatTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
+		[NSDefaultNotificationCenter addObserver:self selector:@selector(notifiedThatTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
 	}
 	return self;
 }

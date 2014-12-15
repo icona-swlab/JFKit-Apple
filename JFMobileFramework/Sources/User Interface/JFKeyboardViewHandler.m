@@ -52,7 +52,7 @@
 
 - (void)dealloc
 {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[NSDefaultNotificationCenter removeObserver:self];
 }
 
 - (instancetype)init
@@ -64,8 +64,8 @@
 		_constant = 0.0f;
 		
 		// Begins to listen for interesting notifications.
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedThatKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedThatKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+		[NSDefaultNotificationCenter addObserver:self selector:@selector(notifiedThatKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+		[NSDefaultNotificationCenter addObserver:self selector:@selector(notifiedThatKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	}
 	return self;
 }

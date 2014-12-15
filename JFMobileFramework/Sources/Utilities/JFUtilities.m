@@ -124,7 +124,7 @@ BOOL UIColorEqualToColor(UIColor* color1, UIColor* color2)
 
 NSString* appInfoForKey(NSString* key)
 {
-	return [[MainBundle infoDictionary] objectForKey:key];
+	return [[NSMainBundle infoDictionary] objectForKey:key];
 }
 
 NSString* standardXIBNameForViewController(UIViewController* viewController)
@@ -145,13 +145,13 @@ NSString* standardXIBNameForViewController(UIViewController* viewController)
 			if(iPad)
 			{
 				xibName = [baseName stringByAppendingString:@"~iPad"];
-				path = [MainBundle pathForResource:xibName ofType:@"nib"];
+				path = [NSMainBundle pathForResource:xibName ofType:@"nib"];
 			}
 			
 			if(!path)
 			{
 				xibName = baseName;
-				path = [MainBundle pathForResource:xibName ofType:@"nib"];
+				path = [NSMainBundle pathForResource:xibName ofType:@"nib"];
 			}
 		}
 		
