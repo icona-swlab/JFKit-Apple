@@ -20,33 +20,25 @@
 
 #import "JFMenuViewController.h"
 
-#import "JFMenuGroup.h"
 #import "JFMenuItem.h"
-#import "JFMenuItemTableViewCell.h"
 #import "JFUtilities.h"
 
 
 
 @interface JFMenuViewController ()
 
-// Memory management
-- (void)	commonInit;
-
-// User interface management (TableView)
-- (void)	applyAttributesOfItem:(JFMenuItem*)item toCell:(JFMenuItemTableViewCell*)cell;
-- (void)	collapseGroup:(JFMenuGroup*)group atIndex:(NSInteger)index;
-- (void)	collapseGroupsIfPossible;
-- (void)	expandGroup:(JFMenuGroup*)group atIndex:(NSInteger)index;
-- (void)	loadDataOfItem:(JFMenuItem*)item intoCell:(JFMenuItemTableViewCell*)cell;
-- (void)	updateCellAtIndexPath:(NSIndexPath*)indexPath;
+// Data
+@property (strong, nonatomic, readonly)	NSMutableArray*	tableItems;	// Two-levels version of the 'items' array.
 
 // Data management
-- (JFMenuGroup*)	groupForItem:(JFMenuItem*)item;
+- (JFMenuItem*)		groupForItem:(JFMenuItem*)item;
 - (NSIndexPath*)	indexPathOfItem:(JFMenuItem*)item;
-- (JFMenuItem*)		itemForRowAtIndexPath:(NSIndexPath*)indexPath;
+- (JFMenuItem*)		itemForIndexPath:(NSIndexPath*)indexPath;
 
-// Validation management
-- (BOOL)	validateItem:(JFMenuItem*)item;
+// User interface management (TableView)
+- (void)	applyAttributesOfItem:(JFMenuItem*)item toCell:(UITableViewCell*)cell;
+- (void)	loadItem:(JFMenuItem*)item intoCell:(UITableViewCell*)cell;
+- (void)	updateCellAtIndexPath:(NSIndexPath*)indexPath;
 
 @end
 
@@ -59,9 +51,7 @@
 // Data
 @synthesize items			= _items;
 @synthesize selectedItem	= _selectedItem;
-
-// Flags
-@synthesize shouldCollapseGroups	= _shouldCollapseGroups;
+@synthesize tableItems		= _tableItems;
 
 // Relationships
 @synthesize delegate	= _delegate;
@@ -71,7 +61,7 @@
 
 - (void)setItems:(NSArray*)items
 {
-	if(_items == items)
+	if(AreArraysEqual(_items, items))
 		return;
 	
 	_items = items;
@@ -83,11 +73,7 @@
 {
 	if(_selectedItem == selectedItem)
 		return;
-	
-	// Checks if the new selected item is one of the menu items and cancels the operation if not ('nil' value is allowed).
-	if(selectedItem && (![self validateItem:selectedItem] || !selectedItem.selectionEnabled))
-		return;
-	
+
 	JFMenuItem* oldItem = _selectedItem;
 	
 	_selectedItem = selectedItem;
@@ -95,7 +81,12 @@
 	if(oldItem)
 	{
 		if([self isViewLoaded])
+		{
 			[self updateCellAtIndexPath:[self indexPathOfItem:oldItem]];
+			
+			JFMenuItem* group = [self groupForItem:oldItem];
+			[self updateCellAtIndexPath:[self indexPathOfItem:group]];
+		}
 		
 		if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:didDeselectItem:)])
 			[self.delegate menuViewController:self didDeselectItem:oldItem];
@@ -105,52 +96,25 @@
 	{
 		if([self isViewLoaded])
 		{
-			NSIndexPath* indexPath = [self indexPathOfItem:_selectedItem];
+			[self updateCellAtIndexPath:[self indexPathOfItem:_selectedItem]];
 			
-			JFMenuGroup* group = [self groupForItem:_selectedItem];
-			if(group)
-				[self expandGroup:group atIndex:indexPath.section];
-			
-			[self updateCellAtIndexPath:indexPath];
+			JFMenuItem* group = [self groupForItem:_selectedItem];
+			[self updateCellAtIndexPath:[self indexPathOfItem:group]];
 		}
 		
 		if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:didSelectItem:)])
 			[self.delegate menuViewController:self didSelectItem:_selectedItem];
 	}
-	
-	if(self.shouldCollapseGroups)
-		[self collapseGroupsIfPossible];
 }
 
-
-#pragma mark - Properties accessors (Flags)
-
-- (void)setShouldCollapseGroups:(BOOL)shouldCollapseGroups
-{
-	if(_shouldCollapseGroups == shouldCollapseGroups)
-		return;
-	
-	_shouldCollapseGroups = shouldCollapseGroups;
-	
-	if(_shouldCollapseGroups)
-		[self collapseGroupsIfPossible];
-}
 
 #pragma mark - Memory management
 
-- (void)commonInit
-{
-	// Flags
-	_shouldCollapseGroups = YES;
-}
-
 - (instancetype)init
 {
-	self = [super init];
+	self = [self initWithStyle:UITableViewStyleGrouped];
 	if(self)
-	{
-		[self commonInit];
-	}
+	{}
 	return self;
 }
 
@@ -158,9 +122,7 @@
 {
 	self = [super initWithCoder:aDecoder];
 	if(self)
-	{
-		[self commonInit];
-	}
+	{}
 	return self;
 }
 
@@ -169,24 +131,114 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if(self)
 	{
-		[self commonInit];
+		// Data
+		_tableItems = [NSMutableArray new];
 	}
+	return self;
+}
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+	self = [super initWithStyle:style];
+	if(self)
+	{}
 	return self;
 }
 
 
 #pragma mark - Data management
 
+- (void)collapseGroup:(JFMenuItem*)group
+{
+	if(!group || ![group isGroup] || [group isGroupCollapsed])
+		return;
+}
+
+- (void)expandGroup:(JFMenuItem*)group
+{
+	if(!group || ![group isGroup] || ![group isGroupCollapsed])
+		return;
+}
+
+- (JFMenuItem*)groupForItem:(JFMenuItem*)item
+{
+	if(!item)
+		return nil;
+	
+	for(NSArray* items in self.tableItems)
+	{
+		for(JFMenuItem* group in items)
+		{
+			if(group == item)
+				return nil;
+			
+			if([group isGroup] && [group.subitems containsObject:item])
+				return group;
+		}
+	}
+	
+	return nil;
+}
+
+- (NSIndexPath*)indexPathOfItem:(JFMenuItem*)item
+{
+	if(!item)
+		return nil;
+	
+	for(NSInteger section = 0; section < [self.tableItems count]; section++)
+	{
+		NSArray* items = [self.tableItems objectAtIndex:section];
+		if([items containsObject:item])
+		{
+			NSInteger row = [items indexOfObject:item];
+			return [NSIndexPath indexPathForRow:row inSection:section];
+		}
+	}
+	return nil;
+}
+
+- (JFMenuItem*)itemForIndexPath:(NSIndexPath*)indexPath
+{
+	if(!indexPath)
+		return nil;
+	
+	return [[self.tableItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+}
+
 - (void)reloadItems
 {
+	// Prepares the block to recursively retrieve all subitems of an item.
+	__block __weak NSArray* (^weakGetSubitems)(JFMenuItem*);
+	NSArray* (^getSubitems)(JFMenuItem*) = ^NSArray*(JFMenuItem* item)
+	{
+		if(!item || ![item isGroup] || [item isGroupCollapsed])
+			return nil;
+		
+		NSMutableArray* retVal = [NSMutableArray array];
+		for(JFMenuItem* subitem in item.subitems)
+		{
+			[retVal addObject:subitem];
+			NSArray* subitems = weakGetSubitems(subitem);
+			if(subitems)
+				[retVal addObjectsFromArray:subitems];
+		}
+		return retVal;
+	};
+	weakGetSubitems = getSubitems;
+	
+	[self.tableItems removeAllObjects];
+	
+	for(JFMenuItem* item in self.items)
+	{
+		NSMutableArray* sectionItems = [NSMutableArray arrayWithObject:item];
+		NSArray* subitems = getSubitems(item);
+		if(subitems)
+			[sectionItems addObjectsFromArray:subitems];
+		[self.tableItems addObject:sectionItems];
+	}
+	
 	if([self isViewLoaded])
 		[self.tableView reloadData];
-	
-	if(self.shouldCollapseGroups)
-		[self collapseGroupsIfPossible];
-	
-	if(self.selectedItem && (![self validateItem:self.selectedItem] || !self.selectedItem.selectionEnabled))
-		self.selectedItem = nil;
 }
 
 
@@ -196,144 +248,49 @@
 {
 	[super viewDidLoad];
 	
-	self.tableView.rowHeight = [JFMenuItemTableViewCell height];
-	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	
-	[self.tableView registerNib:[JFMenuItemTableViewCell nib] forCellReuseIdentifier:[JFMenuItemTableViewCell reuseIdentifier]];
+	//self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 
 #pragma mark - User interface management (TableView)
 
-- (void)applyAttributesOfItem:(JFMenuItem*)item toCell:(JFMenuItemTableViewCell*)cell
+- (void)applyAttributesOfItem:(JFMenuItem*)item toCell:(UITableViewCell*)cell
 {
 	if(!item || !cell)
 		return;
 	
-	JFMenuGroup* group = ([item isKindOfClass:[JFMenuGroup class]] ? (JFMenuGroup*)item : nil);
+	BOOL isSelected = (item == self.selectedItem);
+	BOOL isSelectedGroup = (!isSelected && (item == [self groupForItem:self.selectedItem]));
 	
-	BOOL isSelectedItem = (self.selectedItem == item);
-	BOOL isContainingGroup = (group && [group.items containsObject:self.selectedItem]);
+	BOOL shouldUseSelectedAttributes = ((isSelected || (isSelectedGroup && item.shouldDisplayAsSelectedIfSubitemIsSelected)) && item.selectedAttributes);
 	
-	JFMenuItemAttributes* attributes = (((isSelectedItem || isContainingGroup) && item.selectedAttributes) ? item.selectedAttributes : item.attributes);
+	JFMenuItemAttributes* attributes = (shouldUseSelectedAttributes ? item.selectedAttributes : item.attributes);
 	
+	// Colors
 	cell.backgroundColor = attributes.backgroundColor;
+	cell.detailTextLabel.textColor = attributes.detailTextColor;
+	cell.textLabel.textColor = attributes.textColor;
 	
+	// Fonts
+	cell.detailTextLabel.font = attributes.detailTextFont;
+	cell.textLabel.font = attributes.textFont;
+	
+	// Indentation
 	cell.indentationLevel = attributes.indentationLevel;
 	cell.indentationWidth = attributes.indentationWidth;
 	
-	cell.separatorColor = attributes.separatorColor;
-	cell.separatorHeight = ((group && !group.isCollapsed && group.shouldHideSeparatorWhenExpanded) ? 0.0f : attributes.separatorHeight);
-	
-	cell.backgroundPadding = attributes.backgroundPadding;
-	cell.contentPadding = attributes.contentPadding;
-	
-	cell.detailTextLabel.textColor = attributes.detailTextColor;
-	cell.detailTextLabel.font = attributes.detailTextFont;
-	cell.textLabel.textColor = attributes.textColor;
-	cell.textLabel.font = attributes.textFont;
+	// Selection
+	cell.selectionStyle = attributes.selectionStyle;
 }
 
-- (void)collapseGroup:(JFMenuGroup*)group atIndex:(NSInteger)index
+- (void)loadItem:(JFMenuItem*)item intoCell:(UITableViewCell*)cell
 {
-	if(!group || group.isCollapsed)
+	if(!item || !cell)
 		return;
 	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:shouldCollapseGroup:)])
-	{
-		if(![self.delegate menuViewController:self shouldCollapseGroup:group])
-			return;
-	}
-	
-	group.isCollapsed = YES;
-	
-	if(![self isViewLoaded])
-		return;
-	
-	Block completion = ^(void)
-	{
-		JFMenuItemTableViewCell* cell = (JFMenuItemTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
-		[self applyAttributesOfItem:group toCell:cell];
-	};
-	
-	NSMutableArray* indexPaths = [NSMutableArray array];
-	for(NSUInteger row = 1; row <= [group.items count]; row++)
-	{
-		NSIndexPath* childIndexPath = [NSIndexPath indexPathForRow:row inSection:index];
-		[indexPaths addObject:childIndexPath];
-	}
-	
-	[CATransaction begin];
-	[CATransaction setCompletionBlock:completion];
-	[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-	[CATransaction commit];
-}
-
-- (void)collapseGroupsIfPossible
-{
-	[self.tableView beginUpdates];
-	for(NSUInteger index = 0; index < [self.items count]; index++)
-	{
-		JFMenuItem* item = [self.items objectAtIndex:index];
-		if(![item isKindOfClass:[JFMenuGroup class]])
-			continue;
-		
-		JFMenuGroup* group = (JFMenuGroup*)item;
-		if(group.isCollapsed || (group == self.selectedItem) || ([group.items containsObject:self.selectedItem]))
-			continue;
-		
-		[self collapseGroup:group atIndex:index];
-	}
-	[self.tableView endUpdates];
-}
-
-- (void)expandGroup:(JFMenuGroup*)group atIndex:(NSInteger)index
-{
-	if(!group || !group.isCollapsed)
-		return;
-	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(menuViewController:shouldExpandGroup:)])
-	{
-		if(![self.delegate menuViewController:self shouldExpandGroup:group])
-			return;
-	}
-	
-	if([group.items count] == 0)
-		return;
-	
-	group.isCollapsed = NO;
-	
-	if(![self isViewLoaded])
-		return;
-	
-	JFMenuItemTableViewCell* cell = (JFMenuItemTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
-	[self applyAttributesOfItem:group toCell:cell];
-	
-	NSMutableArray* indexPaths = [NSMutableArray array];
-	for(NSUInteger row = 1; row <= [group.items count]; row++)
-	{
-		NSIndexPath* childIndexPath = [NSIndexPath indexPathForRow:row inSection:index];
-		[indexPaths addObject:childIndexPath];
-	}
-	
-	[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-}
-
-- (void)loadDataOfItem:(JFMenuItem*)item intoCell:(JFMenuItemTableViewCell*)cell
-{
-	if(!cell || !item)
-		return;
-	
-	JFMenuGroup* group = ([item isKindOfClass:[JFMenuGroup class]] ? (JFMenuGroup*)item : nil);
-	
-	BOOL isSelectedItem = (self.selectedItem == item);
-	BOOL isContainingGroup = (group && [group.items containsObject:self.selectedItem]);
-	
-	cell.backgroundImage = item.backgroundImage;
 	cell.detailTextLabel.text = item.detailText;
-	cell.imageView.image = (((isSelectedItem || isContainingGroup) && item.selectedImage) ? item.selectedImage : item.image);
+	cell.imageView.image = item.image;
 	cell.textLabel.text = item.text;
-	cell.userInteractionEnabled = item.userInteractionEnabled;
 }
 
 - (void)updateCellAtIndexPath:(NSIndexPath*)indexPath
@@ -341,75 +298,13 @@
 	if(!indexPath)
 		return;
 	
-	JFMenuItemTableViewCell* cell = (JFMenuItemTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
+	UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	JFMenuItem* item = [self itemForIndexPath:indexPath];
 	if(!cell || !item)
 		return;
 	
 	[self applyAttributesOfItem:item toCell:cell];
-	[self loadDataOfItem:item intoCell:cell];
-	
-	JFMenuGroup* group = [self groupForItem:item];
-	if(!group)
-		return;
-	
-	[self updateCellAtIndexPath:[self indexPathOfItem:group]];
-}
-
-
-#pragma mark - Data management
-
-- (JFMenuGroup*)groupForItem:(JFMenuItem*)item
-{
-	if([self.items containsObject:item])
-		return nil;
-	
-	JFMenuGroup* retVal = nil;
-	for(JFMenuItem* menuItem in self.items)
-	{
-		if(![menuItem isKindOfClass:[JFMenuGroup class]])
-			continue;
-		
-		JFMenuGroup* group = (JFMenuGroup*)menuItem;
-		if([group.items containsObject:item])
-		{
-			retVal = group;
-			break;
-		}
-	}
-	return retVal;
-}
-
-- (NSIndexPath*)indexPathOfItem:(JFMenuItem*)item
-{
-	JFMenuGroup* group = [self groupForItem:item];
-	NSInteger section = [self.items indexOfObject:(group ? group : item)];
-	NSInteger row = (group ? ([group.items indexOfObject:item] + 1) : 0);
-	
-	if((section == NSNotFound) || (row == NSNotFound))
-		return nil;
-	
-	return [NSIndexPath indexPathForRow:row inSection:section];
-}
-
-- (JFMenuItem*)itemForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-	JFMenuItem* retVal = [self.items objectAtIndex:indexPath.section];
-	if((indexPath.row > 0) && [retVal isKindOfClass:[JFMenuGroup class]])
-	{
-		NSInteger row = indexPath.row - 1;
-		JFMenuGroup* group = (JFMenuGroup*)retVal;
-		retVal = ((row < [group.items count]) ? [group.items objectAtIndex:row] : nil);
-	}
-	return retVal;
-}
-
-
-#pragma mark - Validation management
-
-- (BOOL)validateItem:(JFMenuItem*)item
-{
-	return (item && ([self.items containsObject:item] || [self groupForItem:item]));
+	[self loadItem:item intoCell:cell];
 }
 
 
@@ -417,16 +312,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-	return [self.items count];
+	return [self.tableItems count];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
+	static NSString* cellIdentifier = @"Cell";
 	
-	JFMenuItemTableViewCell* retVal = [tableView dequeueReusableCellWithIdentifier:[JFMenuItemTableViewCell reuseIdentifier] forIndexPath:indexPath];
+	UITableViewCell* retVal = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	if(!retVal)
+		retVal = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
 	
-	[self loadDataOfItem:item intoCell:retVal];
+	JFMenuItem* item = [self itemForIndexPath:indexPath];
+	[self loadItem:item intoCell:retVal];
 	
 	if(item == self.selectedItem)
 		[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -436,15 +334,7 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-	JFMenuItem* item = [self.items objectAtIndex:section];
-	if(![item isKindOfClass:[JFMenuGroup class]])
-		return 1;
-	
-	JFMenuGroup* group = (JFMenuGroup*)item;
-	if(group.isCollapsed)
-		return 1;
-	
-	return [group.items count] + 1;
+	return [[self.tableItems objectAtIndex:section] count];
 }
 
 
@@ -452,29 +342,19 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
-	
-	if([item isKindOfClass:[JFMenuGroup class]])
-	{
-		JFMenuGroup* group = (JFMenuGroup*)item;
-		if(group.isCollapsed)
-			[self expandGroup:group atIndex:indexPath.section];
-		else
-			[self collapseGroup:group atIndex:indexPath.section];
-	}
-	
+	JFMenuItem* item = [self itemForIndexPath:indexPath];
 	self.selectedItem = item;
 }
 
-- (void)tableView:(UITableView*)tableView willDisplayCell:(JFMenuItemTableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
+- (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
+	JFMenuItem* item = [self itemForIndexPath:indexPath];
 	[self applyAttributesOfItem:item toCell:cell];
 }
 
 - (NSIndexPath*)tableView:(UITableView*)tableView willSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
+	JFMenuItem* item = [self itemForIndexPath:indexPath];
 	if(!item.selectionEnabled)
 		return nil;
 	

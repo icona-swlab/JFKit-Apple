@@ -33,12 +33,19 @@
 @property (strong, nonatomic)	UIImage*		backgroundImage;
 @property (copy, nonatomic)		NSString*		detailText;
 @property (strong, nonatomic)	UIImage*		image;
-@property (strong, nonatomic)	UIImage*		selectedImage;
 @property (copy, nonatomic)		NSString*		text;
 
 // Flags
-@property (assign, nonatomic)	BOOL selectionEnabled;
-@property (assign, nonatomic)	BOOL userInteractionEnabled;
+@property (assign, nonatomic, getter=isGroupCollapsed)			BOOL groupCollapsed;
+@property (assign, nonatomic, getter=isSelectionEnabled)		BOOL selectionEnabled;
+@property (assign, nonatomic)									BOOL shouldDisplayAsSelectedIfSubitemIsSelected;
+@property (assign, nonatomic, getter=isUserInteractionEnabled)	BOOL userInteractionEnabled;
+
+// Relationships
+@property (copy, nonatomic)	NSArray*	subitems;	// Array of "JFMenuItem" objects.
+
+// Flags management
+- (BOOL)	isGroup;
 
 @end
 
@@ -46,25 +53,20 @@
 
 @interface JFMenuItemAttributes : NSObject <NSCopying>
 
-// Background
+// Colors
 @property (strong, nonatomic)	UIColor*	backgroundColor;
+@property (strong, nonatomic)	UIColor*	detailTextColor;
+@property (strong, nonatomic)	UIColor*	textColor;
+
+// Fonts
+@property (strong, nonatomic)	UIFont*	detailTextFont;
+@property (strong, nonatomic)	UIFont*	textFont;
 
 // Indentation
 @property (assign, nonatomic)	NSInteger	indentationLevel;
 @property (assign, nonatomic)	CGFloat		indentationWidth;
 
-// Separator
-@property (strong, nonatomic)	UIColor*	separatorColor;
-@property (assign, nonatomic)	CGFloat		separatorHeight;
-
-// Spacing
-@property (assign, nonatomic)	UIEdgeInsets	backgroundPadding;
-@property (assign, nonatomic)	UIEdgeInsets	contentPadding;
-
-// Text
-@property (strong, nonatomic)	UIColor*	detailTextColor;
-@property (strong, nonatomic)	UIFont*		detailTextFont;
-@property (strong, nonatomic)	UIColor*	textColor;
-@property (strong, nonatomic)	UIFont*		textFont;
+// Selection
+@property (assign, nonatomic)	UITableViewCellSelectionStyle	selectionStyle;
 
 @end

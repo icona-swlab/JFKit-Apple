@@ -18,7 +18,6 @@
 
 
 
-@class JFMenuGroup;
 @class JFMenuItem;
 @class JFMenuViewController;
 
@@ -32,9 +31,6 @@
 - (void)	menuViewController:(JFMenuViewController*)menuViewController didSelectItem:(JFMenuItem*)item;
 - (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldSelectItem:(JFMenuItem*)item;
 
-- (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldCollapseGroup:(JFMenuGroup*)group;
-- (BOOL)	menuViewController:(JFMenuViewController*)menuViewController shouldExpandGroup:(JFMenuGroup*)group;
-
 @end
 
 
@@ -45,13 +41,12 @@
 @property (strong, nonatomic)	NSArray*	items;	// Array of "JFMenuItem" objects.
 @property (weak, nonatomic)		JFMenuItem*	selectedItem;
 
-// Flags
-@property (assign, nonatomic)	BOOL	shouldCollapseGroups;
-
 // Relationships
 @property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
 
 // Data management
+- (void)	collapseGroup:(JFMenuItem*)group;
+- (void)	expandGroup:(JFMenuItem*)group;
 - (void)	reloadItems;
 
 @end

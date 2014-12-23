@@ -20,6 +20,8 @@
 
 #import "JFMenuItem.h"
 
+#import "JFUtilities.h"
+
 
 
 @implementation JFMenuItem
@@ -35,12 +37,16 @@
 @synthesize backgroundImage	= _backgroundImage;
 @synthesize detailText		= _detailText;
 @synthesize image			= _image;
-@synthesize selectedImage	= _selectedImage;
 @synthesize text			= _text;
 
 // Flags
-@synthesize selectionEnabled		= _selectionEnabled;
-@synthesize userInteractionEnabled	= _userInteractionEnabled;
+@synthesize groupCollapsed								= _groupCollapsed;
+@synthesize selectionEnabled							= _selectionEnabled;
+@synthesize shouldDisplayAsSelectedIfSubitemIsSelected	= _shouldDisplayAsSelectedIfSubitemIsSelected;
+@synthesize userInteractionEnabled						= _userInteractionEnabled;
+
+// Relationships
+@synthesize subitems	= _subitems;
 
 
 #pragma mark - Memory management
@@ -51,20 +57,24 @@
 	if(retVal)
 	{
 		// Attributes
-		retVal->_attributes = _attributes;
-		retVal->_selectedAttributes = _selectedAttributes;
+		retVal->_attributes			= _attributes;
+		retVal->_selectedAttributes	= _selectedAttributes;
 		
 		// Data
-		retVal->_additionalInfo = _additionalInfo;
-		retVal->_backgroundImage = _backgroundImage;
-		retVal->_detailText = _detailText;
-		retVal->_image = _image;
-		retVal->_selectedImage = _selectedImage;
-		retVal->_text = _text;
+		retVal->_additionalInfo		= _additionalInfo;
+		retVal->_backgroundImage	= _backgroundImage;
+		retVal->_detailText			= [_detailText copy];
+		retVal->_image				= _image;
+		retVal->_text				= [_text copy];
 		
 		// Flags
-		retVal->_selectionEnabled = _selectionEnabled;
-		retVal->_userInteractionEnabled = _userInteractionEnabled;
+		retVal->_groupCollapsed								= _groupCollapsed;
+		retVal->_selectionEnabled							= _selectionEnabled;
+		retVal->_shouldDisplayAsSelectedIfSubitemIsSelected	= _shouldDisplayAsSelectedIfSubitemIsSelected;
+		retVal->_userInteractionEnabled						= _userInteractionEnabled;
+		
+		// Relationships
+		retVal->_subitems	= [_subitems copy];
 	}
 	return retVal;
 }
@@ -75,10 +85,20 @@
 	if(self)
 	{
 		// Flags
+		_groupCollapsed = NO;
 		_selectionEnabled = YES;
+		_shouldDisplayAsSelectedIfSubitemIsSelected = NO;
 		_userInteractionEnabled = YES;
 	}
 	return self;
+}
+
+
+#pragma mark - Flags management
+
+- (BOOL)isGroup
+{
+	return (self.subitems != nil);
 }
 
 @end
@@ -87,26 +107,23 @@
 
 @implementation JFMenuItemAttributes
 
-// Background
+#pragma mark - Properties
+
+// Colors
 @synthesize backgroundColor	= _backgroundColor;
+@synthesize detailTextColor	= _detailTextColor;
+@synthesize textColor		= _textColor;
+
+// Fonts
+@synthesize detailTextFont	= _detailTextFont;
+@synthesize textFont		= _textFont;
 
 // Indentation
 @synthesize indentationLevel	= _indentationLevel;
 @synthesize indentationWidth	= _indentationWidth;
 
-// Separator
-@synthesize separatorColor	= _separatorColor;
-@synthesize separatorHeight	= _separatorHeight;
-
-// Spacing
-@synthesize backgroundPadding	= _backgroundPadding;
-@synthesize contentPadding		= _contentPadding;
-
-// Text
-@synthesize detailTextColor	= _detailTextColor;
-@synthesize detailTextFont	= _detailTextFont;
-@synthesize textColor		= _textColor;
-@synthesize textFont		= _textFont;
+// Selection
+@synthesize selectionStyle	= _selectionStyle;
 
 
 #pragma mark - Memory management
@@ -116,28 +133,38 @@
 	JFMenuItemAttributes* retVal = [[[self class] allocWithZone:zone] init];
 	if(retVal)
 	{
-		// Background
-		retVal->_backgroundColor = _backgroundColor;
+		// Colors
+		retVal->_backgroundColor	= _backgroundColor;
+		retVal->_detailTextColor	= _detailTextColor;
+		retVal->_textColor			= _textColor;
+		
+		// Fonts
+		retVal->_detailTextFont	= _detailTextFont;
+		retVal->_textFont		= _textFont;
 		
 		// Indentation
-		retVal->_indentationLevel = _indentationLevel;
-		retVal->_indentationWidth = _indentationWidth;
+		retVal->_indentationLevel	= _indentationLevel;
+		retVal->_indentationWidth	= _indentationWidth;
 		
-		// Separator
-		retVal->_separatorColor = _separatorColor;
-		retVal->_separatorHeight = _separatorHeight;
-		
-		// Spacing
-		retVal->_backgroundPadding = _backgroundPadding;
-		retVal->_contentPadding = _contentPadding;
-		
-		// Text
-		retVal->_detailTextColor = _detailTextColor;
-		retVal->_detailTextFont = _detailTextFont;
-		retVal->_textColor = _textColor;
-		retVal->_textFont = _textFont;
+		// Selection
+		retVal->_selectionStyle	= _selectionStyle;
 	}
 	return retVal;
+}
+
+- (instancetype)init
+{
+	self = [super init];
+	if(self)
+	{
+		// Indentation
+		_indentationLevel = 0;
+		_indentationWidth = 10.0f;
+		
+		// Selection
+		_selectionStyle = (iOS7Plus ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleBlue);
+	}
+	return self;
 }
 
 @end
