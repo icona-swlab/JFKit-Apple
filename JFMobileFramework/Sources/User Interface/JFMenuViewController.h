@@ -45,8 +45,6 @@
 @property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
 
 // Data management
-- (void)	collapseGroup:(JFMenuItem*)group;
-- (void)	expandGroup:(JFMenuItem*)group;
 - (void)	reloadItems;
 
 @end

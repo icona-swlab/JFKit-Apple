@@ -34,6 +34,11 @@
 - (JFMenuItem*)		groupForItem:(JFMenuItem*)item;
 - (NSIndexPath*)	indexPathOfItem:(JFMenuItem*)item;
 - (JFMenuItem*)		itemForIndexPath:(NSIndexPath*)indexPath;
+- (NSMutableArray*)	sectionItemsForItem:(JFMenuItem*)item;
+- (NSArray*)		subitemsOfItem:(JFMenuItem*)item includeCollapsedItems:(BOOL)includeCollapsedItems;
+
+// Notifications management (Delegate)
+- (BOOL)	shouldSelectItem:(JFMenuItem*)item;
 
 // User interface management (TableView)
 - (void)	applyAttributesOfItem:(JFMenuItem*)item toCell:(UITableViewCell*)cell;
@@ -122,7 +127,10 @@
 {
 	self = [super initWithCoder:aDecoder];
 	if(self)
-	{}
+	{
+		// Data
+		_tableItems = [NSMutableArray new];
+	}
 	return self;
 }
 
@@ -147,18 +155,6 @@
 
 
 #pragma mark - Data management
-
-- (void)collapseGroup:(JFMenuItem*)group
-{
-	if(!group || ![group isGroup] || [group isGroupCollapsed])
-		return;
-}
-
-- (void)expandGroup:(JFMenuItem*)group
-{
-	if(!group || ![group isGroup] || ![group isGroupCollapsed])
-		return;
-}
 
 - (JFMenuItem*)groupForItem:(JFMenuItem*)item
 {
@@ -185,14 +181,12 @@
 	if(!item)
 		return nil;
 	
-	for(NSInteger section = 0; section < [self.tableItems count]; section++)
+	NSMutableArray* items = [self sectionItemsForItem:item];
+	if(items)
 	{
-		NSArray* items = [self.tableItems objectAtIndex:section];
-		if([items containsObject:item])
-		{
-			NSInteger row = [items indexOfObject:item];
-			return [NSIndexPath indexPathForRow:row inSection:section];
-		}
+		NSInteger section = [self.tableItems indexOfObject:items];
+		NSInteger row = [items indexOfObject:item];
+		return [NSIndexPath indexPathForRow:row inSection:section];
 	}
 	return nil;
 }
@@ -207,31 +201,12 @@
 
 - (void)reloadItems
 {
-	// Prepares the block to recursively retrieve all subitems of an item.
-	__block __weak NSArray* (^weakGetSubitems)(JFMenuItem*);
-	NSArray* (^getSubitems)(JFMenuItem*) = ^NSArray*(JFMenuItem* item)
-	{
-		if(!item || ![item isGroup] || [item isGroupCollapsed])
-			return nil;
-		
-		NSMutableArray* retVal = [NSMutableArray array];
-		for(JFMenuItem* subitem in item.subitems)
-		{
-			[retVal addObject:subitem];
-			NSArray* subitems = weakGetSubitems(subitem);
-			if(subitems)
-				[retVal addObjectsFromArray:subitems];
-		}
-		return retVal;
-	};
-	weakGetSubitems = getSubitems;
-	
 	[self.tableItems removeAllObjects];
 	
 	for(JFMenuItem* item in self.items)
 	{
 		NSMutableArray* sectionItems = [NSMutableArray arrayWithObject:item];
-		NSArray* subitems = getSubitems(item);
+		NSArray* subitems = [self subitemsOfItem:item includeCollapsedItems:NO];
 		if(subitems)
 			[sectionItems addObjectsFromArray:subitems];
 		[self.tableItems addObject:sectionItems];
@@ -239,6 +214,46 @@
 	
 	if([self isViewLoaded])
 		[self.tableView reloadData];
+}
+
+- (NSMutableArray*)sectionItemsForItem:(JFMenuItem*)item
+{
+	for(NSMutableArray* items in self.tableItems)
+	{
+		if([items containsObject:item])
+			return items;
+	}
+	return nil;
+}
+
+- (NSArray*)subitemsOfItem:(JFMenuItem*)item includeCollapsedItems:(BOOL)includeCollapsedItems
+{
+	if(!item || ![item isGroup] || (!includeCollapsedItems && [item isGroupCollapsed]))
+		return nil;
+	
+	NSMutableArray* retVal = [NSMutableArray array];
+	for(JFMenuItem* subitem in item.subitems)
+	{
+		[retVal addObject:subitem];
+		NSArray* subitems = [self subitemsOfItem:subitem includeCollapsedItems:includeCollapsedItems];
+		if(subitems)
+			[retVal addObjectsFromArray:subitems];
+	}
+	return retVal;
+}
+
+
+#pragma mark - Notifications management (Delegate)
+
+- (BOOL)shouldSelectItem:(JFMenuItem*)item
+{
+	if(![item isSelectionEnabled])
+		return NO;
+	
+	BOOL retVal = YES;
+	if([self.delegate respondsToSelector:@selector(menuViewController:shouldSelectItem:)])
+		retVal = [self.delegate menuViewController:self shouldSelectItem:item];
+	return retVal;
 }
 
 
@@ -355,14 +370,12 @@
 - (NSIndexPath*)tableView:(UITableView*)tableView willSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
 	JFMenuItem* item = [self itemForIndexPath:indexPath];
-	if(!item.selectionEnabled)
+	
+	if(item == self.selectedItem)
 		return nil;
 	
-	if([self.delegate respondsToSelector:@selector(menuViewController:shouldSelectItem:)])
-	{
-		if(![self.delegate menuViewController:self shouldSelectItem:item])
-			return nil;
-	}
+	if(![self shouldSelectItem:item])
+		return nil;
 	
 	return indexPath;
 }
