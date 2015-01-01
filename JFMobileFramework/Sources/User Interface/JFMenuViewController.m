@@ -115,14 +115,6 @@
 
 #pragma mark - Memory management
 
-- (instancetype)init
-{
-	self = [self initWithStyle:UITableViewStyleGrouped];
-	if(self)
-	{}
-	return self;
-}
-
 - (instancetype)initWithCoder:(NSCoder*)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
@@ -142,14 +134,6 @@
 		// Data
 		_tableItems = [NSMutableArray new];
 	}
-	return self;
-}
-
-- (instancetype)initWithStyle:(UITableViewStyle)style
-{
-	self = [super initWithStyle:style];
-	if(self)
-	{}
 	return self;
 }
 
@@ -254,16 +238,6 @@
 	if([self.delegate respondsToSelector:@selector(menuViewController:shouldSelectItem:)])
 		retVal = [self.delegate menuViewController:self shouldSelectItem:item];
 	return retVal;
-}
-
-
-#pragma mark - User interface management (Inherited)
-
-- (void)viewDidLoad
-{
-	[super viewDidLoad];
-	
-	//self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 
