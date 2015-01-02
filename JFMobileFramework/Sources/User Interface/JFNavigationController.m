@@ -30,16 +30,16 @@
 
 @implementation JFNavigationController
 
-#pragma mark - User interface management
-
-- (BOOL)shouldAutorotate
-{
-	return [self.topViewController shouldAutorotate];
-}
+#pragma mark - User interface management (Rotation)
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
 	return [self.topViewController preferredInterfaceOrientationForPresentation];
+}
+
+- (BOOL)shouldAutorotate
+{
+	return [self.topViewController shouldAutorotate];
 }
 
 - (NSUInteger)supportedInterfaceOrientations

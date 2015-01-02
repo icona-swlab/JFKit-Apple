@@ -91,10 +91,10 @@
 		EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFKeyboardViewHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLabel.h; sourceTree = "<group>"; };
 		EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFLabel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFMenuItem.h; path = "JFMobileFramework/Sources/User Interface/JFMenuItem.h"; sourceTree = "<group>"; };
-		EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = JFMenuItem.m; path = "JFMobileFramework/Sources/User Interface/JFMenuItem.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFMenuViewController.h; path = "JFMobileFramework/Sources/User Interface/JFMenuViewController.h"; sourceTree = "<group>"; };
-		EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFMenuViewController.m; path = "JFMobileFramework/Sources/User Interface/JFMenuViewController.m"; sourceTree = "<group>"; };
+		EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItem.h; sourceTree = "<group>"; };
+		EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFMenuItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
+		EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
 		EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
 		EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
 		EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
@@ -143,10 +143,6 @@
 		EA425D841894211F003C55E8 = {
 			isa = PBXGroup;
 			children = (
-				EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */,
-				EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */,
-				EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */,
-				EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */,
 				EA425D8F1894211F003C55E8 /* Frameworks */,
 				EA425D8E1894211F003C55E8 /* Products */,
 				EA6F576A1A3E0CFC006D6C37 /* Sources */,
@@ -222,6 +218,10 @@
 				EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */,
 				EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */,
 				EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */,
+				EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */,
+				EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */,
+				EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */,
+				EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */,
 				EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */,
 				EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */,
 				EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */,
