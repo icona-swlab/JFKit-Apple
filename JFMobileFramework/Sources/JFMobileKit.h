@@ -33,21 +33,39 @@
 // Debug
 #import "JFLogger.h"
 
-// User interface
+// User interface (Activity Indicators)
 #import "JFActivityIndicatorView.h"
+
+// User interface (Alerts)
 #import "JFAlertView.h"
-#import "JFDrawerController.h"
+
+// User interface (Galleries)
 #import "JFGalleryView.h"
+
+// User interface (Keyboard)
 #import "JFKeyboardViewHandler.h"
-#import "JFLabel.h"
-#import "JFMenuItem.h"
-#import "JFMenuViewController.h"
+
+// User interface (Structure)
 #import "JFNavigationController.h"
-#import "JFSimpleFormViewController.h"
 #import "JFSliderController.h"
 #import "JFSplitViewController.h"
+#import "JFTabBarController.h"
+
+// User interface (Tables)
+#import "JFTableViewSection.h"
+
+// User interface (Texts)
+#import "JFLabel.h"
 #import "JFTextView.h"
+
+// User interface (Toolbars)
 #import "JFTransparentToolbar.h"
+
+// User interface (Work In Progress)
+#import "JFDrawerController.h"
+#import "JFMenuItem.h"
+#import "JFMenuViewController.h"
+#import "JFSimpleFormViewController.h"
 
 // Utilities
 #import "JFFileManager.h"

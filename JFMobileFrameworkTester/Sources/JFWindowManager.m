@@ -10,6 +10,8 @@
 
 #import "JFWindowManager.h"
 
+#import "JFRootViewController.h"
+
 
 
 @interface JFWindowManager ()
@@ -61,8 +63,7 @@
 	self.isUserInterfaceLoaded = YES;
 	
 	self.window.backgroundColor = [UIColor blackColor];
-	self.window.rootViewController = [UIViewController new];
-	self.window.rootViewController.view.backgroundColor = [UIColor redColor];
+	self.window.rootViewController = [[JFRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 }
 
 @end

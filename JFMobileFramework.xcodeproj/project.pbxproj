@@ -11,48 +11,52 @@
 		EA27C6C51A3E142500B578EB /* JFCoreDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA27C6C61A3E142500B578EB /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F576E1A3E0CFC006D6C37 /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA27C6C71A3E142500B578EB /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57711A3E0CFC006D6C37 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6C81A3E142500B578EB /* JFActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57741A3E0CFC006D6C37 /* JFActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6C91A3E142500B578EB /* JFAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57761A3E0CFC006D6C37 /* JFAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6CA1A3E142500B578EB /* JFDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57781A3E0CFC006D6C37 /* JFDrawerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6CB1A3E142500B578EB /* JFGalleryView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F577A1A3E0CFC006D6C37 /* JFGalleryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6CC1A3E142500B578EB /* JFKeyboardViewHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F577C1A3E0CFC006D6C37 /* JFKeyboardViewHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6CD1A3E142500B578EB /* JFLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6CF1A3E142500B578EB /* JFMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6D11A3E142500B578EB /* JFMenuViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6D21A3E142500B578EB /* JFNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6D31A3E142500B578EB /* JFSimpleFormViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6D41A3E142500B578EB /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F578D1A3E0CFC006D6C37 /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6D51A3E142500B578EB /* JFSplitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F578F1A3E0CFC006D6C37 /* JFSplitViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6D61A3E142500B578EB /* JFTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57911A3E0CFC006D6C37 /* JFTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA27C6D71A3E142500B578EB /* JFTransparentToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57931A3E0CFC006D6C37 /* JFTransparentToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA27C6D81A3E142500B578EB /* JFFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57961A3E0CFC006D6C37 /* JFFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA27C6D91A3E142500B578EB /* JFUpdatableFile.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F57981A3E0CFC006D6C37 /* JFUpdatableFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA27C6DA1A3E142500B578EB /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6F579A1A3E0CFC006D6C37 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5C29341A3E13A00027D706 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B6D018A8F61100414379 /* CoreData.framework */; };
 		EA5C29351A3E13A00027D706 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425D901894211F003C55E8 /* Foundation.framework */; };
 		EA5C29361A3E13A00027D706 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA425DD71894224A003C55E8 /* UIKit.framework */; };
+		EA5D263A1A5AE3AB00977AA8 /* JFActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26121A5AE3AB00977AA8 /* JFActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D263B1A5AE3AB00977AA8 /* JFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26131A5AE3AB00977AA8 /* JFActivityIndicatorView.m */; };
+		EA5D263C1A5AE3AB00977AA8 /* JFAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26151A5AE3AB00977AA8 /* JFAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D263D1A5AE3AB00977AA8 /* JFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26161A5AE3AB00977AA8 /* JFAlertView.m */; };
+		EA5D263E1A5AE3AB00977AA8 /* JFGalleryView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26181A5AE3AB00977AA8 /* JFGalleryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D263F1A5AE3AB00977AA8 /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26191A5AE3AB00977AA8 /* JFGalleryView.m */; };
+		EA5D26401A5AE3AB00977AA8 /* JFKeyboardViewHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D261B1A5AE3AB00977AA8 /* JFKeyboardViewHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26411A5AE3AB00977AA8 /* JFKeyboardViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D261C1A5AE3AB00977AA8 /* JFKeyboardViewHandler.m */; };
+		EA5D264A1A5AE3AB00977AA8 /* JFTableViewSection.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26271A5AE3AB00977AA8 /* JFTableViewSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D264B1A5AE3AB00977AA8 /* JFTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26281A5AE3AB00977AA8 /* JFTableViewSection.m */; };
+		EA5D264C1A5AE3AB00977AA8 /* JFLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D262A1A5AE3AB00977AA8 /* JFLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D264D1A5AE3AB00977AA8 /* JFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D262B1A5AE3AB00977AA8 /* JFLabel.m */; };
+		EA5D264E1A5AE3AB00977AA8 /* JFTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D262C1A5AE3AB00977AA8 /* JFTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D264F1A5AE3AB00977AA8 /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D262D1A5AE3AB00977AA8 /* JFTextView.m */; };
+		EA5D26501A5AE3AB00977AA8 /* JFTransparentToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D262F1A5AE3AB00977AA8 /* JFTransparentToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26511A5AE3AB00977AA8 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26301A5AE3AB00977AA8 /* JFTransparentToolbar.m */; };
+		EA5D26521A5AE3AB00977AA8 /* JFDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26321A5AE3AB00977AA8 /* JFDrawerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26531A5AE3AB00977AA8 /* JFDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26331A5AE3AB00977AA8 /* JFDrawerController.m */; };
+		EA5D26541A5AE3AB00977AA8 /* JFMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26341A5AE3AB00977AA8 /* JFMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26551A5AE3AB00977AA8 /* JFMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26351A5AE3AB00977AA8 /* JFMenuItem.m */; };
+		EA5D26561A5AE3AB00977AA8 /* JFMenuViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26361A5AE3AB00977AA8 /* JFMenuViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26571A5AE3AB00977AA8 /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26371A5AE3AB00977AA8 /* JFMenuViewController.m */; };
+		EA5D26581A5AE3AB00977AA8 /* JFSimpleFormViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26381A5AE3AB00977AA8 /* JFSimpleFormViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26591A5AE3AB00977AA8 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26391A5AE3AB00977AA8 /* JFSimpleFormViewController.m */; };
+		EA5D26701A5AE50600977AA8 /* JFNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D26681A5AE50600977AA8 /* JFNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26711A5AE50600977AA8 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26691A5AE50600977AA8 /* JFNavigationController.m */; };
+		EA5D26721A5AE50600977AA8 /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D266A1A5AE50600977AA8 /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26731A5AE50600977AA8 /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D266B1A5AE50600977AA8 /* JFSliderController.m */; };
+		EA5D26741A5AE50600977AA8 /* JFSplitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D266C1A5AE50600977AA8 /* JFSplitViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26751A5AE50600977AA8 /* JFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D266D1A5AE50600977AA8 /* JFSplitViewController.m */; };
+		EA5D26761A5AE50600977AA8 /* JFTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D266E1A5AE50600977AA8 /* JFTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA5D26771A5AE50600977AA8 /* JFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D266F1A5AE50600977AA8 /* JFTabBarController.m */; };
 		EA69EF461A3E550F00445BAE /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = EA69EF451A3E550F00445BAE /* Prefix.pch */; };
 		EA6F579C1A3E0CFC006D6C37 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */; };
 		EA6F579D1A3E0CFC006D6C37 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576F1A3E0CFC006D6C37 /* JFHTTPRequest.m */; };
 		EA6F579E1A3E0CFC006D6C37 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57721A3E0CFC006D6C37 /* JFLogger.m */; };
-		EA6F579F1A3E0CFC006D6C37 /* JFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57751A3E0CFC006D6C37 /* JFActivityIndicatorView.m */; };
-		EA6F57A01A3E0CFC006D6C37 /* JFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57771A3E0CFC006D6C37 /* JFAlertView.m */; };
-		EA6F57A11A3E0CFC006D6C37 /* JFDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57791A3E0CFC006D6C37 /* JFDrawerController.m */; };
-		EA6F57A21A3E0CFC006D6C37 /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F577B1A3E0CFC006D6C37 /* JFGalleryView.m */; };
-		EA6F57A31A3E0CFC006D6C37 /* JFKeyboardViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */; };
-		EA6F57A41A3E0CFC006D6C37 /* JFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */; };
-		EA6F57A61A3E0CFC006D6C37 /* JFMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */; };
-		EA6F57A81A3E0CFC006D6C37 /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */; };
-		EA6F57A91A3E0CFC006D6C37 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */; };
-		EA6F57AA1A3E0CFC006D6C37 /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F578C1A3E0CFC006D6C37 /* JFSimpleFormViewController.m */; };
-		EA6F57AB1A3E0CFC006D6C37 /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F578E1A3E0CFC006D6C37 /* JFSliderController.m */; };
-		EA6F57AC1A3E0CFC006D6C37 /* JFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57901A3E0CFC006D6C37 /* JFSplitViewController.m */; };
-		EA6F57AD1A3E0CFC006D6C37 /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57921A3E0CFC006D6C37 /* JFTextView.m */; };
-		EA6F57AE1A3E0CFC006D6C37 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57941A3E0CFC006D6C37 /* JFTransparentToolbar.m */; };
 		EA6F57AF1A3E0CFC006D6C37 /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57971A3E0CFC006D6C37 /* JFFileManager.m */; };
 		EA6F57B01A3E0CFC006D6C37 /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57991A3E0CFC006D6C37 /* JFUpdatableFile.m */; };
 		EA6F57B11A3E0CFC006D6C37 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F579B1A3E0CFC006D6C37 /* JFUtilities.m */; };
-		EAADAB491A3E544E00BD98D0 /* JFGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = EAADAB481A3E544E00BD98D0 /* JFGlobals.h */; };
+		EAADAB491A3E544E00BD98D0 /* JFGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = EAADAB481A3E544E00BD98D0 /* JFGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +75,38 @@
 		EA425D901894211F003C55E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA5C29331A3E130E0027D706 /* JFMobileKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFMobileKit.h; sourceTree = "<group>"; };
+		EA5D26121A5AE3AB00977AA8 /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
+		EA5D26131A5AE3AB00977AA8 /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFActivityIndicatorView.m; sourceTree = "<group>"; };
+		EA5D26151A5AE3AB00977AA8 /* JFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlertView.h; sourceTree = "<group>"; };
+		EA5D26161A5AE3AB00977AA8 /* JFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAlertView.m; sourceTree = "<group>"; };
+		EA5D26181A5AE3AB00977AA8 /* JFGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
+		EA5D26191A5AE3AB00977AA8 /* JFGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
+		EA5D261B1A5AE3AB00977AA8 /* JFKeyboardViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKeyboardViewHandler.h; sourceTree = "<group>"; };
+		EA5D261C1A5AE3AB00977AA8 /* JFKeyboardViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFKeyboardViewHandler.m; sourceTree = "<group>"; };
+		EA5D26271A5AE3AB00977AA8 /* JFTableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewSection.h; sourceTree = "<group>"; };
+		EA5D26281A5AE3AB00977AA8 /* JFTableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewSection.m; sourceTree = "<group>"; };
+		EA5D262A1A5AE3AB00977AA8 /* JFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLabel.h; sourceTree = "<group>"; };
+		EA5D262B1A5AE3AB00977AA8 /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLabel.m; sourceTree = "<group>"; };
+		EA5D262C1A5AE3AB00977AA8 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
+		EA5D262D1A5AE3AB00977AA8 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
+		EA5D262F1A5AE3AB00977AA8 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
+		EA5D26301A5AE3AB00977AA8 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
+		EA5D26321A5AE3AB00977AA8 /* JFDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFDrawerController.h; sourceTree = "<group>"; };
+		EA5D26331A5AE3AB00977AA8 /* JFDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFDrawerController.m; sourceTree = "<group>"; };
+		EA5D26341A5AE3AB00977AA8 /* JFMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItem.h; sourceTree = "<group>"; };
+		EA5D26351A5AE3AB00977AA8 /* JFMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuItem.m; sourceTree = "<group>"; };
+		EA5D26361A5AE3AB00977AA8 /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
+		EA5D26371A5AE3AB00977AA8 /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
+		EA5D26381A5AE3AB00977AA8 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
+		EA5D26391A5AE3AB00977AA8 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
+		EA5D26681A5AE50600977AA8 /* JFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
+		EA5D26691A5AE50600977AA8 /* JFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
+		EA5D266A1A5AE50600977AA8 /* JFSliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSliderController.h; sourceTree = "<group>"; };
+		EA5D266B1A5AE50600977AA8 /* JFSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSliderController.m; sourceTree = "<group>"; };
+		EA5D266C1A5AE50600977AA8 /* JFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSplitViewController.h; sourceTree = "<group>"; };
+		EA5D266D1A5AE50600977AA8 /* JFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSplitViewController.m; sourceTree = "<group>"; };
+		EA5D266E1A5AE50600977AA8 /* JFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTabBarController.h; sourceTree = "<group>"; };
+		EA5D266F1A5AE50600977AA8 /* JFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTabBarController.m; sourceTree = "<group>"; };
 		EA69EF451A3E550F00445BAE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = JFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
@@ -79,34 +115,6 @@
 		EA6F576F1A3E0CFC006D6C37 /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFHTTPRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA6F57711A3E0CFC006D6C37 /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
 		EA6F57721A3E0CFC006D6C37 /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFLogger.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F57741A3E0CFC006D6C37 /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
-		EA6F57751A3E0CFC006D6C37 /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFActivityIndicatorView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F57761A3E0CFC006D6C37 /* JFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JFAlertView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EA6F57771A3E0CFC006D6C37 /* JFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFAlertView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F57781A3E0CFC006D6C37 /* JFDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JFDrawerController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EA6F57791A3E0CFC006D6C37 /* JFDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFDrawerController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F577A1A3E0CFC006D6C37 /* JFGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
-		EA6F577B1A3E0CFC006D6C37 /* JFGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFGalleryView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F577C1A3E0CFC006D6C37 /* JFKeyboardViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKeyboardViewHandler.h; sourceTree = "<group>"; };
-		EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFKeyboardViewHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLabel.h; sourceTree = "<group>"; };
-		EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFLabel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuItem.h; sourceTree = "<group>"; };
-		EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFMenuItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
-		EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
-		EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNavigationController.h; sourceTree = "<group>"; };
-		EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNavigationController.m; sourceTree = "<group>"; };
-		EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
-		EA6F578C1A3E0CFC006D6C37 /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
-		EA6F578D1A3E0CFC006D6C37 /* JFSliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSliderController.h; sourceTree = "<group>"; };
-		EA6F578E1A3E0CFC006D6C37 /* JFSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSliderController.m; sourceTree = "<group>"; };
-		EA6F578F1A3E0CFC006D6C37 /* JFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSplitViewController.h; sourceTree = "<group>"; };
-		EA6F57901A3E0CFC006D6C37 /* JFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSplitViewController.m; sourceTree = "<group>"; };
-		EA6F57911A3E0CFC006D6C37 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
-		EA6F57921A3E0CFC006D6C37 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
-		EA6F57931A3E0CFC006D6C37 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
-		EA6F57941A3E0CFC006D6C37 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
 		EA6F57961A3E0CFC006D6C37 /* JFFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
 		EA6F57971A3E0CFC006D6C37 /* JFFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFFileManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA6F57981A3E0CFC006D6C37 /* JFUpdatableFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUpdatableFile.h; sourceTree = "<group>"; };
@@ -169,6 +177,101 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EA5D26111A5AE3AB00977AA8 /* Activity Indicators */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D26121A5AE3AB00977AA8 /* JFActivityIndicatorView.h */,
+				EA5D26131A5AE3AB00977AA8 /* JFActivityIndicatorView.m */,
+			);
+			path = "Activity Indicators";
+			sourceTree = "<group>";
+		};
+		EA5D26141A5AE3AB00977AA8 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D26151A5AE3AB00977AA8 /* JFAlertView.h */,
+				EA5D26161A5AE3AB00977AA8 /* JFAlertView.m */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		EA5D26171A5AE3AB00977AA8 /* Galleries */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D26181A5AE3AB00977AA8 /* JFGalleryView.h */,
+				EA5D26191A5AE3AB00977AA8 /* JFGalleryView.m */,
+			);
+			path = Galleries;
+			sourceTree = "<group>";
+		};
+		EA5D261A1A5AE3AB00977AA8 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D261B1A5AE3AB00977AA8 /* JFKeyboardViewHandler.h */,
+				EA5D261C1A5AE3AB00977AA8 /* JFKeyboardViewHandler.m */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		EA5D26261A5AE3AB00977AA8 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D26271A5AE3AB00977AA8 /* JFTableViewSection.h */,
+				EA5D26281A5AE3AB00977AA8 /* JFTableViewSection.m */,
+			);
+			path = Tables;
+			sourceTree = "<group>";
+		};
+		EA5D26291A5AE3AB00977AA8 /* Texts */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D262A1A5AE3AB00977AA8 /* JFLabel.h */,
+				EA5D262B1A5AE3AB00977AA8 /* JFLabel.m */,
+				EA5D262C1A5AE3AB00977AA8 /* JFTextView.h */,
+				EA5D262D1A5AE3AB00977AA8 /* JFTextView.m */,
+			);
+			path = Texts;
+			sourceTree = "<group>";
+		};
+		EA5D262E1A5AE3AB00977AA8 /* Toolbars */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D262F1A5AE3AB00977AA8 /* JFTransparentToolbar.h */,
+				EA5D26301A5AE3AB00977AA8 /* JFTransparentToolbar.m */,
+			);
+			path = Toolbars;
+			sourceTree = "<group>";
+		};
+		EA5D26311A5AE3AB00977AA8 /* Work In Progress */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D26321A5AE3AB00977AA8 /* JFDrawerController.h */,
+				EA5D26331A5AE3AB00977AA8 /* JFDrawerController.m */,
+				EA5D26341A5AE3AB00977AA8 /* JFMenuItem.h */,
+				EA5D26351A5AE3AB00977AA8 /* JFMenuItem.m */,
+				EA5D26361A5AE3AB00977AA8 /* JFMenuViewController.h */,
+				EA5D26371A5AE3AB00977AA8 /* JFMenuViewController.m */,
+				EA5D26381A5AE3AB00977AA8 /* JFSimpleFormViewController.h */,
+				EA5D26391A5AE3AB00977AA8 /* JFSimpleFormViewController.m */,
+			);
+			path = "Work In Progress";
+			sourceTree = "<group>";
+		};
+		EA5D26671A5AE50600977AA8 /* Structure */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D26681A5AE50600977AA8 /* JFNavigationController.h */,
+				EA5D26691A5AE50600977AA8 /* JFNavigationController.m */,
+				EA5D266A1A5AE50600977AA8 /* JFSliderController.h */,
+				EA5D266B1A5AE50600977AA8 /* JFSliderController.m */,
+				EA5D266C1A5AE50600977AA8 /* JFSplitViewController.h */,
+				EA5D266D1A5AE50600977AA8 /* JFSplitViewController.m */,
+				EA5D266E1A5AE50600977AA8 /* JFTabBarController.h */,
+				EA5D266F1A5AE50600977AA8 /* JFTabBarController.m */,
+			);
+			path = Structure;
+			sourceTree = "<group>";
+		};
 		EA6F576A1A3E0CFC006D6C37 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,34 +309,15 @@
 		EA6F57731A3E0CFC006D6C37 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				EA6F57741A3E0CFC006D6C37 /* JFActivityIndicatorView.h */,
-				EA6F57751A3E0CFC006D6C37 /* JFActivityIndicatorView.m */,
-				EA6F57761A3E0CFC006D6C37 /* JFAlertView.h */,
-				EA6F57771A3E0CFC006D6C37 /* JFAlertView.m */,
-				EA6F57781A3E0CFC006D6C37 /* JFDrawerController.h */,
-				EA6F57791A3E0CFC006D6C37 /* JFDrawerController.m */,
-				EA6F577A1A3E0CFC006D6C37 /* JFGalleryView.h */,
-				EA6F577B1A3E0CFC006D6C37 /* JFGalleryView.m */,
-				EA6F577C1A3E0CFC006D6C37 /* JFKeyboardViewHandler.h */,
-				EA6F577D1A3E0CFC006D6C37 /* JFKeyboardViewHandler.m */,
-				EA6F577E1A3E0CFC006D6C37 /* JFLabel.h */,
-				EA6F577F1A3E0CFC006D6C37 /* JFLabel.m */,
-				EA6F57821A3E0CFC006D6C37 /* JFMenuItem.h */,
-				EA6F57831A3E0CFC006D6C37 /* JFMenuItem.m */,
-				EA6F57871A3E0CFC006D6C37 /* JFMenuViewController.h */,
-				EA6F57881A3E0CFC006D6C37 /* JFMenuViewController.m */,
-				EA6F57891A3E0CFC006D6C37 /* JFNavigationController.h */,
-				EA6F578A1A3E0CFC006D6C37 /* JFNavigationController.m */,
-				EA6F578B1A3E0CFC006D6C37 /* JFSimpleFormViewController.h */,
-				EA6F578C1A3E0CFC006D6C37 /* JFSimpleFormViewController.m */,
-				EA6F578D1A3E0CFC006D6C37 /* JFSliderController.h */,
-				EA6F578E1A3E0CFC006D6C37 /* JFSliderController.m */,
-				EA6F578F1A3E0CFC006D6C37 /* JFSplitViewController.h */,
-				EA6F57901A3E0CFC006D6C37 /* JFSplitViewController.m */,
-				EA6F57911A3E0CFC006D6C37 /* JFTextView.h */,
-				EA6F57921A3E0CFC006D6C37 /* JFTextView.m */,
-				EA6F57931A3E0CFC006D6C37 /* JFTransparentToolbar.h */,
-				EA6F57941A3E0CFC006D6C37 /* JFTransparentToolbar.m */,
+				EA5D26111A5AE3AB00977AA8 /* Activity Indicators */,
+				EA5D26141A5AE3AB00977AA8 /* Alerts */,
+				EA5D26171A5AE3AB00977AA8 /* Galleries */,
+				EA5D261A1A5AE3AB00977AA8 /* Keyboard */,
+				EA5D26671A5AE50600977AA8 /* Structure */,
+				EA5D26261A5AE3AB00977AA8 /* Tables */,
+				EA5D26291A5AE3AB00977AA8 /* Texts */,
+				EA5D262E1A5AE3AB00977AA8 /* Toolbars */,
+				EA5D26311A5AE3AB00977AA8 /* Work In Progress */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -268,29 +352,31 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA27C6CB1A3E142500B578EB /* JFGalleryView.h in Headers */,
-				EA27C6D71A3E142500B578EB /* JFTransparentToolbar.h in Headers */,
-				EA27C6CD1A3E142500B578EB /* JFLabel.h in Headers */,
+				EA5D26721A5AE50600977AA8 /* JFSliderController.h in Headers */,
+				EA5D26761A5AE50600977AA8 /* JFTabBarController.h in Headers */,
+				EA5D264A1A5AE3AB00977AA8 /* JFTableViewSection.h in Headers */,
+				EA5D26521A5AE3AB00977AA8 /* JFDrawerController.h in Headers */,
+				EA5D264E1A5AE3AB00977AA8 /* JFTextView.h in Headers */,
+				EA5D263E1A5AE3AB00977AA8 /* JFGalleryView.h in Headers */,
+				EAADAB491A3E544E00BD98D0 /* JFGlobals.h in Headers */,
+				EA5D26581A5AE3AB00977AA8 /* JFSimpleFormViewController.h in Headers */,
+				EA5D26701A5AE50600977AA8 /* JFNavigationController.h in Headers */,
+				EA5D26541A5AE3AB00977AA8 /* JFMenuItem.h in Headers */,
+				EA5D26561A5AE3AB00977AA8 /* JFMenuViewController.h in Headers */,
+				EA5D26401A5AE3AB00977AA8 /* JFKeyboardViewHandler.h in Headers */,
+				EA5D263A1A5AE3AB00977AA8 /* JFActivityIndicatorView.h in Headers */,
+				EA5D264C1A5AE3AB00977AA8 /* JFLabel.h in Headers */,
+				EA5D26741A5AE50600977AA8 /* JFSplitViewController.h in Headers */,
+				EA5D26501A5AE3AB00977AA8 /* JFTransparentToolbar.h in Headers */,
+				EA5D263C1A5AE3AB00977AA8 /* JFAlertView.h in Headers */,
 				EA27C6C71A3E142500B578EB /* JFLogger.h in Headers */,
-				EA27C6CA1A3E142500B578EB /* JFDrawerController.h in Headers */,
 				EA27C6D91A3E142500B578EB /* JFUpdatableFile.h in Headers */,
 				EA27C6DA1A3E142500B578EB /* JFUtilities.h in Headers */,
-				EA27C6D21A3E142500B578EB /* JFNavigationController.h in Headers */,
-				EA27C6D41A3E142500B578EB /* JFSliderController.h in Headers */,
 				EA27C6C41A3E142500B578EB /* JFMobileKit.h in Headers */,
-				EA27C6CC1A3E142500B578EB /* JFKeyboardViewHandler.h in Headers */,
-				EA27C6CF1A3E142500B578EB /* JFMenuItem.h in Headers */,
-				EAADAB491A3E544E00BD98D0 /* JFGlobals.h in Headers */,
-				EA27C6D11A3E142500B578EB /* JFMenuViewController.h in Headers */,
 				EA27C6D81A3E142500B578EB /* JFFileManager.h in Headers */,
 				EA69EF461A3E550F00445BAE /* Prefix.pch in Headers */,
 				EA27C6C51A3E142500B578EB /* JFCoreDataManager.h in Headers */,
-				EA27C6C81A3E142500B578EB /* JFActivityIndicatorView.h in Headers */,
-				EA27C6C91A3E142500B578EB /* JFAlertView.h in Headers */,
-				EA27C6D61A3E142500B578EB /* JFTextView.h in Headers */,
 				EA27C6C61A3E142500B578EB /* JFHTTPRequest.h in Headers */,
-				EA27C6D51A3E142500B578EB /* JFSplitViewController.h in Headers */,
-				EA27C6D31A3E142500B578EB /* JFSimpleFormViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,26 +468,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA6F57A11A3E0CFC006D6C37 /* JFDrawerController.m in Sources */,
-				EA6F57A61A3E0CFC006D6C37 /* JFMenuItem.m in Sources */,
+				EA5D26571A5AE3AB00977AA8 /* JFMenuViewController.m in Sources */,
+				EA5D263B1A5AE3AB00977AA8 /* JFActivityIndicatorView.m in Sources */,
+				EA5D26511A5AE3AB00977AA8 /* JFTransparentToolbar.m in Sources */,
+				EA5D264D1A5AE3AB00977AA8 /* JFLabel.m in Sources */,
+				EA5D263F1A5AE3AB00977AA8 /* JFGalleryView.m in Sources */,
+				EA5D26411A5AE3AB00977AA8 /* JFKeyboardViewHandler.m in Sources */,
+				EA5D264B1A5AE3AB00977AA8 /* JFTableViewSection.m in Sources */,
 				EA6F579C1A3E0CFC006D6C37 /* JFCoreDataManager.m in Sources */,
-				EA6F57A81A3E0CFC006D6C37 /* JFMenuViewController.m in Sources */,
-				EA6F57A91A3E0CFC006D6C37 /* JFNavigationController.m in Sources */,
-				EA6F57AB1A3E0CFC006D6C37 /* JFSliderController.m in Sources */,
-				EA6F57A41A3E0CFC006D6C37 /* JFLabel.m in Sources */,
-				EA6F579F1A3E0CFC006D6C37 /* JFActivityIndicatorView.m in Sources */,
-				EA6F57AD1A3E0CFC006D6C37 /* JFTextView.m in Sources */,
-				EA6F57A01A3E0CFC006D6C37 /* JFAlertView.m in Sources */,
+				EA5D26751A5AE50600977AA8 /* JFSplitViewController.m in Sources */,
 				EA6F57B01A3E0CFC006D6C37 /* JFUpdatableFile.m in Sources */,
+				EA5D26531A5AE3AB00977AA8 /* JFDrawerController.m in Sources */,
+				EA5D263D1A5AE3AB00977AA8 /* JFAlertView.m in Sources */,
+				EA5D26731A5AE50600977AA8 /* JFSliderController.m in Sources */,
 				EA6F57B11A3E0CFC006D6C37 /* JFUtilities.m in Sources */,
-				EA6F57AC1A3E0CFC006D6C37 /* JFSplitViewController.m in Sources */,
-				EA6F57A31A3E0CFC006D6C37 /* JFKeyboardViewHandler.m in Sources */,
+				EA5D264F1A5AE3AB00977AA8 /* JFTextView.m in Sources */,
+				EA5D26591A5AE3AB00977AA8 /* JFSimpleFormViewController.m in Sources */,
+				EA5D26551A5AE3AB00977AA8 /* JFMenuItem.m in Sources */,
 				EA6F579D1A3E0CFC006D6C37 /* JFHTTPRequest.m in Sources */,
-				EA6F57AA1A3E0CFC006D6C37 /* JFSimpleFormViewController.m in Sources */,
 				EA6F579E1A3E0CFC006D6C37 /* JFLogger.m in Sources */,
 				EA6F57AF1A3E0CFC006D6C37 /* JFFileManager.m in Sources */,
-				EA6F57AE1A3E0CFC006D6C37 /* JFTransparentToolbar.m in Sources */,
-				EA6F57A21A3E0CFC006D6C37 /* JFGalleryView.m in Sources */,
+				EA5D26711A5AE50600977AA8 /* JFNavigationController.m in Sources */,
+				EA5D26771A5AE50600977AA8 /* JFTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

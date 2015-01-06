@@ -77,11 +77,25 @@
 		if(!_persistentStoreCoordinator && self.managedObjectModel)
 		{
 			NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
-			NSError* error = nil;
-			if([coordinator addPersistentStoreWithType:self.persistentStoreType configuration:nil URL:self.persistentStoreURL options:nil error:&error])
-				_persistentStoreCoordinator = coordinator;
-			else
-				NSLog(@"%@: could not connect to persistent store at URL '%@' for error '%@'.", ClassName, [self.persistentStoreURL absoluteString], error);
+			BOOL shouldStop = NO;
+			while(!shouldStop)
+			{
+				shouldStop = YES;
+				NSError* error = nil;
+				if([coordinator addPersistentStoreWithType:self.persistentStoreType configuration:nil URL:self.persistentStoreURL options:nil error:&error])
+					_persistentStoreCoordinator = coordinator;
+				else
+				{
+					NSLog(@"%@: could not connect to persistent store at URL '%@' for error '%@'.", ClassName, [self.persistentStoreURL absoluteString], error);
+					if([[NSFileManager defaultManager] fileExistsAtPath:[self.persistentStoreURL path]])
+					{
+						if([[NSFileManager defaultManager] removeItemAtURL:self.persistentStoreURL error:&error])
+							shouldStop = NO;
+						else
+							NSLog(@"%@: could not remove persistent store at URL '%@' for error '%@'.", ClassName, [self.persistentStoreURL absoluteString], error);
+					}
+				}
+			}
 		}
 		
 		return _persistentStoreCoordinator;

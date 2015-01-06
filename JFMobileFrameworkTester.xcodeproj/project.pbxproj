@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA1262061A3E2CB000CB61D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1261FD1A3E2CB000CB61D9 /* Images.xcassets */; };
 		EA1262071A3E2CB000CB61D9 /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1262001A3E2CB000CB61D9 /* JFAppDelegate.m */; };
 		EA12620A1A3E2CB000CB61D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1262051A3E2CB000CB61D9 /* main.m */; };
+		EA17F4521A5BF6B300BE36F9 /* Application.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA17F4501A5BF6B300BE36F9 /* Application.xcassets */; };
+		EA17F4551A5BF7A500BE36F9 /* Database1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA17F4531A5BF7A500BE36F9 /* Database1.xcdatamodeld */; };
+		EA17F4581A5BF7AE00BE36F9 /* Database2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA17F4561A5BF7AE00BE36F9 /* Database2.xcdatamodeld */; };
+		EA5D26031A5AD82800977AA8 /* JFRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D26021A5AD82800977AA8 /* JFRootViewController.m */; };
+		EA5D260C1A5AD95E00977AA8 /* JFCoreDataManagerTester.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D260B1A5AD95E00977AA8 /* JFCoreDataManagerTester.m */; };
+		EAAEA02B1A5B273C00CEC003 /* JFModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAEA02A1A5B273C00CEC003 /* JFModalViewController.m */; };
 		EAAEB5841A3E2ED6003DCD73 /* JFWindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAEB5831A3E2ED6003DCD73 /* JFWindowManager.m */; };
 		EAAEB5861A3E2FB9003DCD73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5851A3E2FB9003DCD73 /* Foundation.framework */; };
 		EAAEB5881A3E2FC0003DCD73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAEB5871A3E2FC0003DCD73 /* UIKit.framework */; };
@@ -49,11 +54,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EA1261FD1A3E2CB000CB61D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA1261FF1A3E2CB000CB61D9 /* JFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAppDelegate.h; sourceTree = "<group>"; };
 		EA1262001A3E2CB000CB61D9 /* JFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAppDelegate.m; sourceTree = "<group>"; };
 		EA1262041A3E2CB000CB61D9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA1262051A3E2CB000CB61D9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EA17F4501A5BF6B300BE36F9 /* Application.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Application.xcassets; sourceTree = "<group>"; };
+		EA17F4541A5BF7A500BE36F9 /* Database1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database1.xcdatamodel; sourceTree = "<group>"; };
+		EA17F4571A5BF7AE00BE36F9 /* Database2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database2.xcdatamodel; sourceTree = "<group>"; };
+		EA5D26011A5AD82800977AA8 /* JFRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFRootViewController.h; sourceTree = "<group>"; };
+		EA5D26021A5AD82800977AA8 /* JFRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFRootViewController.m; sourceTree = "<group>"; };
+		EA5D260A1A5AD95E00977AA8 /* JFCoreDataManagerTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManagerTester.h; sourceTree = "<group>"; };
+		EA5D260B1A5AD95E00977AA8 /* JFCoreDataManagerTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManagerTester.m; sourceTree = "<group>"; };
+		EAAEA0291A5B273C00CEC003 /* JFModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFModalViewController.h; sourceTree = "<group>"; };
+		EAAEA02A1A5B273C00CEC003 /* JFModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFModalViewController.m; sourceTree = "<group>"; };
 		EAAEB5801A3E2DB2003DCD73 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		EAAEB5821A3E2ED6003DCD73 /* JFWindowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowManager.h; sourceTree = "<group>"; };
 		EAAEB5831A3E2ED6003DCD73 /* JFWindowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWindowManager.m; sourceTree = "<group>"; };
@@ -80,7 +93,9 @@
 		EA1261FC1A3E2CB000CB61D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EA1261FD1A3E2CB000CB61D9 /* Images.xcassets */,
+				EA17F44E1A5BF6B300BE36F9 /* Data */,
+				EA17F44F1A5BF6B300BE36F9 /* Images */,
+				EA17F4511A5BF6B300BE36F9 /* Strings */,
 			);
 			name = Resources;
 			path = JFMobileFrameworkTester/Resources;
@@ -91,8 +106,13 @@
 			children = (
 				EA1261FF1A3E2CB000CB61D9 /* JFAppDelegate.h */,
 				EA1262001A3E2CB000CB61D9 /* JFAppDelegate.m */,
+				EAAEA0291A5B273C00CEC003 /* JFModalViewController.h */,
+				EAAEA02A1A5B273C00CEC003 /* JFModalViewController.m */,
+				EA5D26011A5AD82800977AA8 /* JFRootViewController.h */,
+				EA5D26021A5AD82800977AA8 /* JFRootViewController.m */,
 				EAAEB5821A3E2ED6003DCD73 /* JFWindowManager.h */,
 				EAAEB5831A3E2ED6003DCD73 /* JFWindowManager.m */,
+				EA5D26091A5AD95E00977AA8 /* Testers */,
 			);
 			name = Sources;
 			path = JFMobileFrameworkTester/Sources;
@@ -107,6 +127,39 @@
 			);
 			name = "Supporting Files";
 			path = "JFMobileFrameworkTester/Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA17F44E1A5BF6B300BE36F9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EA17F4531A5BF7A500BE36F9 /* Database1.xcdatamodeld */,
+				EA17F4561A5BF7AE00BE36F9 /* Database2.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EA17F44F1A5BF6B300BE36F9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EA17F4501A5BF6B300BE36F9 /* Application.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		EA17F4511A5BF6B300BE36F9 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		EA5D26091A5AD95E00977AA8 /* Testers */ = {
+			isa = PBXGroup;
+			children = (
+				EA5D260A1A5AD95E00977AA8 /* JFCoreDataManagerTester.h */,
+				EA5D260B1A5AD95E00977AA8 /* JFCoreDataManagerTester.m */,
+			);
+			path = Testers;
 			sourceTree = "<group>";
 		};
 		EAAEB5891A3E2FC5003DCD73 /* Frameworks */ = {
@@ -238,7 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA1262061A3E2CB000CB61D9 /* Images.xcassets in Resources */,
+				EA17F4521A5BF6B300BE36F9 /* Application.xcassets in Resources */,
 				EAAEB5A71A3E3F66003DCD73 /* JFMobileFramework.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5D26031A5AD82800977AA8 /* JFRootViewController.m in Sources */,
+				EA5D260C1A5AD95E00977AA8 /* JFCoreDataManagerTester.m in Sources */,
+				EAAEA02B1A5B273C00CEC003 /* JFModalViewController.m in Sources */,
+				EA17F4551A5BF7A500BE36F9 /* Database1.xcdatamodeld in Sources */,
 				EA12620A1A3E2CB000CB61D9 /* main.m in Sources */,
+				EA17F4581A5BF7AE00BE36F9 /* Database2.xcdatamodeld in Sources */,
 				EAAEB5841A3E2ED6003DCD73 /* JFWindowManager.m in Sources */,
 				EA1262071A3E2CB000CB61D9 /* JFAppDelegate.m in Sources */,
 			);
@@ -400,6 +458,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EA17F4531A5BF7A500BE36F9 /* Database1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EA17F4541A5BF7A500BE36F9 /* Database1.xcdatamodel */,
+			);
+			currentVersion = EA17F4541A5BF7A500BE36F9 /* Database1.xcdatamodel */;
+			path = Database1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		EA17F4561A5BF7AE00BE36F9 /* Database2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EA17F4571A5BF7AE00BE36F9 /* Database2.xcdatamodel */,
+			);
+			currentVersion = EA17F4571A5BF7AE00BE36F9 /* Database2.xcdatamodel */;
+			path = Database2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EAEE075C1A3E2BD0003501E6 /* Project object */;
 }
