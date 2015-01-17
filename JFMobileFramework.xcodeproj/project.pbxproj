@@ -50,6 +50,8 @@
 		EA5D26761A5AE50600977AA8 /* JFTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5D266E1A5AE50600977AA8 /* JFTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5D26771A5AE50600977AA8 /* JFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5D266F1A5AE50600977AA8 /* JFTabBarController.m */; };
 		EA69EF461A3E550F00445BAE /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = EA69EF451A3E550F00445BAE /* Prefix.pch */; };
+		EA6E73A61A6A827800DAC604 /* JFWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6E73A41A6A827800DAC604 /* JFWindowController.h */; };
+		EA6E73A71A6A827800DAC604 /* JFWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6E73A51A6A827800DAC604 /* JFWindowController.m */; };
 		EA6F579C1A3E0CFC006D6C37 /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */; };
 		EA6F579D1A3E0CFC006D6C37 /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F576F1A3E0CFC006D6C37 /* JFHTTPRequest.m */; };
 		EA6F579E1A3E0CFC006D6C37 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6F57721A3E0CFC006D6C37 /* JFLogger.m */; };
@@ -108,6 +110,8 @@
 		EA5D266E1A5AE50600977AA8 /* JFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTabBarController.h; sourceTree = "<group>"; };
 		EA5D266F1A5AE50600977AA8 /* JFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTabBarController.m; sourceTree = "<group>"; };
 		EA69EF451A3E550F00445BAE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		EA6E73A41A6A827800DAC604 /* JFWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowController.h; sourceTree = "<group>"; };
+		EA6E73A51A6A827800DAC604 /* JFWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWindowController.m; sourceTree = "<group>"; };
 		EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = JFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
 		EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFCoreDataManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -253,6 +257,8 @@
 				EA5D26371A5AE3AB00977AA8 /* JFMenuViewController.m */,
 				EA5D26381A5AE3AB00977AA8 /* JFSimpleFormViewController.h */,
 				EA5D26391A5AE3AB00977AA8 /* JFSimpleFormViewController.m */,
+				EA6E73A41A6A827800DAC604 /* JFWindowController.h */,
+				EA6E73A51A6A827800DAC604 /* JFWindowController.m */,
 			);
 			path = "Work In Progress";
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 				EA5D26401A5AE3AB00977AA8 /* JFKeyboardViewHandler.h in Headers */,
 				EA5D263A1A5AE3AB00977AA8 /* JFActivityIndicatorView.h in Headers */,
 				EA5D264C1A5AE3AB00977AA8 /* JFLabel.h in Headers */,
+				EA6E73A61A6A827800DAC604 /* JFWindowController.h in Headers */,
 				EA5D26741A5AE50600977AA8 /* JFSplitViewController.h in Headers */,
 				EA5D26501A5AE3AB00977AA8 /* JFTransparentToolbar.h in Headers */,
 				EA5D263C1A5AE3AB00977AA8 /* JFAlertView.h in Headers */,
@@ -468,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6E73A71A6A827800DAC604 /* JFWindowController.m in Sources */,
 				EA5D26571A5AE3AB00977AA8 /* JFMenuViewController.m in Sources */,
 				EA5D263B1A5AE3AB00977AA8 /* JFActivityIndicatorView.m in Sources */,
 				EA5D26511A5AE3AB00977AA8 /* JFTransparentToolbar.m in Sources */,
