@@ -18,6 +18,24 @@
 
 
 
+@class JFTabBarController;
+
+
+@protocol JFTabBarControllerDelegate <UITabBarControllerDelegate>
+
+@optional
+
+- (UIInterfaceOrientation)	tabBarControllerPreferredInterfaceOrientationForPresentation:(JFTabBarController*)tabBarController;
+- (BOOL)					tabBarControllerShouldAutorotate:(JFTabBarController*)tabBarController;
+- (NSUInteger)				tabBarControllerSupportedInterfaceOrientations:(JFTabBarController*)tabBarController;
+
+@end
+
+
+
 @interface JFTabBarController : UITabBarController
+
+// Relationships
+@property (weak, nonatomic)	id<JFTabBarControllerDelegate>	delegate;
 
 @end

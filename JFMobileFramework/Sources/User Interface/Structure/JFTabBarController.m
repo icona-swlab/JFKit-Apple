@@ -10,6 +10,8 @@
 
 #import "JFTabBarController.h"
 
+#import "JFUtilities.h"
+
 
 
 @interface JFTabBarController ()
@@ -24,17 +26,32 @@
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-	return [self.selectedViewController preferredInterfaceOrientationForPresentation];
+	if(!iOS7Plus)
+	{
+		if(self.delegate && [self.delegate respondsToSelector:@selector(tabBarControllerPreferredInterfaceOrientationForPresentation:)])
+			return [self.delegate tabBarControllerPreferredInterfaceOrientationForPresentation:self];
+	}
+	
+	return [super preferredInterfaceOrientationForPresentation];
 }
 
 - (BOOL)shouldAutorotate
 {
-	return [self.selectedViewController shouldAutorotate];
+	if(self.delegate && [self.delegate respondsToSelector:@selector(tabBarControllerShouldAutorotate:)])
+		return [self.delegate tabBarControllerShouldAutorotate:self];
+	
+	return [super shouldAutorotate];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-	return [self.selectedViewController supportedInterfaceOrientations];
+	if(!iOS7Plus)
+	{
+		if(self.delegate && [self.delegate respondsToSelector:@selector(tabBarControllerSupportedInterfaceOrientations:)])
+			return [self.delegate tabBarControllerSupportedInterfaceOrientations:self];
+	}
+	
+	return [super supportedInterfaceOrientations];
 }
 
 @end
