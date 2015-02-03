@@ -6,9 +6,59 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		EACA68A91A810D6900D79126 /* All Frameworks */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = EACA68AA1A810D6900D79126 /* Build configuration list for PBXAggregateTarget "All Frameworks" */;
+			buildPhases = (
+			);
+			dependencies = (
+				EACA68AE1A810D7300D79126 /* PBXTargetDependency */,
+				EACA68B01A810D7300D79126 /* PBXTargetDependency */,
+			);
+			name = "All Frameworks";
+			productName = "All Frameworks";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		EACA688D1A81065500D79126 /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EACA688B1A81065500D79126 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EACA688E1A81065500D79126 /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EACA688B1A81065500D79126 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EACA688F1A81065500D79126 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EACA688C1A81065500D79126 /* JFUtilities.m */; };
+		EACA68901A81065500D79126 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EACA688C1A81065500D79126 /* JFUtilities.m */; };
+		EACA68921A81069300D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68911A81069300D79126 /* Foundation.framework */; };
+		EACA68991A8107E600D79126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68981A8107E600D79126 /* UIKit.framework */; };
+		EACA689F1A810A2500D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA689E1A810A2500D79126 /* Foundation.framework */; };
+		EACA68A11A810A3000D79126 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68A01A810A3000D79126 /* AppKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EACA68AD1A810D7300D79126 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAE47AF41A6FA548009D8766 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA7ED21B1A6FA65B00220BA1;
+			remoteInfo = JFFramework;
+		};
+		EACA68AF1A810D7300D79126 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAE47AF41A6FA548009D8766 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA7ED1FF1A6FA63D00220BA1;
+			remoteInfo = JFMobileFramework;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		EA7ED2001A6FA63D00220BA1 /* libJFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7ED21C1A6FA65B00220BA1 /* libJFFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EACA688B1A81065500D79126 /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
+		EACA688C1A81065500D79126 /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
+		EACA68911A81069300D79126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EACA68971A8106D900D79126 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		EACA68981A8107E600D79126 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		EACA689E1A810A2500D79126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EACA68A01A810A3000D79126 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -16,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACA68921A81069300D79126 /* Foundation.framework in Frameworks */,
+				EACA68991A8107E600D79126 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -23,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACA68A11A810A3000D79126 /* AppKit.framework in Frameworks */,
+				EACA689F1A810A2500D79126 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,10 +92,59 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EACA688A1A8105F600D79126 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EACA688B1A81065500D79126 /* JFUtilities.h */,
+				EACA688C1A81065500D79126 /* JFUtilities.m */,
+			);
+			name = Sources;
+			path = JFFramework/Sources;
+			sourceTree = "<group>";
+		};
+		EACA68951A8106C300D79126 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EACA689C1A810A0500D79126 /* iOS */,
+				EACA689D1A810A0C00D79126 /* OSX */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EACA68961A8106D900D79126 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EACA68971A8106D900D79126 /* Prefix.pch */,
+			);
+			name = "Supporting Files";
+			path = "JFFramework/Supporting Files";
+			sourceTree = "<group>";
+		};
+		EACA689C1A810A0500D79126 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EACA68911A81069300D79126 /* Foundation.framework */,
+				EACA68981A8107E600D79126 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EACA689D1A810A0C00D79126 /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				EACA68A01A810A3000D79126 /* AppKit.framework */,
+				EACA689E1A810A2500D79126 /* Foundation.framework */,
+			);
+			name = OSX;
+			sourceTree = "<group>";
+		};
 		EAE47AF31A6FA548009D8766 = {
 			isa = PBXGroup;
 			children = (
+				EACA68951A8106C300D79126 /* Frameworks */,
 				EA7ED2011A6FA63D00220BA1 /* Products */,
+				EACA688A1A8105F600D79126 /* Sources */,
+				EACA68961A8106D900D79126 /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,6 +155,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACA688D1A81065500D79126 /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +163,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACA688E1A81065500D79126 /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +220,9 @@
 					EA7ED21B1A6FA65B00220BA1 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
+					EACA68A91A810D6900D79126 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 				};
 			};
 			buildConfigurationList = EAE47AF71A6FA548009D8766 /* Build configuration list for PBXProject "JFFramework" */;
@@ -131,6 +239,7 @@
 			targets = (
 				EA7ED21B1A6FA65B00220BA1 /* JFFramework */,
 				EA7ED1FF1A6FA63D00220BA1 /* JFMobileFramework */,
+				EACA68A91A810D6900D79126 /* All Frameworks */,
 			);
 		};
 /* End PBXProject section */
@@ -140,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACA68901A81065500D79126 /* JFUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,10 +257,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACA688F1A81065500D79126 /* JFUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EACA68AE1A810D7300D79126 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA7ED21B1A6FA65B00220BA1 /* JFFramework */;
+			targetProxy = EACA68AD1A810D7300D79126 /* PBXContainerItemProxy */;
+		};
+		EACA68B01A810D7300D79126 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA7ED1FF1A6FA63D00220BA1 /* JFMobileFramework */;
+			targetProxy = EACA68AF1A810D7300D79126 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EA7ED2131A6FA63D00220BA1 /* Debug */ = {
@@ -189,6 +313,20 @@
 			};
 			name = Release;
 		};
+		EACA68AB1A810D6900D79126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EACA68AC1A810D6900D79126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		EAE47AF81A6FA548009D8766 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -207,6 +345,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -243,6 +382,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -276,6 +416,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EACA68AA1A810D6900D79126 /* Build configuration list for PBXAggregateTarget "All Frameworks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EACA68AB1A810D6900D79126 /* Debug */,
+				EACA68AC1A810D6900D79126 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		EAE47AF71A6FA548009D8766 /* Build configuration list for PBXProject "JFFramework" */ = {
 			isa = XCConfigurationList;
