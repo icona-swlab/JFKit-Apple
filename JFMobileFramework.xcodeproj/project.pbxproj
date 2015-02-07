@@ -61,18 +61,6 @@
 		EAADAB491A3E544E00BD98D0 /* JFGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = EAADAB481A3E544E00BD98D0 /* JFGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		EA6F57511A3E0CDE006D6C37 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		EA425D901894211F003C55E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA425DD71894224A003C55E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -112,7 +100,7 @@
 		EA69EF451A3E550F00445BAE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		EA6E73A41A6A827800DAC604 /* JFWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowController.h; sourceTree = "<group>"; };
 		EA6E73A51A6A827800DAC604 /* JFWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWindowController.m; sourceTree = "<group>"; };
-		EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = JFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6F57531A3E0CDE006D6C37 /* libJFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6F576C1A3E0CFC006D6C37 /* JFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCoreDataManager.h; sourceTree = "<group>"; };
 		EA6F576D1A3E0CFC006D6C37 /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JFCoreDataManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA6F576E1A3E0CFC006D6C37 /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
@@ -165,7 +153,7 @@
 		EA425D8E1894211F003C55E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */,
+				EA6F57531A3E0CDE006D6C37 /* libJFMobileFramework.a */,
 				EAAEB5981A3E3CEE003DCD73 /* JFMobileFramework.bundle */,
 			);
 			name = Products;
@@ -396,7 +384,6 @@
 			buildPhases = (
 				EA6F574F1A3E0CDE006D6C37 /* Sources */,
 				EA6F57501A3E0CDE006D6C37 /* Frameworks */,
-				EA6F57511A3E0CDE006D6C37 /* CopyFiles */,
 				EA27C6C31A3E140B00B578EB /* Headers */,
 			);
 			buildRules = (
@@ -405,7 +392,7 @@
 			);
 			name = Library;
 			productName = JFMobileLibrary;
-			productReference = EA6F57531A3E0CDE006D6C37 /* JFMobileFramework.a */;
+			productReference = EA6F57531A3E0CDE006D6C37 /* libJFMobileFramework.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		EAAEB5971A3E3CEE003DCD73 /* Resources */ = {
@@ -603,7 +590,6 @@
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
@@ -615,7 +601,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -625,13 +610,11 @@
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

@@ -20,10 +20,24 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#pragma mark - Macros (Colors)
+
+#define ColorAlpha(_val)	colorWithRGBA(0, 0, 0, _val)
+#define ColorBlue(_val)		colorWithRGB(0, 0, _val)
+#define ColorGray(_val)		colorWithRGB(_val, _val, _val)
+#define ColorGreen(_val)	colorWithRGB(0, _val, 0)
+#define ColorRed(_val)		colorWithRGB(_val, 0, 0)
+
+
+#pragma mark - Macros (Debug)
+
+#define	LogMethod	NSLog(@"%@: executing '%@'.", ClassName, MethodName)
+
+
 #pragma mark - Macros (Localization)
 
-#define LocalizedString(arg_key, arg_defVal)							LocalizedStringWithComment(arg_key, arg_defVal, nil)
-#define LocalizedStringWithComment(arg_key, arg_defVal, arg_comment)	NSLocalizedStringWithDefaultValue(arg_key, nil, NSMainBundle, arg_defVal, arg_comment)
+#define LocalizedString(_key, _defVal)						LocalizedStringWithComment(_key, _defVal, nil)
+#define LocalizedStringWithComment(_key, _defVal, _comment)	NSLocalizedStringWithDefaultValue(_key, nil, NSMainBundle, _defVal, _comment)
 
 
 #pragma mark - Macros (Streams)
@@ -33,38 +47,95 @@
 
 #pragma mark - Macros (Strings)
 
-#define BoolToString(arg_val)							stringFromBool(arg_val)
-#define CStringToString(arg_str)						CStringToStringWithEncoding(arg_str, NSUTF8StringEncoding)
-#define CStringToStringWithEncoding(arg_str, arg_enc)	[NSString stringWithCString:arg_str encoding:arg_enc]
-#define DoubleToString(arg_val)							stringFromDouble(arg_val)
-#define FloatToString(arg_val)							stringFromFloat(arg_val)
-#define HexToString(arg_val)							stringFromHex(arg_val)
-#define	IsEmptyString(arg_str)							[arg_str isEqualToString:EmptyString]
-#define	IsNullOrEmptyString(arg_str)					(!arg_str || IsEmptyString(arg_str))
-#define NSIntegerToString(arg_val)						stringFromNSInteger(arg_val)
-#define NSUIntegerToString(arg_val)						stringFromNSUInteger(arg_val)
-#define	ObjectClassString(arg_obj)						NSStringFromClass([arg_obj class])
-#define ObjectPointerToString(arg_val)					stringFromObjectPointer(arg_val)
-#define PointerToString(arg_val)						stringFromPointer(arg_val)
-#define KVCPropertyName(arg_property)					[[KVCPropertyPath(arg_property) componentsSeparatedByString:@"."] lastObject]
-#define KVCPropertyPath(arg_property)					(@""#arg_property)
-#define SInt8ToString(arg_val)							stringFromSInt8(arg_val)
-#define SInt16ToString(arg_val)							stringFromSInt16(arg_val)
-#define SInt32ToString(arg_val)							stringFromSInt32(arg_val)
-#define SInt64ToString(arg_val)							stringFromSInt64(arg_val)
-#define StringToCString(arg_str)						StringToCStringWithEncoding(arg_str, NSUTF8StringEncoding)
-#define StringToCStringWithEncoding(arg_str, arg_enc)	[arg_str cStringUsingEncoding:arg_enc]
-#define UInt8ToString(arg_val)							stringFromUInt8(arg_val)
-#define UInt16ToString(arg_val)							stringFromUInt16(arg_val)
-#define UInt32ToString(arg_val)							stringFromUInt32(arg_val)
-#define UInt64ToString(arg_val)							stringFromUInt64(arg_val)
+#define BoolToString(_val)						stringFromBool(_val)
+#define CStringToString(_str)					CStringToStringWithEncoding(_str, NSUTF8StringEncoding)
+#define CStringToStringWithEncoding(_str, _enc)	[NSString stringWithCString:_str encoding:_enc]
+#define DoubleToString(_val)					stringFromDouble(_val)
+#define FloatToString(_val)						stringFromFloat(_val)
+#define HexToString(_val)						stringFromHex(_val)
+#define	IsEmptyString(_str)						[_str isEqualToString:EmptyString]
+#define	IsNullOrEmptyString(_str)				(!_str || IsEmptyString(_str))
+#define NSIntegerToString(_val)					stringFromNSInteger(_val)
+#define NSUIntegerToString(_val)				stringFromNSUInteger(_val)
+#define	ObjectClassString(_obj)					NSStringFromClass([_obj class])
+#define ObjectPointerToString(_val)				stringFromObjectPointer(_val)
+#define PointerToString(_val)					stringFromPointer(_val)
+#define KVCPropertyName(_property)				[[KVCPropertyPath(_property) componentsSeparatedByString:@"."] lastObject]
+#define KVCPropertyPath(_property)				(@""#_property)
+#define SInt8ToString(_val)						stringFromSInt8(_val)
+#define SInt16ToString(_val)					stringFromSInt16(_val)
+#define SInt32ToString(_val)					stringFromSInt32(_val)
+#define SInt64ToString(_val)					stringFromSInt64(_val)
+#define StringToCString(_str)					StringToCStringWithEncoding(_str, NSUTF8StringEncoding)
+#define StringToCStringWithEncoding(_str, _enc)	[_str cStringUsingEncoding:_enc]
+#define UInt8ToString(_val)						stringFromUInt8(_val)
+#define UInt16ToString(_val)					stringFromUInt16(_val)
+#define UInt32ToString(_val)					stringFromUInt32(_val)
+#define UInt64ToString(_val)					stringFromUInt64(_val)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma mark - Typedefs (Colors)
+
+typedef struct {
+	UInt8	red		: 2;
+	UInt8	green	: 2;
+	UInt8	blue	: 2;
+	UInt8	alpha	: 2;
+} Color8Components;
+
+typedef struct {
+	UInt8	red		: 4;
+	UInt8	green	: 4;
+	UInt8	blue	: 4;
+	UInt8	alpha	: 4;
+} Color16Components;
+
+typedef struct {
+	UInt8	red		: 8;
+	UInt8	green	: 8;
+	UInt8	blue	: 8;
+	UInt8	alpha	: 8;
+} Color32Components;
+
+typedef union {
+	Color8Components	components;
+	UInt8				value;
+} Color8;
+
+typedef union {
+	Color16Components	components;
+	UInt16				value;
+} Color16;
+
+typedef union {
+	Color32Components	components;
+	UInt32				value;
+} Color32;
+
 
 #pragma mark - Typedefs (Math)
 
 typedef double	Degrees;
 typedef double	Radians;
+
+
+#pragma mark - Constants (Metrics)
+
+typedef NS_ENUM(UInt64, SIMetrics) {
+	
+	// Binary
+	SIKibi	= 1024ULL,
+	SIMebi	= SIKibi * SIKibi,
+	SIGibi	= SIMebi * SIKibi,
+	SITebi	= SIGibi * SIKibi,
+	
+	// Decimal
+	SIKilo	= 1000ULL,
+	SIMega	= SIKilo * SIKilo,
+	SIGiga	= SIMega * SIKilo,
+	SITera	= SIGiga * SIKilo,
+};
 
 
 #pragma mark - Typedefs (Streams)
@@ -76,6 +147,13 @@ typedef struct {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#pragma mark - Constants (Colors)
+
+extern UInt8 const Color8ComponentMaxValue;
+extern UInt8 const Color16ComponentMaxValue;
+extern UInt8 const Color32ComponentMaxValue;
+
+
 #pragma mark - Constants (Strings)
 
 extern	NSString* const	EmptyString;
@@ -83,6 +161,21 @@ extern	NSString* const	FalseString;
 extern	NSString* const	TrueString;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma mark - Functions (Colors)
+
+#if TARGET_OS_IPHONE
+extern UIColor*	colorWithComponents(Color32Components components);
+extern UIColor*	colorWithHex(UInt32 value);
+extern UIColor*	colorWithRGB(UInt8 r, UInt8 g, UInt8 b);
+extern UIColor*	colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a);
+#else
+extern NSColor*	colorWithComponents(Color32Components components);
+extern NSColor*	colorWithHex(UInt32 value);
+extern NSColor*	colorWithRGB(UInt8 r, UInt8 g, UInt8 b);
+extern NSColor*	colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a);
+#endif
+
 
 #pragma mark - Functions (Math)
 

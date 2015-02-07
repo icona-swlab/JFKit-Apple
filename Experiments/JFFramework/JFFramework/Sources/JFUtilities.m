@@ -24,6 +24,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#pragma mark - Constants (Colors)
+
+UInt8 const Color8ComponentMaxValue		= 0x3;
+UInt8 const Color16ComponentMaxValue	= 0xF;
+UInt8 const Color32ComponentMaxValue	= 0xFF;
+
+
 #pragma mark - Constants (Strings)
 
 NSString* const	EmptyString	= @"";
@@ -31,6 +38,85 @@ NSString* const	FalseString	= @"NO";
 NSString* const	TrueString	= @"YES";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma mark - Functions (Colors)
+
+#if TARGET_OS_IPHONE
+
+UIColor* colorWithComponents(Color32Components components)
+{
+	UInt8 red	= components.red;
+	UInt8 green	= components.green;
+	UInt8 blue	= components.blue;
+	UInt8 alpha	= components.alpha;
+	
+	return colorWithRGBA(red, green, blue, alpha);
+}
+
+UIColor* colorWithHex(UInt32 value)
+{
+	Color32 color;
+	color.value = value;
+	
+	return colorWithComponents(color.components);
+}
+
+UIColor* colorWithRGB(UInt8 r, UInt8 g, UInt8 b)
+{
+	return colorWithRGBA(r, g, b, UCHAR_MAX);
+}
+
+UIColor* colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a)
+{
+	CGFloat maxValue = UCHAR_MAX;
+	
+	CGFloat red		= (CGFloat)r / maxValue;
+	CGFloat green	= (CGFloat)g / maxValue;
+	CGFloat blue	= (CGFloat)b / maxValue;
+	CGFloat alpha	= (CGFloat)a / maxValue;
+	
+	return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
+#else
+
+NSColor* colorWithComponents(Color32Components components)
+{
+	UInt8 red	= components.red;
+	UInt8 green	= components.green;
+	UInt8 blue	= components.blue;
+	UInt8 alpha	= components.alpha;
+	
+	return colorWithRGBA(red, green, blue, alpha);
+}
+
+NSColor* colorWithHex(UInt32 value)
+{
+	Color32 color;
+	color.value = value;
+	
+	return colorWithComponents(color.components);
+}
+
+NSColor* colorWithRGB(UInt8 r, UInt8 g, UInt8 b)
+{
+	return colorWithRGBA(r, g, b, UCHAR_MAX);
+}
+
+NSColor* colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a)
+{
+	CGFloat maxValue = UCHAR_MAX;
+	
+	CGFloat red		= (CGFloat)r / maxValue;
+	CGFloat green	= (CGFloat)g / maxValue;
+	CGFloat blue	= (CGFloat)b / maxValue;
+	CGFloat alpha	= (CGFloat)a / maxValue;
+	
+	return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
+}
+
+#endif
+
 
 #pragma mark - Functions (Math)
 
@@ -152,12 +238,20 @@ NSString* stringFromHex(unsigned int value)
 
 NSString* stringFromNSInteger(NSInteger value)
 {
+#if __LP64__
 	return [NSString stringWithFormat:@"%ld", (long)value];
+#else
+	return [NSString stringWithFormat:@"%d", (int)value];
+#endif
 }
 
 NSString* stringFromNSUInteger(NSUInteger value)
 {
+#if __LP64__
 	return [NSString stringWithFormat:@"%lu", (unsigned long)value];
+#else
+	return [NSString stringWithFormat:@"%u", (unsigned int)value];
+#endif
 }
 
 NSString* stringFromObjectPointer(id value)
@@ -182,7 +276,11 @@ NSString* stringFromSInt16(SInt16 value)
 
 NSString* stringFromSInt32(SInt32 value)
 {
-	return [NSString stringWithFormat:@"%d", (int)value];
+#if __LP64__
+	return [NSString stringWithFormat:@"%d", (signed int)value];
+#else
+	return [NSString stringWithFormat:@"%ld", (signed long)value];
+#endif
 }
 
 NSString* stringFromSInt64(SInt64 value)
@@ -202,7 +300,11 @@ NSString* stringFromUInt16(UInt16 value)
 
 NSString* stringFromUInt32(UInt32 value)
 {
+#if __LP64__
 	return [NSString stringWithFormat:@"%u", (unsigned int)value];
+#else
+	return [NSString stringWithFormat:@"%lu", (unsigned long)value];
+#endif
 }
 
 NSString* stringFromUInt64(UInt64 value)
