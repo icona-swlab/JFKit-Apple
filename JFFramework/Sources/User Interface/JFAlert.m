@@ -38,6 +38,7 @@
 @property (strong, nonatomic)	UIAlertView*	alertView;
 @property (strong, nonatomic)	NSArray*		currentButtons;
 
+
 #pragma mark Methods
 
 // User interface management
@@ -48,6 +49,14 @@
 - (void)	alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex;
 - (void)	alert:(id)alert didDismissWithButtonIndex:(NSInteger)buttonIndex;
 - (void)	alert:(id)alert willDismissWithButtonIndex:(NSInteger)buttonIndex;
+- (void)	didPresentAlert:(id)alert;
+- (void)	willPresentAlert:(id)alert;
+
+// Notifications management
+- (void)	notifyDidDismissWithButton:(JFAlertButton*)button;
+- (void)	notifyDidPresent;
+- (void)	notifyWillDismissWithButton:(JFAlertButton*)button;
+- (void)	notifyWillPresent;
 
 @end
 
@@ -107,8 +116,8 @@
 	
 	self.dismissCompletion = completion;
 	
-	if(self.actionSheet)	[self.actionSheet dismissWithClickedButtonIndex:-1 animated:YES];
-	else if(self.alertView)	[self.alertView dismissWithClickedButtonIndex:-1 animated:YES];
+	if(self.actionSheet)	[self.actionSheet dismissWithClickedButtonIndex:[self.actionSheet cancelButtonIndex] animated:YES];
+	else if(self.alertView)	[self.alertView dismissWithClickedButtonIndex:[self.alertView cancelButtonIndex] animated:YES];
 	
 	return YES;
 }
@@ -263,8 +272,8 @@
 
 - (void)alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	JFAlertButton* button = [self.currentButtons objectAtIndex:buttonIndex];
-	if(button.action)
+	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
+	if(button && button.action)
 		button.action();
 }
 
@@ -272,15 +281,14 @@
 {
 	self.isVisible = NO;
 	
-	JFAlertButton* button = [self.currentButtons objectAtIndex:buttonIndex];
+	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
 	
 	if(alert == self.actionSheet)		self.actionSheet = nil;
 	else if(alert == self.alertView)	self.alertView = nil;
 	
 	self.currentButtons = nil;
 	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:didDismissWithButton:)])
-		[self.delegate alert:self didDismissWithButton:button];
+	[self notifyDidDismissWithButton:button];
 	
 	if(self.dismissCompletion)
 	{
@@ -292,17 +300,14 @@
 
 - (void)alert:(id)alert willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:willDismissWithButton:)])
-	{
-		JFAlertButton* button = [self.currentButtons objectAtIndex:buttonIndex];
-		[self.delegate alert:self willDismissWithButton:button];
-	}
+	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
+	
+	[self notifyWillDismissWithButton:button];
 }
 
 - (void)didPresentAlert:(id)alert
 {
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alertDidPresent:)])
-		[self.delegate alertDidPresent:self];
+	[self notifyDidPresent];
 	
 	if(self.presentCompletion)
 	{
@@ -316,6 +321,32 @@
 {
 	self.isVisible = YES;
 	
+	[self notifyWillPresent];
+}
+
+
+#pragma mark Notifications management
+
+- (void)notifyDidDismissWithButton:(JFAlertButton*)button
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:didDismissWithButton:)])
+		[self.delegate alert:self didDismissWithButton:button];
+}
+
+- (void)notifyDidPresent
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(alertDidPresent:)])
+		[self.delegate alertDidPresent:self];
+}
+
+- (void)notifyWillDismissWithButton:(JFAlertButton*)button
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:willDismissWithButton:)])
+		[self.delegate alert:self willDismissWithButton:button];
+}
+
+- (void)notifyWillPresent
+{
 	if(self.delegate && [self.delegate respondsToSelector:@selector(alertWillPresent:)])
 		[self.delegate alertWillPresent:self];
 }
