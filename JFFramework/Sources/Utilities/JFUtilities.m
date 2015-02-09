@@ -326,6 +326,42 @@ NSString* appInfoForKey(NSString* key)
 	return [[NSMainBundle infoDictionary] objectForKey:key];
 }
 
+NSString* standardXIBNameForViewController(UIViewController* viewController)
+{
+	NSString* retVal = nil;
+	Class class = [viewController class];
+	while(!retVal && class)
+	{
+		NSString* className = NSStringFromClass(class);
+		NSRange range = [className rangeOfString:@"Controller" options:NSBackwardsSearch];
+		
+		NSString* path = nil;
+		NSString* xibName = nil;
+		if(range.location != NSNotFound)
+		{
+			NSString* baseName = [className stringByReplacingCharactersInRange:range withString:EmptyString];
+			
+			if(iPad)
+			{
+				xibName = [baseName stringByAppendingString:@"~iPad"];
+				path = [NSMainBundle pathForResource:xibName ofType:@"nib"];
+			}
+			
+			if(!path)
+			{
+				xibName = baseName;
+				path = [NSMainBundle pathForResource:xibName ofType:@"nib"];
+			}
+		}
+		
+		if(path)
+			retVal = xibName;
+		else
+			class = [class superclass];
+	}
+	return retVal;
+}
+
 BOOL isSystemVersion(NSString* version)
 {
 	if(!version)

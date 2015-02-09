@@ -87,7 +87,7 @@
 #define NSDefaultNotificationCenter	[NSNotificationCenter defaultCenter]
 #define NSMainBundle				[NSBundle mainBundle]
 #define	UIApp						[UIApplication sharedApplication]
-#define	UIAppDelegate				[UIApp delegate]
+#define	UIAppDelegate				((AppDelegate*)[UIApp delegate])
 #define UIAppLanguage				[UIAppLanguages firstObject]
 #define UIAppLanguages				[NSMainBundle preferredLocalizations]
 #define UICurrentDevice				[UIDevice currentDevice]
@@ -116,6 +116,7 @@
 #define iPhone					(UIIdiom == UIUserInterfaceIdiomPhone)
 #define HideNetworkActivityIndicator	setNetworkActivityIndicatorHidden(YES)
 #define ShowNetworkActivityIndicator	setNetworkActivityIndicatorHidden(NO)
+#define StandardXIBName	standardXIBNameForViewController(self) // Class name without the word "Controller" (e.g. "UIViewController" -> "UIView").
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -299,6 +300,7 @@ extern NSString*	stringFromUInt64(UInt64 value);
 
 #if TARGET_OS_IPHONE
 extern NSString*	appInfoForKey(NSString* key);
+extern NSString*	standardXIBNameForViewController(UIViewController* viewController);
 extern BOOL	isSystemVersion(NSString* version);
 extern BOOL	isSystemVersionExact(NSString* version);
 extern BOOL	isSystemVersionPlus(NSString* version);
