@@ -45,7 +45,7 @@
 - (BOOL)	prepareActionSheet:(Block)completion;
 - (BOOL)	prepareAlertView:(Block)completion;
 
-// User interface management (Alert delegate)
+// User interface management (Alerts handling)
 - (void)	alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex;
 - (void)	alert:(id)alert didDismissWithButtonIndex:(NSInteger)buttonIndex;
 - (void)	alert:(id)alert willDismissWithButtonIndex:(NSInteger)buttonIndex;
@@ -268,7 +268,7 @@
 }
 
 
-#pragma mark User interface management (Alert delegate)
+#pragma mark User interface management (Alerts handling)
 
 - (void)alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -325,33 +325,6 @@
 }
 
 
-#pragma mark Notifications management
-
-- (void)notifyDidDismissWithButton:(JFAlertButton*)button
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:didDismissWithButton:)])
-		[self.delegate alert:self didDismissWithButton:button];
-}
-
-- (void)notifyDidPresent
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alertDidPresent:)])
-		[self.delegate alertDidPresent:self];
-}
-
-- (void)notifyWillDismissWithButton:(JFAlertButton*)button
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:willDismissWithButton:)])
-		[self.delegate alert:self willDismissWithButton:button];
-}
-
-- (void)notifyWillPresent
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alertWillPresent:)])
-		[self.delegate alertWillPresent:self];
-}
-
-
 #pragma mark Protocol implementation (UIActionSheetDelegate)
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -405,6 +378,33 @@
 - (void)willPresentAlertView:(UIAlertView*)alertView
 {
 	[self willPresentAlert:alertView];
+}
+
+
+#pragma mark Notifications management
+
+- (void)notifyDidDismissWithButton:(JFAlertButton*)button
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:didDismissWithButton:)])
+		[self.delegate alert:self didDismissWithButton:button];
+}
+
+- (void)notifyDidPresent
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(alertDidPresent:)])
+		[self.delegate alertDidPresent:self];
+}
+
+- (void)notifyWillDismissWithButton:(JFAlertButton*)button
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:willDismissWithButton:)])
+		[self.delegate alert:self willDismissWithButton:button];
+}
+
+- (void)notifyWillPresent
+{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(alertWillPresent:)])
+		[self.delegate alertWillPresent:self];
 }
 
 @end

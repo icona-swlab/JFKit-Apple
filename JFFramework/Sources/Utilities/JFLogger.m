@@ -1,6 +1,6 @@
 //
 //  JFLogger.m
-//  Copyright (C) 2013  Jacopo Filié
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -29,8 +29,13 @@
 
 @interface JFLogger ()
 
+#pragma mark Properties
+
 // Formatting
 @property (strong, nonatomic, readonly)	NSDateFormatter*	dateFormatter;
+
+
+#pragma mark Methods
 
 // Memory management
 - (void)	commonInitialization;
@@ -40,27 +45,32 @@
 - (void)	logMessageToFile:(NSString*)message;
 
 // Utilities
-- (NSString*)	hashtagsToString:(LogHashtags)hashtags;
+- (NSString*)	hashtagsToString:(JFLogHashtags)hashtags;
 
 @end
 
 
 
+#pragma mark
+
+
+
 @implementation JFLogger
 
-#pragma mark - Properties
+#pragma mark Properties
 
 // Formatting
 @synthesize dateFormatter	= _dateFormatter;
 
 // Settings
 @synthesize destinations	= _destinations;
+@synthesize level			= _level;
 @synthesize fileURL			= _fileURL;
 
 
-#pragma mark - Properties accessors (Settings)
+#pragma mark Properties accessors (Settings)
 
-- (LogDestinations)destinations
+- (JFLogDestinations)destinations
 {
 	@synchronized(self)
 	{
@@ -68,10 +78,10 @@
 	}
 }
 
-- (void)setDestinations:(LogDestinations)destinations
+- (void)setDestinations:(JFLogDestinations)destinations
 {
-	if((destinations & LogDestinationFile) && !self.fileURL)
-		destinations = destinations & ~LogDestinationFile;
+	if((destinations & JFLogDestinationFile) && !self.fileURL)
+		destinations = destinations & ~JFLogDestinationFile;
 	
 	if(destinations == 0)
 		return;
@@ -83,7 +93,7 @@
 }
 
 
-#pragma mark - Memory management
+#pragma mark Memory management
 
 + (instancetype)defaultLogger
 {
@@ -118,7 +128,7 @@
 		[self commonInitialization];
 		
 		// Settings
-		_destinations = LogDestinationConsole;
+		_destinations = JFLogDestinationConsole;
 	}
 	return self;
 }
@@ -132,7 +142,7 @@
 		[self commonInitialization];
 		
 		// Settings
-		_destinations = (LogDestinationConsole | LogDestinationFile);
+		_destinations = (JFLogDestinationConsole | JFLogDestinationFile);
 		_fileURL = fileURL;
 	}
 	return self;
@@ -141,28 +151,28 @@
 
 #pragma mark - Logging management
 
-- (void)logMessage:(NSString*)message
+- (void)logMessage:(NSString*)message level:(JFLogLevel)level
 {
-	[self logMessage:message toDestinations:self.destinations];
+	[self logMessage:message toDestinations:self.destinations level:level];
 }
 
-- (void)logMessage:(NSString*)message hashtags:(LogHashtags)hashtags
+- (void)logMessage:(NSString*)message level:(JFLogLevel)level hashtags:(JFLogHashtags)hashtags
 {
-	[self logMessage:message toDestinations:self.destinations hashtags:hashtags];
+	[self logMessage:message toDestinations:self.destinations level:level hashtags:hashtags];
 }
 
-- (void)logMessage:(NSString*)message toDestinations:(LogDestinations)destinations
+- (void)logMessage:(NSString*)message toDestinations:(JFLogDestinations)destinations level:(JFLogLevel)level
 {
-	[self logMessage:message toDestinations:destinations hashtags:LogHashtagsNone];
+	[self logMessage:message toDestinations:destinations level:level hashtags:JFLogHashtagsNone];
 }
 
-- (void)logMessage:(NSString*)message toDestinations:(LogDestinations)destinations hashtags:(LogHashtags)hashtags
+- (void)logMessage:(NSString*)message toDestinations:(JFLogDestinations)destinations level:(JFLogLevel)level hashtags:(JFLogHashtags)hashtags
 {
-	if(!message)
+	if(!message || (level > self.level))
 		return;
 	
-	BOOL logToConsole = (destinations & LogDestinationConsole);
-	BOOL logToFile = (self.fileURL && (destinations & LogDestinationFile));
+	BOOL logToConsole = (destinations & JFLogDestinationConsole);
+	BOOL logToFile = (self.fileURL && (destinations & JFLogDestinationFile));
 	
 	if(!logToConsole && !logToFile)
 		return;
@@ -187,7 +197,7 @@
 		return;
 	
 	// Prepares the hashtags string in case of error.
-	NSString* hashtagsString = [self hashtagsToString:(LogHashtagAttention|LogHashtagFilesystem)];
+	NSString* hashtagsString = [self hashtagsToString:(JFLogHashtagAttention|JFLogHashtagFilesystem)];
 	
 	// Checks if the file exists and creates it if not.
 	JFFileManager* fm = [JFFileManager defaultManager];
@@ -245,25 +255,25 @@
 
 #pragma mark - Utilities
 
-- (NSString*)hashtagsToString:(LogHashtags)hashtags
+- (NSString*)hashtagsToString:(JFLogHashtags)hashtags
 {
 	// Prepares the temporary buffer.
 	NSMutableArray* hashtagStrings = [NSMutableArray array];
 	
 	// Inserts each requested string.
-	if(hashtags & LogHashtagAttention)	[hashtagStrings addObject:@"#Attention"];
-	if(hashtags & LogHashtagClue)		[hashtagStrings addObject:@"#Clue"];
-	if(hashtags & LogHashtagComment)	[hashtagStrings addObject:@"#Comment"];
-	if(hashtags & LogHashtagCritical)	[hashtagStrings addObject:@"#Critical"];
-	if(hashtags & LogHashtagDeveloper)	[hashtagStrings addObject:@"#Developer"];
-	if(hashtags & LogHashtagError)		[hashtagStrings addObject:@"#Error"];
-	if(hashtags & LogHashtagFilesystem)	[hashtagStrings addObject:@"#Filesystem"];
-	if(hashtags & LogHashtagHardware)	[hashtagStrings addObject:@"#Hardware"];
-	if(hashtags & LogHashtagMarker)		[hashtagStrings addObject:@"#Marker"];
-	if(hashtags & LogHashtagNetwork)	[hashtagStrings addObject:@"#Network"];
-	if(hashtags & LogHashtagSecurity)	[hashtagStrings addObject:@"#Security"];
-	if(hashtags & LogHashtagSystem)		[hashtagStrings addObject:@"#System"];
-	if(hashtags & LogHashtagUser)		[hashtagStrings addObject:@"#User"];
+	if(hashtags & JFLogHashtagAttention)	[hashtagStrings addObject:@"#Attention"];
+	if(hashtags & JFLogHashtagClue)		[hashtagStrings addObject:@"#Clue"];
+	if(hashtags & JFLogHashtagComment)	[hashtagStrings addObject:@"#Comment"];
+	if(hashtags & JFLogHashtagCritical)	[hashtagStrings addObject:@"#Critical"];
+	if(hashtags & JFLogHashtagDeveloper)	[hashtagStrings addObject:@"#Developer"];
+	if(hashtags & JFLogHashtagError)		[hashtagStrings addObject:@"#Error"];
+	if(hashtags & JFLogHashtagFilesystem)	[hashtagStrings addObject:@"#Filesystem"];
+	if(hashtags & JFLogHashtagHardware)	[hashtagStrings addObject:@"#Hardware"];
+	if(hashtags & JFLogHashtagMarker)		[hashtagStrings addObject:@"#Marker"];
+	if(hashtags & JFLogHashtagNetwork)	[hashtagStrings addObject:@"#Network"];
+	if(hashtags & JFLogHashtagSecurity)	[hashtagStrings addObject:@"#Security"];
+	if(hashtags & JFLogHashtagSystem)		[hashtagStrings addObject:@"#System"];
+	if(hashtags & JFLogHashtagUser)		[hashtagStrings addObject:@"#User"];
 	
 	return [hashtagStrings componentsJoinedByString:@" "];
 }

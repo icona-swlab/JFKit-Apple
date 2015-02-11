@@ -72,11 +72,11 @@
 - (BOOL)	dismiss:(Block)completion;
 - (BOOL)	dismissWithClickedButton:(JFAlertButton*)button completion:(Block)completion;
 - (BOOL)	presentAsActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem completion:(Block)completion;	// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(Block)completion;			// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(Block)completion;		// Fails if there are no buttons.
 - (BOOL)	presentAsActionSheetFromTabBar:(UITabBar*)tabBar completion:(Block)completion;						// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(Block)completion;						// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromView:(UIView*)view completion:(Block)completion;								// Fails if there are no buttons.
-- (BOOL)	presentAsAlertView:(Block)completion;																		// Fails if there is not at least the cancel button.
+- (BOOL)	presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(Block)completion;					// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromView:(UIView*)view completion:(Block)completion;							// Fails if there are no buttons.
+- (BOOL)	presentAsAlertView:(Block)completion;																// Fails if there is not the cancel button.
 
 @end
 

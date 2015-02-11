@@ -32,8 +32,6 @@
 		EA26EC621A8785030050049A /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC261A8785030050049A /* JFCoreDataManager.m */; };
 		EA26EC631A8785030050049A /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC271A8785030050049A /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC641A8785030050049A /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC281A8785030050049A /* JFHTTPRequest.m */; };
-		EA26EC651A8785030050049A /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC2A1A8785030050049A /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA26EC661A8785030050049A /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC2B1A8785030050049A /* JFLogger.m */; };
 		EA26EC671A8785030050049A /* JFGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC2C1A8785030050049A /* JFGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC681A8785030050049A /* JFMobileKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC2D1A8785030050049A /* JFMobileKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC691A8785030050049A /* JFActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC301A8785030050049A /* JFActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,6 +70,8 @@
 		EA26EC8C1A8785030050049A /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC5C1A8785030050049A /* JFFileManager.m */; };
 		EA26EC8D1A8785030050049A /* JFUpdatableFile.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC5D1A8785030050049A /* JFUpdatableFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC5E1A8785030050049A /* JFUpdatableFile.m */; };
+		EA4BB9431A8A25C10000C045 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
 		EACA68921A81069300D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68911A81069300D79126 /* Foundation.framework */; };
 		EACA68991A8107E600D79126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68981A8107E600D79126 /* UIKit.framework */; };
 		EACA689F1A810A2500D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA689E1A810A2500D79126 /* Foundation.framework */; };
@@ -106,8 +106,6 @@
 		EA26EC261A8785030050049A /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
 		EA26EC271A8785030050049A /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
 		EA26EC281A8785030050049A /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
-		EA26EC2A1A8785030050049A /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
-		EA26EC2B1A8785030050049A /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 		EA26EC2C1A8785030050049A /* JFGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGlobals.h; sourceTree = "<group>"; };
 		EA26EC2D1A8785030050049A /* JFMobileKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMobileKit.h; sourceTree = "<group>"; };
 		EA26EC301A8785030050049A /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
@@ -148,6 +146,8 @@
 		EA26EC5E1A8785030050049A /* JFUpdatableFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUpdatableFile.m; sourceTree = "<group>"; };
 		EA26EC5F1A8785030050049A /* OLD JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OLD JFUtilities.h"; sourceTree = "<group>"; };
 		EA26EC601A8785030050049A /* OLD JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OLD JFUtilities.m"; sourceTree = "<group>"; };
+		EA4BB9411A8A25C10000C045 /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
+		EA4BB9421A8A25C10000C045 /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 		EA7ED2001A6FA63D00220BA1 /* libJFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7ED21C1A6FA65B00220BA1 /* libJFFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACA68911A81069300D79126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -195,6 +195,8 @@
 		EA26EBEA1A87679F0050049A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EA4BB9411A8A25C10000C045 /* JFLogger.h */,
+				EA4BB9421A8A25C10000C045 /* JFLogger.m */,
 				EA26EBEB1A87679F0050049A /* JFUtilities.h */,
 				EA26EBEC1A87679F0050049A /* JFUtilities.m */,
 			);
@@ -205,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				EA26EC241A8785030050049A /* Data Access */,
-				EA26EC291A8785030050049A /* Debug */,
 				EA26EC2C1A8785030050049A /* JFGlobals.h */,
 				EA26EC2D1A8785030050049A /* JFMobileKit.h */,
 				EA26EC2E1A8785030050049A /* User Interface */,
@@ -223,15 +224,6 @@
 				EA26EC281A8785030050049A /* JFHTTPRequest.m */,
 			);
 			path = "Data Access";
-			sourceTree = "<group>";
-		};
-		EA26EC291A8785030050049A /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				EA26EC2A1A8785030050049A /* JFLogger.h */,
-				EA26EC2B1A8785030050049A /* JFLogger.m */,
-			);
-			path = Debug;
 			sourceTree = "<group>";
 		};
 		EA26EC2E1A8785030050049A /* User Interface */ = {
@@ -449,12 +441,12 @@
 				EA26EC891A8785030050049A /* JFWindowController.h in Headers */,
 				EA26EC731A8785030050049A /* JFSliderController.h in Headers */,
 				EA26EC6F1A8785030050049A /* JFKeyboardViewHandler.h in Headers */,
+				EA4BB9431A8A25C10000C045 /* JFLogger.h in Headers */,
 				EA26EC811A8785030050049A /* JFDrawerController.h in Headers */,
 				EA26EC751A8785030050049A /* JFSplitViewController.h in Headers */,
 				EA26EC831A8785030050049A /* JFMenuItem.h in Headers */,
 				EACFD6151A87AEC400B4494E /* JFAlertsController.h in Headers */,
 				EA26EC6D1A8785030050049A /* JFGalleryView.h in Headers */,
-				EA26EC651A8785030050049A /* JFLogger.h in Headers */,
 				EA26EBF31A8771D50050049A /* JFAlert.h in Headers */,
 				EA26EBEE1A87679F0050049A /* JFUtilities.h in Headers */,
 			);
@@ -547,6 +539,7 @@
 				EACFD6161A87AEC400B4494E /* JFAlertsController.m in Sources */,
 				EA26EC761A8785030050049A /* JFSplitViewController.m in Sources */,
 				EA26EC881A8785030050049A /* JFSimpleFormViewController.m in Sources */,
+				EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */,
 				EA26EBF01A87679F0050049A /* JFUtilities.m in Sources */,
 				EA26EBF41A8771D50050049A /* JFAlert.m in Sources */,
 				EA26EC861A8785030050049A /* JFMenuViewController.m in Sources */,
@@ -560,7 +553,6 @@
 				EA26EC721A8785030050049A /* JFNavigationController.m in Sources */,
 				EA26EC6E1A8785030050049A /* JFGalleryView.m in Sources */,
 				EA26EC821A8785030050049A /* JFDrawerController.m in Sources */,
-				EA26EC661A8785030050049A /* JFLogger.m in Sources */,
 				EA26EC7C1A8785030050049A /* JFLabel.m in Sources */,
 				EA26EC701A8785030050049A /* JFKeyboardViewHandler.m in Sources */,
 				EA26EC6A1A8785030050049A /* JFActivityIndicatorView.m in Sources */,
