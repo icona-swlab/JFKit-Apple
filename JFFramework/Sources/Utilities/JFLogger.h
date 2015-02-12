@@ -78,7 +78,7 @@ typedef NS_OPTIONS(UInt8, JFLogLevel)
 #pragma mark Methods
 
 // Memory management
-+ (instancetype)	defaultLogger;	// It can log to the default log file called <Application name>.log inside the Application Support folder.
++ (instancetype)	defaultLogger;	// It can log to the default log file called "<Application name>.log" inside the Application Support folder.
 - (instancetype)	initWithFileURL:(NSURL*)fileURL;
 
 // Logging management

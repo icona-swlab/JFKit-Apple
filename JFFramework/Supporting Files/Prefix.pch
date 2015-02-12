@@ -24,17 +24,19 @@
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
-#pragma mark - iOS specific headers
+// User
+#import "JFGlobals.h"
+
+
 #if TARGET_OS_IPHONE
+#pragma mark - iOS specific headers
 
 // SDK
 #import <UIKit/UIKit.h>
 
-// User
-#import "JFGlobals.h"
 
-#pragma mark - OSX specific headers
 #else
+#pragma mark - OSX specific headers
 
 // SDK
 #import <AppKit/AppKit.h>

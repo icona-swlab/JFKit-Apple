@@ -31,6 +31,11 @@
 
 #pragma mark Macros (Info)
 
+#define AppDisplayName	appInfoForKey(@"CFBundleDisplayName")
+#define AppIdentifier	appInfoForKey(@"CFBundleIdentifier")
+#define AppName			appInfoForKey(@"CFBundleName")
+#define AppVersionLong	appInfoForKey(@"CFBundleVersion")
+#define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
 #define	ClassName		ObjectClassString(self)
 #define	LogMethod		NSLog(@"%@: executing '%@'.", ClassName, MethodName)
 #define MethodName		NSStringFromSelector(_cmd)
@@ -40,6 +45,11 @@
 
 #define LocalizedString(_key, _defVal)						LocalizedStringWithComment(_key, _defVal, nil)
 #define LocalizedStringWithComment(_key, _defVal, _comment)	NSLocalizedStringWithDefaultValue(_key, nil, NSMainBundle, _defVal, _comment)
+
+
+#pragma mark Macros (Shortcuts)
+
+#define NSMainBundle	[NSBundle mainBundle]
 
 
 #pragma mark Macros (Streams)
@@ -85,7 +95,6 @@
 #define AreSetsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToSet:arg_obj2])
 #define AreStringsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToString:arg_obj2])
 #define NSDefaultNotificationCenter	[NSNotificationCenter defaultCenter]
-#define NSMainBundle				[NSBundle mainBundle]
 #define	UIApp						[UIApplication sharedApplication]
 #define	UIAppDelegate				((AppDelegate*)[UIApp delegate])
 #define UIAppLanguage				[UIAppLanguages firstObject]
@@ -93,11 +102,6 @@
 #define UICurrentDevice				[UIDevice currentDevice]
 #define UIIdiom						[UICurrentDevice userInterfaceIdiom]
 #define UIMainScreen				[UIScreen mainScreen]
-#define AppDisplayName	appInfoForKey(@"CFBundleDisplayName")
-#define AppIdentifier	appInfoForKey(@"CFBundleIdentifier")
-#define AppName			appInfoForKey(@"CFBundleName")
-#define AppVersionLong	appInfoForKey(@"CFBundleVersion")
-#define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
 #define UIDeviceOrientation		[UICurrentDevice orientation]
 #define UIStatusBarOrientation	[UIApp statusBarOrientation]
 #define BundleResourceURL(arg_filename)						[NSMainBundle URLForResource:[arg_filename stringByDeletingPathExtension] withExtension:[arg_filename pathExtension]]
@@ -252,6 +256,11 @@ extern NSColor*	colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a);
 #endif
 
 
+#pragma mark Functions (Info)
+
+extern NSString*	appInfoForKey(NSString* key);
+
+
 #pragma mark Functions (Math)
 
 extern Degrees	degreesFromRadians(Radians radians);
@@ -299,7 +308,6 @@ extern NSString*	stringFromUInt64(UInt64 value);
 #pragma mark Functions (OLD)
 
 #if TARGET_OS_IPHONE
-extern NSString*	appInfoForKey(NSString* key);
 extern NSString*	standardXIBNameForViewController(UIViewController* viewController);
 extern BOOL	isSystemVersion(NSString* version);
 extern BOOL	isSystemVersionExact(NSString* version);

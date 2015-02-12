@@ -122,6 +122,14 @@ NSColor* colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a)
 #endif
 
 
+#pragma mark Functions (Info)
+
+NSString* appInfoForKey(NSString* key)
+{
+	return [[NSMainBundle infoDictionary] objectForKey:key];
+}
+
+
 #pragma mark Functions (Math)
 
 Degrees degreesFromRadians(Radians radians)
@@ -320,11 +328,6 @@ NSString* stringFromUInt64(UInt64 value)
 #pragma mark Functions (OLD)
 
 #if TARGET_OS_IPHONE
-
-NSString* appInfoForKey(NSString* key)
-{
-	return [[NSMainBundle infoDictionary] objectForKey:key];
-}
 
 NSString* standardXIBNameForViewController(UIViewController* viewController)
 {

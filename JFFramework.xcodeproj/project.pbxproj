@@ -78,6 +78,8 @@
 		EACA68A11A810A3000D79126 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68A01A810A3000D79126 /* AppKit.framework */; };
 		EACFD6151A87AEC400B4494E /* JFAlertsController.h in Headers */ = {isa = PBXBuildFile; fileRef = EACFD6131A87AEC400B4494E /* JFAlertsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EACFD6161A87AEC400B4494E /* JFAlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EACFD6141A87AEC400B4494E /* JFAlertsController.m */; };
+		EAD85F341A8D01AA0088BC3D /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD85F351A8D01B00088BC3D /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +417,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD85F341A8D01AA0088BC3D /* JFLogger.h in Headers */,
 				EA26EBED1A87679F0050049A /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA26EBEF1A87679F0050049A /* JFUtilities.m in Sources */,
+				EAD85F351A8D01B00088BC3D /* JFLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
