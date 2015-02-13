@@ -43,8 +43,10 @@
 // Logging management
 - (void)	logMessageToConsole:(NSString*)message;
 - (void)	logMessageToFile:(NSString*)message;
+- (void)	renewLogFile;
+- (BOOL)	shouldRenewLogFile;
 
-// Utilities
+// Utilities management
 - (NSString*)	hashtagsToString:(JFLogHashtags)hashtags;
 
 @end
@@ -63,9 +65,10 @@
 @synthesize dateFormatter	= _dateFormatter;
 
 // Settings
-@synthesize destinations	= _destinations;
-@synthesize level			= _level;
-@synthesize fileURL			= _fileURL;
+@synthesize destinations			= _destinations;
+@synthesize expirationTimeInterval	= _expirationTimeInterval;
+@synthesize fileURL					= _fileURL;
+@synthesize level					= _level;
 
 
 #pragma mark Properties accessors (Settings)
@@ -149,7 +152,7 @@
 }
 
 
-#pragma mark - Logging management
+#pragma mark Logging management
 
 - (void)logMessage:(NSString*)message level:(JFLogLevel)level
 {
@@ -252,8 +255,58 @@
 	}
 }
 
+- (void)renewLogFile
+{}
 
-#pragma mark - Utilities
+- (BOOL)shouldRenewLogFile
+{
+	return NO;
+	
+//	static NSCalendar* calendar = nil;
+//	
+//	if(!filePath)
+//		return NO;
+//	
+//	// Creates an owned instance of a file manager for thread safety.
+//	NSFileManager* fm = [[NSFileManager alloc] init];
+//	
+//	// Retrieves the last modification date attribute of the file.
+//	NSError* error = nil;
+//	NSDictionary* attributes = [fm attributesOfItemAtPath:filePath error:&error];
+//	NSDate* lastModifiedDate = [attributes fileModificationDate];
+//	if(error || !lastModifiedDate)
+//	{
+//		NSString* hashtagsString = [self hashtagsToString:(LogHashtagAttention|LogHashtagFilesystem)];
+//		NSLog(@"%@: could not read the 'last modification date' attribute of log file at path '%@' for error '%@'. %@", SelfClassString, filePath, error, hashtagsString);
+//		return NO;
+//	}
+//	
+//	// Prepares the calendar (NSCalendar is NOT thread safe).
+//	@synchronized(self)
+//	{
+//		// Creates the date formatter if not already done.
+//		if(!calendar)
+//			calendar = [NSCalendar currentCalendar];
+//	}
+//	
+//	// Prepares the date objects for comparison in a thread safe scope.
+//	NSDate* date1 = nil;
+//	NSDate* date2 = nil;
+//	@synchronized(calendar)
+//	{
+//		NSUInteger components = (NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit);
+//		NSDateComponents* dc1 = [calendar components:components fromDate:lastModifiedDate];
+//		NSDateComponents* dc2 = [calendar components:components fromDate:[NSDate date]];
+//		date1 = [calendar dateFromComponents:dc1];
+//		date2 = [calendar dateFromComponents:dc2];
+//	}
+//	
+//	// Returns YES if not the same day.
+//	return ![date1 isEqualToDate:date2];
+}
+
+
+#pragma mark Utilities management
 
 - (NSString*)hashtagsToString:(JFLogHashtags)hashtags
 {
@@ -262,18 +315,18 @@
 	
 	// Inserts each requested string.
 	if(hashtags & JFLogHashtagAttention)	[hashtagStrings addObject:@"#Attention"];
-	if(hashtags & JFLogHashtagClue)		[hashtagStrings addObject:@"#Clue"];
-	if(hashtags & JFLogHashtagComment)	[hashtagStrings addObject:@"#Comment"];
-	if(hashtags & JFLogHashtagCritical)	[hashtagStrings addObject:@"#Critical"];
+	if(hashtags & JFLogHashtagClue)			[hashtagStrings addObject:@"#Clue"];
+	if(hashtags & JFLogHashtagComment)		[hashtagStrings addObject:@"#Comment"];
+	if(hashtags & JFLogHashtagCritical)		[hashtagStrings addObject:@"#Critical"];
 	if(hashtags & JFLogHashtagDeveloper)	[hashtagStrings addObject:@"#Developer"];
 	if(hashtags & JFLogHashtagError)		[hashtagStrings addObject:@"#Error"];
 	if(hashtags & JFLogHashtagFilesystem)	[hashtagStrings addObject:@"#Filesystem"];
-	if(hashtags & JFLogHashtagHardware)	[hashtagStrings addObject:@"#Hardware"];
+	if(hashtags & JFLogHashtagHardware)		[hashtagStrings addObject:@"#Hardware"];
 	if(hashtags & JFLogHashtagMarker)		[hashtagStrings addObject:@"#Marker"];
-	if(hashtags & JFLogHashtagNetwork)	[hashtagStrings addObject:@"#Network"];
-	if(hashtags & JFLogHashtagSecurity)	[hashtagStrings addObject:@"#Security"];
+	if(hashtags & JFLogHashtagNetwork)		[hashtagStrings addObject:@"#Network"];
+	if(hashtags & JFLogHashtagSecurity)		[hashtagStrings addObject:@"#Security"];
 	if(hashtags & JFLogHashtagSystem)		[hashtagStrings addObject:@"#System"];
-	if(hashtags & JFLogHashtagUser)		[hashtagStrings addObject:@"#User"];
+	if(hashtags & JFLogHashtagUser)			[hashtagStrings addObject:@"#User"];
 	
 	return [hashtagStrings componentsJoinedByString:@" "];
 }

@@ -26,6 +26,16 @@ typedef NS_OPTIONS(UInt8, JFLogDestinations)
 	JFLogDestinationFile	= 1 << 1,	// Logs the message into the file if 'fileURL' is set.
 };
 
+typedef NS_OPTIONS(UInt8, JFLogExpirationTimeInterval)
+{
+	JFLogExpirationTimeIntervalNone,		// The log file has no expiration time.
+	JFLogExpirationTimeIntervalOneDay,		// The log file will be changed every day.
+	JFLogExpirationTimeIntervalOneWeek,		// The log file will be changed each monday.
+	JFLogExpirationTimeIntervalOneMonth,	// The log file will be changed the 1st day of each month.
+	
+	JFLogExpirationTimeIntervalDefault = JFLogExpirationTimeIntervalNone
+};
+
 typedef NS_OPTIONS(UInt16, JFLogHashtags)
 {
 	JFLogHashtagsNone		= 0,		// Message is not associated to any hashtag.
@@ -70,9 +80,10 @@ typedef NS_OPTIONS(UInt8, JFLogLevel)
 #pragma mark Properties
 
 // Settings
-@property (assign)						JFLogDestinations	destinations;
-@property (assign)						JFLogLevel			level;	// Only messages that have a lower (or equal) level value will be logged.
-@property (strong, nonatomic, readonly)	NSURL*				fileURL;
+@property (assign)						JFLogDestinations			destinations;
+@property (assign)						JFLogExpirationTimeInterval	expirationTimeInterval;
+@property (strong, nonatomic, readonly)	NSURL*						fileURL;
+@property (assign)						JFLogLevel					level;	// Only messages that have a lower (or equal) level value will be logged.
 
 
 #pragma mark Methods
