@@ -66,8 +66,11 @@
 #define FloatToString(_val)						stringFromFloat(_val)
 #define HexToString(_val)						stringFromHex(_val)
 #define IDToString(_val)						stringFromID(_val)
+#define IntToString(_val)						stringFromInt(_val)
 #define	IsEmptyString(_str)						[_str isEqualToString:EmptyString]
 #define	IsNullOrEmptyString(_str)				(!_str || IsEmptyString(_str))
+#define LongToString(_val)						stringFromLong(_val)
+#define LongLongToString(_val)					stringFromLongLong(_val)
 #define NSIntegerToString(_val)					stringFromNSInteger(_val)
 #define NSUIntegerToString(_val)				stringFromNSUInteger(_val)
 #define	ObjectClassString(_obj)					NSStringFromClass([_obj class])
@@ -292,6 +295,9 @@ extern NSString*	stringFromDouble(double value);
 extern NSString*	stringFromFloat(float value);
 extern NSString*	stringFromHex(unsigned int value);
 extern NSString*	stringFromID(id value);
+extern NSString*	stringFromInt(int value);
+extern NSString*	stringFromLong(long value);
+extern NSString*	stringFromLongLong(long long value);
 extern NSString*	stringFromNSInteger(NSInteger value);
 extern NSString*	stringFromNSUInteger(NSUInteger value);
 extern NSString*	stringFromPointer(void* value);
@@ -303,6 +309,9 @@ extern NSString*	stringFromUInt8(UInt8 value);
 extern NSString*	stringFromUInt16(UInt16 value);
 extern NSString*	stringFromUInt32(UInt32 value);
 extern NSString*	stringFromUInt64(UInt64 value);
+extern NSString*	stringFromUnsignedInt(unsigned int value);
+extern NSString*	stringFromUnsignedLong(unsigned long value);
+extern NSString*	stringFromUnsignedLongLong(unsigned long long value);
 
 
 #pragma mark Functions (OLD)

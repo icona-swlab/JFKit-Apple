@@ -271,6 +271,21 @@ NSString* stringFromID(id value)
 	return [NSString stringWithFormat:@"%p", value];
 }
 
+NSString* stringFromInt(int value)
+{
+	return [NSString stringWithFormat:@"%d", value];
+}
+
+NSString* stringFromLong(long value)
+{
+	return [NSString stringWithFormat:@"%ld", value];
+}
+
+NSString* stringFromLongLong(long long value)
+{
+	return [NSString stringWithFormat:@"%lld", value];
+}
+
 NSString* stringFromPointer(void* value)
 {
 	return [NSString stringWithFormat:@"%p", value];
@@ -320,6 +335,21 @@ NSString* stringFromUInt32(UInt32 value)
 }
 
 NSString* stringFromUInt64(UInt64 value)
+{
+	return [NSString stringWithFormat:@"%llu", value];
+}
+
+NSString* stringFromUnsignedInt(unsigned int value)
+{
+	return [NSString stringWithFormat:@"%u", value];
+}
+
+NSString* stringFromUnsignedLong(unsigned long value)
+{
+	return [NSString stringWithFormat:@"%lu", value];
+}
+
+NSString* stringFromUnsignedLongLong(unsigned long long value)
 {
 	return [NSString stringWithFormat:@"%llu", value];
 }
