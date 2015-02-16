@@ -28,7 +28,7 @@
 @interface JFWindowController ()
 
 // Flags
-@property (assign, nonatomic, getter=isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
+@property (assign, nonatomic, readwrite, getter = isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
 
 // Notifications management (UIWindow)
 - (void)	notifiedThatWindowDidBecomeHidden:(NSNotification*)notification;

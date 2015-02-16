@@ -87,6 +87,9 @@
 #define UInt16ToString(_val)					stringFromUInt16(_val)
 #define UInt32ToString(_val)					stringFromUInt32(_val)
 #define UInt64ToString(_val)					stringFromUInt64(_val)
+#define UnsignedIntToString(_val)				stringFromUnsignedInt(_val)
+#define UnsignedLongToString(_val)				stringFromUnsignedLong(_val)
+#define UnsignedLongLongToString(_val)			stringFromUnsignedLongLong(_val)
 
 
 #pragma mark Macros (OLD)

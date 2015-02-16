@@ -24,6 +24,9 @@
 
 @interface JFWindowController : NSObject
 
+// Flags
+@property (assign, nonatomic, readonly, getter = isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
+
 // Debug
 @property (strong, nonatomic, readonly)	JFLogger*	logger;
 @property (assign, nonatomic)			BOOL		logging;
