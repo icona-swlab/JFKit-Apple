@@ -68,6 +68,7 @@
 #import "JFMenuItem.h"
 #import "JFMenuViewController.h"
 #import "JFSimpleFormViewController.h"
+#import	"JFViewController.h"
 #import	"JFWindowController.h"
 
 // Utilities

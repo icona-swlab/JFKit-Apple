@@ -72,6 +72,8 @@
 		EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC5E1A8785030050049A /* JFUpdatableFile.m */; };
 		EA4BB9431A8A25C10000C045 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
+		EAB33F8B1A950630005FB623 /* JFViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EAB33F871A94F301005FB623 /* JFViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAB33F8C1A950630005FB623 /* JFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB33F881A94F301005FB623 /* JFViewController.m */; };
 		EACA68921A81069300D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68911A81069300D79126 /* Foundation.framework */; };
 		EACA68991A8107E600D79126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68981A8107E600D79126 /* UIKit.framework */; };
 		EACA689F1A810A2500D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA689E1A810A2500D79126 /* Foundation.framework */; };
@@ -152,6 +154,8 @@
 		EA4BB9421A8A25C10000C045 /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 		EA7ED2001A6FA63D00220BA1 /* libJFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7ED21C1A6FA65B00220BA1 /* libJFFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAB33F871A94F301005FB623 /* JFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFViewController.h; sourceTree = "<group>"; };
+		EAB33F881A94F301005FB623 /* JFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFViewController.m; sourceTree = "<group>"; };
 		EACA68911A81069300D79126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EACA68971A8106D900D79126 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		EACA68981A8107E600D79126 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -190,6 +194,8 @@
 				EA26EBF21A8771D50050049A /* JFAlert.m */,
 				EACFD6131A87AEC400B4494E /* JFAlertsController.h */,
 				EACFD6141A87AEC400B4494E /* JFAlertsController.m */,
+				EAB33F871A94F301005FB623 /* JFViewController.h */,
+				EAB33F881A94F301005FB623 /* JFViewController.m */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				EA26EC611A8785030050049A /* JFCoreDataManager.h in Headers */,
 				EA26EC671A8785030050049A /* JFGlobals.h in Headers */,
 				EA26EC791A8785030050049A /* JFTableViewSection.h in Headers */,
+				EAB33F8B1A950630005FB623 /* JFViewController.h in Headers */,
 				EA26EC711A8785030050049A /* JFNavigationController.h in Headers */,
 				EA26EC681A8785030050049A /* JFMobileKit.h in Headers */,
 				EA26EC851A8785030050049A /* JFMenuViewController.h in Headers */,
@@ -558,6 +565,7 @@
 				EA26EC821A8785030050049A /* JFDrawerController.m in Sources */,
 				EA26EC7C1A8785030050049A /* JFLabel.m in Sources */,
 				EA26EC701A8785030050049A /* JFKeyboardViewHandler.m in Sources */,
+				EAB33F8C1A950630005FB623 /* JFViewController.m in Sources */,
 				EA26EC6A1A8785030050049A /* JFActivityIndicatorView.m in Sources */,
 				EA26EC781A8785030050049A /* JFTabBarController.m in Sources */,
 				EA26EC8A1A8785030050049A /* JFWindowController.m in Sources */,
