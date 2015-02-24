@@ -18,28 +18,12 @@
 
 
 
-#ifndef JFMobileFramework_JFMobileKit_h
-#define JFMobileFramework_JFMobileKit_h
-
-// SDK
-#import <CoreData/CoreData.h>
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
 // Data access
 #import	"JFCoreDataManager.h"
 #import	"JFHTTPRequest.h"
 
-// Debug
-#import "JFLogger.h"
-
 // User interface (Activity Indicators)
 #import "JFActivityIndicatorView.h"
-
-// User interface (Alerts)
-//#import "JFAlertView.h"
-#import "JFAlert.h"
-#import "JFAlertsController.h"
 
 // User interface (Galleries)
 #import "JFGalleryView.h"
@@ -68,12 +52,8 @@
 #import "JFMenuItem.h"
 #import "JFMenuViewController.h"
 #import "JFSimpleFormViewController.h"
-#import	"JFViewController.h"
 #import	"JFWindowController.h"
 
 // Utilities
 #import "JFFileManager.h"
 #import "JFUpdatableFile.h"
-#import "JFUtilities.h"
-
-#endif

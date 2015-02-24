@@ -33,7 +33,6 @@
 		EA26EC631A8785030050049A /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC271A8785030050049A /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC641A8785030050049A /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC281A8785030050049A /* JFHTTPRequest.m */; };
 		EA26EC671A8785030050049A /* JFGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC2C1A8785030050049A /* JFGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA26EC681A8785030050049A /* JFMobileKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC2D1A8785030050049A /* JFMobileKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC691A8785030050049A /* JFActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC301A8785030050049A /* JFActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC6A1A8785030050049A /* JFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC311A8785030050049A /* JFActivityIndicatorView.m */; };
 		EA26EC6D1A8785030050049A /* JFGalleryView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC361A8785030050049A /* JFGalleryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,6 +81,8 @@
 		EACFD6161A87AEC400B4494E /* JFAlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EACFD6141A87AEC400B4494E /* JFAlertsController.m */; };
 		EAD85F341A8D01AA0088BC3D /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD85F351A8D01B00088BC3D /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
+		EAF2EB181A9CC677009D304E /* JFMobileKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF2EB171A9CC677009D304E /* JFMobileKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF2EB1A1A9CC681009D304E /* JFMobileKit_OLD.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF2EB191A9CC681009D304E /* JFMobileKit_OLD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +112,6 @@
 		EA26EC271A8785030050049A /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
 		EA26EC281A8785030050049A /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
 		EA26EC2C1A8785030050049A /* JFGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGlobals.h; sourceTree = "<group>"; };
-		EA26EC2D1A8785030050049A /* JFMobileKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMobileKit.h; sourceTree = "<group>"; };
 		EA26EC301A8785030050049A /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
 		EA26EC311A8785030050049A /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFActivityIndicatorView.m; sourceTree = "<group>"; };
 		EA26EC361A8785030050049A /* JFGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
@@ -163,6 +163,8 @@
 		EACA68A01A810A3000D79126 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		EACFD6131A87AEC400B4494E /* JFAlertsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlertsController.h; sourceTree = "<group>"; };
 		EACFD6141A87AEC400B4494E /* JFAlertsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAlertsController.m; sourceTree = "<group>"; };
+		EAF2EB171A9CC677009D304E /* JFMobileKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMobileKit.h; sourceTree = "<group>"; };
+		EAF2EB191A9CC681009D304E /* JFMobileKit_OLD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMobileKit_OLD.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +218,7 @@
 			children = (
 				EA26EC241A8785030050049A /* Data Access */,
 				EA26EC2C1A8785030050049A /* JFGlobals.h */,
-				EA26EC2D1A8785030050049A /* JFMobileKit.h */,
+				EAF2EB191A9CC681009D304E /* JFMobileKit_OLD.h */,
 				EA26EC2E1A8785030050049A /* User Interface */,
 				EA26EC5A1A8785030050049A /* Utilities */,
 			);
@@ -362,6 +364,7 @@
 		EACA688A1A8105F600D79126 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EAF2EB171A9CC677009D304E /* JFMobileKit.h */,
 				EA26EC151A8782460050049A /* OLD */,
 				EA26EBE91A87679F0050049A /* User Interface */,
 				EA26EBEA1A87679F0050049A /* Utilities */,
@@ -435,9 +438,9 @@
 				EA26EC611A8785030050049A /* JFCoreDataManager.h in Headers */,
 				EA26EC671A8785030050049A /* JFGlobals.h in Headers */,
 				EA26EC791A8785030050049A /* JFTableViewSection.h in Headers */,
+				EAF2EB181A9CC677009D304E /* JFMobileKit.h in Headers */,
 				EAB33F8B1A950630005FB623 /* JFViewController.h in Headers */,
 				EA26EC711A8785030050049A /* JFNavigationController.h in Headers */,
-				EA26EC681A8785030050049A /* JFMobileKit.h in Headers */,
 				EA26EC851A8785030050049A /* JFMenuViewController.h in Headers */,
 				EA26EC8D1A8785030050049A /* JFUpdatableFile.h in Headers */,
 				EA26EC8B1A8785030050049A /* JFFileManager.h in Headers */,
@@ -455,6 +458,7 @@
 				EA26EC811A8785030050049A /* JFDrawerController.h in Headers */,
 				EA26EC751A8785030050049A /* JFSplitViewController.h in Headers */,
 				EA26EC831A8785030050049A /* JFMenuItem.h in Headers */,
+				EAF2EB1A1A9CC681009D304E /* JFMobileKit_OLD.h in Headers */,
 				EACFD6151A87AEC400B4494E /* JFAlertsController.h in Headers */,
 				EA26EC6D1A8785030050049A /* JFGalleryView.h in Headers */,
 				EA26EBF31A8771D50050049A /* JFAlert.h in Headers */,

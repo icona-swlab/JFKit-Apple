@@ -8,10 +8,5 @@
 
 
 
-#ifndef JFMobileFramework_JFGlobals_h
-#define JFMobileFramework_JFGlobals_h
-
 // Bundles
 //#define JFMobileFrameworkBundle	@"JFMobileFramework.bundle"
-
-#endif
