@@ -27,6 +27,7 @@
 #import "JFAlert.h"
 #import "JFAlertsController.h"
 #import	"JFViewController.h"
+#import	"JFWindowController.h"
 
 // Utilities
 #import "JFLogger.h"

@@ -63,14 +63,14 @@
 		EA26EC861A8785030050049A /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC551A8785030050049A /* JFMenuViewController.m */; };
 		EA26EC871A8785030050049A /* JFSimpleFormViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC561A8785030050049A /* JFSimpleFormViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC881A8785030050049A /* JFSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC571A8785030050049A /* JFSimpleFormViewController.m */; };
-		EA26EC891A8785030050049A /* JFWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC581A8785030050049A /* JFWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA26EC8A1A8785030050049A /* JFWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC591A8785030050049A /* JFWindowController.m */; };
 		EA26EC8B1A8785030050049A /* JFFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC5B1A8785030050049A /* JFFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC8C1A8785030050049A /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC5C1A8785030050049A /* JFFileManager.m */; };
 		EA26EC8D1A8785030050049A /* JFUpdatableFile.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC5D1A8785030050049A /* JFUpdatableFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC5E1A8785030050049A /* JFUpdatableFile.m */; };
 		EA4BB9431A8A25C10000C045 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
+		EA55EDF91AA336690037F066 /* JFWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA55EDF71AA336690037F066 /* JFWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA55EDFA1AA336690037F066 /* JFWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA55EDF81AA336690037F066 /* JFWindowController.m */; };
 		EAB33F8B1A950630005FB623 /* JFViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EAB33F871A94F301005FB623 /* JFViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAB33F8C1A950630005FB623 /* JFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB33F881A94F301005FB623 /* JFViewController.m */; };
 		EACA68921A81069300D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68911A81069300D79126 /* Foundation.framework */; };
@@ -142,8 +142,6 @@
 		EA26EC551A8785030050049A /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
 		EA26EC561A8785030050049A /* JFSimpleFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleFormViewController.h; sourceTree = "<group>"; };
 		EA26EC571A8785030050049A /* JFSimpleFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleFormViewController.m; sourceTree = "<group>"; };
-		EA26EC581A8785030050049A /* JFWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowController.h; sourceTree = "<group>"; };
-		EA26EC591A8785030050049A /* JFWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWindowController.m; sourceTree = "<group>"; };
 		EA26EC5B1A8785030050049A /* JFFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFileManager.h; sourceTree = "<group>"; };
 		EA26EC5C1A8785030050049A /* JFFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFileManager.m; sourceTree = "<group>"; };
 		EA26EC5D1A8785030050049A /* JFUpdatableFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUpdatableFile.h; sourceTree = "<group>"; };
@@ -152,6 +150,8 @@
 		EA26EC601A8785030050049A /* OLD JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OLD JFUtilities.m"; sourceTree = "<group>"; };
 		EA4BB9411A8A25C10000C045 /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
 		EA4BB9421A8A25C10000C045 /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
+		EA55EDF71AA336690037F066 /* JFWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowController.h; sourceTree = "<group>"; };
+		EA55EDF81AA336690037F066 /* JFWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWindowController.m; sourceTree = "<group>"; };
 		EA7ED2001A6FA63D00220BA1 /* libJFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7ED21C1A6FA65B00220BA1 /* libJFFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB33F871A94F301005FB623 /* JFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFViewController.h; sourceTree = "<group>"; };
@@ -198,6 +198,8 @@
 				EACFD6141A87AEC400B4494E /* JFAlertsController.m */,
 				EAB33F871A94F301005FB623 /* JFViewController.h */,
 				EAB33F881A94F301005FB623 /* JFViewController.m */,
+				EA55EDF71AA336690037F066 /* JFWindowController.h */,
+				EA55EDF81AA336690037F066 /* JFWindowController.m */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -333,8 +335,6 @@
 				EA26EC551A8785030050049A /* JFMenuViewController.m */,
 				EA26EC561A8785030050049A /* JFSimpleFormViewController.h */,
 				EA26EC571A8785030050049A /* JFSimpleFormViewController.m */,
-				EA26EC581A8785030050049A /* JFWindowController.h */,
-				EA26EC591A8785030050049A /* JFWindowController.m */,
 			);
 			path = "Work In Progress";
 			sourceTree = "<group>";
@@ -451,7 +451,6 @@
 				EA26EC871A8785030050049A /* JFSimpleFormViewController.h in Headers */,
 				EA26EC631A8785030050049A /* JFHTTPRequest.h in Headers */,
 				EA26EC7B1A8785030050049A /* JFLabel.h in Headers */,
-				EA26EC891A8785030050049A /* JFWindowController.h in Headers */,
 				EA26EC731A8785030050049A /* JFSliderController.h in Headers */,
 				EA26EC6F1A8785030050049A /* JFKeyboardViewHandler.h in Headers */,
 				EA4BB9431A8A25C10000C045 /* JFLogger.h in Headers */,
@@ -462,6 +461,7 @@
 				EACFD6151A87AEC400B4494E /* JFAlertsController.h in Headers */,
 				EA26EC6D1A8785030050049A /* JFGalleryView.h in Headers */,
 				EA26EBF31A8771D50050049A /* JFAlert.h in Headers */,
+				EA55EDF91AA336690037F066 /* JFWindowController.h in Headers */,
 				EA26EBEE1A87679F0050049A /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +559,7 @@
 				EA26EC861A8785030050049A /* JFMenuViewController.m in Sources */,
 				EA26EC7A1A8785030050049A /* JFTableViewSection.m in Sources */,
 				EA26EC641A8785030050049A /* JFHTTPRequest.m in Sources */,
+				EA55EDFA1AA336690037F066 /* JFWindowController.m in Sources */,
 				EA26EC841A8785030050049A /* JFMenuItem.m in Sources */,
 				EA26EC7E1A8785030050049A /* JFTextView.m in Sources */,
 				EA26EC801A8785030050049A /* JFTransparentToolbar.m in Sources */,
@@ -572,7 +573,6 @@
 				EAB33F8C1A950630005FB623 /* JFViewController.m in Sources */,
 				EA26EC6A1A8785030050049A /* JFActivityIndicatorView.m in Sources */,
 				EA26EC781A8785030050049A /* JFTabBarController.m in Sources */,
-				EA26EC8A1A8785030050049A /* JFWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,7 +30,6 @@
 @protocol JFAlertDelegate <NSObject>
 
 @optional
-#pragma mark Optional
 
 - (void)	alertDidPresent:(JFAlert*)alert;
 - (void)	alertWillPresent:(JFAlert*)alert;

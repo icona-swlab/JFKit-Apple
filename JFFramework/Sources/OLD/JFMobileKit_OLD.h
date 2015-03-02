@@ -52,7 +52,6 @@
 #import "JFMenuItem.h"
 #import "JFMenuViewController.h"
 #import "JFSimpleFormViewController.h"
-#import	"JFWindowController.h"
 
 // Utilities
 #import "JFFileManager.h"

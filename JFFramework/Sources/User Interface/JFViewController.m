@@ -27,14 +27,14 @@
 #pragma mark Notifications
 
 // Navigation
-NSString* const	JFViewControllerHasBeenDismissedNotification	= @"com.jackfelle.JFViewControllerHasBeenDismissedNotification";
-NSString* const	JFViewControllerHasBeenPoppedNotification		= @"com.jackfelle.JFViewControllerHasBeenPoppedNotification";
-NSString* const	JFViewControllerHasBeenPresentedNotification	= @"com.jackfelle.JFViewControllerHasBeenPresentedNotification";
-NSString* const	JFViewControllerHasBeenPushedNotification		= @"com.jackfelle.JFViewControllerHasBeenPushedNotification";
-NSString* const	JFViewControllerIsBeingDismissedNotification	= @"com.jackfelle.JFViewControllerIsBeingDismissedNotification";
-NSString* const	JFViewControllerIsBeingPoppedNotification		= @"com.jackfelle.JFViewControllerIsBeingPoppedNotification";
-NSString* const	JFViewControllerIsBeingPresentedNotification	= @"com.jackfelle.JFViewControllerIsBeingPresentedNotification";
-NSString* const	JFViewControllerIsBeingPushedNotification		= @"com.jackfelle.JFViewControllerIsBeingPushedNotification";
+NSString* const	JFViewControllerHasBeenDismissedNotification	= @"JFViewControllerHasBeenDismissedNotification";
+NSString* const	JFViewControllerHasBeenPoppedNotification		= @"JFViewControllerHasBeenPoppedNotification";
+NSString* const	JFViewControllerHasBeenPresentedNotification	= @"JFViewControllerHasBeenPresentedNotification";
+NSString* const	JFViewControllerHasBeenPushedNotification		= @"JFViewControllerHasBeenPushedNotification";
+NSString* const	JFViewControllerIsBeingDismissedNotification	= @"JFViewControllerIsBeingDismissedNotification";
+NSString* const	JFViewControllerIsBeingPoppedNotification		= @"JFViewControllerIsBeingPoppedNotification";
+NSString* const	JFViewControllerIsBeingPresentedNotification	= @"JFViewControllerIsBeingPresentedNotification";
+NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerIsBeingPushedNotification";
 
 
 

@@ -27,8 +27,13 @@
 
 @interface JFWindowController ()
 
+#pragma mark Properties
+
 // Flags
 @property (assign, nonatomic, readwrite, getter = isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
+
+
+#pragma mark Methods
 
 // Notifications management (UIWindow)
 - (void)	notifiedThatWindowDidBecomeHidden:(NSNotification*)notification;
@@ -40,9 +45,13 @@
 
 
 
+#pragma mark
+
+
+
 @implementation JFWindowController
 
-#pragma mark - Properties
+#pragma mark Properties
 
 // Debug
 @synthesize logger	= _logger;
@@ -55,7 +64,7 @@
 @synthesize window	= _window;
 
 
-#pragma mark - Memory management
+#pragma mark Memory management
 
 - (void)dealloc
 {
@@ -93,11 +102,11 @@
 }
 
 
-#pragma mark - User interface management (Loading)
+#pragma mark User interface management (UIWindow lifecycle)
 
 - (void)didLoadUserInterface
 {
-	if(self.logging)
+	if([self isLogging])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface has been loaded.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -106,7 +115,7 @@
 
 - (void)loadUserInterface
 {
-	if(self.logging)
+	if([self isLogging])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface is being loaded.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -115,19 +124,16 @@
 
 - (void)willLoadUserInterface
 {
-	if(self.logging)
+	if([self isLogging])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface will be loaded.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
 	}
 }
 
-
-#pragma mark -  User interface management (UIWindow lifecycle)
-
 - (void)windowDidBecomeHidden
 {
-	if(self.logging)
+	if([self isLogging])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become hidden.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -136,7 +142,7 @@
 
 - (void)windowDidBecomeKey
 {
-	if(self.logging)
+	if([self isLogging])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become key.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -145,7 +151,7 @@
 
 - (void)windowDidBecomeVisible
 {
-	if(self.logging)
+	if([self isLogging])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become visible.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -162,7 +168,7 @@
 
 - (void)windowDidResignKey
 {
-	if(self.logging)
+	if([self isLogging])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -170,7 +176,7 @@
 }
 
 
-#pragma mark - Notifications management (UIWindow)
+#pragma mark Notifications management (UIWindow)
 
 - (void)notifiedThatWindowDidBecomeHidden:(NSNotification*)notification
 {

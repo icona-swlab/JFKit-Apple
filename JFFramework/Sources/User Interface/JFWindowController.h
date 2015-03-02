@@ -24,26 +24,29 @@
 
 @interface JFWindowController : NSObject
 
+#pragma mark Properties
+
 // Flags
 @property (assign, nonatomic, readonly, getter = isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
 
 // Debug
-@property (strong, nonatomic, readonly)	JFLogger*	logger;
-@property (assign, nonatomic)			BOOL		logging;
+@property (strong, nonatomic, readonly)				JFLogger*	logger;
+@property (assign, nonatomic, getter = isLogging)	BOOL		logging;
 
 // User interface
 @property (strong, nonatomic, readonly)	UIWindow*	window;
+
+
+#pragma mark Methods
 
 // Memory management
 - (instancetype)	initWithWindow:(UIWindow*)window;
 - (instancetype)	initWithWindow:(UIWindow*)window logger:(JFLogger*)logger;	// Default initializator.
 
-// User interface management (Loading)
+// User interface management (UIWindow lifecycle)
 - (void)	didLoadUserInterface;
 - (void)	loadUserInterface;
 - (void)	willLoadUserInterface;
-
-// User interface management (UIWindow lifecycle)
 - (void)	windowDidBecomeHidden;
 - (void)	windowDidBecomeKey;
 - (void)	windowDidBecomeVisible;
