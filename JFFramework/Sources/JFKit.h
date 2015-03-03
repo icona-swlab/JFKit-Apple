@@ -1,6 +1,6 @@
 //
-//  Prefix.pch
-//  Copyright (C) 2015  Jacopo Filié
+//  JFMobileKit.h
+//  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,27 +18,10 @@
 
 
 
-#pragma mark - Common headers
-
 // SDK
+#import <AppKit/AppKit.h>
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
-// User
-#import "JFGlobals.h"
-
-
-#if TARGET_OS_IPHONE
-#pragma mark - iOS specific headers
-
-// SDK
-#import <UIKit/UIKit.h>
-
-
-#else
-#pragma mark - OS X specific headers
-
-// SDK
-#import <AppKit/AppKit.h>
-
-#endif
+// Utilities
+#import "JFUtilities.h"

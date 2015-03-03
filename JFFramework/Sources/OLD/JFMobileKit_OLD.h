@@ -34,7 +34,6 @@
 // User interface (Structure)
 #import "JFSliderController.h"
 #import "JFSplitViewController.h"
-#import "JFTabBarController.h"
 
 // User interface (Tables)
 #import "JFTableViewSection.h"

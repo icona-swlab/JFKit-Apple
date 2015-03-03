@@ -27,6 +27,8 @@
 #import "JFAlert.h"
 #import "JFAlertsController.h"
 #import "JFNavigationController.h"
+#import "JFTabBarController.h"
+#import "JFTableViewCell.h"
 #import	"JFViewController.h"
 #import	"JFWindowController.h"
 

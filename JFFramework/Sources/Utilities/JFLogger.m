@@ -43,8 +43,8 @@
 // Logging management
 - (void)	logMessageToConsole:(NSString*)message;
 - (void)	logMessageToFile:(NSString*)message;
-- (void)	renewLogFile;
-- (BOOL)	shouldRenewLogFile;
+- (void)	replaceLogFile;
+- (BOOL)	shouldReplaceLogFile;
 
 // Utilities management
 - (NSString*)	hashtagsToString:(JFLogHashtags)hashtags;
@@ -226,7 +226,7 @@
 	// Gets the current thread ID.
 	mach_port_t threadID = pthread_mach_thread_np(pthread_self());
 	
-	// Incapsulate the message.
+	// Encapsulate the message.
 	message = [NSString stringWithFormat:@"%@ [%x] %@\n", dateString, threadID, message];
 	
 	// Prepares the data to be written.
@@ -255,10 +255,10 @@
 	}
 }
 
-- (void)renewLogFile
+- (void)replaceLogFile
 {}
 
-- (BOOL)shouldRenewLogFile
+- (BOOL)shouldReplaceLogFile
 {
 	return NO;
 	

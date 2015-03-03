@@ -81,7 +81,7 @@ typedef NS_OPTIONS(UInt8, JFLogLevel)
 
 // Settings
 @property (assign)						JFLogDestinations			destinations;
-@property (assign)						JFLogExpirationTimeInterval	expirationTimeInterval;
+@property (assign)						JFLogExpirationTimeInterval	expirationTimeInterval;	// TODO: not yet implemented.
 @property (strong, nonatomic, readonly)	NSURL*						fileURL;
 @property (assign)						JFLogLevel					level;	// Only messages that have a lower (or equal) level value will be logged.
 

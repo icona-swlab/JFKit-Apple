@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14501AA5B45B0060B922 /* JFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CBE14561AA5B7130060B922 /* JFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CBE14571AA5B7170060B922 /* JFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */; };
 		EA26EBED1A87679F0050049A /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EBEB1A87679F0050049A /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EBEE1A87679F0050049A /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EBEB1A87679F0050049A /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EBEF1A87679F0050049A /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EBEC1A87679F0050049A /* JFUtilities.m */; };
@@ -79,8 +82,6 @@
 		EACA68A11A810A3000D79126 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68A01A810A3000D79126 /* AppKit.framework */; };
 		EACFD6151A87AEC400B4494E /* JFAlertsController.h in Headers */ = {isa = PBXBuildFile; fileRef = EACFD6131A87AEC400B4494E /* JFAlertsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EACFD6161A87AEC400B4494E /* JFAlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EACFD6141A87AEC400B4494E /* JFAlertsController.m */; };
-		EAD85F341A8D01AA0088BC3D /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAD85F351A8D01B00088BC3D /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
 		EAF2EB181A9CC677009D304E /* JFMobileKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF2EB171A9CC677009D304E /* JFMobileKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF2EB1A1A9CC681009D304E /* JFMobileKit_OLD.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF2EB191A9CC681009D304E /* JFMobileKit_OLD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -103,6 +104,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6CBE14501AA5B45B0060B922 /* JFKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKit.h; sourceTree = "<group>"; };
+		6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewCell.h; sourceTree = "<group>"; };
+		6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewCell.m; sourceTree = "<group>"; };
 		EA26EBEB1A87679F0050049A /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
 		EA26EBEC1A87679F0050049A /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
 		EA26EBF11A8771D50050049A /* JFAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlert.h; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				EA61D29E1AA51C4400581F72 /* JFNavigationController.m */,
 				EA61D2A11AA522A300581F72 /* JFTabBarController.h */,
 				EA61D2A21AA522A300581F72 /* JFTabBarController.m */,
+				6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */,
+				6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */,
 				EAB33F871A94F301005FB623 /* JFViewController.h */,
 				EAB33F881A94F301005FB623 /* JFViewController.m */,
 				EA55EDF71AA336690037F066 /* JFWindowController.h */,
@@ -364,6 +370,7 @@
 		EACA688A1A8105F600D79126 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				6CBE14501AA5B45B0060B922 /* JFKit.h */,
 				EAF2EB171A9CC677009D304E /* JFMobileKit.h */,
 				EA26EC151A8782460050049A /* OLD */,
 				EA26EBE91A87679F0050049A /* User Interface */,
@@ -426,7 +433,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD85F341A8D01AA0088BC3D /* JFLogger.h in Headers */,
+				6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */,
 				EA26EBED1A87679F0050049A /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +459,7 @@
 				EA26EC731A8785030050049A /* JFSliderController.h in Headers */,
 				EA26EC6F1A8785030050049A /* JFKeyboardViewHandler.h in Headers */,
 				EA4BB9431A8A25C10000C045 /* JFLogger.h in Headers */,
+				6CBE14561AA5B7130060B922 /* JFTableViewCell.h in Headers */,
 				EA26EC811A8785030050049A /* JFDrawerController.h in Headers */,
 				EA61D2A31AA522A300581F72 /* JFTabBarController.h in Headers */,
 				EA26EC751A8785030050049A /* JFSplitViewController.h in Headers */,
@@ -557,6 +565,7 @@
 				EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */,
 				EA26EBF01A87679F0050049A /* JFUtilities.m in Sources */,
 				EA26EBF41A8771D50050049A /* JFAlert.m in Sources */,
+				6CBE14571AA5B7170060B922 /* JFTableViewCell.m in Sources */,
 				EA26EC861A8785030050049A /* JFMenuViewController.m in Sources */,
 				EA26EC7A1A8785030050049A /* JFTableViewSection.m in Sources */,
 				EA26EC641A8785030050049A /* JFHTTPRequest.m in Sources */,
@@ -581,7 +590,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA26EBEF1A87679F0050049A /* JFUtilities.m in Sources */,
-				EAD85F351A8D01B00088BC3D /* JFLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
