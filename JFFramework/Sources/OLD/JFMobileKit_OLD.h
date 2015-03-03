@@ -32,7 +32,6 @@
 #import "JFKeyboardViewHandler.h"
 
 // User interface (Structure)
-#import "JFNavigationController.h"
 #import "JFSliderController.h"
 #import "JFSplitViewController.h"
 #import "JFTabBarController.h"

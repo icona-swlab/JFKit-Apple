@@ -26,6 +26,7 @@
 // User interface
 #import "JFAlert.h"
 #import "JFAlertsController.h"
+#import "JFNavigationController.h"
 #import	"JFViewController.h"
 #import	"JFWindowController.h"
 

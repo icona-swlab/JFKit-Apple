@@ -1,5 +1,5 @@
 //
-//  JFNavigationController.m
+//  JFTabBarController.h
 //  Copyright (C) 2014  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,33 +18,33 @@
 
 
 
-#import "JFNavigationController.h"
+@class JFTabBarController;
 
 
 
-@interface JFNavigationController ()
+@protocol JFTabBarControllerDelegate <UITabBarControllerDelegate>
+
+@optional
+#pragma mark Optional Methods
+
+// User interface management (Rotation)
+- (UIInterfaceOrientation)	tabBarControllerPreferredInterfaceOrientationForPresentation:(JFTabBarController*)tabBarController;
+- (BOOL)					tabBarControllerShouldAutorotate:(JFTabBarController*)tabBarController;
+- (NSUInteger)				tabBarControllerSupportedInterfaceOrientations:(JFTabBarController*)tabBarController;
 
 @end
 
 
 
-@implementation JFNavigationController
+#pragma mark
 
-#pragma mark - User interface management (Rotation)
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-	return [self.topViewController preferredInterfaceOrientationForPresentation];
-}
 
-- (BOOL)shouldAutorotate
-{
-	return [self.topViewController shouldAutorotate];
-}
+@interface JFTabBarController : UITabBarController
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-	return [self.topViewController supportedInterfaceOrientations];
-}
+#pragma mark Properties
+
+// Relationships
+@property (weak, nonatomic)	id<JFTabBarControllerDelegate>	delegate;
 
 @end
