@@ -25,7 +25,7 @@
 @protocol JFTabBarControllerDelegate <UITabBarControllerDelegate>
 
 @optional
-#pragma mark Optional Methods
+#pragma mark Optional methods
 
 // User interface management (Rotation)
 - (UIInterfaceOrientation)	tabBarControllerPreferredInterfaceOrientationForPresentation:(JFTabBarController*)tabBarController;

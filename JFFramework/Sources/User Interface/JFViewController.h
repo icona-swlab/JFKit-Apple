@@ -18,6 +18,10 @@
 
 
 
+@class JFLogger;
+
+
+
 #pragma mark Notifications
 
 // Navigation
@@ -37,5 +41,17 @@ extern NSString* const	JFViewControllerIsBeingPushedNotification;		// The view c
 
 
 @interface JFViewController : UIViewController
+
+#pragma mark Properties
+
+// Debug
+@property (strong, nonatomic, readonly)				JFLogger*	logger;
+@property (assign, nonatomic, getter = isLogging)	BOOL		logging;
+
+
+#pragma mark Methods
+
+// Memory management
+- (instancetype)	initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil logger:(JFLogger*)logger;
 
 @end

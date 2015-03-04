@@ -20,6 +20,7 @@
 
 #import "JFViewController.h"
 
+#import "JFLogger.h"
 #import "JFUtilities.h"
 
 
@@ -66,11 +67,35 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 
 @implementation JFViewController
 
+#pragma mark Properties
+
+// Debug
+@synthesize logger	= _logger;
+@synthesize logging	= _logging;
+
+
 #pragma mark Memory management
 
 - (instancetype)init
 {
 	return [self initWithNibName:StandardXIBName bundle:nil];
+}
+
+- (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
+{
+	return [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil logger:[JFLogger defaultLogger]];
+}
+
+- (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil logger:(JFLogger*)logger
+{
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	if(self)
+	{
+		// Debug
+		_logger = logger;
+		_logging = YES;
+	}
+	return self;
 }
 
 

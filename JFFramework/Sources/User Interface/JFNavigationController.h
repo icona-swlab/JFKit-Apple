@@ -25,7 +25,7 @@
 @protocol JFNavigationControllerDelegate <UINavigationControllerDelegate>
 
 @optional
-#pragma mark Optional Methods
+#pragma mark Optional methods
 
 // User interface management (Rotation)
 - (UIInterfaceOrientation)	navigationControllerPreferredInterfaceOrientationForPresentation:(JFNavigationController*)navigationController;
