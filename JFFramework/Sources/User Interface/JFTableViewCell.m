@@ -65,6 +65,7 @@
 	[cell setNeedsLayout];
 	[cell layoutIfNeeded];
 	
+	// TODO: fix for iOS6.
 	CGFloat calculatedHeight = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 	CGFloat defaultHeight = [self defaultHeight];
 	

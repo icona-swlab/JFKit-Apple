@@ -137,6 +137,7 @@
 - (void)prepareUserInterface
 {
 	JFLabel* label = [JFLabel new];
+	label.backgroundColor = [UIColor clearColor];
 	label.font = self.font;
 	label.lineBreakMode = NSLineBreakByTruncatingTail;
 	label.numberOfLines = 0;
@@ -175,14 +176,16 @@
 {
 	[super drawRect:rect];
 	
-	float linePadding = self.textContainer.lineFragmentPadding;
-	UIEdgeInsets insets = self.textContainerInset;
+	BOOL shouldUseFallbackSolution = !iOS7Plus;
+	
+	float linePadding = (shouldUseFallbackSolution ? 5.0f : self.textContainer.lineFragmentPadding);
+	UIEdgeInsets insets = (shouldUseFallbackSolution ? UIEdgeInsetsMake(8.0f, 4.0f, 8.0f, 4.0) : self.textContainerInset);
 	
 	CGRect frame = CGRectZero;
 	frame.origin.x = insets.left + linePadding;
 	frame.origin.y = insets.top;
 	frame.size.width = CGRectGetWidth(rect) - (insets.left + insets.right + 2 * linePadding);
-	frame.size.height = CGRectGetHeight(rect) - (insets.top + insets.bottom);
+	frame.size.height = CGFLOAT_MAX;
 	
 	CGSize size = [self.placeholderLabel sizeThatFits:frame.size];
 	frame.size.height = MIN(size.height, CGRectGetHeight(frame));
