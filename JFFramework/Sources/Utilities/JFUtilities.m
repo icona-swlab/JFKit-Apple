@@ -124,7 +124,7 @@ NSColor* colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a)
 
 #pragma mark Functions (Info)
 
-NSString* appInfoForKey(NSString* key)
+NSString* JFApplicationInfoForKey(NSString* key)
 {
 	return [[NSMainBundle infoDictionary] objectForKey:key];
 }
@@ -140,6 +140,37 @@ Degrees degreesFromRadians(Radians radians)
 Radians radiansFromDegress(Degrees degrees)
 {
 	return degrees * M_PI / 180.0;
+}
+
+
+#pragma mark Functions (Objects)
+
+BOOL JFAreObjectsEqual(id obj1, id obj2)
+{
+	// If both are 'nil', they are equal.
+	if(!obj1 && !obj2)
+		return YES;
+	
+	// If anyone is equal to 'nil', they can't be equal.
+	if(!obj1 || !obj2)
+		return NO;
+	
+	BOOL (^validateClass)(Class) = ^BOOL(Class class)
+	{
+		if(![obj1 isKindOfClass:class])	return NO;
+		if(![obj2 isKindOfClass:class])	return NO;
+		return YES;
+	};
+	
+	if(validateClass([NSArray class]))		return [obj1 isEqualToArray:obj2];
+	if(validateClass([NSData class]))		return [obj1 isEqualToData:obj2];
+	if(validateClass([NSDate class]))		return [obj1 isEqualToDate:obj2];
+	if(validateClass([NSDictionary class]))	return [obj1 isEqualToDictionary:obj2];
+	if(validateClass([NSNumber class]))		return [obj1 isEqualToNumber:obj2];
+	if(validateClass([NSSet class]))		return [obj1 isEqualToSet:obj2];
+	if(validateClass([NSString class]))		return [obj1 isEqualToString:obj2];
+	
+	return [obj1 isEqual:obj2];
 }
 
 
@@ -228,27 +259,27 @@ ByteStream ByteStreamRealloc(ByteStream byteStream, NSUInteger length)
 
 #pragma mark Functions (Strings)
 
-NSString* stringFromBool(BOOL value)
+NSString* JFStringFromBool(BOOL value)
 {
 	return (value ? TrueString : FalseString);
 }
 
-NSString* stringFromDouble(double value)
+NSString* JFStringFromDouble(double value)
 {
 	return [NSString stringWithFormat:@"%f", value];
 }
 
-NSString* stringFromFloat(float value)
+NSString* JFStringFromFloat(float value)
 {
 	return [NSString stringWithFormat:@"%f", value];
 }
 
-NSString* stringFromHex(unsigned int value)
+NSString* JFStringFromHex(unsigned int value)
 {
 	return [NSString stringWithFormat:@"%x", value];
 }
 
-NSString* stringFromNSInteger(NSInteger value)
+NSString* JFStringFromNSInteger(NSInteger value)
 {
 #if __LP64__
 	return [NSString stringWithFormat:@"%ld", (long)value];
@@ -257,7 +288,7 @@ NSString* stringFromNSInteger(NSInteger value)
 #endif
 }
 
-NSString* stringFromNSUInteger(NSUInteger value)
+NSString* JFStringFromNSUInteger(NSUInteger value)
 {
 #if __LP64__
 	return [NSString stringWithFormat:@"%lu", (unsigned long)value];
@@ -266,42 +297,42 @@ NSString* stringFromNSUInteger(NSUInteger value)
 #endif
 }
 
-NSString* stringFromID(id value)
+NSString* JFStringFromID(id value)
 {
 	return [NSString stringWithFormat:@"%p", value];
 }
 
-NSString* stringFromInt(int value)
+NSString* JFStringFromInt(int value)
 {
 	return [NSString stringWithFormat:@"%d", value];
 }
 
-NSString* stringFromLong(long value)
+NSString* JFStringFromLong(long value)
 {
 	return [NSString stringWithFormat:@"%ld", value];
 }
 
-NSString* stringFromLongLong(long long value)
+NSString* JFStringFromLongLong(long long value)
 {
 	return [NSString stringWithFormat:@"%lld", value];
 }
 
-NSString* stringFromPointer(void* value)
+NSString* JFStringFromPointer(void* value)
 {
 	return [NSString stringWithFormat:@"%p", value];
 }
 
-NSString* stringFromSInt8(SInt8 value)
+NSString* JFStringFromSInt8(SInt8 value)
 {
 	return [NSString stringWithFormat:@"%hhd", value];
 }
 
-NSString* stringFromSInt16(SInt16 value)
+NSString* JFStringFromSInt16(SInt16 value)
 {
 	return [NSString stringWithFormat:@"%hd", value];
 }
 
-NSString* stringFromSInt32(SInt32 value)
+NSString* JFStringFromSInt32(SInt32 value)
 {
 #if __LP64__
 	return [NSString stringWithFormat:@"%d", (signed int)value];
@@ -310,22 +341,22 @@ NSString* stringFromSInt32(SInt32 value)
 #endif
 }
 
-NSString* stringFromSInt64(SInt64 value)
+NSString* JFStringFromSInt64(SInt64 value)
 {
 	return [NSString stringWithFormat:@"%lld", value];
 }
 
-NSString* stringFromUInt8(UInt8 value)
+NSString* JFStringFromUInt8(UInt8 value)
 {
 	return [NSString stringWithFormat:@"%hhu", value];
 }
 
-NSString* stringFromUInt16(UInt16 value)
+NSString* JFStringFromUInt16(UInt16 value)
 {
 	return [NSString stringWithFormat:@"%hu", value];
 }
 
-NSString* stringFromUInt32(UInt32 value)
+NSString* JFStringFromUInt32(UInt32 value)
 {
 #if __LP64__
 	return [NSString stringWithFormat:@"%u", (unsigned int)value];
@@ -334,22 +365,22 @@ NSString* stringFromUInt32(UInt32 value)
 #endif
 }
 
-NSString* stringFromUInt64(UInt64 value)
+NSString* JFStringFromUInt64(UInt64 value)
 {
 	return [NSString stringWithFormat:@"%llu", value];
 }
 
-NSString* stringFromUnsignedInt(unsigned int value)
+NSString* JFStringFromUnsignedInt(unsigned int value)
 {
 	return [NSString stringWithFormat:@"%u", value];
 }
 
-NSString* stringFromUnsignedLong(unsigned long value)
+NSString* JFStringFromUnsignedLong(unsigned long value)
 {
 	return [NSString stringWithFormat:@"%lu", value];
 }
 
-NSString* stringFromUnsignedLongLong(unsigned long long value)
+NSString* JFStringFromUnsignedLongLong(unsigned long long value)
 {
 	return [NSString stringWithFormat:@"%llu", value];
 }

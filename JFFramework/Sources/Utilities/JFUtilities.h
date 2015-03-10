@@ -31,11 +31,11 @@
 
 #pragma mark Macros (Info)
 
-#define AppDisplayName	appInfoForKey(@"CFBundleDisplayName")
-#define AppIdentifier	appInfoForKey(@"CFBundleIdentifier")
-#define AppName			appInfoForKey(@"CFBundleName")
-#define AppVersionLong	appInfoForKey(@"CFBundleVersion")
-#define AppVersionShort	appInfoForKey(@"CFBundleShortVersionString")
+#define AppDisplayName	JFApplicationInfoForKey(@"CFBundleDisplayName")
+#define AppIdentifier	JFApplicationInfoForKey(@"CFBundleIdentifier")
+#define AppName			JFApplicationInfoForKey(@"CFBundleName")
+#define AppVersionLong	JFApplicationInfoForKey(@"CFBundleVersion")
+#define AppVersionShort	JFApplicationInfoForKey(@"CFBundleShortVersionString")
 #define	ClassName		ObjectClassString(self)
 #define	LogMethod		NSLog(@"%@: executing '%@'.", ClassName, MethodName)
 #define MethodName		NSStringFromSelector(_cmd)
@@ -59,47 +59,42 @@
 
 #pragma mark Macros (Strings)
 
-#define BoolToString(_val)						stringFromBool(_val)
+#define BoolToString(_val)						JFStringFromBool(_val)
 #define CStringToString(_str)					CStringToStringWithEncoding(_str, NSUTF8StringEncoding)
 #define CStringToStringWithEncoding(_str, _enc)	[NSString stringWithCString:_str encoding:_enc]
-#define DoubleToString(_val)					stringFromDouble(_val)
-#define FloatToString(_val)						stringFromFloat(_val)
-#define HexToString(_val)						stringFromHex(_val)
-#define IDToString(_val)						stringFromID(_val)
-#define IntToString(_val)						stringFromInt(_val)
+#define DoubleToString(_val)					JFStringFromDouble(_val)
+#define FloatToString(_val)						JFStringFromFloat(_val)
+#define HexToString(_val)						JFStringFromHex(_val)
+#define IDToString(_val)						JFStringFromID(_val)
+#define IntToString(_val)						JFStringFromInt(_val)
 #define	IsEmptyString(_str)						[_str isEqualToString:EmptyString]
 #define	IsNullOrEmptyString(_str)				(!_str || IsEmptyString(_str))
-#define LongToString(_val)						stringFromLong(_val)
-#define LongLongToString(_val)					stringFromLongLong(_val)
-#define NSIntegerToString(_val)					stringFromNSInteger(_val)
-#define NSUIntegerToString(_val)				stringFromNSUInteger(_val)
+#define LongToString(_val)						JFStringFromLong(_val)
+#define LongLongToString(_val)					JFStringFromLongLong(_val)
+#define NSIntegerToString(_val)					JFStringFromNSInteger(_val)
+#define NSUIntegerToString(_val)				JFStringFromNSUInteger(_val)
 #define	ObjectClassString(_obj)					NSStringFromClass([_obj class])
-#define PointerToString(_val)					stringFromPointer(_val)
+#define PointerToString(_val)					JFStringFromPointer(_val)
 #define KVCPropertyName(_property)				[[KVCPropertyPath(_property) componentsSeparatedByString:@"."] lastObject]
 #define KVCPropertyPath(_property)				(@""#_property)
-#define SInt8ToString(_val)						stringFromSInt8(_val)
-#define SInt16ToString(_val)					stringFromSInt16(_val)
-#define SInt32ToString(_val)					stringFromSInt32(_val)
-#define SInt64ToString(_val)					stringFromSInt64(_val)
+#define SInt8ToString(_val)						JFStringFromSInt8(_val)
+#define SInt16ToString(_val)					JFStringFromSInt16(_val)
+#define SInt32ToString(_val)					JFStringFromSInt32(_val)
+#define SInt64ToString(_val)					JFStringFromSInt64(_val)
 #define StringToCString(_str)					StringToCStringWithEncoding(_str, NSUTF8StringEncoding)
 #define StringToCStringWithEncoding(_str, _enc)	[_str cStringUsingEncoding:_enc]
-#define UInt8ToString(_val)						stringFromUInt8(_val)
-#define UInt16ToString(_val)					stringFromUInt16(_val)
-#define UInt32ToString(_val)					stringFromUInt32(_val)
-#define UInt64ToString(_val)					stringFromUInt64(_val)
-#define UnsignedIntToString(_val)				stringFromUnsignedInt(_val)
-#define UnsignedLongToString(_val)				stringFromUnsignedLong(_val)
-#define UnsignedLongLongToString(_val)			stringFromUnsignedLongLong(_val)
+#define UInt8ToString(_val)						JFStringFromUInt8(_val)
+#define UInt16ToString(_val)					JFStringFromUInt16(_val)
+#define UInt32ToString(_val)					JFStringFromUInt32(_val)
+#define UInt64ToString(_val)					JFStringFromUInt64(_val)
+#define UnsignedIntToString(_val)				JFStringFromUnsignedInt(_val)
+#define UnsignedLongToString(_val)				JFStringFromUnsignedLong(_val)
+#define UnsignedLongLongToString(_val)			JFStringFromUnsignedLongLong(_val)
 
 
 #pragma mark Macros (OLD)
 
 #if TARGET_OS_IPHONE
-#define AreArraysEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToArray:arg_obj2])
-#define AreDatesEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToDate:arg_obj2])
-#define AreObjectsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqual:arg_obj2])
-#define AreSetsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToSet:arg_obj2])
-#define AreStringsEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToString:arg_obj2])
 #define NSDefaultNotificationCenter	[NSNotificationCenter defaultCenter]
 #define	UIApp						[UIApplication sharedApplication]
 #define	UIAppDelegate				((AppDelegate*)[UIApp delegate])
@@ -237,9 +232,9 @@ extern UInt8 const Color32ComponentMaxValue;
 
 #pragma mark Constants (Strings)
 
-extern	NSString* const	EmptyString;
-extern	NSString* const	FalseString;
-extern	NSString* const	TrueString;
+extern NSString* const	EmptyString;
+extern NSString* const	FalseString;
+extern NSString* const	TrueString;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -264,13 +259,18 @@ extern NSColor*	colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a);
 
 #pragma mark Functions (Info)
 
-extern NSString*	appInfoForKey(NSString* key);
+extern NSString*	JFApplicationInfoForKey(NSString* key);
 
 
 #pragma mark Functions (Math)
 
 extern Degrees	degreesFromRadians(Radians radians);
 extern Radians	radiansFromDegress(Degrees degrees);
+
+
+#pragma mark Functions (Objects)
+
+extern BOOL	JFAreObjectsEqual(id obj1, id obj2);
 
 
 #pragma mark Functions (Runtime)
@@ -293,28 +293,28 @@ extern ByteStream	ByteStreamRealloc(ByteStream byteStream, NSUInteger length);
 
 #pragma mark Functions (Strings)
 
-extern NSString*	stringFromBool(BOOL value);
-extern NSString*	stringFromDouble(double value);
-extern NSString*	stringFromFloat(float value);
-extern NSString*	stringFromHex(unsigned int value);
-extern NSString*	stringFromID(id value);
-extern NSString*	stringFromInt(int value);
-extern NSString*	stringFromLong(long value);
-extern NSString*	stringFromLongLong(long long value);
-extern NSString*	stringFromNSInteger(NSInteger value);
-extern NSString*	stringFromNSUInteger(NSUInteger value);
-extern NSString*	stringFromPointer(void* value);
-extern NSString*	stringFromSInt8(SInt8 value);
-extern NSString*	stringFromSInt16(SInt16 value);
-extern NSString*	stringFromSInt32(SInt32 value);
-extern NSString*	stringFromSInt64(SInt64 value);
-extern NSString*	stringFromUInt8(UInt8 value);
-extern NSString*	stringFromUInt16(UInt16 value);
-extern NSString*	stringFromUInt32(UInt32 value);
-extern NSString*	stringFromUInt64(UInt64 value);
-extern NSString*	stringFromUnsignedInt(unsigned int value);
-extern NSString*	stringFromUnsignedLong(unsigned long value);
-extern NSString*	stringFromUnsignedLongLong(unsigned long long value);
+extern NSString*	JFStringFromBool(BOOL value);
+extern NSString*	JFStringFromDouble(double value);
+extern NSString*	JFStringFromFloat(float value);
+extern NSString*	JFStringFromHex(unsigned int value);
+extern NSString*	JFStringFromID(id value);
+extern NSString*	JFStringFromInt(int value);
+extern NSString*	JFStringFromLong(long value);
+extern NSString*	JFStringFromLongLong(long long value);
+extern NSString*	JFStringFromNSInteger(NSInteger value);
+extern NSString*	JFStringFromNSUInteger(NSUInteger value);
+extern NSString*	JFStringFromPointer(void* value);
+extern NSString*	JFStringFromSInt8(SInt8 value);
+extern NSString*	JFStringFromSInt16(SInt16 value);
+extern NSString*	JFStringFromSInt32(SInt32 value);
+extern NSString*	JFStringFromSInt64(SInt64 value);
+extern NSString*	JFStringFromUInt8(UInt8 value);
+extern NSString*	JFStringFromUInt16(UInt16 value);
+extern NSString*	JFStringFromUInt32(UInt32 value);
+extern NSString*	JFStringFromUInt64(UInt64 value);
+extern NSString*	JFStringFromUnsignedInt(unsigned int value);
+extern NSString*	JFStringFromUnsignedLong(unsigned long value);
+extern NSString*	JFStringFromUnsignedLongLong(unsigned long long value);
 
 
 #pragma mark Functions (OLD)

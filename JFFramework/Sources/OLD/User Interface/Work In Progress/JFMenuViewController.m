@@ -66,7 +66,7 @@
 
 - (void)setItems:(NSArray*)items
 {
-	if(AreArraysEqual(_items, items))
+	if(JFAreObjectsEqual(_items, items))
 		return;
 	
 	_items = items;

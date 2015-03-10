@@ -58,7 +58,7 @@
 
 - (void)setPlaceholder:(NSString*)placeholder
 {
-	if(AreStringsEqual(_placeholder, placeholder))
+	if(JFAreObjectsEqual(_placeholder, placeholder))
 		return;
 	
 	_placeholder = [placeholder copy];
