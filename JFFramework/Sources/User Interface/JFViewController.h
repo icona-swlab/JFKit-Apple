@@ -24,15 +24,18 @@
 
 #pragma mark Notifications
 
-// Navigation
-extern NSString* const	JFViewControllerHasBeenDismissedNotification;	// The view controller has been modally dismissed.
-extern NSString* const	JFViewControllerHasBeenPoppedNotification;		// The view controller has been popped from a navigation stack.
-extern NSString* const	JFViewControllerHasBeenPresentedNotification;	// The view controller has been modally presented.
-extern NSString* const	JFViewControllerHasBeenPushedNotification;		// The view controller has been pushed on a navigation stack.
-extern NSString* const	JFViewControllerIsBeingDismissedNotification;	// The view controller is being modally dismissed.
-extern NSString* const	JFViewControllerIsBeingPoppedNotification;		// The view controller is being popped from a navigation stack.
-extern NSString* const	JFViewControllerIsBeingPresentedNotification;	// The view controller is being modally presented.
-extern NSString* const	JFViewControllerIsBeingPushedNotification;		// The view controller is being pushed on a navigation stack.
+// Navigation (Keys)
+extern NSString* const	JFViewControllerIsAnimatedKey;
+
+// Navigation (Names)
+extern NSString* const	JFViewControllerHasBeenDismissedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerHasBeenPoppedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerHasBeenPresentedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerHasBeenPushedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerWillBeDismissedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerWillBePoppedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerWillBePresentedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
 
 
 
@@ -53,5 +56,15 @@ extern NSString* const	JFViewControllerIsBeingPushedNotification;		// The view c
 
 // Memory management
 - (instancetype)	initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil logger:(JFLogger*)logger;
+
+// User interface management (Navigation)
+- (void)	hasBeenDismissed:(BOOL)animated;	// The view controller has been modally dismissed.
+- (void)	hasBeenPopped:(BOOL)animated;		// The view controller has been popped from a navigation stack.
+- (void)	hasBeenPresented:(BOOL)animated;	// The view controller has been modally presented.
+- (void)	hasBeenPushed:(BOOL)animated;		// The view controller has been pushed on a navigation stack.
+- (void)	willBeDismissed:(BOOL)animated;		// The view controller will be modally dismissed.
+- (void)	willBePopped:(BOOL)animated;		// The view controller will be popped from a navigation stack.
+- (void)	willBePresented:(BOOL)animated;		// The view controller will be modally presented.
+- (void)	willBePushed:(BOOL)animated;		// The view controller will be pushed on a navigation stack.
 
 @end

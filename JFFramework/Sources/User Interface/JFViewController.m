@@ -27,15 +27,18 @@
 
 #pragma mark Notifications
 
-// Navigation
+// Navigation (Keys)
+NSString* const	JFViewControllerIsAnimatedKey	= @"JFViewControllerIsAnimatedKey";
+
+// Navigation (Names)
 NSString* const	JFViewControllerHasBeenDismissedNotification	= @"JFViewControllerHasBeenDismissedNotification";
 NSString* const	JFViewControllerHasBeenPoppedNotification		= @"JFViewControllerHasBeenPoppedNotification";
 NSString* const	JFViewControllerHasBeenPresentedNotification	= @"JFViewControllerHasBeenPresentedNotification";
 NSString* const	JFViewControllerHasBeenPushedNotification		= @"JFViewControllerHasBeenPushedNotification";
-NSString* const	JFViewControllerIsBeingDismissedNotification	= @"JFViewControllerIsBeingDismissedNotification";
-NSString* const	JFViewControllerIsBeingPoppedNotification		= @"JFViewControllerIsBeingPoppedNotification";
-NSString* const	JFViewControllerIsBeingPresentedNotification	= @"JFViewControllerIsBeingPresentedNotification";
-NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerIsBeingPushedNotification";
+NSString* const	JFViewControllerWillBeDismissedNotification		= @"JFViewControllerWillBeDismissedNotification";
+NSString* const	JFViewControllerWillBePoppedNotification		= @"JFViewControllerWillBePoppedNotification";
+NSString* const	JFViewControllerWillBePresentedNotification		= @"JFViewControllerWillBePresentedNotification";
+NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWillBePushedNotification";
 
 
 
@@ -52,10 +55,10 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 - (void)	notifyHasBeenPopped:(BOOL)animated;
 - (void)	notifyHasBeenPresented:(BOOL)animated;
 - (void)	notifyHasBeenPushed:(BOOL)animated;
-- (void)	notifyIsBeingDismissed:(BOOL)animated;
-- (void)	notifyIsBeingPopped:(BOOL)animated;
-- (void)	notifyIsBeingPresented:(BOOL)animated;
-- (void)	notifyIsBeingPushed:(BOOL)animated;
+- (void)	notifyWillBeDismissed:(BOOL)animated;
+- (void)	notifyWillBePopped:(BOOL)animated;
+- (void)	notifyWillBePresented:(BOOL)animated;
+- (void)	notifyWillBePushed:(BOOL)animated;
 
 @end
 
@@ -99,6 +102,33 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 }
 
 
+#pragma mark User interface management (Navigation)
+
+- (void)hasBeenDismissed:(BOOL)animated
+{}
+
+- (void)hasBeenPopped:(BOOL)animated
+{}
+
+- (void)hasBeenPresented:(BOOL)animated
+{}
+
+- (void)hasBeenPushed:(BOOL)animated
+{}
+
+- (void)willBeDismissed:(BOOL)animated
+{}
+
+- (void)willBePopped:(BOOL)animated
+{}
+
+- (void)willBePresented:(BOOL)animated
+{}
+
+- (void)willBePushed:(BOOL)animated
+{}
+
+
 #pragma mark User interface management (View lifecycle)
 
 - (void)viewDidAppear:(BOOL)animated
@@ -106,10 +136,16 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 	[super viewDidAppear:animated];
 	
 	if([self isBeingPresented])
+	{
+		[self hasBeenPresented:animated];
 		[self notifyHasBeenPresented:animated];
+	}
 	
 	if([self isMovingToParentViewController])
+	{
+		[self hasBeenPushed:animated];
 		[self notifyHasBeenPushed:animated];
+	}
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -117,10 +153,16 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 	[super viewDidDisappear:animated];
 	
 	if([self isBeingDismissed])
+	{
+		[self hasBeenDismissed:animated];
 		[self notifyHasBeenDismissed:animated];
+	}
 	
 	if([self isMovingFromParentViewController])
+	{
+		[self hasBeenPopped:animated];
 		[self notifyHasBeenPopped:animated];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -128,10 +170,16 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 	[super viewWillAppear:animated];
 	
 	if([self isBeingPresented])
-		[self notifyIsBeingPresented:animated];
+	{
+		[self willBePresented:animated];
+		[self notifyWillBePresented:animated];
+	}
 	
 	if([self isMovingToParentViewController])
-		[self notifyIsBeingPushed:animated];
+	{
+		[self willBePushed:animated];
+		[self notifyWillBePushed:animated];
+	}
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -139,10 +187,16 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 	[super viewWillDisappear:animated];
 	
 	if([self isBeingDismissed])
-		[self notifyIsBeingDismissed:animated];
+	{
+		[self willBeDismissed:animated];
+		[self notifyWillBeDismissed:animated];
+	}
 	
 	if([self isMovingFromParentViewController])
-		[self notifyIsBeingPopped:animated];
+	{
+		[self willBePopped:animated];
+		[self notifyWillBePopped:animated];
+	}
 }
 
 
@@ -150,42 +204,50 @@ NSString* const	JFViewControllerIsBeingPushedNotification		= @"JFViewControllerI
 
 - (void)notifyHasBeenDismissed:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenDismissedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenDismissedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPopped:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPoppedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPoppedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPresented:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPresentedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPresentedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPushed:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPushedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPushedNotification object:self userInfo:userInfo];
 }
 
-- (void)notifyIsBeingDismissed:(BOOL)animated
+- (void)notifyWillBeDismissed:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerIsBeingDismissedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBeDismissedNotification object:self userInfo:userInfo];
 }
 
-- (void)notifyIsBeingPopped:(BOOL)animated
+- (void)notifyWillBePopped:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerIsBeingPoppedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePoppedNotification object:self userInfo:userInfo];
 }
 
-- (void)notifyIsBeingPresented:(BOOL)animated
+- (void)notifyWillBePresented:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerIsBeingPresentedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePresentedNotification object:self userInfo:userInfo];
 }
 
-- (void)notifyIsBeingPushed:(BOOL)animated
+- (void)notifyWillBePushed:(BOOL)animated
 {
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerIsBeingPushedNotification object:self];
+	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePushedNotification object:self userInfo:userInfo];
 }
 
 @end
