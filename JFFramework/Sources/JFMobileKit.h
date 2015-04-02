@@ -33,6 +33,7 @@
 #import	"JFWindowController.h"
 
 // Utilities
+#import	"JFImageManager.h"
 #import "JFLogger.h"
 #import "JFUtilities.h"
 

@@ -66,6 +66,10 @@
 		EA26EC8C1A8785030050049A /* JFFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC5C1A8785030050049A /* JFFileManager.m */; };
 		EA26EC8D1A8785030050049A /* JFUpdatableFile.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC5D1A8785030050049A /* JFUpdatableFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC5E1A8785030050049A /* JFUpdatableFile.m */; };
+		EA34B1CB1ACDB82600CF0B17 /* JFImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA34B1C91ACDB82600CF0B17 /* JFImageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA34B1CC1ACDB82600CF0B17 /* JFImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA34B1CA1ACDB82600CF0B17 /* JFImageManager.m */; };
+		EA34B1D31ACDECA800CF0B17 /* JFImageObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = EA34B1D11ACDECA800CF0B17 /* JFImageObserver.h */; };
+		EA34B1D41ACDECA800CF0B17 /* JFImageObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = EA34B1D21ACDECA800CF0B17 /* JFImageObserver.m */; };
 		EA4BB9431A8A25C10000C045 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
 		EA55EDF91AA336690037F066 /* JFWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA55EDF71AA336690037F066 /* JFWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -148,6 +152,10 @@
 		EA26EC5E1A8785030050049A /* JFUpdatableFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUpdatableFile.m; sourceTree = "<group>"; };
 		EA26EC5F1A8785030050049A /* OLD JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OLD JFUtilities.h"; sourceTree = "<group>"; };
 		EA26EC601A8785030050049A /* OLD JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OLD JFUtilities.m"; sourceTree = "<group>"; };
+		EA34B1C91ACDB82600CF0B17 /* JFImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageManager.h; sourceTree = "<group>"; };
+		EA34B1CA1ACDB82600CF0B17 /* JFImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImageManager.m; sourceTree = "<group>"; };
+		EA34B1D11ACDECA800CF0B17 /* JFImageObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageObserver.h; sourceTree = "<group>"; };
+		EA34B1D21ACDECA800CF0B17 /* JFImageObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImageObserver.m; sourceTree = "<group>"; };
 		EA4BB9411A8A25C10000C045 /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
 		EA4BB9421A8A25C10000C045 /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 		EA55EDF71AA336690037F066 /* JFWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowController.h; sourceTree = "<group>"; };
@@ -217,6 +225,10 @@
 		EA26EBEA1A87679F0050049A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EA34B1C91ACDB82600CF0B17 /* JFImageManager.h */,
+				EA34B1CA1ACDB82600CF0B17 /* JFImageManager.m */,
+				EA34B1D11ACDECA800CF0B17 /* JFImageObserver.h */,
+				EA34B1D21ACDECA800CF0B17 /* JFImageObserver.m */,
 				EA4BB9411A8A25C10000C045 /* JFLogger.h */,
 				EA4BB9421A8A25C10000C045 /* JFLogger.m */,
 				EA26EBEB1A87679F0050049A /* JFUtilities.h */,
@@ -470,6 +482,8 @@
 				EA26EC6D1A8785030050049A /* JFGalleryView.h in Headers */,
 				EA26EBF31A8771D50050049A /* JFAlert.h in Headers */,
 				EA55EDF91AA336690037F066 /* JFWindowController.h in Headers */,
+				EA34B1CB1ACDB82600CF0B17 /* JFImageManager.h in Headers */,
+				EA34B1D31ACDECA800CF0B17 /* JFImageObserver.h in Headers */,
 				EA26EBEE1A87679F0050049A /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +572,7 @@
 			files = (
 				EA61D2A41AA522A300581F72 /* JFTabBarController.m in Sources */,
 				EA26EC621A8785030050049A /* JFCoreDataManager.m in Sources */,
+				EA34B1CC1ACDB82600CF0B17 /* JFImageManager.m in Sources */,
 				EA26EC8C1A8785030050049A /* JFFileManager.m in Sources */,
 				EACFD6161A87AEC400B4494E /* JFAlertsController.m in Sources */,
 				EA26EC761A8785030050049A /* JFSplitViewController.m in Sources */,
@@ -574,6 +589,7 @@
 				EA26EC841A8785030050049A /* JFMenuItem.m in Sources */,
 				EA26EC7E1A8785030050049A /* JFTextView.m in Sources */,
 				EA26EC801A8785030050049A /* JFTransparentToolbar.m in Sources */,
+				EA34B1D41ACDECA800CF0B17 /* JFImageObserver.m in Sources */,
 				EA26EC741A8785030050049A /* JFSliderController.m in Sources */,
 				EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */,
 				EA26EC6E1A8785030050049A /* JFGalleryView.m in Sources */,

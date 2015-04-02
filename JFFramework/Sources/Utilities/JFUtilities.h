@@ -132,9 +132,8 @@
 
 #pragma mark - Typedef (Blocks)
 
-typedef void	(^Block)			(void);
-typedef void	(^CheckerBlock)		(BOOL success, NSError* error);
-typedef void	(^CompletionBlock)	(id object, NSError* error);
+typedef void	(^JFBlock)				(void);
+typedef void	(^JFNotificationBlock)	(NSNotification* notification);
 
 
 #pragma mark Typedefs (Colors)
@@ -211,6 +210,9 @@ typedef struct {
 #pragma mark Typedefs (OLD)
 
 #if TARGET_OS_IPHONE
+typedef void	(^Block)			(void);
+typedef void	(^CheckerBlock)		(BOOL success, NSError* error);
+typedef void	(^CompletionBlock)	(id object, NSError* error);
 typedef void	(^BlockWithBool)			(BOOL value);
 typedef void	(^BlockWithError)			(NSError* error);
 typedef void	(^BlockWithObject)			(id object);
