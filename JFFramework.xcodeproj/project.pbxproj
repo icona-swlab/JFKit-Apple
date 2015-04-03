@@ -74,9 +74,9 @@
 		EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
 		EA55EDF91AA336690037F066 /* JFWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA55EDF71AA336690037F066 /* JFWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA55EDFA1AA336690037F066 /* JFWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA55EDF81AA336690037F066 /* JFWindowController.m */; };
-		EA61D29F1AA51C4400581F72 /* JFNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA61D29D1AA51C4400581F72 /* JFNavigationController.h */; };
+		EA61D29F1AA51C4400581F72 /* JFNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA61D29D1AA51C4400581F72 /* JFNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA61D2A01AA51C4400581F72 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA61D29E1AA51C4400581F72 /* JFNavigationController.m */; };
-		EA61D2A31AA522A300581F72 /* JFTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA61D2A11AA522A300581F72 /* JFTabBarController.h */; };
+		EA61D2A31AA522A300581F72 /* JFTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA61D2A11AA522A300581F72 /* JFTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA61D2A41AA522A300581F72 /* JFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA61D2A21AA522A300581F72 /* JFTabBarController.m */; };
 		EAB33F8B1A950630005FB623 /* JFViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EAB33F871A94F301005FB623 /* JFViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAB33F8C1A950630005FB623 /* JFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB33F881A94F301005FB623 /* JFViewController.m */; };
