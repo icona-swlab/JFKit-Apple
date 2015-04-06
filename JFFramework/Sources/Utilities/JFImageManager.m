@@ -19,14 +19,21 @@
 
 #pragma mark Properties
 
-// Data
-@property (strong, nonatomic, readonly)	NSMutableDictionary*	cache;	// Dictionary of "UIImage" objects.
+// Cache
+@property (strong, nonatomic, readonly)	NSCache*	cache;
 
 // Notifications
 @property (strong, nonatomic, readonly)	NSMutableDictionary*	observers;	// Dictionary of "NSMutableSet" objects where each is a set of "JFImageObserver" objects.
 
+// Operations
+@property (strong, nonatomic, readonly)	NSOperationQueue*	downloadOperations;
+
 
 #pragma mark Methods
+
+// Cache management
+- (UIImage*)	cachedImageForURL:(NSURL*)url;
+- (void)		cacheImage:(UIImage*)image forURL:(NSURL*)url;
 
 // Network management
 - (void)	downloadContentsOfURL:(NSURL*)url;
@@ -35,9 +42,6 @@
 - (void)			notifyDidDownloadImageForURL:(NSURL*)url;
 - (NSMutableSet*)	observersForImageForURL:(NSURL*)url;
 - (NSMutableSet*)	observersForImageForURL:(NSURL*)url shouldCreate:(BOOL)shouldCreate;
-
-// Utilities management
-- (NSURL*)	localURLForImageForURL:(NSURL*)url;
 
 @end
 
@@ -51,11 +55,14 @@
 
 #pragma mark Properties
 
-// Data
+// Cache
 @synthesize cache	= _cache;
 
 // Notifications
 @synthesize observers	= _observers;
+
+// Operations
+@synthesize downloadOperations	= _downloadOperations;
 
 
 #pragma mark Memory management
@@ -74,18 +81,54 @@
 	return defaultManager;
 }
 
+- (void)dealloc
+{
+	[self.downloadOperations cancelAllOperations];
+}
+
 - (instancetype)init
 {
 	self = [super init];
 	if(self)
 	{
-		// Data
-		_cache = [NSMutableDictionary new];
+		// Prepares the cache.
+		NSCache* cache = [NSCache new];
+		cache.name = @"Images";
+		
+		// Prepares the operation queue.
+		NSOperationQueue* queue = [NSOperationQueue new];
+		queue.maxConcurrentOperationCount = 1;
+		queue.name = @"Downloads";
+		
+		// Cache
+		_cache = cache;
 		
 		// Notifications
 		_observers = [NSMutableDictionary new];
+		
+		// Operations
+		_downloadOperations = queue;
 	}
 	return self;
+}
+
+
+#pragma mark Cache management
+
+- (UIImage*)cachedImageForURL:(NSURL*)url
+{
+	if(!url)
+		return nil;
+	
+	return [self.cache objectForKey:url];
+}
+
+- (void)cacheImage:(UIImage*)image forURL:(NSURL*)url
+{
+	if(!image || !url)
+		return;
+	
+	[self.cache setObject:image forKey:url];
 }
 
 
@@ -96,8 +139,8 @@
 	if(!url)
 		return;
 	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-		
+	JFBlock block = ^(void)
+	{
 		ShowNetworkActivityIndicator;
 		NSData* data = [NSData dataWithContentsOfURL:url];
 		HideNetworkActivityIndicator;
@@ -105,13 +148,14 @@
 		if(!data)
 			return;
 		
-		NSURL* localURL = [self localURLForImageForURL:url];
-		
-		if(![[JFFileManager defaultManager] createFileAtURL:localURL contents:data attributes:nil])
-			return;
+		UIImage* image = [UIImage imageWithData:data];
+		if(image)
+			[self cacheImage:image forURL:url];
 		
 		[self notifyDidDownloadImageForURL:url];
-	});
+	};
+	
+	[self.downloadOperations addOperationWithBlock:block];
 }
 
 
@@ -149,13 +193,13 @@
 		imageObservers = [mSet copy];
 	}
 	
-	dispatch_async(dispatch_get_main_queue(), ^{
+	[NSMainOperationQueue addOperationWithBlock:^{
 		for(JFImageObserver* imageObserver in imageObservers)
 		{
 			if(imageObserver.observer)
 				imageObserver.block();
 		}
-	});
+	}];
 }
 
 - (NSMutableSet*)observersForImageForURL:(NSURL*)url
@@ -208,12 +252,7 @@
 	if(!url)
 		return nil;
 	
-	NSURL* localURL = [self localURLForImageForURL:url];
-	
-	UIImage* retObj = nil;
-	if([[JFFileManager defaultManager] itemExistsAtURL:localURL isDirectory:NULL])
-		retObj = [UIImage imageWithContentsOfFile:localURL.path];
-	
+	UIImage* retObj = [self cachedImageForURL:url];
 	if(!retObj)
 	{
 		[self downloadContentsOfURL:url];
@@ -221,18 +260,6 @@
 	}
 	
 	return retObj;
-}
-
-
-#pragma mark Utilities management
-
-- (NSURL*)localURLForImageForURL:(NSURL*)url
-{
-	if(!url)
-		return nil;
-	
-	NSURL* retObj = [[[JFFileManager defaultManager] URLForSystemDirectoryCaches] URLByAppendingPathComponent:@"Images"];
-	return [retObj URLByAppendingPathComponent:[url lastPathComponent]];
 }
 
 @end

@@ -95,6 +95,7 @@
 #pragma mark Macros (OLD)
 
 #if TARGET_OS_IPHONE
+#define NSMainOperationQueue		[NSOperationQueue mainQueue]
 #define NSDefaultNotificationCenter	[NSNotificationCenter defaultCenter]
 #define	UIApp						[UIApplication sharedApplication]
 #define	UIAppDelegate				((AppDelegate*)[UIApp delegate])
