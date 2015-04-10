@@ -36,6 +36,12 @@
 
 @implementation JFNavigationController
 
+#pragma mark Properties
+
+// Relationships
+@dynamic delegate;
+
+
 #pragma mark Properties accessors (User interface)
 
 - (UIViewController*)rootViewController

@@ -71,7 +71,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 - (BOOL)	prepareSlideWithTransition:(JFSliderControllerTransition)transition animated:(BOOL)animated;
 - (BOOL)	prepareSlideWithTranslation:(CGFloat)translation animated:(BOOL)animated;
 - (BOOL)	shouldPrepareSlideWithTransition:(JFSliderControllerTransition)transition;
-- (void)	slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(BlockWithBool)completion;
+- (void)	slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(JFBlockWithBOOL)completion;
 - (void)	updateCurrentSlideDistancesForTransition:(JFSliderControllerTransition)transition;
 
 // Gesture recognizers management (Actions)
@@ -302,7 +302,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	return [self showPanel:panel animated:YES completion:nil];
 }
 
-- (BOOL)showPanel:(JFSliderControllerPanel)panel animated:(BOOL)animated completion:(BlockWithBool)completion
+- (BOOL)showPanel:(JFSliderControllerPanel)panel animated:(BOOL)animated completion:(JFBlockWithBOOL)completion
 {
 	if(self.animating)
 		return NO;
@@ -333,7 +333,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	if(![self prepareSlideWithTransition:transition animated:animated])
 		return NO;
 	
-	BlockWithBool internalCompletion = ^(BOOL finished)
+	JFBlockWithBOOL internalCompletion = ^(BOOL finished)
 	{
 		[self cleanUp:finished animated:animated];
 		if(completion)
@@ -622,11 +622,11 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 		}
 	}
 	else
-		translation = ((fabsf(translation) >= fabsf(self.currentSlideLength / 2.0f)) ? self.currentSlideLength : 0.0f);
+		translation = ((fabs(translation) >= fabs(self.currentSlideLength / 2.0f)) ? self.currentSlideLength : 0.0f);
 	
 	self.shouldCancelCurrentTransition = (translation == 0.0f);
 	
-	BlockWithBool completion = ^(BOOL finished)
+	JFBlockWithBOOL completion = ^(BOOL finished)
 	{
 		[self cleanUp:finished animated:YES];
 	};
@@ -780,7 +780,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	return retVal;
 }
 
-- (void)slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(BlockWithBool)completion
+- (void)slideWithTranslation:(CGFloat)translation animated:(BOOL)animated completion:(JFBlockWithBOOL)completion
 {
 	if(!self.animating)
 		return;
@@ -812,7 +812,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	CGRect frame = self.rootPanelContainer.frame;
 	frame.origin.x = destination;
 	
-	Block animations = ^(void)
+	JFBlock animations = ^(void)
 	{
 		self.rootPanelContainer.frame = frame;
 	};
@@ -916,7 +916,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 	if(gestureRecognizer == self.panGestureRecognizer)
 	{
 		CGPoint translation = [self.panGestureRecognizer translationInView:self.view];
-		if(fabsf(translation.y) > fabsf(translation.x))
+		if(fabs(translation.y) > fabs(translation.x))
 			return NO;
 	}
 	

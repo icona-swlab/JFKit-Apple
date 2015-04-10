@@ -82,7 +82,7 @@
 	self.resizableViewBottomConstraint.constant = self.constant;
 	[self.resizableView.superview setNeedsUpdateConstraints];
 	
-	Block animations = ^()
+	JFBlock animations = ^()
 	{
 		[self.resizableView.superview layoutIfNeeded];
 	};
@@ -102,7 +102,7 @@
 	self.resizableViewBottomConstraint.constant = self.constant + height;
 	[self.resizableView.superview setNeedsUpdateConstraints];
 	
-	Block animations = ^()
+	JFBlock animations = ^()
 	{
 		[self.resizableView.superview layoutIfNeeded];
 	};

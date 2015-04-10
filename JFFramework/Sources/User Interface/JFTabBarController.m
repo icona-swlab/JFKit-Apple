@@ -26,6 +26,12 @@
 
 @implementation JFTabBarController
 
+#pragma mark Properties
+
+// Relationships
+@dynamic delegate;
+
+
 #pragma mark User interface management (Rotation)
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation

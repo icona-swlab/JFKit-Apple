@@ -157,10 +157,10 @@
 
 #pragma mark - Typedef (Blocks)
 
-typedef void	(^Block)					(void);
-typedef void	(^BlockWithBool)			(BOOL value);
+typedef void	(^JFBlock)					(void);
+typedef void	(^JFBlockWithBOOL)			(BOOL value);
 typedef void	(^BlockWithError)			(NSError* error);
-typedef void	(^BlockWithObject)			(id object);
+typedef void	(^JFBlockWithObject)			(id object);
 typedef void	(^BlockWithObjectAndError)	(id object, NSError* error);
 typedef id		(^ProcessDataBlock)			(NSData* data);
 

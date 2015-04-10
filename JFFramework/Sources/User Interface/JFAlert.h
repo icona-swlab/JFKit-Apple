@@ -68,14 +68,14 @@
 #pragma mark Methods
 
 // User interface management
-- (BOOL)	dismiss:(Block)completion;
-- (BOOL)	dismissWithClickedButton:(JFAlertButton*)button completion:(Block)completion;
-- (BOOL)	presentAsActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem completion:(Block)completion;	// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(Block)completion;		// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromTabBar:(UITabBar*)tabBar completion:(Block)completion;						// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(Block)completion;					// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromView:(UIView*)view completion:(Block)completion;							// Fails if there are no buttons.
-- (BOOL)	presentAsAlertView:(Block)completion;																// Fails if there is not the cancel button.
+- (BOOL)	dismiss:(JFBlock)completion;
+- (BOOL)	dismissWithClickedButton:(JFAlertButton*)button completion:(JFBlock)completion;
+- (BOOL)	presentAsActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem completion:(JFBlock)completion;	// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(JFBlock)completion;		// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromTabBar:(UITabBar*)tabBar completion:(JFBlock)completion;						// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(JFBlock)completion;					// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromView:(UIView*)view completion:(JFBlock)completion;							// Fails if there are no buttons.
+- (BOOL)	presentAsAlertView:(JFBlock)completion;																// Fails if there is not the cancel button.
 
 @end
 
@@ -90,7 +90,7 @@
 #pragma mark Properties
 
 // Blocks
-@property (copy, nonatomic, readonly)	Block	action;
+@property (copy, nonatomic, readonly)	JFBlock	action;
 
 // Data
 @property (copy, nonatomic, readonly)	NSString*	title;
@@ -99,7 +99,7 @@
 #pragma mark Methods
 
 // Memory management
-+ (instancetype)	buttonWithTitle:(NSString*)title action:(Block)action;
-- (instancetype)	initWithTitle:(NSString*)title action:(Block)action;
++ (instancetype)	buttonWithTitle:(NSString*)title action:(JFBlock)action;
+- (instancetype)	initWithTitle:(NSString*)title action:(JFBlock)action;
 
 @end

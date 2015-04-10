@@ -27,8 +27,8 @@
 #pragma mark Properties
 
 // Blocks
-@property (copy, nonatomic)	Block	dismissCompletion;
-@property (copy, nonatomic)	Block	presentCompletion;
+@property (copy, nonatomic)	JFBlock	dismissCompletion;
+@property (copy, nonatomic)	JFBlock	presentCompletion;
 
 // Flags
 @property (assign, nonatomic, readwrite)	BOOL	isVisible;
@@ -42,8 +42,8 @@
 #pragma mark Methods
 
 // User interface management
-- (BOOL)	prepareActionSheet:(Block)completion;
-- (BOOL)	prepareAlertView:(Block)completion;
+- (BOOL)	prepareActionSheet:(JFBlock)completion;
+- (BOOL)	prepareAlertView:(JFBlock)completion;
 
 // User interface management (Alerts handling)
 - (void)	alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex;
@@ -109,7 +109,7 @@
 
 #pragma mark User interface management
 
-- (BOOL)dismiss:(Block)completion
+- (BOOL)dismiss:(JFBlock)completion
 {
 	if(!self.isVisible || (!self.actionSheet && !self.alertView))
 		return NO;
@@ -122,7 +122,7 @@
 	return YES;
 }
 
-- (BOOL)dismissWithClickedButton:(JFAlertButton*)button completion:(Block)completion
+- (BOOL)dismissWithClickedButton:(JFAlertButton*)button completion:(JFBlock)completion
 {
 	if(!self.isVisible || (!self.actionSheet && !self.alertView))
 		return NO;
@@ -142,7 +142,7 @@
 	return YES;
 }
 
-- (BOOL)prepareActionSheet:(Block)completion
+- (BOOL)prepareActionSheet:(JFBlock)completion
 {
 	if(self.isVisible || self.actionSheet || self.alertView)
 		return NO;
@@ -175,7 +175,7 @@
 	return YES;
 }
 
-- (BOOL)prepareAlertView:(Block)completion
+- (BOOL)prepareAlertView:(JFBlock)completion
 {
 	if(self.isVisible || self.actionSheet || self.alertView)
 		return NO;
@@ -207,7 +207,7 @@
 	return YES;
 }
 
-- (BOOL)presentAsActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem completion:(Block)completion
+- (BOOL)presentAsActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem completion:(JFBlock)completion
 {
 	if(![self prepareActionSheet:completion])
 		return NO;
@@ -217,7 +217,7 @@
 	return YES;
 }
 
-- (BOOL)presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(Block)completion
+- (BOOL)presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(JFBlock)completion
 {
 	if(![self prepareActionSheet:completion])
 		return NO;
@@ -227,7 +227,7 @@
 	return YES;
 }
 
-- (BOOL)presentAsActionSheetFromTabBar:(UITabBar*)tabBar completion:(Block)completion
+- (BOOL)presentAsActionSheetFromTabBar:(UITabBar*)tabBar completion:(JFBlock)completion
 {
 	if(![self prepareActionSheet:completion])
 		return NO;
@@ -237,7 +237,7 @@
 	return YES;
 }
 
-- (BOOL)presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(Block)completion
+- (BOOL)presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(JFBlock)completion
 {
 	if(![self prepareActionSheet:completion])
 		return NO;
@@ -247,7 +247,7 @@
 	return YES;
 }
 
-- (BOOL)presentAsActionSheetFromView:(UIView*)view completion:(Block)completion
+- (BOOL)presentAsActionSheetFromView:(UIView*)view completion:(JFBlock)completion
 {
 	if(![self prepareActionSheet:completion])
 		return NO;
@@ -257,7 +257,7 @@
 	return YES;
 }
 
-- (BOOL)presentAsAlertView:(Block)completion
+- (BOOL)presentAsAlertView:(JFBlock)completion
 {
 	if(![self prepareAlertView:completion])
 		return NO;
@@ -292,7 +292,7 @@
 	
 	if(self.dismissCompletion)
 	{
-		Block completion = self.dismissCompletion;
+		JFBlock completion = self.dismissCompletion;
 		self.dismissCompletion = nil;
 		completion();
 	}
@@ -311,7 +311,7 @@
 	
 	if(self.presentCompletion)
 	{
-		Block completion = self.presentCompletion;
+		JFBlock completion = self.presentCompletion;
 		self.presentCompletion = nil;
 		completion();
 	}
@@ -428,12 +428,12 @@
 
 #pragma mark Memory management
 
-+ (instancetype)buttonWithTitle:(NSString*)title action:(Block)action
++ (instancetype)buttonWithTitle:(NSString*)title action:(JFBlock)action
 {
 	return [(JFAlertButton*)[self alloc] initWithTitle:title action:action];
 }
 
-- (instancetype)initWithTitle:(NSString*)title action:(Block)action
+- (instancetype)initWithTitle:(NSString*)title action:(JFBlock)action
 {
 	self = (title ? [self init] : nil);
 	if(self)

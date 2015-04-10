@@ -30,6 +30,12 @@
 
 @implementation JFSplitViewController
 
+#pragma mark Properties
+
+// Relationships
+@dynamic delegate;
+
+
 #pragma mark - User interface management (Inherited)
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation

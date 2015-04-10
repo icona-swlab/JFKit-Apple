@@ -64,7 +64,7 @@
 
 // Data management
 - (id)		getContent;
-- (BOOL)	getUpdatedContent:(BlockWithObject)completion;
-- (BOOL)	updateContent:(Block)completion;
+- (BOOL)	getUpdatedContent:(JFBlockWithObject)completion;
+- (BOOL)	updateContent:(JFBlock)completion;
 
 @end

@@ -35,6 +35,7 @@
 // Utilities
 #import	"JFImageManager.h"
 #import "JFLogger.h"
+#import	"JFManager.h"
 #import "JFUtilities.h"
 
 ///// OLD /////

@@ -151,7 +151,7 @@ BOOL JFAreObjectsEqual(id obj1, id obj2)
 	if(!obj1 && !obj2)
 		return YES;
 	
-	// If anyone is equal to 'nil', they can't be equal.
+	// If anyone is still equal to 'nil', they can't be equal.
 	if(!obj1 || !obj2)
 		return NO;
 	

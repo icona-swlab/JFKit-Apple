@@ -79,7 +79,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerPanel)
 
 // User interface management
 - (BOOL)	showPanel:(JFSliderControllerPanel)panel;
-- (BOOL)	showPanel:(JFSliderControllerPanel)panel animated:(BOOL)animated completion:(BlockWithBool)completion;
+- (BOOL)	showPanel:(JFSliderControllerPanel)panel animated:(BOOL)animated completion:(JFBlockWithBOOL)completion;
 
 // Utilities
 + (NSString*)	convertPanelToString:(JFSliderControllerPanel)panel;

@@ -133,8 +133,16 @@
 
 #pragma mark - Typedef (Blocks)
 
-typedef void	(^JFBlock)				(void);
-typedef void	(^JFNotificationBlock)	(NSNotification* notification);
+typedef void	(^JFBlock)					(void);
+typedef void	(^JFBlockWithArray)			(NSArray* array);
+typedef void	(^JFBlockWithBOOL)			(BOOL value);
+typedef void	(^JFBlockWithDictionary)	(NSDictionary* dictionary);
+typedef void	(^JFBlockWithError)			(NSError* error);
+typedef void	(^JFBlockWithInteger)		(NSInteger value);
+typedef void	(^JFBlockWithNotification)	(NSNotification* notification);
+typedef void	(^JFBlockWithObject)		(id object);
+typedef void	(^JFBlockWithSet)			(NSSet* set);
+typedef void	(^JFCompletionBlock)		(BOOL succeded, id object, NSError* error);
 
 
 #pragma mark Typedefs (Colors)
@@ -206,19 +214,6 @@ typedef struct {
 	Byte*		bytes;
 	NSUInteger	length;
 } ByteStream;
-
-
-#pragma mark Typedefs (OLD)
-
-#if TARGET_OS_IPHONE
-typedef void	(^Block)			(void);
-typedef void	(^CheckerBlock)		(BOOL success, NSError* error);
-typedef void	(^CompletionBlock)	(id object, NSError* error);
-typedef void	(^BlockWithBool)			(BOOL value);
-typedef void	(^BlockWithError)			(NSError* error);
-typedef void	(^BlockWithObject)			(id object);
-typedef void	(^BlockWithObjectAndError)	(id object, NSError* error);
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

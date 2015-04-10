@@ -92,12 +92,12 @@
 	return retVal;
 }
 
-- (BOOL)getUpdatedContent:(BlockWithObject)completion
+- (BOOL)getUpdatedContent:(JFBlockWithObject)completion
 {
 	if(!completion)
 		return NO;
 	
-	Block block = ^(void)
+	JFBlock block = ^(void)
 	{
 		id content = [self getContent];
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -159,14 +159,14 @@
 	return retVal;
 }
 
-- (BOOL)updateContent:(Block)completion
+- (BOOL)updateContent:(JFBlock)completion
 {
 	if(self.isUpdatingContent)
 		return NO;
 	
 	self.isUpdatingContent = YES;
 	
-	Block block = ^(void)
+	JFBlock block = ^(void)
 	{
 		// Reads the content from the specified url.
 		NSData* content = [self readContentFromURL:self.remoteURL];
