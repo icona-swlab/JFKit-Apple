@@ -29,9 +29,11 @@ typedef void	(^JFTableViewCellSetupBlock)	(id cell);	// Used to prepare the cell
 // Memory management
 + (UINib*)		nib;
 + (NSString*)	reuseIdentifier;
+- (void)		initializeProperties;
 
 // User interface management
 + (CGFloat)	defaultHeight;
 + (CGFloat)	dynamicHeightForWidth:(CGFloat)width setupBlock:(JFTableViewCellSetupBlock)setupBlock;	// The setup block is called before trying to calculate the height.
+- (void)	initializeUserInterface;
 
 @end

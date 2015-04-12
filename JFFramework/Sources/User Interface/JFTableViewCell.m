@@ -16,6 +16,11 @@
 
 @interface JFTableViewCell ()
 
+#pragma mark Properties
+
+// Flags
+@property (assign, nonatomic, getter = isUserInterfaceInitialized)	BOOL	userInterfaceInitialized;
+
 // User interface management
 + (JFTableViewCell*)	sizingCell;
 
@@ -29,6 +34,12 @@
 
 @implementation JFTableViewCell
 
+#pragma mark Properties
+
+// Flags
+@synthesize userInterfaceInitialized	= _userInterfaceInitialized;
+
+
 #pragma mark Memory management
 
 + (UINib*)nib
@@ -39,6 +50,32 @@
 + (NSString*)reuseIdentifier
 {
 	return ClassName;
+}
+
+- (void)initializeProperties
+{
+	// Flags
+	_userInterfaceInitialized = NO;
+}
+
+- (instancetype)initWithCoder:(NSCoder*)aDecoder
+{
+	self = [super initWithCoder:aDecoder];
+	if(self)
+	{
+		[self initializeProperties];
+	}
+	return self;
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+	if(self)
+	{
+		[self initializeProperties];
+	}
+	return self;
 }
 
 
@@ -92,6 +129,23 @@
 	}
 	
 	return retVal;
+}
+
+- (void)initializeUserInterface
+{}
+
+
+#pragma mark User interface management (View lifecycle)
+
+- (void)didMoveToWindow
+{
+	[super didMoveToWindow];
+	
+	if(![self isUserInterfaceInitialized])
+	{
+		[self initializeUserInterface];
+		self.userInterfaceInitialized = YES;
+	}
 }
 
 @end

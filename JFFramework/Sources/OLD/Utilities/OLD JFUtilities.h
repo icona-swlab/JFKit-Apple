@@ -155,16 +155,6 @@
 #define ShowNetworkActivityIndicator	setNetworkActivityIndicatorHidden(NO)
 
 
-#pragma mark - Typedef (Blocks)
-
-typedef void	(^JFBlock)					(void);
-typedef void	(^JFBlockWithBOOL)			(BOOL value);
-typedef void	(^BlockWithError)			(NSError* error);
-typedef void	(^JFBlockWithObject)			(id object);
-typedef void	(^BlockWithObjectAndError)	(id object, NSError* error);
-typedef id		(^ProcessDataBlock)			(NSData* data);
-
-
 #pragma mark - Typedef (C)
 
 typedef struct {
