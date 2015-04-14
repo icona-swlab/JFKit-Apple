@@ -54,7 +54,7 @@
 @property (copy, nonatomic)	NSString*	title;
 
 // Flags
-@property (assign, nonatomic, readonly)	BOOL	isVisible;
+@property (assign, nonatomic, readonly, getter = isVisible)	BOOL	visible;
 
 // Relationships
 @property (weak, nonatomic)	id<JFAlertDelegate>	delegate;
@@ -71,11 +71,12 @@
 - (BOOL)	dismiss:(JFBlock)completion;
 - (BOOL)	dismissWithClickedButton:(JFAlertButton*)button completion:(JFBlock)completion;
 - (BOOL)	presentAsActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem completion:(JFBlock)completion;	// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(JFBlock)completion;		// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(JFBlock)completion;			// Fails if there are no buttons.
 - (BOOL)	presentAsActionSheetFromTabBar:(UITabBar*)tabBar completion:(JFBlock)completion;						// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(JFBlock)completion;					// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromView:(UIView*)view completion:(JFBlock)completion;							// Fails if there are no buttons.
-- (BOOL)	presentAsAlertView:(JFBlock)completion;																// Fails if there is not the cancel button.
+- (BOOL)	presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(JFBlock)completion;						// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetFromView:(UIView*)view completion:(JFBlock)completion;								// Fails if there are no buttons.
+- (BOOL)	presentAsAlertView:(JFBlock)completion;																	// Fails if there is not the cancel button.
+- (BOOL)	presentAsAlertViewWithTimeout:(NSTimeInterval)timeout completion:(JFBlock)completion;					// Fails if there is not the cancel button.
 
 @end
 

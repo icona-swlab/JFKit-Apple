@@ -31,7 +31,10 @@
 @property (copy, nonatomic)	JFBlock	presentCompletion;
 
 // Flags
-@property (assign, nonatomic, readwrite)	BOOL	isVisible;
+@property (assign, nonatomic, readwrite, getter = isVisible)	BOOL	visible;
+
+// Timing
+@property (strong, nonatomic)	NSTimer*	timer;
 
 // User interface
 @property (strong, nonatomic)	UIActionSheet*	actionSheet;
@@ -79,10 +82,13 @@
 @synthesize title	= _title;
 
 // Flags
-@synthesize isVisible	= _isVisible;
+@synthesize visible	= _visible;
 
 // Relationships
 @synthesize delegate	= _delegate;
+
+// Timing
+@synthesize timer	= _timer;
 
 // User interface
 @synthesize actionSheet			= _actionSheet;
@@ -101,7 +107,7 @@
 	if(self)
 	{
 		// Flags
-		_isVisible = NO;
+		_visible = NO;
 	}
 	return self;
 }
@@ -111,7 +117,7 @@
 
 - (BOOL)dismiss:(JFBlock)completion
 {
-	if(!self.isVisible || (!self.actionSheet && !self.alertView))
+	if(![self isVisible] || (!self.actionSheet && !self.alertView))
 		return NO;
 	
 	self.dismissCompletion = completion;
@@ -124,7 +130,7 @@
 
 - (BOOL)dismissWithClickedButton:(JFAlertButton*)button completion:(JFBlock)completion
 {
-	if(!self.isVisible || (!self.actionSheet && !self.alertView))
+	if(![self isVisible] || (!self.actionSheet && !self.alertView))
 		return NO;
 	
 	NSArray* buttons = self.currentButtons;
@@ -144,7 +150,7 @@
 
 - (BOOL)prepareActionSheet:(JFBlock)completion
 {
-	if(self.isVisible || self.actionSheet || self.alertView)
+	if([self isVisible] || self.actionSheet || self.alertView)
 		return NO;
 	
 	JFAlertButton* cancelButton = self.cancelButton;
@@ -177,7 +183,7 @@
 
 - (BOOL)prepareAlertView:(JFBlock)completion
 {
-	if(self.isVisible || self.actionSheet || self.alertView)
+	if([self isVisible] || self.actionSheet || self.alertView)
 		return NO;
 	
 	JFAlertButton* cancelButton = self.cancelButton;
@@ -259,8 +265,25 @@
 
 - (BOOL)presentAsAlertView:(JFBlock)completion
 {
+	return [self presentAsAlertViewWithTimeout:0.0 completion:completion];
+}
+
+- (BOOL)presentAsAlertViewWithTimeout:(NSTimeInterval)timeout completion:(JFBlock)completion
+{
 	if(![self prepareAlertView:completion])
 		return NO;
+	
+	if(timeout > 0.0)
+	{
+		SEL selector = @selector(dismiss:);
+		
+		NSMethodSignature* signature = [self methodSignatureForSelector:selector];
+		NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
+		invocation.selector = selector;
+		invocation.target = self;
+		
+		self.timer = [NSTimer scheduledTimerWithTimeInterval:timeout invocation:invocation repeats:NO];
+	}
 	
 	[self.alertView show];
 	
@@ -279,7 +302,7 @@
 
 - (void)alert:(id)alert didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	self.isVisible = NO;
+	self.visible = NO;
 	
 	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
 	
@@ -300,6 +323,12 @@
 
 - (void)alert:(id)alert willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+	if(self.timer)
+	{
+		[self.timer invalidate];
+		self.timer = nil;
+	}
+	
 	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
 	
 	[self notifyWillDismissWithButton:button];
@@ -319,7 +348,7 @@
 
 - (void)willPresentAlert:(id)alert
 {
-	self.isVisible = YES;
+	self.visible = YES;
 	
 	[self notifyWillPresent];
 }

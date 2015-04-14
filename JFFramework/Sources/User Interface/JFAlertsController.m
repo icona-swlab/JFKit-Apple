@@ -143,6 +143,11 @@
 
 - (void)presentAlertViewWithTitle:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons
 {
+	[self presentAlertViewWithTitle:title message:message cancelButton:cancelButton otherButtons:otherButtons timeout:0.0];
+}
+
+- (void)presentAlertViewWithTitle:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons timeout:(NSTimeInterval)timeout
+{
 	JFAlert* alert = [[JFAlert alloc] init];
 	alert.delegate = self;
 	alert.message = message;
@@ -152,7 +157,7 @@
 	alert.otherButtons = otherButtons;
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
-		if([alert presentAsAlertView:nil])
+		if([alert presentAsAlertViewWithTimeout:timeout completion:nil])
 			[self.alerts addObject:alert];
 	});
 }
