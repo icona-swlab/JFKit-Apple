@@ -25,7 +25,7 @@
 #pragma mark Notifications
 
 // Navigation (Keys)
-extern NSString* const	JFViewControllerIsAnimatedKey;
+extern NSString* const	JFViewControllerIsAnimatedKey;	// NSNumber
 
 // Navigation (Names)
 extern NSString* const	JFViewControllerHasBeenDismissedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
