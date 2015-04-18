@@ -80,6 +80,8 @@
 		EA61D2A01AA51C4400581F72 /* JFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA61D29E1AA51C4400581F72 /* JFNavigationController.m */; };
 		EA61D2A31AA522A300581F72 /* JFTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA61D2A11AA522A300581F72 /* JFTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA61D2A41AA522A300581F72 /* JFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA61D2A21AA522A300581F72 /* JFTabBarController.m */; };
+		EA8192441AE26C6200DD84C0 /* JFAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EA8192421AE26C6200DD84C0 /* JFAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA8192451AE26C6200DD84C0 /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8192431AE26C6200DD84C0 /* JFAppDelegate.m */; };
 		EAB33F8B1A950630005FB623 /* JFViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EAB33F871A94F301005FB623 /* JFViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAB33F8C1A950630005FB623 /* JFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB33F881A94F301005FB623 /* JFViewController.m */; };
 		EACA68921A81069300D79126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACA68911A81069300D79126 /* Foundation.framework */; };
@@ -170,6 +172,8 @@
 		EA61D2A21AA522A300581F72 /* JFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTabBarController.m; sourceTree = "<group>"; };
 		EA7ED2001A6FA63D00220BA1 /* libJFMobileFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFMobileFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7ED21C1A6FA65B00220BA1 /* libJFFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJFFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA8192421AE26C6200DD84C0 /* JFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAppDelegate.h; sourceTree = "<group>"; };
+		EA8192431AE26C6200DD84C0 /* JFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAppDelegate.m; sourceTree = "<group>"; };
 		EAB33F871A94F301005FB623 /* JFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFViewController.h; sourceTree = "<group>"; };
 		EAB33F881A94F301005FB623 /* JFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFViewController.m; sourceTree = "<group>"; };
 		EACA68911A81069300D79126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -212,6 +216,8 @@
 				EA26EBF21A8771D50050049A /* JFAlert.m */,
 				EACFD6131A87AEC400B4494E /* JFAlertsController.h */,
 				EACFD6141A87AEC400B4494E /* JFAlertsController.m */,
+				EA8192421AE26C6200DD84C0 /* JFAppDelegate.h */,
+				EA8192431AE26C6200DD84C0 /* JFAppDelegate.m */,
 				EA61D29D1AA51C4400581F72 /* JFNavigationController.h */,
 				EA61D29E1AA51C4400581F72 /* JFNavigationController.m */,
 				EA61D2A11AA522A300581F72 /* JFTabBarController.h */,
@@ -481,6 +487,7 @@
 				6CBE14561AA5B7130060B922 /* JFTableViewCell.h in Headers */,
 				EA26EC811A8785030050049A /* JFDrawerController.h in Headers */,
 				EA61D2A31AA522A300581F72 /* JFTabBarController.h in Headers */,
+				EA8192441AE26C6200DD84C0 /* JFAppDelegate.h in Headers */,
 				EA26EC751A8785030050049A /* JFSplitViewController.h in Headers */,
 				EA26EC831A8785030050049A /* JFMenuItem.h in Headers */,
 				EA61D29F1AA51C4400581F72 /* JFNavigationController.h in Headers */,
@@ -601,6 +608,7 @@
 				EA26EC741A8785030050049A /* JFSliderController.m in Sources */,
 				EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */,
 				EA26EC6E1A8785030050049A /* JFGalleryView.m in Sources */,
+				EA8192451AE26C6200DD84C0 /* JFAppDelegate.m in Sources */,
 				EA26EC821A8785030050049A /* JFDrawerController.m in Sources */,
 				EA26EC7C1A8785030050049A /* JFLabel.m in Sources */,
 				EA26EC701A8785030050049A /* JFKeyboardViewHandler.m in Sources */,

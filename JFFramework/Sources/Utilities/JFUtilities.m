@@ -24,6 +24,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#pragma mark Constants (Animations)
+
+NSTimeInterval const	JFAnimationDuration	= 1.0 / 3.0;
+
+
 #pragma mark Constants (Colors)
 
 UInt8 const Color8ComponentMaxValue		= 0x3;

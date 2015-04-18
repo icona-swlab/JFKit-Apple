@@ -102,6 +102,43 @@
 }
 
 
+#pragma mark User interface management
+
+- (void)replaceRootViewControllerWithViewController:(UIViewController*)viewController
+{
+	[self replaceRootViewControllerWithViewController:viewController duration:JFAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve];
+}
+
+- (void)replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options
+{
+	if(!viewController)
+		return;
+	
+	UIViewController* rootViewController = self.window.rootViewController;
+	if(rootViewController == viewController)
+		return;
+	
+	JFBlockWithBOOL completion = ^(BOOL finished)
+	{
+		if(finished)
+			self.window.rootViewController = viewController;
+	};
+	
+	if(!rootViewController)
+	{
+		[NSMainOperationQueue addOperationWithBlock:^(void){
+			completion(YES);
+		}];
+		return;
+	}
+	
+	UIView* fromView = rootViewController.view;
+	UIView* toView = viewController.view;
+	
+	[UIView transitionFromView:fromView toView:toView duration:duration options:options completion:completion];
+}
+
+
 #pragma mark User interface management (UIWindow lifecycle)
 
 - (void)didLoadUserInterface

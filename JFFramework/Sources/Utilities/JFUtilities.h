@@ -221,6 +221,11 @@ typedef struct {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#pragma mark Constants (Animations)
+
+extern NSTimeInterval const	JFAnimationDuration;
+
+
 #pragma mark Constants (Colors)
 
 extern UInt8 const Color8ComponentMaxValue;

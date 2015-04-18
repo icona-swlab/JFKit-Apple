@@ -26,7 +26,7 @@ typedef NS_OPTIONS(UInt8, JFLogDestinations)
 	JFLogDestinationFile	= 1 << 1,	// Logs the message into the file if 'fileURL' is set.
 };
 
-typedef NS_OPTIONS(UInt8, JFLogExpirationTimeInterval)
+typedef NS_OPTIONS(UInt8, JFLogExpirationTimeInterval)	// NOT YET IMPLEMENTED
 {
 	JFLogExpirationTimeIntervalNone,		// The log file has no expiration time.
 	JFLogExpirationTimeIntervalOneDay,		// The log file will be changed every day.

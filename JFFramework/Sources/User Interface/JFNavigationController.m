@@ -46,7 +46,7 @@
 
 - (UIViewController*)rootViewController
 {
-	return [[self.navigationController viewControllers] firstObject];
+	return [[self viewControllers] firstObject];
 }
 
 

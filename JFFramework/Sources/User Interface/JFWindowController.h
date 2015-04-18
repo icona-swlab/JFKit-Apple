@@ -43,6 +43,10 @@
 - (instancetype)	initWithWindow:(UIWindow*)window;
 - (instancetype)	initWithWindow:(UIWindow*)window logger:(JFLogger*)logger;	// Default initializator.
 
+// User interface management
+- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController;
+- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options;
+
 // User interface management (UIWindow lifecycle)
 - (void)	didLoadUserInterface;
 - (void)	loadUserInterface;

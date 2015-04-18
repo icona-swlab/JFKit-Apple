@@ -1,6 +1,6 @@
 //
-//  JFMobileKit.h
-//  Copyright (C) 2014  Jacopo Filié
+//  JFAppDelegate.h
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,26 +18,23 @@
 
 
 
-// SDK
-#import <CoreData/CoreData.h>
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@class JFAlertsController;
+@class JFWindowController;
+
+
+
+@interface JFAppDelegate : UIResponder <UIApplicationDelegate>
+
+#pragma mark Properties
 
 // User interface
-#import "JFAlert.h"
-#import "JFAlertsController.h"
-#import "JFNavigationController.h"
-#import "JFTabBarController.h"
-#import "JFTableViewCell.h"
-#import	"JFViewController.h"
-#import	"JFWindowController.h"
+@property (strong, nonatomic, readonly)	JFAlertsController*	alertsController;
+@property (strong, nonatomic)			UIWindow*			window;
 
-// Utilities
-#import "JFAppDelegate.h"
-#import	"JFImageManager.h"
-#import "JFLogger.h"
-#import	"JFManager.h"
-#import "JFUtilities.h"
 
-///// OLD /////
-#import	"JFMobileKit_OLD.h"
+#pragma mark Methods
+
+// User interface management
+- (JFWindowController*)	createControllerForWindow:(UIWindow*)window;
+
+@end
