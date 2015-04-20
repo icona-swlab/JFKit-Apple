@@ -21,7 +21,6 @@
 #import "JFWindowController.h"
 
 #import "JFLogger.h"
-#import "JFUtilities.h"
 
 
 
@@ -106,10 +105,15 @@
 
 - (void)replaceRootViewControllerWithViewController:(UIViewController*)viewController
 {
-	[self replaceRootViewControllerWithViewController:viewController duration:JFAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve];
+	[self replaceRootViewControllerWithViewController:viewController completion:nil];
 }
 
-- (void)replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options
+- (void)replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion
+{
+	[self replaceRootViewControllerWithViewController:viewController duration:JFAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve completion:completion];
+}
+
+- (void)replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion
 {
 	if(!viewController)
 		return;
@@ -118,16 +122,19 @@
 	if(rootViewController == viewController)
 		return;
 	
-	JFBlockWithBOOL completion = ^(BOOL finished)
+	JFBlockWithBOOL innerCompletion = ^(BOOL finished)
 	{
 		if(finished)
 			self.window.rootViewController = viewController;
+		
+		if(completion)
+			completion(finished);
 	};
 	
 	if(!rootViewController)
 	{
 		[NSMainOperationQueue addOperationWithBlock:^(void){
-			completion(YES);
+			innerCompletion(YES);
 		}];
 		return;
 	}
@@ -135,7 +142,7 @@
 	UIView* fromView = rootViewController.view;
 	UIView* toView = viewController.view;
 	
-	[UIView transitionFromView:fromView toView:toView duration:duration options:options completion:completion];
+	[UIView transitionFromView:fromView toView:toView duration:duration options:options completion:innerCompletion];
 }
 
 

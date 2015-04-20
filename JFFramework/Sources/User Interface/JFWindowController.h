@@ -18,6 +18,10 @@
 
 
 
+#import "JFUtilities.h"
+
+
+
 @class JFLogger;
 
 
@@ -45,7 +49,8 @@
 
 // User interface management
 - (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController;
-- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options;
+- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion;
+- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion;
 
 // User interface management (UIWindow lifecycle)
 - (void)	didLoadUserInterface;
