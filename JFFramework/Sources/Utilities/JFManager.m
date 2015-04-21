@@ -10,11 +10,19 @@
 
 #import "JFManager.h"
 
+#import "JFLogger.h"
 #import "JFUtilities.h"
 
 
 
 @implementation JFManager
+
+#pragma mark Properties
+
+// Debugging
+@synthesize logger	= _logger;
+@synthesize logging	= _logging;
+
 
 #pragma mark Memory management
 
@@ -41,6 +49,18 @@
 	}
 	
 	return retObj;
+}
+
+- (instancetype)init
+{
+	self = [super init];
+	if(self)
+	{
+		// Debugging
+		_logger = [JFLogger defaultLogger];
+		_logging = YES;
+	}
+	return self;
 }
 
 @end
