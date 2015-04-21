@@ -277,6 +277,11 @@ extern Radians	radiansFromDegress(Degrees degrees);
 extern BOOL	JFAreObjectsEqual(id obj1, id obj2);
 
 
+#pragma mark Functions (Randomness)
+
+extern NSString*	JFRandomString(NSUInteger length);
+
+
 #pragma mark Functions (Runtime)
 
 extern void	performSelector(NSObject* target, SEL action);

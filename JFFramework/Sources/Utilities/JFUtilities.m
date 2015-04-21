@@ -179,6 +179,26 @@ BOOL JFAreObjectsEqual(id obj1, id obj2)
 }
 
 
+#pragma mark Functions (Randomness)
+
+NSString* JFRandomString(NSUInteger length)
+{
+	if(length == 0)
+		return EmptyString;
+	
+	static NSString* characters = @"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
+	NSMutableString* retObj = [NSMutableString stringWithCapacity:length];
+	for(NSUInteger i = 0; i < length; i++)
+	{
+		NSUInteger index = arc4random_uniform((u_int32_t)[characters length]);
+		[retObj appendFormat:@"%C", [characters characterAtIndex:index]];
+	}
+	
+	return [retObj copy];
+}
+
+
 #pragma mark Functions (Runtime)
 
 void performSelector(NSObject* target, SEL action)
