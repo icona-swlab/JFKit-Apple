@@ -27,6 +27,8 @@
 		6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14501AA5B45B0060B922 /* JFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14561AA5B7130060B922 /* JFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14571AA5B7170060B922 /* JFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */; };
+		EA16DF421AE98CE200085BAE /* JFSplashViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA16DF401AE98CE200085BAE /* JFSplashViewController.h */; };
+		EA16DF431AE98CE200085BAE /* JFSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16DF411AE98CE200085BAE /* JFSplashViewController.m */; };
 		EA26EBED1A87679F0050049A /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EBEB1A87679F0050049A /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EBEE1A87679F0050049A /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EBEB1A87679F0050049A /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EBEF1A87679F0050049A /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EBEC1A87679F0050049A /* JFUtilities.m */; };
@@ -117,6 +119,8 @@
 		6CBE14501AA5B45B0060B922 /* JFKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKit.h; sourceTree = "<group>"; };
 		6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewCell.h; sourceTree = "<group>"; };
 		6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewCell.m; sourceTree = "<group>"; };
+		EA16DF401AE98CE200085BAE /* JFSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSplashViewController.h; sourceTree = "<group>"; };
+		EA16DF411AE98CE200085BAE /* JFSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSplashViewController.m; sourceTree = "<group>"; };
 		EA26EBEB1A87679F0050049A /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
 		EA26EBEC1A87679F0050049A /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
 		EA26EBF11A8771D50050049A /* JFAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlert.h; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				EA8192431AE26C6200DD84C0 /* JFAppDelegate.m */,
 				EA61D29D1AA51C4400581F72 /* JFNavigationController.h */,
 				EA61D29E1AA51C4400581F72 /* JFNavigationController.m */,
+				EA16DF401AE98CE200085BAE /* JFSplashViewController.h */,
+				EA16DF411AE98CE200085BAE /* JFSplashViewController.m */,
 				EA61D2A11AA522A300581F72 /* JFTabBarController.h */,
 				EA61D2A21AA522A300581F72 /* JFTabBarController.m */,
 				6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */,
@@ -466,6 +472,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA16DF421AE98CE200085BAE /* JFSplashViewController.h in Headers */,
 				EA26EC611A8785030050049A /* JFCoreDataManager.h in Headers */,
 				EA26EC671A8785030050049A /* JFGlobals.h in Headers */,
 				EA26EC791A8785030050049A /* JFTableViewSection.h in Headers */,
@@ -591,6 +598,7 @@
 				EACFD6161A87AEC400B4494E /* JFAlertsController.m in Sources */,
 				EA26EC761A8785030050049A /* JFSplitViewController.m in Sources */,
 				EA26EC881A8785030050049A /* JFSimpleFormViewController.m in Sources */,
+				EA16DF431AE98CE200085BAE /* JFSplashViewController.m in Sources */,
 				EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */,
 				EA26EBF01A87679F0050049A /* JFUtilities.m in Sources */,
 				EA26EBF41A8771D50050049A /* JFAlert.m in Sources */,
