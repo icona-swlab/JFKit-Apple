@@ -26,14 +26,15 @@
 // User interface
 #import "JFAlert.h"
 #import "JFAlertsController.h"
+#import "JFAppDelegate.h"
 #import "JFNavigationController.h"
+#import	"JFSplashViewController.h"
 #import "JFTabBarController.h"
 #import "JFTableViewCell.h"
 #import	"JFViewController.h"
 #import	"JFWindowController.h"
 
 // Utilities
-#import "JFAppDelegate.h"
 #import	"JFImageManager.h"
 #import "JFLogger.h"
 #import	"JFManager.h"
