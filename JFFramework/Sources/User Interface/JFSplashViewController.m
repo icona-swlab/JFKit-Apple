@@ -119,9 +119,9 @@
 
 #pragma mark Memory management
 
-- (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil logger:(JFLogger*)logger
+- (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil logger:logger];
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if(self)
 	{
 		// Flags

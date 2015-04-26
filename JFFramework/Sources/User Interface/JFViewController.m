@@ -76,6 +76,9 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 @synthesize logger	= _logger;
 @synthesize logging	= _logging;
 
+// Relationships
+@synthesize navigationDelegate	= _navigationDelegate;
+
 
 #pragma mark Memory management
 
@@ -86,16 +89,11 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 
 - (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
-	return [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil logger:[JFLogger defaultLogger]];
-}
-
-- (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil logger:(JFLogger*)logger
-{
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if(self)
 	{
 		// Debug
-		_logger = logger;
+		_logger = [JFLogger defaultLogger];
 		_logging = YES;
 	}
 	return self;
@@ -204,48 +202,80 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 
 - (void)notifyHasBeenDismissed:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:hasBeenDismissed:)])
+		[delegate viewController:self hasBeenDismissed:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenDismissedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPopped:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:hasBeenPopped:)])
+		[delegate viewController:self hasBeenPopped:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPoppedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPresented:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:hasBeenPresented:)])
+		[delegate viewController:self hasBeenPresented:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPresentedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPushed:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:hasBeenPushed:)])
+		[delegate viewController:self hasBeenPushed:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPushedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBeDismissed:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:willBeDismissed:)])
+		[delegate viewController:self willBeDismissed:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBeDismissedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBePopped:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:willBePopped:)])
+		[delegate viewController:self willBePopped:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePoppedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBePresented:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:willBePresented:)])
+		[delegate viewController:self willBePresented:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePresentedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBePushed:(BOOL)animated
 {
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:willBePushed:)])
+		[delegate viewController:self willBePushed:animated];
+	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePushedNotification object:self userInfo:userInfo];
 }

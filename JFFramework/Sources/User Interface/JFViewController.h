@@ -19,6 +19,7 @@
 
 
 @class JFLogger;
+@class JFViewController;
 
 
 
@@ -43,19 +44,40 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 
 
 
+@protocol JFViewControllerNavigationDelegate <NSObject>
+
+@optional
+
+- (void)	viewController:(JFViewController*)viewController hasBeenDismissed:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController hasBeenPopped:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController hasBeenPresented:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController hasBeenPushed:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController willBeDismissed:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController willBePopped:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController willBePresented:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController willBePushed:(BOOL)animated;
+
+@end
+
+
+
+#pragma mark
+
+
+
 @interface JFViewController : UIViewController
 
 #pragma mark Properties
 
 // Debug
-@property (strong, nonatomic, readonly)				JFLogger*	logger;
+@property (strong, nonatomic)						JFLogger*	logger;
 @property (assign, nonatomic, getter = isLogging)	BOOL		logging;
+
+// Relationships
+@property (weak, nonatomic)	id<JFViewControllerNavigationDelegate>	navigationDelegate;
 
 
 #pragma mark Methods
-
-// Memory management
-- (instancetype)	initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil logger:(JFLogger*)logger;
 
 // User interface management (Navigation)
 - (void)	hasBeenDismissed:(BOOL)animated;	// The view controller has been modally dismissed.

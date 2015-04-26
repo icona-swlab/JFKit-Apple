@@ -43,8 +43,11 @@
 
 #pragma mark Macros (Localization)
 
-#define LocalizedString(_key, _defVal)						LocalizedStringWithComment(_key, _defVal, nil)
-#define LocalizedStringWithComment(_key, _defVal, _comment)	NSLocalizedStringWithDefaultValue(_key, nil, NSMainBundle, _defVal, _comment)
+#define	JFBundleLanguage		[JFBundleLanguages firstObject];
+#define	JFBundleLanguages		[NSMainBundle preferredLocalizations];
+#define	JFDevelopmentLanguage	[NSMainBundle developmentLocalization];
+#define	JFSystemLanguage		[JFSystemLanguages firstObject]
+#define	JFSystemLanguages		[NSLocale preferredLanguages]
 
 
 #pragma mark Macros (Shortcuts)
@@ -95,12 +98,12 @@
 #pragma mark Macros (OLD)
 
 #if TARGET_OS_IPHONE
+#define LocalizedString(_key, _defVal)						LocalizedStringWithComment(_key, _defVal, nil)
+#define LocalizedStringWithComment(_key, _defVal, _comment)	NSLocalizedStringWithDefaultValue(_key, nil, NSMainBundle, _defVal, _comment)
 #define NSMainOperationQueue		[NSOperationQueue mainQueue]
 #define NSDefaultNotificationCenter	[NSNotificationCenter defaultCenter]
 #define	UIApp						[UIApplication sharedApplication]
 #define	UIAppDelegate				((AppDelegate*)[UIApp delegate])
-#define UIAppLanguage				[UIAppLanguages firstObject]
-#define UIAppLanguages				[NSMainBundle preferredLocalizations]
 #define UICurrentDevice				[UIDevice currentDevice]
 #define UIIdiom						[UICurrentDevice userInterfaceIdiom]
 #define UIMainScreen				[UIScreen mainScreen]
