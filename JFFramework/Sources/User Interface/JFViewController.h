@@ -23,12 +23,12 @@
 
 
 
-#pragma mark Notifications
+#pragma mark Constants (Notifications)
 
-// Navigation (Keys)
+// Keys (Navigation)
 extern NSString* const	JFViewControllerIsAnimatedKey;	// NSNumber
 
-// Navigation (Names)
+// Names (Navigation)
 extern NSString* const	JFViewControllerHasBeenDismissedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
 extern NSString* const	JFViewControllerHasBeenPoppedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
 extern NSString* const	JFViewControllerHasBeenPresentedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.

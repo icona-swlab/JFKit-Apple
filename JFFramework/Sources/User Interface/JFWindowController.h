@@ -48,11 +48,11 @@
 - (instancetype)	initWithWindow:(UIWindow*)window logger:(JFLogger*)logger;	// Default initializator.
 
 // User interface management
-- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController;
-- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion;
-- (void)	replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion;
+//- (BOOL)	replaceRootViewControllerWithViewController:(UIViewController*)viewController;
+//- (BOOL)	replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion;
+//- (BOOL)	replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion;
 
-// User interface management (UIWindow lifecycle)
+// User interface management (Window lifecycle)
 - (void)	didLoadUserInterface;
 - (void)	loadUserInterface;
 - (void)	willLoadUserInterface;
