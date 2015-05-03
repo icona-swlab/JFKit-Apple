@@ -127,9 +127,126 @@ NSColor* colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a)
 #endif
 
 
+#pragma mark Functions (Images)
+
+#if TARGET_OS_IPHONE
+
+NSString* JFGetLaunchImageName()
+{
+	return JFGetLaunchImageNameForOrientation(UIStatusBarOrientation);
+}
+
+NSString* JFGetLaunchImageNameForOrientation(UIInterfaceOrientation orientation)
+{
+	static NSString* const NameKey				= @"UILaunchImageName";
+	static NSString* const MinimumOSVersionKey	= @"UILaunchImageMinimumOSVersion";
+	static NSString* const OrientationKey		= @"UILaunchImageOrientation";
+	static NSString* const SizeKey				= @"UILaunchImageSize";
+	
+	static NSDictionary* LaunchScreens = nil;
+	if(!LaunchScreens)
+	{
+		NSArray* dicts = JFApplicationInfoForKey(@"UILaunchImages");
+		
+		NSString* searchString = @"-700";
+		
+		NSMutableDictionary* mDicts = [NSMutableDictionary dictionaryWithCapacity:[dicts count]];
+		for(NSDictionary* dict in dicts)
+		{
+			NSString* key = [dict objectForKey:NameKey];
+			NSMutableDictionary* mDict = [dict mutableCopy];
+			[mDict removeObjectForKey:NameKey];
+			[mDicts setObject:[mDict copy] forKey:key];
+			
+			NSRange range = [key rangeOfString:searchString];
+			if(range.location != NSNotFound)
+			{
+				key = [key stringByReplacingOccurrencesOfString:searchString withString:EmptyString];
+				[mDict removeObjectForKey:MinimumOSVersionKey];
+				[mDicts setObject:[mDict copy] forKey:key];
+			}
+		}
+		LaunchScreens = [mDicts copy];
+	}
+	
+	static CGSize screenSize = {0.0, 0.0};
+	if(CGSizeEqualToSize(screenSize, CGSizeZero))
+	{
+		UIScreen* screen = UIMainScreen;
+		CGRect screenBounds = (iOS8Plus ? [screen.coordinateSpace convertRect:screen.bounds toCoordinateSpace:screen.fixedCoordinateSpace] : screen.bounds);
+		screenSize = screenBounds.size;
+	}
+	
+	static NSString* landscapeRetObj = nil;
+	static NSString* portraitRetObj = nil;
+	
+	BOOL isLandscape = UIInterfaceOrientationIsLandscape(orientation);
+	BOOL isPortrait = UIInterfaceOrientationIsPortrait(orientation);
+	
+	NSString* retObj = (isLandscape ? landscapeRetObj : (isPortrait ? portraitRetObj : nil));
+	
+	if(!retObj)
+	{
+		NSString* retObjVersion = nil;
+		for(NSString* key in [LaunchScreens allKeys])
+		{
+			NSDictionary* dict = [LaunchScreens objectForKey:key];
+			
+			// Checks the orientation and jumps to the next if not satisfied.
+			NSString* orientationString = [dict objectForKey:OrientationKey];
+			if([orientationString isEqualToString:@"Portrait"])
+			{
+				if(isLandscape)
+					continue;
+			}
+			else if([orientationString isEqualToString:@"Landscape"])
+			{
+				if(isPortrait)
+					continue;
+			}
+			else
+				continue;
+			
+			// Checks the size and jumps to the next if not satisfied.
+			NSString* sizeString = [dict objectForKey:SizeKey];
+			CGSize size = CGSizeFromString(sizeString);
+			if(!CGSizeEqualToSize(size, screenSize))
+				continue;
+			
+			// Checks the minimum iOS version and jumps to the next if not satisfied.
+			NSString* minVersion = [dict objectForKey:MinimumOSVersionKey];
+			if(minVersion)
+			{
+				if(!iOSPlus(minVersion))
+					continue;
+				
+				// Checks if the current image minVersion is better than the last used image version.
+				if(retObjVersion && [minVersion compare:retObjVersion options:NSNumericSearch] != NSOrderedDescending)
+					continue;
+			}
+			else if(retObjVersion)
+				continue;
+			
+			if(isLandscape)	landscapeRetObj = key;
+			if(isPortrait)	portraitRetObj = key;
+			
+			retObj = key;
+			retObjVersion = minVersion;
+			
+			if(iOSExact(minVersion))
+				break;
+		}
+	}
+	
+	return retObj;
+}
+
+#endif
+
+
 #pragma mark Functions (Info)
 
-NSString* JFApplicationInfoForKey(NSString* key)
+id JFApplicationInfoForKey(NSString* key)
 {
 	return [[NSMainBundle infoDictionary] objectForKey:key];
 }

@@ -264,9 +264,17 @@ extern NSColor*	colorWithRGBA(UInt8 r, UInt8 g, UInt8 b, UInt8 a);
 #endif
 
 
+#pragma mark Functions (Images)
+
+#if TARGET_OS_IPHONE
+extern NSString*	JFGetLaunchImageName();
+extern NSString*	JFGetLaunchImageNameForOrientation(UIInterfaceOrientation orientation);
+#endif
+
+
 #pragma mark Functions (Info)
 
-extern NSString*	JFApplicationInfoForKey(NSString* key);
+extern id	JFApplicationInfoForKey(NSString* key);
 
 
 #pragma mark Functions (Math)

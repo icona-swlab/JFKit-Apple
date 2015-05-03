@@ -47,6 +47,7 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 @protocol JFViewControllerNavigationDelegate <NSObject>
 
 @optional
+#pragma mark Optional methods
 
 - (void)	viewController:(JFViewController*)viewController hasBeenDismissed:(BOOL)animated;
 - (void)	viewController:(JFViewController*)viewController hasBeenPopped:(BOOL)animated;
@@ -56,6 +57,26 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 - (void)	viewController:(JFViewController*)viewController willBePopped:(BOOL)animated;
 - (void)	viewController:(JFViewController*)viewController willBePresented:(BOOL)animated;
 - (void)	viewController:(JFViewController*)viewController willBePushed:(BOOL)animated;
+
+@end
+
+
+
+#pragma mark
+
+
+
+@protocol JFViewControllerRotationDelegate <NSObject>
+
+@optional
+#pragma mark Optional methods
+
+- (void)					viewController:(JFViewController*)viewController didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
+- (void)					viewController:(JFViewController*)viewController willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (void)					viewController:(JFViewController*)viewController willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (UIInterfaceOrientation)	viewControllerPreferredInterfaceOrientationForPresentation:(JFViewController*)viewController;
+- (BOOL)					viewControllerShouldAutorotate:(JFViewController*)viewController;
+- (NSUInteger)				viewControllerSupportedInterfaceOrientations:(JFViewController*)viewController;
 
 @end
 
@@ -75,6 +96,7 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 
 // Relationships
 @property (weak, nonatomic)	id<JFViewControllerNavigationDelegate>	navigationDelegate;
+@property (weak, nonatomic)	id<JFViewControllerRotationDelegate>	rotationDelegate;
 
 
 #pragma mark Methods

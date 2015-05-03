@@ -30,6 +30,7 @@
 
 @optional
 
+// Events management
 - (void)	splashViewControllerTapGestureRecognized:(JFSplashViewController*)viewController;
 - (void)	splashViewControllerTimedOut:(JFSplashViewController*)viewController;
 
@@ -52,7 +53,7 @@
 @property (weak, nonatomic)	id<JFSplashViewControllerDelegate>	delegate;
 
 // Timings
-@property (assign, nonatomic)	NSTimeInterval	timeout;
+@property (assign, nonatomic)	NSTimeInterval	timeout;	// Setting '0.0' disables it.
 
 // User interface
 @property (strong, nonatomic, readonly)	UIImageView*	imageView;

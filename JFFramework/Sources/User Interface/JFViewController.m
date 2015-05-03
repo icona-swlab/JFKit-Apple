@@ -78,6 +78,7 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 
 // Relationships
 @synthesize navigationDelegate	= _navigationDelegate;
+@synthesize rotationDelegate	= _rotationDelegate;
 
 
 #pragma mark Memory management
@@ -125,6 +126,63 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 
 - (void)willBePushed:(BOOL)animated
 {}
+
+
+#pragma mark User interface management (Rotation)
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	
+	id<JFViewControllerRotationDelegate> delegate = self.rotationDelegate;
+	if([delegate respondsToSelector:@selector(viewController:didRotateFromInterfaceOrientation:)])
+		[delegate viewController:self didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+	id<JFViewControllerRotationDelegate> delegate = self.rotationDelegate;
+	if([delegate respondsToSelector:@selector(viewControllerPreferredInterfaceOrientationForPresentation:)])
+		return [delegate viewControllerPreferredInterfaceOrientationForPresentation:self];
+	
+	return [super preferredInterfaceOrientationForPresentation];
+}
+
+- (BOOL)shouldAutorotate
+{
+	id<JFViewControllerRotationDelegate> delegate = self.rotationDelegate;
+	if([delegate respondsToSelector:@selector(viewControllerShouldAutorotate:)])
+		return [delegate viewControllerShouldAutorotate:self];
+	
+	return [super shouldAutorotate];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+	id<JFViewControllerRotationDelegate> delegate = self.rotationDelegate;
+	if([delegate respondsToSelector:@selector(viewControllerSupportedInterfaceOrientations:)])
+		return [delegate viewControllerSupportedInterfaceOrientations:self];
+	
+	return [super supportedInterfaceOrientations];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	[super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	
+	id<JFViewControllerRotationDelegate> delegate = self.rotationDelegate;
+	if([delegate respondsToSelector:@selector(viewController:willAnimateRotationToInterfaceOrientation:duration:)])
+		[delegate viewController:self willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	
+	id<JFViewControllerRotationDelegate> delegate = self.rotationDelegate;
+	if([delegate respondsToSelector:@selector(viewController:willRotateToInterfaceOrientation:duration:)])
+		[delegate viewController:self willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+}
 
 
 #pragma mark User interface management (View lifecycle)
