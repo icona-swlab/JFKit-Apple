@@ -83,7 +83,7 @@
 
 + (CGFloat)defaultHeight
 {
-	return 44.0f;
+	return [self minimumHeight];
 }
 
 + (CGFloat)dynamicHeightForWidth:(CGFloat)width setupBlock:(JFTableViewCellSetupBlock)setupBlock
@@ -103,10 +103,22 @@
 	[cell layoutIfNeeded];
 	
 	UIView* view = (iOS8Plus ? cell : cell.contentView);
-	CGFloat calculatedHeight = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-	CGFloat defaultHeight = [self defaultHeight];
+	CGSize calculatedSize = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 	
-	return MAX(calculatedHeight, defaultHeight);
+	CGFloat retVal = MAX(calculatedSize.height, [self minimumHeight]);
+	retVal = MIN(retVal, [self maximumHeight]);
+	
+	return retVal;
+}
+
++ (CGFloat)maximumHeight
+{
+	return CGFLOAT_MAX;
+}
+
++ (CGFloat)minimumHeight
+{
+	return 44.0f;
 }
 
 + (JFTableViewCell*)sizingCell

@@ -34,6 +34,8 @@ typedef void	(^JFTableViewCellSetupBlock)	(id cell);	// Used to prepare the cell
 // User interface management
 + (CGFloat)	defaultHeight;
 + (CGFloat)	dynamicHeightForWidth:(CGFloat)width setupBlock:(JFTableViewCellSetupBlock)setupBlock;	// The setup block is called before trying to calculate the height.
++ (CGFloat)	maximumHeight;
++ (CGFloat)	minimumHeight;
 - (void)	initializeUserInterface;
 
 @end
