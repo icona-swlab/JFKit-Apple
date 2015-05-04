@@ -20,7 +20,6 @@
 
 // Data access
 #import	"JFCoreDataManager.h"
-#import	"JFHTTPRequest.h"
 
 // User interface (Activity Indicators)
 #import "JFActivityIndicatorView.h"

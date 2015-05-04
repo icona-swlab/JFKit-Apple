@@ -23,6 +23,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+// Data access
+#import	"JFHTTPRequest.h"
+
 // User interface
 #import "JFAlert.h"
 #import "JFAlertsController.h"
