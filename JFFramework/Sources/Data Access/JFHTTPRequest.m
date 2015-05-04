@@ -26,10 +26,13 @@
 
 @interface JFHTTPRequest () <NSURLConnectionDataDelegate>
 
+#pragma mark Properties
+
 // Attributes
 @property (assign, nonatomic, readwrite)	JFHTTPRequestState	state;
 
 // Data
+@property (copy, nonatomic)				NSData*					body;
 @property (strong, nonatomic, readonly)	NSMutableDictionary*	fields;
 @property (strong, nonatomic, readonly)	NSMutableDictionary*	headerFields;
 
@@ -41,6 +44,9 @@
 
 // Relationships
 @property (weak, nonatomic)	NSObject<JFHTTPRequestDelegate>*	delegate;
+
+
+#pragma mark Methods
 
 // Attributes management
 - (NSString*)	getEncodedFields;
@@ -54,9 +60,13 @@
 
 
 
+#pragma mark
+
+
+
 @implementation JFHTTPRequest
 
-#pragma mark - Properties
+#pragma mark Properties
 
 // Attributes
 @synthesize encoding	= _encoding;
@@ -64,6 +74,7 @@
 
 // Data
 @synthesize additionalInfo	= _additionalInfo;
+@synthesize body			= _body;
 @synthesize credential		= _credential;
 @synthesize fields			= _fields;
 @synthesize headerFields	= _headerFields;
@@ -82,7 +93,7 @@
 @synthesize delegate	= _delegate;
 
 
-#pragma mark - Properties accessors (Attributes)
+#pragma mark Properties accessors (Attributes)
 
 - (void)setEncoding:(NSStringEncoding)encoding
 {
@@ -101,7 +112,7 @@
 }
 
 
-#pragma mark - Properties accessors (Data)
+#pragma mark Properties accessors (Data)
 
 - (void)setAdditionalInfo:(NSDictionary*)additionalInfo
 {
@@ -128,7 +139,7 @@
 }
 
 
-#pragma mark - Memory management
+#pragma mark Memory management
 
 - (instancetype)initWithDelegate:(NSObject<JFHTTPRequestDelegate>*)delegate
 {
@@ -154,7 +165,7 @@
 }
 
 
-#pragma mark - Attributes management
+#pragma mark Attributes management
 
 - (NSString*)getEncodedFields
 {
@@ -198,6 +209,14 @@
 	return retVal;
 }
 
+- (void)setHTTPBody:(NSData*)body
+{
+	if(!body || (self.state != JFHTTPRequestStateReady))
+		return;
+	
+	self.body = body;
+}
+
 - (void)setValue:(NSString*)value forHTTPField:(NSString*)field
 {
 	if(!field || (self.state != JFHTTPRequestStateReady))
@@ -221,7 +240,7 @@
 }
 
 
-#pragma mark - HTTP request management
+#pragma mark HTTP request management
 
 - (void)clean
 {
@@ -255,17 +274,20 @@
 		for(NSString* field in [self.headerFields allKeys])
 			[self.request setValue:[self.headerFields objectForKey:field] forHTTPHeaderField:field];
 		
-		if((self.httpMethod == JFHTTPMethodPost) && ([self.fields count] > 0))
+		NSData* body = self.body;
+		
+		if(!body && (self.httpMethod == JFHTTPMethodPost) && ([self.fields count] > 0))
 		{
 			NSString* fields = [self getEncodedFields];
-			NSData* body = [fields dataUsingEncoding:self.encoding];
-			if(body)
-			{
-				[self.request setHTTPBody:body];
-				[self setValue:NSUIntegerToString([body length]) forHTTPHeaderField:@"Content-length"];
-			}
+			body = [fields dataUsingEncoding:self.encoding];
 		}
 		
+		if(body)
+		{
+			[self.request setHTTPBody:body];
+			[self setValue:NSUIntegerToString([body length]) forHTTPHeaderField:@"Content-length"];
+		}
+
 		ShowNetworkActivityIndicator;
 		self.state = JFHTTPRequestStateStarted;
 		self.connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:YES];
@@ -273,7 +295,7 @@
 }
 
 
-#pragma mark - Protocol implementation (NSURLConnectionDelegate)
+#pragma mark Protocol implementation (NSURLConnectionDelegate)
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {

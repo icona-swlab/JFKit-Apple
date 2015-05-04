@@ -20,9 +20,9 @@
 
 @class JFHTTPRequest;
 
-@protocol JFHTTPRequestDelegate;
 
 
+#pragma mark Typedefs
 
 // List of supported HTTP methods.
 typedef NS_ENUM(UInt8, JFHTTPMethod)
@@ -42,7 +42,29 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 
 
 
+#pragma mark
+
+
+
+@protocol JFHTTPRequestDelegate
+
+@required
+#pragma mark Required methods
+
+- (void)	httpRequest:(JFHTTPRequest*)request completedRequestWithData:(NSData*)data;
+- (void)	httpRequest:(JFHTTPRequest*)request failedRequestWithError:(NSError*)error;
+
+@end
+
+
+
+#pragma mark
+
+
+
 @interface JFHTTPRequest : NSObject
+
+#pragma mark Properties
 
 // Attributes
 @property (assign, nonatomic)			NSStringEncoding	encoding;
@@ -54,27 +76,19 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 @property (strong, nonatomic)	NSURLCredential*	credential;
 @property (strong, nonatomic)	NSURL*				url;
 
+
+#pragma mark Methods
+
 // Memory management
 - (instancetype)	initWithDelegate:(NSObject<JFHTTPRequestDelegate>*)delegate;
 
 // Attributes management
+- (void)	setHTTPBody:(NSData*)body;
 - (void)	setValue:(NSString*)value forHTTPField:(NSString*)field;
 - (void)	setValue:(NSString*)value forHTTPHeaderField:(NSString*)field;
 
 // HTTP request management
 - (void)	reset;
 - (void)	start;
-
-@end
-
-
-
-@protocol JFHTTPRequestDelegate
-
-@required
-
-// HTTP request events
-- (void)	httpRequest:(JFHTTPRequest*)request completedRequestWithData:(NSData*)data;
-- (void)	httpRequest:(JFHTTPRequest*)request failedRequestWithError:(NSError*)error;
 
 @end
