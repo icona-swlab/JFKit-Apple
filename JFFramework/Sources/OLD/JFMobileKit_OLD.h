@@ -38,7 +38,6 @@
 #import "JFTableViewSection.h"
 
 // User interface (Texts)
-#import "JFLabel.h"
 #import "JFTextView.h"
 
 // User interface (Toolbars)

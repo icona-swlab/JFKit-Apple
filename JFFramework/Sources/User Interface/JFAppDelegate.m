@@ -31,9 +31,6 @@
 
 #pragma mark Properties
 
-// Debug
-@property (strong, nonatomic, readonly)	JFLogger*	logger;
-
 // User interface
 @property (strong, nonatomic)	JFWindowController*	windowController;
 

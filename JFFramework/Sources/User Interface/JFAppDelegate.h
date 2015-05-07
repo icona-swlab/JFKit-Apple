@@ -19,6 +19,7 @@
 
 
 @class JFAlertsController;
+@class JFLogger;
 @class JFWindowController;
 
 
@@ -26,6 +27,9 @@
 @interface JFAppDelegate : UIResponder <UIApplicationDelegate>
 
 #pragma mark Properties
+
+// Debug
+@property (strong, nonatomic, readonly)	JFLogger*	logger;
 
 // User interface
 @property (strong, nonatomic, readonly)	JFAlertsController*	alertsController;

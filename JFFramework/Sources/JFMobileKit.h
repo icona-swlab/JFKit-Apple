@@ -31,6 +31,7 @@
 #import "JFAlertsController.h"
 #import "JFAppDelegate.h"
 #import	"JFBarButtonItem.h"
+#import "JFLabel.h"
 #import "JFNavigationController.h"
 #import	"JFSplashViewController.h"
 #import "JFTabBarController.h"

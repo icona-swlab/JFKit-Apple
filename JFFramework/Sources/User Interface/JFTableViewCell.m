@@ -1,9 +1,19 @@
 //
 //  JFTableViewCell.m
-//  JFFramework
+//  Copyright (C) 2015  Jacopo Filié
 //
-//  Created by Jacopo Filié on 03/03/15.
-//  Copyright (c) 2015 Jacopo Filié. All rights reserved.
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
 
@@ -84,6 +94,30 @@
 + (CGFloat)defaultHeight
 {
 	return [self minimumHeight];
+}
+
++ (CGFloat)dynamicHeightForTableView:(UITableView*)tableView setupBlock:(JFTableViewCellSetupBlock)setupBlock
+{
+	CGFloat width = CGRectGetWidth(tableView.bounds);
+	
+	if((tableView.style == UITableViewStyleGrouped) && !iOS7Plus)
+	{
+		CGFloat margin = 0.0f;
+		
+		if(iPhone)				margin = 10.0f;
+		else if(width <= 20.0f)	margin = width - 10.0f;
+		else if(width < 400.0f)	margin = 10.0f;
+		else					margin = MAX(31.0f, MIN(45.0f, width * 0.06f));
+		
+		width -= MAX(margin, 0.0f) * 2.0f;
+	}
+	
+	CGFloat retVal = [self dynamicHeightForWidth:width setupBlock:setupBlock];
+	
+	if(tableView.separatorStyle != UITableViewCellSeparatorStyleNone)
+		retVal++;
+	
+	return retVal;
 }
 
 + (CGFloat)dynamicHeightForWidth:(CGFloat)width setupBlock:(JFTableViewCellSetupBlock)setupBlock

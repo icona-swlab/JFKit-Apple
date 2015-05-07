@@ -20,6 +20,8 @@
 
 #import "JFLabel.h"
 
+#import "JFUtilities.h"
+
 
 
 @interface JFLabel ()
@@ -28,20 +30,28 @@
 
 
 
+#pragma mark
+
+
+
 @implementation JFLabel
 
-#pragma mark - User interface management (Inherited)
+#pragma mark Properties accessors (Data)
 
-- (CGSize)intrinsicContentSize
+- (void)setText:(NSString*)text
 {
-	CGSize retVal = [super intrinsicContentSize];
- 
-	// Applys the fix if this is a multiline label.
-	if(self.numberOfLines != 1)
-		retVal.height += 1; // FIX: sometimes the intrinsic content size is 1 point too short.
- 
-	return retVal;
+	// FIX: Whitespaces and newline characters may corrupt the text drawing up to iOS6.
+	if(!iOS7Plus)
+	{
+		NSCharacterSet* set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+		text = [text stringByTrimmingCharactersInSet:set];
+	}
+	
+	[super setText:text];
 }
+
+
+#pragma mark - User interface management (Lifecycle)
 
 - (void)layoutSubviews
 {
@@ -57,6 +67,20 @@
 			[self setNeedsUpdateConstraints];
 		}
 	}
+}
+
+
+#pragma mark - User interface management (Metrics)
+
+- (CGSize)intrinsicContentSize
+{
+	CGSize retVal = [super intrinsicContentSize];
+ 
+	// Applys the fix if this is a multiline label.
+	if(self.numberOfLines != 1)
+		retVal.height += 1; // FIX: sometimes the intrinsic content size is 1 point too short.
+ 
+	return retVal;
 }
 
 @end
