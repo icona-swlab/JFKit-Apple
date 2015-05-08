@@ -25,6 +25,7 @@
 
 // Data access
 #import	"JFHTTPRequest.h"
+#import	"JFURLProtocol.h"
 
 // User interface
 #import "JFAlert.h"

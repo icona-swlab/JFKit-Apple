@@ -22,10 +22,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		6C05357B1AFB97C000A85091 /* JFLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C0535791AFB97C000A85091 /* JFLabel.h */; };
+		6C05357B1AFB97C000A85091 /* JFLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C0535791AFB97C000A85091 /* JFLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C05357C1AFB97C000A85091 /* JFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C05357A1AFB97C000A85091 /* JFLabel.m */; };
 		6C06BE9E1AF769C100C5F5CC /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C06BE9C1AF769C100C5F5CC /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C06BE9F1AF769C100C5F5CC /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C06BE9D1AF769C100C5F5CC /* JFHTTPRequest.m */; };
+		6C1B54281AFCE1FC00165804 /* JFURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C1B54241AFCE1F800165804 /* JFURLProtocol.h */; };
+		6C1B54291AFCE26C00165804 /* JFURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B54251AFCE1F800165804 /* JFURLProtocol.m */; };
 		6C21AC1F1AEE799F00618042 /* JFBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C21AC1D1AEE799F00618042 /* JFBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C21AC201AEE799F00618042 /* JFBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C21AC1E1AEE799F00618042 /* JFBarButtonItem.m */; };
 		6C261B851AD674D300B0223F /* JFManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C261B811AD6731400B0223F /* JFManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -120,6 +122,8 @@
 		6C05357A1AFB97C000A85091 /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLabel.m; sourceTree = "<group>"; };
 		6C06BE9C1AF769C100C5F5CC /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
 		6C06BE9D1AF769C100C5F5CC /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
+		6C1B54241AFCE1F800165804 /* JFURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFURLProtocol.h; sourceTree = "<group>"; };
+		6C1B54251AFCE1F800165804 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
 		6C21AC1D1AEE799F00618042 /* JFBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFBarButtonItem.h; sourceTree = "<group>"; };
 		6C21AC1E1AEE799F00618042 /* JFBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFBarButtonItem.m; sourceTree = "<group>"; };
 		6C261B811AD6731400B0223F /* JFManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFManager.h; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 			children = (
 				6C06BE9C1AF769C100C5F5CC /* JFHTTPRequest.h */,
 				6C06BE9D1AF769C100C5F5CC /* JFHTTPRequest.m */,
+				6C1B54241AFCE1F800165804 /* JFURLProtocol.h */,
+				6C1B54251AFCE1F800165804 /* JFURLProtocol.m */,
 			);
 			path = "Data Access";
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 				EAF2EB1A1A9CC681009D304E /* JFMobileKit_OLD.h in Headers */,
 				EACFD6151A87AEC400B4494E /* JFAlertsController.h in Headers */,
 				EA26EC6D1A8785030050049A /* JFGalleryView.h in Headers */,
+				6C1B54281AFCE1FC00165804 /* JFURLProtocol.h in Headers */,
 				EA26EBF31A8771D50050049A /* JFAlert.h in Headers */,
 				EA55EDF91AA336690037F066 /* JFWindowController.h in Headers */,
 				EA34B1CB1ACDB82600CF0B17 /* JFImageManager.h in Headers */,
@@ -630,6 +637,7 @@
 				EA34B1D41ACDECA800CF0B17 /* JFImageObserver.m in Sources */,
 				EA26EC741A8785030050049A /* JFSliderController.m in Sources */,
 				EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */,
+				6C1B54291AFCE26C00165804 /* JFURLProtocol.m in Sources */,
 				6C06BE9F1AF769C100C5F5CC /* JFHTTPRequest.m in Sources */,
 				EA26EC6E1A8785030050049A /* JFGalleryView.m in Sources */,
 				EA8192451AE26C6200DD84C0 /* JFAppDelegate.m in Sources */,
