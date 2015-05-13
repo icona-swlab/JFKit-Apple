@@ -32,6 +32,8 @@
 		6C21AC201AEE799F00618042 /* JFBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C21AC1E1AEE799F00618042 /* JFBarButtonItem.m */; };
 		6C261B851AD674D300B0223F /* JFManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C261B811AD6731400B0223F /* JFManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C261B861AD674D900B0223F /* JFManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C261B821AD6731400B0223F /* JFManager.m */; };
+		6C4F45241B03705000BA0F9D /* JFXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4F45221B03705000BA0F9D /* JFXMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C4F45291B03973400BA0F9D /* JFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F45231B03705000BA0F9D /* JFXMLParser.m */; };
 		6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14501AA5B45B0060B922 /* JFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14561AA5B7130060B922 /* JFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14571AA5B7170060B922 /* JFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */; };
@@ -128,6 +130,8 @@
 		6C21AC1E1AEE799F00618042 /* JFBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFBarButtonItem.m; sourceTree = "<group>"; };
 		6C261B811AD6731400B0223F /* JFManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFManager.h; sourceTree = "<group>"; };
 		6C261B821AD6731400B0223F /* JFManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFManager.m; sourceTree = "<group>"; };
+		6C4F45221B03705000BA0F9D /* JFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFXMLParser.h; sourceTree = "<group>"; };
+		6C4F45231B03705000BA0F9D /* JFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFXMLParser.m; sourceTree = "<group>"; };
 		6CBE14501AA5B45B0060B922 /* JFKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKit.h; sourceTree = "<group>"; };
 		6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewCell.h; sourceTree = "<group>"; };
 		6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewCell.m; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				6C06BE9D1AF769C100C5F5CC /* JFHTTPRequest.m */,
 				6C1B54241AFCE1F800165804 /* JFURLProtocol.h */,
 				6C1B54251AFCE1F800165804 /* JFURLProtocol.m */,
+				6C4F45221B03705000BA0F9D /* JFXMLParser.h */,
+				6C4F45231B03705000BA0F9D /* JFXMLParser.m */,
 			);
 			path = "Data Access";
 			sourceTree = "<group>";
@@ -495,6 +501,7 @@
 				EA16DF421AE98CE200085BAE /* JFSplashViewController.h in Headers */,
 				EA26EC611A8785030050049A /* JFCoreDataManager.h in Headers */,
 				EA26EC671A8785030050049A /* JFGlobals.h in Headers */,
+				6C4F45241B03705000BA0F9D /* JFXMLParser.h in Headers */,
 				6C06BE9E1AF769C100C5F5CC /* JFHTTPRequest.h in Headers */,
 				EA26EC791A8785030050049A /* JFTableViewSection.h in Headers */,
 				EAF2EB181A9CC677009D304E /* JFMobileKit.h in Headers */,
@@ -613,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C4F45291B03973400BA0F9D /* JFXMLParser.m in Sources */,
 				EA61D2A41AA522A300581F72 /* JFTabBarController.m in Sources */,
 				EA26EC621A8785030050049A /* JFCoreDataManager.m in Sources */,
 				EA34B1CC1ACDB82600CF0B17 /* JFImageManager.m in Sources */,
