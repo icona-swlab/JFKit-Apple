@@ -72,9 +72,13 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 @property (assign, nonatomic, readonly)	JFHTTPRequestState	state;
 
 // Data
-@property (strong, nonatomic)	NSDictionary*		additionalInfo;
-@property (strong, nonatomic)	NSURLCredential*	credential;
-@property (strong, nonatomic)	NSURL*				url;
+@property (strong, nonatomic)			NSDictionary*		additionalInfo;
+@property (strong, nonatomic)			NSURLCredential*	credential;
+@property (assign, nonatomic, readonly)	NSInteger			responseCode;
+@property (strong, nonatomic, readonly)	NSData*				responseData;
+@property (strong, nonatomic, readonly)	NSError*			responseError;
+@property (strong, nonatomic, readonly)	NSDictionary*		responseHeaderFields;
+@property (strong, nonatomic)			NSURL*				url;
 
 
 #pragma mark Methods

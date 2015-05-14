@@ -32,15 +32,18 @@
 @property (assign, nonatomic, readwrite)	JFHTTPRequestState	state;
 
 // Data
-@property (copy, nonatomic)				NSData*					body;
-@property (strong, nonatomic, readonly)	NSMutableDictionary*	fields;
-@property (strong, nonatomic, readonly)	NSMutableDictionary*	headerFields;
+@property (copy, nonatomic)					NSData*					body;
+@property (strong, nonatomic, readonly)		NSMutableDictionary*	fields;
+@property (strong, nonatomic, readonly)		NSMutableDictionary*	headerFields;
+@property (assign, nonatomic, readwrite)	NSInteger				responseCode;
+@property (strong, nonatomic, readwrite)	NSData*					responseData;
+@property (strong, nonatomic, readwrite)	NSError*				responseError;
+@property (strong, nonatomic, readwrite)	NSDictionary*			responseHeaderFields;
 
 // HTTP request
 @property (strong, nonatomic)			NSURLConnection*		connection;
 @property (strong, nonatomic, readonly)	NSMutableData*			receivedData;
 @property (strong, nonatomic, readonly)	NSMutableURLRequest*	request;
-@property (assign, nonatomic)			NSInteger				responseCode;
 
 // Relationships
 @property (weak, nonatomic)	NSObject<JFHTTPRequestDelegate>*	delegate;
@@ -73,12 +76,16 @@
 @synthesize httpMethod	= _httpMethod;
 
 // Data
-@synthesize additionalInfo	= _additionalInfo;
-@synthesize body			= _body;
-@synthesize credential		= _credential;
-@synthesize fields			= _fields;
-@synthesize headerFields	= _headerFields;
-@synthesize url				= _url;
+@synthesize additionalInfo			= _additionalInfo;
+@synthesize body					= _body;
+@synthesize credential				= _credential;
+@synthesize fields					= _fields;
+@synthesize headerFields			= _headerFields;
+@synthesize responseCode			= _responseCode;
+@synthesize responseData			= _responseData;
+@synthesize responseError			= _responseError;
+@synthesize responseHeaderFields	= _responseHeaderFields;
+@synthesize url						= _url;
 
 // Flags
 @synthesize state	= _state;
@@ -87,7 +94,6 @@
 @synthesize connection		= _connection;
 @synthesize receivedData	= _receivedData;
 @synthesize request			= _request;
-@synthesize responseCode	= _responseCode;
 
 // Relationships
 @synthesize delegate	= _delegate;
@@ -257,6 +263,11 @@
 		HideNetworkActivityIndicator;
 	}
 	
+	self.responseCode = 0;
+	self.responseData = nil;
+	self.responseError = nil;
+	self.responseHeaderFields = nil;
+	
 	self.state = JFHTTPRequestStateReady;
 }
 
@@ -302,6 +313,7 @@
 	[self clean];
 	HideNetworkActivityIndicator;
 	self.state = JFHTTPRequestStateFailed;
+	self.responseError = error;
 	[self.delegate httpRequest:self failedRequestWithError:error];
 }
 
@@ -316,6 +328,7 @@
 	{
 		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
 		self.responseCode = httpResponse.statusCode;
+		self.responseHeaderFields = [httpResponse allHeaderFields];
 	}
 	
 	[self.receivedData setLength:0];
@@ -335,6 +348,7 @@
 	[self clean];
 	HideNetworkActivityIndicator;
 	self.state = JFHTTPRequestStateCompleted;
+	self.responseData = data;
 	[self.delegate httpRequest:self completedRequestWithData:data];
 }
 
