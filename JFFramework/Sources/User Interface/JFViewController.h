@@ -27,8 +27,10 @@
 
 // Keys (Navigation)
 extern NSString* const	JFViewControllerIsAnimatedKey;	// NSNumber
+extern NSString* const	JFViewControllerParentKey;		// UIViewController
 
 // Names (Navigation)
+extern NSString* const	JFViewControllerDidMoveToParentNotification;	// UserInfo: JFViewControllerParentKey.
 extern NSString* const	JFViewControllerHasBeenDismissedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
 extern NSString* const	JFViewControllerHasBeenPoppedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
 extern NSString* const	JFViewControllerHasBeenPresentedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
@@ -37,6 +39,7 @@ extern NSString* const	JFViewControllerWillBeDismissedNotification;	// UserInfo:
 extern NSString* const	JFViewControllerWillBePoppedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
 extern NSString* const	JFViewControllerWillBePresentedNotification;	// UserInfo: JFViewControllerIsAnimatedKey.
 extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: JFViewControllerIsAnimatedKey.
+extern NSString* const	JFViewControllerWillMoveToParentNotification;	// UserInfo: JFViewControllerParentKey.
 
 
 
@@ -49,6 +52,7 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 @optional
 #pragma mark Optional methods
 
+- (void)	viewController:(JFViewController*)viewController didMoveToParent:(UIViewController*)parent;
 - (void)	viewController:(JFViewController*)viewController hasBeenDismissed:(BOOL)animated;
 - (void)	viewController:(JFViewController*)viewController hasBeenPopped:(BOOL)animated;
 - (void)	viewController:(JFViewController*)viewController hasBeenPresented:(BOOL)animated;
@@ -57,6 +61,7 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 - (void)	viewController:(JFViewController*)viewController willBePopped:(BOOL)animated;
 - (void)	viewController:(JFViewController*)viewController willBePresented:(BOOL)animated;
 - (void)	viewController:(JFViewController*)viewController willBePushed:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController willMoveToParent:(UIViewController*)parent;
 
 @end
 
@@ -86,6 +91,24 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 
 
 
+@protocol JFViewControllerVisibilityDelegate <NSObject>
+
+@optional
+#pragma mark Optional methods
+
+- (void)	viewController:(JFViewController*)viewController viewDidAppear:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController viewDidDisappear:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController viewWillAppear:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController viewWillDisappear:(BOOL)animated;
+
+@end
+
+
+
+#pragma mark
+
+
+
 @interface JFViewController : UIViewController
 
 #pragma mark Properties
@@ -97,6 +120,7 @@ extern NSString* const	JFViewControllerWillBePushedNotification;		// UserInfo: J
 // Relationships
 @property (weak, nonatomic)	id<JFViewControllerNavigationDelegate>	navigationDelegate;
 @property (weak, nonatomic)	id<JFViewControllerRotationDelegate>	rotationDelegate;
+@property (weak, nonatomic)	id<JFViewControllerVisibilityDelegate>	visibilityDelegate;
 
 
 #pragma mark Methods

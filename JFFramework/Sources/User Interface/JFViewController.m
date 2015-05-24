@@ -29,8 +29,10 @@
 
 // Navigation (Keys)
 NSString* const	JFViewControllerIsAnimatedKey	= @"JFViewControllerIsAnimatedKey";
+NSString* const	JFViewControllerParentKey		= @"JFViewControllerParentKey";
 
 // Navigation (Names)
+NSString* const	JFViewControllerDidMoveToParentNotification		= @"JFViewControllerDidMoveToParentNotification";
 NSString* const	JFViewControllerHasBeenDismissedNotification	= @"JFViewControllerHasBeenDismissedNotification";
 NSString* const	JFViewControllerHasBeenPoppedNotification		= @"JFViewControllerHasBeenPoppedNotification";
 NSString* const	JFViewControllerHasBeenPresentedNotification	= @"JFViewControllerHasBeenPresentedNotification";
@@ -39,6 +41,7 @@ NSString* const	JFViewControllerWillBeDismissedNotification		= @"JFViewControlle
 NSString* const	JFViewControllerWillBePoppedNotification		= @"JFViewControllerWillBePoppedNotification";
 NSString* const	JFViewControllerWillBePresentedNotification		= @"JFViewControllerWillBePresentedNotification";
 NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWillBePushedNotification";
+NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControllerWillMoveToParentNotification";
 
 
 
@@ -51,6 +54,7 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 #pragma mark Methods
 
 // Notifications management (Navigation)
+- (void)	notifyDidMoveToParent:(UIViewController*)parent;
 - (void)	notifyHasBeenDismissed:(BOOL)animated;
 - (void)	notifyHasBeenPopped:(BOOL)animated;
 - (void)	notifyHasBeenPresented:(BOOL)animated;
@@ -59,6 +63,13 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 - (void)	notifyWillBePopped:(BOOL)animated;
 - (void)	notifyWillBePresented:(BOOL)animated;
 - (void)	notifyWillBePushed:(BOOL)animated;
+- (void)	notifyWillMoveToParent:(UIViewController*)parent;
+
+// Notifications management (Visibility)
+- (void)	notifyViewDidAppear:(BOOL)animated;
+- (void)	notifyViewDidDisappear:(BOOL)animated;
+- (void)	notifyViewWillAppear:(BOOL)animated;
+- (void)	notifyViewWillDisappear:(BOOL)animated;
 
 @end
 
@@ -79,6 +90,7 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 // Relationships
 @synthesize navigationDelegate	= _navigationDelegate;
 @synthesize rotationDelegate	= _rotationDelegate;
+@synthesize visibilityDelegate	= _visibilityDelegate;
 
 
 #pragma mark Memory management
@@ -187,6 +199,12 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 
 #pragma mark User interface management (View lifecycle)
 
+- (void)didMoveToParentViewController:(UIViewController*)parent
+{
+	[super didMoveToParentViewController:parent];
+	[self notifyDidMoveToParent:parent];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
@@ -202,6 +220,8 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 		[self hasBeenPushed:animated];
 		[self notifyHasBeenPushed:animated];
 	}
+	
+	[self notifyViewDidAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -219,6 +239,8 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 		[self hasBeenPopped:animated];
 		[self notifyHasBeenPopped:animated];
 	}
+	
+	[self notifyViewDidDisappear:animated];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -236,6 +258,8 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 		[self willBePushed:animated];
 		[self notifyWillBePushed:animated];
 	}
+	
+	[self notifyViewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -253,10 +277,28 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 		[self willBePopped:animated];
 		[self notifyWillBePopped:animated];
 	}
+	
+	[self notifyViewWillDisappear:animated];
+}
+
+- (void)willMoveToParentViewController:(UIViewController*)parent
+{
+	[super willMoveToParentViewController:parent];
+	[self notifyWillMoveToParent:parent];
 }
 
 
 #pragma mark Notifications management (Navigation)
+
+- (void)notifyDidMoveToParent:(UIViewController*)parent
+{
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:didMoveToParent:)])
+		[delegate viewController:self didMoveToParent:parent];
+	
+	NSDictionary* userInfo = (parent ? @{JFViewControllerParentKey : parent} : nil);
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerDidMoveToParentNotification object:self userInfo:userInfo];
+}
 
 - (void)notifyHasBeenDismissed:(BOOL)animated
 {
@@ -336,6 +378,47 @@ NSString* const	JFViewControllerWillBePushedNotification		= @"JFViewControllerWi
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
 	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePushedNotification object:self userInfo:userInfo];
+}
+
+- (void)notifyWillMoveToParent:(UIViewController*)parent
+{
+	id<JFViewControllerNavigationDelegate> delegate = self.navigationDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:willMoveToParent:)])
+		[delegate viewController:self willMoveToParent:parent];
+	
+	NSDictionary* userInfo = (parent ? @{JFViewControllerParentKey : parent} : nil);
+	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillMoveToParentNotification object:self userInfo:userInfo];
+}
+
+
+#pragma mark Notifications management (Visibility)
+
+- (void)notifyViewDidAppear:(BOOL)animated
+{
+	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewDidAppear:)])
+		[delegate viewController:self viewDidAppear:animated];
+}
+
+- (void)notifyViewDidDisappear:(BOOL)animated
+{
+	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewDidDisappear:)])
+		[delegate viewController:self viewDidDisappear:animated];
+}
+
+- (void)notifyViewWillAppear:(BOOL)animated
+{
+	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewWillAppear:)])
+		[delegate viewController:self viewWillAppear:animated];
+}
+
+- (void)notifyViewWillDisappear:(BOOL)animated
+{
+	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewWillDisappear:)])
+		[delegate viewController:self viewWillDisappear:animated];
 }
 
 @end

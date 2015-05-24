@@ -37,7 +37,7 @@
 #define AppVersionLong	JFApplicationInfoForKey(@"CFBundleVersion")
 #define AppVersionShort	JFApplicationInfoForKey(@"CFBundleShortVersionString")
 #define	ClassName		ObjectClassString(self)
-#define	LogMethod		NSLog(@"%@: executing '%@'.", ClassName, MethodName)
+#define	LogMethod		NSLog(@"%@ (%@): executing '%@'.", ClassName, IDToString(self), MethodName)
 #define MethodName		NSStringFromSelector(_cmd)
 
 
