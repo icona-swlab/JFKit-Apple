@@ -96,10 +96,10 @@ extern NSString* const	JFViewControllerWillMoveToParentNotification;	// UserInfo
 @optional
 #pragma mark Optional methods
 
-- (void)	viewController:(JFViewController*)viewController viewDidAppear:(BOOL)animated;
-- (void)	viewController:(JFViewController*)viewController viewDidDisappear:(BOOL)animated;
-- (void)	viewController:(JFViewController*)viewController viewWillAppear:(BOOL)animated;
-- (void)	viewController:(JFViewController*)viewController viewWillDisappear:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController viewDidAppearAnimated:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController viewDidDisappearAnimated:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController viewWillAppearAnimated:(BOOL)animated;
+- (void)	viewController:(JFViewController*)viewController viewWillDisappearAnimated:(BOOL)animated;
 
 @end
 

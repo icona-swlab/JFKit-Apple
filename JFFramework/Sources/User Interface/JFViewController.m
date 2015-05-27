@@ -396,29 +396,29 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 - (void)notifyViewDidAppear:(BOOL)animated
 {
 	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
-	if(delegate && [delegate respondsToSelector:@selector(viewController:viewDidAppear:)])
-		[delegate viewController:self viewDidAppear:animated];
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewDidAppearAnimated:)])
+		[delegate viewController:self viewDidAppearAnimated:animated];
 }
 
 - (void)notifyViewDidDisappear:(BOOL)animated
 {
 	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
-	if(delegate && [delegate respondsToSelector:@selector(viewController:viewDidDisappear:)])
-		[delegate viewController:self viewDidDisappear:animated];
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewDidDisappearAnimated:)])
+		[delegate viewController:self viewDidDisappearAnimated:animated];
 }
 
 - (void)notifyViewWillAppear:(BOOL)animated
 {
 	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
-	if(delegate && [delegate respondsToSelector:@selector(viewController:viewWillAppear:)])
-		[delegate viewController:self viewWillAppear:animated];
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewWillAppearAnimated:)])
+		[delegate viewController:self viewWillAppearAnimated:animated];
 }
 
 - (void)notifyViewWillDisappear:(BOOL)animated
 {
 	id<JFViewControllerVisibilityDelegate> delegate = self.visibilityDelegate;
-	if(delegate && [delegate respondsToSelector:@selector(viewController:viewWillDisappear:)])
-		[delegate viewController:self viewWillDisappear:animated];
+	if(delegate && [delegate respondsToSelector:@selector(viewController:viewWillDisappearAnimated:)])
+		[delegate viewController:self viewWillDisappearAnimated:animated];
 }
 
 @end
