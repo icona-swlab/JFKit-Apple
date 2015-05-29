@@ -20,6 +20,7 @@
 
 #import "JFFileManager.h"
 
+#import "JFLogger.h"
 #import "JFUtilities.h"
 
 
@@ -100,12 +101,36 @@
 	return [self.fileManager createDirectoryAtURL:folderURL withIntermediateDirectories:YES attributes:attributes error:error];
 }
 
+- (BOOL)itemExistsAtURL:(NSURL*)itemURL
+{
+	return [self itemExistsAtURL:itemURL isDirectory:NULL];
+}
+
 - (BOOL)itemExistsAtURL:(NSURL*)itemURL isDirectory:(BOOL*)isDirectory
 {
-	if(![itemURL isFileURL])
+	if(!itemURL || ![itemURL isFileURL])
 		return NO;
 	
 	return [self.fileManager fileExistsAtPath:[[itemURL path] stringByExpandingTildeInPath] isDirectory:isDirectory];
+}
+
+- (BOOL)setSkipBackupAttributeToItemAtURL:(NSURL*)itemURL
+{
+	if(!itemURL || ![itemURL isFileURL])
+		return NO;
+	
+	if(![self itemExistsAtURL:itemURL isDirectory:NULL])
+		return NO;
+	
+	NSError* error = nil;
+	BOOL retVal = [itemURL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:&error];
+	if(!retVal)
+	{
+		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+		NSString* logMessage = [NSString stringWithFormat:@"Failed to set the 'skip backup' attribute to item at URL '%@'%@.", [itemURL absoluteString], errorString];
+		[[JFLogger defaultLogger] logMessage:logMessage level:JFLogLevelError hashtags:(JFLogHashtagError | JFLogHashtagFilesystem)];
+	}
+	return retVal;
 }
 
 

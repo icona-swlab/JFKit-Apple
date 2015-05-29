@@ -26,7 +26,9 @@
 // File system management
 - (BOOL)	createFileAtURL:(NSURL*)fileURL contents:(NSData*)data attributes:(NSDictionary*)attributes;
 - (BOOL)	createFolderAtURL:(NSURL*)folderURL attributes:(NSDictionary*)attributes error:(NSError*__autoreleasing*)error;
+- (BOOL)	itemExistsAtURL:(NSURL*)itemURL;
 - (BOOL)	itemExistsAtURL:(NSURL*)itemURL isDirectory:(BOOL*)isDirectory;
+- (BOOL)	setSkipBackupAttributeToItemAtURL:(NSURL*)itemURL;
 
 // System directories management
 - (NSURL*)	createTemporaryDirectoryAppropriateForURL:(NSURL*)url;	// A temporary folder created specifically for the given URL.
