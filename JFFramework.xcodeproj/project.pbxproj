@@ -36,6 +36,8 @@
 		6C4F45291B03973400BA0F9D /* JFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F45231B03705000BA0F9D /* JFXMLParser.m */; };
 		6C679EF51B1F111C003AF29B /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C679EF31B1F111C003AF29B /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C679EF61B1F111C003AF29B /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C679EF41B1F111C003AF29B /* NSFileManager+JFFramework.m */; };
+		6C679F2E1B1F5798003AF29B /* JFBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C679F2C1B1F5798003AF29B /* JFBadge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C679F2F1B1F5798003AF29B /* JFBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C679F2D1B1F5798003AF29B /* JFBadge.m */; };
 		6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14501AA5B45B0060B922 /* JFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14561AA5B7130060B922 /* JFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14571AA5B7170060B922 /* JFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */; };
@@ -134,6 +136,8 @@
 		6C4F45231B03705000BA0F9D /* JFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFXMLParser.m; sourceTree = "<group>"; };
 		6C679EF31B1F111C003AF29B /* NSFileManager+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JFFramework.h"; sourceTree = "<group>"; };
 		6C679EF41B1F111C003AF29B /* NSFileManager+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+JFFramework.m"; sourceTree = "<group>"; };
+		6C679F2C1B1F5798003AF29B /* JFBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFBadge.h; sourceTree = "<group>"; };
+		6C679F2D1B1F5798003AF29B /* JFBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFBadge.m; sourceTree = "<group>"; };
 		6CBE14501AA5B45B0060B922 /* JFKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKit.h; sourceTree = "<group>"; };
 		6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewCell.h; sourceTree = "<group>"; };
 		6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewCell.m; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 				EACFD6141A87AEC400B4494E /* JFAlertsController.m */,
 				EA8192421AE26C6200DD84C0 /* JFAppDelegate.h */,
 				EA8192431AE26C6200DD84C0 /* JFAppDelegate.m */,
+				6C679F2C1B1F5798003AF29B /* JFBadge.h */,
+				6C679F2D1B1F5798003AF29B /* JFBadge.m */,
 				6C21AC1D1AEE799F00618042 /* JFBarButtonItem.h */,
 				6C21AC1E1AEE799F00618042 /* JFBarButtonItem.m */,
 				6C0535791AFB97C000A85091 /* JFLabel.h */,
@@ -522,6 +528,7 @@
 				EA26EC7F1A8785030050049A /* JFTransparentToolbar.h in Headers */,
 				EA26EC7D1A8785030050049A /* JFTextView.h in Headers */,
 				EA26EC871A8785030050049A /* JFSimpleFormViewController.h in Headers */,
+				6C679F2E1B1F5798003AF29B /* JFBadge.h in Headers */,
 				6C261B851AD674D300B0223F /* JFManager.h in Headers */,
 				6C21AC1F1AEE799F00618042 /* JFBarButtonItem.h in Headers */,
 				EA26EC731A8785030050049A /* JFSliderController.h in Headers */,
@@ -659,6 +666,7 @@
 				EA8192451AE26C6200DD84C0 /* JFAppDelegate.m in Sources */,
 				EA26EC821A8785030050049A /* JFDrawerController.m in Sources */,
 				6C21AC201AEE799F00618042 /* JFBarButtonItem.m in Sources */,
+				6C679F2F1B1F5798003AF29B /* JFBadge.m in Sources */,
 				EA26EC701A8785030050049A /* JFKeyboardViewHandler.m in Sources */,
 				EAB33F8C1A950630005FB623 /* JFViewController.m in Sources */,
 				EA26EC6A1A8785030050049A /* JFActivityIndicatorView.m in Sources */,
