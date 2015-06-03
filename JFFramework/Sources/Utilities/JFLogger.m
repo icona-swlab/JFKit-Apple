@@ -22,7 +22,8 @@
 
 #import <pthread.h>
 
-#import "JFFileManager.h"
+#import "NSFileManager+JFFramework.h"
+
 #import "JFUtilities.h"
 
 
@@ -105,7 +106,7 @@
 	
 	dispatch_once(&onceToken, ^{
 		NSString* fileName = [AppName stringByAppendingPathExtension:@"log"];
-		NSURL* url = [[[JFFileManager defaultManager] URLForSystemDirectoryApplicationSupport] URLByAppendingPathComponent:fileName];
+		NSURL* url = [[[NSFileManager defaultManager] URLForApplicationSupportDirectory] URLByAppendingPathComponent:fileName];
 		defaultLogger = (url ? [[self alloc] initWithFileURL:url] : [[self alloc] init]);
 	});
 	
@@ -200,18 +201,21 @@
 		return;
 	
 	// Prepares the hashtags string in case of error.
-	NSString* hashtagsString = [self hashtagsToString:(JFLogHashtagAttention|JFLogHashtagFilesystem)];
+	NSString* hashtagsString = [self hashtagsToString:(JFLogHashtagError | JFLogHashtagFilesystem)];
 	
 	// Checks if the file exists and creates it if not.
-	JFFileManager* fm = [JFFileManager defaultManager];
+	NSFileManager* fm = [NSFileManager defaultManager];
 	BOOL fileExists = [fm itemExistsAtURL:self.fileURL isDirectory:NULL];
 	if(!fileExists)
 	{
 		// Creates an empty file at 'fileURL' location.
-		fileExists = [fm createFileAtURL:self.fileURL contents:nil attributes:nil];
+		NSError* error = nil;
+		fileExists = [fm createFileAtURL:self.fileURL withIntermediateDirectories:YES contents:nil attributes:nil error:&error];
 		if(!fileExists)
 		{
-			NSLog(@"%@: could not create log file at path '%@'. %@", ClassName, [self.fileURL path], hashtagsString);
+			NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+			NSString* logMessage = [NSString stringWithFormat:@"%@: could not create log file at URL '%@'%@. %@", ClassName, [self.fileURL absoluteString], errorString, hashtagsString];
+			[self logMessageToConsole:logMessage];
 			return;
 		}
 	}

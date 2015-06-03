@@ -50,5 +50,4 @@
 #import "JFSimpleFormViewController.h"
 
 // Utilities
-#import "JFFileManager.h"
 #import "JFUpdatableFile.h"
