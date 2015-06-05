@@ -51,7 +51,7 @@
 }
 
 
-#pragma mark - User interface management (Lifecycle)
+#pragma mark User interface management (Lifecycle)
 
 - (void)layoutSubviews
 {
@@ -70,7 +70,7 @@
 }
 
 
-#pragma mark - User interface management (Metrics)
+#pragma mark User interface management (Metrics)
 
 - (CGSize)intrinsicContentSize
 {
