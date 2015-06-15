@@ -181,7 +181,7 @@
 {}
 
 
-#pragma mark User interface management (View lifecycle)
+#pragma mark User interface management (Lifecycle)
 
 - (void)didMoveToWindow
 {
