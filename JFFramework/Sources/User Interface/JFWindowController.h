@@ -33,10 +33,6 @@
 // Flags
 @property (assign, nonatomic, readonly, getter = isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
 
-// Debug
-@property (strong, nonatomic, readonly)				JFLogger*	logger;
-@property (assign, nonatomic, getter = isLogging)	BOOL		logging;
-
 // User interface
 @property (strong, nonatomic, readonly)	UIWindow*	window;
 
@@ -45,7 +41,6 @@
 
 // Memory management
 - (instancetype)	initWithWindow:(UIWindow*)window;
-- (instancetype)	initWithWindow:(UIWindow*)window logger:(JFLogger*)logger;	// Default initializator.
 
 // User interface management
 //- (BOOL)	replaceRootViewControllerWithViewController:(UIViewController*)viewController;

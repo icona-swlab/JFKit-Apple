@@ -14,13 +14,6 @@
 
 @interface JFManager : NSObject
 
-#pragma mark Properties
-
-// Debugging
-@property (strong)						JFLogger*	logger;
-@property (assign, getter = isLogging)	BOOL		logging;
-
-
 #pragma mark Methods
 
 // Memory management

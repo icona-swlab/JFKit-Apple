@@ -26,6 +26,10 @@
 		6C05357C1AFB97C000A85091 /* JFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C05357A1AFB97C000A85091 /* JFLabel.m */; };
 		6C06BE9E1AF769C100C5F5CC /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C06BE9C1AF769C100C5F5CC /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C06BE9F1AF769C100C5F5CC /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C06BE9D1AF769C100C5F5CC /* JFHTTPRequest.m */; };
+		6C118D3B1B31BB4D0002B076 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C118D391B31BB4D0002B076 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C118D3C1B31BB4D0002B076 /* NSObject+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C118D3A1B31BB4D0002B076 /* NSObject+JFFramework.m */; };
+		6C118D3D1B31C09E0002B076 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C118D391B31BB4D0002B076 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C118D3E1B31C0A90002B076 /* NSObject+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C118D3A1B31BB4D0002B076 /* NSObject+JFFramework.m */; };
 		6C1B54281AFCE1FC00165804 /* JFURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C1B54241AFCE1F800165804 /* JFURLProtocol.h */; };
 		6C1B54291AFCE26C00165804 /* JFURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B54251AFCE1F800165804 /* JFURLProtocol.m */; };
 		6C21AC1F1AEE799F00618042 /* JFBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C21AC1D1AEE799F00618042 /* JFBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -124,6 +128,8 @@
 		6C05357A1AFB97C000A85091 /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLabel.m; sourceTree = "<group>"; };
 		6C06BE9C1AF769C100C5F5CC /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
 		6C06BE9D1AF769C100C5F5CC /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
+		6C118D391B31BB4D0002B076 /* NSObject+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JFFramework.h"; sourceTree = "<group>"; };
+		6C118D3A1B31BB4D0002B076 /* NSObject+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JFFramework.m"; sourceTree = "<group>"; };
 		6C1B54241AFCE1F800165804 /* JFURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFURLProtocol.h; sourceTree = "<group>"; };
 		6C1B54251AFCE1F800165804 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
 		6C21AC1D1AEE799F00618042 /* JFBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFBarButtonItem.h; sourceTree = "<group>"; };
@@ -243,6 +249,8 @@
 			children = (
 				6C679EF31B1F111C003AF29B /* NSFileManager+JFFramework.h */,
 				6C679EF41B1F111C003AF29B /* NSFileManager+JFFramework.m */,
+				6C118D391B31BB4D0002B076 /* NSObject+JFFramework.h */,
+				6C118D3A1B31BB4D0002B076 /* NSObject+JFFramework.m */,
 			);
 			path = Addons;
 			sourceTree = "<group>";
@@ -498,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */,
+				6C118D3B1B31BB4D0002B076 /* NSObject+JFFramework.h in Headers */,
 				EA26EBED1A87679F0050049A /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +522,7 @@
 				6C4F45241B03705000BA0F9D /* JFXMLParser.h in Headers */,
 				6C06BE9E1AF769C100C5F5CC /* JFHTTPRequest.h in Headers */,
 				EA26EC791A8785030050049A /* JFTableViewSection.h in Headers */,
+				6C118D3D1B31C09E0002B076 /* NSObject+JFFramework.h in Headers */,
 				EAF2EB181A9CC677009D304E /* JFMobileKit.h in Headers */,
 				EAB33F8B1A950630005FB623 /* JFViewController.h in Headers */,
 				EA26EC851A8785030050049A /* JFMenuViewController.h in Headers */,
@@ -636,6 +646,7 @@
 				EACFD6161A87AEC400B4494E /* JFAlertsController.m in Sources */,
 				EA26EC761A8785030050049A /* JFSplitViewController.m in Sources */,
 				EA26EC881A8785030050049A /* JFSimpleFormViewController.m in Sources */,
+				6C118D3E1B31C0A90002B076 /* NSObject+JFFramework.m in Sources */,
 				EA16DF431AE98CE200085BAE /* JFSplashViewController.m in Sources */,
 				EA4BB9441A8A25C10000C045 /* JFLogger.m in Sources */,
 				EA26EBF01A87679F0050049A /* JFUtilities.m in Sources */,
@@ -669,6 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C118D3C1B31BB4D0002B076 /* NSObject+JFFramework.m in Sources */,
 				EA26EBEF1A87679F0050049A /* JFUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

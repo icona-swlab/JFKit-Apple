@@ -20,6 +20,8 @@
 
 #import "JFAppDelegate.h"
 
+#import "NSObject+JFFramework.h"
+
 #import "JFAlertsController.h"
 #import "JFLogger.h"
 #import "JFUtilities.h"
@@ -46,9 +48,6 @@
 
 #pragma mark Properties
 
-// Debug
-@synthesize logger	= _logger;
-
 // User interface
 @synthesize alertsController	= _alertsController;
 @synthesize window				= _window;
@@ -62,11 +61,8 @@
 	self = [super init];
 	if(self)
 	{
-		// Debug
-		_logger = [JFLogger defaultLogger];
-		
 #ifdef DEBUG
-		_logger.level = JFLogLevelDebug;
+		self.logger.level = JFLogLevelDebug;
 #endif
 		
 		// User interface

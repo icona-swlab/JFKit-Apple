@@ -20,6 +20,8 @@
 
 #import "JFWindowController.h"
 
+#import "NSObject+JFFramework.h"
+
 #import "JFLogger.h"
 
 
@@ -52,10 +54,6 @@
 
 #pragma mark Properties
 
-// Debug
-@synthesize logger	= _logger;
-@synthesize logging	= _logging;
-
 // Flags
 @synthesize userInterfaceLoaded	= _userInterfaceLoaded;
 
@@ -72,18 +70,9 @@
 
 - (instancetype)initWithWindow:(UIWindow*)window
 {
-	return [self initWithWindow:window logger:[JFLogger defaultLogger]];
-}
-
-- (instancetype)initWithWindow:(UIWindow*)window logger:(JFLogger*)logger;
-{
 	self = (window ? [self init] : nil);
 	if(self)
 	{
-		// Debug
-		_logger = logger;
-		_logging = YES;
-		
 		// Flags
 		_userInterfaceLoaded = NO;
 		
@@ -152,7 +141,7 @@
 
 - (void)didLoadUserInterface
 {
-	if([self isLogging])
+	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface has been loaded.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -161,7 +150,7 @@
 
 - (void)loadUserInterface
 {
-	if([self isLogging])
+	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface is being loaded.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -170,7 +159,7 @@
 
 - (void)willLoadUserInterface
 {
-	if([self isLogging])
+	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface will be loaded.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -179,7 +168,7 @@
 
 - (void)windowDidBecomeHidden
 {
-	if([self isLogging])
+	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become hidden.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -188,7 +177,7 @@
 
 - (void)windowDidBecomeKey
 {
-	if([self isLogging])
+	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become key.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -197,7 +186,7 @@
 
 - (void)windowDidBecomeVisible
 {
-	if([self isLogging])
+	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become visible.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
@@ -216,7 +205,7 @@
 
 - (void)windowDidResignKey
 {
-	if([self isLogging])
+	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", IDToString(self.window)];
 		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];

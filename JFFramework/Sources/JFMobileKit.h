@@ -49,6 +49,7 @@
 
 // Utilities (Addons)
 #import	"NSFileManager+JFFramework.h"
+#import	"NSObject+JFFramework.h"
 
 ///// OLD /////
 #import	"JFMobileKit_OLD.h"

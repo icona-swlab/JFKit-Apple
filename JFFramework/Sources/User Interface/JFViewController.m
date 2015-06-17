@@ -83,10 +83,6 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 
 #pragma mark Properties
 
-// Debug
-@synthesize logger	= _logger;
-@synthesize logging	= _logging;
-
 // Relationships
 @synthesize navigationDelegate	= _navigationDelegate;
 @synthesize rotationDelegate	= _rotationDelegate;
@@ -98,18 +94,6 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 - (instancetype)init
 {
 	return [self initWithNibName:StandardXIBName bundle:nil];
-}
-
-- (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
-{
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if(self)
-	{
-		// Debug
-		_logger = [JFLogger defaultLogger];
-		_logging = YES;
-	}
-	return self;
 }
 
 

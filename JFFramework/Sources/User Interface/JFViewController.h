@@ -113,10 +113,6 @@ extern NSString* const	JFViewControllerWillMoveToParentNotification;	// UserInfo
 
 #pragma mark Properties
 
-// Debug
-@property (strong, nonatomic)						JFLogger*	logger;
-@property (assign, nonatomic, getter = isLogging)	BOOL		logging;
-
 // Relationships
 @property (weak, nonatomic)	id<JFViewControllerNavigationDelegate>	navigationDelegate;
 @property (weak, nonatomic)	id<JFViewControllerRotationDelegate>	rotationDelegate;
