@@ -88,53 +88,6 @@
 }
 
 
-#pragma mark User interface management
-
-//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController
-//{
-//	return [self replaceRootViewControllerWithViewController:viewController completion:nil];
-//}
-//
-//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion
-//{
-//	return [self replaceRootViewControllerWithViewController:viewController duration:JFAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve completion:completion];
-//}
-//
-//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion
-//{
-//	if(!viewController)
-//		return NO;
-//
-//	UIViewController* rootViewController = self.window.rootViewController;
-//	if(rootViewController == viewController)
-//		return NO;
-//
-//	JFBlockWithBOOL innerCompletion = ^(BOOL finished)
-//	{
-//		if(finished)
-//			self.window.rootViewController = viewController;
-//
-//		if(completion)
-//			completion(finished);
-//	};
-//
-//	if(!rootViewController)
-//	{
-//		[NSMainOperationQueue addOperationWithBlock:^(void){
-//			innerCompletion(YES);
-//		}];
-//		return YES;
-//	}
-//
-//	UIView* fromView = rootViewController.view;
-//	UIView* toView = viewController.view;
-//
-//	[UIView transitionFromView:fromView toView:toView duration:duration options:options completion:innerCompletion];
-//
-//	return YES;
-//}
-
-
 #pragma mark User interface management (Window lifecycle)
 
 - (void)didLoadUserInterface
@@ -232,3 +185,49 @@
 }
 
 @end
+
+
+
+//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController
+//{
+//	return [self replaceRootViewControllerWithViewController:viewController completion:nil];
+//}
+//
+//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion
+//{
+//	return [self replaceRootViewControllerWithViewController:viewController duration:JFAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve completion:completion];
+//}
+//
+//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion
+//{
+//	if(!viewController)
+//		return NO;
+//
+//	UIViewController* rootViewController = self.window.rootViewController;
+//	if(rootViewController == viewController)
+//		return NO;
+//
+//	JFBlockWithBOOL innerCompletion = ^(BOOL finished)
+//	{
+//		if(finished)
+//			self.window.rootViewController = viewController;
+//
+//		if(completion)
+//			completion(finished);
+//	};
+//
+//	if(!rootViewController)
+//	{
+//		[NSMainOperationQueue addOperationWithBlock:^(void){
+//			innerCompletion(YES);
+//		}];
+//		return YES;
+//	}
+//
+//	UIView* fromView = rootViewController.view;
+//	UIView* toView = viewController.view;
+//
+//	[UIView transitionFromView:fromView toView:toView duration:duration options:options completion:innerCompletion];
+//
+//	return YES;
+//}
