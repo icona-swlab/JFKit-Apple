@@ -16,7 +16,7 @@
 
 @implementation NSObject (JFFramework)
 
-#pragma Class properties
+#pragma mark Class properties
 
 // Flags
 static BOOL	_defaultShouldLogValue	= YES;

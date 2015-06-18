@@ -42,11 +42,6 @@
 // Memory management
 - (instancetype)	initWithWindow:(UIWindow*)window;
 
-// User interface management
-//- (BOOL)	replaceRootViewControllerWithViewController:(UIViewController*)viewController;
-//- (BOOL)	replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion;
-//- (BOOL)	replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion;
-
 // User interface management (Window lifecycle)
 - (void)	didLoadUserInterface;
 - (void)	loadUserInterface;

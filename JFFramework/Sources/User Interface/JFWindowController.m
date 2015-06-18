@@ -104,20 +104,20 @@
 //{
 //	if(!viewController)
 //		return NO;
-//	
+//
 //	UIViewController* rootViewController = self.window.rootViewController;
 //	if(rootViewController == viewController)
 //		return NO;
-//	
+//
 //	JFBlockWithBOOL innerCompletion = ^(BOOL finished)
 //	{
 //		if(finished)
 //			self.window.rootViewController = viewController;
-//		
+//
 //		if(completion)
 //			completion(finished);
 //	};
-//	
+//
 //	if(!rootViewController)
 //	{
 //		[NSMainOperationQueue addOperationWithBlock:^(void){
@@ -125,12 +125,12 @@
 //		}];
 //		return YES;
 //	}
-//	
+//
 //	UIView* fromView = rootViewController.view;
 //	UIView* toView = viewController.view;
-//	
+//
 //	[UIView transitionFromView:fromView toView:toView duration:duration options:options completion:innerCompletion];
-//	
+//
 //	return YES;
 //}
 
@@ -193,9 +193,7 @@
 	if(![self isUserInterfaceLoaded])
 	{
 		[self willLoadUserInterface];
-		[UIView beginAnimations:@"LoadUserInterface" context:NULL];	// FIX: fixes the "Unbalanced calls to..." warning when presenting a modal view at the start.
 		[self loadUserInterface];
-		[UIView commitAnimations];
 		self.userInterfaceLoaded = YES;
 		[self didLoadUserInterface];
 	}
