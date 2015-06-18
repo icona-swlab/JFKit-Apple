@@ -22,8 +22,6 @@
 
 #import <pthread.h>
 
-#import "NSFileManager+JFFramework.h"
-
 #import "JFUtilities.h"
 
 

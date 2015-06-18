@@ -20,8 +20,6 @@
 
 #import "JFImageManager.h"
 
-#import "NSFileManager+JFFramework.h"
-
 #import "JFImageObserver.h"
 
 

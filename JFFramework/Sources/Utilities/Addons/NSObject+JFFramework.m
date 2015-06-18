@@ -16,19 +16,22 @@
 
 @implementation NSObject (JFFramework)
 
+#pragma Class properties
+
+// Flags
+static BOOL	_defaultShouldLogValue	= YES;
+
+// Utilities
+static JFLogger*	_defaultLogger	= nil;
+
+
 #pragma mark Properties accessors (Flags)
 
 + (BOOL)defaultShouldLogValue
 {
 	@synchronized(self)
 	{
-		BOOL retVal = YES;
-		NSNumber* number = objc_getAssociatedObject(self, @selector(defaultShouldLogValue));
-		if(!number)
-			[self setDefaultShouldLogValue:retVal];
-		else
-			retVal = [number boolValue];
-		return retVal;
+		return _defaultShouldLogValue;
 	}
 }
 
@@ -36,7 +39,7 @@
 {
 	@synchronized(self)
 	{
-		objc_setAssociatedObject(self, @selector(defaultShouldLogValue), @(shouldLog), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+		_defaultShouldLogValue = shouldLog;
 	}
 }
 
@@ -72,13 +75,9 @@
 {
 	@synchronized(self)
 	{
-		JFLogger* retObj = objc_getAssociatedObject(self, @selector(defaultLogger));
-		if(!retObj)
-		{
-			retObj = [JFLogger defaultLogger];
-			[self setDefaultLogger:retObj];
-		}
-		return retObj;
+		if(!_defaultLogger)
+			_defaultLogger = [JFLogger defaultLogger];
+		return _defaultLogger;
 	}
 }
 
@@ -86,7 +85,7 @@
 {
 	@synchronized(self)
 	{
-		objc_setAssociatedObject(self, @selector(defaultLogger), logger, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+		_defaultLogger = logger;
 	}
 }
 

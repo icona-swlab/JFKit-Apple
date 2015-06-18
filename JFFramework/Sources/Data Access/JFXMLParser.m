@@ -41,14 +41,6 @@
 
 
 
-#ifdef DEBUG
-static BOOL debugMode = NO;
-#else
-static BOOL debugMode = NO;
-#endif
-
-
-
 @implementation JFXMLParser
 
 #pragma mark - Properties
@@ -141,7 +133,11 @@ static BOOL debugMode = NO;
 	if(self.rssParser != parser)
 		return;
 	
-	if(debugMode) NSLog(@"XML Parser: did end to parse element with name '%@'.", elementName);
+	if([self shouldLog])
+	{
+		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: did end to parse element with name '%@'.", elementName];
+		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+	}
 	
 	id item = [self parserDidEndElement:elementName namespaceURI:namespaceURI qualifiedName:qName];
 	if(item)
@@ -155,7 +151,11 @@ static BOOL debugMode = NO;
 	if(self.rssParser != parser)
 		return;
 	
-	if(debugMode) NSLog(@"XML Parser: did start to parse element with name '%@'.", elementName);
+	if([self shouldLog])
+	{
+		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: did start to parse element with name '%@'.", elementName];
+		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+	}
 	
 	[self parserDidStartElement:elementName namespaceURI:namespaceURI qualifiedName:qName attributes:attributeDict];
 	
@@ -167,7 +167,11 @@ static BOOL debugMode = NO;
 	if(self.rssParser != parser)
 		return;
 	
-	if(debugMode) NSLog(@"XML Parser: found characters for element with name '%@': '%@'.", self.currentElement, string);
+	if([self shouldLog])
+	{
+		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: found characters for element with name '%@': '%@'.", self.currentElement, string];
+		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+	}
 	
 	[self parserFoundCharacters:string forElement:self.currentElement];
 }
@@ -177,6 +181,12 @@ static BOOL debugMode = NO;
 	if(self.rssParser != parser)
 		return;
 	
+	if([self shouldLog])
+	{
+		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: stopped document parsing for error '%@'.", parseError];
+		[self.logger logMessage:logMessage level:JFLogLevelError hashtags:JFLogHashtagError];
+	}
+	
 	[self performSelectorOnMainThread:@selector(notifyDelegateWithError:) withObject:parseError waitUntilDone:NO];
 }
 
@@ -184,6 +194,12 @@ static BOOL debugMode = NO;
 {
 	if(self.rssParser != parser)
 		return;
+	
+	if([self shouldLog])
+	{
+		NSString* logMessage = @"XML Parser: ended document parsing.";
+		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+	}
 	
 	[self performSelectorOnMainThread:@selector(notifyDelegateWithError:) withObject:nil waitUntilDone:NO];
 }
@@ -193,7 +209,11 @@ static BOOL debugMode = NO;
 	if(self.rssParser != parser)
 		return;
 	
-	if(debugMode) NSLog(@"XML Parser: started document parsing.");
+	if([self shouldLog])
+	{
+		NSString* logMessage = @"XML Parser: started document parsing.";
+		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+	}
 }
 
 

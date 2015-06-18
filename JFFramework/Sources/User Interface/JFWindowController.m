@@ -20,8 +20,6 @@
 
 #import "JFWindowController.h"
 
-#import "NSObject+JFFramework.h"
-
 #import "JFLogger.h"
 
 

@@ -20,8 +20,6 @@
 
 #import "JFAppDelegate.h"
 
-#import "NSObject+JFFramework.h"
-
 #import "JFAlertsController.h"
 #import "JFLogger.h"
 #import "JFUtilities.h"

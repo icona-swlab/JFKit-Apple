@@ -36,11 +36,6 @@
 #define ColorWithRGBA(arg_r, arg_g, arg_b, arg_a)	[UIColor colorWithRed:(((float)arg_r)/255.0f) green:(((float)arg_g)/255.0f) blue:(((float)arg_b)/255.0f) alpha:(((float)arg_a)/255.0f)]
 
 
-#pragma mark - Macros (Debug)
-
-#define	LogMethod	NSLog(@"%@: executing '%@'.", ClassName, MethodName)
-
-
 #pragma mark - Macros (Equality)
 
 #define AreArraysEqual(arg_obj1, arg_obj2)	((!arg_obj1 && !arg_obj2) || [arg_obj1 isEqualToArray:arg_obj2])

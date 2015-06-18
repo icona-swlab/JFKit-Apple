@@ -24,8 +24,9 @@
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
-// User
-#import "JFGlobals.h"
+// Addons
+#import "NSFileManager+JFFramework.h"
+#import "NSObject+JFFramework.h"
 
 
 #if TARGET_OS_IPHONE

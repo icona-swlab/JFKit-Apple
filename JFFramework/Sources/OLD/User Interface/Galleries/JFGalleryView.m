@@ -231,7 +231,6 @@
 			view.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
 		}
 		[self.galleryViews replaceObjectAtIndex:index withObject:view];
-		//NSLog(@"%@: Loaded view at index %@.", ClassName, NSIntegerToString(index));
 	}
 	
 	if(view)

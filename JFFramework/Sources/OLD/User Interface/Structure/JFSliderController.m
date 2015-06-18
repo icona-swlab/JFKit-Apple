@@ -136,26 +136,10 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 
 #pragma mark - Properties accessors (Flags)
 
-- (void)setCurrentFocalPanel:(JFSliderControllerPanel)currentFocalPanel
-{
-	if(_currentFocalPanel == currentFocalPanel)
-		return;
-	
-	//NSString* oldStateString = [self convertPanelToString:_currentFocalPanel];
-	//NSString* newStateString = [self convertPanelToString:currentFocalPanel];
-	//NSLog(@"%@: focal panel changed from '%@' to '%@'.", ClassName, oldStateString, newStateString);
-	
-	_currentFocalPanel = currentFocalPanel;
-}
-
 - (void)setCurrentTransition:(JFSliderControllerTransition)currentTransition
 {
 	if(_currentTransition == currentTransition)
 		return;
-	
-	//NSString* oldTransitionString = [self convertTransitionToString:_currentTransition];
-	//NSString* newTransitionString = [self convertTransitionToString:currentTransition];
-	//NSLog(@"%@: transition changed from '%@' to '%@'.", ClassName, oldTransitionString, newTransitionString);
 	
 	_currentTransition = currentTransition;
 	
