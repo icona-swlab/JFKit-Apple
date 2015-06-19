@@ -136,7 +136,7 @@
 	if([self shouldLog])
 	{
 		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: did end to parse element with name '%@'.", elementName];
-		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:logMessage level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
 	id item = [self parserDidEndElement:elementName namespaceURI:namespaceURI qualifiedName:qName];
@@ -154,7 +154,7 @@
 	if([self shouldLog])
 	{
 		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: did start to parse element with name '%@'.", elementName];
-		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:logMessage level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
 	[self parserDidStartElement:elementName namespaceURI:namespaceURI qualifiedName:qName attributes:attributeDict];
@@ -170,7 +170,7 @@
 	if([self shouldLog])
 	{
 		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: found characters for element with name '%@': '%@'.", self.currentElement, string];
-		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:logMessage level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
 	[self parserFoundCharacters:string forElement:self.currentElement];
@@ -184,7 +184,7 @@
 	if([self shouldLog])
 	{
 		NSString* logMessage = [NSString stringWithFormat:@"XML Parser: stopped document parsing for error '%@'.", parseError];
-		[self.logger logMessage:logMessage level:JFLogLevelError hashtags:JFLogHashtagError];
+		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:JFLogHashtagError];
 	}
 	
 	[self performSelectorOnMainThread:@selector(notifyDelegateWithError:) withObject:parseError waitUntilDone:NO];
@@ -198,7 +198,7 @@
 	if([self shouldLog])
 	{
 		NSString* logMessage = @"XML Parser: ended document parsing.";
-		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:logMessage level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
 	[self performSelectorOnMainThread:@selector(notifyDelegateWithError:) withObject:nil waitUntilDone:NO];
@@ -212,7 +212,7 @@
 	if([self shouldLog])
 	{
 		NSString* logMessage = @"XML Parser: started document parsing.";
-		[self.logger logMessage:logMessage level:JFLogLevelInfo hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:logMessage level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 

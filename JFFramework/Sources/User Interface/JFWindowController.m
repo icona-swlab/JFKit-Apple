@@ -95,7 +95,7 @@
 	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface has been loaded.", IDToString(self.window)];
-		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
@@ -104,7 +104,7 @@
 	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface is being loaded.", IDToString(self.window)];
-		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
@@ -113,7 +113,7 @@
 	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface will be loaded.", IDToString(self.window)];
-		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
@@ -122,7 +122,7 @@
 	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become hidden.", IDToString(self.window)];
-		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
@@ -131,7 +131,7 @@
 	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become key.", IDToString(self.window)];
-		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
@@ -140,7 +140,7 @@
 	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did become visible.", IDToString(self.window)];
-		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
 	if(![self isUserInterfaceLoaded])
@@ -157,7 +157,7 @@
 	if([self shouldLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", IDToString(self.window)];
-		[self.logger logMessage:message level:JFLogLevelDefault hashtags:JFLogHashtagDeveloper];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 

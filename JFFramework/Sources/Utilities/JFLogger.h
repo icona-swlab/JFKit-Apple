@@ -57,16 +57,14 @@ typedef NS_OPTIONS(UInt16, JFLogHashtags)
 
 typedef NS_OPTIONS(UInt8, JFLogLevel)
 {
-	JFLogLevelEmergency,	// The highest priority, usually reserved for catastrophic failures and reboot notices.
-	JFLogLevelAlert,		// A serious failure in a key system.
-	JFLogLevelCritical,		// A failure in a key system.
-	JFLogLevelError,		// Something has failed.
-	JFLogLevelWarning,		// Something is amiss and might fail if not corrected.
-	JFLogLevelNotice,		// Things of moderate interest to the user or administrator.
-	JFLogLevelInfo,			// The lowest priority that you would normally log, and purely informational in nature.
-	JFLogLevelDebug,		// The lowest priority, and normally not logged except for messages from the kernel.
-	
-	JFLogLevelDefault = JFLogLevelNotice
+	JFLogLevel0Emergency,	// The highest priority, usually reserved for catastrophic failures and reboot notices.
+	JFLogLevel1Alert,		// A serious failure in a key system.
+	JFLogLevel2Critical,	// A failure in a key system.
+	JFLogLevel3Error,		// Something has failed.
+	JFLogLevel4Warning,		// Something is amiss and might fail if not corrected.
+	JFLogLevel5Notice,		// Things of moderate interest to the user or administrator.
+	JFLogLevel6Info,		// The lowest priority that you would normally log, and purely informational in nature.
+	JFLogLevel7Debug,		// The lowest priority, and normally not logged except for messages from the kernel.
 };
 
 

@@ -60,7 +60,7 @@
 	if(self)
 	{
 #ifdef DEBUG
-		self.logger.level = JFLogLevelDebug;
+		self.logger.level = JFLogLevel7Debug;
 #endif
 		
 		// User interface
@@ -82,7 +82,7 @@
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-	[self.logger logMessage:@"Application opened." level:JFLogLevelDebug hashtags:JFLogHashtagDeveloper];
+	[self.logger logMessage:@"Application opened." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	
 	// Loads the user interface.
 	self.window = [[UIWindow alloc] initWithFrame:UIMainScreen.bounds];
@@ -95,27 +95,27 @@
 
 - (void)applicationDidBecomeActive:(UIApplication*)application
 {
-	[self.logger logMessage:@"Application did become active." level:JFLogLevelDebug hashtags:JFLogHashtagDeveloper];
+	[self.logger logMessage:@"Application did become active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication*)application
 {
-	[self.logger logMessage:@"Application did enter background." level:JFLogLevelDebug hashtags:JFLogHashtagDeveloper];
+	[self.logger logMessage:@"Application did enter background." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication*)application
 {
-	[self.logger logMessage:@"Application did receive memory warning." level:JFLogLevelWarning hashtags:JFLogHashtagAttention];
+	[self.logger logMessage:@"Application did receive memory warning." level:JFLogLevel4Warning hashtags:JFLogHashtagAttention];
 }
 
 - (void)applicationWillResignActive:(UIApplication*)application;
 {
-	[self.logger logMessage:@"Application will resign active." level:JFLogLevelDebug hashtags:JFLogHashtagDeveloper];
+	[self.logger logMessage:@"Application will resign active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication*)application
 {
-	[self.logger logMessage:@"Application will enter foreground." level:JFLogLevelDebug hashtags:JFLogHashtagDeveloper];
+	[self.logger logMessage:@"Application will enter foreground." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 @end

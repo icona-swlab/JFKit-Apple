@@ -87,7 +87,7 @@
 				else
 				{
 					NSString* logMessage = [NSString stringWithFormat:@"%@: could not connect to persistent store at URL '%@' for error '%@'.", ClassName, [self.persistentStoreURL absoluteString], error];
-					[self.logger logMessage:logMessage level:JFLogLevelError hashtags:JFLogHashtagError];
+					[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:JFLogHashtagError];
 					if([[NSFileManager defaultManager] fileExistsAtPath:[self.persistentStoreURL path]])
 					{
 						if([[NSFileManager defaultManager] removeItemAtURL:self.persistentStoreURL error:&error])
@@ -95,7 +95,7 @@
 						else
 						{
 							logMessage = [NSString stringWithFormat:@"%@: could not remove persistent store at URL '%@' for error '%@'.", ClassName, [self.persistentStoreURL absoluteString], error];
-							[self.logger logMessage:logMessage level:JFLogLevelError hashtags:JFLogHashtagError];
+							[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:JFLogHashtagError];
 						}
 					}
 				}
