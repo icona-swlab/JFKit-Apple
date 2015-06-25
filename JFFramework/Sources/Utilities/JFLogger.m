@@ -42,8 +42,6 @@
 // Logging management
 - (void)	logMessageToConsole:(NSString*)message;
 - (void)	logMessageToFile:(NSString*)message;
-- (void)	replaceLogFile;
-- (BOOL)	shouldReplaceLogFile;
 
 // Utilities management
 - (NSString*)	hashtagsToString:(JFLogHashtags)hashtags;
@@ -64,10 +62,9 @@
 @synthesize dateFormatter	= _dateFormatter;
 
 // Settings
-@synthesize destinations			= _destinations;
-@synthesize expirationTimeInterval	= _expirationTimeInterval;
-@synthesize fileURL					= _fileURL;
-@synthesize level					= _level;
+@synthesize destinations	= _destinations;
+@synthesize fileURL			= _fileURL;
+@synthesize level			= _level;
 
 
 #pragma mark Properties accessors (Settings)
@@ -255,56 +252,6 @@
 		[fh writeData:data];
 		[fh closeFile];
 	}
-}
-
-- (void)replaceLogFile
-{}
-
-- (BOOL)shouldReplaceLogFile
-{
-	return NO;
-	
-//	static NSCalendar* calendar = nil;
-//	
-//	if(!filePath)
-//		return NO;
-//	
-//	// Creates an owned instance of a file manager for thread safety.
-//	NSFileManager* fm = [[NSFileManager alloc] init];
-//	
-//	// Retrieves the last modification date attribute of the file.
-//	NSError* error = nil;
-//	NSDictionary* attributes = [fm attributesOfItemAtPath:filePath error:&error];
-//	NSDate* lastModifiedDate = [attributes fileModificationDate];
-//	if(error || !lastModifiedDate)
-//	{
-//		NSString* hashtagsString = [self hashtagsToString:(LogHashtagAttention|LogHashtagFilesystem)];
-//		NSLog(@"%@: could not read the 'last modification date' attribute of log file at path '%@' for error '%@'. %@", SelfClassString, filePath, error, hashtagsString);
-//		return NO;
-//	}
-//	
-//	// Prepares the calendar (NSCalendar is NOT thread safe).
-//	@synchronized(self)
-//	{
-//		// Creates the date formatter if not already done.
-//		if(!calendar)
-//			calendar = [NSCalendar currentCalendar];
-//	}
-//	
-//	// Prepares the date objects for comparison in a thread safe scope.
-//	NSDate* date1 = nil;
-//	NSDate* date2 = nil;
-//	@synchronized(calendar)
-//	{
-//		NSUInteger components = (NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit);
-//		NSDateComponents* dc1 = [calendar components:components fromDate:lastModifiedDate];
-//		NSDateComponents* dc2 = [calendar components:components fromDate:[NSDate date]];
-//		date1 = [calendar dateFromComponents:dc1];
-//		date2 = [calendar dateFromComponents:dc2];
-//	}
-//	
-//	// Returns YES if not the same day.
-//	return ![date1 isEqualToDate:date2];
 }
 
 
