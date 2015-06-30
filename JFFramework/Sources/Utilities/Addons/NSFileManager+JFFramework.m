@@ -133,6 +133,25 @@
 }
 
 
+#pragma mark Item deletion management
+
+- (BOOL)deleteContentsOfDirectoryAtPath:(NSString*)dirPath error:(NSError*__autoreleasing*)error
+{
+	NSArray* items = [self contentsOfDirectoryAtPath:dirPath error:error];
+	if(!items)
+		return NO;
+	
+	for(NSString* item in items)
+	{
+		NSString* itemPath = [dirPath stringByAppendingPathComponent:item];
+		if(![self removeItemAtPath:itemPath error:error])
+			return NO;
+	}
+	
+	return YES;
+}
+
+
 #pragma mark System directories management
 
 - (NSURL*)createTemporaryDirectoryAppropriateForURL:(NSURL*)url
