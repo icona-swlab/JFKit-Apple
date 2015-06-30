@@ -24,6 +24,8 @@
 #import <Foundation/Foundation.h>
 
 // Utilities
+#import	"JFLogger.h"
+#import	"JFManager.h"
 #import "JFUtilities.h"
 
 // Utilities (Addons)
