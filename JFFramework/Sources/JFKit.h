@@ -29,4 +29,5 @@
 #import "JFUtilities.h"
 
 // Utilities (Addons)
+#import "NSIndexPath+JFFramework.h"
 #import	"NSObject+JFFramework.h"
