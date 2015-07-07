@@ -136,8 +136,16 @@
 	[cell setNeedsLayout];
 	[cell layoutIfNeeded];
 	
-	UIView* view = (iOS8Plus ? cell : cell.contentView);
-	CGSize calculatedSize = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+	CGSize calculatedSize = CGSizeZero;
+	
+	if(iOS8Plus)
+	{
+		calculatedSize = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize withHorizontalFittingPriority:UILayoutPriorityRequired verticalFittingPriority:UILayoutPriorityFittingSizeLevel];
+	}
+	else
+	{
+		calculatedSize = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+	}
 	
 	CGFloat retVal = MAX(calculatedSize.height, [self minimumHeight]);
 	retVal = MIN(retVal, [self maximumHeight]);
@@ -166,15 +174,19 @@
 	
 	NSString* key = ClassName;
 	
-	JFTableViewCell* retVal = [sizingCells objectForKey:key];
-	if(!retVal)
+	JFTableViewCell* retObj = [sizingCells objectForKey:key];
+	if(!retObj)
 	{
-		retVal = [[[self nib] instantiateWithOwner:self options:nil] firstObject];
-		if(retVal)
-			[sizingCells setObject:retVal forKey:key];
+		if(self == [JFTableViewCell class])
+			retObj = [[JFTableViewCell alloc] init];
+		else
+			retObj = [[[self nib] instantiateWithOwner:self options:nil] firstObject];
+		
+		if(retObj)
+			[sizingCells setObject:retObj forKey:key];
 	}
 	
-	return retVal;
+	return retObj;
 }
 
 - (void)initializeUserInterface
