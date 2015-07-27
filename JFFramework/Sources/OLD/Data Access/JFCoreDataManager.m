@@ -111,7 +111,7 @@
 
 - (instancetype)initWithDataModelURL:(NSURL*)dataModelURL persistentStoreURL:(NSURL*)persistentStoreURL persistentStoreType:(NSString*)persistentStoreType
 {
-	self = ((dataModelURL && persistentStoreURL && !IsNullOrEmptyString(persistentStoreType)) ? [self init] : nil);
+	self = ((dataModelURL && persistentStoreURL && !JFStringIsNullOrEmpty(persistentStoreType)) ? [self init] : nil);
 	if(self)
 	{
 		// Connection

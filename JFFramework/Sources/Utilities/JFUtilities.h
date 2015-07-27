@@ -63,6 +63,7 @@
 #pragma mark Macros (Strings)
 
 #define BoolToString(_val)						JFStringFromBool(_val)
+#define BooleanToString(_val)					JFStringFromBoolean(_val)
 #define CStringToString(_str)					CStringToStringWithEncoding(_str, NSUTF8StringEncoding)
 #define CStringToStringWithEncoding(_str, _enc)	[NSString stringWithCString:_str encoding:_enc]
 #define DoubleToString(_val)					JFStringFromDouble(_val)
@@ -70,8 +71,6 @@
 #define HexToString(_val)						JFStringFromHex(_val)
 #define IDToString(_val)						JFStringFromID(_val)
 #define IntToString(_val)						JFStringFromInt(_val)
-#define	IsEmptyString(_str)						[_str isEqualToString:EmptyString]
-#define	IsNullOrEmptyString(_str)				(!_str || IsEmptyString(_str))
 #define LongToString(_val)						JFStringFromLong(_val)
 #define LongLongToString(_val)					JFStringFromLongLong(_val)
 #define NSIntegerToString(_val)					JFStringFromNSInteger(_val)
@@ -239,9 +238,11 @@ extern UInt8 const Color32ComponentMaxValue;
 
 #pragma mark Constants (Strings)
 
-extern NSString* const	EmptyString;
-extern NSString* const	FalseString;
-extern NSString* const	TrueString;
+extern NSString* const	JFEmptyString;
+extern NSString* const	JFFalseString;
+extern NSString* const	JFNoString;
+extern NSString* const	JFTrueString;
+extern NSString* const	JFYesString;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -314,6 +315,7 @@ extern ByteStream	ByteStreamRealloc(ByteStream byteStream, NSUInteger length);
 #pragma mark Functions (Strings)
 
 extern NSString*	JFStringFromBool(BOOL value);
+extern NSString*	JFStringFromBoolean(Boolean value);
 extern NSString*	JFStringFromDouble(double value);
 extern NSString*	JFStringFromFloat(float value);
 extern NSString*	JFStringFromHex(unsigned int value);
@@ -335,6 +337,8 @@ extern NSString*	JFStringFromUInt64(UInt64 value);
 extern NSString*	JFStringFromUnsignedInt(unsigned int value);
 extern NSString*	JFStringFromUnsignedLong(unsigned long value);
 extern NSString*	JFStringFromUnsignedLongLong(unsigned long long value);
+extern BOOL			JFStringIsEmpty(NSString* string);
+extern BOOL			JFStringIsNullOrEmpty(NSString* string);
 
 
 #pragma mark Functions (OLD)

@@ -38,9 +38,11 @@ UInt8 const Color32ComponentMaxValue	= 0xFF;
 
 #pragma mark Constants (Strings)
 
-NSString* const	EmptyString	= @"";
-NSString* const	FalseString	= @"NO";
-NSString* const	TrueString	= @"YES";
+NSString* const	JFEmptyString	= @"";
+NSString* const	JFFalseString	= @"False";
+NSString* const	JFNoString		= @"No";
+NSString* const	JFTrueString	= @"True";
+NSString* const	JFYesString		= @"Yes";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -161,7 +163,7 @@ NSString* JFGetLaunchImageNameForOrientation(UIInterfaceOrientation orientation)
 			NSRange range = [key rangeOfString:searchString];
 			if(range.location != NSNotFound)
 			{
-				key = [key stringByReplacingOccurrencesOfString:searchString withString:EmptyString];
+				key = [key stringByReplacingOccurrencesOfString:searchString withString:JFEmptyString];
 				[mDict removeObjectForKey:MinimumOSVersionKey];
 				[mDicts setObject:[mDict copy] forKey:key];
 			}
@@ -301,7 +303,7 @@ BOOL JFAreObjectsEqual(id obj1, id obj2)
 NSString* JFRandomString(NSUInteger length)
 {
 	if(length == 0)
-		return EmptyString;
+		return JFEmptyString;
 	
 	static NSString* characters = @"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
@@ -403,7 +405,12 @@ ByteStream ByteStreamRealloc(ByteStream byteStream, NSUInteger length)
 
 NSString* JFStringFromBool(BOOL value)
 {
-	return (value ? TrueString : FalseString);
+	return (value ? JFYesString : JFNoString);
+}
+
+NSString* JFStringFromBoolean(Boolean value)
+{
+	return (value ? JFTrueString : JFFalseString);
 }
 
 NSString* JFStringFromDouble(double value)
@@ -527,6 +534,16 @@ NSString* JFStringFromUnsignedLongLong(unsigned long long value)
 	return [NSString stringWithFormat:@"%llu", value];
 }
 
+BOOL JFStringIsEmpty(NSString* string)
+{
+	return (string && [string isEqualToString:JFEmptyString]);
+}
+
+BOOL JFStringIsNullOrEmpty(NSString* string)
+{
+	return (!string || [string isEqualToString:JFEmptyString]);
+}
+
 
 #pragma mark Functions (OLD)
 
@@ -545,7 +562,7 @@ NSString* standardXIBNameForViewController(UIViewController* viewController)
 		NSString* xibName = nil;
 		if(range.location != NSNotFound)
 		{
-			NSString* baseName = [className stringByReplacingCharactersInRange:range withString:EmptyString];
+			NSString* baseName = [className stringByReplacingCharactersInRange:range withString:JFEmptyString];
 			
 			if(iPad)
 			{

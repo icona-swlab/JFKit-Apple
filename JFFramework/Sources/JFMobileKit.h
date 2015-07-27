@@ -32,7 +32,6 @@
 #import "JFAlert.h"
 #import "JFAlertsController.h"
 #import "JFAppDelegate.h"
-#import	"JFBarButtonItem.h"
 #import "JFLabel.h"
 #import "JFNavigationController.h"
 #import	"JFSplashViewController.h"
@@ -40,6 +39,10 @@
 #import "JFTableViewCell.h"
 #import	"JFViewController.h"
 #import	"JFWindowController.h"
+
+// User interface (Addons)
+#import	"UIBarButtonItem+JFFramework.h"
+#import	"UIButton+JFFramework.h"
 
 // Utilities
 #import	"JFImageManager.h"

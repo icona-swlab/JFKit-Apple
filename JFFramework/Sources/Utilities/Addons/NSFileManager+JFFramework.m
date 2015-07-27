@@ -142,7 +142,7 @@
 	
 	if(!retObj)
 	{
-		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : JFEmptyString);
 		NSString* logMessage = [NSString stringWithFormat:@"%@: failed to create a temporary directory appropriate for URL '%@'%@.", ClassName, url, errorString];
 		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:(JFLogHashtagError | JFLogHashtagFilesystem)];
 	}
@@ -157,7 +157,7 @@
 	
 	if(!retObj)
 	{
-		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : JFEmptyString);
 		NSString* logMessage = [NSString stringWithFormat:@"%@: unable to locate the 'Application Support' system directory%@.", ClassName, errorString];
 		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:(JFLogHashtagError | JFLogHashtagFilesystem)];
 	}
@@ -172,7 +172,7 @@
 	
 	if(!retObj)
 	{
-		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : JFEmptyString);
 		NSString* logMessage = [NSString stringWithFormat:@"%@: unable to locate the 'Caches' system directory%@.", ClassName, errorString];
 		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:(JFLogHashtagError | JFLogHashtagFilesystem)];
 	}
@@ -187,7 +187,7 @@
 	
 	if(!retObj)
 	{
-		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : JFEmptyString);
 		NSString* logMessage = [NSString stringWithFormat:@"%@: unable to locate the 'Documents' system directory%@.", ClassName, errorString];
 		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:(JFLogHashtagError | JFLogHashtagFilesystem)];
 	}
@@ -205,7 +205,7 @@
 	
 	if(!retObj)
 	{
-		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : JFEmptyString);
 		NSString* logMessage = [NSString stringWithFormat:@"%@: unable to locate the 'Inbox' system directory%@.", ClassName, errorString];
 		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:(JFLogHashtagError | JFLogHashtagFilesystem)];
 	}
@@ -220,7 +220,7 @@
 	
 	if(!retObj)
 	{
-		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+		NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : JFEmptyString);
 		NSString* logMessage = [NSString stringWithFormat:@"%@: unable to locate the 'Library' system directory%@.", ClassName, errorString];
 		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:(JFLogHashtagError | JFLogHashtagFilesystem)];
 	}

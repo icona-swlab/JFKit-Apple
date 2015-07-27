@@ -1,5 +1,5 @@
 //
-//  JFBarButtonItem.m
+//  UIBarButtonItem+JFFramework.m
 //  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,17 +18,13 @@
 
 
 
-#import "JFBarButtonItem.h"
+#import "UIBarButtonItem+JFFramework.h"
+
+#import <objc/runtime.h>
 
 
 
-@interface JFBarButtonItem ()
-
-#pragma mark Properties
-
-// Data
-@property (copy, nonatomic)	JFBarButtonItemBlock	block;
-
+@interface UIBarButtonItem (JFFramework_Private)
 
 #pragma mark Methods
 
@@ -43,12 +39,40 @@
 
 
 
-@implementation JFBarButtonItem
+@implementation UIBarButtonItem (JFFramework_Private)
 
-#pragma mark Properties
+#pragma mark User interface management (Actions)
 
-// Data
-@synthesize block	= _block;
+- (void)buttonTapped:(UIBarButtonItem*)button
+{
+	JFBarButtonItemBlock block = self.actionBlock;
+	if(block)
+		block(self);
+}
+
+@end
+
+
+
+#pragma mark
+
+
+
+@implementation UIBarButtonItem (JFFramework)
+
+#pragma mark Properties accessors (User interface)
+
+- (JFBarButtonItemBlock)actionBlock
+{
+	return objc_getAssociatedObject(self, @selector(actionBlock));
+}
+
+- (void)setActionBlock:(JFBarButtonItemBlock)block
+{
+	self.target = self;
+	self.action = @selector(buttonTapped:);
+	objc_setAssociatedObject(self, @selector(actionBlock), block, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 
 #pragma mark Memory management
@@ -59,7 +83,7 @@
 	if(self)
 	{
 		// Data
-		_block = [block copy];
+		self.actionBlock = block;
 	}
 	return self;
 }
@@ -70,7 +94,7 @@
 	if(self)
 	{
 		// Data
-		_block = [block copy];
+		self.actionBlock = block;
 	}
 	return self;
 }
@@ -81,7 +105,7 @@
 	if(self)
 	{
 		// Data
-		_block = [block copy];
+		self.actionBlock = block;
 	}
 	return self;
 }
@@ -92,18 +116,9 @@
 	if(self)
 	{
 		// Data
-		_block = [block copy];
+		self.actionBlock = block;
 	}
 	return self;
-}
-
-
-#pragma mark User interface management (Actions)
-
-- (void)buttonTapped:(UIBarButtonItem*)sender
-{
-	if(self.block)
-		self.block(self);
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  JFBarButtonItem.h
+//  UIButton+JFFramework.h
 //  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,13 +18,13 @@
 
 
 
-@class JFBarButtonItem;
+#import "JFUtilities.h"
 
 
 
 #pragma mark Typedefs
 
-typedef void (^JFBarButtonItemBlock) (JFBarButtonItem* sender);
+typedef void (^JFButtonBlock) (id sender);
 
 
 
@@ -32,14 +32,11 @@ typedef void (^JFBarButtonItemBlock) (JFBarButtonItem* sender);
 
 
 
-@interface JFBarButtonItem : UIBarButtonItem
+@interface UIButton (JFFramework)
 
-#pragma mark Methods
+#pragma mark Properties
 
-// Memory management
-- (instancetype)	initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem block:(JFBarButtonItemBlock)block;
-- (instancetype)	initWithImage:(UIImage*)image landscapeImagePhone:(UIImage*)landscapeImagePhone style:(UIBarButtonItemStyle)style block:(JFBarButtonItemBlock)block;
-- (instancetype)	initWithImage:(UIImage*)image style:(UIBarButtonItemStyle)style block:(JFBarButtonItemBlock)block;
-- (instancetype)	initWithTitle:(NSString*)title style:(UIBarButtonItemStyle)style block:(JFBarButtonItemBlock)block;
+// User interface
+@property (strong, nonatomic)	JFButtonBlock	actionBlock;
 
 @end

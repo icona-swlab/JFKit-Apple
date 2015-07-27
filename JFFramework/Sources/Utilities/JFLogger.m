@@ -181,7 +181,7 @@
 	
 	NSString* hashtagsString = [self hashtagsToString:hashtags];
 	
-	if(!IsNullOrEmptyString(hashtagsString))
+	if(!JFStringIsNullOrEmpty(hashtagsString))
 		message = [message stringByAppendingFormat:@" %@", hashtagsString];
 	
 	if(logToConsole)	[self logMessageToConsole:message];
@@ -211,7 +211,7 @@
 		fileExists = [fm createFileAtURL:self.fileURL withIntermediateDirectories:YES contents:nil attributes:nil error:&error];
 		if(!fileExists)
 		{
-			NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : EmptyString);
+			NSString* errorString = (error ? [NSString stringWithFormat:@" for error '%@'", [error description]] : JFEmptyString);
 			NSString* logMessage = [NSString stringWithFormat:@"%@: could not create log file at URL '%@'%@. %@", ClassName, [self.fileURL absoluteString], errorString, hashtagsString];
 			[self logMessageToConsole:logMessage];
 			return;

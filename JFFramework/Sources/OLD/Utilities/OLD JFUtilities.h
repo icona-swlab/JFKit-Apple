@@ -97,8 +97,6 @@
 #define DoubleToString(arg_val)							[NSString stringWithFormat:@"%f", (double)arg_val]
 #define FloatToString(arg_val)							[NSString stringWithFormat:@"%f", (float)arg_val]
 #define HexToString(arg_val)							[NSString stringWithFormat:@"%x", (unsigned int)arg_val]
-#define	IsEmptyString(arg_str)							[arg_str isEqualToString:EmptyString]
-#define	IsNullOrEmptyString(arg_str)					(!arg_str || IsEmptyString(arg_str))
 #if __LP64__
 #define NSIntegerToString(arg_val)						SInt64ToString(arg_val)
 #define NSUIntegerToString(arg_val)						UInt64ToString(arg_val)
