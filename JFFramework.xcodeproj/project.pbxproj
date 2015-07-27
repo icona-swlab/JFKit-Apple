@@ -36,10 +36,18 @@
 		6C1B54291AFCE26C00165804 /* JFURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B54251AFCE1F800165804 /* JFURLProtocol.m */; };
 		6C261B851AD674D300B0223F /* JFManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C261B811AD6731400B0223F /* JFManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C261B861AD674D900B0223F /* JFManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C261B821AD6731400B0223F /* JFManager.m */; };
+		6C290C741B43D5C1007147A5 /* NSIndexPath+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C290C721B43D5C1007147A5 /* NSIndexPath+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C290C751B43D5C1007147A5 /* NSIndexPath+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C290C721B43D5C1007147A5 /* NSIndexPath+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C290C761B43D5C1007147A5 /* NSIndexPath+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C290C731B43D5C1007147A5 /* NSIndexPath+JFFramework.m */; };
+		6C290C771B43D5C1007147A5 /* NSIndexPath+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C290C731B43D5C1007147A5 /* NSIndexPath+JFFramework.m */; };
 		6C4F45241B03705000BA0F9D /* JFXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4F45221B03705000BA0F9D /* JFXMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C4F45291B03973400BA0F9D /* JFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F45231B03705000BA0F9D /* JFXMLParser.m */; };
 		6C679EF51B1F111C003AF29B /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C679EF31B1F111C003AF29B /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C679EF61B1F111C003AF29B /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C679EF41B1F111C003AF29B /* NSFileManager+JFFramework.m */; };
+		6CAB89721B42A85C00DFB046 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4BB9411A8A25C10000C045 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CAB89731B42A86300DFB046 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB9421A8A25C10000C045 /* JFLogger.m */; };
+		6CAB89741B42AA8D00DFB046 /* JFManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C261B811AD6731400B0223F /* JFManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CAB89751B42AA9300DFB046 /* JFManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C261B821AD6731400B0223F /* JFManager.m */; };
 		6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14501AA5B45B0060B922 /* JFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14561AA5B7130060B922 /* JFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE14521AA5B6E20060B922 /* JFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE14571AA5B7170060B922 /* JFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE14531AA5B6E20060B922 /* JFTableViewCell.m */; };
@@ -138,6 +146,8 @@
 		6C1B54251AFCE1F800165804 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
 		6C261B811AD6731400B0223F /* JFManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFManager.h; sourceTree = "<group>"; };
 		6C261B821AD6731400B0223F /* JFManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFManager.m; sourceTree = "<group>"; };
+		6C290C721B43D5C1007147A5 /* NSIndexPath+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+JFFramework.h"; sourceTree = "<group>"; };
+		6C290C731B43D5C1007147A5 /* NSIndexPath+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+JFFramework.m"; sourceTree = "<group>"; };
 		6C4F45221B03705000BA0F9D /* JFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFXMLParser.h; sourceTree = "<group>"; };
 		6C4F45231B03705000BA0F9D /* JFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFXMLParser.m; sourceTree = "<group>"; };
 		6C679EF31B1F111C003AF29B /* NSFileManager+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JFFramework.h"; sourceTree = "<group>"; };
@@ -264,6 +274,8 @@
 			children = (
 				6C679EF31B1F111C003AF29B /* NSFileManager+JFFramework.h */,
 				6C679EF41B1F111C003AF29B /* NSFileManager+JFFramework.m */,
+				6C290C721B43D5C1007147A5 /* NSIndexPath+JFFramework.h */,
+				6C290C731B43D5C1007147A5 /* NSIndexPath+JFFramework.m */,
 				6C118D391B31BB4D0002B076 /* NSObject+JFFramework.h */,
 				6C118D3A1B31BB4D0002B076 /* NSObject+JFFramework.m */,
 			);
@@ -519,8 +531,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CAB89721B42A85C00DFB046 /* JFLogger.h in Headers */,
 				6CBE14511AA5B45B0060B922 /* JFKit.h in Headers */,
+				6C290C741B43D5C1007147A5 /* NSIndexPath+JFFramework.h in Headers */,
 				6C118D3B1B31BB4D0002B076 /* NSObject+JFFramework.h in Headers */,
+				6CAB89741B42AA8D00DFB046 /* JFManager.h in Headers */,
 				EA26EBED1A87679F0050049A /* JFUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +562,7 @@
 				EA26EC7F1A8785030050049A /* JFTransparentToolbar.h in Headers */,
 				EA26EC7D1A8785030050049A /* JFTextView.h in Headers */,
 				EA26EC871A8785030050049A /* JFSimpleFormViewController.h in Headers */,
+				6C290C751B43D5C1007147A5 /* NSIndexPath+JFFramework.h in Headers */,
 				6C261B851AD674D300B0223F /* JFManager.h in Headers */,
 				6C17952F1B569D3100A448F1 /* UIButton+JFFramework.h in Headers */,
 				EA26EC731A8785030050049A /* JFSliderController.h in Headers */,
@@ -677,6 +693,7 @@
 				EA26EC7E1A8785030050049A /* JFTextView.m in Sources */,
 				EA26EC801A8785030050049A /* JFTransparentToolbar.m in Sources */,
 				6C05357C1AFB97C000A85091 /* JFLabel.m in Sources */,
+				6C290C771B43D5C1007147A5 /* NSIndexPath+JFFramework.m in Sources */,
 				EA34B1D41ACDECA800CF0B17 /* JFImageObserver.m in Sources */,
 				EA26EC741A8785030050049A /* JFSliderController.m in Sources */,
 				EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */,
@@ -697,7 +714,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C118D3C1B31BB4D0002B076 /* NSObject+JFFramework.m in Sources */,
+				6CAB89751B42AA9300DFB046 /* JFManager.m in Sources */,
+				6C290C761B43D5C1007147A5 /* NSIndexPath+JFFramework.m in Sources */,
 				EA26EBEF1A87679F0050049A /* JFUtilities.m in Sources */,
+				6CAB89731B42A86300DFB046 /* JFLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

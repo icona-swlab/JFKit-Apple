@@ -52,6 +52,7 @@
 
 // Utilities (Addons)
 #import	"NSFileManager+JFFramework.h"
+#import "NSIndexPath+JFFramework.h"
 #import	"NSObject+JFFramework.h"
 
 ///// OLD /////

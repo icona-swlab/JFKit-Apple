@@ -19,7 +19,6 @@
 
 
 @class JFAlertsController;
-@class JFLogger;
 @class JFWindowController;
 
 

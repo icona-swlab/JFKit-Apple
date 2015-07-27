@@ -37,6 +37,9 @@
 - (BOOL)	createFileAtURL:(NSURL*)fileURL contents:(NSData*)contents attributes:(NSDictionary*)attributes;
 - (BOOL)	createFileAtURL:(NSURL*)fileURL withIntermediateDirectories:(BOOL)createIntermediates contents:(NSData*)contents attributes:(NSDictionary*)attributes error:(NSError*__autoreleasing*)error;
 
+// Item deletion management
+- (BOOL)	deleteContentsOfDirectoryAtPath:(NSString*)dirPath error:(NSError*__autoreleasing*)error;
+
 // System directories management
 - (NSURL*)	createTemporaryDirectoryAppropriateForURL:(NSURL*)url;	// A temporary folder created specifically for the given URL.
 - (NSURL*)	URLForApplicationSupportDirectory;	// Contains application support files, like plug-ins. Backed up by iTunes.

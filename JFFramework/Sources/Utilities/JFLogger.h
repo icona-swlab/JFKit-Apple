@@ -18,22 +18,20 @@
 
 
 
-#pragma mark Typedefs
+#pragma mark - Notes
+
+/*
+ It should be added a way to refresh the log file (while doing a backup of the old one) after a chosen time has passed of after a chosen file size has been reached.
+ */
+
+
+
+#pragma mark - Typedefs
 
 typedef NS_OPTIONS(UInt8, JFLogDestinations)
 {
 	JFLogDestinationConsole	= 1 << 0,	// Logs the message into the console.
 	JFLogDestinationFile	= 1 << 1,	// Logs the message into the file if 'fileURL' is set.
-};
-
-typedef NS_OPTIONS(UInt8, JFLogExpirationTimeInterval)	// NOT YET IMPLEMENTED
-{
-	JFLogExpirationTimeIntervalNone,		// The log file has no expiration time.
-	JFLogExpirationTimeIntervalOneDay,		// The log file will be changed every day.
-	JFLogExpirationTimeIntervalOneWeek,		// The log file will be changed each monday.
-	JFLogExpirationTimeIntervalOneMonth,	// The log file will be changed the 1st day of each month.
-	
-	JFLogExpirationTimeIntervalDefault = JFLogExpirationTimeIntervalNone
 };
 
 typedef NS_OPTIONS(UInt16, JFLogHashtags)
@@ -78,10 +76,9 @@ typedef NS_OPTIONS(UInt8, JFLogLevel)
 #pragma mark Properties
 
 // Settings
-@property (assign)						JFLogDestinations			destinations;
-@property (assign)						JFLogExpirationTimeInterval	expirationTimeInterval;	// TODO: not yet implemented.
-@property (strong, nonatomic, readonly)	NSURL*						fileURL;
-@property (assign)						JFLogLevel					level;	// Only messages that have a lower (or equal) level value will be logged.
+@property (assign)						JFLogDestinations	destinations;
+@property (strong, nonatomic, readonly)	NSURL*				fileURL;
+@property (assign)						JFLogLevel			level;	// Only messages that have a lower (or equal) level value will be logged.
 
 
 #pragma mark Methods
