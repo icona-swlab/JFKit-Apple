@@ -21,9 +21,6 @@
 // Data access
 #import	"JFCoreDataManager.h"
 
-// User interface (Activity Indicators)
-#import "JFActivityIndicatorView.h"
-
 // User interface (Galleries)
 #import "JFGalleryView.h"
 

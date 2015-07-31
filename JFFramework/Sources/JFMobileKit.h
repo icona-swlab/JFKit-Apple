@@ -29,6 +29,7 @@
 #import	"JFXMLParser.h"
 
 // User interface
+#import "JFActivityIndicatorView.h"
 #import "JFAlert.h"
 #import "JFAlertsController.h"
 #import "JFAppDelegate.h"
