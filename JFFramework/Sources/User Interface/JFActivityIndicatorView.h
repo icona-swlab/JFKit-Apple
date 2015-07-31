@@ -1,6 +1,6 @@
 //
 //  JFActivityIndicatorView.h
-//  Copyright (C) 2014  Jacopo Filié
+//  Copyright (C) 2015  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,16 +18,37 @@
 
 
 
+#import "JFUtilities.h"
+
+#import "UIButton+JFFramework.h"
+
+
+
+@class JFLabel;
+
+
+
 @interface JFActivityIndicatorView : UIView
+
+#pragma mark Properties
 
 // Attributes
 @property (assign, nonatomic)	NSTimeInterval	animationDuration;
 @property (assign, nonatomic)	CGSize			animationSize;
 
 // Data
-@property (copy, nonatomic)	NSArray*	animationImages;
+@property (copy, nonatomic)		NSArray*		animationImages;
+@property (strong, nonatomic)	JFButtonBlock	buttonBlock;
+@property (copy, nonatomic)		NSString*		buttonTitle;
+@property (copy, nonatomic)		NSString*		message;
+
+
+#pragma mark Methods
 
 // Memory management
-- (void)	commonInit;
+- (void)	initializeProperties;
+
+// User interface management
+- (void)	initializeUserInterface;
 
 @end
