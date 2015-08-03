@@ -70,9 +70,9 @@
 @synthesize animationSize		= _animationSize;
 
 // Constraints
-@synthesize addedConstraints			= _addedConstraints;
+@synthesize addedConstraints				= _addedConstraints;
 @synthesize containerViewAddedConstraints	= _containerViewAddedConstraints;
-@synthesize imageViewAddedConstraints	= _imageViewAddedConstraints;
+@synthesize imageViewAddedConstraints		= _imageViewAddedConstraints;
 
 // Data
 @synthesize animationImages	= _animationImages;
@@ -368,7 +368,7 @@
 	
 	[self toggleIndicatorsAnimation];
 	
-	[self.containerView setNeedsUpdateConstraints];
+	[self setNeedsUpdateConstraints];
 }
 
 
@@ -376,106 +376,109 @@
 
 - (void)updateConstraints
 {
-	UIView* containerView = self.containerView;
-	
-	// Removes the old constraints.
-	[self removeConstraints:self.addedConstraints];
-	[containerView removeConstraints:self.containerViewAddedConstraints];
-	
-	// Prepares some constraint shortcuts.
-	__unused NSLayoutAttribute ab = NSLayoutAttributeBottom;
-	__unused NSLayoutAttribute al = NSLayoutAttributeLeft;
-	__unused NSLayoutAttribute ar = NSLayoutAttributeRight;
-	__unused NSLayoutAttribute at = NSLayoutAttributeTop;
-	__unused NSLayoutAttribute ah = NSLayoutAttributeHeight;
-	__unused NSLayoutAttribute aw = NSLayoutAttributeWidth;
-	__unused NSLayoutAttribute an = NSLayoutAttributeNotAnAttribute;
-	__unused NSLayoutAttribute ax = NSLayoutAttributeCenterX;
-	__unused NSLayoutAttribute ay = NSLayoutAttributeCenterY;
-	__unused NSLayoutRelation re = NSLayoutRelationEqual;
-	__unused NSLayoutRelation rg = NSLayoutRelationGreaterThanOrEqual;
-	__unused NSLayoutRelation rl = NSLayoutRelationLessThanOrEqual;
-	
-	// Prepares the margin offset value.
-	CGFloat offset = 10.0f;
-	
-	// Creates the container view constraints.
-	UIView* v1 = containerView;
-	UIView* v2 = self;
-
-	NSMutableArray* constraints = [NSMutableArray array];
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:rg toItem:v2 attribute:at multiplier:1.0f constant:offset]];	// Top
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:rl toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:rg toItem:v2 attribute:al multiplier:1.0f constant:offset]];	// Left
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:rl toItem:v2 attribute:ar multiplier:1.0f constant:-offset]];	// Right
-	for(NSLayoutConstraint* constraint in constraints)
-		constraint.priority = UILayoutPriorityDefaultHigh;
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ax relatedBy:re toItem:v2 attribute:ax multiplier:1.0f constant:0.0f]];	// Center X
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ay relatedBy:re toItem:v2 attribute:ay multiplier:1.0f constant:0.0f]];	// Center Y
-	[self addConstraints:constraints];
-	[self.addedConstraints setArray:constraints];
-	[constraints removeAllObjects];
-	
-	// Prepares the indicator view.
-	UIView* indicatorView = ([self shouldUseIndicatorView] ? self.indicatorView : self.imageView);
-	
-	if(![self shouldUseIndicatorView])
+	if([self isUserInterfaceInitialized])
 	{
-		CGSize size = self.animationSize;
-		[indicatorView removeConstraints:self.imageViewAddedConstraints];
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:aw relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.width]];
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:ah relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.height]];
-		[indicatorView addConstraints:constraints];
-		[constraints removeAllObjects];
-	}
-	
-	// Prepares the padding offset value.
-	offset = 15.0f;
-	
-	// Creates the indicator view constraints.
-	v1 = indicatorView;
-	v2 = containerView;
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:at multiplier:1.0f constant:offset]];	// Top
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:rg toItem:v2 attribute:al multiplier:1.0f constant:offset]];	// Left
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:rl toItem:v2 attribute:ar multiplier:1.0f constant:-offset]];	// Right
-	[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ax relatedBy:re toItem:v2 attribute:ax multiplier:1.0f constant:0.0f]];		// Center X
-	if(![self shouldShowActionButton] && ![self shouldShowMessageLabel])
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
-	[containerView addConstraints:constraints];
-	[self.containerViewAddedConstraints setArray:constraints];
-	[constraints removeAllObjects];
-	
-	if([self shouldShowMessageLabel])
-	{
-		// Creates the message label constraints.
-		v1 = self.messageLabel;
-		v2 = indicatorView;
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:20.0f]];	// Top
+		UIView* containerView = self.containerView;
 		
-		v2 = containerView;
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:re toItem:v2 attribute:al multiplier:1.0f constant:offset]];	// Left
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v2 attribute:ar multiplier:1.0f constant:-offset]];	// Right
-		if(![self shouldShowActionButton])
-			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
-		[containerView addConstraints:constraints];
-		[self.containerViewAddedConstraints addObjectsFromArray:constraints];
+		// Removes the old constraints.
+		[self removeConstraints:self.addedConstraints];
+		[containerView removeConstraints:self.containerViewAddedConstraints];
+		
+		// Prepares some constraint shortcuts.
+		__unused NSLayoutAttribute ab = NSLayoutAttributeBottom;
+		__unused NSLayoutAttribute al = NSLayoutAttributeLeft;
+		__unused NSLayoutAttribute ar = NSLayoutAttributeRight;
+		__unused NSLayoutAttribute at = NSLayoutAttributeTop;
+		__unused NSLayoutAttribute ah = NSLayoutAttributeHeight;
+		__unused NSLayoutAttribute aw = NSLayoutAttributeWidth;
+		__unused NSLayoutAttribute an = NSLayoutAttributeNotAnAttribute;
+		__unused NSLayoutAttribute ax = NSLayoutAttributeCenterX;
+		__unused NSLayoutAttribute ay = NSLayoutAttributeCenterY;
+		__unused NSLayoutRelation re = NSLayoutRelationEqual;
+		__unused NSLayoutRelation rg = NSLayoutRelationGreaterThanOrEqual;
+		__unused NSLayoutRelation rl = NSLayoutRelationLessThanOrEqual;
+		
+		// Prepares the margin offset value.
+		CGFloat offset = 10.0f;
+		
+		// Creates the container view constraints.
+		UIView* v1 = containerView;
+		UIView* v2 = self;
+		
+		NSMutableArray* constraints = [NSMutableArray array];
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:rg toItem:v2 attribute:at multiplier:1.0f constant:offset]];	// Top
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:rl toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:rg toItem:v2 attribute:al multiplier:1.0f constant:offset]];	// Left
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:rl toItem:v2 attribute:ar multiplier:1.0f constant:-offset]];	// Right
+		for(NSLayoutConstraint* constraint in constraints)
+			constraint.priority = UILayoutPriorityDefaultHigh;
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ax relatedBy:re toItem:v2 attribute:ax multiplier:1.0f constant:0.0f]];	// Center X
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ay relatedBy:re toItem:v2 attribute:ay multiplier:1.0f constant:0.0f]];	// Center Y
+		[self addConstraints:constraints];
+		[self.addedConstraints setArray:constraints];
 		[constraints removeAllObjects];
-	}
-	
-	if([self shouldShowActionButton])
-	{
-		// Creates the action button constraints.
-		v1 = self.actionButton;
-		v2 = ([self shouldShowMessageLabel] ? self.messageLabel : indicatorView);
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:25.0f]];	// Top
+		
+		// Prepares the indicator view.
+		UIView* indicatorView = ([self shouldUseIndicatorView] ? self.indicatorView : self.imageView);
+		
+		if(![self shouldUseIndicatorView])
+		{
+			CGSize size = self.animationSize;
+			[indicatorView removeConstraints:self.imageViewAddedConstraints];
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:aw relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.width]];
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:ah relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.height]];
+			[indicatorView addConstraints:constraints];
+			[constraints removeAllObjects];
+		}
+		
+		// Prepares the padding offset value.
+		offset = 15.0f;
+		
+		// Creates the indicator view constraints.
+		v1 = indicatorView;
 		v2 = containerView;
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:at multiplier:1.0f constant:offset]];	// Top
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:rg toItem:v2 attribute:al multiplier:1.0f constant:offset]];	// Left
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:rl toItem:v2 attribute:ar multiplier:1.0f constant:-offset]];	// Right
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ax relatedBy:re toItem:v2 attribute:ax multiplier:1.0f constant:0.0f]];		// Center X
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
-		[self.containerViewAddedConstraints addObjectsFromArray:constraints];
+		if(![self shouldShowActionButton] && ![self shouldShowMessageLabel])
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
 		[containerView addConstraints:constraints];
+		[self.containerViewAddedConstraints setArray:constraints];
 		[constraints removeAllObjects];
+		
+		if([self shouldShowMessageLabel])
+		{
+			// Creates the message label constraints.
+			v1 = self.messageLabel;
+			v2 = indicatorView;
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:20.0f]];	// Top
+			
+			v2 = containerView;
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:re toItem:v2 attribute:al multiplier:1.0f constant:offset]];	// Left
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v2 attribute:ar multiplier:1.0f constant:-offset]];	// Right
+			if(![self shouldShowActionButton])
+				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
+			[containerView addConstraints:constraints];
+			[self.containerViewAddedConstraints addObjectsFromArray:constraints];
+			[constraints removeAllObjects];
+		}
+		
+		if([self shouldShowActionButton])
+		{
+			// Creates the action button constraints.
+			v1 = self.actionButton;
+			v2 = ([self shouldShowMessageLabel] ? self.messageLabel : indicatorView);
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:25.0f]];	// Top
+			v2 = containerView;
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:rg toItem:v2 attribute:al multiplier:1.0f constant:offset]];	// Left
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:rl toItem:v2 attribute:ar multiplier:1.0f constant:-offset]];	// Right
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ax relatedBy:re toItem:v2 attribute:ax multiplier:1.0f constant:0.0f]];		// Center X
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-offset]];	// Bottom
+			[self.containerViewAddedConstraints addObjectsFromArray:constraints];
+			[containerView addConstraints:constraints];
+			[constraints removeAllObjects];
+		}
 	}
 	
 	[super updateConstraints];
