@@ -78,7 +78,7 @@
 @synthesize animationImages	= _animationImages;
 @synthesize buttonBlock		= _buttonBlock;
 @synthesize buttonTitle		= _buttonTitle;
-@synthesize message			= _message;
+@synthesize text			= _text;
 
 // Flags
 @synthesize shouldShowActionButton		= _shouldShowActionButton;
@@ -159,17 +159,17 @@
 		[self.actionButton setTitle:_buttonTitle forState:UIControlStateNormal];
 }
 
-- (void)setMessage:(NSString*)message
+- (void)setText:(NSString*)text
 {
-	if(JFAreObjectsEqual(_message, message))
+	if(JFAreObjectsEqual(_text, text))
 		return;
 	
-	_message = [message copy];
+	_text = [text copy];
 	
-	self.shouldShowMessageLabel = (BOOL)_message;
+	self.shouldShowMessageLabel = !!_text;
 	
 	if([self isUserInterfaceInitialized])
-		self.messageLabel.text = _message;
+		self.messageLabel.text = _text;
 }
 
 
@@ -324,7 +324,7 @@
 			label.backgroundColor = [UIColor clearColor];
 			label.numberOfLines = 0;
 			label.opaque = NO;
-			label.text = self.message;
+			label.text = self.text;
 			label.textAlignment = NSTextAlignmentCenter;
 			label.textColor = [UIColor whiteColor];
 			label.translatesAutoresizingMaskIntoConstraints = NO;

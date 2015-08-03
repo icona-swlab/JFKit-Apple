@@ -40,7 +40,7 @@
 @property (copy, nonatomic)		NSArray*		animationImages;
 @property (strong, nonatomic)	JFButtonBlock	buttonBlock;
 @property (copy, nonatomic)		NSString*		buttonTitle;
-@property (copy, nonatomic)		NSString*		message;
+@property (copy, nonatomic)		NSString*		text;
 
 
 #pragma mark Methods
