@@ -15,6 +15,30 @@
 		EA5F85E11B76A85B00A32291 /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = EA5F85DF1B76A85B00A32291 /* Prefix.pch */; };
 		EA5F85E21B76B2EC00A32291 /* JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5F85D41B76A40400A32291 /* JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5F85E41B76BC2600A32291 /* JFFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5F85D71B76A40400A32291 /* JFFrameworkTests.m */; };
+		EAA45DAF1B76E48B009F8055 /* JFColor.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA45DAD1B76E48B009F8055 /* JFColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA45DB01B76E48B009F8055 /* JFColor.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA45DAD1B76E48B009F8055 /* JFColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA45DB11B76E48B009F8055 /* JFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA45DAE1B76E48B009F8055 /* JFColor.m */; };
+		EAA45DB21B76E48B009F8055 /* JFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA45DAE1B76E48B009F8055 /* JFColor.m */; };
+		EAA45DB51B76E4B1009F8055 /* JFString.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA45DB31B76E4B1009F8055 /* JFString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA45DB61B76E4B1009F8055 /* JFString.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA45DB31B76E4B1009F8055 /* JFString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA45DB71B76E4B1009F8055 /* JFString.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA45DB41B76E4B1009F8055 /* JFString.m */; };
+		EAA45DB81B76E4B1009F8055 /* JFString.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA45DB41B76E4B1009F8055 /* JFString.m */; };
+		EAA7C4281B775D9900326189 /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA7C4261B775D9900326189 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA7C4291B775D9900326189 /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA7C4261B775D9900326189 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA7C42A1B775D9900326189 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4271B775D9900326189 /* JFUtilities.m */; };
+		EAA7C42B1B775D9900326189 /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4271B775D9900326189 /* JFUtilities.m */; };
+		EAA7C4351B77852C00326189 /* JFColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4331B77852C00326189 /* JFColorTests.m */; };
+		EAA7C4361B77852C00326189 /* JFColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4331B77852C00326189 /* JFColorTests.m */; };
+		EAA7C4371B77852C00326189 /* JFStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4341B77852C00326189 /* JFStringTests.m */; };
+		EAA7C4381B77852C00326189 /* JFStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4341B77852C00326189 /* JFStringTests.m */; };
+		EAA7C43B1B77861F00326189 /* JFUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C43A1B77861F00326189 /* JFUtilitiesTests.m */; };
+		EAA7C43C1B77861F00326189 /* JFUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C43A1B77861F00326189 /* JFUtilitiesTests.m */; };
+		EAA7C4421B7799B500326189 /* JFByteStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4411B7799B500326189 /* JFByteStreamTests.m */; };
+		EAA7C4431B7799B500326189 /* JFByteStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C4411B7799B500326189 /* JFByteStreamTests.m */; };
+		EAA7C4441B7799BF00326189 /* JFByteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C43E1B778C6400326189 /* JFByteStream.m */; };
+		EAA7C4451B7799BF00326189 /* JFByteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA7C43E1B778C6400326189 /* JFByteStream.m */; };
+		EAA7C4461B7799C600326189 /* JFByteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA7C43D1B778C6400326189 /* JFByteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA7C4471B7799C700326189 /* JFByteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA7C43D1B778C6400326189 /* JFByteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +70,18 @@
 		EA5F85D41B76A40400A32291 /* JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFFramework.h; sourceTree = "<group>"; };
 		EA5F85D71B76A40400A32291 /* JFFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFFrameworkTests.m; sourceTree = "<group>"; };
 		EA5F85DF1B76A85B00A32291 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		EAA45DAD1B76E48B009F8055 /* JFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFColor.h; sourceTree = "<group>"; };
+		EAA45DAE1B76E48B009F8055 /* JFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFColor.m; sourceTree = "<group>"; };
+		EAA45DB31B76E4B1009F8055 /* JFString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFString.h; sourceTree = "<group>"; };
+		EAA45DB41B76E4B1009F8055 /* JFString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFString.m; sourceTree = "<group>"; };
+		EAA7C4261B775D9900326189 /* JFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilities.h; sourceTree = "<group>"; };
+		EAA7C4271B775D9900326189 /* JFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilities.m; sourceTree = "<group>"; };
+		EAA7C4331B77852C00326189 /* JFColorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFColorTests.m; sourceTree = "<group>"; };
+		EAA7C4341B77852C00326189 /* JFStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFStringTests.m; sourceTree = "<group>"; };
+		EAA7C43A1B77861F00326189 /* JFUtilitiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUtilitiesTests.m; sourceTree = "<group>"; };
+		EAA7C43D1B778C6400326189 /* JFByteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFByteStream.h; sourceTree = "<group>"; };
+		EAA7C43E1B778C6400326189 /* JFByteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFByteStream.m; sourceTree = "<group>"; };
+		EAA7C4411B7799B500326189 /* JFByteStreamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFByteStreamTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +121,7 @@
 		EA5F858B1B768E5A00A32291 = {
 			isa = PBXGroup;
 			children = (
+				EAA45DA41B76CEB6009F8055 /* Sources */,
 				EA5F85981B769A3700A32291 /* Products */,
 				EA5F85CF1B76A40400A32291 /* Supporting Files */,
 				EA5F85D61B76A40400A32291 /* Tests */,
@@ -119,10 +156,70 @@
 		EA5F85D61B76A40400A32291 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				EAA7C4321B77852C00326189 /* Data Objects */,
 				EA5F85D71B76A40400A32291 /* JFFrameworkTests.m */,
+				EAA7C4391B77861000326189 /* Utilities */,
 			);
 			name = Tests;
 			path = JFFramework/Tests;
+			sourceTree = "<group>";
+		};
+		EAA45DA41B76CEB6009F8055 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EAA45DAC1B76E48B009F8055 /* Data Objects */,
+				EAA45DA51B76D208009F8055 /* User Interface */,
+				EAA7C4251B775D7800326189 /* Utilities */,
+			);
+			name = Sources;
+			path = JFFramework/Sources;
+			sourceTree = "<group>";
+		};
+		EAA45DA51B76D208009F8055 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		EAA45DAC1B76E48B009F8055 /* Data Objects */ = {
+			isa = PBXGroup;
+			children = (
+				EAA7C43D1B778C6400326189 /* JFByteStream.h */,
+				EAA7C43E1B778C6400326189 /* JFByteStream.m */,
+				EAA45DAD1B76E48B009F8055 /* JFColor.h */,
+				EAA45DAE1B76E48B009F8055 /* JFColor.m */,
+				EAA45DB31B76E4B1009F8055 /* JFString.h */,
+				EAA45DB41B76E4B1009F8055 /* JFString.m */,
+			);
+			path = "Data Objects";
+			sourceTree = "<group>";
+		};
+		EAA7C4251B775D7800326189 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EAA7C4261B775D9900326189 /* JFUtilities.h */,
+				EAA7C4271B775D9900326189 /* JFUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EAA7C4321B77852C00326189 /* Data Objects */ = {
+			isa = PBXGroup;
+			children = (
+				EAA7C4411B7799B500326189 /* JFByteStreamTests.m */,
+				EAA7C4331B77852C00326189 /* JFColorTests.m */,
+				EAA7C4341B77852C00326189 /* JFStringTests.m */,
+			);
+			path = "Data Objects";
+			sourceTree = "<group>";
+		};
+		EAA7C4391B77861000326189 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EAA7C43A1B77861F00326189 /* JFUtilitiesTests.m */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,8 +229,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA7C4281B775D9900326189 /* JFUtilities.h in Headers */,
 				EA5F85DC1B76A49A00A32291 /* JFFramework.h in Headers */,
+				EAA7C4461B7799C600326189 /* JFByteStream.h in Headers */,
 				EA5F85E01B76A85B00A32291 /* Prefix.pch in Headers */,
+				EAA45DAF1B76E48B009F8055 /* JFColor.h in Headers */,
+				EAA45DB51B76E4B1009F8055 /* JFString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +242,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA7C4291B775D9900326189 /* JFUtilities.h in Headers */,
 				EA5F85E11B76A85B00A32291 /* Prefix.pch in Headers */,
+				EAA7C4471B7799C700326189 /* JFByteStream.h in Headers */,
 				EA5F85E21B76B2EC00A32291 /* JFFramework.h in Headers */,
+				EAA45DB01B76E48B009F8055 /* JFColor.h in Headers */,
+				EAA45DB61B76E4B1009F8055 /* JFString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +406,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA45DB71B76E4B1009F8055 /* JFString.m in Sources */,
+				EAA7C4451B7799BF00326189 /* JFByteStream.m in Sources */,
+				EAA45DB11B76E48B009F8055 /* JFColor.m in Sources */,
+				EAA7C42A1B775D9900326189 /* JFUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +417,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA7C43B1B77861F00326189 /* JFUtilitiesTests.m in Sources */,
+				EAA7C4371B77852C00326189 /* JFStringTests.m in Sources */,
+				EAA7C4421B7799B500326189 /* JFByteStreamTests.m in Sources */,
 				EA5F85DB1B76A48200A32291 /* JFFrameworkTests.m in Sources */,
+				EAA7C4351B77852C00326189 /* JFColorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +429,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA45DB81B76E4B1009F8055 /* JFString.m in Sources */,
+				EAA7C4441B7799BF00326189 /* JFByteStream.m in Sources */,
+				EAA45DB21B76E48B009F8055 /* JFColor.m in Sources */,
+				EAA7C42B1B775D9900326189 /* JFUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +440,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA7C43C1B77861F00326189 /* JFUtilitiesTests.m in Sources */,
+				EAA7C4381B77852C00326189 /* JFStringTests.m in Sources */,
+				EAA7C4431B7799B500326189 /* JFByteStreamTests.m in Sources */,
 				EA5F85E41B76BC2600A32291 /* JFFrameworkTests.m in Sources */,
+				EAA7C4361B77852C00326189 /* JFColorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +467,7 @@
 		EA5F85901B768E5A00A32291 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -356,6 +478,7 @@
 		EA5F85911B768E5A00A32291 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;

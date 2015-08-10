@@ -42,14 +42,18 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 
 #pragma mark - Common headers
 
+// Data objects
+#import "JFByteStream.h"
+#import "JFColor.h"
+#import "JFString.h"
+
+// Utilities
+#import "JFUtilities.h"
+
 #if TARGET_OS_IPHONE
 #pragma mark - iOS specific headers
 
-// In this header, you should import all the public headers of your framework using statements like #import <JFFramework_iOS/PublicHeader.h>
-
 #else
 #pragma mark - OS X specific headers
-
-// In this header, you should import all the public headers of your framework using statements like #import <JFFramework_OSX/PublicHeader.h>
 
 #endif
