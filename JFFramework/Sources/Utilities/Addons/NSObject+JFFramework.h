@@ -1,6 +1,6 @@
 //
-//  Prefix.pch
-//  Copyright (C) 2015  Jacopo Filié
+//  NSObject+JFFramework.h
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,20 +18,29 @@
 
 
 
-#pragma mark - Common system headers
-
-#import <CoreData/CoreData.h>
-#import <Foundation/Foundation.h>
+@class JFLogger;
 
 
-#if TARGET_OS_IPHONE
-#pragma mark - iOS specific system headers
 
-#import <UIKit/UIKit.h>
+@interface NSObject (JFFramework)
 
-#else
-#pragma mark - OSX specific system headers
+#pragma mark Properties
 
-#import <AppKit/AppKit.h>
+// Flags
+@property (assign)	BOOL	shouldLog;
 
-#endif
+// Utilities
+@property (strong)	JFLogger*	logger;
+
+
+#pragma mark Methods
+
+// Properties accessors (Flags)
++ (BOOL)	defaultShouldLogValue;
++ (void)	setDefaultShouldLogValue:(BOOL)shouldLog;
+
+// Properties accessors (Utilities)
++ (JFLogger*)	defaultLogger;
++ (void)		setDefaultLogger:(JFLogger*)logger;
+
+@end

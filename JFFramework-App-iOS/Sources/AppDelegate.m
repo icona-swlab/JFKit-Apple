@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import "JFFramework.h"
-
 @interface AppDelegate ()
 
 @end

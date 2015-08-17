@@ -42,12 +42,17 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 
 #pragma mark - Common headers
 
+// Addons (Utilities)
+#import "NSFileManager+JFFramework.h"
+#import "NSObject+JFFramework.h"
+
 // Data objects
 #import "JFByteStream.h"
 #import "JFColor.h"
 #import "JFString.h"
 
 // Utilities
+#import "JFLogger.h"
 #import "JFUtilities.h"
 
 #if TARGET_OS_IPHONE

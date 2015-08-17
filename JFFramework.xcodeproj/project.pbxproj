@@ -45,6 +45,18 @@
 		EA1105E01B821C3A00E93D04 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D41B821B5900E93D04 /* Tests.m */; };
 		EA5F85A31B769A3700A32291 /* JFFramework-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5F85971B769A3700A32291 /* JFFramework-iOS.framework */; };
 		EA5F85C11B769A4800A32291 /* JFFramework-OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5F85B61B769A4700A32291 /* JFFramework-OSX.framework */; };
+		EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD3D3451B8234A800A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
+		EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD3D3471B8234A800A56864 /* NSObject+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */; };
+		EAD3D3481B8234A800A56864 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3421B82342F00A56864 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD3D3491B8234A800A56864 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3431B82342F00A56864 /* JFLogger.m */; };
+		EAD3D34A1B82368A00A56864 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3421B82342F00A56864 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD3D34B1B82368E00A56864 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3431B82342F00A56864 /* JFLogger.m */; };
+		EAD3D34C1B82369500A56864 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD3D34D1B82369A00A56864 /* NSObject+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */; };
+		EAD3D34E1B8236B700A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
+		EAD3D34F1B8236BA00A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +147,12 @@
 		EA5F85A21B769A3700A32291 /* JFFramework-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5F85B61B769A4700A32291 /* JFFramework-OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "JFFramework-OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5F85C01B769A4800A32291 /* JFFramework-OSX-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-OSX-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JFFramework.h"; sourceTree = "<group>"; };
+		EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+JFFramework.m"; sourceTree = "<group>"; };
+		EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+JFFramework.h"; sourceTree = "<group>"; };
+		EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JFFramework.m"; sourceTree = "<group>"; };
+		EAD3D3421B82342F00A56864 /* JFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
+		EAD3D3431B82342F00A56864 /* JFLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +255,9 @@
 		EA11054C1B820E3500E93D04 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EAD3D33D1B82342F00A56864 /* Addons */,
+				EAD3D3421B82342F00A56864 /* JFLogger.h */,
+				EAD3D3431B82342F00A56864 /* JFLogger.m */,
 				EA11054D1B820E3500E93D04 /* JFUtilities.h */,
 				EA11054E1B820E3500E93D04 /* JFUtilities.m */,
 			);
@@ -388,6 +409,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EAD3D33D1B82342F00A56864 /* Addons */ = {
+			isa = PBXGroup;
+			children = (
+				EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */,
+				EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */,
+				EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */,
+				EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */,
+			);
+			path = Addons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -396,9 +428,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA11057C1B82123F00E93D04 /* JFString.h in Headers */,
+				EAD3D3481B8234A800A56864 /* JFLogger.h in Headers */,
 				EA11057A1B82123F00E93D04 /* JFColor.h in Headers */,
+				EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */,
 				EA1105781B82123F00E93D04 /* JFByteStream.h in Headers */,
 				EA1105841B82124500E93D04 /* JFUtilities.h in Headers */,
+				EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */,
 				EA1105881B82126A00E93D04 /* JFFramework.h in Headers */,
 				EA11058A1B82127300E93D04 /* Prefix.pch in Headers */,
 			);
@@ -412,7 +447,10 @@
 				EA1105801B82124000E93D04 /* JFColor.h in Headers */,
 				EA11057E1B82124000E93D04 /* JFByteStream.h in Headers */,
 				EA1105861B82124500E93D04 /* JFUtilities.h in Headers */,
+				EAD3D34A1B82368A00A56864 /* JFLogger.h in Headers */,
+				EAD3D34C1B82369500A56864 /* NSObject+JFFramework.h in Headers */,
 				EA1105891B82126B00E93D04 /* JFFramework.h in Headers */,
+				EAD3D34F1B8236BA00A56864 /* NSFileManager+JFFramework.h in Headers */,
 				EA11058B1B82127400E93D04 /* Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,9 +771,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD3D3451B8234A800A56864 /* NSFileManager+JFFramework.m in Sources */,
 				EA1105851B82124500E93D04 /* JFUtilities.m in Sources */,
+				EAD3D3471B8234A800A56864 /* NSObject+JFFramework.m in Sources */,
 				EA1105791B82123F00E93D04 /* JFByteStream.m in Sources */,
 				EA11057D1B82123F00E93D04 /* JFString.m in Sources */,
+				EAD3D3491B8234A800A56864 /* JFLogger.m in Sources */,
 				EA11057B1B82123F00E93D04 /* JFColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,8 +795,11 @@
 			files = (
 				EA1105871B82124500E93D04 /* JFUtilities.m in Sources */,
 				EA11057F1B82124000E93D04 /* JFByteStream.m in Sources */,
+				EAD3D34D1B82369A00A56864 /* NSObject+JFFramework.m in Sources */,
 				EA1105831B82124000E93D04 /* JFString.m in Sources */,
 				EA1105811B82124000E93D04 /* JFColor.m in Sources */,
+				EAD3D34E1B8236B700A56864 /* NSFileManager+JFFramework.m in Sources */,
+				EAD3D34B1B82368E00A56864 /* JFLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1175,6 +1219,7 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1187,6 +1232,7 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1599,6 +1645,7 @@
 				EA1105AE1B82186B00E93D04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA1105AF1B82186B00E93D04 /* Build configuration list for PBXNativeTarget "JFFramework-App-OSX-Tests" */ = {
 			isa = XCConfigurationList;
@@ -1607,6 +1654,7 @@
 				EA1105B11B82186B00E93D04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA5F858F1B768E5A00A32291 /* Build configuration list for PBXProject "JFFramework" */ = {
 			isa = XCConfigurationList;
