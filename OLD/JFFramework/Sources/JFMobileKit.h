@@ -34,6 +34,7 @@
 #import "JFAlertsController.h"
 #import "JFAppDelegate.h"
 #import "JFLabel.h"
+#import "JFKeyboardEventsHandler.h"
 #import "JFNavigationController.h"
 #import	"JFSplashViewController.h"
 #import "JFTabBarController.h"
@@ -49,8 +50,12 @@
 #import	"JFImageManager.h"
 #import "JFLogger.h"
 #import	"JFManager.h"
+#import "JFUtilities.h"
 
 // Utilities (Addons)
 #import	"NSFileManager+JFFramework.h"
 #import "NSIndexPath+JFFramework.h"
 #import	"NSObject+JFFramework.h"
+
+///// OLD /////
+#import	"JFMobileKit_OLD.h"

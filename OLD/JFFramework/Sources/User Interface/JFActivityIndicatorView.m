@@ -418,6 +418,15 @@
 		[self.addedConstraints setArray:constraints];
 		[constraints removeAllObjects];
 		
+		// Adds the size constraints to force it to be as small as possible.
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:aw relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:0.0]];	// Width
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ah relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:0.0]];	// Height
+		for(NSLayoutConstraint* constraint in constraints)
+			constraint.priority = UILayoutPriorityDefaultLow;
+		[containerView addConstraints:constraints];
+		[self.containerViewAddedConstraints setArray:constraints];
+		[constraints removeAllObjects];
+		
 		// Prepares the indicator view.
 		UIView* indicatorView = ([self shouldUseIndicatorView] ? self.indicatorView : self.imageView);
 		
@@ -425,8 +434,8 @@
 		{
 			CGSize size = self.animationSize;
 			[indicatorView removeConstraints:self.imageViewAddedConstraints];
-			[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:aw relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.width]];
-			[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:ah relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.height]];
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:aw relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.width]];	// Width
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:indicatorView attribute:ah relatedBy:re toItem:nil attribute:an multiplier:1.0f constant:size.height]];	// Height
 			[indicatorView addConstraints:constraints];
 			[constraints removeAllObjects];
 		}

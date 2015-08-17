@@ -24,9 +24,6 @@
 // User interface (Galleries)
 #import "JFGalleryView.h"
 
-// User interface (Keyboard)
-#import "JFKeyboardViewHandler.h"
-
 // User interface (Structure)
 #import "JFSliderController.h"
 #import "JFSplitViewController.h"
