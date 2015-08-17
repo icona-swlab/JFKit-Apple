@@ -193,5 +193,4 @@ FOUNDATION_EXPORT void	JFPerformSelector2(NSObject* target, SEL action, id obj1,
 FOUNDATION_EXPORT BOOL	JFCheckSystemVersion(NSString* version, JFRelation relation);
 #endif
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////

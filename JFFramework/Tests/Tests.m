@@ -1,5 +1,5 @@
 //
-//  JFColorTests.m
+//  Tests.m
 //  Copyright (C) 2015  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
 
 
 
-@interface JFColorTests : XCTestCase
+@interface Tests : XCTestCase
 
 @end
 
@@ -32,7 +32,7 @@
 
 
 
-@implementation JFColorTests
+@implementation Tests
 
 - (void)setUp
 {
