@@ -8,10 +8,6 @@
 
 
 
-@class JFLogger;
-
-
-
 @interface JFManager : NSObject
 
 #pragma mark Methods

@@ -18,6 +18,10 @@
 
 
 
+#import "JFUtilities.h"
+
+
+
 @class JFHTTPRequest;
 
 
@@ -49,7 +53,6 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 @protocol JFHTTPRequestDelegate
 
 @required
-#pragma mark Required methods
 
 - (void)	httpRequest:(JFHTTPRequest*)request completedRequestWithData:(NSData*)data;
 - (void)	httpRequest:(JFHTTPRequest*)request failedRequestWithError:(NSError*)error;
@@ -79,6 +82,9 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 @property (strong, nonatomic, readonly)	NSError*			responseError;
 @property (strong, nonatomic, readonly)	NSDictionary*		responseHeaderFields;
 @property (strong, nonatomic)			NSURL*				url;
+
+// Relationships
+@property (weak, nonatomic, readonly)	NSObject<JFHTTPRequestDelegate>*	delegate;
 
 
 #pragma mark Methods

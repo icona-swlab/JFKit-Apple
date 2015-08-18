@@ -46,14 +46,19 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "NSFileManager+JFFramework.h"
 #import "NSObject+JFFramework.h"
 
+// Core
+#import "JFManager.h"
+
 // Data objects
 #import "JFByteStream.h"
 #import "JFColor.h"
 #import "JFString.h"
 
 // Utilities
+#import	"JFHTTPRequest.h"
 #import "JFLogger.h"
 #import "JFUtilities.h"
+#import "JFXMLParser.h"
 
 #if TARGET_OS_IPHONE
 #pragma mark - iOS specific headers

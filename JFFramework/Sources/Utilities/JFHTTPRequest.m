@@ -20,8 +20,6 @@
 
 #import "JFHTTPRequest.h"
 
-#import "JFUtilities.h"
-
 
 
 @interface JFHTTPRequest () <NSURLConnectionDataDelegate>
@@ -44,9 +42,6 @@
 @property (strong, nonatomic)			NSURLConnection*		connection;
 @property (strong, nonatomic, readonly)	NSMutableData*			receivedData;
 @property (strong, nonatomic, readonly)	NSMutableURLRequest*	request;
-
-// Relationships
-@property (weak, nonatomic)	NSObject<JFHTTPRequestDelegate>*	delegate;
 
 
 #pragma mark Methods
@@ -260,7 +255,7 @@
 	{
 		[self.connection cancel];
 		[self clean];
-		HideNetworkActivityIndicator;
+		JFHideNetworkActivityIndicator;
 	}
 	
 	self.responseCode = 0;
@@ -296,10 +291,10 @@
 		if(body)
 		{
 			[self.request setHTTPBody:body];
-			[self setValue:NSUIntegerToString([body length]) forHTTPHeaderField:@"Content-length"];
+			[self setValue:JFStringFromNSUInteger([body length]) forHTTPHeaderField:@"Content-length"];
 		}
-
-		ShowNetworkActivityIndicator;
+		
+		JFShowNetworkActivityIndicator;
 		self.state = JFHTTPRequestStateStarted;
 		self.connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:YES];
 	}
@@ -311,7 +306,7 @@
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
 	[self clean];
-	HideNetworkActivityIndicator;
+	JFHideNetworkActivityIndicator;
 	self.state = JFHTTPRequestStateFailed;
 	self.responseError = error;
 	[self.delegate httpRequest:self failedRequestWithError:error];
@@ -346,7 +341,7 @@
 {
 	NSData* data = [self.receivedData copy];
 	[self clean];
-	HideNetworkActivityIndicator;
+	JFHideNetworkActivityIndicator;
 	self.state = JFHTTPRequestStateCompleted;
 	self.responseData = data;
 	[self.delegate httpRequest:self completedRequestWithData:data];

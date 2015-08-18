@@ -10,7 +10,6 @@
 
 #import "JFManager.h"
 
-#import "JFLogger.h"
 #import "JFUtilities.h"
 
 

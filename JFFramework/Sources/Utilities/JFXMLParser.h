@@ -26,8 +26,8 @@
 
 @required
 
-- (void)	xmlParser:(JFXMLParser*)parser didCompleteOperationWithParsedItems:(NSArray*)items;
-- (void)	xmlParser:(JFXMLParser*)parser didFailOperationWithError:(NSError*)error alreadyParsedItems:(NSArray*)items;
+- (void)	XMLParser:(JFXMLParser*)parser didCompleteOperationWithParsedItems:(NSArray*)items;
+- (void)	XMLParser:(JFXMLParser*)parser didFailOperationWithError:(NSError*)error alreadyParsedItems:(NSArray*)items;
 
 @end
 

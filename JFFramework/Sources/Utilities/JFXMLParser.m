@@ -20,17 +20,25 @@
 
 #import "JFXMLParser.h"
 
+#import "NSObject+JFFramework.h"
+
+#import "JFLogger.h"
 #import "JFUtilities.h"
 
 
 
 @interface JFXMLParser () <NSXMLParserDelegate>
 
+#pragma mark Properties
+
 // Data
 @property (assign, nonatomic, readonly)	NSString*		currentElement;
 @property (retain)						NSMutableArray*	elementsStack;
 @property (retain)						NSMutableArray*	parsedItems;
 @property (retain)						NSXMLParser*	rssParser;
+
+
+#pragma mark Methods
 
 // Data management
 - (void)	notifyDelegateWithError:(NSError*)error;
@@ -41,31 +49,26 @@
 
 
 
+#pragma mark
+
+
+
 @implementation JFXMLParser
 
-#pragma mark - Properties
+#pragma mark Properties
 
 // Data
 @synthesize	elementsStack	= _elementsStack;
 @synthesize	parsedItems		= _parsedItems;
 @synthesize	rssParser		= _rssParser;
 
-// Targets
+// Relationships
 @synthesize	delegate	= _delegate;
 
 
-#pragma mark - Properties accessors
+#pragma mark Properties accessors (Data)
 
-// Data
-
-- (NSArray*)items
-{
-	return [self.parsedItems copy];
-}
-
-// Targets
-
--(NSString*)currentElement
+- (NSString*)currentElement
 {
 	if(!self.elementsStack || ([self.elementsStack count] == 0))
 		return nil;
@@ -73,8 +76,13 @@
 	return [self.elementsStack lastObject];
 }
 
+- (NSArray*)items
+{
+	return [self.parsedItems copy];
+}
 
-#pragma mark - Data management
+
+#pragma mark Data management
 
 - (void)notifyDelegateWithError:(NSError*)error
 {
@@ -82,9 +90,9 @@
 		return;
 	
 	if(error)
-		[self.delegate xmlParser:self didFailOperationWithError:error alreadyParsedItems:self.items];
+		[self.delegate XMLParser:self didFailOperationWithError:error alreadyParsedItems:self.items];
 	else
-		[self.delegate xmlParser:self didCompleteOperationWithParsedItems:self.items];
+		[self.delegate XMLParser:self didCompleteOperationWithParsedItems:self.items];
 }
 
 - (void)parseXMLData:(NSData*)data
@@ -126,7 +134,21 @@
 }
 
 
-#pragma mark - Parser delegate
+#pragma mark Parser management
+
+- (id)parserDidEndElement:(NSString*)elementName namespaceURI:(NSString*)namespaceURI qualifiedName:(NSString*)qName
+{
+	return nil;
+}
+
+- (void)parserDidStartElement:(NSString*)elementName namespaceURI:(NSString*)namespaceURI qualifiedName:(NSString*)qName attributes:(NSDictionary*)attributeDict
+{}
+
+- (void)parserFoundCharacters:(NSString*)string forElement:(NSString*)element
+{}
+
+
+#pragma mark Protocol implementation (NSXMLParserDelegate)
 
 - (void)parser:(NSXMLParser*)parser didEndElement:(NSString*)elementName namespaceURI:(NSString*)namespaceURI qualifiedName:(NSString*)qName
 {
@@ -187,7 +209,9 @@
 		[self.logger logMessage:logMessage level:JFLogLevel3Error hashtags:JFLogHashtagError];
 	}
 	
-	[self performSelectorOnMainThread:@selector(notifyDelegateWithError:) withObject:parseError waitUntilDone:NO];
+	[MainOperationQueue addOperationWithBlock:^{
+		[self notifyDelegateWithError:parseError];
+	}];
 }
 
 - (void)parserDidEndDocument:(NSXMLParser*)parser
@@ -201,7 +225,9 @@
 		[self.logger logMessage:logMessage level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
-	[self performSelectorOnMainThread:@selector(notifyDelegateWithError:) withObject:nil waitUntilDone:NO];
+	[MainOperationQueue addOperationWithBlock:^{
+		[self notifyDelegateWithError:nil];
+	}];
 }
 
 - (void)parserDidStartDocument:(NSXMLParser*)parser
@@ -215,19 +241,5 @@
 		[self.logger logMessage:logMessage level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
-
-
-#pragma mark - Parser management
-
-- (id)parserDidEndElement:(NSString*)elementName namespaceURI:(NSString*)namespaceURI qualifiedName:(NSString*)qName
-{
-	return nil;
-}
-
-- (void)parserDidStartElement:(NSString*)elementName namespaceURI:(NSString*)namespaceURI qualifiedName:(NSString*)qName attributes:(NSDictionary*)attributeDict
-{}
-
-- (void)parserFoundCharacters:(NSString*)string forElement:(NSString*)element
-{}
 
 @end

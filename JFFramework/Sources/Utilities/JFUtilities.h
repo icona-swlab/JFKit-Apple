@@ -18,6 +18,10 @@
 
 
 
+#import "JFString.h"
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - Macros
@@ -35,11 +39,16 @@
 #define CurrentDevice					[UIDevice currentDevice]
 #define CurrentDeviceOrientation		[CurrentDevice orientation]
 #define CurrentStatusBarOrientation		[SharedApplication statusBarOrientation]
-#define JFNibName						JFNibNameForClass([self class])
 #define JFHideNetworkActivityIndicator	JFToggleNetworkActivityIndicator(NO)
+#define JFNibName						JFNibNameForClass([self class])
 #define JFShowNetworkActivityIndicator	JFToggleNetworkActivityIndicator(YES)
 #define MainScreen						[UIScreen mainScreen]
 #define	SharedApplication				[UIApplication sharedApplication]
+#define weak							weak
+#else
+#define JFHideNetworkActivityIndicator
+#define JFShowNetworkActivityIndicator
+#define weak							unsafe_unretained
 #endif
 
 #pragma mark Macros (Info)
