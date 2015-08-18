@@ -51,6 +51,7 @@
 #define weak							unsafe_unretained
 #endif
 
+
 #pragma mark Macros (Info)
 
 #define AppDisplayName	JFApplicationInfoForKey(@"CFBundleDisplayName")

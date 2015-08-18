@@ -1,5 +1,5 @@
 //
-//  JFManager.m
+//  NSIndexPath+JFFramework.h
 //  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,39 +18,12 @@
 
 
 
-#import "JFManager.h"
+@interface NSIndexPath (JFFramework)
 
-#import "JFUtilities.h"
+#pragma mark Methods
 
-
-
-@implementation JFManager
-
-#pragma mark Memory management
-
-+ (instancetype)defaultManager
-{
-	static NSMutableDictionary* defaultManagers = nil;
-	
-	id retObj = nil;
-	
-	@synchronized(self)
-	{
-		if(!defaultManagers)
-			defaultManagers = [NSMutableDictionary new];
-		
-		NSString* key = ClassName;
-		
-		retObj = [defaultManagers objectForKey:key];
-		if(!retObj)
-		{
-			retObj = [[self alloc] init];
-			if(retObj)
-				[defaultManagers setObject:retObj forKey:key];
-		}
-	}
-	
-	return retObj;
-}
+// Memory management
++ (instancetype)	indexPathWithSymbolSeparatedValues:(NSString*)symbolSeparatedValues symbol:(NSString*)symbol;
+- (instancetype)	initWithSymbolSeparatedValues:(NSString*)symbolSeparatedValues symbol:(NSString*)symbol;
 
 @end

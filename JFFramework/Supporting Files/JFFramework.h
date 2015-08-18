@@ -42,6 +42,9 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 
 #pragma mark - Common headers
 
+// Addons (Data Objects)
+#import "NSIndexPath+JFFramework.h"
+
 // Addons (Utilities)
 #import "NSFileManager+JFFramework.h"
 #import "NSObject+JFFramework.h"

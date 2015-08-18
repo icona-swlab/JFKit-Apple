@@ -57,6 +57,10 @@
 		EA87459F1B8341D70064590D /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87459C1B8341D70064590D /* JFHTTPRequest.m */; };
 		EA8745A11B8344100064590D /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EA87459B1B8341D70064590D /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA8745A21B8344150064590D /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87459C1B8341D70064590D /* JFHTTPRequest.m */; };
+		EA8745A61B834B990064590D /* NSIndexPath+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA8745A41B834B990064590D /* NSIndexPath+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA8745A71B834B990064590D /* NSIndexPath+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA8745A41B834B990064590D /* NSIndexPath+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA8745A81B834B990064590D /* NSIndexPath+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */; };
+		EA8745A91B834B990064590D /* NSIndexPath+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */; };
 		EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D3451B8234A800A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
 		EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -165,6 +169,8 @@
 		EA8745961B833CDD0064590D /* JFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFXMLParser.m; sourceTree = "<group>"; };
 		EA87459B1B8341D70064590D /* JFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequest.h; sourceTree = "<group>"; };
 		EA87459C1B8341D70064590D /* JFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequest.m; sourceTree = "<group>"; };
+		EA8745A41B834B990064590D /* NSIndexPath+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+JFFramework.h"; sourceTree = "<group>"; };
+		EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+JFFramework.m"; sourceTree = "<group>"; };
 		EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JFFramework.h"; sourceTree = "<group>"; };
 		EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+JFFramework.m"; sourceTree = "<group>"; };
 		EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+JFFramework.h"; sourceTree = "<group>"; };
@@ -261,6 +267,7 @@
 		EA1105451B820E3500E93D04 /* Data Objects */ = {
 			isa = PBXGroup;
 			children = (
+				EA8745A31B834B8B0064590D /* Addons */,
 				EA1105461B820E3500E93D04 /* JFByteStream.h */,
 				EA1105471B820E3500E93D04 /* JFByteStream.m */,
 				EA1105481B820E3500E93D04 /* JFColor.h */,
@@ -441,6 +448,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		EA8745A31B834B8B0064590D /* Addons */ = {
+			isa = PBXGroup;
+			children = (
+				EA8745A41B834B990064590D /* NSIndexPath+JFFramework.h */,
+				EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */,
+			);
+			path = Addons;
+			sourceTree = "<group>";
+		};
 		EAD3D33D1B82342F00A56864 /* Addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +479,7 @@
 				EA11057C1B82123F00E93D04 /* JFString.h in Headers */,
 				EA87459D1B8341D70064590D /* JFHTTPRequest.h in Headers */,
 				EAD3D3481B8234A800A56864 /* JFLogger.h in Headers */,
+				EA8745A61B834B990064590D /* NSIndexPath+JFFramework.h in Headers */,
 				EA11057A1B82123F00E93D04 /* JFColor.h in Headers */,
 				EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */,
 				EA1105781B82123F00E93D04 /* JFByteStream.h in Headers */,
@@ -482,6 +499,7 @@
 				EA1105821B82124000E93D04 /* JFString.h in Headers */,
 				EA8745A11B8344100064590D /* JFHTTPRequest.h in Headers */,
 				EA1105801B82124000E93D04 /* JFColor.h in Headers */,
+				EA8745A71B834B990064590D /* NSIndexPath+JFFramework.h in Headers */,
 				EA11057E1B82124000E93D04 /* JFByteStream.h in Headers */,
 				EA1105861B82124500E93D04 /* JFUtilities.h in Headers */,
 				EAD3D34A1B82368A00A56864 /* JFLogger.h in Headers */,
@@ -816,6 +834,7 @@
 				EA8745991B833CDD0064590D /* JFXMLParser.m in Sources */,
 				EA1105791B82123F00E93D04 /* JFByteStream.m in Sources */,
 				EA11057D1B82123F00E93D04 /* JFString.m in Sources */,
+				EA8745A81B834B990064590D /* NSIndexPath+JFFramework.m in Sources */,
 				EAD3D3491B8234A800A56864 /* JFLogger.m in Sources */,
 				EA11057B1B82123F00E93D04 /* JFColor.m in Sources */,
 				EA87459F1B8341D70064590D /* JFHTTPRequest.m in Sources */,
@@ -841,6 +860,7 @@
 				EA87459A1B833CDD0064590D /* JFXMLParser.m in Sources */,
 				EA1105831B82124000E93D04 /* JFString.m in Sources */,
 				EA1105811B82124000E93D04 /* JFColor.m in Sources */,
+				EA8745A91B834B990064590D /* NSIndexPath+JFFramework.m in Sources */,
 				EAD3D34E1B8236B700A56864 /* NSFileManager+JFFramework.m in Sources */,
 				EAD3D34B1B82368E00A56864 /* JFLogger.m in Sources */,
 				EA8745A21B8344150064590D /* JFHTTPRequest.m in Sources */,
