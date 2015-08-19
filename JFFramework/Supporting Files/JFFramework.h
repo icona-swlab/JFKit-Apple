@@ -66,6 +66,14 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #if TARGET_OS_IPHONE
 #pragma mark - iOS specific headers
 
+// Core
+#import "JFAppDelegate.h"
+
+// User Interface
+#import "JFAlert.h"
+#import "JFAlertsController.h"
+#import "JFWindowController.h"
+
 #else
 #pragma mark - OS X specific headers
 

@@ -20,6 +20,8 @@
 
 #import "JFAppDelegate.h"
 
+#import "NSObject+JFFramework.h"
+
 #import "JFAlertsController.h"
 #import "JFLogger.h"
 #import "JFUtilities.h"
@@ -85,7 +87,7 @@
 	[self.logger logMessage:@"Application opened." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	
 	// Loads the user interface.
-	self.window = [[UIWindow alloc] initWithFrame:UIMainScreen.bounds];
+	self.window = [[UIWindow alloc] initWithFrame:MainScreen.bounds];
 	JFWindowController* controller = [self createControllerForWindow:self.window];
 	self.windowController = (controller ? controller : [[JFWindowController alloc] initWithWindow:self.window]);
 	[self.window makeKeyAndVisible];

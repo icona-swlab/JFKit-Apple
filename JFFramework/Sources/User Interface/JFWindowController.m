@@ -1,6 +1,6 @@
 //
 //  JFWindowController.m
-//  Copyright (C) 2015  Jacopo Filié
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -20,7 +20,10 @@
 
 #import "JFWindowController.h"
 
+#import "NSObject+JFFramework.h"
+
 #import "JFLogger.h"
+#import "JFUtilities.h"
 
 
 
@@ -35,10 +38,10 @@
 #pragma mark Methods
 
 // Notifications management (UIWindow)
-- (void)	notifiedThatWindowDidBecomeHidden:(NSNotification*)notification;
-- (void)	notifiedThatWindowDidBecomeKey:(NSNotification*)notification;
-- (void)	notifiedThatWindowDidBecomeVisible:(NSNotification*)notification;
-- (void)	notifiedThatWindowDidResignKey:(NSNotification*)notification;
+- (void)	notifiedWindowDidBecomeHidden:(NSNotification*)notification;
+- (void)	notifiedWindowDidBecomeKey:(NSNotification*)notification;
+- (void)	notifiedWindowDidBecomeVisible:(NSNotification*)notification;
+- (void)	notifiedWindowDidResignKey:(NSNotification*)notification;
 
 @end
 
@@ -63,7 +66,7 @@
 
 - (void)dealloc
 {
-	[NSDefaultNotificationCenter removeObserver:self];
+	[MainNotificationCenter removeObserver:self];
 }
 
 - (instancetype)initWithWindow:(UIWindow*)window
@@ -78,11 +81,11 @@
 		_window = window;
 		
 		// Begins to listen for interesting notifications.
-		NSNotificationCenter* center = NSDefaultNotificationCenter;
-		[center addObserver:self selector:@selector(notifiedThatWindowDidBecomeHidden:) name:UIWindowDidBecomeHiddenNotification object:window];
-		[center addObserver:self selector:@selector(notifiedThatWindowDidBecomeKey:) name:UIWindowDidBecomeKeyNotification object:window];
-		[center addObserver:self selector:@selector(notifiedThatWindowDidBecomeVisible:) name:UIWindowDidBecomeVisibleNotification object:window];
-		[center addObserver:self selector:@selector(notifiedThatWindowDidResignKey:) name:UIWindowDidResignKeyNotification object:window];
+		NSNotificationCenter* center = MainNotificationCenter;
+		[center addObserver:self selector:@selector(notifiedWindowDidBecomeHidden:) name:UIWindowDidBecomeHiddenNotification object:window];
+		[center addObserver:self selector:@selector(notifiedWindowDidBecomeKey:) name:UIWindowDidBecomeKeyNotification object:window];
+		[center addObserver:self selector:@selector(notifiedWindowDidBecomeVisible:) name:UIWindowDidBecomeVisibleNotification object:window];
+		[center addObserver:self selector:@selector(notifiedWindowDidResignKey:) name:UIWindowDidResignKeyNotification object:window];
 	}
 	return self;
 }
@@ -94,7 +97,7 @@
 {
 	if([self shouldLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface has been loaded.", IDToString(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface has been loaded.", JFStringFromID(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
@@ -103,7 +106,7 @@
 {
 	if([self shouldLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface is being loaded.", IDToString(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface is being loaded.", JFStringFromID(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
@@ -112,7 +115,7 @@
 {
 	if([self shouldLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface will be loaded.", IDToString(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface will be loaded.", JFStringFromID(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
@@ -121,7 +124,7 @@
 {
 	if([self shouldLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did become hidden.", IDToString(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did become hidden.", JFStringFromID(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
@@ -130,7 +133,7 @@
 {
 	if([self shouldLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did become key.", IDToString(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did become key.", JFStringFromID(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
@@ -139,7 +142,7 @@
 {
 	if([self shouldLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did become visible.", IDToString(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did become visible.", JFStringFromID(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
@@ -156,7 +159,7 @@
 {
 	if([self shouldLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", IDToString(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", JFStringFromID(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
@@ -164,22 +167,22 @@
 
 #pragma mark Notifications management (UIWindow)
 
-- (void)notifiedThatWindowDidBecomeHidden:(NSNotification*)notification
+- (void)notifiedWindowDidBecomeHidden:(NSNotification*)notification
 {
 	[self windowDidBecomeHidden];
 }
 
-- (void)notifiedThatWindowDidBecomeKey:(NSNotification*)notification
+- (void)notifiedWindowDidBecomeKey:(NSNotification*)notification
 {
 	[self windowDidBecomeKey];
 }
 
-- (void)notifiedThatWindowDidBecomeVisible:(NSNotification*)notification
+- (void)notifiedWindowDidBecomeVisible:(NSNotification*)notification
 {
 	[self windowDidBecomeVisible];
 }
 
-- (void)notifiedThatWindowDidResignKey:(NSNotification*)notification
+- (void)notifiedWindowDidResignKey:(NSNotification*)notification
 {
 	[self windowDidResignKey];
 }
