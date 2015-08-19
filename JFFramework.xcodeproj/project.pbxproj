@@ -53,6 +53,16 @@
 		EA6D5D9F1B8483F900455F2A /* JFAlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D9B1B8483F900455F2A /* JFAlertsController.m */; };
 		EA6D5DA21B84841E00455F2A /* JFWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DA01B84841E00455F2A /* JFWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA6D5DA31B84841E00455F2A /* JFWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DA11B84841E00455F2A /* JFWindowController.m */; };
+		EA6D5DA61B848BD400455F2A /* JFViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DA41B848BD400455F2A /* JFViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA6D5DA71B848BD400455F2A /* JFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DA51B848BD400455F2A /* JFViewController.m */; };
+		EA6D5DAD1B84924A00455F2A /* UIBarButtonItem+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DA91B84924A00455F2A /* UIBarButtonItem+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA6D5DAE1B84924A00455F2A /* UIBarButtonItem+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DAA1B84924A00455F2A /* UIBarButtonItem+JFFramework.m */; };
+		EA6D5DAF1B84924A00455F2A /* UIButton+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DAB1B84924A00455F2A /* UIButton+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA6D5DB01B84924A00455F2A /* UIButton+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DAC1B84924A00455F2A /* UIButton+JFFramework.m */; };
+		EA6D5DB31B84928600455F2A /* JFActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DB11B84928600455F2A /* JFActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA6D5DB41B84928600455F2A /* JFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DB21B84928600455F2A /* JFActivityIndicatorView.m */; };
+		EA6D5DB71B8492BA00455F2A /* JFLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DB51B8492BA00455F2A /* JFLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA6D5DB81B8492BA00455F2A /* JFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DB61B8492BA00455F2A /* JFLabel.m */; };
 		EA8745911B8338420064590D /* JFManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA87458F1B8338420064590D /* JFManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA8745921B8338420064590D /* JFManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EA87458F1B8338420064590D /* JFManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA8745931B8338420064590D /* JFManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8745901B8338420064590D /* JFManager.m */; };
@@ -179,6 +189,16 @@
 		EA6D5D9B1B8483F900455F2A /* JFAlertsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAlertsController.m; sourceTree = "<group>"; };
 		EA6D5DA01B84841E00455F2A /* JFWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowController.h; sourceTree = "<group>"; };
 		EA6D5DA11B84841E00455F2A /* JFWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWindowController.m; sourceTree = "<group>"; };
+		EA6D5DA41B848BD400455F2A /* JFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFViewController.h; sourceTree = "<group>"; };
+		EA6D5DA51B848BD400455F2A /* JFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFViewController.m; sourceTree = "<group>"; };
+		EA6D5DA91B84924A00455F2A /* UIBarButtonItem+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+JFFramework.h"; sourceTree = "<group>"; };
+		EA6D5DAA1B84924A00455F2A /* UIBarButtonItem+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+JFFramework.m"; sourceTree = "<group>"; };
+		EA6D5DAB1B84924A00455F2A /* UIButton+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+JFFramework.h"; sourceTree = "<group>"; };
+		EA6D5DAC1B84924A00455F2A /* UIButton+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+JFFramework.m"; sourceTree = "<group>"; };
+		EA6D5DB11B84928600455F2A /* JFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFActivityIndicatorView.h; sourceTree = "<group>"; };
+		EA6D5DB21B84928600455F2A /* JFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFActivityIndicatorView.m; sourceTree = "<group>"; };
+		EA6D5DB51B8492BA00455F2A /* JFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLabel.h; sourceTree = "<group>"; };
+		EA6D5DB61B8492BA00455F2A /* JFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLabel.m; sourceTree = "<group>"; };
 		EA87458F1B8338420064590D /* JFManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFManager.h; sourceTree = "<group>"; };
 		EA8745901B8338420064590D /* JFManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFManager.m; sourceTree = "<group>"; };
 		EA8745951B833CDD0064590D /* JFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFXMLParser.h; sourceTree = "<group>"; };
@@ -459,14 +479,32 @@
 		EA6D5D971B8483EA00455F2A /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				EA6D5DA81B84923F00455F2A /* Addons */,
+				EA6D5DB11B84928600455F2A /* JFActivityIndicatorView.h */,
+				EA6D5DB21B84928600455F2A /* JFActivityIndicatorView.m */,
 				EA6D5D981B8483F900455F2A /* JFAlert.h */,
 				EA6D5D991B8483F900455F2A /* JFAlert.m */,
 				EA6D5D9A1B8483F900455F2A /* JFAlertsController.h */,
 				EA6D5D9B1B8483F900455F2A /* JFAlertsController.m */,
+				EA6D5DB51B8492BA00455F2A /* JFLabel.h */,
+				EA6D5DB61B8492BA00455F2A /* JFLabel.m */,
+				EA6D5DA41B848BD400455F2A /* JFViewController.h */,
+				EA6D5DA51B848BD400455F2A /* JFViewController.m */,
 				EA6D5DA01B84841E00455F2A /* JFWindowController.h */,
 				EA6D5DA11B84841E00455F2A /* JFWindowController.m */,
 			);
 			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		EA6D5DA81B84923F00455F2A /* Addons */ = {
+			isa = PBXGroup;
+			children = (
+				EA6D5DA91B84924A00455F2A /* UIBarButtonItem+JFFramework.h */,
+				EA6D5DAA1B84924A00455F2A /* UIBarButtonItem+JFFramework.m */,
+				EA6D5DAB1B84924A00455F2A /* UIButton+JFFramework.h */,
+				EA6D5DAC1B84924A00455F2A /* UIButton+JFFramework.m */,
+			);
+			path = Addons;
 			sourceTree = "<group>";
 		};
 		EA87458E1B8337F10064590D /* Core */ = {
@@ -508,22 +546,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA8745971B833CDD0064590D /* JFXMLParser.h in Headers */,
+				EA6D5DAD1B84924A00455F2A /* UIBarButtonItem+JFFramework.h in Headers */,
 				EA11057C1B82123F00E93D04 /* JFString.h in Headers */,
 				EA87459D1B8341D70064590D /* JFHTTPRequest.h in Headers */,
+				EA6D5DA61B848BD400455F2A /* JFViewController.h in Headers */,
 				EAD3D3481B8234A800A56864 /* JFLogger.h in Headers */,
 				EA8745A61B834B990064590D /* NSIndexPath+JFFramework.h in Headers */,
 				EA11057A1B82123F00E93D04 /* JFColor.h in Headers */,
 				EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */,
 				EA1105781B82123F00E93D04 /* JFByteStream.h in Headers */,
 				EA6D5DA21B84841E00455F2A /* JFWindowController.h in Headers */,
+				EA6D5DAF1B84924A00455F2A /* UIButton+JFFramework.h in Headers */,
 				EA6D5D9C1B8483F900455F2A /* JFAlert.h in Headers */,
 				EA6D5D9E1B8483F900455F2A /* JFAlertsController.h in Headers */,
 				EA1105841B82124500E93D04 /* JFUtilities.h in Headers */,
 				EA6D5D951B8483A100455F2A /* JFAppDelegate.h in Headers */,
+				EA6D5DB71B8492BA00455F2A /* JFLabel.h in Headers */,
 				EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */,
 				EA1105881B82126A00E93D04 /* JFFramework.h in Headers */,
 				EA8745911B8338420064590D /* JFManager.h in Headers */,
 				EA11058A1B82127300E93D04 /* Prefix.pch in Headers */,
+				EA6D5DB31B84928600455F2A /* JFActivityIndicatorView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,13 +911,18 @@
 				EA6D5D9F1B8483F900455F2A /* JFAlertsController.m in Sources */,
 				EA1105851B82124500E93D04 /* JFUtilities.m in Sources */,
 				EAD3D3471B8234A800A56864 /* NSObject+JFFramework.m in Sources */,
+				EA6D5DB41B84928600455F2A /* JFActivityIndicatorView.m in Sources */,
 				EA8745991B833CDD0064590D /* JFXMLParser.m in Sources */,
 				EA6D5DA31B84841E00455F2A /* JFWindowController.m in Sources */,
 				EA1105791B82123F00E93D04 /* JFByteStream.m in Sources */,
 				EA6D5D9D1B8483F900455F2A /* JFAlert.m in Sources */,
+				EA6D5DAE1B84924A00455F2A /* UIBarButtonItem+JFFramework.m in Sources */,
 				EA6D5D961B8483A100455F2A /* JFAppDelegate.m in Sources */,
 				EA11057D1B82123F00E93D04 /* JFString.m in Sources */,
 				EA8745A81B834B990064590D /* NSIndexPath+JFFramework.m in Sources */,
+				EA6D5DA71B848BD400455F2A /* JFViewController.m in Sources */,
+				EA6D5DB01B84924A00455F2A /* UIButton+JFFramework.m in Sources */,
+				EA6D5DB81B8492BA00455F2A /* JFLabel.m in Sources */,
 				EAD3D3491B8234A800A56864 /* JFLogger.m in Sources */,
 				EA11057B1B82123F00E93D04 /* JFColor.m in Sources */,
 				EA87459F1B8341D70064590D /* JFHTTPRequest.m in Sources */,

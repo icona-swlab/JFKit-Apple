@@ -1,6 +1,6 @@
 //
-//  JFLabel.h
-//  Copyright (C) 2014  Jacopo Filié
+//  UIButton+JFFramework.h
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,6 +18,21 @@
 
 
 
-@interface JFLabel : UILabel
+#pragma mark Typedefs
+
+typedef void (^JFButtonBlock) (id sender);
+
+
+
+#pragma mark
+
+
+
+@interface UIButton (JFFramework)
+
+#pragma mark Properties
+
+// User interface
+@property (strong, nonatomic)	JFButtonBlock	actionBlock;
 
 @end

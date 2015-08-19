@@ -93,7 +93,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 
 - (instancetype)init
 {
-	return [self initWithNibName:StandardXIBName bundle:nil];
+	return [self initWithNibName:JFNibName bundle:nil];
 }
 
 
@@ -281,7 +281,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self didMoveToParent:parent];
 	
 	NSDictionary* userInfo = (parent ? @{JFViewControllerParentKey : parent} : nil);
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerDidMoveToParentNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerDidMoveToParentNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenDismissed:(BOOL)animated
@@ -291,7 +291,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self hasBeenDismissed:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenDismissedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerHasBeenDismissedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPopped:(BOOL)animated
@@ -301,7 +301,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self hasBeenPopped:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPoppedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerHasBeenPoppedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPresented:(BOOL)animated
@@ -311,7 +311,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self hasBeenPresented:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPresentedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerHasBeenPresentedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyHasBeenPushed:(BOOL)animated
@@ -321,7 +321,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self hasBeenPushed:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerHasBeenPushedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerHasBeenPushedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBeDismissed:(BOOL)animated
@@ -331,7 +331,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self willBeDismissed:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBeDismissedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerWillBeDismissedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBePopped:(BOOL)animated
@@ -341,7 +341,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self willBePopped:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePoppedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerWillBePoppedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBePresented:(BOOL)animated
@@ -351,7 +351,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self willBePresented:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePresentedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerWillBePresentedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillBePushed:(BOOL)animated
@@ -361,7 +361,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self willBePushed:animated];
 	
 	NSDictionary* userInfo = @{JFViewControllerIsAnimatedKey : @(animated)};
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillBePushedNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerWillBePushedNotification object:self userInfo:userInfo];
 }
 
 - (void)notifyWillMoveToParent:(UIViewController*)parent
@@ -371,7 +371,7 @@ NSString* const	JFViewControllerWillMoveToParentNotification	= @"JFViewControlle
 		[delegate viewController:self willMoveToParent:parent];
 	
 	NSDictionary* userInfo = (parent ? @{JFViewControllerParentKey : parent} : nil);
-	[NSDefaultNotificationCenter postNotificationName:JFViewControllerWillMoveToParentNotification object:self userInfo:userInfo];
+	[MainNotificationCenter postNotificationName:JFViewControllerWillMoveToParentNotification object:self userInfo:userInfo];
 }
 
 

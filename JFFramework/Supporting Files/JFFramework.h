@@ -42,7 +42,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 
 #pragma mark - Common headers
 
-// Addons (Data Objects)
+// Addons (Data objects)
 #import "NSIndexPath+JFFramework.h"
 
 // Addons (Utilities)
@@ -66,12 +66,19 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #if TARGET_OS_IPHONE
 #pragma mark - iOS specific headers
 
+// Addons (User interface)
+#import "UIBarButtonItem+JFFramework.h"
+#import "UIButton+JFFramework.h"
+
 // Core
 #import "JFAppDelegate.h"
 
-// User Interface
+// User interface
+#import "JFActivityIndicatorView.h"
 #import "JFAlert.h"
 #import "JFAlertsController.h"
+#import "JFLabel.h"
+#import "JFViewController.h"
 #import "JFWindowController.h"
 
 #else

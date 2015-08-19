@@ -1,6 +1,6 @@
 //
 //  JFActivityIndicatorView.m
-//  Copyright (C) 2015  Jacopo Filié
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -20,7 +20,9 @@
 
 #import "JFActivityIndicatorView.h"
 
+#import "JFColor.h"
 #import "JFLabel.h"
+#import "JFUtilities.h"
 
 
 
@@ -257,13 +259,13 @@
 - (void)initializeUserInterface
 {
 	// Prepares itself.
-	self.backgroundColor = ColorAlpha(80.0f);
+	self.backgroundColor = JFColorAlpha(80.0f);
 	self.opaque = NO;
 	self.userInteractionEnabled = YES;
 	
 	// Prepares the container view.
 	UIView* containerView = [UIView new];
-	containerView.backgroundColor = ColorAlpha(192.0f);
+	containerView.backgroundColor = JFColorAlpha(192.0f);
 	containerView.layer.cornerRadius = 8.0f;
 	containerView.opaque = NO;
 	containerView.translatesAutoresizingMaskIntoConstraints = NO;
