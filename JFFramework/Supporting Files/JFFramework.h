@@ -1,6 +1,6 @@
 //
 //  JFFramework.h
-//  Copyright (C) 2015  Jacopo Filié
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -77,7 +77,12 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "JFActivityIndicatorView.h"
 #import "JFAlert.h"
 #import "JFAlertsController.h"
+#import "JFKeyboardEventsHandler.h"
 #import "JFLabel.h"
+#import	"JFNavigationController.h"
+#import "JFSplashViewController.h"
+#import "JFTabBarController.h"
+#import	"JFTableViewCell.h"
 #import "JFViewController.h"
 #import "JFWindowController.h"
 
