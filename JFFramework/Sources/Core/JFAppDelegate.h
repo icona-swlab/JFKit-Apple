@@ -18,23 +18,35 @@
 
 
 
+#import "JFUtilities.h"
+
+
+
 @class JFAlertsController;
+#if TARGET_OS_IPHONE
 @class JFWindowController;
+#endif
 
 
 
+#if TARGET_OS_IPHONE
 @interface JFAppDelegate : UIResponder <UIApplicationDelegate>
+#else
+@interface JFAppDelegate : NSObject <NSApplicationDelegate>
+#endif
 
 #pragma mark Properties
 
 // User interface
-@property (strong, nonatomic, readonly)	JFAlertsController*	alertsController;
-@property (strong, nonatomic)			UIWindow*			window;
+@property (strong, nonatomic, readonly)				JFAlertsController*	alertsController;
+@property (strong, nonatomic)			IBOutlet	JFWindow*			window;
 
 
 #pragma mark Methods
 
 // User interface management
+#if TARGET_OS_IPHONE
 - (JFWindowController*)	createControllerForWindow:(UIWindow*)window;
+#endif
 
 @end

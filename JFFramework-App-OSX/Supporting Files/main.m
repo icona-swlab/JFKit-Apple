@@ -1,6 +1,6 @@
 //
 //  main.m
-//  JFramework-App-OSX
+//  JFFramework-App-OSX
 //
 //  Created by Jacopo Filié on 17/08/15.
 //

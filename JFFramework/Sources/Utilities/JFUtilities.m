@@ -338,6 +338,24 @@ BOOL JFCheckSystemVersion(NSString* version, JFRelation relation)
 	return NO;
 }
 
+#else
+
+BOOL JFCheckSystemVersion(double version, JFRelation relation)
+{
+	double systemVersion = NSAppKitVersionNumber;
+	switch(relation)
+	{
+		case JFRelationLessThan:			return (systemVersion < version);
+		case JFRelationLessThanOrEqual:		return (systemVersion <= version);
+		case JFRelationEqual:				return (systemVersion == version);
+		case JFRelationGreaterThanOrEqual:	return (systemVersion >= version);
+		case JFRelationGreaterThan:			return (systemVersion > version);
+		default:
+			break;
+	}
+	return NO;
+}
+
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

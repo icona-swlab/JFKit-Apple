@@ -34,8 +34,12 @@
 
 #pragma mark Methods
 
+#if TARGET_OS_IPHONE
 // User interface management (Action sheets)
 - (JFAlert*)	createActionSheetWithTitle:(NSString*)title cancelButton:(JFAlertButton*)cancelButton destructiveButton:(JFAlertButton*)destructiveButton otherButtons:(NSArray*)otherButtons;
+#else
+- (JFAlert*)	createActionSheet:(NSAlertStyle)style title:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons;
+#endif
 
 @end
 
@@ -75,18 +79,32 @@
 
 #pragma mark User interface management (Action sheets)
 
+#if TARGET_OS_IPHONE
 - (JFAlert*)createActionSheetWithTitle:(NSString*)title cancelButton:(JFAlertButton*)cancelButton destructiveButton:(JFAlertButton*)destructiveButton otherButtons:(NSArray*)otherButtons
+#else
+- (JFAlert*)createActionSheet:(NSAlertStyle)style title:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons
+#endif
 {
 	JFAlert* retVal = [[JFAlert alloc] init];
 	retVal.delegate = self;
 	retVal.title = title;
 	
+#if !TARGET_OS_IPHONE
+	retVal.message = message;
+	retVal.style = style;
+#endif
+	
 	retVal.cancelButton = cancelButton;
-	retVal.destructiveButton = destructiveButton;
 	retVal.otherButtons = otherButtons;
+	
+#if TARGET_OS_IPHONE
+	retVal.destructiveButton = destructiveButton;
+#endif
 	
 	return retVal;
 }
+
+#if TARGET_OS_IPHONE
 
 - (void)presentActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem title:(NSString*)title cancelButton:(JFAlertButton*)cancelButton destructiveButton:(JFAlertButton*)destructiveButton otherButtons:(NSArray*)otherButtons
 {
@@ -138,8 +156,24 @@
 	});
 }
 
+#else
+
+- (void)presentActionSheetForWindow:(NSWindow*)window style:(NSAlertStyle)style title:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons
+{
+	JFAlert* alert = [self createActionSheet:style title:title message:message cancelButton:cancelButton otherButtons:otherButtons];
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if([alert presentAsActionSheetForWindow:window completion:nil])
+			[self.alerts addObject:alert];
+	});
+}
+
+#endif
+
 
 #pragma mark User interface management (Alert views)
+
+#if TARGET_OS_IPHONE
 
 - (void)presentAlertViewWithTitle:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons
 {
@@ -161,6 +195,32 @@
 			[self.alerts addObject:alert];
 	});
 }
+
+#else
+
+- (void)presentAlertView:(NSAlertStyle)style title:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons
+{
+	[self presentAlertView:style title:title message:message cancelButton:cancelButton otherButtons:otherButtons timeout:0.0];
+}
+
+- (void)presentAlertView:(NSAlertStyle)style title:(NSString*)title message:(NSString*)message cancelButton:(JFAlertButton*)cancelButton otherButtons:(NSArray*)otherButtons timeout:(NSTimeInterval)timeout
+{
+	JFAlert* alert = [[JFAlert alloc] init];
+	alert.delegate = self;
+	alert.message = message;
+	alert.style = style;
+	alert.title = title;
+	
+	alert.cancelButton = cancelButton;
+	alert.otherButtons = otherButtons;
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if([alert presentAsAlertViewWithTimeout:timeout completion:nil])
+			[self.alerts addObject:alert];
+	});
+}
+
+#endif
 
 
 #pragma mark Protocol implementation (JFAlertViewDelegate)

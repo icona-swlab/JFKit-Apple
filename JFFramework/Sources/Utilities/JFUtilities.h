@@ -42,12 +42,14 @@
 #define JFHideNetworkActivityIndicator	JFToggleNetworkActivityIndicator(NO)
 #define JFNibName						JFNibNameForClass([self class])
 #define JFShowNetworkActivityIndicator	JFToggleNetworkActivityIndicator(YES)
+#define JFWindow						UIWindow
 #define MainScreen						[UIScreen mainScreen]
 #define	SharedApplication				[UIApplication sharedApplication]
 #define weak							weak
 #else
 #define JFHideNetworkActivityIndicator
 #define JFShowNetworkActivityIndicator
+#define JFWindow						NSWindow
 #define weak							unsafe_unretained
 #endif
 
@@ -98,6 +100,19 @@
 #define iOS7Plus			iOSPlus(@"7")
 #define iOS8				iOS(@"8")
 #define iOS8Plus			iOSPlus(@"8")
+#else
+#define OSX(_version)		JFCheckSystemVersion(_version, JFRelationEqual)
+#define OSXPlus(_version)	JFCheckSystemVersion(_version, JFRelationGreaterThanOrEqual)
+#define OSX10_6				(OSX10_6Plus && !OSX10_7Plus)
+#define OSX10_6Plus			OSXPlus(NSAppKitVersionNumber10_6)
+#define OSX10_7				(OSX10_7Plus && !OSX10_8Plus)
+#define OSX10_7Plus			OSXPlus(NSAppKitVersionNumber10_7)
+#define OSX10_8				(OSX10_8Plus && !OSX10_9Plus)
+#define OSX10_8Plus			OSXPlus(NSAppKitVersionNumber10_8)
+#define OSX10_9				(OSX10_9Plus && !OSX10_10Plus)
+#define OSX10_9Plus			OSXPlus(NSAppKitVersionNumber10_9)
+#define OSX10_10			(OSX10_10Plus && !OSXPlus(NSAppKitVersionNumber10_10 + 1))
+#define OSX10_10Plus		OSXPlus(NSAppKitVersionNumber10_10)
 #endif
 
 
@@ -201,6 +216,8 @@ FOUNDATION_EXPORT void	JFPerformSelector2(NSObject* target, SEL action, id obj1,
 
 #if TARGET_OS_IPHONE
 FOUNDATION_EXPORT BOOL	JFCheckSystemVersion(NSString* version, JFRelation relation);
+#else
+FOUNDATION_EXPORT BOOL	JFCheckSystemVersion(double version, JFRelation relation);
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

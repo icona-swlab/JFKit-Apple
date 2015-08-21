@@ -50,12 +50,17 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "NSObject+JFFramework.h"
 
 // Core
+#import "JFAppDelegate.h"
 #import "JFManager.h"
 
 // Data objects
 #import "JFByteStream.h"
 #import "JFColor.h"
 #import "JFString.h"
+
+// User interface
+#import "JFAlert.h"
+#import "JFAlertsController.h"
 
 // Utilities
 #import	"JFHTTPRequest.h"
@@ -70,13 +75,8 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "UIBarButtonItem+JFFramework.h"
 #import "UIButton+JFFramework.h"
 
-// Core
-#import "JFAppDelegate.h"
-
 // User interface
 #import "JFActivityIndicatorView.h"
-#import "JFAlert.h"
-#import "JFAlertsController.h"
 #import "JFKeyboardEventsHandler.h"
 #import "JFLabel.h"
 #import	"JFNavigationController.h"

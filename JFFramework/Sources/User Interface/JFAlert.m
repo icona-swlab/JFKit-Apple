@@ -22,7 +22,11 @@
 
 
 
+#if TARGET_OS_IPHONE
 @interface JFAlert () <UIActionSheetDelegate, UIAlertViewDelegate>
+#else
+@interface JFAlert ()
+#endif
 
 #pragma mark Properties
 
@@ -31,35 +35,50 @@
 @property (copy, nonatomic)	JFBlock	presentCompletion;
 
 // Flags
+#if !TARGET_OS_IPHONE
+@property (assign, nonatomic, getter = isApplicationModal)		BOOL	applicationModal;
+#endif
 @property (assign, nonatomic, readwrite, getter = isVisible)	BOOL	visible;
 
 // Timing
 @property (strong, nonatomic)	NSTimer*	timer;
 
 // User interface
+#if TARGET_OS_IPHONE
 @property (strong, nonatomic)	UIActionSheet*	actionSheet;
 @property (strong, nonatomic)	UIAlertView*	alertView;
+#else
+@property (strong, nonatomic)	NSAlert*		alertView;
+#endif
 @property (strong, nonatomic)	NSArray*		currentButtons;
 
 
 #pragma mark Methods
 
-// User interface management
-- (BOOL)	prepareActionSheet:(JFBlock)completion;
-- (BOOL)	prepareAlertView:(JFBlock)completion;
-
-// User interface management (Alerts handling)
-- (void)	alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex;
-- (void)	alert:(id)alert didDismissWithButtonIndex:(NSInteger)buttonIndex;
-- (void)	alert:(id)alert willDismissWithButtonIndex:(NSInteger)buttonIndex;
-- (void)	didPresentAlert:(id)alert;
-- (void)	willPresentAlert:(id)alert;
+// Data management
+- (JFAlertButton*)	buttonAtIndex:(NSInteger)buttonIndex;
 
 // Notifications management
 - (void)	notifyDidDismissWithButton:(JFAlertButton*)button;
 - (void)	notifyDidPresent;
 - (void)	notifyWillDismissWithButton:(JFAlertButton*)button;
 - (void)	notifyWillPresent;
+
+// User interface management
+#if TARGET_OS_IPHONE
+- (BOOL)	prepareActionSheet:(JFBlock)completion;
+#endif
+- (BOOL)	prepareAlertView:(JFBlock)completion;
+
+// User interface management (Alerts handling)
+- (void)	alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)	alert:(id)alert didDismissWithButtonIndex:(NSInteger)buttonIndex;
+- (void)	alert:(id)alert willDismissWithButtonIndex:(NSInteger)buttonIndex;
+#if !TARGET_OS_IPHONE
+- (void)	alertDidEnd:(NSAlert*)alert returnCode:(NSModalResponse)returnCode contextInfo:(void*)contextInfo;
+#endif
+- (void)	didPresentAlert:(id)alert;
+- (void)	willPresentAlert:(id)alert;
 
 @end
 
@@ -73,6 +92,11 @@
 
 #pragma mark Properties
 
+// Attributes
+#if !TARGET_OS_IPHONE
+@synthesize style	= _style;
+#endif
+
 // Blocks
 @synthesize dismissCompletion	= _dismissCompletion;
 @synthesize presentCompletion	= _presentCompletion;
@@ -82,6 +106,9 @@
 @synthesize title	= _title;
 
 // Flags
+#if !TARGET_OS_IPHONE
+@synthesize applicationModal	= _applicationModal;
+#endif
 @synthesize visible	= _visible;
 
 // Relationships
@@ -91,10 +118,14 @@
 @synthesize timer	= _timer;
 
 // User interface
+#if TARGET_OS_IPHONE
 @synthesize actionSheet			= _actionSheet;
+#endif
 @synthesize alertView			= _alertView;
 @synthesize cancelButton		= _cancelButton;
+#if TARGET_OS_IPHONE
 @synthesize destructiveButton	= _destructiveButton;
+#endif
 @synthesize currentButtons		= _currentButtons;
 @synthesize otherButtons		= _otherButtons;
 
@@ -107,9 +138,55 @@
 	if(self)
 	{
 		// Flags
+#if !TARGET_OS_IPHONE
+		_applicationModal = NO;
+#endif
 		_visible = NO;
 	}
 	return self;
+}
+
+
+#pragma mark Data management
+
+- (JFAlertButton*)buttonAtIndex:(NSInteger)buttonIndex
+{
+	NSArray* buttons = self.currentButtons;
+	if((buttonIndex < 0) || (buttonIndex >= [buttons count]))
+		return nil;
+	
+	return [buttons objectAtIndex:buttonIndex];
+}
+
+
+#pragma mark Notifications management
+
+- (void)notifyDidDismissWithButton:(JFAlertButton*)button
+{
+	id<JFAlertDelegate> delegate = self.delegate;
+	if(delegate && [delegate respondsToSelector:@selector(alert:didDismissWithButton:)])
+		[delegate alert:self didDismissWithButton:button];
+}
+
+- (void)notifyDidPresent
+{
+	id<JFAlertDelegate> delegate = self.delegate;
+	if(delegate && [delegate respondsToSelector:@selector(alertDidPresent:)])
+		[delegate alertDidPresent:self];
+}
+
+- (void)notifyWillDismissWithButton:(JFAlertButton*)button
+{
+	id<JFAlertDelegate> delegate = self.delegate;
+	if(delegate && [delegate respondsToSelector:@selector(alert:willDismissWithButton:)])
+		[delegate alert:self willDismissWithButton:button];
+}
+
+- (void)notifyWillPresent
+{
+	id<JFAlertDelegate> delegate = self.delegate;
+	if(delegate && [delegate respondsToSelector:@selector(alertWillPresent:)])
+		[delegate alertWillPresent:self];
 }
 
 
@@ -117,36 +194,84 @@
 
 - (BOOL)dismiss:(JFBlock)completion
 {
-	if(![self isVisible] || (!self.actionSheet && !self.alertView))
-		return NO;
-	
-	self.dismissCompletion = completion;
-	
-	if(self.actionSheet)	[self.actionSheet dismissWithClickedButtonIndex:[self.actionSheet cancelButtonIndex] animated:YES];
-	else if(self.alertView)	[self.alertView dismissWithClickedButtonIndex:[self.alertView cancelButtonIndex] animated:YES];
-	
-	return YES;
+	return [self dismissWithClickedButton:nil completion:completion];
 }
 
 - (BOOL)dismissWithClickedButton:(JFAlertButton*)button completion:(JFBlock)completion
 {
-	if(![self isVisible] || (!self.actionSheet && !self.alertView))
+	BOOL shouldAbort = (![self isVisible] || !self.alertView);
+	
+#if TARGET_OS_IPHONE
+	if(shouldAbort && self.actionSheet)
+		shouldAbort = NO;
+#endif
+	
+	if(shouldAbort)
 		return NO;
 	
-	NSArray* buttons = self.currentButtons;
-	
-	if(![buttons containsObject:button])
-		return NO;
+	NSInteger index = 0;
+	if(button)
+	{
+		NSArray* buttons = self.currentButtons;
+		if([buttons containsObject:button])
+			index = [buttons indexOfObject:button];
+		else
+			button = nil;
+	}
 	
 	self.dismissCompletion = completion;
 	
-	NSInteger index = [buttons indexOfObject:button];
-	
-	if(self.actionSheet)	[self.actionSheet dismissWithClickedButtonIndex:index animated:YES];
-	else if(self.alertView)	[self.alertView dismissWithClickedButtonIndex:index animated:YES];
+	if(self.alertView)
+	{
+#if TARGET_OS_IPHONE
+		UIAlertView* alertView = self.alertView;
+		NSInteger buttonIndex = (button ? index : [alertView cancelButtonIndex]);
+		[self alert:alertView clickedButtonAtIndex:buttonIndex];
+		[alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+#else
+		NSWindow* sheet = self.alertView.window;
+		if(button)
+		{
+			NSModalResponse returnCode = NSAlertFirstButtonReturn + index;
+			
+			if([self isApplicationModal])
+				[NSApp stopModalWithCode:returnCode];
+			else
+			{
+				if(OSX10_9Plus)
+					[sheet.sheetParent endSheet:sheet returnCode:returnCode];
+				else
+					[NSApp endSheet:sheet returnCode:returnCode];
+			}
+		}
+		else
+		{
+			if([self isApplicationModal])
+				[NSApp stopModal];
+			else
+			{
+				if(OSX10_9Plus)
+					[sheet.sheetParent endSheet:sheet];
+				else
+					[NSApp endSheet:sheet];
+			}
+		}
+#endif
+	}
+#if TARGET_OS_IPHONE
+	else if(self.actionSheet)
+	{
+		UIActionSheet* actionSheet = self.actionSheet;
+		NSInteger buttonIndex = (button ? index : [actionSheet cancelButtonIndex]);
+		[self alert:actionSheet clickedButtonAtIndex:buttonIndex];
+		[actionSheet dismissWithClickedButtonIndex:buttonIndex animated:YES];
+	}
+#endif
 	
 	return YES;
 }
+
+#if TARGET_OS_IPHONE
 
 - (BOOL)prepareActionSheet:(JFBlock)completion
 {
@@ -181,10 +306,17 @@
 	return YES;
 }
 
+#endif
+
 - (BOOL)prepareAlertView:(JFBlock)completion
 {
-	if([self isVisible] || self.actionSheet || self.alertView)
+	if([self isVisible] || self.alertView)
 		return NO;
+	
+#if TARGET_OS_IPHONE
+	if(self.actionSheet)
+		return NO;
+#endif
 	
 	JFAlertButton* cancelButton = self.cancelButton;
 	if(!cancelButton)
@@ -199,7 +331,14 @@
 	
 	self.presentCompletion = completion;
 	
+#if TARGET_OS_IPHONE
 	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:self.title message:self.message delegate:self cancelButtonTitle:cancelButton.title otherButtonTitles:nil];
+#else
+	NSAlert* alertView = [NSAlert new];
+	alertView.informativeText = self.message;
+	alertView.messageText = self.title;
+	[alertView addButtonWithTitle:cancelButton.title];
+#endif
 	
 	for(NSUInteger i = 0; i < [otherButtons count]; i++)
 	{
@@ -212,6 +351,8 @@
 	
 	return YES;
 }
+
+#if TARGET_OS_IPHONE
 
 - (BOOL)presentAsActionSheetFromBarButtonItem:(UIBarButtonItem*)barButtonItem completion:(JFBlock)completion
 {
@@ -263,6 +404,42 @@
 	return YES;
 }
 
+#else
+
+- (BOOL)presentAsActionSheetForWindow:(NSWindow*)window completion:(JFBlock)completion
+{
+	if(![self prepareAlertView:completion])
+		return NO;
+	
+	self.applicationModal = NO;
+	
+	NSAlert* alert = self.alertView;
+	
+	[self willPresentAlert:alert];
+	
+	if(OSX10_9Plus)
+	{
+		void (^handler)(NSModalResponse) = ^(NSModalResponse returnCode)
+		{
+			[self alertDidEnd:alert returnCode:returnCode contextInfo:NULL];
+		};
+		
+		[alert beginSheetModalForWindow:window completionHandler:handler];
+	}
+	else
+	{
+		SEL selector = @selector(alertDidEnd:returnCode:contextInfo:);
+		
+		[alert beginSheetModalForWindow:window modalDelegate:self didEndSelector:selector contextInfo:NULL];
+	}
+	
+	[self didPresentAlert:alert];
+	
+	return YES;
+}
+
+#endif
+
 - (BOOL)presentAsAlertView:(JFBlock)completion
 {
 	return [self presentAsAlertViewWithTimeout:0.0 completion:completion];
@@ -282,10 +459,21 @@
 		invocation.selector = selector;
 		invocation.target = self;
 		
-		self.timer = [NSTimer scheduledTimerWithTimeInterval:timeout invocation:invocation repeats:NO];
+		self.timer = [NSTimer timerWithTimeInterval:timeout invocation:invocation repeats:NO];
 	}
 	
+#if TARGET_OS_IPHONE
 	[self.alertView show];
+#else
+	self.applicationModal = YES;
+	[MainOperationQueue addOperationWithBlock:^{
+		NSAlert* alert = self.alertView;
+		[self willPresentAlert:alert];
+		[self didPresentAlert:alert];
+		NSModalResponse returnCode = [alert runModal];
+		[self alertDidEnd:alert returnCode:returnCode contextInfo:NULL];
+	}];
+#endif
 	
 	return YES;
 }
@@ -295,7 +483,7 @@
 
 - (void)alert:(id)alert clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
+	JFAlertButton* button = [self buttonAtIndex:buttonIndex];
 	if(button && button.action)
 		button.action();
 }
@@ -304,11 +492,15 @@
 {
 	self.visible = NO;
 	
-	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
+	JFAlertButton* button = [self buttonAtIndex:buttonIndex];
 	
-	if(alert == self.actionSheet)		self.actionSheet = nil;
-	else if(alert == self.alertView)	self.alertView = nil;
+#if TARGET_OS_IPHONE
+	self.actionSheet = nil;
+#else
+	self.applicationModal = NO;
+#endif
 	
+	self.alertView = nil;
 	self.currentButtons = nil;
 	
 	[self notifyDidDismissWithButton:button];
@@ -329,13 +521,42 @@
 		self.timer = nil;
 	}
 	
-	JFAlertButton* button = ((buttonIndex < 0) ? nil : [self.currentButtons objectAtIndex:buttonIndex]);
+	JFAlertButton* button = [self buttonAtIndex:buttonIndex];
 	
 	[self notifyWillDismissWithButton:button];
 }
 
+#if !TARGET_OS_IPHONE
+
+- (void)alertDidEnd:(NSAlert*)alert returnCode:(NSModalResponse)returnCode contextInfo:(void*)contextInfo
+{
+	if(returnCode < 0)
+		returnCode = NSAlertFirstButtonReturn;
+	
+	NSInteger buttonIndex = returnCode - NSAlertFirstButtonReturn;
+	
+	[self alert:alert clickedButtonAtIndex:buttonIndex];
+	[self alert:alert willDismissWithButtonIndex:buttonIndex];
+	if(!OSX10_9Plus && ![self isApplicationModal])
+		[alert.window orderOut:alert];
+	[self alert:alert didDismissWithButtonIndex:buttonIndex];
+}
+
+#endif
+
 - (void)didPresentAlert:(id)alert
 {
+	NSTimer* timer = self.timer;
+	if(timer)
+	{
+#if TARGET_OS_IPHONE
+		NSString* runLoopMode = NSDefaultRunLoopMode;
+#else
+		NSString* runLoopMode = NSModalPanelRunLoopMode;
+#endif
+		[[NSRunLoop currentRunLoop] addTimer:timer forMode:runLoopMode];
+	}
+	
 	[self notifyDidPresent];
 	
 	if(self.presentCompletion)
@@ -353,6 +574,8 @@
 	[self notifyWillPresent];
 }
 
+
+#if TARGET_OS_IPHONE
 
 #pragma mark Protocol implementation (UIActionSheetDelegate)
 
@@ -409,32 +632,7 @@
 	[self willPresentAlert:alertView];
 }
 
-
-#pragma mark Notifications management
-
-- (void)notifyDidDismissWithButton:(JFAlertButton*)button
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:didDismissWithButton:)])
-		[self.delegate alert:self didDismissWithButton:button];
-}
-
-- (void)notifyDidPresent
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alertDidPresent:)])
-		[self.delegate alertDidPresent:self];
-}
-
-- (void)notifyWillDismissWithButton:(JFAlertButton*)button
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alert:willDismissWithButton:)])
-		[self.delegate alert:self willDismissWithButton:button];
-}
-
-- (void)notifyWillPresent
-{
-	if(self.delegate && [self.delegate respondsToSelector:@selector(alertWillPresent:)])
-		[self.delegate alertWillPresent:self];
-}
+#endif
 
 @end
 

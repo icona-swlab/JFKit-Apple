@@ -89,6 +89,10 @@
 		EA8745A71B834B990064590D /* NSIndexPath+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA8745A41B834B990064590D /* NSIndexPath+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA8745A81B834B990064590D /* NSIndexPath+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */; };
 		EA8745A91B834B990064590D /* NSIndexPath+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */; };
+		EAAE87221B84E0E6006C8744 /* JFAlertsController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D9A1B8483F900455F2A /* JFAlertsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAAE87231B84E0E6006C8744 /* JFAlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D9B1B8483F900455F2A /* JFAlertsController.m */; };
+		EAD1C2A51B84C82E0056E1E7 /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D941B8483A100455F2A /* JFAppDelegate.m */; };
+		EAD1C2A61B84CF580056E1E7 /* JFAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D931B8483A100455F2A /* JFAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D3451B8234A800A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
 		EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +105,8 @@
 		EAD3D34D1B82369A00A56864 /* NSObject+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */; };
 		EAD3D34E1B8236B700A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
 		EAD3D34F1B8236BA00A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD9E0031B864B82002D669F /* JFAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D981B8483F900455F2A /* JFAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAD9E0041B864B82002D669F /* JFAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D991B8483F900455F2A /* JFAlert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -616,12 +622,15 @@
 				EA8745A71B834B990064590D /* NSIndexPath+JFFramework.h in Headers */,
 				EA11057E1B82124000E93D04 /* JFByteStream.h in Headers */,
 				EA1105861B82124500E93D04 /* JFUtilities.h in Headers */,
+				EAD9E0031B864B82002D669F /* JFAlert.h in Headers */,
 				EAD3D34A1B82368A00A56864 /* JFLogger.h in Headers */,
 				EAD3D34C1B82369500A56864 /* NSObject+JFFramework.h in Headers */,
+				EAD1C2A61B84CF580056E1E7 /* JFAppDelegate.h in Headers */,
 				EA1105891B82126B00E93D04 /* JFFramework.h in Headers */,
 				EAD3D34F1B8236BA00A56864 /* NSFileManager+JFFramework.h in Headers */,
 				EA8745921B8338420064590D /* JFManager.h in Headers */,
 				EA11058B1B82127400E93D04 /* Prefix.pch in Headers */,
+				EAAE87221B84E0E6006C8744 /* JFAlertsController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,10 +996,13 @@
 				EAD3D34D1B82369A00A56864 /* NSObject+JFFramework.m in Sources */,
 				EA87459A1B833CDD0064590D /* JFXMLParser.m in Sources */,
 				EA1105831B82124000E93D04 /* JFString.m in Sources */,
+				EAD9E0041B864B82002D669F /* JFAlert.m in Sources */,
+				EAD1C2A51B84C82E0056E1E7 /* JFAppDelegate.m in Sources */,
 				EA1105811B82124000E93D04 /* JFColor.m in Sources */,
 				EA8745A91B834B990064590D /* NSIndexPath+JFFramework.m in Sources */,
 				EAD3D34E1B8236B700A56864 /* NSFileManager+JFFramework.m in Sources */,
 				EAD3D34B1B82368E00A56864 /* JFLogger.m in Sources */,
+				EAAE87231B84E0E6006C8744 /* JFAlertsController.m in Sources */,
 				EA8745A21B8344150064590D /* JFHTTPRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1354,7 +1366,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JFramework-App-OSX.app/Contents/MacOS/JFramework-App-OSX";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JFFramework-App-OSX.app/Contents/MacOS/JFFramework-App-OSX";
 			};
 			name = Debug;
 		};
@@ -1399,7 +1411,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JFramework-App-OSX.app/Contents/MacOS/JFramework-App-OSX";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JFFramework-App-OSX.app/Contents/MacOS/JFFramework-App-OSX";
 			};
 			name = Release;
 		};
@@ -1408,7 +1420,6 @@
 			buildSettings = {
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
-				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1421,7 +1432,6 @@
 			buildSettings = {
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
-				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1458,6 +1468,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1511,6 +1522,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1650,6 +1662,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1703,6 +1716,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/Supporting Files/Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
