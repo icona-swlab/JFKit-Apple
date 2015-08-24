@@ -18,6 +18,9 @@
 
 
 
+#ifndef JFFrameworkPrefixHeader
+#define JFFrameworkPrefixHeader
+
 #pragma mark - Common system headers
 
 #import <CoreData/CoreData.h>
@@ -33,5 +36,7 @@
 #pragma mark - OSX specific system headers
 
 #import <AppKit/AppKit.h>
+
+#endif
 
 #endif

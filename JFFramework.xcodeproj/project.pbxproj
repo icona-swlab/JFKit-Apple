@@ -43,10 +43,12 @@
 		EA1105DE1B821C3500E93D04 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1105CE1B821B5900E93D04 /* MainMenu.xib */; };
 		EA1105DF1B821C3800E93D04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D21B821B5900E93D04 /* main.m */; };
 		EA1105E01B821C3A00E93D04 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D41B821B5900E93D04 /* Tests.m */; };
+		EA2840F51B8B5A74008A837F /* JFAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EA2840F31B8B5A74008A837F /* JFAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA2840F61B8B5A74008A837F /* JFAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EA2840F31B8B5A74008A837F /* JFAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA2840F71B8B5A74008A837F /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2840F41B8B5A74008A837F /* JFAppDelegate.m */; };
+		EA2840F81B8B5A74008A837F /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2840F41B8B5A74008A837F /* JFAppDelegate.m */; };
 		EA5F85A31B769A3700A32291 /* JFFramework-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5F85971B769A3700A32291 /* JFFramework-iOS.framework */; };
 		EA5F85C11B769A4800A32291 /* JFFramework-OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5F85B61B769A4700A32291 /* JFFramework-OSX.framework */; };
-		EA6D5D951B8483A100455F2A /* JFAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D931B8483A100455F2A /* JFAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA6D5D961B8483A100455F2A /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D941B8483A100455F2A /* JFAppDelegate.m */; };
 		EA6D5D9C1B8483F900455F2A /* JFAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D981B8483F900455F2A /* JFAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA6D5D9D1B8483F900455F2A /* JFAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D991B8483F900455F2A /* JFAlert.m */; };
 		EA6D5D9E1B8483F900455F2A /* JFAlertsController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D9A1B8483F900455F2A /* JFAlertsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,8 +93,6 @@
 		EA8745A91B834B990064590D /* NSIndexPath+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */; };
 		EAAE87221B84E0E6006C8744 /* JFAlertsController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D9A1B8483F900455F2A /* JFAlertsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAAE87231B84E0E6006C8744 /* JFAlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D9B1B8483F900455F2A /* JFAlertsController.m */; };
-		EAD1C2A51B84C82E0056E1E7 /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D941B8483A100455F2A /* JFAppDelegate.m */; };
-		EAD1C2A61B84CF580056E1E7 /* JFAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D931B8483A100455F2A /* JFAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D3451B8234A800A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
 		EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -193,12 +193,12 @@
 		EA1105D11B821B5900E93D04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA1105D21B821B5900E93D04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA1105D41B821B5900E93D04 /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		EA2840F31B8B5A74008A837F /* JFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAppDelegate.h; sourceTree = "<group>"; };
+		EA2840F41B8B5A74008A837F /* JFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAppDelegate.m; sourceTree = "<group>"; };
 		EA5F85971B769A3700A32291 /* JFFramework-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "JFFramework-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5F85A21B769A3700A32291 /* JFFramework-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5F85B61B769A4700A32291 /* JFFramework-OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "JFFramework-OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5F85C01B769A4800A32291 /* JFFramework-OSX-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-OSX-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA6D5D931B8483A100455F2A /* JFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAppDelegate.h; sourceTree = "<group>"; };
-		EA6D5D941B8483A100455F2A /* JFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAppDelegate.m; sourceTree = "<group>"; };
 		EA6D5D981B8483F900455F2A /* JFAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlert.h; sourceTree = "<group>"; };
 		EA6D5D991B8483F900455F2A /* JFAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAlert.m; sourceTree = "<group>"; };
 		EA6D5D9A1B8483F900455F2A /* JFAlertsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlertsController.h; sourceTree = "<group>"; };
@@ -319,6 +319,7 @@
 		EA1105441B820E3500E93D04 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EA2840F21B8B5A74008A837F /* Application */,
 				EA87458E1B8337F10064590D /* Core */,
 				EA1105451B820E3500E93D04 /* Data Objects */,
 				EA6D5D971B8483EA00455F2A /* User Interface */,
@@ -477,6 +478,15 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		EA2840F21B8B5A74008A837F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				EA2840F31B8B5A74008A837F /* JFAppDelegate.h */,
+				EA2840F41B8B5A74008A837F /* JFAppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		EA5F858B1B768E5A00A32291 = {
 			isa = PBXGroup;
 			children = (
@@ -546,8 +556,6 @@
 		EA87458E1B8337F10064590D /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EA6D5D931B8483A100455F2A /* JFAppDelegate.h */,
-				EA6D5D941B8483A100455F2A /* JFAppDelegate.m */,
 				EA87458F1B8338420064590D /* JFManager.h */,
 				EA8745901B8338420064590D /* JFManager.m */,
 			);
@@ -590,13 +598,13 @@
 				EA8745A61B834B990064590D /* NSIndexPath+JFFramework.h in Headers */,
 				EA11057A1B82123F00E93D04 /* JFColor.h in Headers */,
 				EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */,
+				EA2840F51B8B5A74008A837F /* JFAppDelegate.h in Headers */,
 				EA1105781B82123F00E93D04 /* JFByteStream.h in Headers */,
 				EA6D5DA21B84841E00455F2A /* JFWindowController.h in Headers */,
 				EA6D5DAF1B84924A00455F2A /* UIButton+JFFramework.h in Headers */,
 				EA6D5D9C1B8483F900455F2A /* JFAlert.h in Headers */,
 				EA6D5D9E1B8483F900455F2A /* JFAlertsController.h in Headers */,
 				EA1105841B82124500E93D04 /* JFUtilities.h in Headers */,
-				EA6D5D951B8483A100455F2A /* JFAppDelegate.h in Headers */,
 				EA6D5DB71B8492BA00455F2A /* JFLabel.h in Headers */,
 				EA6D5DC71B8498C300455F2A /* JFSplashViewController.h in Headers */,
 				EA6D5DC51B8498C300455F2A /* JFNavigationController.h in Headers */,
@@ -620,12 +628,12 @@
 				EA8745A11B8344100064590D /* JFHTTPRequest.h in Headers */,
 				EA1105801B82124000E93D04 /* JFColor.h in Headers */,
 				EA8745A71B834B990064590D /* NSIndexPath+JFFramework.h in Headers */,
+				EA2840F61B8B5A74008A837F /* JFAppDelegate.h in Headers */,
 				EA11057E1B82124000E93D04 /* JFByteStream.h in Headers */,
 				EA1105861B82124500E93D04 /* JFUtilities.h in Headers */,
 				EAD9E0031B864B82002D669F /* JFAlert.h in Headers */,
 				EAD3D34A1B82368A00A56864 /* JFLogger.h in Headers */,
 				EAD3D34C1B82369500A56864 /* NSObject+JFFramework.h in Headers */,
-				EAD1C2A61B84CF580056E1E7 /* JFAppDelegate.h in Headers */,
 				EA1105891B82126B00E93D04 /* JFFramework.h in Headers */,
 				EAD3D34F1B8236BA00A56864 /* NSFileManager+JFFramework.h in Headers */,
 				EA8745921B8338420064590D /* JFManager.h in Headers */,
@@ -964,12 +972,12 @@
 				EA6D5DAE1B84924A00455F2A /* UIBarButtonItem+JFFramework.m in Sources */,
 				EA6D5DCC1B8498C300455F2A /* JFTableViewCell.m in Sources */,
 				EA6D5DC61B8498C300455F2A /* JFNavigationController.m in Sources */,
-				EA6D5D961B8483A100455F2A /* JFAppDelegate.m in Sources */,
 				EA11057D1B82123F00E93D04 /* JFString.m in Sources */,
 				EA6D5DCA1B8498C300455F2A /* JFTabBarController.m in Sources */,
 				EA6D5DC41B8498C300455F2A /* JFKeyboardEventsHandler.m in Sources */,
 				EA8745A81B834B990064590D /* NSIndexPath+JFFramework.m in Sources */,
 				EA6D5DA71B848BD400455F2A /* JFViewController.m in Sources */,
+				EA2840F71B8B5A74008A837F /* JFAppDelegate.m in Sources */,
 				EA6D5DB01B84924A00455F2A /* UIButton+JFFramework.m in Sources */,
 				EA6D5DB81B8492BA00455F2A /* JFLabel.m in Sources */,
 				EAD3D3491B8234A800A56864 /* JFLogger.m in Sources */,
@@ -997,8 +1005,8 @@
 				EA87459A1B833CDD0064590D /* JFXMLParser.m in Sources */,
 				EA1105831B82124000E93D04 /* JFString.m in Sources */,
 				EAD9E0041B864B82002D669F /* JFAlert.m in Sources */,
-				EAD1C2A51B84C82E0056E1E7 /* JFAppDelegate.m in Sources */,
 				EA1105811B82124000E93D04 /* JFColor.m in Sources */,
+				EA2840F81B8B5A74008A837F /* JFAppDelegate.m in Sources */,
 				EA8745A91B834B990064590D /* NSIndexPath+JFFramework.m in Sources */,
 				EAD3D34E1B8236B700A56864 /* NSFileManager+JFFramework.m in Sources */,
 				EAD3D34B1B82368E00A56864 /* JFLogger.m in Sources */,
