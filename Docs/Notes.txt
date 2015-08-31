@@ -1,0 +1,5 @@
+
+Files that need to be updated:
+
+- JFTextView.h/m
+- JFTransparentToolbar.h/m

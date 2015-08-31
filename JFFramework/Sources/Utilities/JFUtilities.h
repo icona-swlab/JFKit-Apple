@@ -63,12 +63,13 @@
 
 #pragma mark Macros (Localization)
 
-#define	JFBundleLanguage					[JFBundleLanguages firstObject];
-#define	JFBundleLanguages					[MainBundle preferredLocalizations];
-#define	JFDevelopmentLanguage				[MainBundle developmentLocalization];
-#define JFLocalizedString(_key, _defVal)	NSLocalizedStringWithDefaultValue(_key, nil, ClassBundle, _defVal, _comment)
-#define	JFSystemLanguage					[JFSystemLanguages firstObject]
-#define	JFSystemLanguages					[NSLocale preferredLanguages]
+#define	JFBundleLanguage										[JFBundleLanguages firstObject];
+#define	JFBundleLanguages										[MainBundle preferredLocalizations];
+#define	JFDevelopmentLanguage									[MainBundle developmentLocalization];
+#define JFLocalizedString(_key, _defVal)						NSLocalizedStringWithDefaultValue(_key, nil, ClassBundle, _defVal, nil)
+#define JFLocalizedStringWithComment(_key, _defVal, _comment)	NSLocalizedStringWithDefaultValue(_key, nil, ClassBundle, _defVal, _comment)
+#define	JFSystemLanguage										[JFSystemLanguages firstObject]
+#define	JFSystemLanguages										[NSLocale preferredLanguages]
 
 
 #pragma mark Macros (Resources)

@@ -316,7 +316,7 @@ BOOL JFCheckSystemVersion(NSString* version, JFRelation relation)
 		NSString* comp1 = [comps1 objectAtIndex:i];
 		NSString* comp2 = [comps2 objectAtIndex:i];
 		
-		result = [comp1 compare:comp2 options:NSNumericSearch];
+		result = [comp2 compare:comp1 options:NSNumericSearch];
 		if(result != NSOrderedSame)
 			break;
 	}

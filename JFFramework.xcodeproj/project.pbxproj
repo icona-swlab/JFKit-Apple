@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 47;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6CBE69F31B9465E600B49918 /* JFTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE69F11B9465E600B49918 /* JFTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CBE69F41B9465E600B49918 /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE69F21B9465E600B49918 /* JFTextView.m */; };
+		6CBE69F91B947CBC00B49918 /* JFTransparentToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CBE69FA1B947CBC00B49918 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */; };
 		EA1105701B82107600E93D04 /* JFFramework-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5F85971B769A3700A32291 /* JFFramework-iOS.framework */; };
 		EA1105781B82123F00E93D04 /* JFByteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1105461B820E3500E93D04 /* JFByteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA1105791B82123F00E93D04 /* JFByteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105471B820E3500E93D04 /* JFByteStream.m */; };
@@ -155,6 +159,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6CBE69F11B9465E600B49918 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
+		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
+		6CBE69F61B947C5800B49918 /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
+		6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
+		6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
 		EA11051D1B820C5000E93D04 /* JFFramework-App-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JFFramework-App-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105351B820C5000E93D04 /* JFFramework-App-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-App-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105461B820E3500E93D04 /* JFByteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFByteStream.h; sourceTree = "<group>"; };
@@ -305,6 +314,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CBE69F51B947C4700B49918 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				6CBE69F61B947C5800B49918 /* Notes.txt */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
 		EA1105431B820E3500E93D04 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +507,7 @@
 		EA5F858B1B768E5A00A32291 = {
 			isa = PBXGroup;
 			children = (
+				6CBE69F51B947C4700B49918 /* Docs */,
 				EA1105B81B821B5900E93D04 /* App-iOS */,
 				EA1105C81B821B5900E93D04 /* App-OSX */,
 				EA1105431B820E3500E93D04 /* Framework */,
@@ -534,6 +552,10 @@
 				EA6D5DC01B8498C300455F2A /* JFTabBarController.m */,
 				EA6D5DC11B8498C300455F2A /* JFTableViewCell.h */,
 				EA6D5DC21B8498C300455F2A /* JFTableViewCell.m */,
+				6CBE69F11B9465E600B49918 /* JFTextView.h */,
+				6CBE69F21B9465E600B49918 /* JFTextView.m */,
+				6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */,
+				6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */,
 				EA6D5DA41B848BD400455F2A /* JFViewController.h */,
 				EA6D5DA51B848BD400455F2A /* JFViewController.m */,
 				EA6D5DA01B84841E00455F2A /* JFWindowController.h */,
@@ -603,6 +625,7 @@
 				EA6D5DA21B84841E00455F2A /* JFWindowController.h in Headers */,
 				EA6D5DAF1B84924A00455F2A /* UIButton+JFFramework.h in Headers */,
 				EA6D5D9C1B8483F900455F2A /* JFAlert.h in Headers */,
+				6CBE69F31B9465E600B49918 /* JFTextView.h in Headers */,
 				EA6D5D9E1B8483F900455F2A /* JFAlertsController.h in Headers */,
 				EA1105841B82124500E93D04 /* JFUtilities.h in Headers */,
 				EA6D5DB71B8492BA00455F2A /* JFLabel.h in Headers */,
@@ -614,6 +637,7 @@
 				EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */,
 				EA1105881B82126A00E93D04 /* JFFramework.h in Headers */,
 				EA8745911B8338420064590D /* JFManager.h in Headers */,
+				6CBE69F91B947CBC00B49918 /* JFTransparentToolbar.h in Headers */,
 				EA11058A1B82127300E93D04 /* Prefix.pch in Headers */,
 				EA6D5DB31B84928600455F2A /* JFActivityIndicatorView.h in Headers */,
 			);
@@ -830,7 +854,7 @@
 				};
 			};
 			buildConfigurationList = EA5F858F1B768E5A00A32291 /* Build configuration list for PBXProject "JFFramework" */;
-			compatibilityVersion = "Xcode 6.3";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -980,9 +1004,11 @@
 				EA2840F71B8B5A74008A837F /* JFAppDelegate.m in Sources */,
 				EA6D5DB01B84924A00455F2A /* UIButton+JFFramework.m in Sources */,
 				EA6D5DB81B8492BA00455F2A /* JFLabel.m in Sources */,
+				6CBE69FA1B947CBC00B49918 /* JFTransparentToolbar.m in Sources */,
 				EAD3D3491B8234A800A56864 /* JFLogger.m in Sources */,
 				EA11057B1B82123F00E93D04 /* JFColor.m in Sources */,
 				EA87459F1B8341D70064590D /* JFHTTPRequest.m in Sources */,
+				6CBE69F41B9465E600B49918 /* JFTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,6 +1191,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1215,6 +1242,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1344,6 +1372,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1396,6 +1425,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1430,6 +1460,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1568,6 +1599,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1615,6 +1647,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1759,6 +1792,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1807,6 +1841,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

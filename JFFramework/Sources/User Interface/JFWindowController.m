@@ -221,7 +221,7 @@
 //
 //	if(!rootViewController)
 //	{
-//		[NSMainOperationQueue addOperationWithBlock:^(void){
+//		[MainOperationQueue addOperationWithBlock:^(void){
 //			innerCompletion(YES);
 //		}];
 //		return YES;
