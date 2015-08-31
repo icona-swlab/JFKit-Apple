@@ -42,14 +42,12 @@
 #define JFHideNetworkActivityIndicator	JFToggleNetworkActivityIndicator(NO)
 #define JFNibName						JFNibNameForClass([self class])
 #define JFShowNetworkActivityIndicator	JFToggleNetworkActivityIndicator(YES)
-#define JFWindow						UIWindow
 #define MainScreen						[UIScreen mainScreen]
 #define	SharedApplication				[UIApplication sharedApplication]
 #define weak							weak
 #else
 #define JFHideNetworkActivityIndicator
 #define JFShowNetworkActivityIndicator
-#define JFWindow						NSWindow
 #define weak							unsafe_unretained
 #endif
 

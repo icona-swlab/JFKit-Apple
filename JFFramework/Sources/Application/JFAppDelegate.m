@@ -37,7 +37,9 @@
 
 // User interface
 #if TARGET_OS_IPHONE
-@property (strong, nonatomic)	JFWindowController*	windowController;
+@property (strong, nonatomic, readwrite)				JFWindowController*	windowController;
+#else
+@property (strong, nonatomic)				IBOutlet	NSWindow*			window;
 #endif
 
 @end
@@ -57,6 +59,39 @@
 @synthesize window				= _window;
 #if TARGET_OS_IPHONE
 @synthesize windowController	= _windowController;
+#endif
+
+
+#pragma mark Properties accessors (User interface)
+
+#if TARGET_OS_IPHONE
+
+- (UIWindow*)window
+{
+	if(!_window)
+		self.window = [[UIWindow alloc] initWithFrame:MainScreen.bounds];
+	
+	return _window;
+}
+
+- (void)setWindow:(UIWindow*)window
+{
+	if(_window == window)
+		return;
+	
+	_window = window;
+	
+	// Loads the user interface.
+	JFWindowController* controller = nil;
+	if(_window)
+	{
+		controller = [self createControllerForWindow:_window];
+		if(!controller)
+			controller = [[JFWindowController alloc] initWithWindow:_window];
+	}
+	self.windowController = controller;
+}
+
 #endif
 
 
@@ -81,27 +116,22 @@
 #pragma mark User interface management
 
 #if TARGET_OS_IPHONE
+
 - (JFWindowController*)createControllerForWindow:(UIWindow*)window
 {
 	return nil;
 }
+
 #endif
 
 
 #if TARGET_OS_IPHONE
-
 #pragma mark Protocol implementation (UIApplicationDelegate)
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
 	[self.logger logMessage:@"Application opened." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	
-	// Loads the user interface.
-	self.window = [[UIWindow alloc] initWithFrame:MainScreen.bounds];
-	JFWindowController* controller = [self createControllerForWindow:self.window];
-	self.windowController = (controller ? controller : [[JFWindowController alloc] initWithWindow:self.window]);
 	[self.window makeKeyAndVisible];
-	
 	return YES;
 }
 
@@ -120,14 +150,14 @@
 	[self.logger logMessage:@"Application did receive memory warning." level:JFLogLevel4Warning hashtags:JFLogHashtagAttention];
 }
 
-- (void)applicationWillResignActive:(UIApplication*)application;
-{
-	[self.logger logMessage:@"Application will resign active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-}
-
 - (void)applicationWillEnterForeground:(UIApplication*)application
 {
 	[self.logger logMessage:@"Application will enter foreground." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+}
+
+- (void)applicationWillResignActive:(UIApplication*)application;
+{
+	[self.logger logMessage:@"Application will resign active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 - (void)applicationWillTerminate:(UIApplication*)application
@@ -139,39 +169,14 @@
 #else
 #pragma mark Protocol implementation (NSApplicationDelegate)
 
-- (void)applicationDidFinishLaunching:(NSNotification*)notification
-{
-	[self.logger logMessage:@"Application opened." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-}
-
-- (void)applicationWillBecomeActive:(NSNotification*)notification
-{
-	[self.logger logMessage:@"Application will become active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-}
-
 - (void)applicationDidBecomeActive:(NSNotification*)notification
 {
 	[self.logger logMessage:@"Application did become active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
-- (void)applicationWillResignActive:(NSNotification*)notification
+- (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
-	[self.logger logMessage:@"Application will resign active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-}
-
-- (void)applicationDidResignActive:(NSNotification*)notification
-{
-	[self.logger logMessage:@"Application did resign active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-}
-
-- (void)applicationWillTerminate:(NSNotification *)notification
-{
-	[self.logger logMessage:@"Application will terminate." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-}
-
-- (void)applicationWillHide:(NSNotification*)notification
-{
-	[self.logger logMessage:@"Application will hide." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	[self.logger logMessage:@"Application opened." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 - (void)applicationDidHide:(NSNotification*)notification
@@ -179,14 +184,39 @@
 	[self.logger logMessage:@"Application did hide." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
-- (void)applicationWillUnhide:(NSNotification*)notification
+- (void)applicationDidResignActive:(NSNotification*)notification
 {
-	[self.logger logMessage:@"Application will unhide." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	[self.logger logMessage:@"Application did resign active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 - (void)applicationDidUnhide:(NSNotification*)notification
 {
 	[self.logger logMessage:@"Application did unhide." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+}
+
+- (void)applicationWillBecomeActive:(NSNotification*)notification
+{
+	[self.logger logMessage:@"Application will become active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+}
+
+- (void)applicationWillHide:(NSNotification*)notification
+{
+	[self.logger logMessage:@"Application will hide." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+}
+
+- (void)applicationWillResignActive:(NSNotification*)notification
+{
+	[self.logger logMessage:@"Application will resign active." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+	[self.logger logMessage:@"Application will terminate." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+}
+
+- (void)applicationWillUnhide:(NSNotification*)notification
+{
+	[self.logger logMessage:@"Application will unhide." level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 }
 
 #endif

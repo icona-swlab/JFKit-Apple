@@ -38,15 +38,40 @@
 #pragma mark Properties
 
 // User interface
-@property (strong, nonatomic, readonly)				JFAlertsController*	alertsController;
-@property (strong, nonatomic)			IBOutlet	JFWindow*			window;
+@property (strong, nonatomic, readonly)	JFAlertsController*	alertsController;
+#if TARGET_OS_IPHONE
+@property (strong, nonatomic, readonly)	JFWindowController*	windowController;
+#endif
 
 
 #pragma mark Methods
 
-// User interface management
 #if TARGET_OS_IPHONE
+// User interface management
 - (JFWindowController*)	createControllerForWindow:(UIWindow*)window;
+#endif
+
+#if TARGET_OS_IPHONE
+// Protocol implementation (UIApplicationDelegate)
+- (BOOL)	application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions;
+- (void)	applicationDidBecomeActive:(UIApplication*)application;
+- (void)	applicationDidEnterBackground:(UIApplication*)application;
+- (void)	applicationDidReceiveMemoryWarning:(UIApplication*)application;
+- (void)	applicationWillEnterForeground:(UIApplication*)application;
+- (void)	applicationWillResignActive:(UIApplication*)application;
+- (void)	applicationWillTerminate:(UIApplication*)application;
+#else
+// Protocol implementation (NSApplicationDelegate)
+- (void)	applicationDidBecomeActive:(NSNotification*)notification;
+- (void)	applicationDidFinishLaunching:(NSNotification*)notification;
+- (void)	applicationDidHide:(NSNotification*)notification;
+- (void)	applicationDidResignActive:(NSNotification*)notification;
+- (void)	applicationDidUnhide:(NSNotification*)notification;
+- (void)	applicationWillBecomeActive:(NSNotification*)notification;
+- (void)	applicationWillHide:(NSNotification*)notification;
+- (void)	applicationWillResignActive:(NSNotification*)notification;
+- (void)	applicationWillTerminate:(NSNotification *)notification;
+- (void)	applicationWillUnhide:(NSNotification*)notification;
 #endif
 
 @end
