@@ -26,39 +26,16 @@
 
 #pragma mark - Macros
 
-#define	ClassBundle				[NSBundle bundleForClass:[self class]]
-#define	ClassName				JFStringFromObjectClass(self)
-#define	LogMethod				NSLog(@"%@ (%@): executing '%@'.", ClassName, JFStringFromID(self), MethodName)
-#define MainBundle				[NSBundle mainBundle]
-#define MainNotificationCenter	[NSNotificationCenter defaultCenter]
-#define MainOperationQueue		[NSOperationQueue mainQueue]
-#define MethodName				NSStringFromSelector(_cmd)
-
 #if TARGET_OS_IPHONE
-#define	ApplicationDelegate				((AppDelegate*)[SharedApplication delegate])
-#define CurrentDevice					[UIDevice currentDevice]
-#define CurrentDeviceOrientation		[CurrentDevice orientation]
-#define CurrentStatusBarOrientation		[SharedApplication statusBarOrientation]
 #define JFHideNetworkActivityIndicator	JFToggleNetworkActivityIndicator(NO)
 #define JFNibName						JFNibNameForClass([self class])
 #define JFShowNetworkActivityIndicator	JFToggleNetworkActivityIndicator(YES)
-#define MainScreen						[UIScreen mainScreen]
-#define	SharedApplication				[UIApplication sharedApplication]
 #define weak							weak
 #else
 #define JFHideNetworkActivityIndicator
 #define JFShowNetworkActivityIndicator
 #define weak							unsafe_unretained
 #endif
-
-
-#pragma mark Macros (Info)
-
-#define AppDisplayName	JFApplicationInfoForKey(@"CFBundleDisplayName")
-#define AppIdentifier	JFApplicationInfoForKey(@"CFBundleIdentifier")
-#define AppName			JFApplicationInfoForKey(@"CFBundleName")
-#define AppVersionLong	JFApplicationInfoForKey(@"CFBundleVersion")
-#define AppVersionShort	JFApplicationInfoForKey(@"CFBundleShortVersionString")
 
 
 #pragma mark Macros (Localization)
@@ -76,44 +53,6 @@
 
 #define JFResourceURL(_filename)				JFBundleResourceURLForFile(ClassBundle, _filename)
 #define JFResourceURLWithType(_filename, _type)	JFBundleResourceURLForFileWithType(ClassBundle, _filename, _type)
-
-
-#pragma mark Macros (System)
-
-#if TARGET_OS_IPHONE
-#define iPad				(UserInterfaceIdiom == UIUserInterfaceIdiomPad)
-#define iPhone				(UserInterfaceIdiom == UIUserInterfaceIdiomPhone)
-#define SystemVersion		[CurrentDevice systemVersion]
-#define UserInterfaceIdiom	[CurrentDevice userInterfaceIdiom]
-#endif
-
-
-#pragma mark Macros (Version)
-
-#if TARGET_OS_IPHONE
-#define iOS(_version)		JFCheckSystemVersion(_version, JFRelationEqual)
-#define iOSPlus(_version)	JFCheckSystemVersion(_version, JFRelationGreaterThanOrEqual)
-#define iOS6				iOS(@"6")
-#define iOS6Plus			iOSPlus(@"6")
-#define iOS7				iOS(@"7")
-#define iOS7Plus			iOSPlus(@"7")
-#define iOS8				iOS(@"8")
-#define iOS8Plus			iOSPlus(@"8")
-#else
-#define OSX(_version)		JFCheckSystemVersion(_version, JFRelationEqual)
-#define OSXPlus(_version)	JFCheckSystemVersion(_version, JFRelationGreaterThanOrEqual)
-#define OSX10_6				(OSX10_6Plus && !OSX10_7Plus)
-#define OSX10_6Plus			OSXPlus(NSAppKitVersionNumber10_6)
-#define OSX10_7				(OSX10_7Plus && !OSX10_8Plus)
-#define OSX10_7Plus			OSXPlus(NSAppKitVersionNumber10_7)
-#define OSX10_8				(OSX10_8Plus && !OSX10_9Plus)
-#define OSX10_8Plus			OSXPlus(NSAppKitVersionNumber10_8)
-#define OSX10_9				(OSX10_9Plus && !OSX10_10Plus)
-#define OSX10_9Plus			OSXPlus(NSAppKitVersionNumber10_9)
-#define OSX10_10			(OSX10_10Plus && !OSXPlus(NSAppKitVersionNumber10_10 + 1))
-#define OSX10_10Plus		OSXPlus(NSAppKitVersionNumber10_10)
-#endif
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

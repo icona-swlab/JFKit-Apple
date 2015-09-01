@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C9E64441B95B625000E0682 /* JFShortcuts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9E64421B95B078000E0682 /* JFShortcuts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C9E64451B95B625000E0682 /* JFShortcuts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9E64421B95B078000E0682 /* JFShortcuts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE69F31B9465E600B49918 /* JFTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE69F11B9465E600B49918 /* JFTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE69F41B9465E600B49918 /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE69F21B9465E600B49918 /* JFTextView.m */; };
 		6CBE69F91B947CBC00B49918 /* JFTransparentToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -159,6 +161,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C9E64421B95B078000E0682 /* JFShortcuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFShortcuts.h; sourceTree = "<group>"; };
 		6CBE69F11B9465E600B49918 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
 		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
 		6CBE69F61B947C5800B49918 /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
@@ -367,6 +370,7 @@
 				EA87459C1B8341D70064590D /* JFHTTPRequest.m */,
 				EAD3D3421B82342F00A56864 /* JFLogger.h */,
 				EAD3D3431B82342F00A56864 /* JFLogger.m */,
+				6C9E64421B95B078000E0682 /* JFShortcuts.h */,
 				EA11054D1B820E3500E93D04 /* JFUtilities.h */,
 				EA11054E1B820E3500E93D04 /* JFUtilities.m */,
 				EA8745951B833CDD0064590D /* JFXMLParser.h */,
@@ -507,9 +511,9 @@
 		EA5F858B1B768E5A00A32291 = {
 			isa = PBXGroup;
 			children = (
-				6CBE69F51B947C4700B49918 /* Docs */,
 				EA1105B81B821B5900E93D04 /* App-iOS */,
 				EA1105C81B821B5900E93D04 /* App-OSX */,
+				6CBE69F51B947C4700B49918 /* Docs */,
 				EA1105431B820E3500E93D04 /* Framework */,
 				EA5F85981B769A3700A32291 /* Products */,
 			);
@@ -627,6 +631,7 @@
 				EA6D5D9C1B8483F900455F2A /* JFAlert.h in Headers */,
 				6CBE69F31B9465E600B49918 /* JFTextView.h in Headers */,
 				EA6D5D9E1B8483F900455F2A /* JFAlertsController.h in Headers */,
+				6C9E64441B95B625000E0682 /* JFShortcuts.h in Headers */,
 				EA1105841B82124500E93D04 /* JFUtilities.h in Headers */,
 				EA6D5DB71B8492BA00455F2A /* JFLabel.h in Headers */,
 				EA6D5DC71B8498C300455F2A /* JFSplashViewController.h in Headers */,
@@ -647,6 +652,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C9E64451B95B625000E0682 /* JFShortcuts.h in Headers */,
 				EA8745981B833CDD0064590D /* JFXMLParser.h in Headers */,
 				EA1105821B82124000E93D04 /* JFString.h in Headers */,
 				EA8745A11B8344100064590D /* JFHTTPRequest.h in Headers */,

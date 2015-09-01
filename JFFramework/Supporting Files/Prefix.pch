@@ -26,7 +26,6 @@
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
-
 #if TARGET_OS_IPHONE
 #pragma mark - iOS specific system headers
 
@@ -38,5 +37,10 @@
 #import <AppKit/AppKit.h>
 
 #endif
+
+
+#pragma mark - Common user headers
+
+#import "JFShortcuts.h"
 
 #endif
