@@ -18,6 +18,8 @@
 
 
 
+#import <Availability.h>
+
 #import "JFString.h"
 
 
@@ -30,11 +32,16 @@
 #define JFHideNetworkActivityIndicator	JFToggleNetworkActivityIndicator(NO)
 #define JFNibName						JFNibNameForClass([self class])
 #define JFShowNetworkActivityIndicator	JFToggleNetworkActivityIndicator(YES)
-#define weak							weak
 #else
 #define JFHideNetworkActivityIndicator
 #define JFShowNetworkActivityIndicator
-#define weak							unsafe_unretained
+#endif
+
+
+#pragma mark Macros (Compatibility)
+
+#if !TARGET_OS_IPHONE && (MAC_OS_X_VERSION_MIN_REQUIRED < 1070) // __MAC_10_7
+#define weak	unsafe_unretained
 #endif
 
 

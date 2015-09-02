@@ -161,10 +161,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C5537151B9724AA004A782A /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
 		6C9E64421B95B078000E0682 /* JFShortcuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFShortcuts.h; sourceTree = "<group>"; };
 		6CBE69F11B9465E600B49918 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
 		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
-		6CBE69F61B947C5800B49918 /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
 		6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
 		6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
 		EA11051D1B820C5000E93D04 /* JFFramework-App-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JFFramework-App-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,12 +317,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6CBE69F51B947C4700B49918 /* Docs */ = {
+		6C5537141B9724AA004A782A /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				6CBE69F61B947C5800B49918 /* Notes.txt */,
+				6C5537151B9724AA004A782A /* Notes.txt */,
 			);
-			path = Docs;
+			path = Documents;
 			sourceTree = "<group>";
 		};
 		EA1105431B820E3500E93D04 /* Framework */ = {
@@ -513,7 +513,7 @@
 			children = (
 				EA1105B81B821B5900E93D04 /* App-iOS */,
 				EA1105C81B821B5900E93D04 /* App-OSX */,
-				6CBE69F51B947C4700B49918 /* Docs */,
+				6C5537141B9724AA004A782A /* Documents */,
 				EA1105431B820E3500E93D04 /* Framework */,
 				EA5F85981B769A3700A32291 /* Products */,
 			);
