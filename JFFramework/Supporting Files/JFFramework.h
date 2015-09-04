@@ -47,7 +47,6 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 
 // Addons (Utilities)
 #import "NSFileManager+JFFramework.h"
-#import "NSObject+JFFramework.h"
 
 // Application
 #import "JFAppDelegate.h"

@@ -20,8 +20,6 @@
 
 #import "JFXMLParser.h"
 
-#import "NSObject+JFFramework.h"
-
 #import "JFLogger.h"
 #import "JFUtilities.h"
 

@@ -20,8 +20,6 @@
 
 #import "NSFileManager+JFFramework.h"
 
-#import "NSObject+JFFramework.h"
-
 #import "JFLogger.h"
 #import "JFString.h"
 #import "JFUtilities.h"

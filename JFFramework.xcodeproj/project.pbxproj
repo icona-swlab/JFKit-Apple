@@ -103,14 +103,10 @@
 		EAAE87231B84E0E6006C8744 /* JFAlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5D9B1B8483F900455F2A /* JFAlertsController.m */; };
 		EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D3451B8234A800A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
-		EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAD3D3471B8234A800A56864 /* NSObject+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */; };
 		EAD3D3481B8234A800A56864 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3421B82342F00A56864 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D3491B8234A800A56864 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3431B82342F00A56864 /* JFLogger.m */; };
 		EAD3D34A1B82368A00A56864 /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3421B82342F00A56864 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD3D34B1B82368E00A56864 /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3431B82342F00A56864 /* JFLogger.m */; };
-		EAD3D34C1B82369500A56864 /* NSObject+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAD3D34D1B82369A00A56864 /* NSObject+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */; };
 		EAD3D34E1B8236B700A56864 /* NSFileManager+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */; };
 		EAD3D34F1B8236BA00A56864 /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAD9E0031B864B82002D669F /* JFAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5D981B8483F900455F2A /* JFAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -251,8 +247,6 @@
 		EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+JFFramework.m"; sourceTree = "<group>"; };
 		EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JFFramework.h"; sourceTree = "<group>"; };
 		EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+JFFramework.m"; sourceTree = "<group>"; };
-		EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+JFFramework.h"; sourceTree = "<group>"; };
-		EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JFFramework.m"; sourceTree = "<group>"; };
 		EAD3D3421B82342F00A56864 /* JFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
 		EAD3D3431B82342F00A56864 /* JFLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -600,8 +594,6 @@
 			children = (
 				EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */,
 				EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */,
-				EAD3D3401B82342F00A56864 /* NSObject+JFFramework.h */,
-				EAD3D3411B82342F00A56864 /* NSObject+JFFramework.m */,
 			);
 			path = Addons;
 			sourceTree = "<group>";
@@ -638,7 +630,6 @@
 				EA6D5DCB1B8498C300455F2A /* JFTableViewCell.h in Headers */,
 				EA6D5DC91B8498C300455F2A /* JFTabBarController.h in Headers */,
 				EA6D5DC31B8498C300455F2A /* JFKeyboardEventsHandler.h in Headers */,
-				EAD3D3461B8234A800A56864 /* NSObject+JFFramework.h in Headers */,
 				EA1105881B82126A00E93D04 /* JFFramework.h in Headers */,
 				EA8745911B8338420064590D /* JFManager.h in Headers */,
 				6CBE69F91B947CBC00B49918 /* JFTransparentToolbar.h in Headers */,
@@ -662,7 +653,6 @@
 				EA1105861B82124500E93D04 /* JFUtilities.h in Headers */,
 				EAD9E0031B864B82002D669F /* JFAlert.h in Headers */,
 				EAD3D34A1B82368A00A56864 /* JFLogger.h in Headers */,
-				EAD3D34C1B82369500A56864 /* NSObject+JFFramework.h in Headers */,
 				EA1105891B82126B00E93D04 /* JFFramework.h in Headers */,
 				EAD3D34F1B8236BA00A56864 /* NSFileManager+JFFramework.h in Headers */,
 				EA8745921B8338420064590D /* JFManager.h in Headers */,
@@ -992,7 +982,6 @@
 				EA6D5D9F1B8483F900455F2A /* JFAlertsController.m in Sources */,
 				EA6D5DC81B8498C300455F2A /* JFSplashViewController.m in Sources */,
 				EA1105851B82124500E93D04 /* JFUtilities.m in Sources */,
-				EAD3D3471B8234A800A56864 /* NSObject+JFFramework.m in Sources */,
 				EA6D5DB41B84928600455F2A /* JFActivityIndicatorView.m in Sources */,
 				EA8745991B833CDD0064590D /* JFXMLParser.m in Sources */,
 				EA6D5DA31B84841E00455F2A /* JFWindowController.m in Sources */,
@@ -1033,7 +1022,6 @@
 				EA1105871B82124500E93D04 /* JFUtilities.m in Sources */,
 				EA8745941B8338420064590D /* JFManager.m in Sources */,
 				EA11057F1B82124000E93D04 /* JFByteStream.m in Sources */,
-				EAD3D34D1B82369A00A56864 /* NSObject+JFFramework.m in Sources */,
 				EA87459A1B833CDD0064590D /* JFXMLParser.m in Sources */,
 				EA1105831B82124000E93D04 /* JFString.m in Sources */,
 				EAD9E0041B864B82002D669F /* JFAlert.m in Sources */,

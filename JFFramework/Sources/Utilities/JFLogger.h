@@ -94,3 +94,32 @@ typedef NS_OPTIONS(UInt8, JFLogLevel)
 - (void)	logMessage:(NSString*)message toDestinations:(JFLogDestinations)destinations level:(JFLogLevel)level hashtags:(JFLogHashtags)hashtags;
 
 @end
+
+
+
+#pragma mark
+
+
+
+@interface NSObject (JFLogger)
+
+#pragma mark Properties
+
+// Flags
+@property (assign)	BOOL	shouldLog;
+
+// Utilities
+@property (strong)	JFLogger*	logger;
+
+
+#pragma mark Methods
+
+// Properties accessors (Flags)
++ (BOOL)	defaultShouldLogValue;
++ (void)	setDefaultShouldLogValue:(BOOL)shouldLog;
+
+// Properties accessors (Utilities)
++ (JFLogger*)	defaultLogger;
++ (void)		setDefaultLogger:(JFLogger*)logger;
+
+@end
