@@ -90,6 +90,9 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "JFViewController.h"
 #import "JFWindowController.h"
 
+// Utilities
+#import "JFURLProtocol.h"
+
 #else
 #pragma mark - OS X specific headers
 

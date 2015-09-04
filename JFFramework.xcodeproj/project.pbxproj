@@ -13,6 +13,8 @@
 		6CBE69F41B9465E600B49918 /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE69F21B9465E600B49918 /* JFTextView.m */; };
 		6CBE69F91B947CBC00B49918 /* JFTransparentToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE69FA1B947CBC00B49918 /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */; };
+		6CEC2CD51B98767600A7C700 /* JFURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CEC2CD61B98767600A7C700 /* JFURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */; };
 		EA1105701B82107600E93D04 /* JFFramework-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5F85971B769A3700A32291 /* JFFramework-iOS.framework */; };
 		EA1105781B82123F00E93D04 /* JFByteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1105461B820E3500E93D04 /* JFByteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA1105791B82123F00E93D04 /* JFByteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105471B820E3500E93D04 /* JFByteStream.m */; };
@@ -161,12 +163,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6C5537151B9724AA004A782A /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
+		6C6236621B999B9C00EDB7CC /* Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documents; sourceTree = "<group>"; };
 		6C9E64421B95B078000E0682 /* JFShortcuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFShortcuts.h; sourceTree = "<group>"; };
 		6CBE69F11B9465E600B49918 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
 		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
 		6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
 		6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
+		6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFURLProtocol.h; sourceTree = "<group>"; };
+		6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
 		EA11051D1B820C5000E93D04 /* JFFramework-App-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JFFramework-App-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105351B820C5000E93D04 /* JFFramework-App-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-App-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105461B820E3500E93D04 /* JFByteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFByteStream.h; sourceTree = "<group>"; };
@@ -317,14 +321,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6C5537141B9724AA004A782A /* Documents */ = {
-			isa = PBXGroup;
-			children = (
-				6C5537151B9724AA004A782A /* Notes.txt */,
-			);
-			path = Documents;
-			sourceTree = "<group>";
-		};
 		EA1105431B820E3500E93D04 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +367,8 @@
 				EAD3D3421B82342F00A56864 /* JFLogger.h */,
 				EAD3D3431B82342F00A56864 /* JFLogger.m */,
 				6C9E64421B95B078000E0682 /* JFShortcuts.h */,
+				6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */,
+				6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */,
 				EA11054D1B820E3500E93D04 /* JFUtilities.h */,
 				EA11054E1B820E3500E93D04 /* JFUtilities.m */,
 				EA8745951B833CDD0064590D /* JFXMLParser.h */,
@@ -513,7 +511,7 @@
 			children = (
 				EA1105B81B821B5900E93D04 /* App-iOS */,
 				EA1105C81B821B5900E93D04 /* App-OSX */,
-				6C5537141B9724AA004A782A /* Documents */,
+				6C6236621B999B9C00EDB7CC /* Documents */,
 				EA1105431B820E3500E93D04 /* Framework */,
 				EA5F85981B769A3700A32291 /* Products */,
 			);
@@ -629,6 +627,7 @@
 				EA6D5DA21B84841E00455F2A /* JFWindowController.h in Headers */,
 				EA6D5DAF1B84924A00455F2A /* UIButton+JFFramework.h in Headers */,
 				EA6D5D9C1B8483F900455F2A /* JFAlert.h in Headers */,
+				6CEC2CD51B98767600A7C700 /* JFURLProtocol.h in Headers */,
 				6CBE69F31B9465E600B49918 /* JFTextView.h in Headers */,
 				EA6D5D9E1B8483F900455F2A /* JFAlertsController.h in Headers */,
 				6C9E64441B95B625000E0682 /* JFShortcuts.h in Headers */,
@@ -1007,6 +1006,7 @@
 				EA6D5DC41B8498C300455F2A /* JFKeyboardEventsHandler.m in Sources */,
 				EA8745A81B834B990064590D /* NSIndexPath+JFFramework.m in Sources */,
 				EA6D5DA71B848BD400455F2A /* JFViewController.m in Sources */,
+				6CEC2CD61B98767600A7C700 /* JFURLProtocol.m in Sources */,
 				EA2840F71B8B5A74008A837F /* JFAppDelegate.m in Sources */,
 				EA6D5DB01B84924A00455F2A /* UIButton+JFFramework.m in Sources */,
 				EA6D5DB81B8492BA00455F2A /* JFLabel.m in Sources */,
@@ -1532,7 +1532,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1580,7 +1580,7 @@
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
