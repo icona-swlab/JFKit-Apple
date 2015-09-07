@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C7613E01B9D918200DD9BBC /* NSObject+JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C7613DE1B9D918200DD9BBC /* NSObject+JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C7613E11B9D918200DD9BBC /* NSObject+JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C7613DE1B9D918200DD9BBC /* NSObject+JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C7613E21B9D918200DD9BBC /* NSObject+JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7613DF1B9D918200DD9BBC /* NSObject+JFLogger.m */; };
+		6C7613E31B9D918200DD9BBC /* NSObject+JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7613DF1B9D918200DD9BBC /* NSObject+JFLogger.m */; };
 		6C9E64441B95B625000E0682 /* JFShortcuts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9E64421B95B078000E0682 /* JFShortcuts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C9E64451B95B625000E0682 /* JFShortcuts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9E64421B95B078000E0682 /* JFShortcuts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE69F31B9465E600B49918 /* JFTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE69F11B9465E600B49918 /* JFTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -160,6 +164,8 @@
 
 /* Begin PBXFileReference section */
 		6C6236621B999B9C00EDB7CC /* Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documents; sourceTree = "<group>"; };
+		6C7613DE1B9D918200DD9BBC /* NSObject+JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JFLogger.h"; sourceTree = "<group>"; };
+		6C7613DF1B9D918200DD9BBC /* NSObject+JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JFLogger.m"; sourceTree = "<group>"; };
 		6C9E64421B95B078000E0682 /* JFShortcuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFShortcuts.h; sourceTree = "<group>"; };
 		6CBE69F11B9465E600B49918 /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
 		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
@@ -594,6 +600,8 @@
 			children = (
 				EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */,
 				EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */,
+				6C7613DE1B9D918200DD9BBC /* NSObject+JFLogger.h */,
+				6C7613DF1B9D918200DD9BBC /* NSObject+JFLogger.m */,
 			);
 			path = Addons;
 			sourceTree = "<group>";
@@ -611,6 +619,7 @@
 				EA87459D1B8341D70064590D /* JFHTTPRequest.h in Headers */,
 				EA6D5DA61B848BD400455F2A /* JFViewController.h in Headers */,
 				EAD3D3481B8234A800A56864 /* JFLogger.h in Headers */,
+				6C7613E01B9D918200DD9BBC /* NSObject+JFLogger.h in Headers */,
 				EA8745A61B834B990064590D /* NSIndexPath+JFFramework.h in Headers */,
 				EA11057A1B82123F00E93D04 /* JFColor.h in Headers */,
 				EAD3D3441B8234A800A56864 /* NSFileManager+JFFramework.h in Headers */,
@@ -658,6 +667,7 @@
 				EA8745921B8338420064590D /* JFManager.h in Headers */,
 				EA11058B1B82127400E93D04 /* Prefix.pch in Headers */,
 				EAAE87221B84E0E6006C8744 /* JFAlertsController.h in Headers */,
+				6C7613E11B9D918200DD9BBC /* NSObject+JFLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +988,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD3D3451B8234A800A56864 /* NSFileManager+JFFramework.m in Sources */,
+				6C7613E21B9D918200DD9BBC /* NSObject+JFLogger.m in Sources */,
 				EA8745931B8338420064590D /* JFManager.m in Sources */,
 				EA6D5D9F1B8483F900455F2A /* JFAlertsController.m in Sources */,
 				EA6D5DC81B8498C300455F2A /* JFSplashViewController.m in Sources */,
@@ -1020,6 +1031,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA1105871B82124500E93D04 /* JFUtilities.m in Sources */,
+				6C7613E31B9D918200DD9BBC /* NSObject+JFLogger.m in Sources */,
 				EA8745941B8338420064590D /* JFManager.m in Sources */,
 				EA11057F1B82124000E93D04 /* JFByteStream.m in Sources */,
 				EA87459A1B833CDD0064590D /* JFXMLParser.m in Sources */,
