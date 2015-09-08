@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA5F85B51B769A4700A32291"
-               BuildableName = "JFFramework-OSX.framework"
+               BlueprintIdentifier = "6C31C7951B9EF3CE00FAF487"
+               BuildableName = "JFFramework-OSX.a"
                BlueprintName = "JFFramework-OSX"
                ReferencedContainer = "container:JFFramework.xcodeproj">
             </BuildableReference>
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA5F85BF1B769A4800A32291"
+               BlueprintIdentifier = "6C31C79F1B9EF3CF00FAF487"
                BuildableName = "JFFramework-OSX-Tests.xctest"
                BlueprintName = "JFFramework-OSX-Tests"
                ReferencedContainer = "container:JFFramework.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA5F85BF1B769A4800A32291"
+               BlueprintIdentifier = "6C31C79F1B9EF3CF00FAF487"
                BuildableName = "JFFramework-OSX-Tests.xctest"
                BlueprintName = "JFFramework-OSX-Tests"
                ReferencedContainer = "container:JFFramework.xcodeproj">
@@ -56,8 +56,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA5F85B51B769A4700A32291"
-            BuildableName = "JFFramework-OSX.framework"
+            BlueprintIdentifier = "6C31C7951B9EF3CE00FAF487"
+            BuildableName = "JFFramework-OSX.a"
             BlueprintName = "JFFramework-OSX"
             ReferencedContainer = "container:JFFramework.xcodeproj">
          </BuildableReference>
@@ -75,8 +75,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA5F85B51B769A4700A32291"
-            BuildableName = "JFFramework-OSX.framework"
+            BlueprintIdentifier = "6C31C7951B9EF3CE00FAF487"
+            BuildableName = "JFFramework-OSX.a"
             BlueprintName = "JFFramework-OSX"
             ReferencedContainer = "container:JFFramework.xcodeproj">
          </BuildableReference>
@@ -93,8 +93,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA5F85B51B769A4700A32291"
-            BuildableName = "JFFramework-OSX.framework"
+            BlueprintIdentifier = "6C31C7951B9EF3CE00FAF487"
+            BuildableName = "JFFramework-OSX.a"
             BlueprintName = "JFFramework-OSX"
             ReferencedContainer = "container:JFFramework.xcodeproj">
          </BuildableReference>
