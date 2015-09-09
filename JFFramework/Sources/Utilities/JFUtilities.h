@@ -85,8 +85,8 @@ typedef void	(^JFBlockWithInteger)		(NSInteger value);
 typedef void	(^JFBlockWithNotification)	(NSNotification* notification);
 typedef void	(^JFBlockWithObject)		(id object);
 typedef void	(^JFBlockWithSet)			(NSSet* set);
-typedef void	(^JFCompletionBlock)		(BOOL succeded, id object, NSError* error);
-typedef void	(^JFSimpleCompletionBlock)	(BOOL succeded, NSError* error);
+typedef void	(^JFCompletionBlock)		(BOOL succeeded, id object, NSError* error);
+typedef void	(^JFSimpleCompletionBlock)	(BOOL succeeded, NSError* error);
 
 
 #pragma mark Typedefs (Math)
