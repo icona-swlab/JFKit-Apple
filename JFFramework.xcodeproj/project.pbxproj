@@ -11,6 +11,10 @@
 		6C31C7A11B9EF3CF00FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
 		6C31C7B21B9EF62200FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
 		6C31C7B51B9EF7A400FAF487 /* JFFramework-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C77A1B9EEDF300FAF487 /* JFFramework-iOS.a */; };
+		6C38E6821BA18A80005C63CA /* JFErrorsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */; };
+		6C38E6831BA18A80005C63CA /* JFErrorsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */; };
+		6C38E6841BA18A83005C63CA /* JFErrorsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C38E6851BA18A84005C63CA /* JFErrorsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B09BB1B9EFA5A0055ACEC /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2840F41B8B5A74008A837F /* JFAppDelegate.m */; };
 		6C5B09BC1B9EFA610055ACEC /* JFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2840F41B8B5A74008A837F /* JFAppDelegate.m */; };
 		6C5B09BE1B9EFADF0055ACEC /* JFAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EA2840F31B8B5A74008A837F /* JFAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -165,6 +169,8 @@
 		6C31C7841B9EEDF400FAF487 /* JFFramework-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "JFFramework-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C31C7A01B9EF3CF00FAF487 /* JFFramework-OSX-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-OSX-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFErrorsManager.h; sourceTree = "<group>"; };
+		6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFErrorsManager.m; sourceTree = "<group>"; };
 		6C6236621B999B9C00EDB7CC /* Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documents; sourceTree = "<group>"; };
 		6C7613DE1B9D918200DD9BBC /* NSObject+JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JFLogger.h"; sourceTree = "<group>"; };
 		6C7613DF1B9D918200DD9BBC /* NSObject+JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JFLogger.m"; sourceTree = "<group>"; };
@@ -574,6 +580,8 @@
 		EA87458E1B8337F10064590D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */,
+				6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */,
 				EA87458F1B8338420064590D /* JFManager.h */,
 				EA8745901B8338420064590D /* JFManager.m */,
 			);
@@ -613,6 +621,7 @@
 				6C5B0A071B9EFBC20055ACEC /* JFHTTPRequest.h in Headers */,
 				6C5B09C21B9EFAE70055ACEC /* JFManager.h in Headers */,
 				6C5B0A091B9EFBC20055ACEC /* JFLogger.h in Headers */,
+				6C38E6851BA18A84005C63CA /* JFErrorsManager.h in Headers */,
 				6C5B09BF1B9EFAE00055ACEC /* JFAppDelegate.h in Headers */,
 				6C5B09FC1B9EFB7C0055ACEC /* NSObject+JFLogger.h in Headers */,
 				6C5B0A0E1B9EFBC20055ACEC /* JFXMLParser.h in Headers */,
@@ -656,6 +665,7 @@
 				6C5B09E21B9EFB450055ACEC /* JFKeyboardEventsHandler.h in Headers */,
 				6C5B09C41B9EFB280055ACEC /* NSIndexPath+JFFramework.h in Headers */,
 				6C5B0A021B9EFBC10055ACEC /* JFShortcuts.h in Headers */,
+				6C38E6841BA18A83005C63CA /* JFErrorsManager.h in Headers */,
 				6C5B09D61B9EFB300055ACEC /* UIButton+JFFramework.h in Headers */,
 				6C5B09D81B9EFB360055ACEC /* JFActivityIndicatorView.h in Headers */,
 				6C5B09E01B9EFB420055ACEC /* JFAlertsController.h in Headers */,
@@ -943,6 +953,7 @@
 				6C5B09F91B9EFB7C0055ACEC /* NSObject+JFLogger.m in Sources */,
 				6C5B0A041B9EFBC10055ACEC /* JFUtilities.m in Sources */,
 				6C5B0A011B9EFBC10055ACEC /* JFLogger.m in Sources */,
+				6C38E6821BA18A80005C63CA /* JFErrorsManager.m in Sources */,
 				6C5B09E51B9EFB490055ACEC /* JFLabel.m in Sources */,
 				6C5B09F71B9EFB7C0055ACEC /* NSFileManager+JFFramework.m in Sources */,
 				6C5B0A111B9EFBC40055ACEC /* JFURLProtocol.m in Sources */,
@@ -973,6 +984,7 @@
 				6C5B0A0D1B9EFBC20055ACEC /* JFUtilities.m in Sources */,
 				6C5B09CF1B9EFB2C0055ACEC /* JFByteStream.m in Sources */,
 				6C5B0A081B9EFBC20055ACEC /* JFHTTPRequest.m in Sources */,
+				6C38E6831BA18A80005C63CA /* JFErrorsManager.m in Sources */,
 				6C5B09C31B9EFAE70055ACEC /* JFManager.m in Sources */,
 				6C5B09D11B9EFB2C0055ACEC /* JFColor.m in Sources */,
 				6C5B0A0A1B9EFBC20055ACEC /* JFLogger.m in Sources */,

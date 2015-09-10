@@ -52,6 +52,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "JFAppDelegate.h"
 
 // Core
+#import "JFErrorsManager.h"
 #import "JFManager.h"
 
 // Data objects

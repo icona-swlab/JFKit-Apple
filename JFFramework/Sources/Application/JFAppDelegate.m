@@ -21,6 +21,7 @@
 #import "JFAppDelegate.h"
 
 #import "JFAlertsController.h"
+#import "JFErrorsManager.h"
 #import "JFLogger.h"
 #import "JFUtilities.h"
 #if TARGET_OS_IPHONE
@@ -52,12 +53,37 @@
 
 #pragma mark Properties
 
+// Errors
+@synthesize errorsManager	= _errorsManager;
+
 // User interface
 @synthesize alertsController	= _alertsController;
 @synthesize window				= _window;
 #if TARGET_OS_IPHONE
 @synthesize windowController	= _windowController;
 #endif
+
+
+#pragma mark Properties accessors (Errors)
+
+- (void)setErrorsManager:(JFErrorsManager*)errorsManager
+{
+	@synchronized(self)
+	{
+		_errorsManager = errorsManager;
+	}
+}
+
+- (JFErrorsManager*)errorsManager
+{
+	@synchronized(self)
+	{
+		if(!_errorsManager)
+			_errorsManager = [JFErrorsManager defaultManager];
+		
+		return _errorsManager;
+	}
+}
 
 
 #pragma mark Properties accessors (User interface)

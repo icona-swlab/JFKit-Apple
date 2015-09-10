@@ -23,6 +23,7 @@
 
 
 @class JFAlertsController;
+@class JFErrorsManager;
 #if TARGET_OS_IPHONE
 @class JFWindowController;
 #endif
@@ -36,6 +37,9 @@
 #endif
 
 #pragma mark Properties
+
+// Errors
+@property (strong)	JFErrorsManager*	errorsManager;
 
 // User interface
 @property (strong, nonatomic, readonly)	JFAlertsController*	alertsController;
