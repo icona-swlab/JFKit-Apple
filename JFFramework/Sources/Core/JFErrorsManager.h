@@ -26,10 +26,12 @@
 - (instancetype)	initWithDomain:(NSString*)domain NS_DESIGNATED_INITIALIZER;
 
 // Data management
-- (NSString*)	localizedDescriptionForErrorCode:(NSInteger)errorCode;
-- (NSString*)	localizedFailureReasonForErrorCode:(NSInteger)errorCode;
-- (NSString*)	localizedRecoverySuggestionForErrorCode:(NSInteger)errorCode;
-- (NSString*)	stringForErrorCode:(NSString*)errorCode;
+- (NSString*)		debugStringForErrorCode:(NSInteger)errorCode;
+- (NSString*)		localizedDescriptionForErrorCode:(NSInteger)errorCode;
+- (NSString*)		localizedFailureReasonForErrorCode:(NSInteger)errorCode;
+- (NSString*)		localizedRecoverySuggestionForErrorCode:(NSInteger)errorCode;
+- (NSDictionary*)	userInfoForErrorCode:(NSInteger)errorCode;
+- (NSDictionary*)	userInfoForErrorCode:(NSInteger)errorCode underlyingError:(NSError*)error;
 
 // Errors management
 - (NSError*)	errorWithCode:(NSInteger)errorCode;

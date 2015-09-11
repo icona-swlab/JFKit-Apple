@@ -11,6 +11,7 @@
 #import "JFErrorsManager.h"
 
 #import "JFString.h"
+#import "JFUtilities.h"
 
 
 
@@ -36,7 +37,7 @@
 
 - (instancetype)init
 {
-	return [self initWithDomain:@"ApplicationDomain"];
+	return [self initWithDomain:AppIdentifier];
 }
 
 - (instancetype)initWithDomain:(NSString*)domain
@@ -53,6 +54,11 @@
 
 #pragma mark Data management
 
+- (NSString*)debugStringForErrorCode:(NSInteger)errorCode
+{
+	return nil;
+}
+
 - (NSString*)localizedDescriptionForErrorCode:(NSInteger)errorCode
 {
 	return nil;
@@ -68,9 +74,29 @@
 	return nil;
 }
 
-- (NSString*)stringForErrorCode:(NSString*)errorCode
+- (NSDictionary*)userInfoForErrorCode:(NSInteger)errorCode
 {
-	return nil;
+	return [self userInfoForErrorCode:errorCode underlyingError:nil];
+}
+
+- (NSDictionary*)userInfoForErrorCode:(NSInteger)errorCode underlyingError:(NSError*)error
+{
+	NSString* description = [self localizedDescriptionForErrorCode:errorCode];
+	NSString* failureReason = [self localizedFailureReasonForErrorCode:errorCode];
+	NSString* recoverySuggestion = [self localizedRecoverySuggestionForErrorCode:errorCode];
+	
+	NSMutableDictionary* retObj = nil;
+	
+	if(description || failureReason || recoverySuggestion || error)
+	{
+		retObj = [NSMutableDictionary dictionary];
+		if(description)			[retObj setObject:description forKey:NSLocalizedDescriptionKey];
+		if(error)				[retObj setObject:error forKey:NSUnderlyingErrorKey];
+		if(failureReason)		[retObj setObject:failureReason forKey:NSLocalizedFailureReasonErrorKey];
+		if(recoverySuggestion)	[retObj setObject:recoverySuggestion forKey:NSLocalizedRecoverySuggestionErrorKey];
+	}
+	
+	return [retObj copy];
 }
 
 
@@ -78,20 +104,7 @@
 
 - (NSError*)errorWithCode:(NSInteger)errorCode
 {
-	NSString* description = [self localizedDescriptionForErrorCode:errorCode];
-	NSString* failureReason = [self localizedFailureReasonForErrorCode:errorCode];
-	NSString* recoverySuggestion = [self localizedRecoverySuggestionForErrorCode:errorCode];
-	
-	NSMutableDictionary* userInfo = nil;
-	
-	if(description || failureReason || recoverySuggestion)
-	{
-		userInfo = [NSMutableDictionary dictionary];
-		if(description)			[userInfo setObject:description forKey:NSLocalizedDescriptionKey];
-		if(failureReason)		[userInfo setObject:failureReason forKey:NSLocalizedFailureReasonErrorKey];
-		if(recoverySuggestion)	[userInfo setObject:recoverySuggestion forKey:NSLocalizedRecoverySuggestionErrorKey];
-	}
-	
+	NSDictionary* userInfo = [self userInfoForErrorCode:errorCode];
 	return [self errorWithCode:errorCode userInfo:userInfo];
 }
 

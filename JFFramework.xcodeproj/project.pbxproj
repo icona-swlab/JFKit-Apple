@@ -11,6 +11,10 @@
 		6C31C7A11B9EF3CF00FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
 		6C31C7B21B9EF62200FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
 		6C31C7B51B9EF7A400FAF487 /* JFFramework-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C77A1B9EEDF300FAF487 /* JFFramework-iOS.a */; };
+		6C33B2471BA2D01C00C8554D /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C33B2451BA2D01C00C8554D /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C33B2481BA2D01C00C8554D /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C33B2451BA2D01C00C8554D /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C33B2491BA2D01C00C8554D /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C33B2461BA2D01C00C8554D /* JFLogger.m */; };
+		6C33B24A1BA2D01C00C8554D /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C33B2461BA2D01C00C8554D /* JFLogger.m */; };
 		6C38E6821BA18A80005C63CA /* JFErrorsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */; };
 		6C38E6831BA18A80005C63CA /* JFErrorsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */; };
 		6C38E6841BA18A83005C63CA /* JFErrorsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -83,8 +87,6 @@
 		6C5B09FD1B9EFB7C0055ACEC /* NSObject+JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7613DF1B9D918200DD9BBC /* NSObject+JFLogger.m */; };
 		6C5B09FE1B9EFBC10055ACEC /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EA87459B1B8341D70064590D /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B09FF1B9EFBC10055ACEC /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87459C1B8341D70064590D /* JFHTTPRequest.m */; };
-		6C5B0A001B9EFBC10055ACEC /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3421B82342F00A56864 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C5B0A011B9EFBC10055ACEC /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3431B82342F00A56864 /* JFLogger.m */; };
 		6C5B0A021B9EFBC10055ACEC /* JFShortcuts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9E64421B95B078000E0682 /* JFShortcuts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B0A031B9EFBC10055ACEC /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA11054D1B820E3500E93D04 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B0A041B9EFBC10055ACEC /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA11054E1B820E3500E93D04 /* JFUtilities.m */; };
@@ -92,8 +94,6 @@
 		6C5B0A061B9EFBC10055ACEC /* JFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8745961B833CDD0064590D /* JFXMLParser.m */; };
 		6C5B0A071B9EFBC20055ACEC /* JFHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EA87459B1B8341D70064590D /* JFHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B0A081B9EFBC20055ACEC /* JFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87459C1B8341D70064590D /* JFHTTPRequest.m */; };
-		6C5B0A091B9EFBC20055ACEC /* JFLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D3421B82342F00A56864 /* JFLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C5B0A0A1B9EFBC20055ACEC /* JFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3D3431B82342F00A56864 /* JFLogger.m */; };
 		6C5B0A0B1B9EFBC20055ACEC /* JFShortcuts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9E64421B95B078000E0682 /* JFShortcuts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B0A0C1B9EFBC20055ACEC /* JFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EA11054D1B820E3500E93D04 /* JFUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B0A0D1B9EFBC20055ACEC /* JFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EA11054E1B820E3500E93D04 /* JFUtilities.m */; };
@@ -169,6 +169,8 @@
 		6C31C7841B9EEDF400FAF487 /* JFFramework-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "JFFramework-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C31C7A01B9EF3CF00FAF487 /* JFFramework-OSX-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-OSX-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C33B2451BA2D01C00C8554D /* JFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
+		6C33B2461BA2D01C00C8554D /* JFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 		6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFErrorsManager.h; sourceTree = "<group>"; };
 		6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFErrorsManager.m; sourceTree = "<group>"; };
 		6C6236621B999B9C00EDB7CC /* Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documents; sourceTree = "<group>"; };
@@ -255,8 +257,6 @@
 		EA8745A51B834B990064590D /* NSIndexPath+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+JFFramework.m"; sourceTree = "<group>"; };
 		EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JFFramework.h"; sourceTree = "<group>"; };
 		EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+JFFramework.m"; sourceTree = "<group>"; };
-		EAD3D3421B82342F00A56864 /* JFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFLogger.h; sourceTree = "<group>"; };
-		EAD3D3431B82342F00A56864 /* JFLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,8 +366,6 @@
 				EAD3D33D1B82342F00A56864 /* Addons */,
 				EA87459B1B8341D70064590D /* JFHTTPRequest.h */,
 				EA87459C1B8341D70064590D /* JFHTTPRequest.m */,
-				EAD3D3421B82342F00A56864 /* JFLogger.h */,
-				EAD3D3431B82342F00A56864 /* JFLogger.m */,
 				6C9E64421B95B078000E0682 /* JFShortcuts.h */,
 				6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */,
 				6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */,
@@ -580,6 +578,8 @@
 		EA87458E1B8337F10064590D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6C33B2451BA2D01C00C8554D /* JFLogger.h */,
+				6C33B2461BA2D01C00C8554D /* JFLogger.m */,
 				6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */,
 				6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */,
 				EA87458F1B8338420064590D /* JFManager.h */,
@@ -620,11 +620,11 @@
 				6C5B09DC1B9EFB410055ACEC /* JFAlertsController.h in Headers */,
 				6C5B0A071B9EFBC20055ACEC /* JFHTTPRequest.h in Headers */,
 				6C5B09C21B9EFAE70055ACEC /* JFManager.h in Headers */,
-				6C5B0A091B9EFBC20055ACEC /* JFLogger.h in Headers */,
 				6C38E6851BA18A84005C63CA /* JFErrorsManager.h in Headers */,
 				6C5B09BF1B9EFAE00055ACEC /* JFAppDelegate.h in Headers */,
 				6C5B09FC1B9EFB7C0055ACEC /* NSObject+JFLogger.h in Headers */,
 				6C5B0A0E1B9EFBC20055ACEC /* JFXMLParser.h in Headers */,
+				6C33B2481BA2D01C00C8554D /* JFLogger.h in Headers */,
 				6C5B09DA1B9EFB410055ACEC /* JFAlert.h in Headers */,
 				6C5B09D21B9EFB2C0055ACEC /* JFString.h in Headers */,
 				6C5B0A0B1B9EFBC20055ACEC /* JFShortcuts.h in Headers */,
@@ -655,7 +655,7 @@
 				6C5B09CC1B9EFB2C0055ACEC /* JFString.h in Headers */,
 				6C5B09F21B9EFB680055ACEC /* JFViewController.h in Headers */,
 				6C5B0A031B9EFBC10055ACEC /* JFUtilities.h in Headers */,
-				6C5B0A001B9EFBC10055ACEC /* JFLogger.h in Headers */,
+				6C33B2471BA2D01C00C8554D /* JFLogger.h in Headers */,
 				6C5B09FE1B9EFBC10055ACEC /* JFHTTPRequest.h in Headers */,
 				6C5B09CA1B9EFB2C0055ACEC /* JFColor.h in Headers */,
 				6C5B09F81B9EFB7C0055ACEC /* NSObject+JFLogger.h in Headers */,
@@ -869,14 +869,14 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA11051C1B820C5000E93D04 /* JFFramework-App-iOS */,
-				EA1105341B820C5000E93D04 /* JFFramework-App-iOS-Tests */,
-				EA1105911B82186B00E93D04 /* JFFramework-App-OSX */,
-				EA1105A31B82186B00E93D04 /* JFFramework-App-OSX-Tests */,
 				6C31C7791B9EEDF300FAF487 /* JFFramework-iOS */,
 				6C31C7831B9EEDF400FAF487 /* JFFramework-iOS-Tests */,
 				6C31C7951B9EF3CE00FAF487 /* JFFramework-OSX */,
 				6C31C79F1B9EF3CF00FAF487 /* JFFramework-OSX-Tests */,
+				EA11051C1B820C5000E93D04 /* JFFramework-App-iOS */,
+				EA1105341B820C5000E93D04 /* JFFramework-App-iOS-Tests */,
+				EA1105911B82186B00E93D04 /* JFFramework-App-OSX */,
+				EA1105A31B82186B00E93D04 /* JFFramework-App-OSX-Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -952,7 +952,6 @@
 				6C5B0A061B9EFBC10055ACEC /* JFXMLParser.m in Sources */,
 				6C5B09F91B9EFB7C0055ACEC /* NSObject+JFLogger.m in Sources */,
 				6C5B0A041B9EFBC10055ACEC /* JFUtilities.m in Sources */,
-				6C5B0A011B9EFBC10055ACEC /* JFLogger.m in Sources */,
 				6C38E6821BA18A80005C63CA /* JFErrorsManager.m in Sources */,
 				6C5B09E51B9EFB490055ACEC /* JFLabel.m in Sources */,
 				6C5B09F71B9EFB7C0055ACEC /* NSFileManager+JFFramework.m in Sources */,
@@ -965,6 +964,7 @@
 				6C5B09C51B9EFB280055ACEC /* NSIndexPath+JFFramework.m in Sources */,
 				6C5B09F11B9EFB680055ACEC /* JFTransparentToolbar.m in Sources */,
 				6C5B09EB1B9EFB540055ACEC /* JFTabBarController.m in Sources */,
+				6C33B2491BA2D01C00C8554D /* JFLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,9 +985,9 @@
 				6C5B09CF1B9EFB2C0055ACEC /* JFByteStream.m in Sources */,
 				6C5B0A081B9EFBC20055ACEC /* JFHTTPRequest.m in Sources */,
 				6C38E6831BA18A80005C63CA /* JFErrorsManager.m in Sources */,
+				6C33B24A1BA2D01C00C8554D /* JFLogger.m in Sources */,
 				6C5B09C31B9EFAE70055ACEC /* JFManager.m in Sources */,
 				6C5B09D11B9EFB2C0055ACEC /* JFColor.m in Sources */,
-				6C5B0A0A1B9EFBC20055ACEC /* JFLogger.m in Sources */,
 				6C5B09D31B9EFB2C0055ACEC /* JFString.m in Sources */,
 				6C5B0A0F1B9EFBC20055ACEC /* JFXMLParser.m in Sources */,
 				6C5B09C71B9EFB280055ACEC /* NSIndexPath+JFFramework.m in Sources */,
