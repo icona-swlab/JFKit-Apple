@@ -73,8 +73,6 @@
 		6C5B09EF1B9EFB680055ACEC /* JFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE69F21B9465E600B49918 /* JFTextView.m */; };
 		6C5B09F01B9EFB680055ACEC /* JFTransparentToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B09F11B9EFB680055ACEC /* JFTransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */; };
-		6C5B09F21B9EFB680055ACEC /* JFViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DA41B848BD400455F2A /* JFViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C5B09F31B9EFB680055ACEC /* JFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DA51B848BD400455F2A /* JFViewController.m */; };
 		6C5B09F41B9EFB760055ACEC /* JFWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5DA01B84841E00455F2A /* JFWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B09F51B9EFB760055ACEC /* JFWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D5DA11B84841E00455F2A /* JFWindowController.m */; };
 		6C5B09F61B9EFB7C0055ACEC /* NSFileManager+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -105,6 +103,16 @@
 		6C5B0A131B9EFBDB0055ACEC /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105B51B821B4100E93D04 /* Tests.m */; };
 		6C5B0A141B9EFC000055ACEC /* JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1105541B820E3500E93D04 /* JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B0A151B9EFC000055ACEC /* JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1105541B820E3500E93D04 /* JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CF02A771BA869E2009503FB /* JFWeakHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A751BA869E2009503FB /* JFWeakHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CF02A781BA869E2009503FB /* JFWeakHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A751BA869E2009503FB /* JFWeakHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CF02A791BA869E2009503FB /* JFWeakHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A761BA869E2009503FB /* JFWeakHandle.m */; };
+		6CF02A7A1BA869E2009503FB /* JFWeakHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A761BA869E2009503FB /* JFWeakHandle.m */; };
+		6CF02A7D1BA86DAA009503FB /* UIViewController+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A7B1BA86DAA009503FB /* UIViewController+JFFramework.h */; };
+		6CF02A7E1BA86DAA009503FB /* UIViewController+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A7C1BA86DAA009503FB /* UIViewController+JFFramework.m */; };
+		6CF02A841BA87BBA009503FB /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A821BA87BBA009503FB /* JRSwizzle.h */; };
+		6CF02A851BA87BBA009503FB /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A821BA87BBA009503FB /* JRSwizzle.h */; };
+		6CF02A861BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
+		6CF02A871BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
 		EA1105D51B821BD200E93D04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1105BA1B821B5900E93D04 /* Images.xcassets */; };
 		EA1105D61B821BD200E93D04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105BD1B821B5900E93D04 /* AppDelegate.m */; };
 		EA1105D71B821BD200E93D04 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1105BE1B821B5900E93D04 /* LaunchScreen.xib */; };
@@ -183,6 +191,12 @@
 		6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
 		6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFURLProtocol.h; sourceTree = "<group>"; };
 		6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
+		6CF02A751BA869E2009503FB /* JFWeakHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWeakHandle.h; sourceTree = "<group>"; };
+		6CF02A761BA869E2009503FB /* JFWeakHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWeakHandle.m; sourceTree = "<group>"; };
+		6CF02A7B1BA86DAA009503FB /* UIViewController+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JFFramework.h"; sourceTree = "<group>"; };
+		6CF02A7C1BA86DAA009503FB /* UIViewController+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JFFramework.m"; sourceTree = "<group>"; };
+		6CF02A821BA87BBA009503FB /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
+		6CF02A831BA87BBA009503FB /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
 		EA11051D1B820C5000E93D04 /* JFFramework-App-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JFFramework-App-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105351B820C5000E93D04 /* JFFramework-App-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-App-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105461B820E3500E93D04 /* JFByteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFByteStream.h; sourceTree = "<group>"; };
@@ -227,8 +241,6 @@
 		EA6D5D9B1B8483F900455F2A /* JFAlertsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAlertsController.m; sourceTree = "<group>"; };
 		EA6D5DA01B84841E00455F2A /* JFWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWindowController.h; sourceTree = "<group>"; };
 		EA6D5DA11B84841E00455F2A /* JFWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWindowController.m; sourceTree = "<group>"; };
-		EA6D5DA41B848BD400455F2A /* JFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFViewController.h; sourceTree = "<group>"; };
-		EA6D5DA51B848BD400455F2A /* JFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFViewController.m; sourceTree = "<group>"; };
 		EA6D5DA91B84924A00455F2A /* UIBarButtonItem+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+JFFramework.h"; sourceTree = "<group>"; };
 		EA6D5DAA1B84924A00455F2A /* UIBarButtonItem+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+JFFramework.m"; sourceTree = "<group>"; };
 		EA6D5DAB1B84924A00455F2A /* UIButton+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+JFFramework.h"; sourceTree = "<group>"; };
@@ -323,12 +335,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CF02A801BA87BBA009503FB /* Third-Party */ = {
+			isa = PBXGroup;
+			children = (
+				6CF02A811BA87BBA009503FB /* JRSwizzle */,
+			);
+			path = "Third-Party";
+			sourceTree = "<group>";
+		};
+		6CF02A811BA87BBA009503FB /* JRSwizzle */ = {
+			isa = PBXGroup;
+			children = (
+				6CF02A821BA87BBA009503FB /* JRSwizzle.h */,
+				6CF02A831BA87BBA009503FB /* JRSwizzle.m */,
+			);
+			path = JRSwizzle;
+			sourceTree = "<group>";
+		};
 		EA1105431B820E3500E93D04 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
 				EA1105441B820E3500E93D04 /* Sources */,
 				EA11054F1B820E3500E93D04 /* Supporting Files */,
 				EA1105561B820E3500E93D04 /* Tests */,
+				6CF02A801BA87BBA009503FB /* Third-Party */,
 			);
 			name = Framework;
 			path = JFFramework;
@@ -371,6 +401,8 @@
 				6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */,
 				EA11054D1B820E3500E93D04 /* JFUtilities.h */,
 				EA11054E1B820E3500E93D04 /* JFUtilities.m */,
+				6CF02A751BA869E2009503FB /* JFWeakHandle.h */,
+				6CF02A761BA869E2009503FB /* JFWeakHandle.m */,
 				EA8745951B833CDD0064590D /* JFXMLParser.h */,
 				EA8745961B833CDD0064590D /* JFXMLParser.m */,
 			);
@@ -556,8 +588,6 @@
 				6CBE69F21B9465E600B49918 /* JFTextView.m */,
 				6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */,
 				6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */,
-				EA6D5DA41B848BD400455F2A /* JFViewController.h */,
-				EA6D5DA51B848BD400455F2A /* JFViewController.m */,
 				EA6D5DA01B84841E00455F2A /* JFWindowController.h */,
 				EA6D5DA11B84841E00455F2A /* JFWindowController.m */,
 			);
@@ -571,6 +601,8 @@
 				EA6D5DAA1B84924A00455F2A /* UIBarButtonItem+JFFramework.m */,
 				EA6D5DAB1B84924A00455F2A /* UIButton+JFFramework.h */,
 				EA6D5DAC1B84924A00455F2A /* UIButton+JFFramework.m */,
+				6CF02A7B1BA86DAA009503FB /* UIViewController+JFFramework.h */,
+				6CF02A7C1BA86DAA009503FB /* UIViewController+JFFramework.m */,
 			);
 			path = Addons;
 			sourceTree = "<group>";
@@ -619,11 +651,13 @@
 				6C5B0A151B9EFC000055ACEC /* JFFramework.h in Headers */,
 				6C5B09DC1B9EFB410055ACEC /* JFAlertsController.h in Headers */,
 				6C5B0A071B9EFBC20055ACEC /* JFHTTPRequest.h in Headers */,
+				6CF02A781BA869E2009503FB /* JFWeakHandle.h in Headers */,
 				6C5B09C21B9EFAE70055ACEC /* JFManager.h in Headers */,
 				6C38E6851BA18A84005C63CA /* JFErrorsManager.h in Headers */,
 				6C5B09BF1B9EFAE00055ACEC /* JFAppDelegate.h in Headers */,
 				6C5B09FC1B9EFB7C0055ACEC /* NSObject+JFLogger.h in Headers */,
 				6C5B0A0E1B9EFBC20055ACEC /* JFXMLParser.h in Headers */,
+				6CF02A851BA87BBA009503FB /* JRSwizzle.h in Headers */,
 				6C33B2481BA2D01C00C8554D /* JFLogger.h in Headers */,
 				6C5B09DA1B9EFB410055ACEC /* JFAlert.h in Headers */,
 				6C5B09D21B9EFB2C0055ACEC /* JFString.h in Headers */,
@@ -647,13 +681,15 @@
 				6C5B09F41B9EFB760055ACEC /* JFWindowController.h in Headers */,
 				6C5B09F61B9EFB7C0055ACEC /* NSFileManager+JFFramework.h in Headers */,
 				6C5B09DE1B9EFB420055ACEC /* JFAlert.h in Headers */,
+				6CF02A771BA869E2009503FB /* JFWeakHandle.h in Headers */,
+				6CF02A7D1BA86DAA009503FB /* UIViewController+JFFramework.h in Headers */,
 				6C5B09E81B9EFB510055ACEC /* JFSplashViewController.h in Headers */,
 				6C5B09BE1B9EFADF0055ACEC /* JFAppDelegate.h in Headers */,
 				6C5B09F01B9EFB680055ACEC /* JFTransparentToolbar.h in Headers */,
+				6CF02A841BA87BBA009503FB /* JRSwizzle.h in Headers */,
 				6C5B0A101B9EFBC40055ACEC /* JFURLProtocol.h in Headers */,
 				6C5B09EE1B9EFB680055ACEC /* JFTextView.h in Headers */,
 				6C5B09CC1B9EFB2C0055ACEC /* JFString.h in Headers */,
-				6C5B09F21B9EFB680055ACEC /* JFViewController.h in Headers */,
 				6C5B0A031B9EFBC10055ACEC /* JFUtilities.h in Headers */,
 				6C33B2471BA2D01C00C8554D /* JFLogger.h in Headers */,
 				6C5B09FE1B9EFBC10055ACEC /* JFHTTPRequest.h in Headers */,
@@ -937,6 +973,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C5B09BC1B9EFA610055ACEC /* JFAppDelegate.m in Sources */,
+				6CF02A7E1BA86DAA009503FB /* UIViewController+JFFramework.m in Sources */,
 				6C5B09E91B9EFB510055ACEC /* JFSplashViewController.m in Sources */,
 				6C5B09C91B9EFB2C0055ACEC /* JFByteStream.m in Sources */,
 				6C5B09C11B9EFAE70055ACEC /* JFManager.m in Sources */,
@@ -959,8 +996,9 @@
 				6C5B09CD1B9EFB2C0055ACEC /* JFString.m in Sources */,
 				6C5B09D51B9EFB300055ACEC /* UIBarButtonItem+JFFramework.m in Sources */,
 				6C5B09DF1B9EFB420055ACEC /* JFAlert.m in Sources */,
+				6CF02A791BA869E2009503FB /* JFWeakHandle.m in Sources */,
 				6C5B09E11B9EFB420055ACEC /* JFAlertsController.m in Sources */,
-				6C5B09F31B9EFB680055ACEC /* JFViewController.m in Sources */,
+				6CF02A861BA87BBA009503FB /* JRSwizzle.m in Sources */,
 				6C5B09C51B9EFB280055ACEC /* NSIndexPath+JFFramework.m in Sources */,
 				6C5B09F11B9EFB680055ACEC /* JFTransparentToolbar.m in Sources */,
 				6C5B09EB1B9EFB540055ACEC /* JFTabBarController.m in Sources */,
@@ -987,12 +1025,14 @@
 				6C38E6831BA18A80005C63CA /* JFErrorsManager.m in Sources */,
 				6C33B24A1BA2D01C00C8554D /* JFLogger.m in Sources */,
 				6C5B09C31B9EFAE70055ACEC /* JFManager.m in Sources */,
+				6CF02A871BA87BBA009503FB /* JRSwizzle.m in Sources */,
 				6C5B09D11B9EFB2C0055ACEC /* JFColor.m in Sources */,
 				6C5B09D31B9EFB2C0055ACEC /* JFString.m in Sources */,
 				6C5B0A0F1B9EFBC20055ACEC /* JFXMLParser.m in Sources */,
 				6C5B09C71B9EFB280055ACEC /* NSIndexPath+JFFramework.m in Sources */,
 				6C5B09DD1B9EFB410055ACEC /* JFAlertsController.m in Sources */,
 				6C5B09FB1B9EFB7C0055ACEC /* NSFileManager+JFFramework.m in Sources */,
+				6CF02A7A1BA869E2009503FB /* JFWeakHandle.m in Sources */,
 				6C5B09DB1B9EFB410055ACEC /* JFAlert.m in Sources */,
 				6C5B09FD1B9EFB7C0055ACEC /* NSObject+JFLogger.m in Sources */,
 			);

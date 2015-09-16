@@ -68,6 +68,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import	"JFHTTPRequest.h"
 #import "JFLogger.h"
 #import "JFUtilities.h"
+#import "JFWeakHandle.h"
 #import "JFXMLParser.h"
 
 #if TARGET_OS_IPHONE
@@ -76,6 +77,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 // Addons (User interface)
 #import "UIBarButtonItem+JFFramework.h"
 #import "UIButton+JFFramework.h"
+#import "UIViewController+JFFramework.h"
 
 // User interface
 #import "JFActivityIndicatorView.h"
@@ -87,7 +89,6 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import	"JFTableViewCell.h"
 #import "JFTextView.h"
 #import	"JFTransparentToolbar.h"
-#import "JFViewController.h"
 #import "JFWindowController.h"
 
 // Utilities

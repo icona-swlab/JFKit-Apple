@@ -18,10 +18,6 @@
 
 
 
-#import "JFViewController.h"
-
-
-
 @class JFSplashViewController;
 
 
@@ -42,7 +38,7 @@
 
 
 
-@interface JFSplashViewController : JFViewController
+@interface JFSplashViewController : UIViewController
 
 #pragma mark Properties
 

@@ -24,6 +24,7 @@
 
 #define JFKVCPropertyName(_property)			[[JFKVCPropertyPath(_property) componentsSeparatedByString:@"."] lastObject]
 #define JFKVCPropertyPath(_property)			(JFEmptyString#_property)
+#define JFReversedDomain						@"com.jackfelle"
 #define JFStringFromCString(_cStr)				JFStringFromEncodedCString(_cStr, NSUTF8StringEncoding)
 #define JFStringFromEncodedCString(_cStr, _enc)	[NSString stringWithCString:_cStr encoding:_enc]
 #define	JFStringFromObjectClass(_obj)			NSStringFromClass([_obj class])
