@@ -28,9 +28,9 @@
 #pragma mark Optional methods
 
 // User interface management (Rotation)
-- (UIInterfaceOrientation)	navigationControllerPreferredInterfaceOrientationForPresentation:(JFNavigationController*)navigationController;
-- (BOOL)					navigationControllerShouldAutorotate:(JFNavigationController*)navigationController;
-- (NSUInteger)				navigationControllerSupportedInterfaceOrientations:(JFNavigationController*)navigationController;
+- (UIInterfaceOrientation)		navigationControllerPreferredInterfaceOrientationForPresentation:(JFNavigationController*)navigationController;
+- (BOOL)						navigationControllerShouldAutorotate:(JFNavigationController*)navigationController;
+- (UIInterfaceOrientationMask)	navigationControllerSupportedInterfaceOrientations:(JFNavigationController*)navigationController;
 
 @end
 

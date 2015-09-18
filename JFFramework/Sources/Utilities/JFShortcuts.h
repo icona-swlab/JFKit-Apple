@@ -84,7 +84,7 @@
 #define OSX10_8Plus			OSXPlus(NSAppKitVersionNumber10_8)
 #define OSX10_9				(OSX10_9Plus && !OSX10_10Plus)
 #define OSX10_9Plus			OSXPlus(NSAppKitVersionNumber10_9)
-#define OSX10_10			(OSX10_10Plus && !OSXPlus(NSAppKitVersionNumber10_10 + 1))
+#define OSX10_10			(OSX10_10Plus && !OSXPlus(NSAppKitVersionNumber10_10_Max + 1))
 #define OSX10_10Plus		OSXPlus(NSAppKitVersionNumber10_10)
 #endif
 

@@ -65,7 +65,7 @@
 	return [super shouldAutorotate];
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
 	if(!iOS7Plus)
 	{

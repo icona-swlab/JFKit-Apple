@@ -28,9 +28,9 @@
 #pragma mark Optional methods
 
 // User interface management (Rotation)
-- (UIInterfaceOrientation)	tabBarControllerPreferredInterfaceOrientationForPresentation:(JFTabBarController*)tabBarController;
-- (BOOL)					tabBarControllerShouldAutorotate:(JFTabBarController*)tabBarController;
-- (NSUInteger)				tabBarControllerSupportedInterfaceOrientations:(JFTabBarController*)tabBarController;
+- (UIInterfaceOrientation)		tabBarControllerPreferredInterfaceOrientationForPresentation:(JFTabBarController*)tabBarController;
+- (BOOL)						tabBarControllerShouldAutorotate:(JFTabBarController*)tabBarController;
+- (UIInterfaceOrientationMask)	tabBarControllerSupportedInterfaceOrientations:(JFTabBarController*)tabBarController;
 
 @end
 

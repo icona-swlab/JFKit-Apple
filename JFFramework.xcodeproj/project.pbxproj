@@ -107,7 +107,7 @@
 		6CF02A781BA869E2009503FB /* JFWeakHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A751BA869E2009503FB /* JFWeakHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CF02A791BA869E2009503FB /* JFWeakHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A761BA869E2009503FB /* JFWeakHandle.m */; };
 		6CF02A7A1BA869E2009503FB /* JFWeakHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A761BA869E2009503FB /* JFWeakHandle.m */; };
-		6CF02A7D1BA86DAA009503FB /* UIViewController+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A7B1BA86DAA009503FB /* UIViewController+JFFramework.h */; };
+		6CF02A7D1BA86DAA009503FB /* UIViewController+JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A7B1BA86DAA009503FB /* UIViewController+JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CF02A7E1BA86DAA009503FB /* UIViewController+JFFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A7C1BA86DAA009503FB /* UIViewController+JFFramework.m */; };
 		6CF02A841BA87BBA009503FB /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A821BA87BBA009503FB /* JRSwizzle.h */; };
 		6CF02A851BA87BBA009503FB /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A821BA87BBA009503FB /* JRSwizzle.h */; };
@@ -860,7 +860,7 @@
 		EA5F858C1B768E5A00A32291 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					6C31C7791B9EEDF300FAF487 = {
 						CreatedOnToolsVersion = 6.4;
@@ -1310,6 +1310,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1354,6 +1355,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1572,10 +1574,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1623,10 +1621,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1752,10 +1746,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1805,10 +1795,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1832,10 +1818,12 @@
 			buildSettings = {
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
+				ENABLE_TESTABILITY = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackfelle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
 			};
@@ -1849,6 +1837,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackfelle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
 			};

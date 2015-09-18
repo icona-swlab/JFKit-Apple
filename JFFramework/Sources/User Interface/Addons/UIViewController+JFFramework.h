@@ -84,12 +84,12 @@ FOUNDATION_EXPORT NSString* const	JFViewControllerParentViewControllerUserInfoKe
 @optional
 #pragma mark Optional methods
 
-- (void)					viewController:(UIViewController*)viewController didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
-- (UIInterfaceOrientation)	viewController:(UIViewController*)viewController preferredInterfaceOrientationForPresentation:(UIInterfaceOrientation)proposedInterfaceOrientation;
-- (BOOL)					viewController:(UIViewController*)viewController shouldAutorotate:(BOOL)proposedAnswer;
-- (NSUInteger)				viewController:(UIViewController*)viewController supportedInterfaceOrientations:(NSUInteger)proposedInterfaceOrientations;
-- (void)					viewController:(UIViewController*)viewController willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
-- (void)					viewController:(UIViewController*)viewController willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (void)						viewController:(UIViewController*)viewController didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
+- (UIInterfaceOrientation)		viewController:(UIViewController*)viewController preferredInterfaceOrientationForPresentation:(UIInterfaceOrientation)proposedInterfaceOrientation;
+- (BOOL)						viewController:(UIViewController*)viewController shouldAutorotate:(BOOL)proposedAnswer;
+- (UIInterfaceOrientationMask)	viewController:(UIViewController*)viewController supportedInterfaceOrientations:(UIInterfaceOrientationMask)proposedInterfaceOrientations;
+- (void)						viewController:(UIViewController*)viewController willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (void)						viewController:(UIViewController*)viewController willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
 
 @end
 

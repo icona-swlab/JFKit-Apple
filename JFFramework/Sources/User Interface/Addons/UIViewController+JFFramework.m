@@ -82,12 +82,12 @@ NSString* const	JFViewControllerParentViewControllerUserInfoKey	= JFViewControll
 - (void)	jf_swizzled_willMoveToParentViewController:(UIViewController*)parent;
 
 // User interface management (Rotation)
-- (void)					jf_swizzled_didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
-- (UIInterfaceOrientation)	jf_swizzled_preferredInterfaceOrientationForPresentation;
-- (BOOL)					jf_swizzled_shouldAutorotate;
-- (NSUInteger)				jf_swizzled_supportedInterfaceOrientations;
-- (void)					jf_swizzled_willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
-- (void)					jf_swizzled_willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (void)						jf_swizzled_didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
+- (UIInterfaceOrientation)		jf_swizzled_preferredInterfaceOrientationForPresentation;
+- (BOOL)						jf_swizzled_shouldAutorotate;
+- (UIInterfaceOrientationMask)	jf_swizzled_supportedInterfaceOrientations;
+- (void)						jf_swizzled_willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (void)						jf_swizzled_willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
 
 // User interface management (Visibility)
 - (void)	jf_swizzled_viewDidAppear:(BOOL)animated;
@@ -132,12 +132,12 @@ NSString* const	JFViewControllerParentViewControllerUserInfoKey	= JFViewControll
 #pragma mark Methods
 
 // Notifications management
-- (void)					jf_notifyDidRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
-- (UIInterfaceOrientation)	jf_notifyPreferredInterfaceOrientationForPresentation:(UIInterfaceOrientation)proposedInterfaceOrientation;
-- (BOOL)					jf_notifyShouldAutorotate:(BOOL)proposedAnswer;
-- (NSUInteger)				jf_notifySupportedInterfaceOrientations:(NSUInteger)proposedInterfaceOrientations;
-- (void)					jf_notifyWillAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
-- (void)					jf_notifyWillRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (void)						jf_notifyDidRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
+- (UIInterfaceOrientation)		jf_notifyPreferredInterfaceOrientationForPresentation:(UIInterfaceOrientation)proposedInterfaceOrientation;
+- (BOOL)						jf_notifyShouldAutorotate:(BOOL)proposedAnswer;
+- (UIInterfaceOrientationMask)	jf_notifySupportedInterfaceOrientations:(UIInterfaceOrientationMask)proposedInterfaceOrientations;
+- (void)						jf_notifyWillAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+- (void)						jf_notifyWillRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
 
 @end
 
@@ -236,7 +236,7 @@ NSString* const	JFViewControllerParentViewControllerUserInfoKey	= JFViewControll
 	return [self jf_notifyShouldAutorotate:[self jf_swizzled_shouldAutorotate]];
 }
 
-- (NSUInteger)jf_swizzled_supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)jf_swizzled_supportedInterfaceOrientations
 {
 	return [self jf_notifySupportedInterfaceOrientations:[self jf_swizzled_supportedInterfaceOrientations]];
 }
@@ -547,9 +547,9 @@ NSString* const	JFViewControllerParentViewControllerUserInfoKey	= JFViewControll
 	return retVal;
 }
 
-- (NSUInteger)jf_notifySupportedInterfaceOrientations:(NSUInteger)proposedInterfaceOrientations
+- (UIInterfaceOrientationMask)jf_notifySupportedInterfaceOrientations:(UIInterfaceOrientationMask)proposedInterfaceOrientations
 {
-	NSUInteger retVal = proposedInterfaceOrientations;
+	UIInterfaceOrientationMask retVal = proposedInterfaceOrientations;
 	
 	id<JFViewControllerRotationDelegate> delegate = self.rotationDelegate;
 	if([delegate respondsToSelector:@selector(viewController:supportedInterfaceOrientations:)])
