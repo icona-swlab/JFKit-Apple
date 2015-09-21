@@ -45,21 +45,22 @@
 #pragma mark Methods
 
 // Memory management
-- (void)			didReleaseViewController:(UIViewController*)viewController;
-- (void)			didRetainViewController:(UIViewController*)viewController;
+//- (void)			didReleaseViewController:(UIViewController*)viewController;
+//- (void)			didRetainViewController:(UIViewController*)viewController;
 - (instancetype)	initWithWindow:(UIWindow*)window;
 - (void)			releaseViewController:(UIViewController*)viewController;	// Will silently fail if 'viewControllers' does NOT contain the passed "viewController".
 - (void)			retainViewController:(UIViewController*)viewController;		// Will silently fail if 'viewControllers' already contains the passed "viewController".
 
+// User interface management
+- (UIViewController*)	createRootViewController;
+- (UIViewController*)	createSplashViewController;
+
 // User interface management (Navigation)
-- (void)	presentModalViewController:(UIViewController*)modalViewController fromViewController:(UIViewController*)presentingViewController;															// Animated with no completion.
-- (void)	presentModalViewController:(UIViewController*)modalViewController fromViewController:(UIViewController*)presentingViewController animated:(BOOL)animated completion:(JFBlock)completion;	// Will automatically retain and release the passed "modalViewController".
-- (void)	pushViewController:(UIViewController*)viewController onNavigationController:(UINavigationController*)navigationController;															// Animated with no completion.
-- (void)	pushViewController:(UIViewController*)viewController onNavigationController:(UINavigationController*)navigationController animated:(BOOL)animated completion:(JFBlock)completion;	// Will automatically retain and release the passed "viewController".
-- (void)	pushViewControllers:(NSArray*)viewControllers onNavigationController:(UINavigationController*)navigationController;															// Animated with no completion.
-- (void)	pushViewControllers:(NSArray*)viewControllers onNavigationController:(UINavigationController*)navigationController animated:(BOOL)animated completion:(JFBlock)completion;	// Will automatically retain and release the passed "viewControllers".
-- (void)	setViewControllers:(NSArray*)viewControllers forNavigationController:(UINavigationController*)navigationController;															// Animated with no completion.
-- (void)	setViewControllers:(NSArray*)viewControllers forNavigationController:(UINavigationController*)navigationController animated:(BOOL)animated completion:(JFBlock)completion;	// Will automatically retain and release the passed "viewControllers".
+- (void)	didDismissSplashViewController:(BOOL)animated;
+- (void)	didPresentSplashViewController:(BOOL)animated;
+- (void)	dismissSplashViewController:(BOOL)animated;
+- (void)	willDismissSplashViewController:(BOOL)animated;
+- (void)	willPresentSplashViewController:(BOOL)animated;
 
 // User interface management (Window lifecycle)
 - (void)	didLoadUserInterface;
