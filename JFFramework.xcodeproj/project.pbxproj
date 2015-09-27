@@ -125,6 +125,8 @@
 		EA1105DE1B821C3500E93D04 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1105CE1B821B5900E93D04 /* MainMenu.xib */; };
 		EA1105DF1B821C3800E93D04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D21B821B5900E93D04 /* main.m */; };
 		EA1105E01B821C3A00E93D04 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D41B821B5900E93D04 /* Tests.m */; };
+		EA7773C81BB7303F002BD08B /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA7773C61BB7303F002BD08B /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA7773C91BB7303F002BD08B /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7773C71BB7303F002BD08B /* JFSliderController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +261,8 @@
 		EA6D5DC01B8498C300455F2A /* JFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTabBarController.m; sourceTree = "<group>"; };
 		EA6D5DC11B8498C300455F2A /* JFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewCell.h; sourceTree = "<group>"; };
 		EA6D5DC21B8498C300455F2A /* JFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewCell.m; sourceTree = "<group>"; };
+		EA7773C61BB7303F002BD08B /* JFSliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSliderController.h; sourceTree = "<group>"; };
+		EA7773C71BB7303F002BD08B /* JFSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSliderController.m; sourceTree = "<group>"; };
 		EA87458F1B8338420064590D /* JFManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFManager.h; sourceTree = "<group>"; };
 		EA8745901B8338420064590D /* JFManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFManager.m; sourceTree = "<group>"; };
 		EA8745951B833CDD0064590D /* JFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFXMLParser.h; sourceTree = "<group>"; };
@@ -578,6 +582,8 @@
 				EA6D5DB61B8492BA00455F2A /* JFLabel.m */,
 				EA6D5DBB1B8498C300455F2A /* JFNavigationController.h */,
 				EA6D5DBC1B8498C300455F2A /* JFNavigationController.m */,
+				EA7773C61BB7303F002BD08B /* JFSliderController.h */,
+				EA7773C71BB7303F002BD08B /* JFSliderController.m */,
 				EA6D5DBD1B8498C300455F2A /* JFSplashViewController.h */,
 				EA6D5DBE1B8498C300455F2A /* JFSplashViewController.m */,
 				EA6D5DBF1B8498C300455F2A /* JFTabBarController.h */,
@@ -682,6 +688,7 @@
 				6C5B09F61B9EFB7C0055ACEC /* NSFileManager+JFFramework.h in Headers */,
 				6C5B09DE1B9EFB420055ACEC /* JFAlert.h in Headers */,
 				6CF02A771BA869E2009503FB /* JFWeakHandle.h in Headers */,
+				EA7773C81BB7303F002BD08B /* JFSliderController.h in Headers */,
 				6CF02A7D1BA86DAA009503FB /* UIViewController+JFFramework.h in Headers */,
 				6C5B09E81B9EFB510055ACEC /* JFSplashViewController.h in Headers */,
 				6C5B09BE1B9EFADF0055ACEC /* JFAppDelegate.h in Headers */,
@@ -977,6 +984,7 @@
 				6C5B09E91B9EFB510055ACEC /* JFSplashViewController.m in Sources */,
 				6C5B09C91B9EFB2C0055ACEC /* JFByteStream.m in Sources */,
 				6C5B09C11B9EFAE70055ACEC /* JFManager.m in Sources */,
+				EA7773C91BB7303F002BD08B /* JFSliderController.m in Sources */,
 				6C5B09CB1B9EFB2C0055ACEC /* JFColor.m in Sources */,
 				6C5B09E31B9EFB450055ACEC /* JFKeyboardEventsHandler.m in Sources */,
 				6C5B09E71B9EFB510055ACEC /* JFNavigationController.m in Sources */,

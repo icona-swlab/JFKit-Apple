@@ -84,6 +84,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "JFKeyboardEventsHandler.h"
 #import "JFLabel.h"
 #import	"JFNavigationController.h"
+#import "JFSliderController.h"
 #import "JFSplashViewController.h"
 #import "JFTabBarController.h"
 #import	"JFTableViewCell.h"
