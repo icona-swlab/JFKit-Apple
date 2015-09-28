@@ -100,7 +100,7 @@ typedef NS_ENUM(UInt8, JFSliderControllerTransition)
 - (BOOL)				activatePanel:(JFSliderControllerPanel)panel animated:(BOOL)animated completion:(JFBlockWithBOOL)completion;
 - (UIViewController*)	viewControllerForPanel:(JFSliderControllerPanel)panel;
 
-// Utilities
+// Utilities management (Debug)
 + (NSString*)	debugStringFromPanel:(JFSliderControllerPanel)panel;
 + (NSString*)	debugStringFromTransition:(JFSliderControllerTransition)transition;
 - (NSString*)	debugStringFromPanel:(JFSliderControllerPanel)panel;

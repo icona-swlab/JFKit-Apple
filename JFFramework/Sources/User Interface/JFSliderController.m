@@ -514,75 +514,51 @@
 {
 	BOOL shouldCancel = self.shouldCancelCurrentTransition;
 	
-	BOOL didHidePanel = NO;
-	BOOL didShowPanel = NO;
+	BOOL didActivateSidePanel = NO;
+	BOOL didDeactivateSidePanel = NO;
 	BOOL shouldUninstallActivateRootPanelButton = NO;
 	
 	JFSliderControllerPanel currentActivePanel = self.currentActivePanel;
+	
 	JFSliderControllerPanel panel = currentActivePanel;
 	UIView* panelContainer = nil;
 	UIViewController* panelController = nil;
-	
 	switch(self.currentTransition)
 	{
 		case JFSliderControllerTransitionLeftToRoot:
 		{
-			didHidePanel = YES;
-			panel = JFSliderControllerPanelLeft;
+			didDeactivateSidePanel = YES;
+			panel = JFSliderControllerPanelRoot;
 			panelContainer = self.leftPanelContainer;
 			panelController = self.leftViewController;
-			
-			if(shouldCancel)
-				break;
-			
-			currentActivePanel = JFSliderControllerPanelRoot;
-			shouldUninstallActivateRootPanelButton = YES;
+			shouldUninstallActivateRootPanelButton = !shouldCancel;
 			break;
 		}
 		case JFSliderControllerTransitionRightToRoot:
 		{
-			didHidePanel = YES;
-			panel = JFSliderControllerPanelRight;
+			didDeactivateSidePanel = YES;
+			panel = JFSliderControllerPanelRoot;
 			panelContainer = self.rightPanelContainer;
 			panelController = self.rightViewController;
-			
-			if(shouldCancel)
-				break;
-			
-			currentActivePanel = JFSliderControllerPanelRoot;
-			shouldUninstallActivateRootPanelButton = YES;
+			shouldUninstallActivateRootPanelButton = !shouldCancel;
 			break;
 		}
 		case JFSliderControllerTransitionRootToLeft:
 		{
-			didShowPanel = YES;
+			didActivateSidePanel = YES;
 			panel = JFSliderControllerPanelLeft;
 			panelContainer = self.leftPanelContainer;
 			panelController = self.leftViewController;
-			
-			if(shouldCancel)
-			{
-				shouldUninstallActivateRootPanelButton = YES;
-				break;
-			}
-			
-			currentActivePanel = JFSliderControllerPanelLeft;
+			shouldUninstallActivateRootPanelButton = shouldCancel;
 			break;
 		}
 		case JFSliderControllerTransitionRootToRight:
 		{
-			didShowPanel = YES;
+			didActivateSidePanel = YES;
 			panel = JFSliderControllerPanelRight;
 			panelContainer = self.rightPanelContainer;
 			panelController = self.rightViewController;
-			
-			if(shouldCancel)
-			{
-				shouldUninstallActivateRootPanelButton = YES;
-				break;
-			}
-			
-			currentActivePanel = JFSliderControllerPanelRight;
+			shouldUninstallActivateRootPanelButton = shouldCancel;
 			break;
 		}
 		default:
@@ -600,37 +576,29 @@
 	
 	if(shouldCancel)
 	{
-		if(didHidePanel)
+		if(didActivateSidePanel)
 		{
-			//if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didCancelDeactivatePanel:)])
-			//	[self.delegate sliderController:self didCancelDeactivatePanel:panel];
+			[panelController beginAppearanceTransition:NO animated:animated];
+			panelContainer.hidden = YES;
+			[panelController endAppearanceTransition];
 		}
 		
-		if(didShowPanel)
-		{
-			panelContainer.hidden = YES;
-			
-			//if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didCancelActivatePanel:)])
-			//	[self.delegate sliderController:self didCancelActivatePanel:panel];
-		}
+		[self notifyDidCancelDeactivatePanel:currentActivePanel];
+		[self notifyDidCancelActivatePanel:panel];
 	}
 	else
 	{
-		self.currentActivePanel = currentActivePanel;
+		self.currentActivePanel = panel;
 		
-		if(didHidePanel)
+		if(didDeactivateSidePanel)
 		{
+			[panelController beginAppearanceTransition:NO animated:animated];
 			panelContainer.hidden = YES;
-			
-			//if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didDeactivatePanel:)])
-			//	[self.delegate sliderController:self didDeactivatePanel:panel];
+			[panelController endAppearanceTransition];
 		}
 		
-		if(didShowPanel)
-		{
-			//if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:didActivatePanel:)])
-			//	[self.delegate sliderController:self didActivatePanel:panel];
-		}
+		[self notifyDidDeactivatePanel:currentActivePanel];
+		[self notifyDidActivatePanel:panel];
 	}
 }
 
@@ -679,9 +647,9 @@
 	
 	[self updateCurrentSlideDistancesForTransition:transition];
 	
-	BOOL shouldInstallShowRootPanelButton = NO;
-	BOOL willHidePanel = NO;
-	BOOL willShowPanel = NO;
+	BOOL shouldInstallActivateRootPanelButton = NO;
+	BOOL willActivateSidePanel = NO;
+	BOOL willDeactivateSidePanel = NO;
 	
 	JFSliderControllerPanel panel;
 	UIView* panelContainer = nil;
@@ -694,7 +662,7 @@
 			panel = JFSliderControllerPanelLeft;
 			panelContainer = self.leftPanelContainer;
 			panelController = self.leftViewController;
-			willHidePanel = YES;
+			willDeactivateSidePanel = YES;
 			break;
 		}
 		case JFSliderControllerTransitionRightToRoot:
@@ -702,7 +670,7 @@
 			panel = JFSliderControllerPanelRight;
 			panelContainer = self.rightPanelContainer;
 			panelController = self.rightViewController;
-			willHidePanel = YES;
+			willDeactivateSidePanel = YES;
 			break;
 		}
 		case JFSliderControllerTransitionRootToLeft:
@@ -710,8 +678,8 @@
 			panel = JFSliderControllerPanelLeft;
 			panelContainer = self.leftPanelContainer;
 			panelController = self.leftViewController;
-			shouldInstallShowRootPanelButton = YES;
-			willShowPanel = YES;
+			shouldInstallActivateRootPanelButton = YES;
+			willActivateSidePanel = YES;
 			break;
 		}
 		case JFSliderControllerTransitionRootToRight:
@@ -719,8 +687,8 @@
 			panel = JFSliderControllerPanelRight;
 			panelContainer = self.rightPanelContainer;
 			panelController = self.rightViewController;
-			shouldInstallShowRootPanelButton = YES;
-			willShowPanel = YES;
+			shouldInstallActivateRootPanelButton = YES;
+			willActivateSidePanel = YES;
 			break;
 		}
 		default:
@@ -729,21 +697,23 @@
 	
 	panelContainer.userInteractionEnabled = NO;
 	
-	if(willHidePanel)
+	if(willDeactivateSidePanel)
 	{
-		//if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:willDeactivatePanel:)])
-		//	[self.delegate sliderController:self willDeactivatePanel:panel];
+		[self notifyWillDeactivatePanel:panel];
+		[self notifyWillActivatePanel:JFSliderControllerPanelRoot];
 	}
 	
-	if(willShowPanel)
+	if(willActivateSidePanel)
 	{
-		//if(self.delegate && [self.delegate respondsToSelector:@selector(sliderController:willActivatePanel:)])
-		//	[self.delegate sliderController:self willActivatePanel:panel];
+		[self notifyWillDeactivatePanel:JFSliderControllerPanelRoot];
+		[self notifyWillActivatePanel:panel];
 		
+		[panelController beginAppearanceTransition:YES animated:animated];
 		panelContainer.hidden = NO;
+		[panelController endAppearanceTransition];
 	}
 	
-	if(shouldInstallShowRootPanelButton)
+	if(shouldInstallActivateRootPanelButton)
 		[self installActivateRootPanelButton];
 	
 	self.animating = YES;
@@ -777,9 +747,6 @@
 
 - (BOOL)shouldPrepareSlideWithTransition:(JFSliderControllerTransition)transition
 {
-	if(!self.delegate)
-		return YES;
-	
 	id<JFSliderControllerDelegate> delegate = self.delegate;
 	
 	BOOL retVal = YES;
@@ -788,19 +755,19 @@
 		case JFSliderControllerTransitionLeftToRoot:
 		case JFSliderControllerTransitionRightToRoot:
 		{
-			if([delegate respondsToSelector:@selector(sliderController:shouldActivatePanel:)])
+			if(delegate && [delegate respondsToSelector:@selector(sliderController:shouldActivatePanel:)])
 				retVal = [delegate sliderController:self shouldActivatePanel:JFSliderControllerPanelRoot];
 			break;
 		}
 		case JFSliderControllerTransitionRootToLeft:
 		{
-			if([delegate respondsToSelector:@selector(sliderController:shouldActivatePanel:)])
+			if(delegate && [delegate respondsToSelector:@selector(sliderController:shouldActivatePanel:)])
 				retVal = [delegate sliderController:self shouldActivatePanel:JFSliderControllerPanelLeft];
 			break;
 		}
 		case JFSliderControllerTransitionRootToRight:
 		{
-			if([delegate respondsToSelector:@selector(sliderController:shouldActivatePanel:)])
+			if(delegate && [delegate respondsToSelector:@selector(sliderController:shouldActivatePanel:)])
 				retVal = [delegate sliderController:self shouldActivatePanel:JFSliderControllerPanelRight];
 			break;
 		}
@@ -1026,11 +993,11 @@
 }
 
 
-#pragma mark Utilities
+#pragma mark Utilities management (Debug)
 
 + (NSString*)debugStringFromPanel:(JFSliderControllerPanel)panel
 {
-	NSString* retObj = nil;
+	NSString* retObj;
 	switch(panel)
 	{
 		case JFSliderControllerPanelLeft:	retObj = @"Left Panel";		break;
