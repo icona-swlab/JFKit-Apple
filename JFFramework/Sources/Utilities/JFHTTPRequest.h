@@ -33,6 +33,7 @@ typedef NS_ENUM(UInt8, JFHTTPMethod)
 {
 	JFHTTPMethodGet,
 	JFHTTPMethodPost,
+	JFHTTPMethodPut,
 };
 
 // Request state
@@ -50,7 +51,7 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 
 
 
-@protocol JFHTTPRequestDelegate
+@protocol JFHTTPRequestDelegate <NSObject>
 
 @required
 
@@ -84,13 +85,13 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 @property (strong, nonatomic)			NSURL*				url;
 
 // Relationships
-@property (weak, nonatomic, readonly)	NSObject<JFHTTPRequestDelegate>*	delegate;
+@property (weak, nonatomic, readonly)	id<JFHTTPRequestDelegate>	delegate;
 
 
 #pragma mark Methods
 
 // Memory management
-- (instancetype)	initWithDelegate:(NSObject<JFHTTPRequestDelegate>*)delegate;
+- (instancetype)	initWithDelegate:(id<JFHTTPRequestDelegate>)delegate;
 
 // Attributes management
 - (void)	setHTTPBody:(NSData*)body;

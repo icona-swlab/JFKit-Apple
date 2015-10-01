@@ -31,8 +31,10 @@
 #pragma mark Properties
 
 // Attributes
-@property (assign, nonatomic)	NSTimeInterval	animationDuration;
-@property (assign, nonatomic)	CGSize			animationSize;
+@property (assign, nonatomic)	UIActivityIndicatorViewStyle	activityIndicatorStyle;
+@property (assign, nonatomic)	NSTimeInterval					animationDuration;
+@property (assign, nonatomic)	CGSize							animationSize;
+@property (strong, nonatomic)	UIColor*						containerBackgroundColor;
 
 // Data
 @property (copy, nonatomic)		NSArray*		animationImages;
