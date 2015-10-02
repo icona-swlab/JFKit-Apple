@@ -68,10 +68,12 @@
 #pragma mark Properties
 
 // Attributes
+@synthesize activityIndicatorColor		= _activityIndicatorColor;
 @synthesize activityIndicatorStyle		= _activityIndicatorStyle;
 @synthesize animationDuration			= _animationDuration;
 @synthesize animationSize				= _animationSize;
 @synthesize containerBackgroundColor	= _containerBackgroundColor;
+@synthesize containerCornerRadius		= _containerCornerRadius;
 
 // Constraints
 @synthesize addedConstraints				= _addedConstraints;
@@ -99,6 +101,17 @@
 
 
 #pragma mark Properties accessors (Attributes)
+
+- (void)setActivityIndicatorColor:(UIColor*)activityIndicatorColor
+{
+	if(_activityIndicatorColor == activityIndicatorColor)
+		return;
+	
+	_activityIndicatorColor = activityIndicatorColor;
+	
+	self.indicatorView.color = _activityIndicatorColor;
+}
+
 
 - (void)setActivityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle
 {
@@ -140,6 +153,16 @@
 	_containerBackgroundColor = containerBackgroundColor;
 	
 	self.containerView.backgroundColor = _containerBackgroundColor;
+}
+
+- (void)setContainerCornerRadius:(CGFloat)containerCornerRadius
+{
+	if(_containerCornerRadius == containerCornerRadius)
+		return;
+	
+	_containerCornerRadius = containerCornerRadius;
+	
+	self.containerView.layer.cornerRadius = _containerCornerRadius;
 }
 
 
@@ -246,6 +269,7 @@
 {
 	// Attributes
 	_activityIndicatorStyle = UIActivityIndicatorViewStyleWhiteLarge;
+	_containerCornerRadius = 8.0f;
 	
 	// Constraints
 	_addedConstraints				= [NSMutableArray new];
@@ -295,7 +319,7 @@
 	// Prepares the container view.
 	UIView* containerView = [UIView new];
 	containerView.backgroundColor = (containerBackgroundColor ? containerBackgroundColor : JFColorAlpha(192.0f));
-	containerView.layer.cornerRadius = 8.0f;
+	containerView.layer.cornerRadius = self.containerCornerRadius;
 	containerView.opaque = NO;
 	containerView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self addSubview:containerView];
@@ -372,9 +396,13 @@
 		[self.imageView removeFromSuperview];
 		
 		UIActivityIndicatorView* indicatorView = self.indicatorView;
-		if(!indicatorView)
+		if(!indicatorView || (indicatorView.activityIndicatorViewStyle != self.activityIndicatorStyle))
 		{
+			if(indicatorView)
+				[indicatorView removeFromSuperview];
+			
 			indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorStyle];
+			indicatorView.color = self.activityIndicatorColor;
 			indicatorView.translatesAutoresizingMaskIntoConstraints = NO;
 			self.indicatorView = indicatorView;
 		}
