@@ -68,8 +68,12 @@
 #pragma mark Properties
 
 // Attributes
-@synthesize animationDuration	= _animationDuration;
-@synthesize animationSize		= _animationSize;
+@synthesize activityIndicatorColor		= _activityIndicatorColor;
+@synthesize activityIndicatorStyle		= _activityIndicatorStyle;
+@synthesize animationDuration			= _animationDuration;
+@synthesize animationSize				= _animationSize;
+@synthesize containerBackgroundColor	= _containerBackgroundColor;
+@synthesize containerCornerRadius		= _containerCornerRadius;
 
 // Constraints
 @synthesize addedConstraints				= _addedConstraints;
@@ -98,6 +102,28 @@
 
 #pragma mark Properties accessors (Attributes)
 
+- (void)setActivityIndicatorColor:(UIColor*)activityIndicatorColor
+{
+	if(_activityIndicatorColor == activityIndicatorColor)
+		return;
+	
+	_activityIndicatorColor = activityIndicatorColor;
+	
+	self.indicatorView.color = _activityIndicatorColor;
+}
+
+
+- (void)setActivityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle
+{
+	if(_activityIndicatorStyle == activityIndicatorStyle)
+		return;
+	
+	_activityIndicatorStyle = activityIndicatorStyle;
+	
+	if([self isUserInterfaceInitialized])
+		[self updateComponentsVisibility];
+}
+
 - (void)setAnimationDuration:(NSTimeInterval)animationDuration
 {
 	if(_animationDuration == animationDuration)
@@ -117,6 +143,26 @@
 	
 	if([self isUserInterfaceInitialized])
 		[self setNeedsUpdateConstraints];
+}
+
+- (void)setContainerBackgroundColor:(UIColor*)containerBackgroundColor
+{
+	if(_containerBackgroundColor == containerBackgroundColor)
+		return;
+	
+	_containerBackgroundColor = containerBackgroundColor;
+	
+	self.containerView.backgroundColor = _containerBackgroundColor;
+}
+
+- (void)setContainerCornerRadius:(CGFloat)containerCornerRadius
+{
+	if(_containerCornerRadius == containerCornerRadius)
+		return;
+	
+	_containerCornerRadius = containerCornerRadius;
+	
+	self.containerView.layer.cornerRadius = _containerCornerRadius;
 }
 
 
@@ -221,6 +267,10 @@
 
 - (void)initializeProperties
 {
+	// Attributes
+	_activityIndicatorStyle = UIActivityIndicatorViewStyleWhiteLarge;
+	_containerCornerRadius = 8.0f;
+	
 	// Constraints
 	_addedConstraints				= [NSMutableArray new];
 	_containerViewAddedConstraints	= [NSMutableArray new];
@@ -258,15 +308,18 @@
 
 - (void)initializeUserInterface
 {
+	UIColor* backgroundColor = self.backgroundColor;
+	UIColor* containerBackgroundColor = self.containerBackgroundColor;
+	
 	// Prepares itself.
-	self.backgroundColor = JFColorAlpha(80.0f);
+	self.backgroundColor = (backgroundColor ? backgroundColor : JFColorAlpha(80.0f));
 	self.opaque = NO;
 	self.userInteractionEnabled = YES;
 	
 	// Prepares the container view.
 	UIView* containerView = [UIView new];
-	containerView.backgroundColor = JFColorAlpha(192.0f);
-	containerView.layer.cornerRadius = 8.0f;
+	containerView.backgroundColor = (containerBackgroundColor ? containerBackgroundColor : JFColorAlpha(192.0f));
+	containerView.layer.cornerRadius = self.containerCornerRadius;
 	containerView.opaque = NO;
 	containerView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self addSubview:containerView];
@@ -343,9 +396,13 @@
 		[self.imageView removeFromSuperview];
 		
 		UIActivityIndicatorView* indicatorView = self.indicatorView;
-		if(!indicatorView)
+		if(!indicatorView || (indicatorView.activityIndicatorViewStyle != self.activityIndicatorStyle))
 		{
-			indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+			if(indicatorView)
+				[indicatorView removeFromSuperview];
+			
+			indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorStyle];
+			indicatorView.color = self.activityIndicatorColor;
 			indicatorView.translatesAutoresizingMaskIntoConstraints = NO;
 			self.indicatorView = indicatorView;
 		}

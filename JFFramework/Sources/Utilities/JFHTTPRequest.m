@@ -191,6 +191,7 @@
 	{
 		case JFHTTPMethodGet:	retVal = @"GET";	break;
 		case JFHTTPMethodPost:	retVal = @"POST";	break;
+		case JFHTTPMethodPut:	retVal = @"PUT";	break;
 			
 		default:
 			break;
@@ -282,7 +283,7 @@
 		
 		NSData* body = self.body;
 		
-		if(!body && (self.httpMethod == JFHTTPMethodPost) && ([self.fields count] > 0))
+		if(!body && ((self.httpMethod == JFHTTPMethodPost) || (self.httpMethod == JFHTTPMethodPut)) && ([self.fields count] > 0))
 		{
 			NSString* fields = [self getEncodedFields];
 			body = [fields dataUsingEncoding:self.encoding];
