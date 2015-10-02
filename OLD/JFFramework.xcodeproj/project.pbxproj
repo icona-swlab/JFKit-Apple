@@ -28,8 +28,6 @@
 		EA26EC621A8785030050049A /* JFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC261A8785030050049A /* JFCoreDataManager.m */; };
 		EA26EC6D1A8785030050049A /* JFGalleryView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC361A8785030050049A /* JFGalleryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC6E1A8785030050049A /* JFGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC371A8785030050049A /* JFGalleryView.m */; };
-		EA26EC731A8785030050049A /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC3E1A8785030050049A /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA26EC741A8785030050049A /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC3F1A8785030050049A /* JFSliderController.m */; };
 		EA26EC751A8785030050049A /* JFSplitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC401A8785030050049A /* JFSplitViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA26EC761A8785030050049A /* JFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26EC411A8785030050049A /* JFSplitViewController.m */; };
 		EA26EC791A8785030050049A /* JFTableViewSection.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26EC451A8785030050049A /* JFTableViewSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,8 +80,6 @@
 		EA26EC261A8785030050049A /* JFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCoreDataManager.m; sourceTree = "<group>"; };
 		EA26EC361A8785030050049A /* JFGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGalleryView.h; sourceTree = "<group>"; };
 		EA26EC371A8785030050049A /* JFGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
-		EA26EC3E1A8785030050049A /* JFSliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSliderController.h; sourceTree = "<group>"; };
-		EA26EC3F1A8785030050049A /* JFSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSliderController.m; sourceTree = "<group>"; };
 		EA26EC401A8785030050049A /* JFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSplitViewController.h; sourceTree = "<group>"; };
 		EA26EC411A8785030050049A /* JFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSplitViewController.m; sourceTree = "<group>"; };
 		EA26EC451A8785030050049A /* JFTableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewSection.h; sourceTree = "<group>"; };
@@ -201,8 +197,6 @@
 		EA26EC3B1A8785030050049A /* Structure */ = {
 			isa = PBXGroup;
 			children = (
-				EA26EC3E1A8785030050049A /* JFSliderController.h */,
-				EA26EC3F1A8785030050049A /* JFSliderController.m */,
 				EA26EC401A8785030050049A /* JFSplitViewController.h */,
 				EA26EC411A8785030050049A /* JFSplitViewController.m */,
 			);
@@ -347,7 +341,6 @@
 				EA26EC7F1A8785030050049A /* JFTransparentToolbar.h in Headers */,
 				EA26EC7D1A8785030050049A /* JFTextView.h in Headers */,
 				EA26EC871A8785030050049A /* JFSimpleFormViewController.h in Headers */,
-				EA26EC731A8785030050049A /* JFSliderController.h in Headers */,
 				EA26EC811A8785030050049A /* JFDrawerController.h in Headers */,
 				EA26EC751A8785030050049A /* JFSplitViewController.h in Headers */,
 				EA26EC831A8785030050049A /* JFMenuItem.h in Headers */,
@@ -450,7 +443,6 @@
 				EA26EC7E1A8785030050049A /* JFTextView.m in Sources */,
 				EA26EC801A8785030050049A /* JFTransparentToolbar.m in Sources */,
 				EA34B1D41ACDECA800CF0B17 /* JFImageObserver.m in Sources */,
-				EA26EC741A8785030050049A /* JFSliderController.m in Sources */,
 				EA26EC8E1A8785030050049A /* JFUpdatableFile.m in Sources */,
 				6C1B54291AFCE26C00165804 /* JFURLProtocol.m in Sources */,
 				EA26EC6E1A8785030050049A /* JFGalleryView.m in Sources */,
