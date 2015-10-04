@@ -113,6 +113,8 @@
 		6CF02A851BA87BBA009503FB /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A821BA87BBA009503FB /* JRSwizzle.h */; };
 		6CF02A861BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
 		6CF02A871BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
+		EA011E521BC068990090EFCC /* JFMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA011E501BC068990090EFCC /* JFMenuController.h */; settings = {ASSET_TAGS = (); }; };
+		EA011E531BC068990090EFCC /* JFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA011E511BC068990090EFCC /* JFMenuController.m */; settings = {ASSET_TAGS = (); }; };
 		EA1105D51B821BD200E93D04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1105BA1B821B5900E93D04 /* Images.xcassets */; };
 		EA1105D61B821BD200E93D04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105BD1B821B5900E93D04 /* AppDelegate.m */; };
 		EA1105D71B821BD200E93D04 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1105BE1B821B5900E93D04 /* LaunchScreen.xib */; };
@@ -199,6 +201,8 @@
 		6CF02A7C1BA86DAA009503FB /* UIViewController+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JFFramework.m"; sourceTree = "<group>"; };
 		6CF02A821BA87BBA009503FB /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
 		6CF02A831BA87BBA009503FB /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
+		EA011E501BC068990090EFCC /* JFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuController.h; sourceTree = "<group>"; };
+		EA011E511BC068990090EFCC /* JFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuController.m; sourceTree = "<group>"; };
 		EA11051D1B820C5000E93D04 /* JFFramework-App-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JFFramework-App-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105351B820C5000E93D04 /* JFFramework-App-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-App-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1105461B820E3500E93D04 /* JFByteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFByteStream.h; sourceTree = "<group>"; };
@@ -580,6 +584,8 @@
 				EA6D5DBA1B8498C300455F2A /* JFKeyboardEventsHandler.m */,
 				EA6D5DB51B8492BA00455F2A /* JFLabel.h */,
 				EA6D5DB61B8492BA00455F2A /* JFLabel.m */,
+				EA011E501BC068990090EFCC /* JFMenuController.h */,
+				EA011E511BC068990090EFCC /* JFMenuController.m */,
 				EA6D5DBB1B8498C300455F2A /* JFNavigationController.h */,
 				EA6D5DBC1B8498C300455F2A /* JFNavigationController.m */,
 				EA7773C61BB7303F002BD08B /* JFSliderController.h */,
@@ -688,6 +694,7 @@
 				6C5B09F61B9EFB7C0055ACEC /* NSFileManager+JFFramework.h in Headers */,
 				6C5B09DE1B9EFB420055ACEC /* JFAlert.h in Headers */,
 				6CF02A771BA869E2009503FB /* JFWeakHandle.h in Headers */,
+				EA011E521BC068990090EFCC /* JFMenuController.h in Headers */,
 				EA7773C81BB7303F002BD08B /* JFSliderController.h in Headers */,
 				6CF02A7D1BA86DAA009503FB /* UIViewController+JFFramework.h in Headers */,
 				6C5B09E81B9EFB510055ACEC /* JFSplashViewController.h in Headers */,
@@ -994,6 +1001,7 @@
 				6C5B09EF1B9EFB680055ACEC /* JFTextView.m in Sources */,
 				6C5B09FF1B9EFBC10055ACEC /* JFHTTPRequest.m in Sources */,
 				6C5B09ED1B9EFB580055ACEC /* JFTableViewCell.m in Sources */,
+				EA011E531BC068990090EFCC /* JFMenuController.m in Sources */,
 				6C5B0A061B9EFBC10055ACEC /* JFXMLParser.m in Sources */,
 				6C5B09F91B9EFB7C0055ACEC /* NSObject+JFLogger.m in Sources */,
 				6C5B0A041B9EFBC10055ACEC /* JFUtilities.m in Sources */,

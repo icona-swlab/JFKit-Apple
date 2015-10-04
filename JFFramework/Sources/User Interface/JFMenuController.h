@@ -1,6 +1,6 @@
 //
-//  JFTransparentToolbar.h
-//  Copyright (C) 2014 Jacopo Filié
+//  JFMenuController.h
+//  Copyright (C) 2015 Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,9 +18,6 @@
 
 
 
-@interface JFTransparentToolbar : UIToolbar
-
-// User interface
-@property (weak, nonatomic)	IBOutlet	UIView*	underneathView;
+@interface JFMenuController : UIViewController
 
 @end
