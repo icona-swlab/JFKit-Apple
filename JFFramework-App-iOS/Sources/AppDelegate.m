@@ -6,11 +6,19 @@
 //
 //
 
+
+
 #import "AppDelegate.h"
+
+#import "WindowController.h"
+
+
 
 @interface AppDelegate ()
 
 @end
+
+
 
 @implementation AppDelegate
 
@@ -20,6 +28,11 @@
 	if(retVal)
 	{}
 	return retVal;
+}
+
+- (JFWindowController*)createControllerForWindow:(UIWindow*)window
+{
+	return [[WindowController alloc] initWithWindow:window];
 }
 
 @end
