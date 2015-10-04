@@ -171,8 +171,8 @@ NSString* const	JFViewControllerParentViewControllerUserInfoKey	= JFViewControll
 
 + (void)load
 {
-	static dispatch_once_t token = 0;
-	dispatch_once(&token, ^{
+	static dispatch_once_t onceToken = 0;
+	dispatch_once(&onceToken, ^{
 		
 		// Prepares the swizzling block.
 		void (^swizzleMethod)(SEL, SEL) = ^(SEL original, SEL swizzled)

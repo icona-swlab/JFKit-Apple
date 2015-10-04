@@ -6,9 +6,7 @@
 //
 //
 
-#import <UIKit/UIKit.h>
 
-#import "JFFramework.h"
 
 @interface AppDelegate : JFAppDelegate
 

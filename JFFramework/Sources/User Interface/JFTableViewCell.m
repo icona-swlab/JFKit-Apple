@@ -139,13 +139,9 @@
 	CGSize calculatedSize = CGSizeZero;
 	
 	if(iOS8Plus)
-	{
-		calculatedSize = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize withHorizontalFittingPriority:UILayoutPriorityFittingSizeLevel verticalFittingPriority:UILayoutPriorityFittingSizeLevel];
-	}
+		calculatedSize = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize withHorizontalFittingPriority:UILayoutPriorityFittingSizeLevel verticalFittingPriority:UILayoutPriorityFittingSizeLevel];
 	else
-	{
 		calculatedSize = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-	}
 	
 	CGFloat retVal = MAX(calculatedSize.height, [self minimumHeight]);
 	retVal = MIN(retVal, [self maximumHeight]);
@@ -155,20 +151,20 @@
 
 + (CGFloat)maximumHeight
 {
-	return CGFLOAT_MAX;
+	return 2009.0; // This value is imposed by Apple (see UITableViewDelegate references).
 }
 
 + (CGFloat)minimumHeight
 {
-	return 44.0f;
+	return 44.0;
 }
 
 + (JFTableViewCell*)sizingCell
 {
 	static NSMutableDictionary* sizingCells = nil;
-	static dispatch_once_t token = 0;
+	static dispatch_once_t onceToken = 0;
 	
-	dispatch_once(&token, ^{
+	dispatch_once(&onceToken, ^{
 		sizingCells = [NSMutableDictionary new];
 	});
 	
@@ -177,13 +173,17 @@
 	JFTableViewCell* retObj = [sizingCells objectForKey:key];
 	if(!retObj)
 	{
-		if(self == [JFTableViewCell class])
-			retObj = [[JFTableViewCell alloc] init];
-		else
+		// I hate try-catch blocks, but I couldn't find anything better yet.
+		@try {
 			retObj = [[[self nib] instantiateWithOwner:self options:nil] firstObject];
-		
-		if(retObj)
-			[sizingCells setObject:retObj forKey:key];
+		}
+		@catch (NSException* exception) {
+			retObj = [[[self class] alloc] init];
+		}
+		@finally {
+			if(retObj)
+				[sizingCells setObject:retObj forKey:key];
+		}
 	}
 	
 	return retObj;
