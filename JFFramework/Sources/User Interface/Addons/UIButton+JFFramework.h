@@ -18,7 +18,7 @@
 
 
 
-#pragma mark Typedefs
+#pragma mark - Typedefs
 
 typedef void (^JFButtonBlock) (id sender);
 

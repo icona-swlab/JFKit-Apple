@@ -113,7 +113,7 @@
 		6CF02A851BA87BBA009503FB /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A821BA87BBA009503FB /* JRSwizzle.h */; };
 		6CF02A861BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
 		6CF02A871BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
-		EA011E521BC068990090EFCC /* JFMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA011E501BC068990090EFCC /* JFMenuController.h */; settings = {ASSET_TAGS = (); }; };
+		EA011E521BC068990090EFCC /* JFMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA011E501BC068990090EFCC /* JFMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA011E531BC068990090EFCC /* JFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA011E511BC068990090EFCC /* JFMenuController.m */; settings = {ASSET_TAGS = (); }; };
 		EA1105D51B821BD200E93D04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1105BA1B821B5900E93D04 /* Images.xcassets */; };
 		EA1105D61B821BD200E93D04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105BD1B821B5900E93D04 /* AppDelegate.m */; };
@@ -158,6 +158,20 @@
 			remoteGlobalIDString = 6C31C7791B9EEDF300FAF487;
 			remoteInfo = "JFFramework-iOS";
 		};
+		6CDD87ED1BC2B42F00B7BCBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA7ED21C1A6FA65B00220BA1;
+			remoteInfo = JFFramework;
+		};
+		6CDD87EF1BC2B42F00B7BCBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA7ED2001A6FA63D00220BA1;
+			remoteInfo = JFMobileFramework;
+		};
 		EA1105361B820C5000E93D04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA5F858C1B768E5A00A32291 /* Project object */;
@@ -191,6 +205,7 @@
 		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
 		6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
 		6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
+		6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JFFramework.xcodeproj; path = OLD/JFFramework.xcodeproj; sourceTree = "<group>"; };
 		6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFURLProtocol.h; sourceTree = "<group>"; };
 		6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
 		6CF02A751BA869E2009503FB /* JFWeakHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWeakHandle.h; sourceTree = "<group>"; };
@@ -340,6 +355,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CDD87E61BC2B41F00B7BCBA /* Old Project */ = {
+			isa = PBXGroup;
+			children = (
+				6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */,
+			);
+			name = "Old Project";
+			sourceTree = "<group>";
+		};
+		6CDD87E81BC2B42F00B7BCBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6CDD87EE1BC2B42F00B7BCBA /* libJFFramework.a */,
+				6CDD87F01BC2B42F00B7BCBA /* libJFMobileFramework.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6CF02A801BA87BBA009503FB /* Third-Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +579,7 @@
 				EA1105C81B821B5900E93D04 /* App-OSX */,
 				6C6236621B999B9C00EDB7CC /* Documents */,
 				EA1105431B820E3500E93D04 /* Framework */,
+				6CDD87E61BC2B41F00B7BCBA /* Old Project */,
 				EA5F85981B769A3700A32291 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -913,6 +946,12 @@
 			mainGroup = EA5F858B1B768E5A00A32291;
 			productRefGroup = EA5F85981B769A3700A32291 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6CDD87E81BC2B42F00B7BCBA /* Products */;
+					ProjectRef = 6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6C31C7791B9EEDF300FAF487 /* JFFramework-iOS */,
@@ -926,6 +965,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6CDD87EE1BC2B42F00B7BCBA /* libJFFramework.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libJFFramework.a;
+			remoteRef = 6CDD87ED1BC2B42F00B7BCBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6CDD87F01BC2B42F00B7BCBA /* libJFMobileFramework.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libJFMobileFramework.a;
+			remoteRef = 6CDD87EF1BC2B42F00B7BCBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6C31C7821B9EEDF400FAF487 /* Resources */ = {

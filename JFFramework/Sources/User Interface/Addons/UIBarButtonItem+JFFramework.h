@@ -22,7 +22,7 @@
 
 
 
-#pragma mark Typedefs
+#pragma mark - Typedefs
 
 typedef void (^JFBarButtonItemBlock) (id sender);
 

@@ -26,7 +26,7 @@
 
 
 
-#pragma mark Typedefs
+#pragma mark - Typedefs
 
 // List of supported HTTP methods.
 typedef NS_ENUM(UInt8, JFHTTPMethod)

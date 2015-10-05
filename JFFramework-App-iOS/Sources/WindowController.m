@@ -22,7 +22,8 @@
 
 - (UIViewController*)createRootViewController
 {
-	return [UIViewController new];
+	JFMenuController* retObj = [JFMenuController new];
+	return retObj;
 }
 
 @end
