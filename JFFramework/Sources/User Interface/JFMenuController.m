@@ -22,23 +22,15 @@
 
 
 
-@interface JFMenuController ()
-
-@end
-
-
-
-#pragma mark
-
-
-
-@interface JFMenuItem ()
+@interface JFMenuController () <UITableViewDataSource, UITableViewDelegate>
 
 #pragma mark Properties
 
-// Relationships
-@property (strong, nonatomic, readonly)	NSMutableArray*	privateSubitems;
-@property (weak, nonatomic, readwrite)	JFMenuItem*		superitem;
+// Data
+@property (strong, nonatomic, readonly)	NSMutableArray*	tableItems;
+
+// User interface
+@property (strong, nonatomic)	UITableView*	tableView;
 
 @end
 
@@ -50,126 +42,105 @@
 
 @implementation JFMenuController
 
-@end
-
-
-
-#pragma mark
-
-
-
-@implementation JFMenuItem
-
 #pragma mark Properties
 
 // Data
-@synthesize actionBlock		= _actionBlock;
-@synthesize additionalInfo	= _additionalInfo;
-@synthesize detailText		= _detailText;
-@synthesize imageURL		= _imageURL;
-@synthesize title			= _title;
+@synthesize items		= _items;
+@synthesize tableItems	= _tableItems;
 
-// Relationships
-@synthesize privateSubitems	= _privateSubitems;
-@synthesize subitems		= _subitems;
-@synthesize superitem		= _superitem;
+// User interface
+@synthesize tableView	= _tableView;
 
 
-#pragma mark Properties accessors (Relationships)
+#pragma mark Properties accessors (Data)
 
-- (NSArray<JFMenuItem*>*)subitems
+- (void)setItems:(NSArray<JFMenuSection*>*)items
 {
-	if(!_subitems)
-		_subitems = [self.privateSubitems copy];
+	if(_items == items)
+		return;
 	
-	return _subitems;
+	_items = [items copy];
+	
+	[self reloadItems];
 }
 
 
 #pragma mark Memory management
 
-- (instancetype)init
+- (instancetype)initWithCoder:(NSCoder*)aDecoder
 {
-	self = [super init];
+	self = [super initWithCoder:aDecoder];
 	if(self)
 	{
-		// Relationships
-		_privateSubitems = [NSMutableArray new];
+		// Data
+		_tableItems = [NSMutableArray new];
+	}
+	return self;
+}
+
+- (instancetype)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
+{
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	if(self)
+	{
+		// Data
+		_tableItems = [NSMutableArray new];
 	}
 	return self;
 }
 
 
-#pragma mark Relationships management
+#pragma mark Data management
 
-- (void)addSubitem:(JFMenuItem*)item
+- (void)reloadItems
 {
-	if(!item)
-		return;
-	
-	[self addSubitems:@[item]];
+	LogMethod;
 }
 
-- (void)addSubitems:(NSArray<JFMenuItem*>*)items
+
+#pragma mark User interface management (View lifecycle)
+
+- (void)viewDidLoad
 {
-	[self insertSubitems:items atIndex:[self.privateSubitems count]];
+	[super viewDidLoad];
+	
+	UITableView* tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+	tableView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+	tableView.dataSource = self;
+	tableView.delegate = self;
+	[self.view addSubview:tableView];
+	self.tableView = tableView;
 }
 
-- (void)insertSubitem:(JFMenuItem*)item atIndex:(NSUInteger)index
+
+#pragma mark Protocol implementation (UITableViewDatasource)
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-	if(!item)
-		return;
-	
-	[self insertSubitems:@[item] atIndex:index];
+	return [self.tableItems count];
 }
 
-- (void)insertSubitems:(NSArray<JFMenuItem*>*)items atIndex:(NSUInteger)index
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	if(!items)
-		return;
+	static NSString* const CellIdentifier = @"Menu Item";
 	
-	NSUInteger lastIndex = [self.privateSubitems count] - 1;
-	if(index > (lastIndex + 1))
-		return;
+	UITableViewCell* retObj = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if(!retObj)
+		retObj = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 	
-	NSRange range = NSMakeRange(index, [items count]);
-	NSIndexSet* indexSet = [[NSIndexSet alloc] initWithIndexesInRange:range];
-	[self.privateSubitems insertObjects:items atIndexes:indexSet];
-	_subitems = nil;
-	
-	for(JFMenuItem* item in items)
-	{
-		[item.superitem removeSubitem:item];
-		item.superitem = self;
-	}
+	return retObj;
 }
 
-- (void)removeSubitem:(JFMenuItem*)item
+- (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if(!item)
-		return;
-	
-	[self removeSubitems:@[item]];
+	JFMenuSection* menuSection = [self.tableItems objectAtIndex:section];
+	return menuSection.title;
 }
 
-- (void)removeSubitems:(NSArray<JFMenuItem*>*)items
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if(!items)
-		return;
-	
-	NSMutableArray* subitems = self.privateSubitems;
-	for(JFMenuItem* item in items)
-	{
-		if(![subitems containsObject:item])
-			continue;
-		
-		[subitems removeObject:item];
-		
-		if(item.superitem == self)
-			item.superitem = nil;
-	}
-	
-	_subitems = nil;
+	JFMenuSection* menuSection = [self.tableItems objectAtIndex:section];
+	return [menuSection.subitems count];
 }
 
 @end

@@ -124,6 +124,8 @@
 		EA1105DE1B821C3500E93D04 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1105CE1B821B5900E93D04 /* MainMenu.xib */; };
 		EA1105DF1B821C3800E93D04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D21B821B5900E93D04 /* main.m */; };
 		EA1105E01B821C3A00E93D04 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D41B821B5900E93D04 /* Tests.m */; };
+		EA26D7C11BC3136B007823BE /* JFMenuObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26D7BF1BC3136B007823BE /* JFMenuObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA26D7C21BC3136B007823BE /* JFMenuObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26D7C01BC3136B007823BE /* JFMenuObjects.m */; settings = {ASSET_TAGS = (); }; };
 		EA7773C81BB7303F002BD08B /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA7773C61BB7303F002BD08B /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA7773C91BB7303F002BD08B /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7773C71BB7303F002BD08B /* JFSliderController.m */; settings = {ASSET_TAGS = (); }; };
 		EA8E77BE1BC1207200FA98E5 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8E77BB1BC1206F00FA98E5 /* WindowController.m */; settings = {ASSET_TAGS = (); }; };
@@ -158,20 +160,6 @@
 			remoteGlobalIDString = 6C31C7791B9EEDF300FAF487;
 			remoteInfo = "JFFramework-iOS";
 		};
-		6CDD87ED1BC2B42F00B7BCBA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EA7ED21C1A6FA65B00220BA1;
-			remoteInfo = JFFramework;
-		};
-		6CDD87EF1BC2B42F00B7BCBA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EA7ED2001A6FA63D00220BA1;
-			remoteInfo = JFMobileFramework;
-		};
 		EA1105361B820C5000E93D04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA5F858C1B768E5A00A32291 /* Project object */;
@@ -205,7 +193,7 @@
 		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
 		6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
 		6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
-		6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JFFramework.xcodeproj; path = OLD/JFFramework.xcodeproj; sourceTree = "<group>"; };
+		6CDD87E71BC2B42F00B7BCBA /* Old JFFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Old JFFramework.xcodeproj"; path = "OLD/Old JFFramework.xcodeproj"; sourceTree = "<group>"; };
 		6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFURLProtocol.h; sourceTree = "<group>"; };
 		6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
 		6CF02A751BA869E2009503FB /* JFWeakHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWeakHandle.h; sourceTree = "<group>"; };
@@ -248,6 +236,8 @@
 		EA1105D11B821B5900E93D04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA1105D21B821B5900E93D04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA1105D41B821B5900E93D04 /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		EA26D7BF1BC3136B007823BE /* JFMenuObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuObjects.h; sourceTree = "<group>"; };
+		EA26D7C01BC3136B007823BE /* JFMenuObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuObjects.m; sourceTree = "<group>"; };
 		EA2840F31B8B5A74008A837F /* JFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAppDelegate.h; sourceTree = "<group>"; };
 		EA2840F41B8B5A74008A837F /* JFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAppDelegate.m; sourceTree = "<group>"; };
 		EA6D5D981B8483F900455F2A /* JFAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAlert.h; sourceTree = "<group>"; };
@@ -358,18 +348,9 @@
 		6CDD87E61BC2B41F00B7BCBA /* Old Project */ = {
 			isa = PBXGroup;
 			children = (
-				6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */,
+				6CDD87E71BC2B42F00B7BCBA /* Old JFFramework.xcodeproj */,
 			);
 			name = "Old Project";
-			sourceTree = "<group>";
-		};
-		6CDD87E81BC2B42F00B7BCBA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6CDD87EE1BC2B42F00B7BCBA /* libJFFramework.a */,
-				6CDD87F01BC2B42F00B7BCBA /* libJFMobileFramework.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		6CF02A801BA87BBA009503FB /* Third-Party */ = {
@@ -421,6 +402,8 @@
 				EA1105471B820E3500E93D04 /* JFByteStream.m */,
 				EA1105481B820E3500E93D04 /* JFColor.h */,
 				EA1105491B820E3500E93D04 /* JFColor.m */,
+				EA26D7BF1BC3136B007823BE /* JFMenuObjects.h */,
+				EA26D7C01BC3136B007823BE /* JFMenuObjects.m */,
 				EA11054A1B820E3500E93D04 /* JFString.h */,
 				EA11054B1B820E3500E93D04 /* JFString.m */,
 			);
@@ -561,6 +544,13 @@
 				EA1105D41B821B5900E93D04 /* Tests.m */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		EA26D7B91BC2F1B6007823BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EA2840F21B8B5A74008A837F /* Application */ = {
@@ -732,6 +722,7 @@
 				6CF02A841BA87BBA009503FB /* JRSwizzle.h in Headers */,
 				6C5B0A101B9EFBC40055ACEC /* JFURLProtocol.h in Headers */,
 				6C5B09EE1B9EFB680055ACEC /* JFTextView.h in Headers */,
+				EA26D7C11BC3136B007823BE /* JFMenuObjects.h in Headers */,
 				6C5B09CC1B9EFB2C0055ACEC /* JFString.h in Headers */,
 				6C5B0A031B9EFBC10055ACEC /* JFUtilities.h in Headers */,
 				6C33B2471BA2D01C00C8554D /* JFLogger.h in Headers */,
@@ -948,8 +939,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 6CDD87E81BC2B42F00B7BCBA /* Products */;
-					ProjectRef = 6CDD87E71BC2B42F00B7BCBA /* JFFramework.xcodeproj */;
+					ProductGroup = EA26D7B91BC2F1B6007823BE /* Products */;
+					ProjectRef = 6CDD87E71BC2B42F00B7BCBA /* Old JFFramework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -965,23 +956,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		6CDD87EE1BC2B42F00B7BCBA /* libJFFramework.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libJFFramework.a;
-			remoteRef = 6CDD87ED1BC2B42F00B7BCBA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6CDD87F01BC2B42F00B7BCBA /* libJFMobileFramework.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libJFMobileFramework.a;
-			remoteRef = 6CDD87EF1BC2B42F00B7BCBA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6C31C7821B9EEDF400FAF487 /* Resources */ = {
@@ -1053,6 +1027,7 @@
 				6C5B09ED1B9EFB580055ACEC /* JFTableViewCell.m in Sources */,
 				EA011E531BC068990090EFCC /* JFMenuController.m in Sources */,
 				6C5B0A061B9EFBC10055ACEC /* JFXMLParser.m in Sources */,
+				EA26D7C21BC3136B007823BE /* JFMenuObjects.m in Sources */,
 				6C5B09F91B9EFB7C0055ACEC /* NSObject+JFLogger.m in Sources */,
 				6C5B0A041B9EFBC10055ACEC /* JFUtilities.m in Sources */,
 				6C38E6821BA18A80005C63CA /* JFErrorsManager.m in Sources */,

@@ -225,7 +225,7 @@
 
 #pragma mark Protocol implementation (NSCopying)
 
-- (id)copyWithZone:(NSZone*)zone
+- (instancetype)copyWithZone:(nullable NSZone*)zone
 {
 	typeof(self) retObj = [[[self class] alloc] init];
 	

@@ -18,50 +18,21 @@
 
 
 
-#pragma mark - Typedefs
-
-typedef void (^JFMenuItemBlock) (id sender);
-
-
-
-#pragma mark
+#import "JFMenuObjects.h"
 
 
 
 @interface JFMenuController : UIViewController
 
-@end
-
-
-
-#pragma mark
-
-
-
-@interface JFMenuItem : NSObject <NSCopying>
-
 #pragma mark Properties
 
 // Data
-@property (strong, nonatomic)	JFMenuItemBlock	actionBlock;
-@property (copy, nonatomic)		NSDictionary*	additionalInfo;
-@property (copy, nonatomic)		NSString*		detailText;
-@property (copy, nonatomic)		NSURL*			imageURL;
-@property (copy, nonatomic)		NSString*		title;
-
-// Relationships
-@property (strong, nonatomic, readonly)	NSArray<JFMenuItem*>*	subitems;
-@property (weak, nonatomic, readonly)	JFMenuItem*				superitem;
+@property (copy, nonatomic)	NSArray<JFMenuSection*>*	items;
 
 
 #pragma mark Methods
 
-// Relationships management
-- (void)	addSubitem:(JFMenuItem*)item;
-- (void)	addSubitems:(NSArray<JFMenuItem*>*)items;
-- (void)	insertSubitem:(JFMenuItem*)item atIndex:(NSUInteger)index;
-- (void)	insertSubitems:(NSArray<JFMenuItem*>*)items atIndex:(NSUInteger)index;
-- (void)	removeSubitem:(JFMenuItem*)item;
-- (void)	removeSubitems:(NSArray<JFMenuItem*>*)items;
+// Data management
+- (void)	reloadItems;
 
 @end

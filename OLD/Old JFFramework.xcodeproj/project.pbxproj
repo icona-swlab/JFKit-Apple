@@ -206,7 +206,7 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Jacopo Filié";
 			};
-			buildConfigurationList = EAE47AF71A6FA548009D8766 /* Build configuration list for PBXProject "JFFramework" */;
+			buildConfigurationList = EAE47AF71A6FA548009D8766 /* Build configuration list for PBXProject "Old JFFramework" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -238,7 +238,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EAE47AF71A6FA548009D8766 /* Build configuration list for PBXProject "JFFramework" */ = {
+		EAE47AF71A6FA548009D8766 /* Build configuration list for PBXProject "Old JFFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EAE47AF81A6FA548009D8766 /* Debug */,
