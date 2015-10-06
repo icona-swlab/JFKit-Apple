@@ -22,7 +22,7 @@
 
 
 
-@interface JFMenuController () <UITableViewDataSource, UITableViewDelegate>
+@interface JFMenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
 #pragma mark Properties
 
@@ -40,7 +40,7 @@
 
 
 
-@implementation JFMenuController
+@implementation JFMenuViewController
 
 #pragma mark Properties
 
