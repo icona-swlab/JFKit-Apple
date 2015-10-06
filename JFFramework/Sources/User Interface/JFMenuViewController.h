@@ -22,7 +22,7 @@
 
 
 
-@interface JFMenuController : UIViewController
+@interface JFMenuViewController : UIViewController
 
 #pragma mark Properties
 

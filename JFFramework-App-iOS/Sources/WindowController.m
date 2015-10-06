@@ -22,7 +22,7 @@
 
 - (UIViewController*)createRootViewController
 {
-	JFMenuController* retObj = [JFMenuController new];
+	JFMenuViewController* retObj = [JFMenuViewController new];
 	NSMutableArray* sections = [NSMutableArray array];
 	for(NSUInteger i = 0; i < 3; i++)
 	{
