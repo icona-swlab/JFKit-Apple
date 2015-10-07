@@ -26,13 +26,44 @@
 
 
 
+#pragma mark - Constants
+
+static NSString* const	JFLoggerKey			= @"LoggerKey";
+static NSString* const	JFShouldDebugLogKey	= @"ShouldDebugLogKey";
+static NSString* const	JFShouldLogKey		= @"ShouldLogKey";
+
+
+
 @implementation NSObject (JFLogger)
 
 #pragma mark Properties accessors (Flags)
 
++ (BOOL)defaultShouldDebugLogValue
+{
+	@synchronized(JFShouldDebugLogKey)
+	{
+		BOOL retVal;
+		NSNumber* number = objc_getAssociatedObject(self, @selector(defaultShouldDebugLogValue));
+		if(number)
+			retVal = [number boolValue];
+		else if(self == [NSObject class])
+		{
+#ifdef DEBUG
+			retVal = YES;
+#else
+			retVal = NO;
+#endif
+			[self setDefaultShouldDebugLogValue:retVal];
+		}
+		else
+			retVal = [[self superclass] defaultShouldDebugLogValue];
+		return retVal;
+	}
+}
+
 + (BOOL)defaultShouldLogValue
 {
-	@synchronized(self)
+	@synchronized(JFShouldLogKey)
 	{
 		BOOL retVal;
 		NSNumber* number = objc_getAssociatedObject(self, @selector(defaultShouldLogValue));
@@ -49,17 +80,42 @@
 	}
 }
 
++ (void)setDefaultShouldDebugLogValue:(BOOL)shouldDebugLog
+{
+	@synchronized(JFShouldDebugLogKey)
+	{
+		objc_setAssociatedObject(self, @selector(defaultShouldDebugLogValue), @(shouldDebugLog), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	}
+}
+
 + (void)setDefaultShouldLogValue:(BOOL)shouldLog
 {
-	@synchronized(self)
+	@synchronized(JFShouldLogKey)
 	{
 		objc_setAssociatedObject(self, @selector(defaultShouldLogValue), @(shouldLog), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}
 }
 
+- (BOOL)shouldDebugLog
+{
+	@synchronized(JFShouldDebugLogKey)
+	{
+		BOOL retVal;
+		NSNumber* number = objc_getAssociatedObject(self, @selector(shouldDebugLog));
+		if(number)
+			retVal = [number boolValue];
+		else
+		{
+			retVal = [[self class] defaultShouldDebugLogValue];
+			[self setShouldDebugLog:retVal];
+		}
+		return retVal;
+	}
+}
+
 - (BOOL)shouldLog
 {
-	@synchronized(self)
+	@synchronized(JFShouldLogKey)
 	{
 		BOOL retVal;
 		NSNumber* number = objc_getAssociatedObject(self, @selector(shouldLog));
@@ -74,19 +130,28 @@
 	}
 }
 
+- (void)setShouldDebugLog:(BOOL)shouldDebugLog
+{
+	@synchronized(JFShouldDebugLogKey)
+	{
+		objc_setAssociatedObject(self, @selector(shouldDebugLog), @(shouldDebugLog), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	}
+}
+
 - (void)setShouldLog:(BOOL)shouldLog
 {
-	@synchronized(self)
+	@synchronized(JFShouldLogKey)
 	{
 		objc_setAssociatedObject(self, @selector(shouldLog), @(shouldLog), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}
 }
 
+
 #pragma mark Properties accessors (Utilities)
 
 + (JFLogger*)defaultLogger
 {
-	@synchronized(self)
+	@synchronized(JFLoggerKey)
 	{
 		JFLogger* retObj = objc_getAssociatedObject(self, @selector(defaultLogger));
 		if(!retObj)
@@ -105,7 +170,7 @@
 
 + (void)setDefaultLogger:(JFLogger*)logger
 {
-	@synchronized(self)
+	@synchronized(JFLoggerKey)
 	{
 		objc_setAssociatedObject(self, @selector(defaultLogger), logger, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}
@@ -113,7 +178,7 @@
 
 - (JFLogger*)logger
 {
-	@synchronized(self)
+	@synchronized(JFLoggerKey)
 	{
 		JFLogger* retObj = objc_getAssociatedObject(self, @selector(logger));
 		if(!retObj)
@@ -127,7 +192,7 @@
 
 - (void)setLogger:(JFLogger*)logger
 {
-	@synchronized(self)
+	@synchronized(JFLoggerKey)
 	{
 		objc_setAssociatedObject(self, @selector(logger), logger, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}

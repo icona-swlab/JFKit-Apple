@@ -32,23 +32,23 @@
 @property (assign, nonatomic, readwrite, getter = isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
 
 // User interface
-@property (strong, nonatomic, readonly)	NSMutableSet*		privateViewControllers;
+@property (strong, nonatomic, readonly)	NSMutableSet*		privateObservedViewControllers;
 @property (weak, nonatomic, readwrite)	UIViewController*	splashViewController;
 
 
 #pragma mark Methods
 
 // Notifications management
-//- (void)	notifiedViewControllerDidMoveToParent:(NSNotification*)notification;
-//- (void)	notifiedViewControllerHasBeenDismissed:(NSNotification*)notification;
-//- (void)	notifiedViewControllerHasBeenPopped:(NSNotification*)notification;
-//- (void)	notifiedViewControllerHasBeenPresented:(NSNotification*)notification;
-//- (void)	notifiedViewControllerHasBeenPushed:(NSNotification*)notification;
-//- (void)	notifiedViewControllerWillBeDismissed:(NSNotification*)notification;
-//- (void)	notifiedViewControllerWillBePopped:(NSNotification*)notification;
-//- (void)	notifiedViewControllerWillBePresented:(NSNotification*)notification;
-//- (void)	notifiedViewControllerWillBePushed:(NSNotification*)notification;
-//- (void)	notifiedViewControllerWillMoveToParent:(NSNotification*)notification;
+- (void)	notifiedViewControllerDidMoveToParent:(NSNotification*)notification;
+- (void)	notifiedViewControllerHasBeenDismissed:(NSNotification*)notification;
+- (void)	notifiedViewControllerHasBeenPopped:(NSNotification*)notification;
+- (void)	notifiedViewControllerHasBeenPresented:(NSNotification*)notification;
+- (void)	notifiedViewControllerHasBeenPushed:(NSNotification*)notification;
+- (void)	notifiedViewControllerWillBeDismissed:(NSNotification*)notification;
+- (void)	notifiedViewControllerWillBePopped:(NSNotification*)notification;
+- (void)	notifiedViewControllerWillBePresented:(NSNotification*)notification;
+- (void)	notifiedViewControllerWillBePushed:(NSNotification*)notification;
+- (void)	notifiedViewControllerWillMoveToParent:(NSNotification*)notification;
 - (void)	notifiedWindowDidBecomeHidden:(NSNotification*)notification;
 - (void)	notifiedWindowDidBecomeKey:(NSNotification*)notification;
 - (void)	notifiedWindowDidBecomeVisible:(NSNotification*)notification;
@@ -70,16 +70,16 @@
 @synthesize userInterfaceLoaded	= _userInterfaceLoaded;
 
 // User interface
-@synthesize privateViewControllers	= _privateViewControllers;
-@synthesize splashViewController	= _splashViewController;
-@synthesize window					= _window;
+@synthesize privateObservedViewControllers	= _privateObservedViewControllers;
+@synthesize splashViewController			= _splashViewController;
+@synthesize window							= _window;
 
 
 #pragma mark Properties accessors (User interface)
 
-- (NSSet*)viewControllers
+- (NSSet*)observedViewControllers
 {
-	return [self.privateViewControllers copy];
+	return [self.privateObservedViewControllers copy];
 }
 
 - (UIViewController*)rootViewController
@@ -95,24 +95,6 @@
 	[MainNotificationCenter removeObserver:self];
 }
 
-//- (void)didReleaseViewController:(UIViewController*)viewController
-//{
-//	if([self shouldLog])
-//	{
-//		NSString* message = [NSString stringWithFormat:@"WindowController '%@' did release viewController '%@'.", JFStringFromID(self), JFStringFromID(viewController)];
-//		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-//	}
-//}
-//
-//- (void)didRetainViewController:(UIViewController*)viewController
-//{
-//	if([self shouldLog])
-//	{
-//		NSString* message = [NSString stringWithFormat:@"WindowController '%@' did retain viewController '%@'.", JFStringFromID(self), JFStringFromID(viewController)];
-//		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-//	}
-//}
-
 - (instancetype)initWithWindow:(UIWindow*)window
 {
 	self = (window ? [self init] : nil);
@@ -122,7 +104,7 @@
 		_userInterfaceLoaded = NO;
 		
 		// User interface
-		_privateViewControllers = [NSMutableSet new];
+		_privateObservedViewControllers = [NSMutableSet new];
 		_window = window;
 		
 		// Begins to listen for interesting notifications.
@@ -135,82 +117,68 @@
 	return self;
 }
 
-- (void)releaseViewController:(UIViewController*)viewController
-{
-	if(![self.privateViewControllers containsObject:viewController])
-		return;
-	
-//	NSNotificationCenter* center = MainNotificationCenter;
-//	[center removeObserver:self name:JFViewControllerDidMoveToParentNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerHasBeenDismissedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerHasBeenPoppedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerHasBeenPresentedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerHasBeenPushedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerWillBeDismissedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerWillBePoppedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerWillBePresentedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerWillBePushedNotification object:viewController];
-//	[center removeObserver:self name:JFViewControllerWillMoveToParentNotification object:viewController];
-	
-	[self.privateViewControllers removeObject:viewController];
-	
-	//[self didReleaseViewController:viewController];
-}
-
-- (void)retainViewController:(UIViewController*)viewController
-{
-	if([self.privateViewControllers containsObject:viewController])
-		return;
-	
-	[self.privateViewControllers addObject:viewController];
-	
-//	NSNotificationCenter* center = MainNotificationCenter;
-//	[center addObserver:self selector:@selector(notifiedViewControllerDidMoveToParent:) name:JFViewControllerDidMoveToParentNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenDismissed:) name:JFViewControllerHasBeenDismissedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenPopped:) name:JFViewControllerHasBeenPoppedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenPresented:) name:JFViewControllerHasBeenPresentedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenPushed:) name:JFViewControllerHasBeenPushedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerWillBeDismissed:) name:JFViewControllerWillBeDismissedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerWillBePopped:) name:JFViewControllerWillBePoppedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerWillBePresented:) name:JFViewControllerWillBePresentedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerWillBePushed:) name:JFViewControllerWillBePushedNotification object:viewController];
-//	[center addObserver:self selector:@selector(notifiedViewControllerWillMoveToParent:) name:JFViewControllerWillMoveToParentNotification object:viewController];
-	
-	//[self didRetainViewController:viewController];
-}
-
 
 #pragma mark Notifications management
 
-//- (void)notifiedViewControllerDidMoveToParent:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerHasBeenDismissed:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerHasBeenPopped:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerHasBeenPresented:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerHasBeenPushed:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerWillBeDismissed:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerWillBePopped:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerWillBePresented:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerWillBePushed:(NSNotification*)notification
-//{}
-//
-//- (void)notifiedViewControllerWillMoveToParent:(NSNotification*)notification
-//{}
+- (void)notifiedViewControllerDidMoveToParent:(NSNotification*)notification
+{
+	UIViewController* parent = [notification.userInfo objectForKey:JFViewControllerParentViewControllerUserInfoKey];
+	[self viewController:notification.object didMoveToParent:parent];
+}
+
+- (void)notifiedViewControllerHasBeenDismissed:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object hasBeenDismissedAnimated:animated];
+}
+
+- (void)notifiedViewControllerHasBeenPopped:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object hasBeenPoppedAnimated:animated];
+}
+
+- (void)notifiedViewControllerHasBeenPresented:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object hasBeenPresentedAnimated:animated];
+}
+
+- (void)notifiedViewControllerHasBeenPushed:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object hasBeenPushedAnimated:animated];
+}
+
+- (void)notifiedViewControllerWillBeDismissed:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object willBeDismissedAnimated:animated];
+}
+
+- (void)notifiedViewControllerWillBePopped:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object willBePoppedAnimated:animated];
+}
+
+- (void)notifiedViewControllerWillBePresented:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object willBePresentedAnimated:animated];
+}
+
+- (void)notifiedViewControllerWillBePushed:(NSNotification*)notification
+{
+	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
+	[self viewController:notification.object willBePushedAnimated:animated];
+}
+
+- (void)notifiedViewControllerWillMoveToParent:(NSNotification*)notification
+{
+	UIViewController* parent = [notification.userInfo objectForKey:JFViewControllerParentViewControllerUserInfoKey];
+	[self viewController:notification.object willMoveToParent:parent];
+}
 
 - (void)notifiedWindowDidBecomeHidden:(NSNotification*)notification
 {
@@ -240,16 +208,88 @@
 	return nil;
 }
 
+
+#pragma mark User interface management (Observation)
+
+- (void)beginObservingViewController:(UIViewController*)viewController
+{
+	if([self.privateObservedViewControllers containsObject:viewController])
+		return;
+	
+	[self.privateObservedViewControllers addObject:viewController];
+	
+	NSNotificationCenter* center = MainNotificationCenter;
+	[center addObserver:self selector:@selector(notifiedViewControllerDidMoveToParent:) name:JFViewControllerDidMoveToParentNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenDismissed:) name:JFViewControllerHasBeenDismissedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenPopped:) name:JFViewControllerHasBeenPoppedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenPresented:) name:JFViewControllerHasBeenPresentedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerHasBeenPushed:) name:JFViewControllerHasBeenPushedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerWillBeDismissed:) name:JFViewControllerWillBeDismissedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerWillBePopped:) name:JFViewControllerWillBePoppedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerWillBePresented:) name:JFViewControllerWillBePresentedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerWillBePushed:) name:JFViewControllerWillBePushedNotification object:viewController];
+	[center addObserver:self selector:@selector(notifiedViewControllerWillMoveToParent:) name:JFViewControllerWillMoveToParentNotification object:viewController];
+	
+	[self didBeginObservingViewController:viewController];
+}
+
+- (void)didBeginObservingViewController:(UIViewController*)viewController
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"WindowController '%@' did begin observing viewController '%@'.", JFStringFromObject(self), JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)didEndObservingViewController:(UIViewController*)viewController
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"WindowController '%@' did end observing viewController '%@'.", JFStringFromObject(self), JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)endObservingViewController:(UIViewController*)viewController
+{
+	if(![self.privateObservedViewControllers containsObject:viewController])
+		return;
+	
+	NSNotificationCenter* center = MainNotificationCenter;
+	[center removeObserver:self name:JFViewControllerDidMoveToParentNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerHasBeenDismissedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerHasBeenPoppedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerHasBeenPresentedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerHasBeenPushedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerWillBeDismissedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerWillBePoppedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerWillBePresentedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerWillBePushedNotification object:viewController];
+	[center removeObserver:self name:JFViewControllerWillMoveToParentNotification object:viewController];
+	
+	[self.privateObservedViewControllers removeObject:viewController];
+	
+	[self didEndObservingViewController:viewController];
+}
+
+- (BOOL)shouldEndObservingViewController:(UIViewController*)viewController
+{
+	return NO;
+}
+
+
+#pragma mark User interface management (Splash screen)
+
 - (UIViewController*)createSplashViewController
 {
 	return nil;
 }
 
-
-#pragma mark User interface management (Navigation)
-
 - (void)didDismissSplashViewController:(BOOL)animated
-{}
+{
+	[self endObservingViewController:self.splashViewController];
+}
 
 - (void)didPresentSplashViewController:(BOOL)animated
 {}
@@ -280,9 +320,9 @@
 
 - (void)didLoadUserInterface
 {
-	if([self shouldLog])
+	if([self shouldDebugLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface has been loaded.", JFStringFromID(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface has been loaded.", JFStringFromObject(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
@@ -291,12 +331,14 @@
 {
 	// Prepares the rootViewController.
 	UIViewController* rootViewController = [self createRootViewController];
+	[self beginObservingViewController:rootViewController];
 	self.window.rootViewController = rootViewController;
 	
 	// Prepares the splashViewController.
 	UIViewController* splashViewController = [self createSplashViewController];
 	if(splashViewController)
 	{
+		[self beginObservingViewController:splashViewController];
 		self.splashViewController = splashViewController;
 		
 		BOOL animated = NO;
@@ -314,36 +356,36 @@
 
 - (void)willLoadUserInterface
 {
-	if([self shouldLog])
+	if([self shouldDebugLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface will be loaded.", JFStringFromID(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' user interface will be loaded.", JFStringFromObject(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
 - (void)windowDidBecomeHidden
 {
-	if([self shouldLog])
+	if([self shouldDebugLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did become hidden.", JFStringFromID(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did become hidden.", JFStringFromObject(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
 - (void)windowDidBecomeKey
 {
-	if([self shouldLog])
+	if([self shouldDebugLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did become key.", JFStringFromID(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did become key.", JFStringFromObject(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
 - (void)windowDidBecomeVisible
 {
-	if([self shouldLog])
+	if([self shouldDebugLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did become visible.", JFStringFromID(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did become visible.", JFStringFromObject(self.window)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 	
@@ -358,57 +400,113 @@
 
 - (void)windowDidResignKey
 {
-	if([self shouldLog])
+	if([self shouldDebugLog])
 	{
-		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", JFStringFromID(self.window)];
+		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", JFStringFromObject(self.window)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+
+#pragma mark Protocol implementation (JFViewControllerNavigationDelegate)
+
+- (void)viewController:(UIViewController*)viewController didMoveToParent:(UIViewController*)parent
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' did move to parent '%@'.", JFStringFromObject(viewController), JFStringFromObject(parent)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+	
+	if(!parent && [self shouldEndObservingViewController:viewController])
+		[self endObservingViewController:viewController];
+}
+
+- (void)viewController:(UIViewController*)viewController hasBeenDismissedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been dismissed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+	
+	if([self shouldEndObservingViewController:viewController])
+		[self endObservingViewController:viewController];
+}
+
+- (void)viewController:(UIViewController*)viewController hasBeenPoppedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been popped.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+	
+	if([self shouldEndObservingViewController:viewController])
+		[self endObservingViewController:viewController];
+}
+
+- (void)viewController:(UIViewController*)viewController hasBeenPresentedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been presented.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)viewController:(UIViewController*)viewController hasBeenPushedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been pushed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)viewController:(UIViewController*)viewController willBeDismissedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be dismissed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)viewController:(UIViewController*)viewController willBePoppedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be popped.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)viewController:(UIViewController*)viewController willBePresentedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be presented.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)viewController:(UIViewController*)viewController willBePushedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be pushed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)viewController:(UIViewController*)viewController willMoveToParent:(UIViewController*)parent
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will move to parent '%@'.", JFStringFromObject(viewController), JFStringFromObject(parent)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }
 
 @end
-
-
-
-//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController
-//{
-//	return [self replaceRootViewControllerWithViewController:viewController completion:nil];
-//}
-//
-//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController completion:(JFBlockWithBOOL)completion
-//{
-//	return [self replaceRootViewControllerWithViewController:viewController duration:JFAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve completion:completion];
-//}
-//
-//- (BOOL)replaceRootViewControllerWithViewController:(UIViewController*)viewController duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(JFBlockWithBOOL)completion
-//{
-//	if(!viewController)
-//		return NO;
-//
-//	UIViewController* rootViewController = self.window.rootViewController;
-//	if(rootViewController == viewController)
-//		return NO;
-//
-//	JFBlockWithBOOL innerCompletion = ^(BOOL finished)
-//	{
-//		if(finished)
-//			self.window.rootViewController = viewController;
-//
-//		if(completion)
-//			completion(finished);
-//	};
-//
-//	if(!rootViewController)
-//	{
-//		[MainOperationQueue addOperationWithBlock:^(void){
-//			innerCompletion(YES);
-//		}];
-//		return YES;
-//	}
-//
-//	UIView* fromView = rootViewController.view;
-//	UIView* toView = viewController.view;
-//
-//	[UIView transitionFromView:fromView toView:toView duration:duration options:options completion:innerCompletion];
-//
-//	return YES;
-//}

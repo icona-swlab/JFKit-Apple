@@ -99,6 +99,26 @@ NSString* JFStringFromHex(unsigned int value)
 	return [NSString stringWithFormat:@"%x", value];
 }
 
+NSString* JFStringFromID(id object)
+{
+	return [NSString stringWithFormat:@"%p", object];
+}
+
+NSString* JFStringFromInt(int value)
+{
+	return [NSString stringWithFormat:@"%d", value];
+}
+
+NSString* JFStringFromLong(long value)
+{
+	return [NSString stringWithFormat:@"%ld", value];
+}
+
+NSString* JFStringFromLongLong(long long value)
+{
+	return [NSString stringWithFormat:@"%lld", value];
+}
+
 NSString* JFStringFromNSInteger(NSInteger value)
 {
 #if __LP64__
@@ -117,29 +137,14 @@ NSString* JFStringFromNSUInteger(NSUInteger value)
 #endif
 }
 
-NSString* JFStringFromID(id value)
+NSString* JFStringFromObject(id object)
 {
-	return [NSString stringWithFormat:@"%p", value];
+	return [NSString stringWithFormat:@"<%@: %@>", JFStringFromObjectClass(object), JFStringFromID(object)];
 }
 
-NSString* JFStringFromInt(int value)
+NSString* JFStringFromPointer(void* pointer)
 {
-	return [NSString stringWithFormat:@"%d", value];
-}
-
-NSString* JFStringFromLong(long value)
-{
-	return [NSString stringWithFormat:@"%ld", value];
-}
-
-NSString* JFStringFromLongLong(long long value)
-{
-	return [NSString stringWithFormat:@"%lld", value];
-}
-
-NSString* JFStringFromPointer(void* value)
-{
-	return [NSString stringWithFormat:@"%p", value];
+	return [NSString stringWithFormat:@"%p", pointer];
 }
 
 NSString* JFStringFromSInt8(SInt8 value)

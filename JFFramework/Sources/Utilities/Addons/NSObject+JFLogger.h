@@ -27,6 +27,7 @@
 #pragma mark Properties
 
 // Flags
+@property (assign)	BOOL	shouldDebugLog;
 @property (assign)	BOOL	shouldLog;
 
 // Utilities
@@ -36,7 +37,9 @@
 #pragma mark Methods
 
 // Properties accessors (Flags)
++ (BOOL)	defaultShouldDebugLogValue;
 + (BOOL)	defaultShouldLogValue;
++ (void)	setDefaultShouldDebugLogValue:(BOOL)shouldDebugLog;
 + (void)	setDefaultShouldLogValue:(BOOL)shouldLog;
 
 // Properties accessors (Utilities)

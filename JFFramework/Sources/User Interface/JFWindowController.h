@@ -28,7 +28,7 @@
 
 
 
-@interface JFWindowController : NSObject
+@interface JFWindowController : NSObject <JFViewControllerNavigationDelegate>
 
 #pragma mark Properties
 
@@ -36,31 +36,34 @@
 @property (assign, nonatomic, readonly, getter = isUserInterfaceLoaded)	BOOL	userInterfaceLoaded;
 
 // User interface
+@property (copy, nonatomic, readonly)	NSSet*				observedViewControllers;
 @property (weak, nonatomic, readonly)	UIViewController*	rootViewController;
 @property (weak, nonatomic, readonly)	UIViewController*	splashViewController;
-@property (copy, nonatomic, readonly)	NSSet*				viewControllers;
 @property (strong, nonatomic, readonly)	UIWindow*			window;
 
 
 #pragma mark Methods
 
 // Memory management
-//- (void)			didReleaseViewController:(UIViewController*)viewController;
-//- (void)			didRetainViewController:(UIViewController*)viewController;
 - (instancetype)	initWithWindow:(UIWindow*)window;
-- (void)			releaseViewController:(UIViewController*)viewController;	// Will silently fail if 'viewControllers' does NOT contain the passed "viewController".
-- (void)			retainViewController:(UIViewController*)viewController;		// Will silently fail if 'viewControllers' already contains the passed "viewController".
 
 // User interface management
 - (UIViewController*)	createRootViewController;
-- (UIViewController*)	createSplashViewController;
 
-// User interface management (Navigation)
-- (void)	didDismissSplashViewController:(BOOL)animated;
-- (void)	didPresentSplashViewController:(BOOL)animated;
-- (void)	dismissSplashViewController:(BOOL)animated;
-- (void)	willDismissSplashViewController:(BOOL)animated;
-- (void)	willPresentSplashViewController:(BOOL)animated;
+// User interface management (Observation)
+- (void)	beginObservingViewController:(UIViewController*)viewController;
+- (void)	didBeginObservingViewController:(UIViewController*)viewController;
+- (void)	didEndObservingViewController:(UIViewController*)viewController;
+- (void)	endObservingViewController:(UIViewController*)viewController;
+- (BOOL)	shouldEndObservingViewController:(UIViewController*)viewController;
+
+// User interface management (Splash screen)
+- (UIViewController*)	createSplashViewController;
+- (void)				didDismissSplashViewController:(BOOL)animated;
+- (void)				didPresentSplashViewController:(BOOL)animated;
+- (void)				dismissSplashViewController:(BOOL)animated;
+- (void)				willDismissSplashViewController:(BOOL)animated;
+- (void)				willPresentSplashViewController:(BOOL)animated;
 
 // User interface management (Window lifecycle)
 - (void)	didLoadUserInterface;
@@ -70,5 +73,17 @@
 - (void)	windowDidBecomeKey;
 - (void)	windowDidBecomeVisible;
 - (void)	windowDidResignKey;
+
+// Protocol implementation (JFViewControllerNavigationDelegate)
+- (void)	viewController:(UIViewController*)viewController didMoveToParent:(UIViewController*)parent;
+- (void)	viewController:(UIViewController*)viewController hasBeenDismissedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController hasBeenPoppedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController hasBeenPresentedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController hasBeenPushedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController willBeDismissedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController willBePoppedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController willBePresentedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController willBePushedAnimated:(BOOL)animated;
+- (void)	viewController:(UIViewController*)viewController willMoveToParent:(UIViewController*)parent;
 
 @end
