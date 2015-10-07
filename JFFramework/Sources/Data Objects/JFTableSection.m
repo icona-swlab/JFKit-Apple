@@ -1,5 +1,5 @@
 //
-//  JFTableViewSection.m
+//  JFTableSection.m
 //  Copyright (C) 2015  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,19 +18,24 @@
 
 
 
-#import "JFTableViewSection.h"
+#import "JFTableSection.h"
 
 
 
-// Default values
+#pragma mark - Constants
+
 static CGFloat	DefaultFooterHeight = 0.0f;
 static CGFloat	DefaultHeaderHeight = 0.0f;
 
 
 
-@implementation JFTableViewSection
+#pragma mark
 
-#pragma mark - Properties
+
+
+@implementation JFTableSection
+
+#pragma mark Properties
 
 // Attributes
 @synthesize footerHeight	= _footerHeight;
@@ -39,18 +44,20 @@ static CGFloat	DefaultHeaderHeight = 0.0f;
 // Data
 @synthesize footerTitle	= _footerTitle;
 @synthesize headerTitle	= _headerTitle;
-@synthesize items		= _items;
+
+// Relationships
+@synthesize items	= _items;
 
 // User interface
 @synthesize	footerView	= _footerView;
 @synthesize	headerView	= _headerView;
 
 
-#pragma mark - Memory management
+#pragma mark Memory management
 
 + (void)initialize
 {
-	if(self != [JFTableViewSection self])
+	if(self != [JFTableSection class])
 		return;
 	
 	UITableView* tableView = [UITableView new];

@@ -20,6 +20,8 @@
 
 #import "JFMenuViewController.h"
 
+#import "JFTableSection.h"
+
 
 
 @interface JFMenuViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -27,7 +29,7 @@
 #pragma mark Properties
 
 // Data
-@property (strong, nonatomic, readonly)	NSMutableArray*	tableItems;
+@property (strong, nonatomic, readonly)	NSMutableArray<JFTableSection*>*	tableItems;
 
 // User interface
 @property (strong, nonatomic)	UITableView*	tableView;

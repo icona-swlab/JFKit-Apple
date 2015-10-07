@@ -15,8 +15,6 @@
 		EA26EC371A8785030050049A /* JFGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGalleryView.m; sourceTree = "<group>"; };
 		EA26EC401A8785030050049A /* JFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSplitViewController.h; sourceTree = "<group>"; };
 		EA26EC411A8785030050049A /* JFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSplitViewController.m; sourceTree = "<group>"; };
-		EA26EC451A8785030050049A /* JFTableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableViewSection.h; sourceTree = "<group>"; };
-		EA26EC461A8785030050049A /* JFTableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableViewSection.m; sourceTree = "<group>"; };
 		EA26EC4A1A8785030050049A /* JFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTextView.h; sourceTree = "<group>"; };
 		EA26EC4B1A8785030050049A /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
 		EA26EC4D1A8785030050049A /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 			children = (
 				EA26EC351A8785030050049A /* Galleries */,
 				EA26EC3B1A8785030050049A /* Structure */,
-				EA26EC441A8785030050049A /* Tables */,
 				EA26EC471A8785030050049A /* Texts */,
 				EA26EC4C1A8785030050049A /* Toolbars */,
 				EA26EC4F1A8785030050049A /* Work In Progress */,
@@ -107,15 +104,6 @@
 				EA26EC411A8785030050049A /* JFSplitViewController.m */,
 			);
 			path = Structure;
-			sourceTree = "<group>";
-		};
-		EA26EC441A8785030050049A /* Tables */ = {
-			isa = PBXGroup;
-			children = (
-				EA26EC451A8785030050049A /* JFTableViewSection.h */,
-				EA26EC461A8785030050049A /* JFTableViewSection.m */,
-			);
-			path = Tables;
 			sourceTree = "<group>";
 		};
 		EA26EC471A8785030050049A /* Texts */ = {

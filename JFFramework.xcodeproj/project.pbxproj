@@ -129,6 +129,8 @@
 		EA7773C81BB7303F002BD08B /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA7773C61BB7303F002BD08B /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA7773C91BB7303F002BD08B /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7773C71BB7303F002BD08B /* JFSliderController.m */; settings = {ASSET_TAGS = (); }; };
 		EA8E77BE1BC1207200FA98E5 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8E77BB1BC1206F00FA98E5 /* WindowController.m */; settings = {ASSET_TAGS = (); }; };
+		EAFD9A7F1BC456670076EB23 /* JFTableSection.h in Headers */ = {isa = PBXBuildFile; fileRef = EAFD9A7D1BC456670076EB23 /* JFTableSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAFD9A801BC456670076EB23 /* JFTableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFD9A7E1BC456670076EB23 /* JFTableSection.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -279,6 +281,8 @@
 		EACC08A51BC120D500733D5C /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		EAD3D33E1B82342F00A56864 /* NSFileManager+JFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JFFramework.h"; sourceTree = "<group>"; };
 		EAD3D33F1B82342F00A56864 /* NSFileManager+JFFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+JFFramework.m"; sourceTree = "<group>"; };
+		EAFD9A7D1BC456670076EB23 /* JFTableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTableSection.h; sourceTree = "<group>"; };
+		EAFD9A7E1BC456670076EB23 /* JFTableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTableSection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +410,8 @@
 				EA26D7C01BC3136B007823BE /* JFMenuObjects.m */,
 				EA11054A1B820E3500E93D04 /* JFString.h */,
 				EA11054B1B820E3500E93D04 /* JFString.m */,
+				EAFD9A7D1BC456670076EB23 /* JFTableSection.h */,
+				EAFD9A7E1BC456670076EB23 /* JFTableSection.m */,
 			);
 			path = "Data Objects";
 			sourceTree = "<group>";
@@ -720,6 +726,7 @@
 				6C5B09BE1B9EFADF0055ACEC /* JFAppDelegate.h in Headers */,
 				6C5B09F01B9EFB680055ACEC /* JFTransparentToolbar.h in Headers */,
 				6CF02A841BA87BBA009503FB /* JRSwizzle.h in Headers */,
+				EAFD9A7F1BC456670076EB23 /* JFTableSection.h in Headers */,
 				6C5B0A101B9EFBC40055ACEC /* JFURLProtocol.h in Headers */,
 				6C5B09EE1B9EFB680055ACEC /* JFTextView.h in Headers */,
 				EA26D7C11BC3136B007823BE /* JFMenuObjects.h in Headers */,
@@ -1036,6 +1043,7 @@
 				6C5B0A111B9EFBC40055ACEC /* JFURLProtocol.m in Sources */,
 				6C5B09CD1B9EFB2C0055ACEC /* JFString.m in Sources */,
 				6C5B09D51B9EFB300055ACEC /* UIBarButtonItem+JFFramework.m in Sources */,
+				EAFD9A801BC456670076EB23 /* JFTableSection.m in Sources */,
 				6C5B09DF1B9EFB420055ACEC /* JFAlert.m in Sources */,
 				6CF02A791BA869E2009503FB /* JFWeakHandle.m in Sources */,
 				6C5B09E11B9EFB420055ACEC /* JFAlertsController.m in Sources */,

@@ -79,6 +79,9 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "UIButton+JFFramework.h"
 #import "UIViewController+JFFramework.h"
 
+// Data objects
+#import "JFTableSection.h"
+
 // User interface
 #import "JFActivityIndicatorView.h"
 #import "JFKeyboardEventsHandler.h"

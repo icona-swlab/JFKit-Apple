@@ -1,5 +1,5 @@
 //
-//  JFTableViewSection.h
+//  JFTableSection.h
 //  Copyright (C) 2015  Jacopo Filié
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,9 @@
 
 
 
-@interface JFTableViewSection : NSObject
+@interface JFTableSection : NSObject
+
+#pragma mark Properties
 
 // Attributes
 @property (assign, nonatomic)	CGFloat	footerHeight;
@@ -27,6 +29,8 @@
 // Data
 @property (strong, nonatomic)	NSString*	footerTitle;
 @property (strong, nonatomic)	NSString*	headerTitle;
+
+// Relationships
 @property (strong, nonatomic)	NSArray*	items;
 
 // User interface
