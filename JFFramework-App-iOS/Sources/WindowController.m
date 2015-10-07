@@ -12,7 +12,7 @@
 
 
 
-@interface WindowController ()
+@interface WindowController () <JFMenuViewControllerDelegate>
 
 @end
 
@@ -23,6 +23,7 @@
 - (UIViewController*)createRootViewController
 {
 	JFMenuViewController* retObj = [JFMenuViewController new];
+	retObj.delegate = self;
 	retObj.indentationWidth = 25.0;
 	NSMutableArray* sections = [NSMutableArray array];
 	for(NSUInteger i = 0; i < 2; i++)
@@ -54,8 +55,13 @@
 		}
 		[sections addObject:section];
 	}
-	retObj.items = sections;
+	retObj.sections = sections;
 	return retObj;
+}
+
+- (void)menuViewController:(JFMenuViewController*)menuViewController didSelectItem:(JFMenuItem*)menuItem
+{
+	NSLog(@"Item: %@", menuItem.title);
 }
 
 @end

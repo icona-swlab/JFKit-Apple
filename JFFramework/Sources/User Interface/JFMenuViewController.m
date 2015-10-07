@@ -36,6 +36,7 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 #pragma mark Properties
 
 // Data
+@property (strong, nonatomic, readonly)	NSMutableSet<JFMenuItem*>*			allItems;
 @property (strong, nonatomic, readonly)	NSMutableArray<JFTableSection*>*	tableItems;
 
 // User interface
@@ -47,6 +48,9 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 // Data management
 - (JFMenuItem*)				itemForRowAtIndexPath:(NSIndexPath*)indexPath;
 - (NSArray<JFMenuItem*>*)	serializeSubitemsOfNode:(JFMenuNode*)node;
+
+// Notifications management
+- (void)	notifyDidSelectItem:(JFMenuItem*)item;
 
 @end
 
@@ -64,8 +68,12 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 @synthesize indentationWidth	= _indentationWidth;
 
 // Data
-@synthesize items		= _items;
+@synthesize allItems	= _allItems;
+@synthesize sections	= _sections;
 @synthesize tableItems	= _tableItems;
+
+// Relationships
+@synthesize delegate	= _delegate;
 
 // User interface
 @synthesize tableView	= _tableView;
@@ -73,12 +81,12 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 
 #pragma mark Properties accessors (Data)
 
-- (void)setItems:(NSArray<JFMenuSection*>*)items
+- (void)setSections:(NSArray<JFMenuSection*>*)sections
 {
-	if(_items == items)
+	if(_sections == sections)
 		return;
 	
-	_items = [items copy];
+	_sections = [sections copy];
 	
 	[self reloadItems];
 }
@@ -105,6 +113,7 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 		_indentationWidth = DefaultIndentationWidth;
 		
 		// Data
+		_allItems = [NSMutableSet new];
 		_tableItems = [NSMutableArray new];
 	}
 	return self;
@@ -119,6 +128,7 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 		_indentationWidth = DefaultIndentationWidth;
 		
 		// Data
+		_allItems = [NSMutableSet new];
 		_tableItems = [NSMutableArray new];
 	}
 	return self;
@@ -149,18 +159,27 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 
 - (void)reloadItems
 {
-	NSArray* menuItems = self.items;
-	NSMutableArray* tableItems = [NSMutableArray arrayWithCapacity:[menuItems count]];
+	NSArray* menuSections = self.sections;
+	NSMutableArray* tableItems = [NSMutableArray arrayWithCapacity:[menuSections count]];
+	NSMutableSet* allItems = [NSMutableSet setWithCapacity:[menuSections count]];
 	
-	for(JFMenuSection* menuSection in menuItems)
+	for(JFMenuSection* menuSection in menuSections)
 	{
 		JFTableSection* tableSection = [[JFTableSection alloc] init];
 		tableSection.footerTitle = menuSection.detailText;
 		tableSection.headerTitle = menuSection.title;
-		tableSection.items = [self serializeSubitemsOfNode:menuSection];
+		
+		NSArray* sectionItems = [self serializeSubitemsOfNode:menuSection];
+		if(sectionItems)
+		{
+			tableSection.items = sectionItems;
+			[allItems addObjectsFromArray:tableSection.items];
+		}
+		
 		[tableItems addObject:tableSection];
 	}
 	
+	[self.allItems setSet:allItems];
 	[self.tableItems setArray:tableItems];
 	
 	if([self isViewLoaded])
@@ -183,6 +202,19 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 	}
 	
 	return [retObj copy];
+}
+
+
+#pragma mark Notifications management
+
+- (void)notifyDidSelectItem:(JFMenuItem*)item
+{
+	if(![self.allItems containsObject:item])
+		return;
+	
+	id<JFMenuViewControllerDelegate> delegate = self.delegate;
+	if(delegate && [delegate respondsToSelector:@selector(menuViewController:didSelectItem:)])
+		[delegate menuViewController:self didSelectItem:item];
 }
 
 
@@ -237,6 +269,12 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 	return retObj;
 }
 
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+{
+	JFTableSection* menuSection = [self.tableItems objectAtIndex:section];
+	return [menuSection.items count];
+}
+
 - (NSString*)tableView:(UITableView*)tableView titleForFooterInSection:(NSInteger)section
 {
 	JFTableSection* menuSection = [self.tableItems objectAtIndex:section];
@@ -249,10 +287,15 @@ static CGFloat	DefaultIndentationWidth	= 0.0;
 	return menuSection.headerTitle;
 }
 
-- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+
+#pragma mark Protocol implementation (UITableViewDelegate)
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	JFTableSection* menuSection = [self.tableItems objectAtIndex:section];
-	return [menuSection.items count];
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	
+	JFMenuItem* item = [self itemForRowAtIndexPath:indexPath];
+	[self notifyDidSelectItem:item];
 }
 
 @end

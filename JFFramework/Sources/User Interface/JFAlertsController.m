@@ -146,12 +146,12 @@
 	});
 }
 
-- (void)presentActionSheetFromView:(UIView*)view title:(NSString*)title cancelButton:(JFAlertButton*)cancelButton destructiveButton:(JFAlertButton*)destructiveButton otherButtons:(NSArray*)otherButtons
+- (void)presentActionSheetInView:(UIView*)view title:(NSString*)title cancelButton:(JFAlertButton*)cancelButton destructiveButton:(JFAlertButton*)destructiveButton otherButtons:(NSArray*)otherButtons
 {
 	JFAlert* alert = [self createActionSheetWithTitle:title cancelButton:cancelButton destructiveButton:destructiveButton otherButtons:otherButtons];
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
-		if([alert presentAsActionSheetFromView:view completion:nil])
+		if([alert presentAsActionSheetInView:view completion:nil])
 			[self.alerts addObject:alert];
 	});
 }

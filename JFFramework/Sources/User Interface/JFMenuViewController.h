@@ -22,6 +22,24 @@
 
 
 
+@class JFMenuViewController;
+
+
+
+@protocol JFMenuViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)	menuViewController:(JFMenuViewController*)menuViewController didSelectItem:(JFMenuItem*)menuItem;
+
+@end
+
+
+
+#pragma mark
+
+
+
 @interface JFMenuViewController : UIViewController
 
 #pragma mark Properties
@@ -30,7 +48,10 @@
 @property (assign, nonatomic)	CGFloat	indentationWidth;
 
 // Data
-@property (copy, nonatomic)	NSArray<JFMenuSection*>*	items;
+@property (copy, nonatomic)	NSArray<JFMenuSection*>*	sections;
+
+// Relationships
+@property (weak, nonatomic)	id<JFMenuViewControllerDelegate>	delegate;
 
 
 #pragma mark Methods
