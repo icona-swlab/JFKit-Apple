@@ -394,7 +394,7 @@
 	return YES;
 }
 
-- (BOOL)presentAsActionSheetFromView:(UIView*)view completion:(JFBlock)completion
+- (BOOL)presentAsActionSheetInView:(UIView*)view completion:(JFBlock)completion
 {
 	if(![self prepareActionSheet:completion])
 		return NO;

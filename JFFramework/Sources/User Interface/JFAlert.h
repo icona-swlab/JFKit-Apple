@@ -82,7 +82,7 @@
 - (BOOL)	presentAsActionSheetFromRect:(CGRect)rect inView:(UIView*)view completion:(JFBlock)completion;			// Fails if there are no buttons.
 - (BOOL)	presentAsActionSheetFromTabBar:(UITabBar*)tabBar completion:(JFBlock)completion;						// Fails if there are no buttons.
 - (BOOL)	presentAsActionSheetFromToolbar:(UIToolbar*)toolbar completion:(JFBlock)completion;						// Fails if there are no buttons.
-- (BOOL)	presentAsActionSheetFromView:(UIView*)view completion:(JFBlock)completion;								// Fails if there are no buttons.
+- (BOOL)	presentAsActionSheetInView:(UIView*)view completion:(JFBlock)completion;								// Fails if there are no buttons.
 #else
 - (BOOL)	presentAsActionSheetForWindow:(NSWindow*)window completion:(JFBlock)completion;							// Fails if there are no buttons.
 #endif
