@@ -33,6 +33,7 @@
 
 // Data
 @property (copy, nonatomic)		NSDictionary*	additionalInfo;
+@property (copy, nonatomic)		NSString*		detailText;
 @property (copy, nonatomic)		NSString*		title;
 
 // Relationships
@@ -63,7 +64,6 @@
 
 // Data
 @property (strong, nonatomic)	JFBlockWithObject	actionBlock;
-@property (copy, nonatomic)		NSString*			detailText;
 @property (copy, nonatomic)		NSURL*				imageURL;
 
 // Relationships

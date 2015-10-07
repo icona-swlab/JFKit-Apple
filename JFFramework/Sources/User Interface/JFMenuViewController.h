@@ -26,6 +26,9 @@
 
 #pragma mark Properties
 
+// Attributes
+@property (assign, nonatomic)	CGFloat	indentationWidth;
+
 // Data
 @property (copy, nonatomic)	NSArray<JFMenuSection*>*	items;
 

@@ -59,6 +59,7 @@
 
 // Data
 @synthesize additionalInfo	= _additionalInfo;
+@synthesize detailText		= _detailText;
 @synthesize title			= _title;
 
 // Relationships
@@ -184,6 +185,7 @@
 	
 	// Data
 	retObj->_additionalInfo	= _additionalInfo;
+	retObj->_detailText		= _detailText;
 	retObj->_title			= _title;
 	
 	return retObj;
@@ -203,7 +205,6 @@
 
 // Data
 @synthesize actionBlock		= _actionBlock;
-@synthesize detailText		= _detailText;
 @synthesize imageURL		= _imageURL;
 
 // Relationships
@@ -269,7 +270,6 @@
 	{
 		// Data
 		retObj->_actionBlock	= _actionBlock;
-		retObj->_detailText		= _detailText;
 		retObj->_imageURL		= _imageURL;
 	}
 	return retObj;
