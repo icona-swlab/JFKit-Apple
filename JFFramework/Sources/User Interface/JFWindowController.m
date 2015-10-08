@@ -386,9 +386,7 @@
 }
 
 - (void)didDismissSplashViewController:(BOOL)animated
-{
-	[self endObservingViewController:self.splashViewController];
-}
+{}
 
 - (void)didPresentSplashViewController:(BOOL)animated
 {}

@@ -913,14 +913,15 @@
 	// Gestures
 	_panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)];
 	
-	self.rootPanelContainer.clipsToBounds = YES;
-	
 	self.leftPanelContainer.backgroundColor = [UIColor lightGrayColor];
 	self.rightPanelContainer.backgroundColor = [UIColor darkGrayColor];
 	self.rootPanelContainer.backgroundColor = [UIColor blackColor];
 	
 	self.leftPanelContainer.hidden = YES;
 	self.rightPanelContainer.hidden = YES;
+	
+	self.rootPanelContainer.clipsToBounds = NO;
+	self.rootPanelContainer.layer.shadowOpacity = 1.0f;
 	
 	if(self.leftViewController)
 	{
