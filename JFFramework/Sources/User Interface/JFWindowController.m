@@ -123,61 +123,61 @@
 - (void)notifiedViewControllerDidMoveToParent:(NSNotification*)notification
 {
 	UIViewController* parent = [notification.userInfo objectForKey:JFViewControllerParentViewControllerUserInfoKey];
-	[self viewController:notification.object didMoveToParent:parent];
+	[self observedViewController:notification.object didMoveToParent:parent];
 }
 
 - (void)notifiedViewControllerHasBeenDismissed:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object hasBeenDismissedAnimated:animated];
+	[self observedViewController:notification.object hasBeenDismissedAnimated:animated];
 }
 
 - (void)notifiedViewControllerHasBeenPopped:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object hasBeenPoppedAnimated:animated];
+	[self observedViewController:notification.object hasBeenPoppedAnimated:animated];
 }
 
 - (void)notifiedViewControllerHasBeenPresented:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object hasBeenPresentedAnimated:animated];
+	[self observedViewController:notification.object hasBeenPresentedAnimated:animated];
 }
 
 - (void)notifiedViewControllerHasBeenPushed:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object hasBeenPushedAnimated:animated];
+	[self observedViewController:notification.object hasBeenPushedAnimated:animated];
 }
 
 - (void)notifiedViewControllerWillBeDismissed:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object willBeDismissedAnimated:animated];
+	[self observedViewController:notification.object willBeDismissedAnimated:animated];
 }
 
 - (void)notifiedViewControllerWillBePopped:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object willBePoppedAnimated:animated];
+	[self observedViewController:notification.object willBePoppedAnimated:animated];
 }
 
 - (void)notifiedViewControllerWillBePresented:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object willBePresentedAnimated:animated];
+	[self observedViewController:notification.object willBePresentedAnimated:animated];
 }
 
 - (void)notifiedViewControllerWillBePushed:(NSNotification*)notification
 {
 	BOOL animated = [[notification.userInfo objectForKey:JFViewControllerIsAnimatedUserInfoKey] boolValue];
-	[self viewController:notification.object willBePushedAnimated:animated];
+	[self observedViewController:notification.object willBePushedAnimated:animated];
 }
 
 - (void)notifiedViewControllerWillMoveToParent:(NSNotification*)notification
 {
 	UIViewController* parent = [notification.userInfo objectForKey:JFViewControllerParentViewControllerUserInfoKey];
-	[self viewController:notification.object willMoveToParent:parent];
+	[self observedViewController:notification.object willMoveToParent:parent];
 }
 
 - (void)notifiedWindowDidBecomeHidden:(NSNotification*)notification
@@ -273,9 +273,108 @@
 	[self didEndObservingViewController:viewController];
 }
 
+- (void)observedViewController:(UIViewController*)viewController didMoveToParent:(UIViewController*)parent
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' did move to parent '%@'.", JFStringFromObject(viewController), JFStringFromObject(parent)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+	
+	if(!parent && [self shouldEndObservingViewController:viewController])
+		[self endObservingViewController:viewController];
+}
+
+- (void)observedViewController:(UIViewController*)viewController hasBeenDismissedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been dismissed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+	
+	if([self shouldEndObservingViewController:viewController])
+		[self endObservingViewController:viewController];
+}
+
+- (void)observedViewController:(UIViewController*)viewController hasBeenPoppedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been popped.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+	
+	if([self shouldEndObservingViewController:viewController])
+		[self endObservingViewController:viewController];
+}
+
+- (void)observedViewController:(UIViewController*)viewController hasBeenPresentedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been presented.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)observedViewController:(UIViewController*)viewController hasBeenPushedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been pushed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)observedViewController:(UIViewController*)viewController willBeDismissedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be dismissed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)observedViewController:(UIViewController*)viewController willBePoppedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be popped.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)observedViewController:(UIViewController*)viewController willBePresentedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be presented.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)observedViewController:(UIViewController*)viewController willBePushedAnimated:(BOOL)animated
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be pushed.", JFStringFromObject(viewController)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
+- (void)observedViewController:(UIViewController*)viewController willMoveToParent:(UIViewController*)parent
+{
+	if([self shouldDebugLog])
+	{
+		NSString* message = [NSString stringWithFormat:@"View controller '%@' will move to parent '%@'.", JFStringFromObject(viewController), JFStringFromObject(parent)];
+		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
+	}
+}
+
 - (BOOL)shouldEndObservingViewController:(UIViewController*)viewController
 {
-	return NO;
+	return YES;
 }
 
 
@@ -403,108 +502,6 @@
 	if([self shouldDebugLog])
 	{
 		NSString* message = [NSString stringWithFormat:@"Window '%@' did resign key.", JFStringFromObject(self.window)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-}
-
-
-#pragma mark Protocol implementation (JFViewControllerNavigationDelegate)
-
-- (void)viewController:(UIViewController*)viewController didMoveToParent:(UIViewController*)parent
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' did move to parent '%@'.", JFStringFromObject(viewController), JFStringFromObject(parent)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-	
-	if(!parent && [self shouldEndObservingViewController:viewController])
-		[self endObservingViewController:viewController];
-}
-
-- (void)viewController:(UIViewController*)viewController hasBeenDismissedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been dismissed.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-	
-	if([self shouldEndObservingViewController:viewController])
-		[self endObservingViewController:viewController];
-}
-
-- (void)viewController:(UIViewController*)viewController hasBeenPoppedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been popped.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-	
-	if([self shouldEndObservingViewController:viewController])
-		[self endObservingViewController:viewController];
-}
-
-- (void)viewController:(UIViewController*)viewController hasBeenPresentedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been presented.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-}
-
-- (void)viewController:(UIViewController*)viewController hasBeenPushedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' has been pushed.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-}
-
-- (void)viewController:(UIViewController*)viewController willBeDismissedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be dismissed.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-}
-
-- (void)viewController:(UIViewController*)viewController willBePoppedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be popped.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-}
-
-- (void)viewController:(UIViewController*)viewController willBePresentedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be presented.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-}
-
-- (void)viewController:(UIViewController*)viewController willBePushedAnimated:(BOOL)animated
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' will be pushed.", JFStringFromObject(viewController)];
-		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
-	}
-}
-
-- (void)viewController:(UIViewController*)viewController willMoveToParent:(UIViewController*)parent
-{
-	if([self shouldDebugLog])
-	{
-		NSString* message = [NSString stringWithFormat:@"View controller '%@' will move to parent '%@'.", JFStringFromObject(viewController), JFStringFromObject(parent)];
 		[self.logger logMessage:message level:JFLogLevel6Info hashtags:JFLogHashtagDeveloper];
 	}
 }

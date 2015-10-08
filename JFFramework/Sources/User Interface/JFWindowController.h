@@ -28,7 +28,7 @@
 
 
 
-@interface JFWindowController : NSObject <JFViewControllerNavigationDelegate>
+@interface JFWindowController : NSObject
 
 #pragma mark Properties
 
@@ -55,6 +55,16 @@
 - (void)	didBeginObservingViewController:(UIViewController*)viewController;
 - (void)	didEndObservingViewController:(UIViewController*)viewController;
 - (void)	endObservingViewController:(UIViewController*)viewController;
+- (void)	observedViewController:(UIViewController*)viewController didMoveToParent:(UIViewController*)parent;
+- (void)	observedViewController:(UIViewController*)viewController hasBeenDismissedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController hasBeenPoppedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController hasBeenPresentedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController hasBeenPushedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController willBeDismissedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController willBePoppedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController willBePresentedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController willBePushedAnimated:(BOOL)animated;
+- (void)	observedViewController:(UIViewController*)viewController willMoveToParent:(UIViewController*)parent;
 - (BOOL)	shouldEndObservingViewController:(UIViewController*)viewController;
 
 // User interface management (Splash screen)
@@ -73,17 +83,5 @@
 - (void)	windowDidBecomeKey;
 - (void)	windowDidBecomeVisible;
 - (void)	windowDidResignKey;
-
-// Protocol implementation (JFViewControllerNavigationDelegate)
-- (void)	viewController:(UIViewController*)viewController didMoveToParent:(UIViewController*)parent;
-- (void)	viewController:(UIViewController*)viewController hasBeenDismissedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController hasBeenPoppedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController hasBeenPresentedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController hasBeenPushedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController willBeDismissedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController willBePoppedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController willBePresentedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController willBePushedAnimated:(BOOL)animated;
-- (void)	viewController:(UIViewController*)viewController willMoveToParent:(UIViewController*)parent;
 
 @end
