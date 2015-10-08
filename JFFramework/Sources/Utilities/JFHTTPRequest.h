@@ -72,7 +72,7 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 
 // Attributes
 @property (assign, nonatomic)			NSStringEncoding	encoding;
-@property (assign, nonatomic)			JFHTTPMethod		httpMethod;
+@property (assign, nonatomic)			JFHTTPMethod		method;
 @property (assign, nonatomic, readonly)	JFHTTPRequestState	state;
 
 // Data
@@ -84,14 +84,14 @@ typedef NS_ENUM(UInt8, JFHTTPRequestState)
 @property (strong, nonatomic, readonly)	NSDictionary*		responseHeaderFields;
 @property (strong, nonatomic)			NSURL*				url;
 
+// Flags
+@property (assign, nonatomic)	BOOL	shouldToggleNetworkActivityIndicator;
+
 // Relationships
-@property (weak, nonatomic, readonly)	id<JFHTTPRequestDelegate>	delegate;
+@property (weak, nonatomic)	id<JFHTTPRequestDelegate>	delegate;
 
 
 #pragma mark Methods
-
-// Memory management
-- (instancetype)	initWithDelegate:(id<JFHTTPRequestDelegate>)delegate;
 
 // Attributes management
 - (void)	setHTTPBody:(NSData*)body;

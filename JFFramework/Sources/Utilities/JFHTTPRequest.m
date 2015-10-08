@@ -54,6 +54,10 @@
 // HTTP request management
 - (void)	clean;
 
+// User interface management
+- (void)	hideNetworkActivityIndicator;
+- (void)	showNetworkActivityIndicator;
+
 @end
 
 
@@ -68,7 +72,8 @@
 
 // Attributes
 @synthesize encoding	= _encoding;
-@synthesize httpMethod	= _httpMethod;
+@synthesize method		= _method;
+@synthesize state		= _state;
 
 // Data
 @synthesize additionalInfo			= _additionalInfo;
@@ -83,7 +88,7 @@
 @synthesize url						= _url;
 
 // Flags
-@synthesize state	= _state;
+@synthesize shouldToggleNetworkActivityIndicator	= _shouldToggleNetworkActivityIndicator;
 
 // HTTP request
 @synthesize connection		= _connection;
@@ -104,12 +109,12 @@
 	_encoding = encoding;
 }
 
-- (void)setHttpMethod:(JFHTTPMethod)httpMethod
+- (void)setMethod:(JFHTTPMethod)method
 {
 	if(self.state != JFHTTPRequestStateReady)
 		return;
 	
-	_httpMethod = httpMethod;
+	_method = method;
 }
 
 
@@ -140,11 +145,33 @@
 }
 
 
+#pragma mark Properties accessors (Flags)
+
+- (void)setShouldToggleNetworkActivityIndicator:(BOOL)shouldToggleNetworkActivityIndicator
+{
+	if(self.state != JFHTTPRequestStateReady)
+		return;
+	
+	_shouldToggleNetworkActivityIndicator = shouldToggleNetworkActivityIndicator;
+}
+
+
+#pragma mark Properties accessors (Relationships)
+
+- (void)setDelegate:(id<JFHTTPRequestDelegate>)delegate
+{
+	if(self.state != JFHTTPRequestStateReady)
+		return;
+	
+	_delegate = delegate;
+}
+
+
 #pragma mark Memory management
 
-- (instancetype)initWithDelegate:(NSObject<JFHTTPRequestDelegate>*)delegate
+- (instancetype)init
 {
-	self = (delegate ? [super init] : nil);
+	self = [super init];
 	if(self)
 	{
 		// Attributes
@@ -155,12 +182,12 @@
 		_fields = [NSMutableDictionary dictionary];
 		_headerFields = [NSMutableDictionary dictionary];
 		
+		// Flags
+		_shouldToggleNetworkActivityIndicator = YES;
+		
 		// HTTP request
 		_receivedData = [NSMutableData data];
 		_request = [NSMutableURLRequest new];
-		
-		// Relationships
-		_delegate = delegate;
 	}
 	return self;
 }
@@ -187,7 +214,7 @@
 - (NSString*)getHTTPMethodString
 {
 	NSString* retVal = nil;
-	switch(self.httpMethod)
+	switch(self.method)
 	{
 		case JFHTTPMethodGet:	retVal = @"GET";	break;
 		case JFHTTPMethodPost:	retVal = @"POST";	break;
@@ -202,7 +229,7 @@
 - (NSURL*)getURL
 {
 	NSURL* retVal = self.url;
-	if((self.httpMethod == JFHTTPMethodGet) && ([self.fields count] > 0))
+	if((self.method == JFHTTPMethodGet) && ([self.fields count] > 0))
 	{
 		NSMutableString* urlString = [[retVal absoluteString] mutableCopy];
 		[urlString appendFormat:@"?%@", [self getEncodedFields]];
@@ -256,7 +283,7 @@
 	{
 		[self.connection cancel];
 		[self clean];
-		JFHideNetworkActivityIndicator;
+		[self hideNetworkActivityIndicator];
 	}
 	
 	self.responseCode = 0;
@@ -283,7 +310,7 @@
 		
 		NSData* body = self.body;
 		
-		if(!body && ((self.httpMethod == JFHTTPMethodPost) || (self.httpMethod == JFHTTPMethodPut)) && ([self.fields count] > 0))
+		if(!body && ((self.method == JFHTTPMethodPost) || (self.method == JFHTTPMethodPut)) && ([self.fields count] > 0))
 		{
 			NSString* fields = [self getEncodedFields];
 			body = [fields dataUsingEncoding:self.encoding];
@@ -295,10 +322,29 @@
 			[self setValue:JFStringFromNSUInteger([body length]) forHTTPHeaderField:@"Content-length"];
 		}
 		
-		JFShowNetworkActivityIndicator;
+		[self showNetworkActivityIndicator];
 		self.state = JFHTTPRequestStateStarted;
 		self.connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:YES];
 	}
+}
+
+
+#pragma mark User interface management
+
+- (void)hideNetworkActivityIndicator
+{
+	if(![self shouldToggleNetworkActivityIndicator])
+		return;
+	
+	JFHideNetworkActivityIndicator;
+}
+
+- (void)showNetworkActivityIndicator
+{
+	if(![self shouldToggleNetworkActivityIndicator])
+		return;
+	
+	JFShowNetworkActivityIndicator;
 }
 
 
@@ -307,7 +353,7 @@
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
 	[self clean];
-	JFHideNetworkActivityIndicator;
+	[self hideNetworkActivityIndicator];
 	self.state = JFHTTPRequestStateFailed;
 	self.responseError = error;
 	[self.delegate httpRequest:self failedRequestWithError:error];
@@ -342,7 +388,7 @@
 {
 	NSData* data = [self.receivedData copy];
 	[self clean];
-	JFHideNetworkActivityIndicator;
+	[self hideNetworkActivityIndicator];
 	self.state = JFHTTPRequestStateCompleted;
 	self.responseData = data;
 	[self.delegate httpRequest:self completedRequestWithData:data];
