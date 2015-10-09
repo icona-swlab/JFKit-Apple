@@ -213,7 +213,7 @@
 
 - (void)beginObservingViewController:(UIViewController*)viewController
 {
-	if([self.privateObservedViewControllers containsObject:viewController])
+	if(!viewController || [self.privateObservedViewControllers containsObject:viewController])
 		return;
 	
 	[self.privateObservedViewControllers addObject:viewController];
@@ -253,7 +253,7 @@
 
 - (void)endObservingViewController:(UIViewController*)viewController
 {
-	if(![self.privateObservedViewControllers containsObject:viewController])
+	if(!viewController || ![self.privateObservedViewControllers containsObject:viewController])
 		return;
 	
 	NSNotificationCenter* center = MainNotificationCenter;
