@@ -21,6 +21,7 @@
 #import <Availability.h>
 
 #import "JFString.h"
+#import "JFTypes.h"
 
 
 
@@ -60,57 +61,6 @@
 
 #define JFResourceURL(_filename)				JFBundleResourceURLForFile(ClassBundle, _filename)
 #define JFResourceURLWithType(_filename, _type)	JFBundleResourceURLForFileWithType(ClassBundle, _filename, _type)
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma mark - Typedefs
-
-typedef NS_ENUM(UInt8, JFRelation) {
-	JFRelationLessThan,
-	JFRelationLessThanOrEqual,
-	JFRelationEqual,
-	JFRelationGreaterThanOrEqual,
-	JFRelationGreaterThan,
-};
-
-
-#pragma mark Typedefs (Blocks)
-
-typedef void	(^JFBlock)					(void);
-typedef void	(^JFBlockWithArray)			(NSArray* array);
-typedef void	(^JFBlockWithBOOL)			(BOOL value);
-typedef void	(^JFBlockWithDictionary)	(NSDictionary* dictionary);
-typedef void	(^JFBlockWithError)			(NSError* error);
-typedef void	(^JFBlockWithInteger)		(NSInteger value);
-typedef void	(^JFBlockWithNotification)	(NSNotification* notification);
-typedef void	(^JFBlockWithObject)		(id object);
-typedef void	(^JFBlockWithSet)			(NSSet* set);
-typedef void	(^JFCompletionBlock)		(BOOL succeeded, id object, NSError* error);
-typedef void	(^JFSimpleCompletionBlock)	(BOOL succeeded, NSError* error);
-
-
-#pragma mark Typedefs (Math)
-
-typedef double	JFDegrees;
-typedef double	JFRadians;
-
-
-#pragma mark Typedefs (Metrics)
-
-typedef NS_ENUM(UInt64, JFMetrics) {
-	
-	// Binary
-	JFKibi	= 1024ULL,
-	JFMebi	= JFKibi * JFKibi,
-	JFGibi	= JFMebi * JFKibi,
-	JFTebi	= JFGibi * JFKibi,
-	
-	// Decimal
-	JFKilo	= 1000ULL,
-	JFMega	= JFKilo * JFKilo,
-	JFGiga	= JFMega * JFKilo,
-	JFTera	= JFGiga * JFKilo,
-};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

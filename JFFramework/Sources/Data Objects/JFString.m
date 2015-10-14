@@ -210,4 +210,25 @@ NSString* JFStringFromUnsignedLongLong(unsigned long long value)
 	return [NSString stringWithFormat:@"%llu", value];
 }
 
+
+#pragma mark Functions (Debug)
+
+NSString* JFDebugStringFromConnectionState(JFConnectionState value)
+{
+	NSString* retObj = nil;
+	switch(value)
+	{
+		case JFConnectionStateConnected:		retObj = @"Connected";		break;
+		case JFConnectionStateConnecting:		retObj = @"Connecting";		break;
+		case JFConnectionStateDisconnected:		retObj = @"Disconnected";	break;
+		case JFConnectionStateDisconnecting:	retObj = @"Disconnecting";	break;
+		case JFConnectionStateLost:				retObj = @"Lost";			break;
+		case JFConnectionStateReady:			retObj = @"Ready";			break;
+		case JFConnectionStateReconnecting:		retObj = @"Reconnecting";	break;
+		case JFConnectionStateUnknown:			retObj = @"Unknown";		break;
+		default:								retObj = @"Not Valid";		break;
+	}
+	return retObj;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////

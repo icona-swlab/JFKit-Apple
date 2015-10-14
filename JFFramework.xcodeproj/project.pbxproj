@@ -103,6 +103,8 @@
 		6C5B0A131B9EFBDB0055ACEC /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105B51B821B4100E93D04 /* Tests.m */; };
 		6C5B0A141B9EFC000055ACEC /* JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1105541B820E3500E93D04 /* JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C5B0A151B9EFC000055ACEC /* JFFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EA1105541B820E3500E93D04 /* JFFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CC1F5D51BCE4A05001550B7 /* JFTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC1F5D41BCE4A05001550B7 /* JFTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CC1F5D61BCE4A05001550B7 /* JFTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC1F5D41BCE4A05001550B7 /* JFTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CDA42F61BC67E4B006D4161 /* JFNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CDA42F41BC67E4B006D4161 /* JFNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CDA42F71BC67E4B006D4161 /* JFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDA42F51BC67E4B006D4161 /* JFNetworkManager.m */; settings = {ASSET_TAGS = (); }; };
 		6CDA42F81BC67E9B006D4161 /* JFNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CDA42F41BC67E4B006D4161 /* JFNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -198,6 +200,7 @@
 		6CBE69F21B9465E600B49918 /* JFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTextView.m; sourceTree = "<group>"; };
 		6CBE69F71B947CBC00B49918 /* JFTransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTransparentToolbar.h; sourceTree = "<group>"; };
 		6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTransparentToolbar.m; sourceTree = "<group>"; };
+		6CC1F5D41BCE4A05001550B7 /* JFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTypes.h; sourceTree = "<group>"; };
 		6CDA42F41BC67E4B006D4161 /* JFNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNetworkManager.h; sourceTree = "<group>"; };
 		6CDA42F51BC67E4B006D4161 /* JFNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNetworkManager.m; sourceTree = "<group>"; };
 		6CDD87E71BC2B42F00B7BCBA /* Old JFFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Old JFFramework.xcodeproj"; path = "OLD/Old JFFramework.xcodeproj"; sourceTree = "<group>"; };
@@ -428,6 +431,7 @@
 				EA87459B1B8341D70064590D /* JFHTTPRequest.h */,
 				EA87459C1B8341D70064590D /* JFHTTPRequest.m */,
 				6C9E64421B95B078000E0682 /* JFShortcuts.h */,
+				6CC1F5D41BCE4A05001550B7 /* JFTypes.h */,
 				6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */,
 				6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */,
 				EA11054D1B820E3500E93D04 /* JFUtilities.h */,
@@ -696,6 +700,7 @@
 				6C5B09DC1B9EFB410055ACEC /* JFAlertsController.h in Headers */,
 				6C5B0A071B9EFBC20055ACEC /* JFHTTPRequest.h in Headers */,
 				6CF02A781BA869E2009503FB /* JFWeakHandle.h in Headers */,
+				6CC1F5D61BCE4A05001550B7 /* JFTypes.h in Headers */,
 				6C5B09C21B9EFAE70055ACEC /* JFManager.h in Headers */,
 				6C38E6851BA18A84005C63CA /* JFErrorsManager.h in Headers */,
 				6C5B09BF1B9EFAE00055ACEC /* JFAppDelegate.h in Headers */,
@@ -753,6 +758,7 @@
 				6C5B0A021B9EFBC10055ACEC /* JFShortcuts.h in Headers */,
 				6C38E6841BA18A83005C63CA /* JFErrorsManager.h in Headers */,
 				6C5B09D61B9EFB300055ACEC /* UIButton+JFFramework.h in Headers */,
+				6CC1F5D51BCE4A05001550B7 /* JFTypes.h in Headers */,
 				6C5B09D81B9EFB360055ACEC /* JFActivityIndicatorView.h in Headers */,
 				6C5B09E01B9EFB420055ACEC /* JFAlertsController.h in Headers */,
 				6C5B0A141B9EFC000055ACEC /* JFFramework.h in Headers */,

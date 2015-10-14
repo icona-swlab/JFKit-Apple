@@ -18,6 +18,11 @@
 
 
 
+#import "JFTypes.h"
+#import "JFUtilities.h"
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - Macros
@@ -77,5 +82,10 @@ FOUNDATION_EXPORT NSString*	JFStringFromUInt64(UInt64 value);
 FOUNDATION_EXPORT NSString*	JFStringFromUnsignedInt(unsigned int value);
 FOUNDATION_EXPORT NSString*	JFStringFromUnsignedLong(unsigned long value);
 FOUNDATION_EXPORT NSString*	JFStringFromUnsignedLongLong(unsigned long long value);
+
+
+#pragma mark Functions (Debug)
+
+FOUNDATION_EXPORT NSString*	JFDebugStringFromConnectionState(JFConnectionState value);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

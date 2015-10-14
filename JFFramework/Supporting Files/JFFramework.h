@@ -68,6 +68,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 // Utilities
 #import	"JFHTTPRequest.h"
 #import "JFLogger.h"
+#import "JFTypes.h"
 #import "JFUtilities.h"
 #import "JFWeakHandle.h"
 #import "JFXMLParser.h"
