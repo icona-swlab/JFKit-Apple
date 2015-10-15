@@ -111,6 +111,7 @@
 #pragma mark Methods
 
 // Memory management
++ (instancetype)	buttonWithTitle:(NSString*)title;
 + (instancetype)	buttonWithTitle:(NSString*)title action:(JFBlock)action;
 - (instancetype)	initWithTitle:(NSString*)title action:(JFBlock)action;
 

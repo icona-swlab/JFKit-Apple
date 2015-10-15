@@ -655,9 +655,14 @@
 
 #pragma mark Memory management
 
++ (instancetype)buttonWithTitle:(NSString*)title
+{
+	return [self buttonWithTitle:title action:nil];
+}
+
 + (instancetype)buttonWithTitle:(NSString*)title action:(JFBlock)action
 {
-	return [(JFAlertButton*)[self alloc] initWithTitle:title action:action];
+	return [[self alloc] initWithTitle:title action:action];
 }
 
 - (instancetype)initWithTitle:(NSString*)title action:(JFBlock)action
