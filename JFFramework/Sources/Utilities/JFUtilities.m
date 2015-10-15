@@ -293,6 +293,33 @@ void JFPerformSelector2(NSObject* target, SEL action, id obj1, id obj2)
 }
 
 
+#pragma mark Functions (Validation)
+
+BOOL JFValidateConnectionState(JFConnectionState state)
+{
+	BOOL retVal = YES;
+	switch(state)
+	{
+		case JFConnectionStateConnected:
+		case JFConnectionStateConnecting:
+		case JFConnectionStateDisconnected:
+		case JFConnectionStateDisconnecting:
+		case JFConnectionStateLost:
+		case JFConnectionStateReady:
+		case JFConnectionStateReconnecting:
+		case JFConnectionStateUnknown:
+			break;
+			
+		default:
+		{
+			retVal = NO;
+			break;
+		}
+	}
+	return retVal;
+}
+
+
 #pragma mark Functions (Version)
 
 #if TARGET_OS_IPHONE

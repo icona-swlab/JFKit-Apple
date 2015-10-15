@@ -225,6 +225,7 @@ NSString* JFDebugStringFromConnectionState(JFConnectionState value)
 		case JFConnectionStateLost:				retObj = @"Lost";			break;
 		case JFConnectionStateReady:			retObj = @"Ready";			break;
 		case JFConnectionStateReconnecting:		retObj = @"Reconnecting";	break;
+		case JFConnectionStateResetting:		retObj = @"Resetting";		break;
 		case JFConnectionStateUnknown:			retObj = @"Unknown";		break;
 		default:								retObj = @"Not Valid";		break;
 	}

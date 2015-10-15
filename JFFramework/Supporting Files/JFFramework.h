@@ -52,6 +52,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "JFAppDelegate.h"
 
 // Core
+#import "JFConnectionMachine.h"
 #import "JFErrorsManager.h"
 #import "JFManager.h"
 #import "JFNetworkManager.h"

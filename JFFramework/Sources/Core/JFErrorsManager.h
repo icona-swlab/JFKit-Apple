@@ -44,6 +44,7 @@
 - (NSDictionary*)	userInfoForErrorCode:(NSInteger)errorCode underlyingError:(NSError*)error;
 
 // Errors management
+- (NSError*)	debugPlaceholderError;
 - (NSError*)	errorWithCode:(NSInteger)errorCode;
 - (NSError*)	errorWithCode:(NSInteger)errorCode userInfo:(NSDictionary*)userInfo;
 

@@ -107,6 +107,11 @@ FOUNDATION_EXPORT void	JFPerformSelector1(NSObject* target, SEL action, id objec
 FOUNDATION_EXPORT void	JFPerformSelector2(NSObject* target, SEL action, id obj1, id obj2);
 
 
+#pragma mark Functions (Validation)
+
+FOUNDATION_EXPORT BOOL	JFValidateConnectionState(JFConnectionState state);
+
+
 #pragma mark Functions (Version)
 
 #if TARGET_OS_IPHONE

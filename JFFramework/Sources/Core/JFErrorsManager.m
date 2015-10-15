@@ -112,6 +112,11 @@
 
 #pragma mark Errors management
 
+- (NSError*)debugPlaceholderError
+{
+	return [self errorWithCode:NSIntegerMax];
+}
+
 - (NSError*)errorWithCode:(NSInteger)errorCode
 {
 	NSDictionary* userInfo = [self userInfoForErrorCode:errorCode];

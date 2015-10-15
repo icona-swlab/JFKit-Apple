@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C23B7FA1BCFAF95008889D4 /* JFConnectionMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C23B7F81BCFAF95008889D4 /* JFConnectionMachine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C23B7FB1BCFAF95008889D4 /* JFConnectionMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C23B7F81BCFAF95008889D4 /* JFConnectionMachine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C23B7FC1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */; settings = {ASSET_TAGS = (); }; };
+		6C23B7FD1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */; settings = {ASSET_TAGS = (); }; };
 		6C31C7851B9EEDF400FAF487 /* JFFramework-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C77A1B9EEDF300FAF487 /* JFFramework-iOS.a */; };
 		6C31C7A11B9EF3CF00FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
 		6C31C7B21B9EF62200FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
@@ -184,6 +188,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C23B7F81BCFAF95008889D4 /* JFConnectionMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFConnectionMachine.h; sourceTree = "<group>"; };
+		6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFConnectionMachine.m; sourceTree = "<group>"; };
 		6C31C77A1B9EEDF300FAF487 /* JFFramework-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "JFFramework-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C31C7841B9EEDF400FAF487 /* JFFramework-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFFramework-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "JFFramework-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -656,6 +662,8 @@
 		EA87458E1B8337F10064590D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6C23B7F81BCFAF95008889D4 /* JFConnectionMachine.h */,
+				6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */,
 				6C38E67E1BA188C0005C63CA /* JFErrorsManager.h */,
 				6C38E67F1BA188C0005C63CA /* JFErrorsManager.m */,
 				6C33B2451BA2D01C00C8554D /* JFLogger.h */,
@@ -707,6 +715,7 @@
 				6C5B09FC1B9EFB7C0055ACEC /* NSObject+JFLogger.h in Headers */,
 				6C5B0A0E1B9EFBC20055ACEC /* JFXMLParser.h in Headers */,
 				6CF02A851BA87BBA009503FB /* JRSwizzle.h in Headers */,
+				6C23B7FB1BCFAF95008889D4 /* JFConnectionMachine.h in Headers */,
 				6C33B2481BA2D01C00C8554D /* JFLogger.h in Headers */,
 				6C5B09DA1B9EFB410055ACEC /* JFAlert.h in Headers */,
 				6C5B09D21B9EFB2C0055ACEC /* JFString.h in Headers */,
@@ -755,6 +764,7 @@
 				6C5B0A051B9EFBC10055ACEC /* JFXMLParser.h in Headers */,
 				6C5B09E21B9EFB450055ACEC /* JFKeyboardEventsHandler.h in Headers */,
 				6C5B09C41B9EFB280055ACEC /* NSIndexPath+JFFramework.h in Headers */,
+				6C23B7FA1BCFAF95008889D4 /* JFConnectionMachine.h in Headers */,
 				6C5B0A021B9EFBC10055ACEC /* JFShortcuts.h in Headers */,
 				6C38E6841BA18A83005C63CA /* JFErrorsManager.h in Headers */,
 				6C5B09D61B9EFB300055ACEC /* UIButton+JFFramework.h in Headers */,
@@ -1044,6 +1054,7 @@
 				6C5B09D71B9EFB300055ACEC /* UIButton+JFFramework.m in Sources */,
 				6CDA42F71BC67E4B006D4161 /* JFNetworkManager.m in Sources */,
 				6C5B09D91B9EFB360055ACEC /* JFActivityIndicatorView.m in Sources */,
+				6C23B7FC1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */,
 				6C5B09F51B9EFB760055ACEC /* JFWindowController.m in Sources */,
 				6C5B09EF1B9EFB680055ACEC /* JFTextView.m in Sources */,
 				6C5B09FF1B9EFBC10055ACEC /* JFHTTPRequest.m in Sources */,
@@ -1084,6 +1095,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C5B09BB1B9EFA5A0055ACEC /* JFAppDelegate.m in Sources */,
+				6C23B7FD1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */,
 				6C5B0A0D1B9EFBC20055ACEC /* JFUtilities.m in Sources */,
 				6C5B09CF1B9EFB2C0055ACEC /* JFByteStream.m in Sources */,
 				6C5B0A081B9EFBC20055ACEC /* JFHTTPRequest.m in Sources */,

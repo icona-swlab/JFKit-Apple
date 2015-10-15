@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, JFConnectionState) {
 	JFConnectionStateDisconnected,
 	JFConnectionStateLost,
 	JFConnectionStateReconnecting,
+	JFConnectionStateResetting,
 };
 
 typedef NS_ENUM(UInt8, JFRelation) {
