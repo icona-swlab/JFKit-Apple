@@ -35,6 +35,12 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 
 #pragma mark Properties
 
+// Connection
+@property (strong, nonatomic)	JFBlockWithBOOL	connectCompletion;
+@property (strong, nonatomic)	JFBlockWithBOOL	disconnectCompletion;
+@property (strong, nonatomic)	JFBlockWithBOOL	reconnectCompletion;
+@property (strong, nonatomic)	JFBlockWithBOOL	resetCompletion;
+
 // Flags
 @property (assign, readwrite)	JFConnectionState	state;
 
@@ -55,6 +61,12 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 @implementation JFConnectionMachine
 
 #pragma mark Properties
+
+// Connection
+@synthesize connectCompletion		= _connectCompletion;
+@synthesize disconnectCompletion	= _disconnectCompletion;
+@synthesize reconnectCompletion		= _reconnectCompletion;
+@synthesize resetCompletion			= _resetCompletion;
 
 // Flags
 @synthesize state	= _state;
@@ -83,17 +95,16 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 			return;
 		
 		oldState = _state;
-		
 		_state = state;
+	}
+	
+	if([self shouldDebugLog])
+	{
+		NSString* oldString = JFDebugStringFromConnectionState(oldState);
+		NSString* newString = JFDebugStringFromConnectionState(_state);
 		
-		if([self shouldDebugLog])
-		{
-			NSString* oldString = JFDebugStringFromConnectionState(oldState);
-			NSString* newString = JFDebugStringFromConnectionState(_state);
-			
-			NSString* logMessage = [NSString stringWithFormat:@"Connection machine '%@' state changed from '%@' to '%@'.", JFStringFromObject(self), oldString, newString];
-			[self.logger logMessage:logMessage level:JFLogLevel7Debug hashtags:(JFLogHashtagDeveloper | JFLogHashtagNetwork)];
-		}
+		NSString* logMessage = [NSString stringWithFormat:@"Connection machine '%@' state changed from '%@' to '%@'.", JFStringFromObject(self), oldString, newString];
+		[self.logger logMessage:logMessage level:JFLogLevel7Debug hashtags:(JFLogHashtagDeveloper | JFLogHashtagNetwork)];
 	}
 	
 	id<JFConnectionMachineDelegate> delegate = self.delegate;
@@ -163,11 +174,13 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	}
 	
 	__weak typeof(self) weakSelf = self;
-	JFBlockWithBOOL completion = ^(BOOL succeeded)
+	self.connectCompletion = ^(BOOL succeeded)
 	{
 		__strong typeof(self) strongSelf = weakSelf;
 		if(!strongSelf)
 			return;
+		
+		strongSelf.connectCompletion = nil;
 		
 		@synchronized(strongSelf)
 		{
@@ -177,7 +190,7 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	};
 	
 	[MainOperationQueue addOperationWithBlock:^{
-		[self.delegate connectionMachine:self performConnect:completion];
+		[self.delegate connectionMachinePerformConnect:self];
 	}];
 	
 	return YES;
@@ -194,11 +207,13 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	}
 	
 	__weak typeof(self) weakSelf = self;
-	JFBlockWithBOOL completion = ^(BOOL succeeded)
+	self.disconnectCompletion = ^(BOOL succeeded)
 	{
 		__strong typeof(self) strongSelf = weakSelf;
 		if(!strongSelf)
 			return;
+		
+		strongSelf.disconnectCompletion = nil;
 		
 		@synchronized(strongSelf)
 		{
@@ -208,7 +223,7 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	};
 	
 	[MainOperationQueue addOperationWithBlock:^{
-		[self.delegate connectionMachine:self performDisconnect:completion];
+		[self.delegate connectionMachinePerformDisconnect:self];
 	}];
 	
 	return YES;
@@ -225,11 +240,13 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	}
 	
 	__weak typeof(self) weakSelf = self;
-	JFBlockWithBOOL completion = ^(BOOL succeeded)
+	self.reconnectCompletion = ^(BOOL succeeded)
 	{
 		__strong typeof(self) strongSelf = weakSelf;
 		if(!strongSelf)
 			return;
+		
+		strongSelf.reconnectCompletion = nil;
 		
 		@synchronized(strongSelf)
 		{
@@ -239,7 +256,7 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	};
 	
 	[MainOperationQueue addOperationWithBlock:^{
-		[self.delegate connectionMachine:self performReconnect:completion];
+		[self.delegate connectionMachinePerformReconnect:self];
 	}];
 	
 	return YES;
@@ -256,11 +273,13 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	}
 	
 	__weak typeof(self) weakSelf = self;
-	JFBlockWithBOOL completion = ^(BOOL succeeded)
+	self.resetCompletion = ^(BOOL succeeded)
 	{
 		__strong typeof(self) strongSelf = weakSelf;
 		if(!strongSelf)
 			return;
+		
+		strongSelf.resetCompletion = nil;
 		
 		@synchronized(strongSelf)
 		{
@@ -270,7 +289,7 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 	};
 	
 	[MainOperationQueue addOperationWithBlock:^{
-		[self.delegate connectionMachine:self performReset:completion];
+		[self.delegate connectionMachinePerformReset:self];
 	}];
 	
 	return YES;
@@ -278,6 +297,12 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 
 
 #pragma mark Connection management (Events)
+
+- (void)onConnectCompleted:(BOOL)succeeded
+{
+	if(self.connectCompletion)
+		self.connectCompletion(succeeded);
+}
 
 - (void)onConnectionLost
 {
@@ -288,6 +313,24 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 		
 		self.state = JFConnectionStateLost;
 	}
+}
+
+- (void)onDisconnectCompleted:(BOOL)succeeded
+{
+	if(self.disconnectCompletion)
+		self.disconnectCompletion(succeeded);
+}
+
+- (void)onReconnectCompleted:(BOOL)succeeded
+{
+	if(self.reconnectCompletion)
+		self.reconnectCompletion(succeeded);
+}
+
+- (void)onResetCompleted:(BOOL)succeeded
+{
+	if(self.resetCompletion)
+		self.resetCompletion(succeeded);
 }
 
 @end

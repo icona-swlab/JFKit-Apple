@@ -20,10 +20,10 @@
 
 @required
 
-- (void)	connectionMachine:(JFConnectionMachine*)machine performConnect:(JFBlockWithBOOL)completion;
-- (void)	connectionMachine:(JFConnectionMachine*)machine performDisconnect:(JFBlockWithBOOL)completion;
-- (void)	connectionMachine:(JFConnectionMachine*)machine performReconnect:(JFBlockWithBOOL)completion;
-- (void)	connectionMachine:(JFConnectionMachine*)machine performReset:(JFBlockWithBOOL)completion;
+- (void)	connectionMachinePerformConnect:(JFConnectionMachine*)machine;
+- (void)	connectionMachinePerformDisconnect:(JFConnectionMachine*)machine;
+- (void)	connectionMachinePerformReconnect:(JFConnectionMachine*)machine;
+- (void)	connectionMachinePerformReset:(JFConnectionMachine*)machine;
 
 @optional
 
@@ -60,6 +60,10 @@
 - (BOOL)	reset;
 
 // Connection management (Events)
+- (void)	onConnectCompleted:(BOOL)succeeded;
 - (void)	onConnectionLost;
+- (void)	onDisconnectCompleted:(BOOL)succeeded;
+- (void)	onReconnectCompleted:(BOOL)succeeded;
+- (void)	onResetCompleted:(BOOL)succeeded;
 
 @end
