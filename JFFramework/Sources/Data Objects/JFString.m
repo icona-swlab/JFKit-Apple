@@ -84,9 +84,18 @@ NSString* JFStringFromBoolean(Boolean value)
 	return (value ? JFTrueString : JFFalseString);
 }
 
+NSString* JFStringFromCGFloat(CGFloat value)
+{
+#if __LP64__
+	return JFStringFromDouble(value);
+#else
+	return JFStringFromFloat(value);
+#endif
+}
+
 NSString* JFStringFromDouble(double value)
 {
-	return [NSString stringWithFormat:@"%f", value];
+	return [NSString stringWithFormat:@"%lf", value];
 }
 
 NSString* JFStringFromFloat(float value)
@@ -122,18 +131,18 @@ NSString* JFStringFromLongLong(long long value)
 NSString* JFStringFromNSInteger(NSInteger value)
 {
 #if __LP64__
-	return [NSString stringWithFormat:@"%ld", (long)value];
+	return JFStringFromLong(value);
 #else
-	return [NSString stringWithFormat:@"%d", (int)value];
+	return JFStringFromInt(value);
 #endif
 }
 
 NSString* JFStringFromNSUInteger(NSUInteger value)
 {
 #if __LP64__
-	return [NSString stringWithFormat:@"%lu", (unsigned long)value];
+	return JFStringFromUnsignedLong(value);
 #else
-	return [NSString stringWithFormat:@"%u", (unsigned int)value];
+	return JFStringFromUnsignedInt(value);
 #endif
 }
 

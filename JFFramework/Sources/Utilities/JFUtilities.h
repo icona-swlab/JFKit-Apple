@@ -41,7 +41,7 @@
 
 #pragma mark Macros (Compatibility)
 
-#if !TARGET_OS_IPHONE && (MAC_OS_X_VERSION_MIN_REQUIRED < 1070) // __MAC_10_7
+#if !__has_feature(objc_arc_weak)
 #define weak	unsafe_unretained
 #endif
 

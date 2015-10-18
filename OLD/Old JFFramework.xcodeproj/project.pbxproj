@@ -33,6 +33,8 @@
 		EA34B1CA1ACDB82600CF0B17 /* JFImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImageManager.m; sourceTree = "<group>"; };
 		EA34B1D11ACDECA800CF0B17 /* JFImageObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageObserver.h; sourceTree = "<group>"; };
 		EA34B1D21ACDECA800CF0B17 /* JFImageObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFImageObserver.m; sourceTree = "<group>"; };
+		EA7D3C351BD463D00023A721 /* IFCRatingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFCRatingView.h; sourceTree = "<group>"; };
+		EA7D3C361BD463D00023A721 /* IFCRatingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFCRatingView.m; sourceTree = "<group>"; };
 		EACA68971A8106D900D79126 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,8 @@
 		EA26EC4F1A8785030050049A /* Work In Progress */ = {
 			isa = PBXGroup;
 			children = (
+				EA7D3C351BD463D00023A721 /* IFCRatingView.h */,
+				EA7D3C361BD463D00023A721 /* IFCRatingView.m */,
 				EA26EC501A8785030050049A /* JFDrawerController.h */,
 				EA26EC511A8785030050049A /* JFDrawerController.m */,
 				EA26EC521A8785030050049A /* JFMenuItem.h */,

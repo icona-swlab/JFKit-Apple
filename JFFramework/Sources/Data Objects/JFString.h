@@ -60,6 +60,7 @@ FOUNDATION_EXPORT NSString*	JFStringMakeRandomWithCharacters(NSUInteger length, 
 
 FOUNDATION_EXPORT NSString*	JFStringFromBool(BOOL value);
 FOUNDATION_EXPORT NSString*	JFStringFromBoolean(Boolean value);
+FOUNDATION_EXPORT NSString*	JFStringFromCGFloat(CGFloat value);
 FOUNDATION_EXPORT NSString*	JFStringFromDouble(double value);
 FOUNDATION_EXPORT NSString*	JFStringFromFloat(float value);
 FOUNDATION_EXPORT NSString*	JFStringFromHex(unsigned int value);

@@ -18,6 +18,10 @@
 
 
 
+#import "JFUtilities.h"
+
+
+
 @interface JFWeakHandle : NSObject
 
 #pragma mark Properties
