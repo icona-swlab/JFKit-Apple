@@ -103,7 +103,9 @@ typedef NS_ENUM(UInt8, JFConnectionMachineCommand)
 		NSString* oldString = JFDebugStringFromConnectionState(oldState);
 		NSString* newString = JFDebugStringFromConnectionState(_state);
 		
-		NSString* logMessage = [NSString stringWithFormat:@"Connection machine '%@' state changed from '%@' to '%@'.", JFStringFromObject(self), oldString, newString];
+		id<JFConnectionMachineDelegate> delegate = self.delegate;
+		NSString* delegateString = (delegate ? [NSString stringWithFormat:@" (delegate: '%@')", JFStringFromObject(delegate)] : JFEmptyString);
+		NSString* logMessage = [NSString stringWithFormat:@"Connection machine '%@'%@ state changed from '%@' to '%@'.", JFStringFromObject(self), delegateString, oldString, newString];
 		[self.logger logMessage:logMessage level:JFLogLevel7Debug hashtags:(JFLogHashtagDeveloper | JFLogHashtagNetwork)];
 	}
 	
