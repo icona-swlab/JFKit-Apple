@@ -73,6 +73,8 @@
 #define iOS7Plus			iOSPlus(@"7")
 #define iOS8				iOS(@"8")
 #define iOS8Plus			iOSPlus(@"8")
+#define iOS9				iOS(@"9")
+#define iOS9Plus			iOSPlus(@"9")
 #else
 #define OSX(_version)		JFCheckSystemVersion(_version, JFRelationEqual)
 #define OSXPlus(_version)	JFCheckSystemVersion(_version, JFRelationGreaterThanOrEqual)

@@ -122,6 +122,8 @@
 		6CF02A851BA87BBA009503FB /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A821BA87BBA009503FB /* JRSwizzle.h */; };
 		6CF02A861BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
 		6CF02A871BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
+		6CF7F7DD1BD699A200D31A63 /* JFScreenshotsObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF7F7DB1BD699A200D31A63 /* JFScreenshotsObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CF7F7DE1BD699A200D31A63 /* JFScreenshotsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7F7DC1BD699A200D31A63 /* JFScreenshotsObserver.m */; settings = {ASSET_TAGS = (); }; };
 		EA011E521BC068990090EFCC /* JFMenuViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA011E501BC068990090EFCC /* JFMenuViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA011E531BC068990090EFCC /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA011E511BC068990090EFCC /* JFMenuViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EA1105D51B821BD200E93D04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1105BA1B821B5900E93D04 /* Images.xcassets */; };
@@ -220,6 +222,8 @@
 		6CF02A7C1BA86DAA009503FB /* UIViewController+JFFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JFFramework.m"; sourceTree = "<group>"; };
 		6CF02A821BA87BBA009503FB /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
 		6CF02A831BA87BBA009503FB /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
+		6CF7F7DB1BD699A200D31A63 /* JFScreenshotsObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFScreenshotsObserver.h; sourceTree = "<group>"; };
+		6CF7F7DC1BD699A200D31A63 /* JFScreenshotsObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFScreenshotsObserver.m; sourceTree = "<group>"; };
 		EA011E501BC068990090EFCC /* JFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMenuViewController.h; sourceTree = "<group>"; };
 		EA011E511BC068990090EFCC /* JFMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMenuViewController.m; sourceTree = "<group>"; };
 		EA11051D1B820C5000E93D04 /* JFFramework-App-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JFFramework-App-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -440,6 +444,8 @@
 				EAD3D33D1B82342F00A56864 /* Addons */,
 				EA87459B1B8341D70064590D /* JFHTTPRequest.h */,
 				EA87459C1B8341D70064590D /* JFHTTPRequest.m */,
+				6CF7F7DB1BD699A200D31A63 /* JFScreenshotsObserver.h */,
+				6CF7F7DC1BD699A200D31A63 /* JFScreenshotsObserver.m */,
 				6C9E64421B95B078000E0682 /* JFShortcuts.h */,
 				6CC1F5D41BCE4A05001550B7 /* JFTypes.h */,
 				6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */,
@@ -766,6 +772,7 @@
 				EA32C6191BD2832300506BE6 /* JFRatingView.h in Headers */,
 				6CDA42F61BC67E4B006D4161 /* JFNetworkManager.h in Headers */,
 				6C5B09F81B9EFB7C0055ACEC /* NSObject+JFLogger.h in Headers */,
+				6CF7F7DD1BD699A200D31A63 /* JFScreenshotsObserver.h in Headers */,
 				6C5B09EA1B9EFB540055ACEC /* JFTabBarController.h in Headers */,
 				6C5B09EC1B9EFB580055ACEC /* JFTableViewCell.h in Headers */,
 				6C5B0A051B9EFBC10055ACEC /* JFXMLParser.h in Headers */,
@@ -1068,6 +1075,7 @@
 				6C5B09FF1B9EFBC10055ACEC /* JFHTTPRequest.m in Sources */,
 				6C5B09ED1B9EFB580055ACEC /* JFTableViewCell.m in Sources */,
 				EA011E531BC068990090EFCC /* JFMenuViewController.m in Sources */,
+				6CF7F7DE1BD699A200D31A63 /* JFScreenshotsObserver.m in Sources */,
 				6C5B0A061B9EFBC10055ACEC /* JFXMLParser.m in Sources */,
 				EA26D7C21BC3136B007823BE /* JFMenuObjects.m in Sources */,
 				6C5B09F91B9EFB7C0055ACEC /* NSObject+JFLogger.m in Sources */,

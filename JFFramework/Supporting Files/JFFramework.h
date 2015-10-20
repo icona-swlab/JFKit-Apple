@@ -101,6 +101,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 #import "JFWindowController.h"
 
 // Utilities
+#import "JFScreenshotsObserver.h"
 #import "JFURLProtocol.h"
 
 #else
