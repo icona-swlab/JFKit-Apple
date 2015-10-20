@@ -265,30 +265,25 @@
 
 #pragma mark Memory management
 
-- (void)initializeProperties
-{
-	// Attributes
-	_activityIndicatorStyle = UIActivityIndicatorViewStyleWhiteLarge;
-	_containerCornerRadius = 8.0f;
-	
-	// Constraints
-	_addedConstraints				= [NSMutableArray new];
-	_containerViewAddedConstraints	= [NSMutableArray new];
-	_imageViewAddedConstraints		= [NSMutableArray new];
-	
-	// Flags
-	_shouldShowActionButton		= NO;
-	_shouldShowMessageLabel		= NO;
-	_shouldUseIndicatorView		= YES;
-	_userInterfaceInitialized	= NO;
-}
-
 - (instancetype)initWithCoder:(NSCoder*)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
 	if(self)
 	{
-		[self initializeProperties];
+		// Attributes
+		_activityIndicatorStyle = UIActivityIndicatorViewStyleWhiteLarge;
+		_containerCornerRadius = 8.0f;
+		
+		// Constraints
+		_addedConstraints				= [NSMutableArray new];
+		_containerViewAddedConstraints	= [NSMutableArray new];
+		_imageViewAddedConstraints		= [NSMutableArray new];
+		
+		// Flags
+		_shouldShowActionButton		= NO;
+		_shouldShowMessageLabel		= NO;
+		_shouldUseIndicatorView		= YES;
+		_userInterfaceInitialized	= NO;
 	}
 	return self;
 }
@@ -298,7 +293,20 @@
 	self = [super initWithFrame:frame];
 	if(self)
 	{
-		[self initializeProperties];
+		// Attributes
+		_activityIndicatorStyle = UIActivityIndicatorViewStyleWhiteLarge;
+		_containerCornerRadius = 8.0f;
+		
+		// Constraints
+		_addedConstraints				= [NSMutableArray new];
+		_containerViewAddedConstraints	= [NSMutableArray new];
+		_imageViewAddedConstraints		= [NSMutableArray new];
+		
+		// Flags
+		_shouldShowActionButton		= NO;
+		_shouldShowMessageLabel		= NO;
+		_shouldUseIndicatorView		= YES;
+		_userInterfaceInitialized	= NO;
 	}
 	return self;
 }

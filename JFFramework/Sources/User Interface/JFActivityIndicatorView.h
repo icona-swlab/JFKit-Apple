@@ -47,9 +47,6 @@
 
 #pragma mark Methods
 
-// Memory management
-- (void)	initializeProperties;
-
 // User interface management
 - (void)	initializeUserInterface;
 
