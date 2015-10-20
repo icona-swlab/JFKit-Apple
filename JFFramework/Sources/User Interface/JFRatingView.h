@@ -58,10 +58,10 @@
 // Data (Images)
 @property (strong, nonatomic)	UIImage*	emptyImage;
 @property (strong, nonatomic)	UIImage*	fullImage;
-@property (strong, nonatomic)	UIImage*	halfImage;	// Ignored if "allowsHalfRatings" is "NO".
+@property (strong, nonatomic)	UIImage*	halfImage;
 
 // Flags
-@property (assign, nonatomic)						BOOL	allowsHalfRatings;
+@property (assign, nonatomic, readonly)				BOOL	allowsHalfRatings;
 @property (assign, nonatomic, getter = isEditable)	BOOL	editable;
 
 // Relationships

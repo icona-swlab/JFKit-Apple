@@ -391,7 +391,6 @@
 			label.textAlignment = NSTextAlignmentCenter;
 			label.textColor = [UIColor whiteColor];
 			label.translatesAutoresizingMaskIntoConstraints = NO;
-			[containerView addSubview:label];
 			self.messageLabel = label;
 		}
 		[containerView addSubview:label];

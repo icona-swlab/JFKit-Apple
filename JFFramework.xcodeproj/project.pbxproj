@@ -638,6 +638,8 @@
 				EA011E511BC068990090EFCC /* JFMenuViewController.m */,
 				EA6D5DBB1B8498C300455F2A /* JFNavigationController.h */,
 				EA6D5DBC1B8498C300455F2A /* JFNavigationController.m */,
+				EA32C6171BD2832300506BE6 /* JFRatingView.h */,
+				EA32C6181BD2832300506BE6 /* JFRatingView.m */,
 				EA7773C61BB7303F002BD08B /* JFSliderController.h */,
 				EA7773C71BB7303F002BD08B /* JFSliderController.m */,
 				EA6D5DBD1B8498C300455F2A /* JFSplashViewController.h */,
@@ -652,8 +654,6 @@
 				6CBE69F81B947CBC00B49918 /* JFTransparentToolbar.m */,
 				EA6D5DA01B84841E00455F2A /* JFWindowController.h */,
 				EA6D5DA11B84841E00455F2A /* JFWindowController.m */,
-				EA32C6171BD2832300506BE6 /* JFRatingView.h */,
-				EA32C6181BD2832300506BE6 /* JFRatingView.m */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
