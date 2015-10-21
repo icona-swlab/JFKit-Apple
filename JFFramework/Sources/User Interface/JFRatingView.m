@@ -28,6 +28,9 @@
 
 #pragma mark Properties
 
+// Attributes
+@property (assign, nonatomic, readonly)	CGFloat	valueUnit;
+
 // Constraints
 @property (strong, nonatomic, readonly)	NSMutableArray<NSLayoutConstraint*>*	addedConstraints;
 @property (strong, nonatomic, readonly)	NSMutableArray<NSLayoutConstraint*>*	containerViewAddedConstraints;
@@ -123,6 +126,11 @@
 	
 	if([self isUserInterfaceInitialized])
 		[self reloadRatingImages];
+}
+
+- (CGFloat)valueUnit
+{
+	return (self.maximumValue / (CGFloat)self.numberOfImages);
 }
 
 
@@ -317,7 +325,7 @@
 		_containerViewAddedConstraints	= [NSMutableArray<NSLayoutConstraint*> new];
 		
 		// Data
-		_value	= 0.0;
+		_value	= 2.5;
 		
 		// Flags
 		_editable					= YES;
@@ -330,22 +338,118 @@
 }
 
 
+#pragma mark Responder management
+
+- (void)handleTouch:(UITouch*)touch
+{
+	LogMethod;
+	
+	//	CGFloat location = touchLocation.x;
+	//
+	//	CGFloat newRating = 0.0f;
+	//	if(location <= 0.0f)
+	//		newRating = 0.0f;
+	//	else if(location > self.bounds.size.width)
+	//		newRating = self.maxRating;
+	//	else
+	//	{
+	//		NSUInteger count = [self.ratingImages count] * (self.allowsHalfVotes ? 2 : 1);
+	//		CGFloat slice = self.bounds.size.width / count;
+	//
+	//		for(NSUInteger index = 0; index < count; index++)
+	//		{
+	//			if((location > (slice * index)) && (location <= (slice * (index + 1))))
+	//			{
+	//				newRating = ((float)self.maxRating / (float)count) * (float)(index + 1);
+	//				break;
+	//			}
+	//		}
+	//	}
+	//
+	//	self.rating = MAX(self.minRating, newRating);
+}
+
+- (void)touchesBegan:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
+{
+	LogMethod;
+	
+	if([self isEditable])
+		[self handleTouch:[touches anyObject]];
+	
+	[super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
+{
+	LogMethod;
+	
+	[super touchesEnded:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
+{
+	LogMethod;
+	
+	if([self isEditable])
+		[self handleTouch:[touches anyObject]];
+	
+	[super touchesMoved:touches withEvent:event];
+}
+
+//- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
+//{
+//	LogMethod;
+//
+//	if(!self.editable)
+//		return;
+//
+//	[self handleTouchAtLocation:[[touches anyObject] locationInView:self]];
+//}
+//
+//- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
+//{
+//	LogMethod;
+//
+//	if(!self.editable)
+//		return;
+//
+//	//if(self.delegate && [self.delegate respondsToSelector:@selector(rateView:ratingDidChange:)])
+//	//	[self.delegate rateView:self ratingDidChange:self.rating];
+//}
+//
+//- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
+//{
+//	LogMethod;
+//
+//	[super touchesMoved:touches withEvent:event];
+//
+//	if(!self.editable)
+//		return;
+//
+//	[self handleTouchAtLocation:[[touches anyObject] locationInView:self]];
+//}
+
+
 #pragma mark User interface management
 
 - (UIImage*)imageForViewAtIndex:(NSUInteger)index
 {
-	//CGFloat value = self.value;
-	//CGFloat step = (self.maximumValue / (CGFloat)self.numberOfImages);
-	//CGFloat indexValue = ((CGFloat)index * step);
+	CGFloat value = self.value;
+	CGFloat valueUnit = self.valueUnit;
 	
-	return self.fullImage;
+	CGFloat indexValue = valueUnit * index;
+	
+	UIImage* retObj = nil;
+	
+	if(value >= indexValue + valueUnit)	retObj = self.fullImage;
+	else if(value > indexValue)			retObj = self.halfImage;
+	else								retObj = self.emptyImage;
+	
+	return retObj;
 }
 
 - (void)initializeUserInterface
 {
-	//self.contentInsets	= UIEdgeInsetsMake(10, 10, 10, 10);
-	//self.imagesDistance	= 10.0f;
-	
 	// Prepares the container view.
 	UIView* containerView = [UIView new];
 	containerView.backgroundColor = [UIColor magentaColor];
@@ -359,9 +463,10 @@
 
 - (void)reloadRatingImages
 {
-	for(NSUInteger i = 0; i < [self.imageViews count]; i++)
+	NSArray* imageViews = self.imageViews;
+	for(NSUInteger i = 0; i < [imageViews count]; i++)
 	{
-		UIImageView* imageView = [self.imageViews objectAtIndex:i];
+		UIImageView* imageView = [imageViews objectAtIndex:i];
 		imageView.image = [self imageForViewAtIndex:i];
 	}
 }
@@ -435,7 +540,7 @@
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:at multiplier:1.0f constant:insets.top]];		// Top
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-insets.bottom]];	// Bottom
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:re toItem:v2 attribute:al multiplier:1.0f constant:insets.left]];		// Left
-		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v2 attribute:ar multiplier:1.0f constant:-insets.right]];	// Right
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v2 attribute:ar multiplier:1.0f constant:-insets.right]];		// Right
 		for(NSLayoutConstraint* constraint in constraints)
 			constraint.priority = UILayoutPriorityDefaultHigh;
 		[self addConstraints:constraints];
