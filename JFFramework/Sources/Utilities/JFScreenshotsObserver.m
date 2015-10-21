@@ -23,6 +23,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
 
+#import "JFLogger.h"
 #import "JFUtilities.h"
 
 
@@ -96,6 +97,30 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 
 
 
+@interface JFScreenshot ()
+
+#pragma mark Properties
+
+// Attributes
+@property (strong, nonatomic, readwrite)	NSDate*				creationDate;
+@property (assign, nonatomic, readwrite)	UIImageOrientation	orientation;
+@property (assign, nonatomic, readwrite)	CGFloat				scale;
+@property (assign, nonatomic, readwrite)	CGSize				size;
+@property (strong, nonatomic, readwrite)	NSString*			UTI;
+
+// Data
+@property (strong, nonatomic, readwrite)	NSData*		data;
+@property (strong, nonatomic, readwrite)	UIImage*	image;
+@property (strong, nonatomic, readwrite)	NSString*	name;
+
+@end
+
+
+
+#pragma mark
+
+
+
 @implementation JFScreenshotsObserver
 
 #pragma mark Properties
@@ -137,12 +162,12 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 	self.assets = [self fetchValidAssetsFromCurrentFetchResult];
 }
 
-- (UIImage*)newestScreenshot
+- (JFScreenshot*)newestScreenshot
 {
 	return [self screenshotAtIndex:self.screenshotsCount - 1];
 }
 
-- (UIImage*)oldestScreenshot
+- (JFScreenshot*)oldestScreenshot
 {
 	return [self screenshotAtIndex:0];
 }
@@ -245,11 +270,12 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 			NSArray* groupAssets = [self fetchValidAssetsFromGroup:group];
 			if(groupAssets)
 				[assets addObjectsFromArray:groupAssets];
+			
+			if(!group)
+				self.assets = [assets copy];
 		};
 		
 		[self.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:successBlock failureBlock:nil];
-		
-		self.assets = [assets copy];
 	}
 }
 
@@ -303,24 +329,27 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 	if(!completion)
 		return;
 	
-	JFBlockWithObject innerCompletion = ^(UIImage* image)
+	JFBlockWithObject innerCompletion = ^(JFScreenshot* screenshot)
 	{
 		if(async)
 		{
 			[MainOperationQueue addOperationWithBlock:^{
-				completion(image);
+				completion(screenshot);
 			}];
 		}
 		else
-			completion(image);
+			completion(screenshot);
 	};
 	
 	NSArray* assets = self.assets;
-	if(index > ([assets count] - 1))
+	NSUInteger count = [assets count];
+	if((count == 0) || (index > (count - 1)))
 	{
 		innerCompletion(nil);
 		return;
 	}
+	
+	CGFloat scale = MainScreen.scale;
 	
 	if(iOS8Plus)
 	{
@@ -331,8 +360,27 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 		PHImageRequestOptions* options = [PHImageRequestOptions new];
 		options.synchronous = !async;
 		
-		[manager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage* result, NSDictionary* info) {
-			innerCompletion(result);
+		[manager requestImageDataForAsset:asset options:options resultHandler:^(NSData* imageData, NSString* dataUTI, UIImageOrientation orientation, NSDictionary* info) {
+			
+			NSString* name = (iOS9Plus ? [[PHAssetResource assetResourcesForAsset:asset] firstObject].originalFilename : [[info objectForKey:@"PHImageFileURLKey"] lastPathComponent]);
+			
+			CGSize size = CGSizeMake(((CGFloat)asset.pixelWidth / scale), ((CGFloat)asset.pixelHeight / scale));
+			
+			JFScreenshot* screenshot = [[JFScreenshot alloc] init];
+			
+			// Attributes
+			screenshot.creationDate	= asset.creationDate;
+			screenshot.orientation	= orientation;
+			screenshot.scale		= scale;
+			screenshot.size			= size;
+			screenshot.UTI			= dataUTI;
+			
+			// Data
+			screenshot.data		= imageData;
+			screenshot.image	= [UIImage imageWithData:imageData scale:scale];
+			screenshot.name		= name;
+			
+			innerCompletion(screenshot);
 		}];
 	}
 	else
@@ -346,12 +394,49 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 			return;
 		}
 		
-		NSNumber* number = [asset valueForProperty:ALAssetPropertyOrientation];
-		UIImageOrientation orientation = (number ? [number integerValue] : UIImageOrientationUp);
+		UIImageOrientation orientation = UIImageOrientationUp;
+		switch(representation.orientation)
+		{
+			case ALAssetOrientationDown:			orientation = UIImageOrientationDown;			break;
+			case ALAssetOrientationDownMirrored:	orientation = UIImageOrientationDownMirrored;	break;
+			case ALAssetOrientationLeft:			orientation = UIImageOrientationLeft;			break;
+			case ALAssetOrientationLeftMirrored:	orientation = UIImageOrientationLeftMirrored;	break;
+			case ALAssetOrientationRight:			orientation = UIImageOrientationRight;			break;
+			case ALAssetOrientationRightMirrored:	orientation = UIImageOrientationRightMirrored;	break;
+			case ALAssetOrientationUp:				orientation = UIImageOrientationUp;				break;
+			case ALAssetOrientationUpMirrored:		orientation = UIImageOrientationUpMirrored;		break;
+			default:
+				break;
+		}
 		
-		UIImage* image = [UIImage imageWithCGImage:[representation fullResolutionImage] scale:1.0 orientation:orientation];
+		NSError* error = nil;
+		NSUInteger length = (NSUInteger)representation.size;
+		Byte* bytes = (Byte*)malloc(sizeof(Byte) * length);
+		length = [representation getBytes:bytes fromOffset:0 length:length error:&error];
+		if(error)
+		{
+			NSString* message = [NSString stringWithFormat:@"Failed to get screenshot data for error '%@'.", error];
+			[self.logger logMessage:message level:JFLogLevel3Error hashtags:JFLogHashtagError];
+		}
+		NSData* imageData = ((length > 0) ? [NSData dataWithBytesNoCopy:bytes length:length freeWhenDone:YES] : nil);
 		
-		innerCompletion(image);
+		NSDate* creationDate = [asset valueForProperty:ALAssetPropertyDate];
+		
+		JFScreenshot* screenshot = [[JFScreenshot alloc] init];
+		
+		// Attributes
+		screenshot.creationDate	= creationDate;
+		screenshot.orientation	= orientation;
+		screenshot.scale		= representation.scale;
+		screenshot.size			= representation.dimensions;
+		screenshot.UTI			= representation.UTI;
+		
+		// Data
+		screenshot.data		= imageData;
+		screenshot.image	= [UIImage imageWithData:imageData scale:scale];
+		screenshot.name		= representation.filename;
+		
+		innerCompletion(screenshot);
 	}
 }
 
@@ -360,12 +445,12 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 	[self requestScreenshotAtIndex:index asynchronously:YES completion:completion];
 }
 
-- (UIImage*)screenshotAtIndex:(NSUInteger)index
+- (JFScreenshot*)screenshotAtIndex:(NSUInteger)index
 {
-	__block UIImage* retObj = nil;
+	__block JFScreenshot* retObj = nil;
 	
-	[self requestScreenshotAtIndex:index asynchronously:NO completion:^(UIImage* image) {
-		retObj = image;
+	[self requestScreenshotAtIndex:index asynchronously:NO completion:^(JFScreenshot* screenshot) {
+		retObj = screenshot;
 	}];
 	
 	return retObj;
@@ -557,5 +642,29 @@ static	NSTimeInterval	JFScreenshotsObserverPollingTimeout	= 1.0;
 	
 	[MainOperationQueue addOperationWithBlock:block];
 }
+
+@end
+
+
+
+#pragma mark
+
+
+
+@implementation JFScreenshot
+
+#pragma mark Properties
+
+// Attributes
+@synthesize creationDate	= _creationDate;
+@synthesize orientation		= _orientation;
+@synthesize scale			= _scale;
+@synthesize size			= _size;
+@synthesize UTI				= _UTI;
+
+// Data
+@synthesize data	= _data;
+@synthesize image	= _image;
+@synthesize name	= _name;
 
 @end
