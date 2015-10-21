@@ -24,7 +24,7 @@
 
 @protocol JFRatingViewDelegate <NSObject>
 
-@optional
+@required
 
 - (void)	ratingView:(JFRatingView*)ratingView didChangeValue:(CGFloat)value;
 

@@ -342,37 +342,47 @@
 
 - (void)handleTouch:(UITouch*)touch
 {
-	LogMethod;
+	CGFloat location = [touch locationInView:self].x;
 	
-	//	CGFloat location = touchLocation.x;
-	//
-	//	CGFloat newRating = 0.0f;
-	//	if(location <= 0.0f)
-	//		newRating = 0.0f;
-	//	else if(location > self.bounds.size.width)
-	//		newRating = self.maxRating;
-	//	else
-	//	{
-	//		NSUInteger count = [self.ratingImages count] * (self.allowsHalfVotes ? 2 : 1);
-	//		CGFloat slice = self.bounds.size.width / count;
-	//
-	//		for(NSUInteger index = 0; index < count; index++)
-	//		{
-	//			if((location > (slice * index)) && (location <= (slice * (index + 1))))
-	//			{
-	//				newRating = ((float)self.maxRating / (float)count) * (float)(index + 1);
-	//				break;
-	//			}
-	//		}
-	//	}
-	//
-	//	self.rating = MAX(self.minRating, newRating);
+	CGFloat width = self.bounds.size.width;
+	
+	BOOL allowsHalfRatings = [self allowsHalfRatings];
+	CGFloat multiplier = (allowsHalfRatings ? 2 : 1);
+	
+	NSUInteger numberOfSlices = self.numberOfImages * multiplier;
+	CGFloat slice = width / (CGFloat)numberOfSlices;
+	CGFloat marginSlice = slice / 2.0;
+	
+	CGFloat value = 0.0f;
+	if(location <= marginSlice)
+		value = 0.0f;
+	else if(location > (width - marginSlice))
+		value = self.maximumValue;
+	else
+	{
+		CGFloat valueUnit = (self.valueUnit / multiplier);
+		
+		for(NSUInteger i = 0; i < numberOfSlices; i++)
+		{
+			CGFloat currentSlice = (i * slice);
+			CGFloat nextSlice = currentSlice + slice;
+			
+			BOOL isGreaterThanCurrentSlice = (location > currentSlice);
+			BOOL isSmallerThanOrEqualToNextSlice = (location <= nextSlice);
+			
+			if(isGreaterThanCurrentSlice && isSmallerThanOrEqualToNextSlice)
+			{
+				value = (valueUnit * (CGFloat)(i + 1));
+				break;
+			}
+		}
+	}
+	
+	self.value = MAX(self.minimumValue, value);
 }
 
 - (void)touchesBegan:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
 {
-	LogMethod;
-	
 	if([self isEditable])
 		[self handleTouch:[touches anyObject]];
 	
@@ -381,53 +391,18 @@
 
 - (void)touchesEnded:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
 {
-	LogMethod;
-	
 	[super touchesEnded:touches withEvent:event];
+	
+	[self.delegate ratingView:self didChangeValue:self.value];
 }
 
 - (void)touchesMoved:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
 {
-	LogMethod;
-	
 	if([self isEditable])
 		[self handleTouch:[touches anyObject]];
 	
 	[super touchesMoved:touches withEvent:event];
 }
-
-//- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
-//{
-//	LogMethod;
-//
-//	if(!self.editable)
-//		return;
-//
-//	[self handleTouchAtLocation:[[touches anyObject] locationInView:self]];
-//}
-//
-//- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
-//{
-//	LogMethod;
-//
-//	if(!self.editable)
-//		return;
-//
-//	//if(self.delegate && [self.delegate respondsToSelector:@selector(rateView:ratingDidChange:)])
-//	//	[self.delegate rateView:self ratingDidChange:self.rating];
-//}
-//
-//- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
-//{
-//	LogMethod;
-//
-//	[super touchesMoved:touches withEvent:event];
-//
-//	if(!self.editable)
-//		return;
-//
-//	[self handleTouchAtLocation:[[touches anyObject] locationInView:self]];
-//}
 
 
 #pragma mark User interface management
