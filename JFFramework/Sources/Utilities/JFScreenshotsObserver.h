@@ -24,6 +24,10 @@
 
 
 
+@class JFScreenshot;
+
+
+
 #pragma mark - Constans
 
 FOUNDATION_EXPORT	NSString* const	JFScreenshotsObserverListUpdatedNotification;
@@ -50,9 +54,9 @@ typedef NS_ENUM(NSInteger, JFPhotosAuthorizationStatus)
 #pragma mark Properties
 
 // Data
-@property (assign, nonatomic, readonly)	UIImage*	newestScreenshot;
-@property (assign, nonatomic, readonly)	UIImage*	oldestScreenshot;
-@property (assign, nonatomic, readonly)	NSUInteger	screenshotsCount;
+@property (assign, nonatomic, readonly)	JFScreenshot*	newestScreenshot;
+@property (assign, nonatomic, readonly)	JFScreenshot*	oldestScreenshot;
+@property (assign, nonatomic, readonly)	NSUInteger		screenshotsCount;
 
 // Flags
 @property (assign, nonatomic, readonly)				JFPhotosAuthorizationStatus	authorizationStatus;
@@ -62,11 +66,35 @@ typedef NS_ENUM(NSInteger, JFPhotosAuthorizationStatus)
 #pragma mark Methods
 
 // Data management
-- (void)		requestScreenshotAtIndex:(NSUInteger)index completion:(JFBlockWithObject)completion;
-- (UIImage*)	screenshotAtIndex:(NSUInteger)index;
+- (void)			requestScreenshotAtIndex:(NSUInteger)index completion:(JFBlockWithObject)completion;
+- (JFScreenshot*)	screenshotAtIndex:(NSUInteger)index;
 
 // Services management
 - (void)	startObserving;
 - (void)	stopObserving;
+
+@end
+
+
+
+#pragma mark
+
+
+
+@interface JFScreenshot : NSObject
+
+#pragma mark Properties
+
+// Attributes
+@property (strong, nonatomic, readonly)	NSDate*				creationDate;
+@property (assign, nonatomic, readonly)	UIImageOrientation	orientation;
+@property (assign, nonatomic, readonly)	CGFloat				scale;
+@property (assign, nonatomic, readonly)	CGSize				size;
+@property (strong, nonatomic, readonly)	NSString*			UTI;
+
+// Data
+@property (strong, nonatomic, readonly)	NSData*		data;
+@property (strong, nonatomic, readonly)	UIImage*	image;
+@property (strong, nonatomic, readonly)	NSString*	name;
 
 @end
