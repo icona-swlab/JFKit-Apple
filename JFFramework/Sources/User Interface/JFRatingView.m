@@ -427,7 +427,7 @@
 {
 	// Prepares the container view.
 	UIView* containerView = [UIView new];
-	containerView.backgroundColor = [UIColor magentaColor];
+	containerView.backgroundColor = [UIColor clearColor];
 	containerView.opaque = NO;
 	containerView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self addSubview:containerView];
@@ -482,14 +482,23 @@
 {
 	if([self isUserInterfaceInitialized])
 	{
+		NSMutableArray* constraints = [NSMutableArray array];
 		UIView* containerView = self.containerView;
 		NSArray<UIImageView*>* imageViews = self.imageViews;
 		NSUInteger numberOfImages = self.numberOfImages;
 		CGFloat imagesDistance = self.imagesDistance;
+		CGSize maxSize = self.imageMaximumSize;
+		CGSize minSize = self.imageMinimumSize;
+		UIEdgeInsets insets = self.contentInsets;
+		
+		BOOL shouldApplyMaxSizeConstraints = !CGSizeEqualToSize(maxSize, CGSizeZero);
+		BOOL shouldApplyMinSizeConstraints = !CGSizeEqualToSize(minSize, CGSizeZero);
 		
 		// Removes the old constraints.
 		[self removeConstraints:self.addedConstraints];
 		[containerView removeConstraints:self.containerViewAddedConstraints];
+		[self.addedConstraints removeAllObjects];
+		[self.containerViewAddedConstraints removeAllObjects];
 		
 		// Prepares some constraint shortcuts.
 		__unused NSLayoutAttribute ab = NSLayoutAttributeBottom;
@@ -505,21 +514,43 @@
 		__unused NSLayoutRelation rg = NSLayoutRelationGreaterThanOrEqual;
 		__unused NSLayoutRelation rl = NSLayoutRelationLessThanOrEqual;
 		
-		UIEdgeInsets insets = self.contentInsets;
-		
-		// Creates the container view constraints.
+		// Prepares the views.
 		UIView* v1 = containerView;
 		UIView* v2 = self;
 		
-		NSMutableArray* constraints = [NSMutableArray array];
+		// Adds the constraints that try to keep the insets with the desired dimensions.
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:at multiplier:1.0f constant:insets.top]];		// Top
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:-insets.bottom]];	// Bottom
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:re toItem:v2 attribute:al multiplier:1.0f constant:insets.left]];		// Left
 		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v2 attribute:ar multiplier:1.0f constant:-insets.right]];		// Right
 		for(NSLayoutConstraint* constraint in constraints)
+			constraint.priority = UILayoutPriorityDefaultLow;
+		[self addConstraints:constraints];
+		[self.addedConstraints addObjectsFromArray:constraints];
+		[constraints removeAllObjects];
+		
+		// Adds the constraints the forces the container view to stay at least at the desired distances from the bounds of the superview.
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:rg toItem:v2 attribute:at multiplier:1.0f constant:insets.top]];		// Top
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:rl toItem:v2 attribute:ab multiplier:1.0f constant:-insets.bottom]];	// Bottom
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:rg toItem:v2 attribute:al multiplier:1.0f constant:insets.left]];		// Left
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:rl toItem:v2 attribute:ar multiplier:1.0f constant:-insets.right]];		// Right
+		for(NSLayoutConstraint* constraint in constraints)
 			constraint.priority = UILayoutPriorityDefaultHigh;
 		[self addConstraints:constraints];
-		[self.addedConstraints setArray:constraints];
+		[self.addedConstraints addObjectsFromArray:constraints];
+		[constraints removeAllObjects];
+		
+		// Forces the container view to mantain its height in a range.
+		if(shouldApplyMaxSizeConstraints)
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ah relatedBy:rl toItem:nil attribute:an multiplier:1.0f constant:maxSize.height]];	// Max height
+		if(shouldApplyMinSizeConstraints)
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ah relatedBy:rg toItem:nil attribute:an multiplier:1.0f constant:minSize.height]];	// Min height
+		
+		// Forces the container view to stay in the center of the superview.
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ax relatedBy:re toItem:v2 attribute:ax multiplier:1.0f constant:0.0f]];	// Center X
+		[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ay relatedBy:re toItem:v2 attribute:ay multiplier:1.0f constant:0.0f]];	// Center Y
+		[self addConstraints:constraints];
+		[self.addedConstraints addObjectsFromArray:constraints];
 		[constraints removeAllObjects];
 		
 		// Creates the indicator view constraints.
@@ -534,20 +565,26 @@
 			if(isFirstImageView)
 				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:al relatedBy:re toItem:v2 attribute:al multiplier:1.0f constant:0.0f]];	// Left
 			
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:at multiplier:1.0f constant:0.0f]];		// Top
+			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:0.0f]];		// Bottom
+			
 			if(isLastImageView)
 				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v2 attribute:ar multiplier:1.0f constant:0.0f]];	// Right
 			else
 			{
 				UIView* v3 = [imageViews objectAtIndex:(i + 1)];
-				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v3 attribute:al multiplier:1.0f constant:-imagesDistance]];	// Between
-				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:aw relatedBy:re toItem:v3 attribute:aw multiplier:1.0f constant:0.0f]];				// Equal Width
+				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ar relatedBy:re toItem:v3 attribute:al multiplier:1.0f constant:-imagesDistance]];	// Space
+				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:aw relatedBy:re toItem:v3 attribute:aw multiplier:1.0f constant:0.0f]];				// Equal width
 			}
 			
-			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:at relatedBy:re toItem:v2 attribute:at multiplier:1.0f constant:0.0f]];		// Top
-			[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:ab relatedBy:re toItem:v2 attribute:ab multiplier:1.0f constant:0.0f]];		// Bottom
+			if(shouldApplyMaxSizeConstraints)
+				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:aw relatedBy:rl toItem:nil attribute:an multiplier:1.0f constant:maxSize.width]];	// Max width
+			
+			if(shouldApplyMinSizeConstraints)
+				[constraints addObject:[NSLayoutConstraint constraintWithItem:v1 attribute:aw relatedBy:rg toItem:nil attribute:an multiplier:1.0f constant:minSize.width]];	// Min width
 			
 			[containerView addConstraints:constraints];
-			[self.containerViewAddedConstraints setArray:constraints];
+			[self.containerViewAddedConstraints addObjectsFromArray:constraints];
 			[constraints removeAllObjects];
 		}
 	}
