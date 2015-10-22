@@ -45,11 +45,12 @@
 
 #pragma mark Macros (Info)
 
-#define AppBuild		JFApplicationInfoForKey(@"CFBundleVersion")
-#define AppDisplayName	JFApplicationInfoForKey(@"CFBundleDisplayName")
-#define AppIdentifier	JFApplicationInfoForKey(@"CFBundleIdentifier")
-#define AppName			JFApplicationInfoForKey(@"CFBundleName")
-#define AppVersion		JFApplicationInfoForKey(@"CFBundleShortVersionString")
+#define AppBuild			JFApplicationInfoForKey(@"CFBundleVersion")
+#define AppDetailedVersion	[NSString stringWithFormat:@"%@ (%@)", AppVersion, AppBuild]
+#define AppDisplayName		JFApplicationInfoForKey(@"CFBundleDisplayName")
+#define AppIdentifier		JFApplicationInfoForKey(@"CFBundleIdentifier")
+#define AppName				JFApplicationInfoForKey(@"CFBundleName")
+#define AppVersion			JFApplicationInfoForKey(@"CFBundleShortVersionString")
 
 
 #pragma mark Macros (System)
