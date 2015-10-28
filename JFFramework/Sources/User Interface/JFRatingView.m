@@ -342,9 +342,11 @@
 
 - (void)handleTouch:(UITouch*)touch
 {
-	CGFloat location = [touch locationInView:self].x;
+	UIView* view = self.containerView;
 	
-	CGFloat width = self.bounds.size.width;
+	CGFloat location = [touch locationInView:view].x;
+	
+	CGFloat width = CGRectGetWidth(view.bounds);
 	
 	BOOL allowsHalfRatings = [self allowsHalfRatings];
 	CGFloat multiplier = (allowsHalfRatings ? 2 : 1);
@@ -427,7 +429,7 @@
 {
 	// Prepares the container view.
 	UIView* containerView = [UIView new];
-	containerView.backgroundColor = [UIColor clearColor];
+	containerView.backgroundColor = [UIColor cyanColor];
 	containerView.opaque = NO;
 	containerView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self addSubview:containerView];
