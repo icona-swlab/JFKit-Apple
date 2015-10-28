@@ -429,7 +429,7 @@
 {
 	// Prepares the container view.
 	UIView* containerView = [UIView new];
-	containerView.backgroundColor = [UIColor cyanColor];
+	containerView.backgroundColor = [UIColor clearColor];
 	containerView.opaque = NO;
 	containerView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self addSubview:containerView];
