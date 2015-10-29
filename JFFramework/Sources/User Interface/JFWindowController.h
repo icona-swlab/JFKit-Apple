@@ -47,8 +47,16 @@
 // Memory management
 - (instancetype)	initWithWindow:(UIWindow*)window;
 
-// User interface management
-- (UIViewController*)	createRootViewController;
+// User interface management (Creation)
+- (UINavigationController*)	createNavigationController;
+- (UINavigationController*)	createNavigationControllerWithRootViewController:(UIViewController*)rootViewController;
+- (UIViewController*)		createRootViewController;
+
+// User interface management (Navigation)
+- (BOOL)	dismissModalViewController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion;
+- (BOOL)	popViewControllerFromNavigationController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion;
+- (BOOL)	presentModalViewController:(UIViewController*)viewController fromViewController:(UIViewController*)presentingViewController animated:(BOOL)animated completion:(JFBlock)completion;
+- (BOOL)	pushViewController:(UIViewController*)viewController onNavigationController:(UINavigationController*)navigationController animated:(BOOL)animated completion:(JFBlock)completion;
 
 // User interface management (Observation)
 - (void)	beginObservingViewController:(UIViewController*)viewController;

@@ -201,11 +201,100 @@
 }
 
 
-#pragma mark User interface management
+#pragma mark User interface management (Creation)
+
+- (UINavigationController*)createNavigationController
+{
+	return [UINavigationController new];
+}
+
+- (UINavigationController*)createNavigationControllerWithRootViewController:(UIViewController*)rootViewController
+{
+	UINavigationController* retObj = [self createNavigationController];
+	if(retObj && rootViewController)
+		retObj.viewControllers = @[rootViewController];
+	return retObj;
+}
 
 - (UIViewController*)createRootViewController
 {
 	return nil;
+}
+
+
+#pragma mark User interface management (Navigation)
+
+- (BOOL)dismissModalViewController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion
+{
+	if(!viewController || !viewController.presentingViewController)
+		return NO;
+	
+	[viewController.presentingViewController dismissViewControllerAnimated:animated completion:completion];
+	
+	return YES;
+}
+
+- (BOOL)popViewControllerFromNavigationController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion
+{
+	if(!viewController || !viewController.navigationController)
+		return NO;
+	
+	UINavigationController* navigationController = viewController.navigationController;
+	NSArray* viewControllers = navigationController.viewControllers;
+	
+	UIViewController* previousViewController = nil;
+	NSUInteger index = [viewControllers indexOfObject:viewController];
+	if(index > 0)
+		previousViewController = [viewControllers objectAtIndex:(index - 1)];
+	
+	if(completion)
+	{
+		[CATransaction begin];
+		[CATransaction setCompletionBlock:completion];
+	}
+	
+	if(previousViewController)
+		[navigationController popToViewController:previousViewController animated:animated];
+	else
+		[navigationController setViewControllers:@[] animated:animated];
+	
+	if(completion)
+		[CATransaction commit];
+	
+	return YES;
+}
+
+- (BOOL)presentModalViewController:(UIViewController*)viewController fromViewController:(UIViewController*)presentingViewController animated:(BOOL)animated completion:(JFBlock)completion
+{
+	if(!viewController || !presentingViewController || presentingViewController.presentedViewController)
+		return NO;
+	
+	[self beginObservingViewController:viewController];
+	
+	[presentingViewController presentViewController:viewController animated:animated completion:completion];
+	
+	return YES;
+}
+
+- (BOOL)pushViewController:(UIViewController*)viewController onNavigationController:(UINavigationController*)navigationController animated:(BOOL)animated completion:(JFBlock)completion
+{
+	if(!viewController || !navigationController)
+		return NO;
+	
+	[self beginObservingViewController:viewController];
+	
+	if(completion)
+	{
+		[CATransaction begin];
+		[CATransaction setCompletionBlock:completion];
+	}
+	
+	[navigationController pushViewController:viewController animated:animated];
+	
+	if(completion)
+		[CATransaction commit];
+	
+	return YES;
 }
 
 
