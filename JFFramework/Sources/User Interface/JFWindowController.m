@@ -34,6 +34,8 @@
 // User interface
 @property (strong, nonatomic, readonly)	NSMutableSet*		privateObservedViewControllers;
 @property (weak, nonatomic, readwrite)	UIViewController*	splashViewController;
+@property (strong, nonatomic, readonly)	NSMutableSet*		viewControllersBeingDismissed;
+@property (strong, nonatomic, readonly)	NSMutableSet*		viewControllersBeingPresented;
 
 
 #pragma mark Methods
@@ -72,6 +74,8 @@
 // User interface
 @synthesize privateObservedViewControllers	= _privateObservedViewControllers;
 @synthesize splashViewController			= _splashViewController;
+@synthesize viewControllersBeingDismissed	= _viewControllersBeingDismissed;
+@synthesize viewControllersBeingPresented	= _viewControllersBeingPresented;
 @synthesize window							= _window;
 
 
@@ -105,6 +109,8 @@
 		
 		// User interface
 		_privateObservedViewControllers = [NSMutableSet new];
+		_viewControllersBeingDismissed = [NSMutableSet new];
+		_viewControllersBeingPresented = [NSMutableSet new];
 		_window = window;
 		
 		// Begins to listen for interesting notifications.
@@ -226,73 +232,119 @@
 
 - (BOOL)dismissModalViewController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion
 {
-	if(!viewController || !viewController.presentingViewController)
+	if(!viewController || !viewController.presentingViewController || [self isDismissingViewController:viewController])
 		return NO;
 	
-	[viewController.presentingViewController dismissViewControllerAnimated:animated completion:completion];
+	NSMutableSet* viewControllers = self.viewControllersBeingDismissed;
+	
+	[viewControllers addObject:viewController];
+	
+	JFBlock innerCompletion = ^(void)
+	{
+		[viewControllers removeObject:viewController];
+		if(completion)
+			completion();
+	};
+	
+	[viewController.presentingViewController dismissViewControllerAnimated:animated completion:innerCompletion];
 	
 	return YES;
 }
 
+- (BOOL)isDismissingViewController:(UIViewController*)viewController
+{
+	return [self.viewControllersBeingDismissed containsObject:viewController];
+}
+
+- (BOOL)isPresentingViewController:(UIViewController*)viewController
+{
+	return [self.viewControllersBeingPresented containsObject:viewController];
+}
+
 - (BOOL)popViewControllerFromNavigationController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion
 {
-	if(!viewController || !viewController.navigationController)
+	if(!viewController || !viewController.navigationController || [self isDismissingViewController:viewController])
 		return NO;
 	
+	NSMutableSet* viewControllers = self.viewControllersBeingDismissed;
+	
+	[viewControllers addObject:viewController];
+	
 	UINavigationController* navigationController = viewController.navigationController;
-	NSArray* viewControllers = navigationController.viewControllers;
+	NSArray* stack = navigationController.viewControllers;
 	
 	UIViewController* previousViewController = nil;
-	NSUInteger index = [viewControllers indexOfObject:viewController];
+	NSUInteger index = [stack indexOfObject:viewController];
 	if(index > 0)
-		previousViewController = [viewControllers objectAtIndex:(index - 1)];
+		previousViewController = [stack objectAtIndex:(index - 1)];
 	
-	if(completion)
+	JFBlock innerCompletion = ^(void)
 	{
-		[CATransaction begin];
-		[CATransaction setCompletionBlock:completion];
-	}
+		[viewControllers removeObject:viewController];
+		if(completion)
+			completion();
+	};
+	
+	[CATransaction begin];
+	[CATransaction setCompletionBlock:innerCompletion];
 	
 	if(previousViewController)
 		[navigationController popToViewController:previousViewController animated:animated];
 	else
 		[navigationController setViewControllers:@[] animated:animated];
 	
-	if(completion)
-		[CATransaction commit];
+	[CATransaction commit];
 	
 	return YES;
 }
 
 - (BOOL)presentModalViewController:(UIViewController*)viewController fromViewController:(UIViewController*)presentingViewController animated:(BOOL)animated completion:(JFBlock)completion
 {
-	if(!viewController || !presentingViewController || presentingViewController.presentedViewController)
+	if(!viewController || !presentingViewController || presentingViewController.presentedViewController || [self isPresentingViewController:viewController])
 		return NO;
 	
 	[self beginObservingViewController:viewController];
 	
-	[presentingViewController presentViewController:viewController animated:animated completion:completion];
+	NSMutableSet* viewControllers = self.viewControllersBeingPresented;
+	
+	[viewControllers addObject:viewController];
+	
+	JFBlock innerCompletion = ^(void)
+	{
+		[viewControllers removeObject:viewController];
+		if(completion)
+			completion();
+	};
+	
+	[presentingViewController presentViewController:viewController animated:animated completion:innerCompletion];
 	
 	return YES;
 }
 
 - (BOOL)pushViewController:(UIViewController*)viewController onNavigationController:(UINavigationController*)navigationController animated:(BOOL)animated completion:(JFBlock)completion
 {
-	if(!viewController || !navigationController)
+	if(!viewController || !navigationController || [self isPresentingViewController:viewController])
 		return NO;
 	
 	[self beginObservingViewController:viewController];
 	
-	if(completion)
+	NSMutableSet* viewControllers = self.viewControllersBeingPresented;
+	
+	[viewControllers addObject:viewController];
+	
+	JFBlock innerCompletion = ^(void)
 	{
-		[CATransaction begin];
-		[CATransaction setCompletionBlock:completion];
-	}
+		[viewControllers removeObject:viewController];
+		if(completion)
+			completion();
+	};
+	
+	[CATransaction begin];
+	[CATransaction setCompletionBlock:innerCompletion];
 	
 	[navigationController pushViewController:viewController animated:animated];
 	
-	if(completion)
-		[CATransaction commit];
+	[CATransaction commit];
 	
 	return YES;
 }

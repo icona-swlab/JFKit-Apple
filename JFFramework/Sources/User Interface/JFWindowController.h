@@ -54,6 +54,8 @@
 
 // User interface management (Navigation)
 - (BOOL)	dismissModalViewController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion;
+- (BOOL)	isDismissingViewController:(UIViewController*)viewController;
+- (BOOL)	isPresentingViewController:(UIViewController*)viewController;
 - (BOOL)	popViewControllerFromNavigationController:(UIViewController*)viewController animated:(BOOL)animated completion:(JFBlock)completion;
 - (BOOL)	presentModalViewController:(UIViewController*)viewController fromViewController:(UIViewController*)presentingViewController animated:(BOOL)animated completion:(JFBlock)completion;
 - (BOOL)	pushViewController:(UIViewController*)viewController onNavigationController:(UINavigationController*)navigationController animated:(BOOL)animated completion:(JFBlock)completion;
