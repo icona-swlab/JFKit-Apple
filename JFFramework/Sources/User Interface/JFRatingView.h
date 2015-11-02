@@ -65,7 +65,7 @@
 @property (assign, nonatomic, getter = isEditable)	BOOL	editable;
 
 // Relationships
-@property (weak, nonatomic)	id<JFRatingViewDelegate>	delegate;
+@property (weak, nonatomic)	IBOutlet	id<JFRatingViewDelegate>	delegate;
 
 
 #pragma mark Methods
