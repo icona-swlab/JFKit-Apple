@@ -221,7 +221,7 @@
 	if([self isUserInterfaceInitialized])
 		[self reloadRatingImages];
 	
-	[self.delegate ratingView:self didChangeValue:self.value];
+	[self.delegate ratingView:self didChangeValue:value];
 }
 
 
