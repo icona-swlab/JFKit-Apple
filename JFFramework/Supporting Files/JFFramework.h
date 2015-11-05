@@ -60,6 +60,7 @@ FOUNDATION_EXPORT const unsigned char JFFramework_OSXVersionString[];
 // Data objects
 #import "JFByteStream.h"
 #import "JFColor.h"
+#import "JFKVObject.h"
 #import "JFString.h"
 
 // User interface

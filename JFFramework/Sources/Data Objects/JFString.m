@@ -103,6 +103,16 @@ NSString* JFStringFromFloat(float value)
 	return [NSString stringWithFormat:@"%f", value];
 }
 
+NSString* JFStringFromFloat32(Float32 value)
+{
+	return JFStringFromFloat(value);
+}
+
+NSString* JFStringFromFloat64(Float64 value)
+{
+	return JFStringFromDouble(value);
+}
+
 NSString* JFStringFromHex(unsigned int value)
 {
 	return [NSString stringWithFormat:@"%x", value];
@@ -135,6 +145,11 @@ NSString* JFStringFromNSInteger(NSInteger value)
 #else
 	return JFStringFromInt(value);
 #endif
+}
+
+NSString* JFStringFromNSTimeInterval(NSTimeInterval value)
+{
+	return JFStringFromDouble(value);
 }
 
 NSString* JFStringFromNSUInteger(NSUInteger value)

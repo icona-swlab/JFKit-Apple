@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		6C23B7FA1BCFAF95008889D4 /* JFConnectionMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C23B7F81BCFAF95008889D4 /* JFConnectionMachine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C23B7FB1BCFAF95008889D4 /* JFConnectionMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C23B7F81BCFAF95008889D4 /* JFConnectionMachine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C23B7FC1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */; settings = {ASSET_TAGS = (); }; };
-		6C23B7FD1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */; settings = {ASSET_TAGS = (); }; };
+		6C23B7FC1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */; };
+		6C23B7FD1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C23B7F91BCFAF95008889D4 /* JFConnectionMachine.m */; };
 		6C31C7851B9EEDF400FAF487 /* JFFramework-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C77A1B9EEDF300FAF487 /* JFFramework-iOS.a */; };
 		6C31C7A11B9EF3CF00FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
 		6C31C7B21B9EF62200FAF487 /* JFFramework-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C31C7961B9EF3CE00FAF487 /* JFFramework-OSX.a */; };
@@ -110,8 +110,12 @@
 		6CC1F5D51BCE4A05001550B7 /* JFTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC1F5D41BCE4A05001550B7 /* JFTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CC1F5D61BCE4A05001550B7 /* JFTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC1F5D41BCE4A05001550B7 /* JFTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CDA42F61BC67E4B006D4161 /* JFNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CDA42F41BC67E4B006D4161 /* JFNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6CDA42F71BC67E4B006D4161 /* JFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDA42F51BC67E4B006D4161 /* JFNetworkManager.m */; settings = {ASSET_TAGS = (); }; };
+		6CDA42F71BC67E4B006D4161 /* JFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDA42F51BC67E4B006D4161 /* JFNetworkManager.m */; };
 		6CDA42F81BC67E9B006D4161 /* JFNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CDA42F41BC67E4B006D4161 /* JFNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CEDD6631BEA19A200287FA0 /* JFKVObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CEDD6611BEA19A200287FA0 /* JFKVObject.h */; };
+		6CEDD6641BEA19A200287FA0 /* JFKVObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CEDD6611BEA19A200287FA0 /* JFKVObject.h */; };
+		6CEDD6651BEA19A200287FA0 /* JFKVObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDD6621BEA19A200287FA0 /* JFKVObject.m */; };
+		6CEDD6661BEA19A200287FA0 /* JFKVObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDD6621BEA19A200287FA0 /* JFKVObject.m */; };
 		6CF02A771BA869E2009503FB /* JFWeakHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A751BA869E2009503FB /* JFWeakHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CF02A781BA869E2009503FB /* JFWeakHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF02A751BA869E2009503FB /* JFWeakHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CF02A791BA869E2009503FB /* JFWeakHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A761BA869E2009503FB /* JFWeakHandle.m */; };
@@ -123,9 +127,9 @@
 		6CF02A861BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
 		6CF02A871BA87BBA009503FB /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF02A831BA87BBA009503FB /* JRSwizzle.m */; };
 		6CF7F7DD1BD699A200D31A63 /* JFScreenshotsObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF7F7DB1BD699A200D31A63 /* JFScreenshotsObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6CF7F7DE1BD699A200D31A63 /* JFScreenshotsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7F7DC1BD699A200D31A63 /* JFScreenshotsObserver.m */; settings = {ASSET_TAGS = (); }; };
+		6CF7F7DE1BD699A200D31A63 /* JFScreenshotsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7F7DC1BD699A200D31A63 /* JFScreenshotsObserver.m */; };
 		EA011E521BC068990090EFCC /* JFMenuViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA011E501BC068990090EFCC /* JFMenuViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA011E531BC068990090EFCC /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA011E511BC068990090EFCC /* JFMenuViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EA011E531BC068990090EFCC /* JFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA011E511BC068990090EFCC /* JFMenuViewController.m */; };
 		EA1105D51B821BD200E93D04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1105BA1B821B5900E93D04 /* Images.xcassets */; };
 		EA1105D61B821BD200E93D04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105BD1B821B5900E93D04 /* AppDelegate.m */; };
 		EA1105DA1B821BD900E93D04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105C51B821B5900E93D04 /* main.m */; };
@@ -136,14 +140,14 @@
 		EA1105DF1B821C3800E93D04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D21B821B5900E93D04 /* main.m */; };
 		EA1105E01B821C3A00E93D04 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1105D41B821B5900E93D04 /* Tests.m */; };
 		EA26D7C11BC3136B007823BE /* JFMenuObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = EA26D7BF1BC3136B007823BE /* JFMenuObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA26D7C21BC3136B007823BE /* JFMenuObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26D7C01BC3136B007823BE /* JFMenuObjects.m */; settings = {ASSET_TAGS = (); }; };
+		EA26D7C21BC3136B007823BE /* JFMenuObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26D7C01BC3136B007823BE /* JFMenuObjects.m */; };
 		EA32C6191BD2832300506BE6 /* JFRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = EA32C6171BD2832300506BE6 /* JFRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA32C61A1BD2832300506BE6 /* JFRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA32C6181BD2832300506BE6 /* JFRatingView.m */; settings = {ASSET_TAGS = (); }; };
+		EA32C61A1BD2832300506BE6 /* JFRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA32C6181BD2832300506BE6 /* JFRatingView.m */; };
 		EA7773C81BB7303F002BD08B /* JFSliderController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA7773C61BB7303F002BD08B /* JFSliderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA7773C91BB7303F002BD08B /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7773C71BB7303F002BD08B /* JFSliderController.m */; settings = {ASSET_TAGS = (); }; };
-		EA8E77BE1BC1207200FA98E5 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8E77BB1BC1206F00FA98E5 /* WindowController.m */; settings = {ASSET_TAGS = (); }; };
+		EA7773C91BB7303F002BD08B /* JFSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7773C71BB7303F002BD08B /* JFSliderController.m */; };
+		EA8E77BE1BC1207200FA98E5 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8E77BB1BC1206F00FA98E5 /* WindowController.m */; };
 		EAFD9A7F1BC456670076EB23 /* JFTableSection.h in Headers */ = {isa = PBXBuildFile; fileRef = EAFD9A7D1BC456670076EB23 /* JFTableSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAFD9A801BC456670076EB23 /* JFTableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFD9A7E1BC456670076EB23 /* JFTableSection.m */; settings = {ASSET_TAGS = (); }; };
+		EAFD9A801BC456670076EB23 /* JFTableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFD9A7E1BC456670076EB23 /* JFTableSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +220,8 @@
 		6CDD87E71BC2B42F00B7BCBA /* Old JFFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Old JFFramework.xcodeproj"; path = "OLD/Old JFFramework.xcodeproj"; sourceTree = "<group>"; };
 		6CEC2CD31B98767600A7C700 /* JFURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFURLProtocol.h; sourceTree = "<group>"; };
 		6CEC2CD41B98767600A7C700 /* JFURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFURLProtocol.m; sourceTree = "<group>"; };
+		6CEDD6611BEA19A200287FA0 /* JFKVObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFKVObject.h; sourceTree = "<group>"; };
+		6CEDD6621BEA19A200287FA0 /* JFKVObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFKVObject.m; sourceTree = "<group>"; };
 		6CF02A751BA869E2009503FB /* JFWeakHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWeakHandle.h; sourceTree = "<group>"; };
 		6CF02A761BA869E2009503FB /* JFWeakHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWeakHandle.m; sourceTree = "<group>"; };
 		6CF02A7B1BA86DAA009503FB /* UIViewController+JFFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JFFramework.h"; sourceTree = "<group>"; };
@@ -428,6 +434,8 @@
 				EA1105471B820E3500E93D04 /* JFByteStream.m */,
 				EA1105481B820E3500E93D04 /* JFColor.h */,
 				EA1105491B820E3500E93D04 /* JFColor.m */,
+				6CEDD6611BEA19A200287FA0 /* JFKVObject.h */,
+				6CEDD6621BEA19A200287FA0 /* JFKVObject.m */,
 				EA26D7BF1BC3136B007823BE /* JFMenuObjects.h */,
 				EA26D7C01BC3136B007823BE /* JFMenuObjects.m */,
 				EA11054A1B820E3500E93D04 /* JFString.h */,
@@ -732,6 +740,7 @@
 				6C5B09DA1B9EFB410055ACEC /* JFAlert.h in Headers */,
 				6C5B09D21B9EFB2C0055ACEC /* JFString.h in Headers */,
 				6C5B0A0B1B9EFBC20055ACEC /* JFShortcuts.h in Headers */,
+				6CEDD6641BEA19A200287FA0 /* JFKVObject.h in Headers */,
 				6C5B09D01B9EFB2C0055ACEC /* JFColor.h in Headers */,
 				6C5B09FA1B9EFB7C0055ACEC /* NSFileManager+JFFramework.h in Headers */,
 				6CDA42F81BC67E9B006D4161 /* JFNetworkManager.h in Headers */,
@@ -778,6 +787,7 @@
 				6C5B0A051B9EFBC10055ACEC /* JFXMLParser.h in Headers */,
 				6C5B09E21B9EFB450055ACEC /* JFKeyboardEventsHandler.h in Headers */,
 				6C5B09C41B9EFB280055ACEC /* NSIndexPath+JFFramework.h in Headers */,
+				6CEDD6631BEA19A200287FA0 /* JFKVObject.h in Headers */,
 				6C23B7FA1BCFAF95008889D4 /* JFConnectionMachine.h in Headers */,
 				6C5B0A021B9EFBC10055ACEC /* JFShortcuts.h in Headers */,
 				6C38E6841BA18A83005C63CA /* JFErrorsManager.h in Headers */,
@@ -1063,6 +1073,7 @@
 				6C5B09C11B9EFAE70055ACEC /* JFManager.m in Sources */,
 				EA7773C91BB7303F002BD08B /* JFSliderController.m in Sources */,
 				6C5B09CB1B9EFB2C0055ACEC /* JFColor.m in Sources */,
+				6CEDD6651BEA19A200287FA0 /* JFKVObject.m in Sources */,
 				6C5B09E31B9EFB450055ACEC /* JFKeyboardEventsHandler.m in Sources */,
 				6C5B09E71B9EFB510055ACEC /* JFNavigationController.m in Sources */,
 				EA32C61A1BD2832300506BE6 /* JFRatingView.m in Sources */,
@@ -1113,6 +1124,7 @@
 				6C5B09BB1B9EFA5A0055ACEC /* JFAppDelegate.m in Sources */,
 				6C23B7FD1BCFAF95008889D4 /* JFConnectionMachine.m in Sources */,
 				6C5B0A0D1B9EFBC20055ACEC /* JFUtilities.m in Sources */,
+				6CEDD6661BEA19A200287FA0 /* JFKVObject.m in Sources */,
 				6C5B09CF1B9EFB2C0055ACEC /* JFByteStream.m in Sources */,
 				6C5B0A081B9EFBC20055ACEC /* JFHTTPRequest.m in Sources */,
 				6C38E6831BA18A80005C63CA /* JFErrorsManager.m in Sources */,
