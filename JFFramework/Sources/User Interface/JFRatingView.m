@@ -220,6 +220,8 @@
 	
 	if([self isUserInterfaceInitialized])
 		[self reloadRatingImages];
+	
+	[self.delegate ratingView:self didChangeValue:value];
 }
 
 
@@ -389,13 +391,6 @@
 		[self handleTouch:[touches anyObject]];
 	
 	[super touchesBegan:touches withEvent:event];
-}
-
-- (void)touchesEnded:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
-{
-	[super touchesEnded:touches withEvent:event];
-	
-	[self.delegate ratingView:self didChangeValue:self.value];
 }
 
 - (void)touchesMoved:(NSSet<UITouch*>*)touches withEvent:(nullable UIEvent*)event
