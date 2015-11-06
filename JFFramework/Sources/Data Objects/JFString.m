@@ -95,12 +95,12 @@ NSString* JFStringFromCGFloat(CGFloat value)
 
 NSString* JFStringFromDouble(double value)
 {
-	return [NSString stringWithFormat:@"%lf", value];
+	return [NSString stringWithFormat:@"%lg", value];
 }
 
 NSString* JFStringFromFloat(float value)
 {
-	return [NSString stringWithFormat:@"%f", value];
+	return [NSString stringWithFormat:@"%g", value];
 }
 
 NSString* JFStringFromFloat32(Float32 value)
@@ -111,6 +111,18 @@ NSString* JFStringFromFloat32(Float32 value)
 NSString* JFStringFromFloat64(Float64 value)
 {
 	return JFStringFromDouble(value);
+}
+
+NSString* JFStringFromFormattedDouble(double value, UInt8 decimalDigits, BOOL fixed)
+{
+	NSString* formatString = [NSString stringWithFormat:@"%%.%@l%c", JFStringFromUInt8(decimalDigits), (fixed ? 'f' : 'g')];
+	return [NSString stringWithFormat:formatString, value];
+}
+
+NSString* JFStringFromFormattedFloat(float value, UInt8 decimalDigits, BOOL fixed)
+{
+	NSString* formatString = [NSString stringWithFormat:@"%%.%@%c", JFStringFromUInt8(decimalDigits), (fixed ? 'f' : 'g')];
+	return [NSString stringWithFormat:formatString, value];
 }
 
 NSString* JFStringFromHex(unsigned int value)

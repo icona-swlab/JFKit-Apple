@@ -65,6 +65,8 @@ FOUNDATION_EXPORT NSString*	JFStringFromDouble(double value);
 FOUNDATION_EXPORT NSString*	JFStringFromFloat(float value);
 FOUNDATION_EXPORT NSString*	JFStringFromFloat32(Float32 value);
 FOUNDATION_EXPORT NSString*	JFStringFromFloat64(Float64 value);
+FOUNDATION_EXPORT NSString*	JFStringFromFormattedDouble(double value, UInt8 decimalDigits, BOOL fixed);
+FOUNDATION_EXPORT NSString*	JFStringFromFormattedFloat(float value, UInt8 decimalDigits, BOOL fixed);
 FOUNDATION_EXPORT NSString*	JFStringFromHex(unsigned int value);
 FOUNDATION_EXPORT NSString*	JFStringFromID(id object);
 FOUNDATION_EXPORT NSString*	JFStringFromInt(int value);
