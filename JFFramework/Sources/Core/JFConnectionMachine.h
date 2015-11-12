@@ -21,14 +21,18 @@
 
 @required
 
-- (void)	connectionMachinePerformConnect:(JFConnectionMachine*)machine;
-- (void)	connectionMachinePerformDisconnect:(JFConnectionMachine*)machine;
-- (void)	connectionMachinePerformReconnect:(JFConnectionMachine*)machine;
-- (void)	connectionMachinePerformReset:(JFConnectionMachine*)machine;
+- (void)	connectionMachine:(JFConnectionMachine*)machine performConnect:(NSDictionary*)userInfo;
+- (void)	connectionMachine:(JFConnectionMachine*)machine performDisconnect:(NSDictionary*)userInfo;
+- (void)	connectionMachine:(JFConnectionMachine*)machine performReconnect:(NSDictionary*)userInfo;
+- (void)	connectionMachine:(JFConnectionMachine*)machine performReset:(NSDictionary*)userInfo;
 
 @optional
 
 - (void)	connectionMachine:(JFConnectionMachine*)machine didChangeState:(JFConnectionState)newState oldState:(JFConnectionState)oldState;
+- (void)	connectionMachine:(JFConnectionMachine*)machine didConnect:(NSDictionary*)userInfo succeeded:(BOOL)succeeded error:(NSError*)error;
+- (void)	connectionMachine:(JFConnectionMachine*)machine didDisconnect:(NSDictionary*)userInfo succeeded:(BOOL)succeeded error:(NSError*)error;
+- (void)	connectionMachine:(JFConnectionMachine*)machine didReconnect:(NSDictionary*)userInfo succeeded:(BOOL)succeeded error:(NSError*)error;
+- (void)	connectionMachine:(JFConnectionMachine*)machine didReset:(NSDictionary*)userInfo succeeded:(BOOL)succeeded error:(NSError*)error;
 
 @end
 
@@ -56,15 +60,19 @@
 
 // Connection management
 - (BOOL)	connect;
+- (BOOL)	connect:(NSDictionary*)userInfo;
 - (BOOL)	disconnect;
+- (BOOL)	disconnect:(NSDictionary*)userInfo;
 - (BOOL)	reconnect;
+- (BOOL)	reconnect:(NSDictionary*)userInfo;
 - (BOOL)	reset;
+- (BOOL)	reset:(NSDictionary*)userInfo;
 
 // Connection management (Events)
-- (void)	onConnectCompleted:(BOOL)succeeded;
+- (void)	onConnectCompleted:(BOOL)succeeded error:(NSError*)error;
 - (void)	onConnectionLost;
-- (void)	onDisconnectCompleted:(BOOL)succeeded;
-- (void)	onReconnectCompleted:(BOOL)succeeded;
-- (void)	onResetCompleted:(BOOL)succeeded;
+- (void)	onDisconnectCompleted:(BOOL)succeeded error:(NSError*)error;
+- (void)	onReconnectCompleted:(BOOL)succeeded error:(NSError*)error;
+- (void)	onResetCompleted:(BOOL)succeeded error:(NSError*)error;
 
 @end
