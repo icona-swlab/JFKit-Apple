@@ -28,7 +28,7 @@
 
 #pragma mark - Constants
 
-NSTimeInterval const	JFAnimationDuration	= 1.0 / 3.0;
+NSTimeInterval const	JFAnimationDuration	= 0.25;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -130,12 +130,12 @@ void JFToggleNetworkActivityIndicator(BOOL visible)
 
 #if TARGET_OS_IPHONE
 
-NSString* JFGetLaunchImageName()
+NSString* JFLaunchImageName()
 {
-	return JFGetLaunchImageNameForOrientation(CurrentStatusBarOrientation);
+	return JFLaunchImageNameForOrientation(CurrentStatusBarOrientation);
 }
 
-NSString* JFGetLaunchImageNameForOrientation(UIInterfaceOrientation orientation)
+NSString* JFLaunchImageNameForOrientation(UIInterfaceOrientation orientation)
 {
 	static NSString* const NameKey				= @"UILaunchImageName";
 	static NSString* const MinimumOSVersionKey	= @"UILaunchImageMinimumOSVersion";
@@ -191,7 +191,7 @@ NSString* JFGetLaunchImageNameForOrientation(UIInterfaceOrientation orientation)
 		{
 			NSDictionary* dict = [LaunchScreens objectForKey:key];
 			
-			// Checks the orientation and jumps to the next if not satisfied.
+			// Checks the orientation and skips to the next if not satisfied.
 			NSString* orientationString = [dict objectForKey:OrientationKey];
 			if([orientationString isEqualToString:@"Portrait"])
 			{
@@ -206,13 +206,13 @@ NSString* JFGetLaunchImageNameForOrientation(UIInterfaceOrientation orientation)
 			else
 				continue;
 			
-			// Checks the size and jumps to the next if not satisfied.
+			// Checks the size and skips to the next if not satisfied.
 			NSString* sizeString = [dict objectForKey:SizeKey];
 			CGSize size = CGSizeFromString(sizeString);
 			if(!CGSizeEqualToSize(size, screenSize))
 				continue;
 			
-			// Checks the minimum iOS version and jumps to the next if not satisfied.
+			// Checks the minimum iOS version and skips to the next if not satisfied.
 			NSString* minVersion = [dict objectForKey:MinimumOSVersionKey];
 			if(minVersion)
 			{
@@ -250,7 +250,7 @@ JFDegrees JFDegreesFromRadians(JFRadians radians)
 	return radians * 180.0 / M_PI;
 }
 
-JFRadians JFRadiansFromDegress(JFDegrees degrees)
+JFRadians JFRadiansFromDegrees(JFDegrees degrees)
 {
 	return degrees * M_PI / 180.0;
 }
@@ -325,28 +325,90 @@ BOOL JFValidateConnectionState(JFConnectionState state)
 
 #pragma mark Functions (Version)
 
-#if TARGET_OS_IPHONE
-
 BOOL JFCheckSystemVersion(NSString* version, JFRelation relation)
 {
+	static NSInteger currentMajorVersion = 0;
+	static NSInteger currentMinorVersion = 0;
+	static NSInteger currentPatchVersion = 0;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		if([NSProcessInfo instancesRespondToSelector:@selector(operatingSystemVersion)])
+		{
+			NSOperatingSystemVersion currentVersion = ProcessInfo.operatingSystemVersion;
+			currentMajorVersion = currentVersion.majorVersion;
+			currentMinorVersion = currentVersion.minorVersion;
+			currentPatchVersion = currentVersion.patchVersion;
+		}
+		else
+		{
+#if TARGET_OS_IPHONE
+			NSArray* versionComponents = [SystemVersion componentsSeparatedByString:@"."];
+			NSUInteger count = [versionComponents count];
+			if(count > 0) currentMajorVersion = [versionComponents[0] integerValue];
+			if(count > 1) currentMinorVersion = [versionComponents[1] integerValue];
+			if(count > 2) currentPatchVersion = [versionComponents[2] integerValue];
+#else
+			SInt32 majorVersion, minorVersion, patchVersion;
+			Gestalt(gestaltSystemVersionMajor, &majorVersion);
+			Gestalt(gestaltSystemVersionMinor, &minorVersion);
+			Gestalt(gestaltSystemVersionBugFix, &patchVersion);
+			currentMajorVersion = majorVersion;
+			currentMinorVersion = minorVersion;
+			currentPatchVersion = patchVersion;
+#endif
+		}
+	});
+	
 	if(JFStringIsNullOrEmpty(version))
 		return NO;
 	
-	NSArray* comps1 = [version componentsSeparatedByString:@"."];
-	NSArray* comps2 = [SystemVersion componentsSeparatedByString:@"."];
+	NSArray* versionComponents = [version componentsSeparatedByString:@"."];
+	NSUInteger count = [versionComponents count];
 	
-	NSUInteger comps1Count = [comps1 count];
-	NSUInteger comps2Count = [comps2 count];
-	if((comps1Count == 0) || (comps1Count > comps2Count))
+	NSInteger majorVersion = -1;
+	NSInteger minorVersion = -1;
+	NSInteger patchVersion = -1;
+	
+	if(count > 0)
+	{
+		NSInteger value = [versionComponents[0] integerValue];
+		if(value >= 0)
+			majorVersion = value;
+	}
+	
+	if(majorVersion == -1)
 		return NO;
 	
-	NSComparisonResult result = NSOrderedSame;
-	for(NSUInteger i = 0; i < comps1Count; i++)
+	if(count > 1)
 	{
-		NSString* comp1 = [comps1 objectAtIndex:i];
-		NSString* comp2 = [comps2 objectAtIndex:i];
+		NSInteger value = [versionComponents[1] integerValue];
+		if(value >= 0)
+			minorVersion = value;
+	}
+	if(count > 2)
+	{
+		NSInteger value = [versionComponents[2] integerValue];
+		if(value >= 0)
+			patchVersion = value;
+	}
+	
+	NSInteger comps1[3] = {majorVersion, minorVersion, patchVersion};
+	NSInteger comps2[3] = {currentMajorVersion, currentMinorVersion, currentPatchVersion};
+	
+	NSComparisonResult result = NSOrderedSame;
+	for(NSUInteger i = 0; i < 3; i++)
+	{
+		NSInteger comp1 = comps1[i];
+		if(comp1 == -1)
+			break;
 		
-		result = [comp2 compare:comp1 options:NSNumericSearch];
+		NSInteger comp2 = comps2[i];
+		
+		if(comp2 == comp1)		result = NSOrderedSame;
+		else if(comp2 < comp1)	result = NSOrderedAscending;
+		else if(comp2 > comp1)	result = NSOrderedDescending;
+		
 		if(result != NSOrderedSame)
 			break;
 	}
@@ -367,25 +429,5 @@ BOOL JFCheckSystemVersion(NSString* version, JFRelation relation)
 	
 	return NO;
 }
-
-#else
-
-BOOL JFCheckSystemVersion(double version, JFRelation relation)
-{
-	double systemVersion = NSAppKitVersionNumber;
-	switch(relation)
-	{
-		case JFRelationLessThan:			return (systemVersion < version);
-		case JFRelationLessThanOrEqual:		return (systemVersion <= version);
-		case JFRelationEqual:				return (systemVersion == version);
-		case JFRelationGreaterThanOrEqual:	return (systemVersion >= version);
-		case JFRelationGreaterThan:			return (systemVersion > version);
-		default:
-			break;
-	}
-	return NO;
-}
-
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

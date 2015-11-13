@@ -92,7 +92,7 @@ FOUNDATION_EXPORT NSString*	JFGetLaunchImageNameForOrientation(UIInterfaceOrient
 #pragma mark Functions (Math)
 
 FOUNDATION_EXPORT JFDegrees	JFDegreesFromRadians(JFRadians radians);
-FOUNDATION_EXPORT JFRadians	JFRadiansFromDegress(JFDegrees degrees);
+FOUNDATION_EXPORT JFRadians	JFRadiansFromDegrees(JFDegrees degrees);
 
 
 #pragma mark Functions (Resources)
@@ -114,10 +114,6 @@ FOUNDATION_EXPORT BOOL	JFValidateConnectionState(JFConnectionState state);
 
 #pragma mark Functions (Version)
 
-#if TARGET_OS_IPHONE
 FOUNDATION_EXPORT BOOL	JFCheckSystemVersion(NSString* version, JFRelation relation);
-#else
-FOUNDATION_EXPORT BOOL	JFCheckSystemVersion(double version, JFRelation relation);
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

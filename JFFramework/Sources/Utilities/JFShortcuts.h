@@ -30,6 +30,7 @@
 #define MainNotificationCenter	[NSNotificationCenter defaultCenter]
 #define MainOperationQueue		[NSOperationQueue mainQueue]
 #define MethodName				NSStringFromSelector(_cmd)
+#define ProcessInfo				[NSProcessInfo processInfo]
 
 #if TARGET_OS_IPHONE
 #define CurrentDevice					[UIDevice currentDevice]
@@ -79,16 +80,18 @@
 #else
 #define OSX(_version)		JFCheckSystemVersion(_version, JFRelationEqual)
 #define OSXPlus(_version)	JFCheckSystemVersion(_version, JFRelationGreaterThanOrEqual)
-#define OSX10_6				(OSX10_6Plus && !OSX10_7Plus)
-#define OSX10_6Plus			OSXPlus(NSAppKitVersionNumber10_6)
-#define OSX10_7				(OSX10_7Plus && !OSX10_8Plus)
-#define OSX10_7Plus			OSXPlus(NSAppKitVersionNumber10_7)
-#define OSX10_8				(OSX10_8Plus && !OSX10_9Plus)
-#define OSX10_8Plus			OSXPlus(NSAppKitVersionNumber10_8)
-#define OSX10_9				(OSX10_9Plus && !OSX10_10Plus)
-#define OSX10_9Plus			OSXPlus(NSAppKitVersionNumber10_9)
-#define OSX10_10			(OSX10_10Plus && !OSXPlus(NSAppKitVersionNumber10_10_Max + 1))
-#define OSX10_10Plus		OSXPlus(NSAppKitVersionNumber10_10)
+#define OSX10_6				OSX(@"10.6")
+#define OSX10_6Plus			OSXPlus(@"10.6")
+#define OSX10_7				OSX(@"10.7")
+#define OSX10_7Plus			OSXPlus(@"10.7")
+#define OSX10_8				OSX(@"10.8")
+#define OSX10_8Plus			OSXPlus(@"10.8")
+#define OSX10_9				OSX(@"10.9")
+#define OSX10_9Plus			OSXPlus(@"10.9")
+#define OSX10_10			OSX(@"10.10")
+#define OSX10_10Plus		OSXPlus(@"10.10")
+#define OSX10_11			OSX(@"10.11")
+#define OSX10_11Plus		OSXPlus(@"10.11")
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
