@@ -73,6 +73,9 @@ JFColor* JFColorWithComponents32(JFColor32Components components)
 
 JFColor* JFColorWithHex(unsigned int value)
 {
+	if(NSHostByteOrder() == NS_LittleEndian)
+		value = NSSwapInt(value);
+	
 	JFColor32 color;
 	color.value = value;
 	
