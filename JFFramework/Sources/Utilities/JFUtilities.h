@@ -84,8 +84,8 @@ FOUNDATION_EXPORT void		JFToggleNetworkActivityIndicator(BOOL visible);
 #pragma mark Functions (Images)
 
 #if TARGET_OS_IPHONE
-FOUNDATION_EXPORT NSString*	JFGetLaunchImageName();
-FOUNDATION_EXPORT NSString*	JFGetLaunchImageNameForOrientation(UIInterfaceOrientation orientation);
+FOUNDATION_EXPORT NSString*	JFLaunchImageName();
+FOUNDATION_EXPORT NSString*	JFLaunchImageNameForOrientation(UIInterfaceOrientation orientation);
 #endif
 
 
