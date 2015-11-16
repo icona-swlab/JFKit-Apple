@@ -41,6 +41,13 @@ BOOL JFStringIsEmpty(NSString* string)
 	return (string && [string isEqualToString:JFEmptyString]);
 }
 
+BOOL JFStringIsMadeOfCharacters(NSString* string, NSString* characters)
+{
+	NSCharacterSet* stringSet = [NSCharacterSet characterSetWithCharactersInString:string];
+	NSCharacterSet* charactersSet = [NSCharacterSet characterSetWithCharactersInString:characters];
+	return [charactersSet isSupersetOfSet:stringSet];
+}
+
 BOOL JFStringIsNullOrEmpty(NSString* string)
 {
 	return (!string || [string isEqualToString:JFEmptyString]);
@@ -72,7 +79,65 @@ NSString* JFStringMakeRandomWithCharacters(NSUInteger length, NSString* characte
 }
 
 
-#pragma mark Functions (Conversions)
+#pragma mark Functions (Object conversions)
+
+NSString* JFStringFromClassOfObject(id<NSObject> object)
+{
+	if(!object)
+		return nil;
+	
+	return NSStringFromClass([object class]);
+}
+
+NSString* JFStringFromCString(const char* string)
+{
+	return JFStringFromEncodedCString(string, NSUTF8StringEncoding);
+}
+
+NSString* JFStringFromEncodedCString(const char* string, NSStringEncoding encoding)
+{
+	if(!string)
+		return nil;
+	
+	return [NSString stringWithCString:string encoding:encoding];
+}
+
+NSString* JFStringFromObject(id<NSObject> object)
+{
+	if(!object)
+		return nil;
+	
+	return [NSString stringWithFormat:@"<%@: %@>", JFStringFromClassOfObject(object), JFStringFromPointerOfObject(object)];
+}
+
+NSString* JFStringFromPointer(void* pointer)
+{
+	if(!pointer)
+		return nil;
+	
+	return [NSString stringWithFormat:@"%p", pointer];
+}
+
+NSString* JFStringFromPointerOfObject(id<NSObject> object)
+{
+	if(!object)
+		return nil;
+	
+	return [NSString stringWithFormat:@"%p", object];
+}
+
+const char* JFStringToCString(NSString* string)
+{
+	return JFStringToEncodedCString(string, NSUTF8StringEncoding);
+}
+
+const char* JFStringToEncodedCString(NSString* string, NSStringEncoding encoding)
+{
+	return [string cStringUsingEncoding:encoding];
+}
+
+
+#pragma mark Functions (Scalar conversions)
 
 NSString* JFStringFromBool(BOOL value)
 {
@@ -130,11 +195,6 @@ NSString* JFStringFromHex(unsigned int value)
 	return [NSString stringWithFormat:@"%x", value];
 }
 
-NSString* JFStringFromID(id object)
-{
-	return [NSString stringWithFormat:@"%p", object];
-}
-
 NSString* JFStringFromInt(int value)
 {
 	return [NSString stringWithFormat:@"%d", value];
@@ -171,16 +231,6 @@ NSString* JFStringFromNSUInteger(NSUInteger value)
 #else
 	return JFStringFromUnsignedInt(value);
 #endif
-}
-
-NSString* JFStringFromObject(id object)
-{
-	return [NSString stringWithFormat:@"<%@: %@>", JFStringFromObjectClass(object), JFStringFromID(object)];
-}
-
-NSString* JFStringFromPointer(void* pointer)
-{
-	return [NSString stringWithFormat:@"%p", pointer];
 }
 
 NSString* JFStringFromSInt8(SInt8 value)

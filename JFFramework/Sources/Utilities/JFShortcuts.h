@@ -24,8 +24,8 @@
 
 #define	ApplicationDelegate		((AppDelegate*)[SharedApplication delegate])
 #define	ClassBundle				[NSBundle bundleForClass:[self class]]
-#define	ClassName				JFStringFromObjectClass(self)
-#define	LogMethod				NSLog(@"%@ (%@): executing '%@'.", ClassName, JFStringFromID(self), MethodName)
+#define	ClassName				NSStringFromClass([self class])
+#define	LogMethod				NSLog(@"%@ (%@): executing '%@'.", ClassName, JFStringFromPointerOfObject(self), MethodName)
 #define MainBundle				[NSBundle mainBundle]
 #define MainNotificationCenter	[NSNotificationCenter defaultCenter]
 #define MainOperationQueue		[NSOperationQueue mainQueue]
@@ -33,14 +33,14 @@
 #define ProcessInfo				[NSProcessInfo processInfo]
 
 #if TARGET_OS_IPHONE
-#define CurrentDevice					[UIDevice currentDevice]
-#define CurrentDeviceOrientation		[CurrentDevice orientation]
-#define CurrentStatusBarOrientation		[SharedApplication statusBarOrientation]
-#define MainScreen						[UIScreen mainScreen]
-#define	SharedApplication				[UIApplication sharedApplication]
+#define CurrentDevice				[UIDevice currentDevice]
+#define CurrentDeviceOrientation	[CurrentDevice orientation]
+#define CurrentStatusBarOrientation	[SharedApplication statusBarOrientation]
+#define MainScreen					[UIScreen mainScreen]
+#define	SharedApplication			[UIApplication sharedApplication]
 #else
-#define	SharedApplication				NSApp
-#define	SharedWorkspace					[NSWorkspace sharedWorkspace]
+#define	SharedApplication			NSApp
+#define	SharedWorkspace				[NSWorkspace sharedWorkspace]
 #endif
 
 

@@ -19,7 +19,6 @@
 
 
 #import "JFTypes.h"
-#import "JFUtilities.h"
 
 
 
@@ -27,14 +26,9 @@
 
 #pragma mark - Macros
 
-#define JFKVCPropertyName(_property)			[[JFKVCPropertyPath(_property) componentsSeparatedByString:@"."] lastObject]
-#define JFKVCPropertyPath(_property)			(JFEmptyString#_property)
-#define JFReversedDomain						@"com.jackfelle"
-#define JFStringFromCString(_cStr)				JFStringFromEncodedCString(_cStr, NSUTF8StringEncoding)
-#define JFStringFromEncodedCString(_cStr, _enc)	[NSString stringWithCString:_cStr encoding:_enc]
-#define	JFStringFromObjectClass(_obj)			NSStringFromClass([_obj class])
-#define JFStringToCString(_str)					JFStringToEncodedCString(_str, NSUTF8StringEncoding)
-#define JFStringToEncodedCString(_str, _enc)	[_str cStringUsingEncoding:_enc]
+#define JFKVCPropertyName(_property)	[[JFKVCPropertyPath(_property) componentsSeparatedByString:@"."] lastObject]
+#define JFKVCPropertyPath(_property)	(@#_property)
+#define JFReversedDomain				@"com.jackfelle"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,15 +42,32 @@ FOUNDATION_EXPORT NSString* const	JFYesString;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark - Functions
+#pragma mark - Functions (Comparison)
 
-FOUNDATION_EXPORT BOOL		JFStringIsEmpty(NSString* string);
-FOUNDATION_EXPORT BOOL		JFStringIsNullOrEmpty(NSString* string);
+FOUNDATION_EXPORT BOOL	JFStringIsEmpty(NSString* string);
+FOUNDATION_EXPORT BOOL	JFStringIsMadeOfCharacters(NSString* string, NSString* characters);
+FOUNDATION_EXPORT BOOL	JFStringIsNullOrEmpty(NSString* string);
+
+
+#pragma mark - Functions (Creation)
+
 FOUNDATION_EXPORT NSString*	JFStringMakeRandom(NSUInteger length);
 FOUNDATION_EXPORT NSString*	JFStringMakeRandomWithCharacters(NSUInteger length, NSString* characters);
 
 
-#pragma mark Functions (Conversions)
+#pragma mark Functions (Object conversions)
+
+FOUNDATION_EXPORT NSString*		JFStringFromClassOfObject(id<NSObject> object);
+FOUNDATION_EXPORT NSString*		JFStringFromCString(const char* string);
+FOUNDATION_EXPORT NSString*		JFStringFromEncodedCString(const char* string, NSStringEncoding encoding);
+FOUNDATION_EXPORT NSString*		JFStringFromObject(id<NSObject> object);
+FOUNDATION_EXPORT NSString*		JFStringFromPointer(void* pointer);
+FOUNDATION_EXPORT NSString*		JFStringFromPointerOfObject(id<NSObject> object);
+FOUNDATION_EXPORT const char*	JFStringToCString(NSString* string);
+FOUNDATION_EXPORT const char*	JFStringToEncodedCString(NSString* string, NSStringEncoding encoding);
+
+
+#pragma mark Functions (Scalar conversions)
 
 FOUNDATION_EXPORT NSString*	JFStringFromBool(BOOL value);
 FOUNDATION_EXPORT NSString*	JFStringFromBoolean(Boolean value);
@@ -68,15 +79,12 @@ FOUNDATION_EXPORT NSString*	JFStringFromFloat64(Float64 value);
 FOUNDATION_EXPORT NSString*	JFStringFromFormattedDouble(double value, UInt8 decimalDigits, BOOL fixed);
 FOUNDATION_EXPORT NSString*	JFStringFromFormattedFloat(float value, UInt8 decimalDigits, BOOL fixed);
 FOUNDATION_EXPORT NSString*	JFStringFromHex(unsigned int value);
-FOUNDATION_EXPORT NSString*	JFStringFromID(id object);
 FOUNDATION_EXPORT NSString*	JFStringFromInt(int value);
 FOUNDATION_EXPORT NSString*	JFStringFromLong(long value);
 FOUNDATION_EXPORT NSString*	JFStringFromLongLong(long long value);
 FOUNDATION_EXPORT NSString*	JFStringFromNSInteger(NSInteger value);
 FOUNDATION_EXPORT NSString*	JFStringFromNSTimeInterval(NSTimeInterval value);
 FOUNDATION_EXPORT NSString*	JFStringFromNSUInteger(NSUInteger value);
-FOUNDATION_EXPORT NSString*	JFStringFromObject(id object);
-FOUNDATION_EXPORT NSString*	JFStringFromPointer(void* pointer);
 FOUNDATION_EXPORT NSString*	JFStringFromSInt8(SInt8 value);
 FOUNDATION_EXPORT NSString*	JFStringFromSInt16(SInt16 value);
 FOUNDATION_EXPORT NSString*	JFStringFromSInt32(SInt32 value);
