@@ -73,7 +73,7 @@ FOUNDATION_EXPORT NSTimeInterval const	JFAnimationDuration;
 #pragma mark - Functions
 
 FOUNDATION_EXPORT id	JFApplicationInfoForKey(NSString* key);
-FOUNDATION_EXPORT BOOL	JFAreObjectsEqual(id obj1, id obj2);
+FOUNDATION_EXPORT BOOL	JFAreObjectsEqual(id<NSObject> obj1, id<NSObject> obj2);
 
 #if TARGET_OS_IPHONE
 FOUNDATION_EXPORT NSString*	JFNibNameForClass(Class class);
@@ -100,6 +100,7 @@ FOUNDATION_EXPORT JFRadians	JFRadiansFromDegrees(JFDegrees degrees);
 FOUNDATION_EXPORT NSURL*	JFBundleResourceURLForFile(NSBundle* bundle, NSString* filename);
 FOUNDATION_EXPORT NSURL*	JFBundleResourceURLForFileWithType(NSBundle* bundle, NSString* filename, NSString* type);
 
+
 #pragma mark Functions (Runtime)
 
 FOUNDATION_EXPORT void	JFPerformSelector(NSObject* target, SEL action);
@@ -114,6 +115,7 @@ FOUNDATION_EXPORT BOOL	JFValidateConnectionState(JFConnectionState state);
 
 #pragma mark Functions (Version)
 
-FOUNDATION_EXPORT BOOL	JFCheckSystemVersion(NSString* version, JFRelation relation);
+FOUNDATION_EXPORT BOOL		JFCheckSystemVersion(NSString* version, JFRelation relation);
+FOUNDATION_EXPORT NSString*	JFSystemVersion();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
